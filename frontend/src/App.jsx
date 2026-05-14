@@ -9,7 +9,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Login from './pages/auth/Login';
 
 // Website Pages
-import Home from './pages/website/Home';
+import Home from './pages/website/Homepage/Homepage';
 import About from './pages/website/About';
 import Contact from './pages/website/Contact';
 import Dashboard from './pages/dashboard/Dashboard';
