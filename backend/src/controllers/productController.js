@@ -1,0 +1,80 @@
+const Product = require('../models/Product');
+
+exports.createProduct = async (req, res) => {
+    try {
+        const { name, category, price, description } = req.body;
+        const image = req.file ? req.file.path : '';
+
+        const product = await Product.create({
+            name,
+            category,
+            price,
+            description,
+            image
+        });
+
+        res.status(201).json(product);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+exports.getProducts = async (req, res) => {
+    try {
+        const products = await Product.find({}).populate('category', 'name');
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+exports.getProductById = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id).populate('category', 'name');
+        if (product) {
+            res.json(product);
+        } else {
+            res.status(404).json({ message: 'Product not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+exports.updateProduct = async (req, res) => {
+    try {
+        const { name, category, price, description } = req.body;
+        const product = await Product.findById(req.params.id);
+
+        if (product) {
+            product.name = name || product.name;
+            product.category = category || product.category;
+            product.price = price || product.price;
+            product.description = description || product.description;
+            if (req.file) {
+                product.image = req.file.path;
+            }
+
+            const updatedProduct = await product.save();
+            res.json(updatedProduct);
+        } else {
+            res.status(404).json({ message: 'Product not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+exports.deleteProduct = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        if (product) {
+            await product.remove();
+            res.json({ message: 'Product removed' });
+        } else {
+            res.status(404).json({ message: 'Product not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
