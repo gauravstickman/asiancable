@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight, Search } from 'lucide-react';
 
 const WebsiteNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,44 +17,59 @@ const WebsiteNavbar = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-6'
+        isScrolled ? 'bg-white/90 backdrop-blur-md  shadow-sm' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <div className="max-w-[1320px] mx-auto px-6 h-[85px] flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <h1 className={`text-2xl font-black italic tracking-tighter uppercase transition-colors ${
-            isScrolled ? 'text-[#1E3A8A]' : 'text-white'
-          }`}>
-            Asian<span className={isScrolled ? 'text-blue-500' : 'text-blue-200'}>Cables</span>
-          </h1>
+           <img
+    src={
+      isScrolled
+        ? "/src/assets/LOGO_Dark.svg"
+        : "/src/assets/footer-logo.svg"
+    }
+    alt="Asian Cables"
+    className="h-[36px] w-auto transition-all duration-300"
+  />
         </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10">
-          {['Home', 'About', 'Products', 'Applications', 'Contact'].map((item) => (
+          {['Home', 'Products', 'The Company', 'Career', 'Investors'].map((item) => (
             <Link 
               key={item} 
               to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-              className={`text-sm font-bold uppercase tracking-widest transition-colors ${
-                isScrolled ? 'text-slate-600 hover:text-[#1E3A8A]' : 'text-white/80 hover:text-white'
+              className={`text-[16px]  font-normal  transition-colors ${
+                isScrolled ? 'text-[#1E3C8C] hover:text-[#1E3C8C]' : 'text-[#ffffff] hover:text-white'
               }`}
             >
               {item}
             </Link>
           ))}
+        
+        </div>
+           <div className="xs:hidden flex items-center gap-6">
+             <span
+  className={`transition-colors duration-300 ${
+    isScrolled
+      ? "text-[#1E3A8A]"
+      : "text-white"
+  }`}
+>
+  <Search size={20} />
+</span>
           <Link 
             to="/login" 
-            className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+            className={`px-7 py-2 rounded-[2px] text-[16px] font-medium leading-[24px] tracking-[0px] transition-all ${
               isScrolled 
                 ? 'bg-[#1E3A8A] text-white hover:bg-blue-800' 
                 : 'bg-white text-[#1E3A8A] hover:bg-blue-50'
             }`}
           >
-            Client Login
+            Contact
           </Link>
-        </div>
-
+            </div> 
         {/* Mobile Menu Button */}
         <button 
           className={`md:hidden p-2 transition-colors ${
@@ -82,10 +97,10 @@ const WebsiteNavbar = () => {
             ))}
             <Link 
               to="/login" 
-              className="w-full py-4 bg-[#1E3A8A] text-white text-center text-xs font-black uppercase tracking-widest rounded-xl"
+              className="w-full py-4 bg-[#1E3C8C] text-white text-center text-xs font-black uppercase tracking-widest"
               onClick={() => setIsMenuOpen(false)}
             >
-              Client Login
+              contact
             </Link>
           </div>
         </div>

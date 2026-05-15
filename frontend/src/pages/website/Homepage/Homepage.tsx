@@ -9,6 +9,11 @@ import AboutUs from "./Parts/About";
 import FactsSection from "./Parts/Facts";
 import ProductRangeSection from "./Parts/Productrange";
 import WebsiteNavbar from "../../../components/layout/WebsiteNavbar";
+import SustainabilitySection from "./Parts/Sustainability";
+import EngineeringAccordionSection from "./Parts/Enginnering";
+import TestimonialsSection from "./Parts/Testimonials";
+import Blogs from "./Parts/Blogs";
+import ProvenFieldSection from "./Parts/Fields";
 
 const slides = [
   {
@@ -78,7 +83,7 @@ export default function Homepage() {
   return (
     <>
     <WebsiteNavbar />
-    <div className="relative h-screen w-full overflow-hidden bg-black">
+    <div className="relative h-screen w-full overflow-hidden1 bg-black">
       {/* Background Images */}
       {slides.map((slide, index) => (
         <div
@@ -135,17 +140,17 @@ export default function Homepage() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-30 flex h-full items-center px-6 md:px-16">
+      <div className="relative z-30 flex h-full items-center px-6 max-w-[1320px] mx-auto">
         <div className="max-w-2xl">
-          <h1 className="text-5xl font-extrabold italic leading-tight text-white md:text-7xl">
+          <h1 className="text-[64px] font-extrabold italic leading-tight text-white">
             {slides[current].title}
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
+          <p className="mt-6 max-w-xl text-[18px] leading-8 text-white/80">
             {slides[current].description}
           </p>
 
-          <button className="mt-10 flex items-center gap-3 rounded-md bg-white px-7 py-4 text-lg font-semibold text-blue-900 transition hover:bg-blue-50">
+          <button className="mt-10 flex items-center gap-2 rounded-md bg-white px-6 py-2 text-[20px] font-semibold text-blue-900 transition hover:bg-blue-50">
             Watch Full Video
             <ChevronRight size={20} />
           </button>
@@ -175,7 +180,7 @@ export default function Homepage() {
       </button>
 
       {/* Bottom Floating Menu */}
-      <div className="absolute bottom-4 left-1/2 z-40 flex -translate-x-1/2 overflow-hidden rounded-md border border-blue-200 bg-white shadow-2xl">
+      <div className="absolute -bottom-[20px] left-1/2 z-999999 flex -translate-x-1/2 overflow-hidden rounded-md border border-blue-200 bg-white shadow-2xl">
         <button className="flex items-center gap-2 border-r px-6 py-4 text-sm font-medium text-blue-900 hover:bg-blue-50">
           <FileText size={18} />
           Company Overview
@@ -211,18 +216,22 @@ export default function Homepage() {
       </div>
     </div>
 
-    {/* <div className="blur-divider">
+    <div className="blur-divider">
       <img
   src="/src/assets/divider.svg"
   alt=""
   className="max-w-[100%]" 
 />
-    </div> */}
+    </div>
     
     <AboutUs/>
           <FactsSection/>
+          <EngineeringAccordionSection/>
+          <ProvenFieldSection/>
           <ProductRangeSection/>
-    <ApplicationsSection/>  
+    <SustainabilitySection/>
+    <TestimonialsSection/>
+    <Blogs/>
     <Footer/>
     </>
   );

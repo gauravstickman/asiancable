@@ -1,75 +1,184 @@
 import React from "react";
-import { Globe, Mail, Phone, MapPin, Share2, Camera, Send, Github } from "lucide-react";
+import { Globe, Mail, Phone, MapPin, Share2, Camera, Send } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1E3A8A] text-white pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-        {/* Company Info */}
-        <div className="space-y-6">
-          <h3 className="text-2xl font-bold italic tracking-tighter uppercase">
-            Asian<span className="text-blue-200">Cables</span>
-          </h3>
-          <p className="text-blue-100/80 text-sm leading-relaxed">
-            Powering progress through innovation since 1959. Delivering world-class 
-            cable solutions for critical infrastructure across the globe.
-          </p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-blue-300 transition-colors"><Share2 size={20} /></a>
-            <a href="#" className="hover:text-blue-300 transition-colors"><Send size={20} /></a>
-            <a href="#" className="hover:text-blue-300 transition-colors"><Camera size={20} /></a>
-            <a href="#" className="hover:text-blue-300 transition-colors"><Globe size={20} /></a>
+     <footer className=" relative overflow-hidden text-white">
+         <div className="absolute inset-0">
+      <img
+        src="/src/assets/footer.png"
+        alt="Footer Background"
+        className="w-full h-full object-cover object-right-bottom"
+      />
+    
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0" />
+    
+      {/* OPTIONAL GLOW EFFECTS */}
+      <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-red-500/30 blur-[140px]" />
+      <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-orange-500/20 blur-[120px]" />
+    </div>
+          <div className="relative z-10 max-w-[1320px] mx-auto px-4 py-14">
+            {/* TOP CTA */}
+            <div className="bg-white/10 backdrop-blur-md rounded-lg px-8 py-8 mb-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div>
+                <h2 className="text-3xl font-black italic mb-4">
+                  Connect with us
+                </h2>
+    
+                <p className="text-white/80 text-[15px] leading-[22px] max-w-[550px]">
+                  Have a query or seek support?
+                  <br />
+                  Share your details here and our team will revert shortly.
+                </p>
+              </div>
+    
+              <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                <input
+                  type="email"
+                  placeholder="Your e-mail..."
+                  className="w-full lg:w-[380px] h-[48px] px-6 rounded-lg bg-white text-black outline-none text-lg"
+                />
+    
+                <button className="h-[48px] px-8 rounded-lg transition flex items-center justify-center gap-3 text-[18px] font-medium">
+                  Get in touch
+    <img
+      src="/src/assets/arrow.svg"
+      alt=""
+      className="max-w-[12px]" 
+    />
+                </button>
+              </div>
+            </div>
+    
+            {/* MAIN FOOTER */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+              {/* LEFT */}
+              <div className="lg:col-span-2">
+                {/* LOGO */}
+                <div className="flex items-center gap-5 mb-8">
+                 <img
+      src="/src/assets/footer-logo.svg"
+      alt="Footer Background"
+      className="w-full h-full object-cover object-right-bottom max-w-[132px]" 
+    />
+    
+                  <div className="divider">
+      <img
+      src="/src/assets/line.svg"
+      alt="Footer Background"
+      className="w-full h-full object-cover object-right-bottom max-w-[26px]" 
+    />
+                  </div>
+    
+                  <span className="text-lg text-[14px]">
+                    An RPG Company
+                  </span>
+                </div>
+    
+                {/* TEXT */}
+                <p className="text-[#FBFBFB]/83  text-[16px] leading-[26px] max-w-[412px] mb-10">
+                  We offer a comprehensive portfolio of cables &
+                  conductors. Serving infrastructure and industrial systems
+                  central to sustainability and future growth in a globally
+                  connected world.
+                </p>
+    
+                {/* SOCIAL */}
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-lg bg-[#1B49B7] flex items-center justify-center cursor-pointer hover:scale-105 transition">
+                      <img
+      src="/src/assets/in.svg"
+      alt=""
+      className="max-w-[16px]" 
+    />
+                  </div>
+    
+                  <div className="w-10 h-10 rounded-lg bg-[#1B49B7] flex items-center justify-center cursor-pointer hover:scale-105 transition">
+                       <img
+      src="/src/assets/x.svg"
+      alt=""
+      className="max-w-[16px]" 
+    />
+                  </div>
+    
+                  <div className="w-10 h-10 rounded-lg bg-[#1B49B7] flex items-center justify-center cursor-pointer hover:scale-105 transition">
+                        <img
+      src="/src/assets/fb.svg"
+      alt=""
+      className="max-w-[16px]" 
+    />
+                  </div>
+    
+                  <div className="w-10 h-10 rounded-lg bg-[#1B49B7] flex items-center justify-center cursor-pointer hover:scale-105 transition">
+                   <img
+      src="/src/assets/yt.svg"
+      alt=""
+      className="max-w-[16px]" 
+    />
+                  </div>
+                </div>
+              </div>
+    
+              {/* PRODUCTS */}
+              <div>
+                <h3 className="text-[20px] font-normal mb-4">
+                  Products
+                </h3>
+    
+                <ul className="space-y-5 text-[#FBFBFB]/60 text-lg text-[16px]">
+                  <li>Specialty Cables</li>
+                  <li>Power Cables</li>
+                  <li>Railway Cables</li>
+                  <li>Control & Instrumentation</li>
+                  <li>Conductors</li>
+                  <li>Telecom & OFC</li>
+                </ul>
+              </div>
+    
+              {/* COMPANY */}
+              <div>
+                <h3 className="text-[20px] font-normal mb-4">
+                  Company
+                </h3>
+    
+                <ul className="space-y-5 text-[#FBFBFB]/60 text-lg text-[16px]">
+                  <li>About Us</li>
+                  <li>Careers</li>
+                  <li>Sustainability</li>
+                  <li>Investors</li>
+                </ul>
+              </div>
+    
+              {/* SUPPORT */}
+              <div>
+                <h3 className="text-[20px] font-normal mb-4">
+                  Support
+                </h3>
+    
+                <ul className="space-y-5 text-[#FBFBFB]/60 text-lg text-[16px]">
+                  <li>Contact Us</li>
+                  <li>Technical Support</li>
+                  <li>Downloads</li>
+                  <li>FAQs</li>
+                </ul>
+              </div>
+            </div>
+    
+            {/* BOTTOM */}
+            <div className="border-t border-white/20 mt-16 pt-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+              <p className="text-[#D1D1D1]  text-[16px]">
+                © 2026 Asian Cables. All rights reserved.
+              </p>
+    
+              <div className="flex flex-wrap items-center gap-8 text-[#D1D1D1]  text-[16px]">
+                <span>Privacy Policy</span>
+                <span>Terms of Service</span>
+                <span>Cookie Policy</span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Quick Links */}
-        <div>
-          <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
-          <ul className="space-y-4 text-sm text-blue-100/80">
-            <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
-            <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
-            <li><a href="/products" className="hover:text-white transition-colors">Product Range</a></li>
-            <li><a href="/applications" className="hover:text-white transition-colors">Applications</a></li>
-            <li><a href="/contact" className="hover:text-white transition-colors">Contact</a></li>
-          </ul>
-        </div>
-
-        {/* Products */}
-        <div>
-          <h4 className="text-lg font-semibold mb-6">Products</h4>
-          <ul className="space-y-4 text-sm text-blue-100/80">
-            <li><a href="#" className="hover:text-white transition-colors">Power Cables</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Control Cables</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Instrumentation Cables</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Telecom Cables</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Specialty Cables</a></li>
-          </ul>
-        </div>
-
-        {/* Contact Info */}
-        <div>
-          <h4 className="text-lg font-semibold mb-6">Contact Us</h4>
-          <ul className="space-y-4 text-sm text-blue-100/80">
-            <li className="flex gap-3">
-              <MapPin size={18} className="text-blue-300 shrink-0" />
-              <span>RPG House, 463, Dr. Annie Besant Road, Worli, Mumbai - 400 030</span>
-            </li>
-            <li className="flex gap-3">
-              <Phone size={18} className="text-blue-300 shrink-0" />
-              <span>+91 22 2493 0621</span>
-            </li>
-            <li className="flex gap-3">
-              <Mail size={18} className="text-blue-300 shrink-0" />
-              <span>contact@asiancables.com</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="mt-16 pt-8 border-t border-blue-800 text-center text-xs text-blue-200/50 uppercase tracking-widest">
-        <p>© 2026 Asian Cables. A part of RPG Group. All Rights Reserved.</p>
-      </div>
-    </footer>
+        </footer>
   );
 };
 

@@ -44,7 +44,7 @@ body {
     @apply selection:bg-indigo-50 selection:text-indigo-700;
   }
   h1, h2, h3, h4 {
-    @apply text-slate-900 tracking-tight font-semibold;
+    @apply tracking-tight font-semibold;
   }
 }
 
@@ -87,7 +87,31 @@ body {
 }
 
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
 
 
-
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+.blur-divider img {
+    width: 100%;
+    position: relative;
+    top: -120px;
+    z-index: 99;
+    height: 120px;
+    object-fit: cover;
+    object-position: top;
+}
 

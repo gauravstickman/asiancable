@@ -43,7 +43,7 @@ export default function FactsSection() {
               <div className="bg-[#f9f9f9] border border-[#f9f9f9] p-5  flex flex-col justify-between">
                 
                 <div>
-                  <h3 className="text-[48px] font-bold italic leading-none mb-20 bg-gradient-to-r from-orange-500 via-red-500 to-cyan-400 text-transparent bg-clip-text">
+                  <h3 className="text-[48px] font-bold italic leading-none mb-20 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-transparent">
                     6+ Decades
                   </h3>
 
@@ -65,7 +65,7 @@ export default function FactsSection() {
               <div className="bg-[#f9f9f9] border border-[#f9f9f9] p-5  flex flex-col justify-between">
                 
                 <div>
-                  <h3 className="text-[48px] font-black italic leading-none mb-20 bg-gradient-to-r from-orange-500 via-red-500 to-cyan-400 text-transparent bg-clip-text">
+                  <h3 className="text-[48px] font-black italic leading-none mb-20 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-transparent">
                     Up To 220 KV
                   </h3>
 

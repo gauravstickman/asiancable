@@ -1,3 +1,5 @@
+import {
+  ChevronRight, Check} from "lucide-react";
 export default function ProductRangeSection() {
   const products = [
     {
@@ -70,7 +72,7 @@ export default function ProductRangeSection() {
         
         {/* HEADING */}
         <div className="text-center mb-14">
-          <h2 className="text-[58px] leading-none font-black italic text-[#21409A] mb-4">
+          <h2 className="text-[46px] leading-none font-black italic text-[#21409A] mb-4">
             Our Products Range
           </h2>
 
@@ -103,22 +105,22 @@ export default function ProductRangeSection() {
 
               {/* CONTENT */}
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="space-y-3 mb-5">
+                <div className="space-y-3">
                   {products[0].points.map((point, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 text-white text-[16px]"
+                      className="flex items-center gap-2 text-white text-[16px]"
                     >
-                      <span>✓</span>
+                      <span><Check size={16}/></span>
                       <span>{point}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex justify-end">
+                <div className="absolute right-0 bottom-0 flex justify-end">
                   <button className="text-white text-[16px] flex items-center gap-2">
                     Read More
-                    <span>›</span>
+                    <span><ChevronRight size={16}/></span>
                   </button>
                 </div>
               </div>
@@ -154,22 +156,22 @@ export default function ProductRangeSection() {
 
                   {/* CONTENT */}
                   <div className="absolute bottom-5 left-5 right-5">
-                    <div className="space-y-2 mb-4">
+                    <div className="space-y-2">
                       {item.points.map((point, idx) => (
                         <div
                           key={idx}
                           className="flex items-center gap-2 text-white text-[15px]"
                         >
-                          <span>✓</span>
+                          <span><Check size={16}/></span>
                           <span>{point}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex justify-end">
+                    <div className="absolute right-0 bottom-0 flex justify-end">
                       <button className="text-white text-[15px] flex items-center gap-2">
                         Read More
-                        <span>›</span>
+                        <span><ChevronRight size={16}/></span>
                       </button>
                     </div>
                   </div>
@@ -202,22 +204,22 @@ export default function ProductRangeSection() {
 
                   {/* CONTENT */}
                   <div className="absolute bottom-5 left-5 right-5">
-                    <div className="space-y-2 mb-4">
+                    <div className="space-y-2">
                       {item.points.map((point, idx) => (
                         <div
                           key={idx}
                           className="flex items-center gap-2 text-white text-[15px]"
                         >
-                          <span>✓</span>
+                          <span><Check size={16}/></span>
                           <span>{point}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex justify-end">
+                    <div className="absolute right-0 bottom-0 flex justify-end">
                       <button className="text-white text-[15px] flex items-center gap-2">
                         Read More
-                        <span>›</span>
+                        <span><ChevronRight size={15} /></span>
                       </button>
                     </div>
                   </div>
@@ -230,7 +232,7 @@ export default function ProductRangeSection() {
           </div>
 
               {/* BOTTOM WIDE CARD */}
-            <div className="relative h-[230px] rounded-[8px] overflow-hidden group w-[100%] lg:col-span-12">
+            <div className="relative h-[299px] rounded-[8px] overflow-hidden group w-[100%] lg:col-span-12">
               
               <img
                 src={products[5].image}
@@ -249,19 +251,19 @@ export default function ProductRangeSection() {
 
               {/* CONTENT */}
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="space-y-3 mb-5">
+                <div className="space-y-3">
                   {products[5].points.map((point, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 text-white text-[16px]"
+                      className="flex items-center gap-2 text-white text-[16px]"
                     >
-                      <span>✓</span>
+                      <span><Check size={16}/></span>
                       <span>{point}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex justify-end">
+                <div className="absolute right-0 bottom-0 flex justify-end absolute right-0 bottom-0">
                   <button className="text-white text-[16px] flex items-center gap-2">
                     Read More
                     <span>›</span>
@@ -271,6 +273,10 @@ export default function ProductRangeSection() {
             </div>
         </div>
       </div>
+  <button className="w-[162px] h-[48px] bg-[#1E3C8C] rounded-[5.52px]  flex items-center justify-center gap-[6px] mx-auto text-white text-[20px] font-medium hover:bg-[#163174] transition mt-10">
+  View All
+  <span> <ChevronRight size={18} /></span>
+</button>
     </section>
   );
 }
