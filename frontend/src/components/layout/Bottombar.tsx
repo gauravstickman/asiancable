@@ -45,7 +45,7 @@ export default function BottomBar() {
 
           {/* MENU */}
           {open && (
-            <div className="absolute top-[58px] left-0 w-[28px] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.08)] rounded-b-[4px] overflow-hidden z-50">
+            <div className="absolute top-[58px] left-0 w-[280px] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.08)] rounded-b-[4px] overflow-hidden z-50">
 
               {categories.map((item, index) => (
                 <button

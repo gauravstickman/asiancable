@@ -1,18 +1,20 @@
 import React from 'react';
-import { ShoppingBag, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { ShoppingBag, Mail, Phone, MapPin, Send, CircleCheck, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import WebsiteNavbarDark from '../../../components/layout/Navbardark';
 import Footer from '../../../components/layout/Footer';
 import BottomBar from '../../../components/layout/Bottombar';
 import FloatingActions from '../../../components/layout/Floatingactions';
-
+import ProjectSection from '../Homepage/Parts/Applications';
+import ProvenFieldSection from '../Homepage/Parts/Fields';
+import ProductResources from './parts/ProductResources';
 const Product = () => {
     return (
         <>
             <WebsiteNavbarDark/>
             <BottomBar/>
 
-            <section className="bg-[#f6f6f6] py-20">
+            <section className="bg-[#f6f6f6] pt-20 pb-24">
   <div className="max-w-[1320px] mx-auto px-4">
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -182,9 +184,10 @@ const Product = () => {
   </div>
 </section>
 
+<div className='relative top-2'>
 <FloatingActions/>
-
-<section className="bg-[#ffffff] py-24">
+</div>
+<section className="bg-[#ffffff] pt-30 pb-20">
   <div className="max-w-[1320px] mx-auto px-4">
 
     {/* TOP */}
@@ -221,7 +224,7 @@ const Product = () => {
         <div className="rounded-[8px] overflow-hidden shadow-[0px_20px_60px_rgba(0,0,0,0.12)]">
 
           <img
-            src="/images/product-overview.jpg"
+            src="/src/assets/image99.png"
             alt="Product Overview"
             className="w-full h-[520px] object-cover"
           />
@@ -230,12 +233,12 @@ const Product = () => {
     </div>
 
     {/* BOTTOM STATS */}
-    <div className="bg-[#F0F0F0] rounded-[8px] px-10 py-5">
+    <div className="bg-[#F0F0F0] rounded-[8px] px-10 py-6">
 
-      <div className="grid grid-cols-1 md:grid-cols-3">
+      <div className="flex justify-between items-center  px-8">
 
         {/* ITEM */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center justify-between">
 
           <div>
             <h3 className="text-[#1E3C8C] text-[34px] leading-[1.4] font-black italic">
@@ -246,13 +249,14 @@ const Product = () => {
               annual cable manufacturing capacity
             </p>
           </div>
-
-          {/* DIVIDER */}
-          <div className="w-[3px] h-[50px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
+            
+       
         </div>
+           {/* DIVIDER */}
+          <div className="w-[3px] h-[50px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
 
         {/* ITEM */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center justify-between">
 
           <div>
             <h3 className="text-[#1E3C8C] text-[34px] leading-[1.4] font-black italic">
@@ -263,14 +267,12 @@ const Product = () => {
               Decades of Cable Manufacturing Expertise
             </p>
           </div>
-
-          {/* DIVIDER */}
-          <div className="w-[3px] h-[50px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
         </div>
-
+   {/* DIVIDER */}
+          <div className="w-[3px] h-[50px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
         {/* ITEM */}
-        <div className="pl-12">
-
+        <div className="flex flex-col items-center justify-between">
+              <div>
           <h3 className="text-[#1E3C8C] text-[34px] leading-[1.4] font-black italic">
             90+
           </h3>
@@ -279,6 +281,7 @@ const Product = () => {
             Presence in Countries
           </p>
         </div>
+        </div>
       </div>
     </div>
 
@@ -286,6 +289,173 @@ const Product = () => {
 </section>
 
 
+<ProductResources/>
+
+
+<section className="bg-[#f6f6f6] py-15">
+  <div className="max-w-[1320px] mx-auto px-4">
+
+    {/* HEADING */}
+    <div className="text-center mb-16">
+      <h2 className="text-[#21409A] text-[46px] leading-none font-black italic">
+        Features & Standards
+      </h2>
+    </div>
+
+    {/* GRID */}
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+      {/* LEFT BIG CARD */}
+      <div className="lg:col-span-7 bg-white rounded-[6px] overflow-hidden relative min-h-[520px]">
+
+        {/* BACKGROUND IMAGE */}
+        <img
+          src="/src/assets/Container-2.png"
+          alt=""
+          className="absolute top-0 right-0 w-[55%] h-full object-cover object-right-topss"
+        />
+
+        {/* GRADIENT OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/10" />
+
+        {/* CONTENT */}
+        <div className="relative z-10 p-10">
+
+          {/* TITLE */}
+          <h3 className="text-[#21409A] text-[36px] leading-none font-black italic mb-12">
+            Key Features
+          </h3>
+
+          {/* FEATURES */}
+          <div className="space-y-8">
+
+            {[
+              "Accurate signal transmission with minimal interference",
+              "Shielded construction options for noise reduction",
+              "Flexible and durable cable construction",
+              "Suitable for hazardous and industrial environments",
+              "Reliable performance for monitoring and control systems",
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-3"
+              >
+                {/* ICON */}
+                <div className="w-5 h-5 rounded-full bg-[#21409A] flex items-center justify-center shrink-0 mt-1">
+                  <span className="text-white text-[14px]">
+                    <CircleCheck size={25} />
+                  </span>
+                </div>
+
+                {/* TEXT */}
+                <p className="text-[#525252] text-[18px] leading-[1.7]">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* BOTTOM RIGHT GRADIENT */}
+        <div className="absolute bottom-0 right-0 w-[220px] h-[220px] bg-[radial-gradient(circle,_rgba(255,210,18,0.35)_0%,_transparent_70%)]" />
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="lg:col-span-5 flex flex-col gap-4">
+
+        {/* ISO CARD */}
+        <div className="relative bg-[#12398F] rounded-[6px] overflow-hidden h-[250px]">
+               {/* BACKGROUND IMAGE */}
+        <img
+          src="/src/assets/footer.jpg"
+          alt=""
+          className="absolute top-0 right-0 w-[100%] h-full object-cover"
+        />
+
+          {/* CONTENT */}
+          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-8">
+
+            {/* ICON */}
+            <div className="mb-6">
+              <Award size={64} color="#ffffff" />
+            </div>
+
+            {/* TITLE */}
+            <h3 className="text-white text-[28px] leading-none font-black italic mb-8">
+              ISO Certifications
+            </h3>
+
+            {/* CERTIFICATIONS */}
+            <div className="flex items-center gap-8">
+
+              {["ISO 9001", "ISO 14001", "ISO 45001"].map((item, index) => (
+                <span
+                  key={index}
+                  className="text-white text-[15px]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* STANDARDS CARD */}
+        <div className="relative bg-white rounded-[6px] overflow-hidden h-[250px] p-10">
+
+          {/* BACKGROUND GLOW */}
+          <div className="absolute top-0 right-0 w-[180px] h-[180px] bg-[radial-gradient(circle,_rgba(60,170,223,0.18)_0%,_transparent_70%)]" />
+
+         {/* BACKGROUND IMAGE */}
+        <img
+          src="/src/assets/Container-3.png"
+          alt=""
+          className="absolute top-0 right-0 w-[100%] h-full object-cover object-right-top"
+        />
+          {/* CONTENT */}
+          <div className="relative z-10">
+
+            {/* TITLE */}
+            <h3 className="text-[#21409A] text-[18px] leading-none font-black italic mb-10">
+              Standards
+            </h3>
+
+            {/* LIST */}
+            <div className="space-y-6">
+
+              {[
+                "IEC Standards",
+                "BS Standards",
+                "IS Standards",
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2"
+                >
+                  <div className="w-2 h-2 rounded-full bg-[#21409A]" />
+
+                  <p className="text-[#5B5B5B] text-[15px] leading-[1]">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<ProjectSection/>
+
+<div className='proven-f w'>
+  <ProvenFieldSection/>
+</div>
 
             <Footer/>
         </>

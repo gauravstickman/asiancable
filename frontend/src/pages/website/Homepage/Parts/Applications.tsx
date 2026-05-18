@@ -1,9 +1,9 @@
 export default function ApplicationsSection() {
   return (
-    <section className="bg-[#ffffff] py-20">
+    <section className="bg-[#ffffff] py-10">
       <div className="max-w-[1320px] mx-auto px-4">
         {/* Heading */}
-        <h2 className="text-center text-[#1E3C8C] text-5xl md:text-6xl font-black italic mb-14">
+        <h2 className="text-center text-[#1E3C8C] text-[46px] font-black italic mb-14">
           Applications
         </h2>
 
@@ -28,11 +28,11 @@ export default function ApplicationsSection() {
                   PRIMARY USE
                 </span>
 
-                <h3 className="text-[52px] leading-none font-black italic mb-6">
+                <h3 className="text-[42px] leading-none font-black italic mb-6">
                   Oil & Gas
                 </h3>
 
-                <p className="text-[22px] leading-[1.7] text-white/90">
+                <p className="text-[16px] leading-[1.7] text-white/90">
                   Enabling uninterrupted operations across upstream,
                   midstream, and downstream facilities through cabling
                   solutions aligned to safety protocols, reliability
@@ -59,7 +59,7 @@ export default function ApplicationsSection() {
                 <div className="absolute inset-0 bg-black/30" />
 
                 <div className="absolute bottom-5 left-5">
-                  <h3 className="text-white text-[22px] font-black italic leading-tight">
+                  <h3 className="text-white text-[24px] font-black italic leading-tight">
                     Power Plants
                   </h3>
                 </div>
@@ -76,7 +76,7 @@ export default function ApplicationsSection() {
                 <div className="absolute inset-0 bg-black/30" />
 
                 <div className="absolute bottom-5 left-5">
-                  <h3 className="text-white text-[22px] font-black italic leading-tight">
+                  <h3 className="text-white text-[24px] font-black italic leading-tight">
                     Utilities
                   </h3>
                 </div>
@@ -94,7 +94,7 @@ export default function ApplicationsSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
               <div className="absolute bottom-6 left-6">
-                <h3 className="text-white text-[34px] font-black italic leading-tight max-w-[500px]">
+                <h3 className="text-white text-[24px] font-black italic leading-tight max-w-[500px]">
                   Industrial & Heavy Engineering
                 </h3>
               </div>

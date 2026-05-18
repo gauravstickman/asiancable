@@ -118,3 +118,17 @@ body {
     object-position: top;
 }
 
+.proven-f section {
+    background: #fff;
+}
+
+.proven-f h2 {
+    color: #1e3c8c;
+}
+
+.proven-f button {
+    background: #1e3c8c;
+    color: #fff;
+}
+
+.proven-f h2 + p {color: #1e3c8c;}
