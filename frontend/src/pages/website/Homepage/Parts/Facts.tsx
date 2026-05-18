@@ -14,7 +14,7 @@ export default function FactsSection() {
                 
                 {/* TEXT */}
                 <div className="max-w-[500px]">
-                  <h2 className="text-[22px] leading-none font-black italic text-[#21409A] mb-2">
+                  <h2 className="text-[22px] leading-none font-black italic text-[#1E3C8C] mb-2">
                     Presence in 90+ Countries
                   </h2>
 
@@ -48,7 +48,7 @@ export default function FactsSection() {
                   </h3>
 
                   <div>
-                    <h4 className="text-[24px] leading-tight font-black italic text-[#21409A] mb-4">
+                    <h4 className="text-[24px] leading-tight font-black italic text-[#1E3C8C] mb-4">
                       Manufacturing Expertise
                     </h4>
 
@@ -70,7 +70,7 @@ export default function FactsSection() {
                   </h3>
 
                   <div>
-                    <h4 className="text-[24px] leading-tight font-black italic text-[#21409A] mb-4">
+                    <h4 className="text-[24px] leading-tight font-black italic text-[#1E3C8C] mb-4">
                       Manufacturing Capability
                     </h4>
 
@@ -111,7 +111,7 @@ export default function FactsSection() {
 
               {/* CONTENT */}
               <div className="p-8 bottom-[10px] absolute">
-                <h3 className="text-[24px] leading-[1.6] font-black italic text-[#21409A] mb-4">
+                <h3 className="text-[24px] leading-[1.6] font-black italic text-[#1E3C8C] mb-4">
                   Annual Cable manufacturing capacity
                 </h3>
 

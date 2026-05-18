@@ -3,7 +3,7 @@ export default function ApplicationsSection() {
     <section className="bg-[#ffffff] py-20">
       <div className="max-w-[1320px] mx-auto px-4">
         {/* Heading */}
-        <h2 className="text-center text-[#21409A] text-5xl md:text-6xl font-black italic mb-14">
+        <h2 className="text-center text-[#1E3C8C] text-5xl md:text-6xl font-black italic mb-14">
           Applications
         </h2>
 

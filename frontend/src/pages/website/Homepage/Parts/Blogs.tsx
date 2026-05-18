@@ -31,7 +31,7 @@ export default function BlogSection() {
 
         {/* HEADING */}
         <div className="text-center mb-16">
-          <h2 className="text-[#21409A] text-[46px] leading-none font-black italic">
+          <h2 className="text-[#1E3C8C] text-[46px] leading-none font-black italic">
             Latest From Asian Cables
           </h2>
         </div>

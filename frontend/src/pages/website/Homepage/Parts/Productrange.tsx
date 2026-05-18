@@ -72,7 +72,7 @@ export default function ProductRangeSection() {
         
         {/* HEADING */}
         <div className="text-center mb-14">
-          <h2 className="text-[46px] leading-none font-black italic text-[#21409A] mb-4">
+          <h2 className="text-[46px] leading-none font-black italic text-[#1E3C8C] mb-4">
             Our Products Range
           </h2>
 

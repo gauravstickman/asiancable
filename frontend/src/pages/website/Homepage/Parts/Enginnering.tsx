@@ -44,7 +44,7 @@ export default function EngineeringAccordionSection() {
 
         {/* HEADING */}
         <div className="text-center mb-20">
-          <h2 className="text-[#21409A] text-[46px] leading-[1.3] font-black italic max-w-[700px] mx-auto">
+          <h2 className="text-[#1E3C8C] text-[46px] leading-[1.3] font-black italic max-w-[700px] mx-auto">
             Engineering Trust. Enabling Progress.
           </h2>
         </div>
@@ -83,14 +83,14 @@ export default function EngineeringAccordionSection() {
   index === 0 ? "pt-0 pb-5" : "pt-5 pb-5"
 } ${
   active
-    ? "text-[#21409A]"
+    ? "text-[#1E3C8C]"
     : "text-[#8B8B8B]"
 }`}
                   >
                     <h3
                       className={`text-[23px] leading-tight font-black italic transition ${
                         active
-                          ? "text-[#21409A]"
+                          ? "text-[#1E3C8C]"
                           : "text-[#8B8B8B]"
                       }`}
                     >
@@ -119,7 +119,7 @@ export default function EngineeringAccordionSection() {
                       {item.content}
                     </p>
 
-                    <button className="text-[#21409A] text-[16px] font-medium hover:underline">
+                    <button className="text-[#1E3C8C] text-[16px] font-medium hover:underline">
                       Learn more
                     </button>
                   </div>

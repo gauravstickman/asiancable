@@ -28,7 +28,7 @@ export default function TestimonialsSection() {
 
         {/* HEADING */}
         <div className="text-center mb-16">
-          <h2 className="text-[46px] leading-none font-black italic text-[#21409A]">
+          <h2 className="text-[46px] leading-none font-black italic text-[#1E3C8C]">
             What Our Clients Say
           </h2>
         </div>
