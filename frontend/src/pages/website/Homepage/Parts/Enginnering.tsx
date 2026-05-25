@@ -7,31 +7,48 @@ const accordionData = [
     title: "Renewable Energy Cables",
     content:
       "Advanced renewable energy cable systems engineered for solar, wind, and clean energy infrastructure projects.",
+    image:
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1400&auto=format&fit=crop",
   },
+
   {
     title: "Telecom & Optical Fibre Cables",
     content:
-      "High-performance cables designed for scalable telecom networks, broadband infrastructure, and high-speed data transmission, built to meet carrier-grade compliance and evolving bandwidth demands.",
+      "High-performance cables designed for scalable telecom networks, broadband infrastructure, and high-speed data transmission.",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop",
   },
+
   {
     title: "Railway Cables",
     content:
-      "Reliable railway cable solutions engineered for signaling, rolling stock, and critical rail infrastructure applications.",
+      "Reliable railway cable solutions engineered for signaling, rolling stock, and rail infrastructure.",
+    image:
+      "https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=1400&auto=format&fit=crop",
   },
+
   {
     title: "Conductors",
     content:
       "Premium-grade conductors designed for efficient power transmission and industrial infrastructure.",
+    image:
+      "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=1400&auto=format&fit=crop",
   },
+
   {
     title: "Elastomeric & Mining Cables",
     content:
       "Heavy-duty elastomeric and mining cables built for harsh industrial and underground environments.",
+    image:
+      "https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=1400&auto=format&fit=crop",
   },
+
   {
     title: "Specialty & Industrial Cables",
     content:
       "Custom-engineered specialty cable solutions tailored for industrial and mission-critical operations.",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop",
   },
 ];
 
@@ -39,7 +56,7 @@ export default function EngineeringAccordionSection() {
   const [activeIndex, setActiveIndex] = useState(1);
 
   return (
-    <section className="bg-[#f6f6f6] py-24">
+    <section className="bg-[#f6f6f6] py-24 reveal-section">
       <div className="max-w-[1320px] mx-auto px-4">
 
         {/* HEADING */}
@@ -53,12 +70,12 @@ export default function EngineeringAccordionSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
           {/* LEFT IMAGE */}
-          <div className="relative  max-h-[550px] rounded-[6px] overflow-hidden">
+          <div className="relative h-[550px] rounded-[6px] overflow-hidden">
 
             <img
-              src="/src/assets/engineering.png"
-              alt="Engineering"
-              className="object-cover"
+              src={accordionData[activeIndex].image}
+              alt=""
+              className="w-full h-full object-cover transition-all duration-700"
             />
 
             {/* OVERLAY */}
@@ -74,18 +91,19 @@ export default function EngineeringAccordionSection() {
               return (
                 <div
                   key={index}
-                  className="relative"
+                  className="relative cursor-pointer"
+                  onMouseEnter={() => setActiveIndex(index)}
                 >
-                 
+
+                  {/* TITLE */}
                   <button
-                    onClick={() => setActiveIndex(index)}
-                   className={`w-full text-left transition ${
-  index === 0 ? "pt-0 pb-5" : "pt-5 pb-5"
-} ${
-  active
-    ? "text-[#1E3C8C]"
-    : "text-[#8B8B8B]"
-}`}
+                    className={`w-full text-left transition ${
+                      index === 0 ? "pt-0 pb-5" : "pt-5 pb-5"
+                    } ${
+                      active
+                        ? "text-[#1E3C8C]"
+                        : "text-[#8B8B8B]"
+                    }`}
                   >
                     <h3
                       className={`text-[23px] leading-tight font-black italic transition ${
@@ -98,14 +116,14 @@ export default function EngineeringAccordionSection() {
                     </h3>
                   </button>
 
-                     {active && (
-  <div className="h-[2px] w-full bg-[#D9D9D9] relative overflow-hidden">
-    
-    {/* GRADIENT ACTIVE LINE */}
-    <div className="absolute left-0 top-auto bottom-0 h-full w-[72%] bg-gradient-to-r from-[#F7C948] via-[#F28C8C] to-[#6EC1FF]" />
-  
-  </div>
-)}
+                  {/* ACTIVE BORDER */}
+                  {active && (
+                    <div className="h-[2px] w-full bg-[#D9D9D9] relative overflow-hidden">
+
+                      <div className="absolute left-0 bottom-0 h-full w-[72%] bg-gradient-to-r from-[#F7C948] via-[#F28C8C] to-[#6EC1FF]" />
+
+                    </div>
+                  )}
 
                   {/* CONTENT */}
                   <div
@@ -115,7 +133,7 @@ export default function EngineeringAccordionSection() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="pt-5 text-[16px] leading-[1.4] text-[#6B6B6B] max-w-[620px] mb-6">
+                    <p className="pt-5 text-[16px] leading-[1.7] text-[#6B6B6B] max-w-[620px] mb-6">
                       {item.content}
                     </p>
 

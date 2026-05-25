@@ -17,10 +17,14 @@ import CategoryList from './pages/category/CategoryList';
 import ProductList from './pages/product/ProductList';
 import Product from './pages/website/Products/Product';
 import Industy from './pages/website/Industries/IndustryPage';
-
+import RevealProvider from "./hooks/RevealProvider";
 function App() {
+
   return (
+    <>
+  
     <Router>
+        <RevealProvider/>
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
@@ -50,6 +54,7 @@ function App() {
         autoClose={3000}
       />
     </Router>
+    </>
   );
 }
 

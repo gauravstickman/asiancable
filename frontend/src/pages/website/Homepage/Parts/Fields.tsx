@@ -2,7 +2,7 @@
 import {
   ChevronRight, ArrowRight} from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 const projects = [
@@ -74,7 +74,7 @@ const projects = [
 
 export default function ProvenFieldSection() {
   return (
-    <section className="bg-[#1E3C8C] py-24 overflow-hidden">
+    <section className="bg-[#1E3C8C] py-24 overflow-hidden reveal-section">
       <div className="max-w-[100%] mx-auto">
 
         {/* HEADING */}
@@ -90,7 +90,12 @@ export default function ProvenFieldSection() {
 
         {/* SLIDER */}
         <Swiper
+  modules={[Autoplay]}
   spaceBetween={20}
+  autoplay={{
+    delay: 3000,
+    disableOnInteraction: false,
+  }}
   slidesPerView={2}
   centeredSlides={true}
   grabCursor={true}
@@ -158,7 +163,7 @@ export default function ProvenFieldSection() {
         </Swiper>
 
         {/* BUTTON */}
-         <button className="w-[162px] h-[48px] bg-[#ffffff] rounded-[5.52px]  flex items-center justify-center gap-[6px] mx-auto text-[#1E3C8C] text-[20px] font-medium hover:bg-[#ffffff] transition mt-10">
+         <button className="border-it w-[162px] h-[48px] bg-[#ffffff] rounded-[5.52px] border-transparent hover:border-[1.84px] hover:[border-image:linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)_1] transition-all duration-300  flex items-center justify-center gap-[6px] mx-auto text-[#1E3C8C] text-[20px] font-medium hover:bg-[#ffffff] transition mt-10">
             View All
             <span> <ChevronRight size={18} /></span>
           </button>

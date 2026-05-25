@@ -67,7 +67,7 @@ export default function ProductRangeSection() {
   ];
 
   return (
-    <section className="bg-[#f5f5f5] py-20">
+    <section className="bg-[#f5f5f5] py-20 reveal-section">
       <div className="max-w-[1320px] mx-auto px-4">
         
         {/* HEADING */}

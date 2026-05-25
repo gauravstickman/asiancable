@@ -8,7 +8,7 @@ export default function TrustedLeaders() {
   ];
 
   return (
-    <section className="bg-[#ffffff] pt-5 pb-24">
+    <section className="bg-[#ffffff] pt-5 pb-24 reveal-section">
       <div className="max-w-[1320px] mx-auto px-4">
 
         {/* HEADING */}

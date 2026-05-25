@@ -184,7 +184,7 @@ const Product = () => {
   </div>
 </section>
 
-<section className="bg-[#ffffff] pt-30 pb-20">
+<section className="bg-[#ffffff] pt-30 pb-20 reveal-section">
   <div className="max-w-[1320px] mx-auto px-4">
 
     {/* TOP */}
@@ -289,7 +289,7 @@ const Product = () => {
 <ProductResources/>
 
 
-<section className="bg-[#f6f6f6] py-15">
+<section className="bg-[#f6f6f6] py-15 reveal-section">
   <div className="max-w-[1320px] mx-auto px-4">
 
     {/* HEADING */}

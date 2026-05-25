@@ -22,7 +22,7 @@ export default function ProvenProjects() {
   ];
 
   return (
-    <section className="bg-[#ffffff] py-24 mt-24">
+    <section className="bg-[#ffffff] py-24 mt-24 reveal-section">
       <div className="max-w-[1320px] mx-auto px-4">
 
         {/* HEADING */}

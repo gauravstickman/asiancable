@@ -55,7 +55,7 @@ const IndustryPage = () => {
   </div>
 
   {/* BOTTOM STATS */}
-  <div className="absolute left-1/2 bottom-0 z-20 w-full max-w-[1320px] -translate-x-1/2 translate-y-1/2 px-4">
+  <div className="absolute reveal-section left-1/2 bottom-0 z-20 w-full max-w-[1320px] -translate-x-1/2 translate-y-1/2 px-4">
 
     <div className="grid grid-cols-1 md:grid-cols-3 overflow-hidden rounded-[6px] shadow-[0px_25px_60px_rgba(0,0,0,0.25)]">
 

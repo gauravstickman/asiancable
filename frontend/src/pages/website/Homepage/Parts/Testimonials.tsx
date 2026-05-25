@@ -23,7 +23,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-24 bg-[#ffffff] overflow-hidden">
+    <section className="py-24 bg-[#ffffff] overflow-hidden reveal-section">
       <div className="max-w-[100%] mx-auto">
 
         {/* HEADING */}

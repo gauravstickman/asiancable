@@ -21,7 +21,7 @@ export default function AsianCablesImpact() {
   ];
 
   return (
-    <section className="bg-[#1E3C8C] py-24">
+    <section className="bg-[#1E3C8C] py-24 reveal-section">
       <div className="max-w-[1320px] mx-auto px-4">
 
         {/* HEADING */}

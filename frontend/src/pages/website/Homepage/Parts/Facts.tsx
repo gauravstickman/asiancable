@@ -1,7 +1,7 @@
 
 export default function FactsSection() {
   return (
-    <section className="bg-[#ffffff] py-20">
+    <section className="bg-[#ffffff] py-20 reveal-section">
       <div className="max-w-[1320px] mx-auto px-4  py-4 shadow-[0px_4px_133.5px_0px_#9D9D9D40]">
         <div className="grid grid-cols-12 gap-4">
           
@@ -9,16 +9,16 @@ export default function FactsSection() {
           <div className="col-span-12 lg:col-span-8 flex flex-col gap-4">
             
             {/* TOP CARD */}
-            <div className="bg-[#f9f9f9] border border-[#f9f9f9] p-5 rounded-sm">
+            <div className="bg-[#f9f9f9] border border-[#f9f9f9] p-5 rounded-sm hover:bg-[#1E3C8C] transition-all duration-300 group">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 
                 {/* TEXT */}
                 <div className="max-w-[500px]">
-                  <h2 className="text-[22px] leading-none font-black italic text-[#1E3C8C] mb-2">
+                  <h2 className="text-[22px] leading-none font-black italic text-[#1E3C8C] group-hover:text-white transition-colors duration-300 mb-2">
                     Presence in 90+ Countries
                   </h2>
 
-                  <p className="text-[14px] leading-[1.6] text-[#6f6f6f]">
+                  <p className="text-[14px] leading-[1.6] text-[#6f6f6f] group-hover:text-white/80 transition-colors duration-300">
                     The company exports cables worldwide, serving global
                     infrastructure projects across Asia, Africa, Europe,
                     the Middle East and Australia.
@@ -40,19 +40,19 @@ export default function FactsSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               
               {/* CARD 1 */}
-              <div className="bg-[#f9f9f9] border border-[#f9f9f9] p-5  flex flex-col justify-between">
+              <div className="bg-[#f9f9f9] border border-[#f9f9f9] p-5 flex flex-col justify-between hover:bg-[#1E3C8C] transition-all duration-300 group">
                 
                 <div>
-                  <h3 className="text-[48px] font-bold italic leading-none mb-20 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-transparent">
+<h3 className="text-[48px] font-black italic leading-none mb-20 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-transparent group-hover:bg-none group-hover:text-white transition-all duration-300">
                     6+ Decades
                   </h3>
 
                   <div>
-                    <h4 className="text-[24px] leading-tight font-black italic text-[#1E3C8C] mb-4">
+                    <h4 className="text-[24px]  group-hover:text-white leading-tight font-black italic text-[#1E3C8C] mb-4">
                       Manufacturing Expertise
                     </h4>
 
-                    <p className="text-[16px] leading-[1.6] text-[#6f6f6f]">
+                    <p className="text-[16px] group-hover:text-white/80 leading-[1.6] text-[#6f6f6f]">
                       Asian Cables has been delivering advanced cable
                       solutions since its inception, with continuous
                       innovation in power and telecom cable technologies.
@@ -62,19 +62,19 @@ export default function FactsSection() {
               </div>
 
               {/* CARD 2 */}
-              <div className="bg-[#f9f9f9] border border-[#f9f9f9] p-5  flex flex-col justify-between">
+              <div className="bg-[#f9f9f9] border border-[#f9f9f9] p-5 flex flex-col justify-between hover:bg-[#1E3C8C] transition-all duration-300 group">
                 
                 <div>
-                  <h3 className="text-[48px] font-black italic leading-none mb-20 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-transparent">
+<h3 className="text-[48px] font-black italic leading-none mb-20 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-transparent group-hover:bg-none group-hover:text-white transition-all duration-300">
                     Up To 220 KV
                   </h3>
 
                   <div>
-                    <h4 className="text-[24px] leading-tight font-black italic text-[#1E3C8C] mb-4">
+                    <h4 className="text-[24px] group-hover:text-white leading-tight font-black italic text-[#1E3C8C] mb-4">
                       Manufacturing Capability
                     </h4>
 
-                    <p className="text-[16px] leading-[1.6] text-[#6f6f6f]">
+                    <p className="text-[16px] group-hover:text-white/80 leading-[1.6] text-[#6f6f6f]">
                       High Voltage and Extra High Voltage cables up to
                       220 kV are manufactured at the advanced facility
                       in Vadodara.

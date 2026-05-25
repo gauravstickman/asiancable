@@ -7,7 +7,7 @@ import {
 
 export default function SustainabilitySection() {
   return (
-    <section className="relative w-full h-[900px] overflow-hidden">
+    <section className="relative w-full h-[900px] overflow-hidden reveal-section">
       
       {/* BACKGROUND IMAGE */}
       <img

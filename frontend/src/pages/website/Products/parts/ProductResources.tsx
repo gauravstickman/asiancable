@@ -8,7 +8,7 @@ export default function ProductResources() {
 
   return (
    <>
-   <section className="bg-[#ffffff] pt-8 pb-20">
+   <section className="bg-[#ffffff] pt-8 pb-20 reveal-section">
   <div className="max-w-[1320px] mx-auto px-4">
 
     {/* HEADING */}

@@ -26,7 +26,7 @@ const blogs = [
 
 export default function BlogSection() {
   return (
-    <section className="bg-[#f6f6f6] py-24">
+    <section className="bg-[#f6f6f6] py-24 reveal-section">
       <div className="max-w-[1320px] mx-auto px-4">
 
         {/* HEADING */}
