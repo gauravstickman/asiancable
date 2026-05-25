@@ -164,7 +164,6 @@ export default function Homepage() {
       </button>
 
     </div>
-<FloatingActions/>
     <div className="blur-divider">
       <img
   src="/src/assets/divider.svg"

@@ -184,9 +184,6 @@ const Product = () => {
   </div>
 </section>
 
-<div className='relative top-2'>
-<FloatingActions/>
-</div>
 <section className="bg-[#ffffff] pt-30 pb-20">
   <div className="max-w-[1320px] mx-auto px-4">
 
@@ -297,7 +294,7 @@ const Product = () => {
 
     {/* HEADING */}
     <div className="text-center mb-16">
-      <h2 className="text-[#21409A] text-[46px] leading-none font-black italic">
+      <h2 className="text-[#1E3C8C] text-[46px] leading-none font-black italic">
         Features & Standards
       </h2>
     </div>
@@ -322,7 +319,7 @@ const Product = () => {
         <div className="relative z-10 p-10">
 
           {/* TITLE */}
-          <h3 className="text-[#21409A] text-[36px] leading-none font-black italic mb-12">
+          <h3 className="text-[#1E3C8C] text-[36px] leading-none font-black italic mb-12">
             Key Features
           </h3>
 
@@ -341,7 +338,7 @@ const Product = () => {
                 className="flex items-start gap-3"
               >
                 {/* ICON */}
-                <div className="w-5 h-5 rounded-full bg-[#21409A] flex items-center justify-center shrink-0 mt-1">
+                <div className="w-5 h-5 rounded-full bg-[#1E3C8C] flex items-center justify-center shrink-0 mt-1">
                   <span className="text-white text-[14px]">
                     <CircleCheck size={25} />
                   </span>
@@ -416,7 +413,7 @@ const Product = () => {
           <div className="relative z-10">
 
             {/* TITLE */}
-            <h3 className="text-[#21409A] text-[18px] leading-none font-black italic mb-10">
+            <h3 className="text-[#1E3C8C] text-[18px] leading-none font-black italic mb-10">
               Standards
             </h3>
 
@@ -432,7 +429,7 @@ const Product = () => {
                   key={index}
                   className="flex items-center gap-2"
                 >
-                  <div className="w-2 h-2 rounded-full bg-[#21409A]" />
+                  <div className="w-2 h-2 rounded-full bg-[#1E3C8C]" />
 
                   <p className="text-[#5B5B5B] text-[15px] leading-[1]">
                     {item}

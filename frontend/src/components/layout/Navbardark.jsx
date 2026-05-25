@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight, Search } from 'lucide-react';
+  import React, { useState, useEffect } from 'react';
+  import { Link } from 'react-router-dom';
+  import { Menu, X, ChevronRight, Search } from 'lucide-react';
 
 const WebsiteNavbarDark = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,11 +15,13 @@ const WebsiteNavbarDark = () => {
   }, []);
 
   return (
-    <nav 
-      className={` top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md  shadow-sm' : 'bg-transparent'
-      }`}
-    >
+  <nav
+  className={`sticky top-0 z-50 transition-all duration-300 ${
+    isScrolled
+      ? "bg-white/90 backdrop-blur-md shadow-sm"
+      : "bg-transparent"
+  }`}
+>
       <div className="max-w-[1320px] mx-auto px-6 h-[85px] flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
@@ -106,6 +108,8 @@ const WebsiteNavbarDark = () => {
         </div>
       )}
     </nav>
+
+    
   );
 };
 

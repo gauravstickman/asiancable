@@ -40,7 +40,7 @@ export default function AboutUs() {
   return (
     <section
       ref={sectionRef}
-      className="relative pt-20 pb-20 bg-[#f8fafc] flex items-center justify-center px-6"
+      className="relative pt-5 pb-30 bg-[#f8fafc] flex items-center justify-center px-6"
     >
       <div className="max-w-[758px] text-center">
         <p className="text-[23px] leading-[1.6] font-medium tracking-wide">

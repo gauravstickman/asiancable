@@ -3,7 +3,7 @@ import { Globe, Mail, Phone, MapPin, Share2, Camera, Send } from "lucide-react";
 
 const Footer = () => {
   return (
-     <footer className=" relative overflow-hidden text-white">
+     <footer className=" relative overflow-hidden text-white" id="footer">
          <div className="absolute inset-0">
       <img
         src="/src/assets/footer.png"
@@ -71,9 +71,11 @@ const Footer = () => {
     />
                   </div>
     
-                  <span className="text-lg text-[14px]">
-                    An RPG Company
-                  </span>
+                  <img
+      src="/src/assets/footer-logo-2.png"
+      alt="Footer Background"
+      className="w-full h-full object-cover object-right-bottom max-w-[132px]" 
+    />
                 </div>
     
                 {/* TEXT */}

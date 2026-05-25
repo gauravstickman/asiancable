@@ -13,7 +13,7 @@ export default function ProductResources() {
 
     {/* HEADING */}
     <div className="text-center mb-14">
-      <h2 className="text-[#21409A] text-[46px] leading-none font-black italic">
+      <h2 className="text-[#1E3C8C] text-[46px] leading-none font-black italic">
         Product Resources
       </h2>
     </div>
@@ -70,7 +70,7 @@ export default function ProductResources() {
           <div className="flex items-center gap-8">
 
             {/* DOWNLOAD BUTTON */}
-            <button className="h-[48px] px-6 bg-white rounded-[6px] text-[#21409A] text-[18px] font-semibold flex items-center gap-3 hover:bg-[#ECECEC] transition">
+            <button className="h-[48px] px-6 bg-white rounded-[6px] text-[#1E3C8C] text-[18px] font-semibold flex items-center gap-3 hover:bg-[#ECECEC] transition">
 
               <DownloadIcon/>
 
