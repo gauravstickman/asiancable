@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import MediaPicker from '../../components/common/MediaPicker';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -55,7 +57,7 @@ const ProductList = () => {
             setCategoryId(product.category?._id || product.category || '');
             setPrice(product.price);
             setDescription(product.description || '');
-            setImagePreview(product.image ? (product.image.startsWith('http') ? product.image : `http://localhost:5000/${product.image.replace(/\\/g, '/')}`) : '');
+            setImagePreview(product.image ? (product.image.startsWith('http') ? product.image : `${API_URL}/${product.image.replace(/\\/g, '/')}`) : '');
             setImageUrl(product.image || '');
         } else {
             setSelectedProduct(null);
@@ -194,7 +196,7 @@ const ProductList = () => {
                                                     <div className="w-12 h-12 rounded-lg bg-slate-800 overflow-hidden flex-shrink-0">
                                                         {product.image ? (
                                                             <img 
-                                                                src={`http://localhost:5000/${product.image.replace(/\\/g, '/')}`} 
+                                                                src={`${API_URL}/${product.image.replace(/\\/g, '/')}`} 
                                                                 alt={product.name}
                                                                 className="w-full h-full object-cover"
                                                             />
@@ -325,7 +327,7 @@ const ProductList = () => {
                                             value={imageUrl}
                                             onChange={(e) => {
                                                 setImageUrl(e.target.value);
-                                                setImagePreview(e.target.value ? (e.target.value.startsWith('http') ? e.target.value : `http://localhost:5000/${e.target.value.replace(/^\//, '').replace(/\\/g, '/')}`) : '');
+                                                setImagePreview(e.target.value ? (e.target.value.startsWith('http') ? e.target.value : `${API_URL}/${e.target.value.replace(/^\//, '').replace(/\\/g, '/')}`) : '');
                                             }}
                                             className="flex-1 px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 text-sm"
                                             placeholder="Select or enter image URL..."
@@ -386,7 +388,7 @@ const ProductList = () => {
                 onClose={() => setPickerOpen(false)} 
                 onSelect={(url) => {
                     setImageUrl(url);
-                    setImagePreview(`http://localhost:5000${url}`);
+                    setImagePreview(`${API_URL}${url}`);
                 }} 
             />
         </div>

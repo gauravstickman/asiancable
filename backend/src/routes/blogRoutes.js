@@ -1,5 +1,4 @@
 const express = require('express');
-const multer = require('multer');
 const { 
     createBlog, 
     getBlogs, 
@@ -9,27 +8,17 @@ const {
 } = require('../controllers/blogController');
 const protect = require('../middleware/authMiddleware');
 
+const { uploadS3 } = require('../middleware/uploadS3');
+
 const router = express.Router();
-
-// Multer storage configuration
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'src/uploads/');
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`);
-    }
-});
-
-const upload = multer({ storage });
 
 router.route('/')
     .get(getBlogs)
-    .post(protect, upload.single('image'), createBlog);
+    .post(protect, uploadS3.single('image'), createBlog);
 
 router.route('/:id')
     .get(getBlogById)
-    .put(protect, upload.single('image'), updateBlog)
+    .put(protect, uploadS3.single('image'), updateBlog)
     .delete(protect, deleteBlog);
 
 module.exports = router;

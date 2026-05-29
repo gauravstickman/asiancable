@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import MediaPicker from '../../components/common/MediaPicker';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const CategoryList = () => {
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -40,7 +42,7 @@ const CategoryList = () => {
             setSelectedCategory(category);
             setName(category.name);
             setPointsStr(category.points ? category.points.join(', ') : '');
-            setImagePreview(category.image ? (category.image.startsWith('http') ? category.image : `http://localhost:5000/${category.image.replace(/\\/g, '/')}`) : '');
+            setImagePreview(category.image ? (category.image.startsWith('http') ? category.image : `${API_URL}/${category.image.replace(/\\/g, '/')}`) : '');
             setImageUrl(category.image || '');
         } else {
             setSelectedCategory(null);
@@ -162,7 +164,7 @@ const CategoryList = () => {
                                     <div className="h-48 bg-slate-800 relative overflow-hidden">
                                         {category.image ? (
                                             <img 
-                                                src={`http://localhost:5000/${category.image.replace(/\\/g, '/')}`} 
+                                                src={`${API_URL}/${category.image.replace(/\\/g, '/')}`} 
                                                 alt={category.name}
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             />
@@ -262,7 +264,7 @@ const CategoryList = () => {
                                         value={imageUrl}
                                         onChange={(e) => {
                                             setImageUrl(e.target.value);
-                                            setImagePreview(e.target.value ? (e.target.value.startsWith('http') ? e.target.value : `http://localhost:5000/${e.target.value.replace(/^\//, '').replace(/\\/g, '/')}`) : '');
+                                            setImagePreview(e.target.value ? (e.target.value.startsWith('http') ? e.target.value : `${API_URL}/${e.target.value.replace(/^\//, '').replace(/\\/g, '/')}`) : '');
                                         }}
                                         className="flex-1 px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 text-sm"
                                         placeholder="Select or enter image URL..."
@@ -322,7 +324,7 @@ const CategoryList = () => {
                 onClose={() => setPickerOpen(false)} 
                 onSelect={(url) => {
                     setImageUrl(url);
-                    setImagePreview(`http://localhost:5000${url}`);
+                    setImagePreview(`${API_URL}${url}`);
                 }} 
             />
         </div>

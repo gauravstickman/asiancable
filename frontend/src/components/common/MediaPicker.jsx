@@ -3,6 +3,8 @@ import API from '../../api/axios';
 import { toast } from 'react-toastify';
 import { X, Search, Upload, Image, Check, Loader2, Trash2 } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const MediaPicker = ({ isOpen, onClose, onSelect }) => {
     const [mediaFiles, setMediaFiles] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -72,7 +74,7 @@ const MediaPicker = ({ isOpen, onClose, onSelect }) => {
             if (data.success) {
                 toast.success('Image deleted from library');
                 // Clear selection if the deleted image was the selected one
-                if (selectedUrl === `/uploads/${filename}`) {
+                if (selectedUrl === file.url || selectedUrl === `/uploads/${filename}`) {
                     setSelectedUrl('');
                 }
                 fetchMedia(); // Refresh list
@@ -179,7 +181,7 @@ const MediaPicker = ({ isOpen, onClose, onSelect }) => {
                     ) : (
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                             {filteredFiles.map((file, idx) => {
-                                const fullUrl = `http://localhost:5000${file.url}`;
+                                const fullUrl = file.url.startsWith('http') ? file.url : `${API_URL}${file.url}`;
                                 const isSelected = selectedUrl === file.url;
                                 return (
                                     <div

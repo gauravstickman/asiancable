@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import MediaPicker from '../../components/common/MediaPicker';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -68,7 +70,7 @@ const BlogList = () => {
             setContent(blog.content || '');
             setStatus(blog.status || 'published');
             setImageUrl(blog.image || '');
-            setImagePreview(blog.image ? (blog.image.startsWith('http') ? blog.image : `http://localhost:5000/${blog.image.replace(/\\/g, '/')}`) : '');
+            setImagePreview(blog.image ? (blog.image.startsWith('http') ? blog.image : `${API_URL}/${blog.image.replace(/\\/g, '/')}`) : '');
         } else {
             setSelectedBlog(null);
             setTitle('');
@@ -137,7 +139,7 @@ const BlogList = () => {
     const getImageUrl = (img) => {
         if (!img) return '';
         if (img.startsWith('http') || img.startsWith('data:')) return img;
-        return `http://localhost:5000/${img.replace(/\\/g, '/')}`;
+        return `${API_URL}/${img.replace(/\\/g, '/')}`;
     };
 
     // Filtered blogs list
@@ -254,7 +256,7 @@ const BlogList = () => {
                                         value={imageUrl}
                                         onChange={(e) => {
                                             setImageUrl(e.target.value);
-                                            setImagePreview(e.target.value ? (e.target.value.startsWith('http') ? e.target.value : `http://localhost:5000/${e.target.value.replace(/^\//, '').replace(/\\/g, '/')}`) : '');
+                                            setImagePreview(e.target.value ? (e.target.value.startsWith('http') ? e.target.value : `${API_URL}/${e.target.value.replace(/^\//, '').replace(/\\/g, '/')}`) : '');
                                         }}
                                         className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm"
                                         placeholder="Select or enter banner image URL..."
@@ -474,7 +476,7 @@ const BlogList = () => {
                 onClose={() => setPickerOpen(false)} 
                 onSelect={(url) => {
                     setImageUrl(url);
-                    setImagePreview(`http://localhost:5000${url}`);
+                    setImagePreview(`${API_URL}${url}`);
                 }} 
             />
         </div>
