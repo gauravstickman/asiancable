@@ -33,12 +33,12 @@ const Sidebar = ({ isOpen, onClose }) => {
         {
             group: 'Content Management',
             items: [
-                { path: '/admin/homepage-settings', name: 'Homepage Settings', icon: LayoutDashboard },
-                { path: '/admin/industry-page', name: 'Industry Page', icon: FileText },
-                { path: '/admin/categories', name: 'Categories', icon: Layers },
+                { path: '/admin/homepage-settings', name: 'Home', icon: LayoutDashboard },
+                { path: '/admin/industry-page', name: 'Industries', icon: FileText },
+                // { path: '/admin/categories', name: 'Categories', icon: Layers },
                 { path: '/admin/products', name: 'Products', icon: Package },
-                { path: '/admin/blog-categories', name: 'Blog Categories', icon: Layers },
-                { path: '/admin/blogs', name: 'Blogs', icon: FileText },
+                // { path: '/admin/blog-categories', name: 'Blog Categories', icon: Layers },
+                // { path: '/admin/blogs', name: 'Blogs', icon: FileText },
             ]
         },
         { 

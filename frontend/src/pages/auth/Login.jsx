@@ -74,11 +74,7 @@ const Login = () => {
                             />
                         </div>
                         {errors.password && <span className="text-red-400 text-xs mt-1">{errors.password.message}</span>}
-                        <div className="flex justify-end mt-2">
-                            <Link to="/admin/forgot-password" className="text-sm text-primary-500 hover:text-primary-400 transition-colors">
-                                Forgot Password?
-                            </Link>
-                        </div>
+
                     </div>
 
                     <button 
@@ -91,7 +87,7 @@ const Login = () => {
                 </form>
 
                 <div className="mt-8 text-center text-sm text-slate-500">
-                    <p>&copy; 2026 MERN Admin Panel. All rights reserved.</p>
+                    <p>&copy; 2026 Asian Cables. All rights reserved.</p>
                 </div>
             </motion.div>
         </div>
