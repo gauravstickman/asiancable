@@ -122,13 +122,6 @@ const CategoryList = () => {
                     <h1 className="text-3xl font-bold text-slate-900 mb-2">Categories</h1>
                     <p className="text-slate-400">Manage your product categories & homepage range efficiently.</p>
                 </div>
-                <button 
-                    onClick={() => handleOpenModal()}
-                    className="premium-gradient px-6 py-3 rounded-xl font-bold text-white flex items-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-primary-500/20 cursor-pointer"
-                >
-                    <Plus size={20} />
-                    Add Category
-                </button>
             </div>
 
             <div className="flex flex-col md:flex-row gap-4">
@@ -149,70 +142,47 @@ const CategoryList = () => {
                     <Loader2 className="animate-spin text-primary-500" size={40} />
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    <AnimatePresence>
-                        {filteredCategories.map((category) => (
-                            <motion.div 
-                                layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                key={category._id}
-                                className="glass-card overflow-hidden group border border-slate-100 flex flex-col justify-between"
-                            >
-                                <div>
-                                    <div className="h-48 bg-slate-800 relative overflow-hidden">
-                                        {category.image ? (
-                                            <img 
-                                                src={`${API_URL}/${category.image.replace(/\\/g, '/')}`} 
-                                                alt={category.name}
-                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full flex items-center justify-center text-slate-400">
-                                                No Image Uploaded
-                                            </div>
-                                        )}
-                                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="bg-slate-50 border-b border-slate-200">
+                                <th className="p-4 text-sm font-semibold text-slate-600">Category Name</th>
+                                <th className="p-4 text-sm font-semibold text-slate-600 w-24 text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <AnimatePresence>
+                                {filteredCategories.map((category) => (
+                                    <motion.tr 
+                                        layout
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        key={category._id}
+                                        className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
+                                    >
+                                        <td className="p-4">
+                                            <div className="font-semibold text-slate-800 text-base">{category.name}</div>
+                                        </td>
+                                        <td className="p-4 text-center">
                                             <button 
                                                 onClick={() => handleOpenModal(category)}
-                                                className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-blue-500 transition-colors cursor-pointer"
+                                                className="p-2 bg-slate-100 hover:bg-blue-100 hover:text-blue-600 rounded-lg text-slate-600 transition-colors cursor-pointer inline-flex items-center justify-center"
+                                                title="Edit Category"
                                             >
-                                                <Edit size={20} />
+                                                <Edit size={16} />
                                             </button>
-                                            <button 
-                                                onClick={() => handleDelete(category._id)}
-                                                className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-red-500 transition-colors cursor-pointer"
-                                            >
-                                                <Trash2 size={20} />
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="p-6 space-y-3">
-                                        <div>
-                                            <h3 className="text-xl font-bold text-slate-900 mb-1">{category.name}</h3>
-                                            <p className="text-slate-400 text-xs font-medium">{category.slug}</p>
-                                        </div>
-                                        
-                                        {/* Points list */}
-                                        {category.points && category.points.length > 0 && (
-                                            <div className="space-y-1 pt-2 border-t border-slate-100">
-                                                <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Features / Points</p>
-                                                <div className="space-y-1">
-                                                    {category.points.map((pt, idx) => (
-                                                        <div key={idx} className="flex items-center gap-1.5 text-xs text-slate-600">
-                                                            <Check size={12} className="text-[#21409A]" />
-                                                            <span className="truncate">{pt}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
+                                        </td>
+                                    </motion.tr>
+                                ))}
+                            </AnimatePresence>
+                            {filteredCategories.length === 0 && (
+                                <tr>
+                                    <td colSpan="2" className="p-8 text-center text-slate-500 text-sm">No categories found.</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
             )}
 
@@ -222,7 +192,7 @@ const CategoryList = () => {
                     <div className="bg-white rounded-2xl border border-slate-100 shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                         <div className="flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50">
                             <h2 className="text-xl font-bold text-slate-900">
-                                {selectedCategory ? 'Edit Category' : 'Add New Category'}
+                                Edit Category
                             </h2>
                             <button 
                                 onClick={() => setIsModalOpen(false)} 
@@ -244,59 +214,6 @@ const CategoryList = () => {
                                 />
                             </div>
 
-                            <div className="space-y-1">
-                                <label className="text-sm font-semibold text-slate-700">Bullet Points / Features (Comma separated)</label>
-                                <textarea 
-                                    value={pointsStr}
-                                    onChange={(e) => setPointsStr(e.target.value)}
-                                    rows={3}
-                                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 text-sm"
-                                    placeholder="e.g. Fire-Survival & LSZH, Solar & EV Charging Ready, Oil & Gas Rated"
-                                />
-                                <p className="text-[11px] text-slate-400">Add points separated by commas to display under the product range block on the homepage.</p>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-sm font-semibold text-slate-700">Category Image</label>
-                                <div className="flex gap-2">
-                                    <input 
-                                        type="text" 
-                                        value={imageUrl}
-                                        onChange={(e) => {
-                                            setImageUrl(e.target.value);
-                                            setImagePreview(e.target.value ? (e.target.value.startsWith('http') ? e.target.value : `${API_URL}/${e.target.value.replace(/^\//, '').replace(/\\/g, '/')}`) : '');
-                                        }}
-                                        className="flex-1 px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 text-sm"
-                                        placeholder="Select or enter image URL..."
-                                    />
-                                    <button 
-                                        type="button"
-                                        onClick={() => setPickerOpen(true)}
-                                        className="bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-xl transition-colors border border-slate-200 flex items-center justify-center gap-1.5 text-slate-600 font-semibold text-sm cursor-pointer"
-                                        title="Choose from Library"
-                                    >
-                                        <Image size={18} />
-                                        Choose
-                                    </button>
-                                </div>
-                                
-                                {imagePreview && (
-                                    <div className="mt-3 relative w-32 h-32 rounded-xl overflow-hidden border border-slate-100 group shadow-sm bg-slate-50">
-                                        <img src={imagePreview} alt="Selected Preview" className="w-full h-full object-cover" />
-                                        <button 
-                                            type="button" 
-                                            onClick={() => {
-                                                setImageUrl('');
-                                                setImagePreview('');
-                                            }}
-                                            className="absolute inset-0 bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                                        >
-                                            <X size={18} />
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-
                             <div className="flex gap-3 justify-end pt-4 border-t border-slate-100">
                                 <button 
                                     type="button"
@@ -311,7 +228,7 @@ const CategoryList = () => {
                                     className="px-5 py-2.5 premium-gradient text-white rounded-xl font-semibold shadow-lg shadow-blue-500/20 flex items-center gap-2 cursor-pointer text-sm"
                                 >
                                     {submitting && <Loader2 className="animate-spin" size={16} />}
-                                    {selectedCategory ? 'Update Category' : 'Create Category'}
+                                    Update Category
                                 </button>
                             </div>
                         </form>

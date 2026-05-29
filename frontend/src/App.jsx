@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Login from './pages/auth/Login';
+import ForgotPassword from './pages/auth/ForgotPassword';
+import ResetPassword from './pages/auth/ResetPassword';
 import FloatingActions from './components/layout/Floatingactions';
 
 // Admin Pages
@@ -18,7 +20,9 @@ import BlogList from './pages/blog/BlogList';
 
 // Homepage Settings Pages
 import HomepageSettingsMaster from './pages/homepage-settings/HomepageSettingsMaster';
+import IndustryPageList from './pages/homepage-settings/IndustryPageList';
 import IndustryPageSettings from './pages/homepage-settings/IndustryPageSettings';
+import Settings from './pages/settings/Settings';
 
 function App() {
   return (
@@ -27,7 +31,10 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Navigate to="/admin" replace />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Navigate to="/admin/login" replace />} />
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin/forgot-password" element={<ForgotPassword />} />
+          <Route path="/admin/reset-password/:token" element={<ResetPassword />} />
           
           {/* Protected Admin Routes */}
           <Route 
@@ -46,7 +53,10 @@ function App() {
 
             {/* Content Sections */}
             <Route path="homepage-settings" element={<HomepageSettingsMaster />} />
-            <Route path="industry-page" element={<IndustryPageSettings />} />
+            <Route path="industry-page" element={<IndustryPageList />} />
+            <Route path="industry-page/:id" element={<IndustryPageSettings />} />
+            
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
         

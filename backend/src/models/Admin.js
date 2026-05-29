@@ -14,8 +14,26 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
 }, {
     timestamps: true,
 });
+
+// Generate password reset token
+adminSchema.methods.getResetPasswordToken = function () {
+    const crypto = require('crypto');
+    
+    // Generate token
+    const resetToken = crypto.randomBytes(20).toString('hex');
+
+    // Hash token and set to resetPasswordToken field
+    this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+    // Set expire (10 minutes)
+    this.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+
+    return resetToken;
+};
 
 module.exports = mongoose.model('Admin', adminSchema);

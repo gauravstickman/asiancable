@@ -172,9 +172,12 @@ const HomepageSettingsMaster = () => {
                                 <FormInput label="Subtitle" placeholder="Subtitle" value={slide.subtitle || ''} onChange={e => handleArrayChange('heroSlides', idx, 'subtitle', e.target.value)} />
                                 <FormInput label="Button Name" placeholder="Button Name (e.g. ABOUT US)" value={slide.cta?.text || ''} onChange={e => handleArrayChange('heroSlides', idx, 'cta', { ...(slide.cta || {}), text: e.target.value })} />
                                 <FormInput label="Button Link" placeholder="Button Link (e.g. /about)" value={slide.cta?.link || ''} onChange={e => handleArrayChange('heroSlides', idx, 'cta', { ...(slide.cta || {}), link: e.target.value })} />
-                                <div className="md:col-span-2 flex gap-2">
-                                    <FormInput label="Image URL" placeholder="Image URL" value={slide.image || ''} onChange={e => handleArrayChange('heroSlides', idx, 'image', e.target.value)} />
-                                    <button onClick={() => openMediaPicker((url) => handleArrayChange('heroSlides', idx, 'image', url))} className="bg-white px-3 py-2 border rounded text-sm"><Image size={16}/></button>
+                                <div className="md:col-span-2 flex flex-col gap-2">
+                                    <div className="flex gap-2">
+                                        <FormInput label="Image URL" placeholder="Image URL" value={slide.image || ''} onChange={e => handleArrayChange('heroSlides', idx, 'image', e.target.value)} />
+                                        <button onClick={() => openMediaPicker((url) => handleArrayChange('heroSlides', idx, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
+                                    </div>
+                                    {slide.image && <img src={slide.image.startsWith('http') ? slide.image : `${import.meta.env.VITE_API_URL}${slide.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                 </div>
                             </div>
                                 ))} 
@@ -206,9 +209,12 @@ const HomepageSettingsMaster = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <FormInput label="Title" placeholder="Title" value={settings.facts?.presence?.title || ''} onChange={e => handleNestedChange('facts', 'presence', 'title', e.target.value)} />
                                 <FormInput label="Description" placeholder="Description" value={settings.facts?.presence?.description || ''} onChange={e => handleNestedChange('facts', 'presence', 'description', e.target.value)} />
-                                <div className="md:col-span-2 flex gap-2">
-                                    <FormInput label="Image URL" placeholder="Image URL" value={settings.facts?.presence?.image || ''} onChange={e => handleNestedChange('facts', 'presence', 'image', e.target.value)} />
-                                    <button onClick={() => openMediaPicker((url) => handleNestedChange('facts', 'presence', 'image', url))} className="bg-slate-100 px-3 py-2 border rounded text-sm"><Image size={16}/></button>
+                                <div className="md:col-span-2 flex flex-col gap-2">
+                                    <div className="flex gap-2">
+                                        <FormInput label="Image URL" placeholder="Image URL" value={settings.facts?.presence?.image || ''} onChange={e => handleNestedChange('facts', 'presence', 'image', e.target.value)} />
+                                        <button onClick={() => openMediaPicker((url) => handleNestedChange('facts', 'presence', 'image', url))} className="bg-slate-100 px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
+                                    </div>
+                                    {settings.facts?.presence?.image && <img src={settings.facts?.presence?.image.startsWith('http') ? settings.facts?.presence?.image : `${import.meta.env.VITE_API_URL}${settings.facts?.presence?.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                 </div>
                             </div>
                         </div>
@@ -236,9 +242,12 @@ const HomepageSettingsMaster = () => {
                                 <FormInput label="Value" placeholder="Value (e.g. 2.5M+)" value={settings.facts?.annual?.value || ''} onChange={e => handleNestedChange('facts', 'annual', 'value', e.target.value)} />
                                 <FormInput label="Title" placeholder="Title" value={settings.facts?.annual?.title || ''} onChange={e => handleNestedChange('facts', 'annual', 'title', e.target.value)} />
                                 <FormInput label="Description" placeholder="Description" value={settings.facts?.annual?.description || ''} onChange={e => handleNestedChange('facts', 'annual', 'description', e.target.value)} />
-                                <div className="md:col-span-2 flex gap-2">
-                                    <FormInput label="Image URL" placeholder="Image URL" value={settings.facts?.annual?.image || ''} onChange={e => handleNestedChange('facts', 'annual', 'image', e.target.value)} />
-                                    <button onClick={() => openMediaPicker((url) => handleNestedChange('facts', 'annual', 'image', url))} className="bg-slate-100 px-3 py-2 border rounded text-sm"><Image size={16}/></button>
+                                <div className="md:col-span-2 flex flex-col gap-2">
+                                    <div className="flex gap-2">
+                                        <FormInput label="Image URL" placeholder="Image URL" value={settings.facts?.annual?.image || ''} onChange={e => handleNestedChange('facts', 'annual', 'image', e.target.value)} />
+                                        <button onClick={() => openMediaPicker((url) => handleNestedChange('facts', 'annual', 'image', url))} className="bg-slate-100 px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
+                                    </div>
+                                    {settings.facts?.annual?.image && <img src={settings.facts?.annual?.image.startsWith('http') ? settings.facts?.annual?.image : `${import.meta.env.VITE_API_URL}${settings.facts?.annual?.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                 </div>
                             </div>
                         </div>
@@ -261,9 +270,12 @@ const HomepageSettingsMaster = () => {
                                     {key === 'main' && (
                                         <FormInput label="Description" placeholder="Description" value={settings.applications?.[key]?.description || ''} onChange={e => handleNestedChange('applications', key, 'description', e.target.value)} />
                                     )}
-                                    <div className={`flex gap-2 ${key === 'main' ? 'md:col-span-2' : ''}`}>
-                                        <FormInput label="Image URL" placeholder="Image URL" value={settings.applications?.[key]?.image || ''} onChange={e => handleNestedChange('applications', key, 'image', e.target.value)} />
-                                        <button onClick={() => openMediaPicker((url) => handleNestedChange('applications', key, 'image', url))} className="bg-white px-3 py-2 border rounded text-sm"><Image size={16}/></button>
+                                    <div className={`flex flex-col gap-2 ${key === 'main' ? 'md:col-span-2' : ''}`}>
+                                        <div className="flex gap-2">
+                                            <FormInput label="Image URL" placeholder="Image URL" value={settings.applications?.[key]?.image || ''} onChange={e => handleNestedChange('applications', key, 'image', e.target.value)} />
+                                            <button onClick={() => openMediaPicker((url) => handleNestedChange('applications', key, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
+                                        </div>
+                                        {settings.applications?.[key]?.image && <img src={settings.applications?.[key]?.image.startsWith('http') ? settings.applications?.[key]?.image : `${import.meta.env.VITE_API_URL}${settings.applications?.[key]?.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                     </div>
                                 </div>
                             </div>
@@ -286,9 +298,12 @@ const HomepageSettingsMaster = () => {
                                 <FormInput label="Tag" placeholder="Tag" value={field.tag || ''} onChange={e => handleArrayChange('provenFields', idx, 'tag', e.target.value)} />
                                 <FormInput label="Title" placeholder="Title" value={field.title || ''} onChange={e => handleArrayChange('provenFields', idx, 'title', e.target.value)} />
                                 <FormTextarea label="Description" placeholder="Description" rows={2} value={field.description || ''} onChange={e => handleArrayChange('provenFields', idx, 'description', e.target.value)} className="md:col-span-2" />
-                                <div className="md:col-span-2 flex gap-2">
-                                    <FormInput label="Image URL" placeholder="Image URL" value={field.image || ''} onChange={e => handleArrayChange('provenFields', idx, 'image', e.target.value)} />
-                                    <button onClick={() => openMediaPicker((url) => handleArrayChange('provenFields', idx, 'image', url))} className="bg-white px-3 py-2 border rounded text-sm"><Image size={16}/></button>
+                                <div className="md:col-span-2 flex flex-col gap-2">
+                                    <div className="flex gap-2">
+                                        <FormInput label="Image URL" placeholder="Image URL" value={field.image || ''} onChange={e => handleArrayChange('provenFields', idx, 'image', e.target.value)} />
+                                        <button onClick={() => openMediaPicker((url) => handleArrayChange('provenFields', idx, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
+                                    </div>
+                                    {field.image && <img src={field.image.startsWith('http') ? field.image : `${import.meta.env.VITE_API_URL}${field.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                 </div>
                                 <FormInput label="Badges" placeholder="Badges (comma separated)" value={(field.badges || []).join(', ')} onChange={e => handleArrayChange('provenFields', idx, 'badges', e.target.value.split(',').map(s=>s.trim()))} />
                             </div>
@@ -313,9 +328,12 @@ const HomepageSettingsMaster = () => {
                                 <FormInput label="Company" placeholder="Company" value={test.company || ''} onChange={e => handleArrayChange('testimonials', idx, 'company', e.target.value)} />
                                 <FormInput type="number" label="Rating" placeholder="Rating (1-5)" value={test.rating || ''} onChange={e => handleArrayChange('testimonials', idx, 'rating', e.target.value)} />
                                 <FormTextarea label="Quote" placeholder="Quote" rows={2} value={test.quote || ''} onChange={e => handleArrayChange('testimonials', idx, 'quote', e.target.value)} className="md:col-span-2" />
-                                <div className="md:col-span-2 flex gap-2">
-                                    <FormInput label="Image URL" placeholder="Image URL" value={test.image || ''} onChange={e => handleArrayChange('testimonials', idx, 'image', e.target.value)} />
-                                    <button onClick={() => openMediaPicker((url) => handleArrayChange('testimonials', idx, 'image', url))} className="bg-white px-3 py-2 border rounded text-sm"><Image size={16}/></button>
+                                <div className="md:col-span-2 flex flex-col gap-2">
+                                    <div className="flex gap-2">
+                                        <FormInput label="Image URL" placeholder="Image URL" value={test.image || ''} onChange={e => handleArrayChange('testimonials', idx, 'image', e.target.value)} />
+                                        <button onClick={() => openMediaPicker((url) => handleArrayChange('testimonials', idx, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
+                                    </div>
+                                    {test.image && <img src={test.image.startsWith('http') ? test.image : `${import.meta.env.VITE_API_URL}${test.image}`} alt="Preview" className="h-16 w-16 rounded-full object-cover bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                 </div>
                             </div>
                                 ))} 

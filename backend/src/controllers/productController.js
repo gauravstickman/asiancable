@@ -2,14 +2,13 @@ const Product = require('../models/Product');
 
 exports.createProduct = async (req, res) => {
     try {
-        const { name, category, price, description, image: bodyImage } = req.body;
+        const { name, category, features, image: bodyImage } = req.body;
         const image = req.file ? req.file.path : (bodyImage || '');
 
         const product = await Product.create({
             name,
-            category,
-            price,
-            description,
+            category: category || null,
+            features: features || [],
             image
         });
 
@@ -43,14 +42,14 @@ exports.getProductById = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
     try {
-        const { name, category, price, description } = req.body;
+        const { name, category, features } = req.body;
         const product = await Product.findById(req.params.id);
 
         if (product) {
             product.name = name || product.name;
-            product.category = category || product.category;
-            product.price = price || product.price;
-            product.description = description || product.description;
+            if (category !== undefined) product.category = category || null;
+            if (features !== undefined) product.features = features;
+            
             if (req.file) {
                 product.image = req.file.path;
             } else if (req.body.image !== undefined) {

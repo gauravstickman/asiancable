@@ -33,6 +33,9 @@ const applicationSchema = new mongoose.Schema({
 });
 
 const schema = new mongoose.Schema({
+    name: { type: String, required: true },
+    slug: { type: String, required: true, unique: true },
+
     // Hero Header
     headerBgImage: { type: String, default: '/src/assets/industry-main.png' },
     headerTag: { type: String, default: 'Industries' },

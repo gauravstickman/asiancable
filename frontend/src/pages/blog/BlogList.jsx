@@ -153,6 +153,20 @@ const BlogList = () => {
         return matchesSearch && matchesCategory;
     });
 
+    // Pagination logic
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+    
+    // Reset page on search or filter
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm, selectedCategoryFilter]);
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentBlogs = filteredBlogs.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
+
     return (
         <div className="p-6 max-w-6xl mx-auto space-y-8 animate-in fade-in duration-300">
             {/* Conditional Views: Form vs Grid List */}
@@ -402,68 +416,118 @@ const BlogList = () => {
                             <Loader2 className="animate-spin text-blue-600" size={40} />
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                            <AnimatePresence>
-                                {filteredBlogs.map((blog) => (
-                                    <motion.div 
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.95 }}
-                                        key={blog._id}
-                                        className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden group flex flex-col justify-between hover:shadow-md transition-shadow duration-200"
-                                    >
-                                        <div>
-                                            <div className="h-48 bg-slate-800 relative overflow-hidden">
-                                                {blog.image ? (
-                                                    <img 
-                                                        src={getImageUrl(blog.image)} 
-                                                        alt={blog.title}
-                                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                                    />
-                                                ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-slate-400 text-sm">
-                                                        No Banner Image
-                                                    </div>
-                                                )}
-                                                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm uppercase tracking-wider">
-                                                    {blog.category?.name || 'Uncategorized'}
-                                                </div>
-                                                <div className="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm uppercase tracking-wider">
-                                                    {blog.status}
-                                                </div>
-                                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                                                    <button 
-                                                        onClick={() => handleOpenForm(blog)}
-                                                        className="p-2.5 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-blue-600 transition-colors cursor-pointer"
-                                                    >
-                                                        <Edit size={16} />
-                                                    </button>
-                                                    <button 
-                                                        onClick={() => handleDelete(blog._id)}
-                                                        className="p-2.5 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-red-600 transition-colors cursor-pointer"
-                                                    >
-                                                        <Trash2 size={16} />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div className="p-5 space-y-3">
-                                                <div>
-                                                    <h3 className="text-base font-bold text-slate-900 line-clamp-2 leading-snug">{blog.title}</h3>
-                                                    <p className="text-slate-400 text-[11px] font-mono mt-1">/{blog.slug}</p>
-                                                </div>
-                                                
-                                                <p className="text-xs text-slate-500 line-clamp-3 leading-relaxed">
-                                                    {blog.description || 'No description provided.'}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </AnimatePresence>
-                            {filteredBlogs.length === 0 && (
-                                <div className="col-span-full text-center py-12 text-slate-500 text-sm">
-                                    No blog posts found. Click 'Add Blog Post' to write your first article.
+                        <div className="space-y-4">
+                            <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="bg-slate-50 border-b border-slate-200">
+                                            <th className="p-4 text-sm font-semibold text-slate-600">Blog Title</th>
+                                            <th className="p-4 text-sm font-semibold text-slate-600">Category</th>
+                                            <th className="p-4 text-sm font-semibold text-slate-600">Status</th>
+                                            <th className="p-4 text-sm font-semibold text-slate-600 w-28 text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <AnimatePresence>
+                                            {currentBlogs.map((blog) => (
+                                                <motion.tr 
+                                                    layout
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    key={blog._id}
+                                                    className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
+                                                >
+                                                    <td className="p-4">
+                                                        <div className="flex items-center gap-3">
+                                                            <div className="w-10 h-10 rounded-lg overflow-hidden bg-slate-100 shrink-0 border border-slate-200">
+                                                                {blog.image ? (
+                                                                    <img src={getImageUrl(blog.image)} alt="" className="w-full h-full object-cover" />
+                                                                ) : (
+                                                                    <div className="w-full h-full flex items-center justify-center text-slate-400">
+                                                                        <Image size={16} />
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                            <div>
+                                                                <div className="font-semibold text-slate-800 text-sm line-clamp-1">{blog.title}</div>
+                                                                <div className="text-xs text-slate-400 mt-0.5 font-mono">/{blog.slug}</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td className="p-4">
+                                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                                                            {blog.category?.name || 'Uncategorized'}
+                                                        </span>
+                                                    </td>
+                                                    <td className="p-4">
+                                                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${blog.status === 'published' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
+                                                            {blog.status}
+                                                        </span>
+                                                    </td>
+                                                    <td className="p-4 text-center">
+                                                        <div className="flex items-center justify-center gap-1">
+                                                            <button 
+                                                                onClick={() => handleOpenForm(blog)}
+                                                                className="p-1.5 bg-slate-100 hover:bg-blue-100 hover:text-blue-600 rounded-md text-slate-500 transition-colors cursor-pointer"
+                                                                title="Edit Blog"
+                                                            >
+                                                                <Edit size={14} />
+                                                            </button>
+                                                            <button 
+                                                                onClick={() => handleDelete(blog._id)}
+                                                                className="p-1.5 bg-slate-100 hover:bg-red-100 hover:text-red-600 rounded-md text-slate-500 transition-colors cursor-pointer"
+                                                                title="Delete Blog"
+                                                            >
+                                                                <Trash2 size={14} />
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </motion.tr>
+                                            ))}
+                                        </AnimatePresence>
+                                        {filteredBlogs.length === 0 && (
+                                            <tr>
+                                                <td colSpan="4" className="p-8 text-center text-slate-500 text-sm">
+                                                    No blog posts found. Click 'Add Blog Post' to write your first article.
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            {/* Pagination Controls */}
+                            {totalPages > 1 && (
+                                <div className="flex items-center justify-between pt-4">
+                                    <div className="text-sm text-slate-500">
+                                        Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredBlogs.length)} of {filteredBlogs.length} entries
+                                    </div>
+                                    <div className="flex gap-1">
+                                        <button 
+                                            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                            disabled={currentPage === 1}
+                                            className="px-3 py-1.5 rounded-md border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            Previous
+                                        </button>
+                                        {[...Array(totalPages)].map((_, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => setCurrentPage(i + 1)}
+                                                className={`w-8 py-1.5 rounded-md text-sm font-medium transition-colors ${currentPage === i + 1 ? 'bg-blue-600 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                                            >
+                                                {i + 1}
+                                            </button>
+                                        ))}
+                                        <button 
+                                            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                            disabled={currentPage === totalPages}
+                                            className="px-3 py-1.5 rounded-md border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            Next
+                                        </button>
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -476,7 +540,7 @@ const BlogList = () => {
                 onClose={() => setPickerOpen(false)} 
                 onSelect={(url) => {
                     setImageUrl(url);
-                    setImagePreview(`${API_URL}${url}`);
+                    setImagePreview(getImageUrl(url));
                 }} 
             />
         </div>

@@ -8,14 +8,11 @@ const productSchema = new mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
+        required: false
     },
-    price: {
-        type: Number,
-        required: true,
-    },
-    description: {
-        type: String,
-    },
+    features: [{
+        type: String
+    }],
     image: {
         type: String,
     },

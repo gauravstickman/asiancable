@@ -95,6 +95,19 @@ const BlogCategoryList = () => {
         (cat.description && cat.description.toLowerCase().includes(searchTerm.toLowerCase()))
     );
 
+    // Pagination logic
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm]);
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentCategories = filteredCategories.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(filteredCategories.length / itemsPerPage);
+
     return (
         <div className="p-6 max-w-6xl mx-auto space-y-8 animate-in fade-in duration-300">
             <div>
@@ -121,52 +134,98 @@ const BlogCategoryList = () => {
                             <Loader2 className="animate-spin text-blue-600" size={40} />
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <AnimatePresence>
-                                {filteredCategories.map((category) => (
-                                    <motion.div 
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.95 }}
-                                        key={category._id}
-                                        className={`bg-white rounded-lg shadow-sm border p-5 flex flex-col justify-between hover:shadow-md transition-all duration-200 ${
-                                            selectedCategory?._id === category._id ? 'border-blue-500 ring-2 ring-blue-500/10' : 'border-slate-200'
-                                        }`}
-                                    >
-                                        <div className="space-y-4">
-                                            <div>
-                                                <h3 className="text-base font-bold text-slate-900 mb-1">{category.name}</h3>
-                                                <p className="text-slate-400 text-xs font-mono">/{category.slug}</p>
-                                            </div>
-                                            
-                                            <p className="text-sm text-slate-650 line-clamp-3 leading-relaxed">
-                                                {category.description || 'No description provided.'}
-                                            </p>
-                                        </div>
+                        <div className="space-y-4">
+                            <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="bg-slate-50 border-b border-slate-200">
+                                            <th className="p-4 text-sm font-semibold text-slate-600">Category Name</th>
+                                            <th className="p-4 text-sm font-semibold text-slate-600">Description</th>
+                                            <th className="p-4 text-sm font-semibold text-slate-600 w-28 text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <AnimatePresence>
+                                            {currentCategories.map((category) => (
+                                            <motion.tr 
+                                                layout
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                key={category._id}
+                                                className={`border-b border-slate-100 hover:bg-slate-50 transition-colors ${selectedCategory?._id === category._id ? 'bg-blue-50/50' : ''}`}
+                                            >
+                                                <td className="p-4">
+                                                    <div className="font-semibold text-slate-800 text-sm">{category.name}</div>
+                                                </td>
+                                                <td className="p-4">
+                                                    <div className="text-xs text-slate-500 line-clamp-2">
+                                                        {category.description || 'No description provided.'}
+                                                    </div>
+                                                </td>
+                                                <td className="p-4 text-center">
+                                                    <div className="flex items-center justify-center gap-1">
+                                                        <button 
+                                                            onClick={() => handleSelectCategory(category)}
+                                                            className="p-1.5 bg-slate-100 hover:bg-blue-100 hover:text-blue-600 rounded-md text-slate-500 transition-colors cursor-pointer"
+                                                            title="Edit Category"
+                                                        >
+                                                            <Edit size={14} />
+                                                        </button>
+                                                        <button 
+                                                            onClick={() => handleDelete(category._id)}
+                                                            className="p-1.5 bg-slate-100 hover:bg-red-100 hover:text-red-600 rounded-md text-slate-500 transition-colors cursor-pointer"
+                                                            title="Delete Category"
+                                                        >
+                                                            <Trash2 size={14} />
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </motion.tr>
+                                        ))}
+                                    </AnimatePresence>
+                                    {filteredCategories.length === 0 && (
+                                        <tr>
+                                            <td colSpan="3" className="p-8 text-center text-slate-500 text-sm">
+                                                No blog categories found. Use the form on the right to create one.
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
 
-                                        <div className="flex justify-end gap-2 pt-4 border-t border-slate-100 mt-6">
-                                            <button 
-                                                onClick={() => handleSelectCategory(category)}
-                                                className="p-2 bg-slate-50 hover:bg-blue-50 hover:text-blue-600 rounded-lg text-slate-500 transition-colors cursor-pointer border border-slate-100"
-                                                title="Edit Category"
+                        {/* Pagination Controls */}
+                            {totalPages > 1 && (
+                                <div className="flex items-center justify-between pt-2">
+                                    <div className="text-sm text-slate-500">
+                                        Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredCategories.length)} of {filteredCategories.length} entries
+                                    </div>
+                                    <div className="flex gap-1">
+                                        <button 
+                                            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                            disabled={currentPage === 1}
+                                            className="px-3 py-1.5 rounded-md border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            Previous
+                                        </button>
+                                        {[...Array(totalPages)].map((_, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => setCurrentPage(i + 1)}
+                                                className={`w-8 py-1.5 rounded-md text-sm font-medium transition-colors ${currentPage === i + 1 ? 'bg-blue-600 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                                             >
-                                                <Edit size={14} />
+                                                {i + 1}
                                             </button>
-                                            <button 
-                                                onClick={() => handleDelete(category._id)}
-                                                className="p-2 bg-slate-50 hover:bg-red-50 hover:text-red-600 rounded-lg text-slate-500 transition-colors cursor-pointer border border-slate-100"
-                                                title="Delete Category"
-                                            >
-                                                <Trash2 size={14} />
-                                            </button>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </AnimatePresence>
-                            {filteredCategories.length === 0 && (
-                                <div className="col-span-full text-center py-12 text-slate-500 text-sm">
-                                    No blog categories found. Use the form on the right to create one.
+                                        ))}
+                                        <button 
+                                            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                            disabled={currentPage === totalPages}
+                                            className="px-3 py-1.5 rounded-md border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            Next
+                                        </button>
+                                    </div>
                                 </div>
                             )}
                         </div>
