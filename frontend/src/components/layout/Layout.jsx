@@ -21,7 +21,7 @@ const Layout = () => {
             <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
                 <Navbar onMenuClick={() => setIsSidebarOpen(true)} />
                 <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto custom-scrollbar">
-                    <div className="max-w-[1400px] mx-auto animate-fade-in">
+                    <div className="max-w-[1400px] mx-auto">
                         <Outlet />
                     </div>
                 </main>

@@ -2,8 +2,8 @@ const Product = require('../models/Product');
 
 exports.createProduct = async (req, res) => {
     try {
-        const { name, category, price, description } = req.body;
-        const image = req.file ? req.file.path : '';
+        const { name, category, price, description, image: bodyImage } = req.body;
+        const image = req.file ? req.file.path : (bodyImage || '');
 
         const product = await Product.create({
             name,
@@ -53,6 +53,8 @@ exports.updateProduct = async (req, res) => {
             product.description = description || product.description;
             if (req.file) {
                 product.image = req.file.path;
+            } else if (req.body.image !== undefined) {
+                product.image = req.body.image;
             }
 
             const updatedProduct = await product.save();
@@ -69,7 +71,7 @@ exports.deleteProduct = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
         if (product) {
-            await product.remove();
+            await Product.findByIdAndDelete(req.params.id);
             res.json({ message: 'Product removed' });
         } else {
             res.status(404).json({ message: 'Product not found' });

@@ -10,7 +10,9 @@ import {
     Users,
     ShoppingCart,
     Zap,
-    X
+    X,
+    FileText,
+    MessageSquare
 } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/authSlice';
@@ -41,6 +43,15 @@ const Sidebar = ({ isOpen, onClose }) => {
                 { path: '/admin/products', name: 'Products', icon: Package },
                 { path: '/admin/orders', name: 'Orders', icon: ShoppingCart },
                 { path: '/admin/customers', name: 'Customers', icon: Users },
+            ]
+        },
+        {
+            group: 'Content Management',
+            items: [
+                { path: '/admin/homepage-settings', name: 'Homepage Settings', icon: LayoutDashboard },
+                { path: '/admin/industry-page', name: 'Industry Page', icon: FileText },
+                { path: '/admin/blog-categories', name: 'Blog Categories', icon: Layers },
+                { path: '/admin/blogs', name: 'Blogs', icon: FileText },
             ]
         },
         { 

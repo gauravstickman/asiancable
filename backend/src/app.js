@@ -18,11 +18,18 @@ app.use(cookieParser());
 
 // Static folder for uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/src/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/upload', require('./routes/uploadRoutes'));
+app.use('/api/blog-categories', require('./routes/blogCategoryRoutes'));
+app.use('/api/blogs', require('./routes/blogRoutes'));
+app.use('/api/homepage-sections', require('./routes/homepageSectionRoutes'));
+app.use('/api/industry-page', require('./routes/industryPageRoutes'));
+app.use('/api/homepage-settings', require('./routes/homepageSettingsRoutes'));
 
 app.get('/', (req, res) => {
     res.send('API is running...');

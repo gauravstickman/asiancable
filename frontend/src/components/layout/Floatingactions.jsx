@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   Download,
   Phone,
@@ -39,12 +40,16 @@ const downloads = [
 export default function FloatingActions() {
   const [show, setShow] = useState(false);
   const [hideAtFooter, setHideAtFooter] = useState(false);
-  const [openDownloads, setOpenDownloads] =
-    useState(false);
+  const [openDownloads, setOpenDownloads] = useState(false);
+  
+  const location = useLocation();
+  const isAdminOrLogin = location.pathname.startsWith('/admin') || location.pathname.startsWith('/login');
 
   useEffect(() => {
+    if (isAdminOrLogin) return;
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      // Show only after scrolling past the entire 100vh slider area
+      if (window.scrollY > (window.innerHeight - 80)) {
         setShow(true);
       } else {
         setShow(false);
@@ -78,7 +83,9 @@ export default function FloatingActions() {
         handleScroll
       );
     };
-  }, []);
+  }, [isAdminOrLogin]);
+
+  if (isAdminOrLogin) return null;
 
   return (
     <>

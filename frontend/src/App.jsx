@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -7,53 +7,56 @@ import 'react-toastify/dist/ReactToastify.css';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Login from './pages/auth/Login';
+import FloatingActions from './components/layout/Floatingactions';
 
-// Website Pages
-import Home from './pages/website/Homepage/Homepage';
-import About from './pages/website/About';
-import Contact from './pages/website/Contact';
+// Admin Pages
 import Dashboard from './pages/dashboard/Dashboard';
 import CategoryList from './pages/category/CategoryList';
 import ProductList from './pages/product/ProductList';
-import Product from './pages/website/Products/Product';
-import Industy from './pages/website/Industries/IndustryPage';
-import RevealProvider from "./hooks/RevealProvider";
-function App() {
+import BlogCategoryList from './pages/blog/BlogCategoryList';
+import BlogList from './pages/blog/BlogList';
 
+// Homepage Settings Pages
+import HomepageSettingsMaster from './pages/homepage-settings/HomepageSettingsMaster';
+import IndustryPageSettings from './pages/homepage-settings/IndustryPageSettings';
+
+function App() {
   return (
     <>
-  
-    <Router>
-        <RevealProvider/>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        {/* Protected Admin Routes */}
-        <Route path="/products" element={<Product />} />
-        <Route path="/industry" element={<Industy />} />
-        <Route 
-          path="/admin" 
-          element={
-            <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
-          }
-        >
-          <Route index element={<Dashboard />} />
-          <Route path="categories" element={<CategoryList />} />
-          <Route path="products" element={<ProductList />} />
-        </Route>
-      </Routes>
-      
-      <ToastContainer 
-        position="bottom-right"
-        theme="dark"
-        autoClose={3000}
-      />
-    </Router>
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Navigate to="/admin" replace />} />
+          <Route path="/login" element={<Login />} />
+          
+          {/* Protected Admin Routes */}
+          <Route 
+            path="/admin" 
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="categories" element={<CategoryList />} />
+            <Route path="products" element={<ProductList />} />
+            <Route path="blog-categories" element={<BlogCategoryList />} />
+            <Route path="blogs" element={<BlogList />} />
+
+            {/* Content Sections */}
+            <Route path="homepage-settings" element={<HomepageSettingsMaster />} />
+            <Route path="industry-page" element={<IndustryPageSettings />} />
+          </Route>
+        </Routes>
+        
+        <FloatingActions />
+        <ToastContainer 
+          position="bottom-right"
+          theme="dark"
+          autoClose={3000}
+        />
+      </Router>
     </>
   );
 }

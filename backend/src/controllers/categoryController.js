@@ -3,13 +3,23 @@ const slugify = require('slugify');
 
 exports.createCategory = async (req, res) => {
     try {
-        const { name } = req.body;
-        const image = req.file ? req.file.path : '';
+        const { name, points, image: bodyImage } = req.body;
+        const image = req.file ? req.file.path : (bodyImage || '');
         
+        let parsedPoints = [];
+        if (points) {
+            try {
+                parsedPoints = Array.isArray(points) ? points : JSON.parse(points);
+            } catch (e) {
+                parsedPoints = typeof points === 'string' ? points.split(',').map(p => p.trim()) : [];
+            }
+        }
+
         const category = await Category.create({
             name,
             slug: name.toLowerCase().replace(/ /g, '-'),
-            image
+            image,
+            points: parsedPoints
         });
 
         res.status(201).json(category);
@@ -42,7 +52,7 @@ exports.getCategoryById = async (req, res) => {
 
 exports.updateCategory = async (req, res) => {
     try {
-        const { name } = req.body;
+        const { name, points } = req.body;
         const category = await Category.findById(req.params.id);
 
         if (category) {
@@ -50,6 +60,17 @@ exports.updateCategory = async (req, res) => {
             category.slug = name ? name.toLowerCase().replace(/ /g, '-') : category.slug;
             if (req.file) {
                 category.image = req.file.path;
+            } else if (req.body.image !== undefined) {
+                category.image = req.body.image;
+            }
+            if (points !== undefined) {
+                let parsedPoints = [];
+                try {
+                    parsedPoints = Array.isArray(points) ? points : JSON.parse(points);
+                } catch (e) {
+                    parsedPoints = typeof points === 'string' ? points.split(',').map(p => p.trim()) : [];
+                }
+                category.points = parsedPoints;
             }
 
             const updatedCategory = await category.save();
@@ -66,7 +87,7 @@ exports.deleteCategory = async (req, res) => {
     try {
         const category = await Category.findById(req.params.id);
         if (category) {
-            await category.remove();
+            await Category.findByIdAndDelete(req.params.id);
             res.json({ message: 'Category removed' });
         } else {
             res.status(404).json({ message: 'Category not found' });
