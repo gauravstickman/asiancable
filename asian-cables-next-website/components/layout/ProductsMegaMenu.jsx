@@ -84,7 +84,7 @@ export default function ProductsMegaMenu({ industryGroups = {}, typeGroups = {} 
                       {prods.map(p => (
                         <Link
                           key={p._id}
-                          href={`/product/${p._id}`}
+                          href={`/product/${p.slug}`}
                           className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
                         >
                           {p.name}
@@ -109,7 +109,7 @@ export default function ProductsMegaMenu({ industryGroups = {}, typeGroups = {} 
                       {prods.map(p => (
                         <Link
                           key={p._id}
-                          href={`/product/${p._id}`}
+                          href={`/product/${p.slug}`}
                           className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
                         >
                           {p.name}

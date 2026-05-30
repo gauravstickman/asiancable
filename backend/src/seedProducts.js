@@ -187,6 +187,8 @@ const seedProducts = async () => {
             } else {
                 prod.industry = null;
             }
+            
+            prod.slug = prod.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
             await Product.create(prod);
         }

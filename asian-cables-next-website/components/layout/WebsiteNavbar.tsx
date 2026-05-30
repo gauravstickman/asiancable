@@ -41,13 +41,13 @@ useEffect(() => {
       data.forEach((p: any) => {
         if (p.category && p.category.name) {
           const catName = p.category.name;
-          if (p.industry) {
-            if (!indGroups[catName]) indGroups[catName] = [];
-            indGroups[catName].push(p);
-          } else {
-            if (!typGroups[catName]) typGroups[catName] = [];
-            typGroups[catName].push(p);
-          }
+          if (!typGroups[catName]) typGroups[catName] = [];
+          typGroups[catName].push(p);
+        }
+        if (p.industry && p.industry.name) {
+          const indName = p.industry.name;
+          if (!indGroups[indName]) indGroups[indName] = [];
+          indGroups[indName].push(p);
         }
       });
       setIndustryGroups(indGroups);
@@ -98,8 +98,8 @@ useEffect(() => {
           <img
             src={
               isScrolled || showMegaMenu
-                ? "assets/LOGO_Dark.svg"
-                : "assets/footer-logo.svg"
+                ? "/assets/LOGO_Dark.svg"
+                : "/assets/footer-logo.svg"
             }
             alt="Asian Cables"
             className="h-[34px] max-h-[34px] w-[110px] w-auto max-w-[110px] min-w-[110px] transition-all duration-300"

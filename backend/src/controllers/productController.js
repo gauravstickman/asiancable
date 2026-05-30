@@ -6,8 +6,11 @@ exports.createProduct = async (req, res) => {
         const image = req.files && req.files.image ? req.files.image[0].path : (bodyImage || '');
         const overviewImage = req.files && req.files.overviewImage ? req.files.overviewImage[0].path : (bodyOverviewImage || '');
 
+        const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
         const product = await Product.create({
             name,
+            slug,
             category: category || null,
             industry: industry || null,
             description,
@@ -59,13 +62,31 @@ exports.getProductById = async (req, res) => {
     }
 };
 
+exports.getProductBySlug = async (req, res) => {
+    try {
+        const product = await Product.findOne({ slug: req.params.slug })
+            .populate('category', 'name')
+            .populate('industry', 'name');
+        if (product) {
+            res.json(product);
+        } else {
+            res.status(404).json({ message: 'Product not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 exports.updateProduct = async (req, res) => {
     try {
         const { name, category, industry, description, specifications, idealFor, overviewDescription, standards, features, catalogueName, catalogueDescription, catalogueImage, cataloguePdf, applications, projects, stats } = req.body;
         const product = await Product.findById(req.params.id);
 
         if (product) {
-            product.name = name || product.name;
+            if (name) {
+                product.name = name;
+                product.slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            }
             if (category !== undefined) product.category = category || null;
             if (industry !== undefined) product.industry = industry || null;
             if (description !== undefined) product.description = description;

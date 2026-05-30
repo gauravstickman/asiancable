@@ -292,13 +292,14 @@ const IndustryPageSettings = () => {
                         </div>
                         <div className="flex justify-between items-center mb-2">
                             <label className="text-sm font-bold text-slate-800">Products</label>
-                            <button onClick={() => handleAddToArray('products', {title: '', description: '', image: ''})} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Product</button>
+                            <button onClick={() => handleAddToArray('products', {title: '', description: '', image: '', link: ''})} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Product</button>
                         </div>
                         <div className="space-y-4">
                             {settings.products.map((prod, idx) => (
                                 <div key={idx} className="bg-slate-50 p-4 rounded-lg border relative grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <button onClick={() => handleRemoveFromArray('products', idx)} className="absolute top-2 right-2 text-red-500 hover:bg-red-50 p-1 rounded"><Trash2 size={18}/></button>
                                     <FormInput label="Title" placeholder="Title" value={prod.title || ''} onChange={e => handleArrayChange('products', idx, 'title', e.target.value)} />
+                                    <FormInput label="Link" placeholder="e.g. /product/slug" value={prod.link || ''} onChange={e => handleArrayChange('products', idx, 'link', e.target.value)} />
                                     <FormTextarea label="Description" placeholder="Description" rows={2} value={prod.description || ''} onChange={e => handleArrayChange('products', idx, 'description', e.target.value)} className="md:col-span-2" />
                                     <div className="flex flex-col gap-2">
                                         <div className="flex gap-2">

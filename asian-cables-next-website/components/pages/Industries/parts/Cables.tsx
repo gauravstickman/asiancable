@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import { getBaseUrl } from "../../../../utils/api";
+import Link from "next/link";
 
 export default function IndustryProducts({ dynamicData, sectionTitle }: { dynamicData?: any[], sectionTitle?: string }) {
   const fallbackProducts = [
@@ -91,10 +92,17 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
                 </p>
 
                 {/* CTA */}
-                <button className="relative z-10 mt-auto flex items-center gap-2 pt-5 text-[15px] font-semibold text-[#525252] transition hover:text-[#1E3C8C]">
-                  Know more
-                  <span className="text-[18px] leading-none">›</span>
-                </button>
+                {item.link ? (
+                  <Link href={item.link} className="relative z-10 mt-auto inline-flex items-center gap-2 pt-5 text-[15px] font-semibold text-[#525252] transition hover:text-[#1E3C8C] max-w-max">
+                    Know more
+                    <span className="text-[18px] leading-none">›</span>
+                  </Link>
+                ) : (
+                  <button className="relative z-10 mt-auto flex items-center gap-2 pt-5 text-[15px] font-semibold text-[#525252] transition hover:text-[#1E3C8C]">
+                    Know more
+                    <span className="text-[18px] leading-none">›</span>
+                  </button>
+                )}
               </div>
             </div>
           ))}

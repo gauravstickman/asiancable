@@ -16,7 +16,8 @@ const projectSchema = new mongoose.Schema({
 const productSchema = new mongoose.Schema({
     title: String,
     description: String,
-    image: String
+    image: String,
+    link: String
 });
 
 const impactSchema = new mongoose.Schema({

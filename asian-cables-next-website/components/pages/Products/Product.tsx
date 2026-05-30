@@ -9,12 +9,12 @@ import ProjectSection from "../Homepage/Parts/Applications";
 import ProvenFieldSection from "../Homepage/Parts/Fields";
 import ProductResources from "./parts/ProductResources";
 
-const Product = ({ productId }: { productId?: string }) => {
+const Product = ({ productSlug }: { productSlug?: string }) => {
   const [data, setData] = useState<any>(null);
 
   useEffect(() => {
-    if (productId) {
-      api.get(`/products/${productId}`)
+    if (productSlug) {
+      api.get(`/products/slug/${productSlug}`)
         .then((res) => {
           if (res.data) {
             setData(res.data);
@@ -22,7 +22,7 @@ const Product = ({ productId }: { productId?: string }) => {
         })
         .catch((err) => console.error(err));
     }
-  }, [productId]);
+  }, [productSlug]);
 
   const p = data || {};
   
