@@ -4,7 +4,7 @@ import API from '../../api/axios';
 import { toast } from 'react-toastify';
 import MediaPicker from '../../components/common/MediaPicker';
 import { Save, Plus, Trash2, Edit2, Image, Layers, Settings, FileText, BarChart2, Briefcase, Star, PenTool, Layout, ShieldCheck } from 'lucide-react';
-import { FormInput, FormTextarea, ImageInput } from '../../components/admin/FormComponents';
+import { FormInput, FormTextarea, ImageInput, FormSelect } from '../../components/admin/FormComponents';
 
 const IndustryPageSettings = () => {
     const { id } = useParams();
@@ -23,6 +23,19 @@ const IndustryPageSettings = () => {
         { id: 'products', label: 'Cables / Products', icon: Layout },
         { id: 'impact', label: 'Asian Cables Impact', icon: BarChart2 },
         { id: 'applications', label: 'Applications', icon: Layers }
+    ];
+
+    const PREDEFINED_INDUSTRIES = [
+        "Oil & Gas",
+        "Solar",
+        "Wind Energy",
+        "EV Charging",
+        "Power & Transmission",
+        "Mining",
+        "Marine",
+        "Renewables",
+        "Telecom & OFC",
+        "Railways"
     ];
 
     const fetchSettings = async () => {

@@ -21,6 +21,18 @@ exports.getById = async (req, res) => {
     }
 };
 
+exports.getBySlug = async (req, res) => {
+    try {
+        const page = await IndustryPage.findOne({ slug: req.params.slug });
+        if (!page) {
+            return res.status(404).json({ success: false, message: 'Industry Page not found' });
+        }
+        res.status(200).json({ success: true, data: page });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
 exports.updateById = async (req, res) => {
     try {
         const page = await IndustryPage.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });

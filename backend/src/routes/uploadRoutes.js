@@ -30,7 +30,7 @@ router.get('/', protect, async (req, res) => {
         const fileList = data.Contents
             .filter(file => {
                 const ext = path.extname(file.Key).toLowerCase();
-                return ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'].includes(ext);
+                return ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif'].includes(ext);
             })
             .map(file => {
                 return {

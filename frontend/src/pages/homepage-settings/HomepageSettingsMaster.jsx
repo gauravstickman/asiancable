@@ -162,16 +162,19 @@ const HomepageSettingsMaster = () => {
                         <div>
                             <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
                                 <h2 className="text-xl font-semibold text-slate-800">Hero Slider</h2>
-                                <button onClick={() => handleAddToArray('heroSlides', {title: '', subtitle: '', cta: { text: '', link: '' }, image: ''})} className="text-blue-600 text-sm font-medium flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors"><Plus size={16}/> Add Slide</button>
+                                <button onClick={() => handleAddToArray('heroSlides', {title: '', description: '', nextText: '', cta: { text: '', link: '' }, image: ''})} className="text-blue-600 text-sm font-medium flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors"><Plus size={16}/> Add Slide</button>
                             </div>
                             <div className="space-y-4">
                         {settings.heroSlides.map((slide, idx) => (
                             <div key={idx} className="bg-slate-50 p-4 rounded-lg border relative grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <button onClick={() => handleRemoveFromArray('heroSlides', idx)} className="absolute top-2 right-2 text-red-500 hover:bg-red-50 p-1 rounded"><Trash2 size={18}/></button>
                                 <FormInput label="Title" placeholder="Title" value={slide.title || ''} onChange={e => handleArrayChange('heroSlides', idx, 'title', e.target.value)} />
-                                <FormInput label="Subtitle" placeholder="Subtitle" value={slide.subtitle || ''} onChange={e => handleArrayChange('heroSlides', idx, 'subtitle', e.target.value)} />
+                                <FormInput label="Next Slide Text" placeholder="Next Slide Text" value={slide.nextText || ''} onChange={e => handleArrayChange('heroSlides', idx, 'nextText', e.target.value)} />
                                 <FormInput label="Button Name" placeholder="Button Name (e.g. ABOUT US)" value={slide.cta?.text || ''} onChange={e => handleArrayChange('heroSlides', idx, 'cta', { ...(slide.cta || {}), text: e.target.value })} />
                                 <FormInput label="Button Link" placeholder="Button Link (e.g. /about)" value={slide.cta?.link || ''} onChange={e => handleArrayChange('heroSlides', idx, 'cta', { ...(slide.cta || {}), link: e.target.value })} />
+                                <div className="md:col-span-2">
+                                    <FormTextarea label="Description" placeholder="Description" rows={3} value={slide.description || ''} onChange={e => handleArrayChange('heroSlides', idx, 'description', e.target.value)} />
+                                </div>
                                 <div className="md:col-span-2 flex flex-col gap-2">
                                     <div className="flex gap-2">
                                         <FormInput label="Image URL" placeholder="Image URL" value={slide.image || ''} onChange={e => handleArrayChange('heroSlides', idx, 'image', e.target.value)} />
@@ -347,29 +350,31 @@ const HomepageSettingsMaster = () => {
                             <div className="mb-6 pb-4 border-b border-slate-100">
                                 <h2 className="text-xl font-semibold text-slate-800">Engineering Section</h2>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <FormInput label="Tagline" placeholder="Tagline" value={settings.engineering?.tagline || ''} onChange={e => handleChange('engineering', 'tagline', e.target.value)} />
-                            <FormInput label="Title" placeholder="Title" value={settings.engineering?.title || ''} onChange={e => handleChange('engineering', 'title', e.target.value)} />
-                            <FormTextarea label="Description" placeholder="Description" rows={3} value={settings.engineering?.description || ''} onChange={e => handleChange('engineering', 'description', e.target.value)} className="md:col-span-2" />
-                        </div>
-                        <div className="mt-6">
-                            <div className="flex justify-between items-center mb-2">
-                                <label className="text-sm font-bold text-slate-800">Engineering Items</label>
-                                <button onClick={() => handleAddToNestedArray('engineering', 'items', {title:'', description:'', icon:'', hoverColor:'', link:''})} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Item</button>
+                            <div className="grid grid-cols-1 gap-4">
+                                <FormInput label="Title" placeholder="Title" value={settings.engineering?.title || ''} onChange={e => handleChange('engineering', 'title', e.target.value)} />
                             </div>
-                            <div className="space-y-4">
-                                {(settings.engineering?.items || []).map((item, idx) => (
-                                    <div key={idx} className="bg-slate-50 p-4 rounded-lg border relative grid grid-cols-1 md:grid-cols-2 gap-3">
-                                <button onClick={() => handleRemoveFromNestedArray('engineering', 'items', idx)} className="absolute top-2 right-2 text-red-500 hover:bg-red-50 p-1 rounded"><Trash2 size={18}/></button>
-                                        <FormInput label="Title" placeholder="Title" value={item.title || ''} onChange={e => handleNestedArrayChange('engineering', 'items', idx, 'title', e.target.value)} />
-                                        <FormInput label="Icon Name" placeholder="Icon Name" value={item.icon || ''} onChange={e => handleNestedArrayChange('engineering', 'items', idx, 'icon', e.target.value)} />
-                                        <FormInput label="Hover Color" placeholder="Hover Color (e.g. blue)" value={item.hoverColor || ''} onChange={e => handleNestedArrayChange('engineering', 'items', idx, 'hoverColor', e.target.value)} />
-                                        <FormInput label="Link" placeholder="Link" value={item.link || ''} onChange={e => handleNestedArrayChange('engineering', 'items', idx, 'link', e.target.value)} />
-                                        <FormTextarea label="Description" placeholder="Description" rows={2} value={item.description || ''} onChange={e => handleNestedArrayChange('engineering', 'items', idx, 'description', e.target.value)} className="md:col-span-2" />
-                                    </div>
-                                ))} 
+                            <div className="mt-6">
+                                <div className="flex justify-between items-center mb-2">
+                                    <label className="text-sm font-bold text-slate-800">Engineering Items</label>
+                                    <button onClick={() => handleAddToNestedArray('engineering', 'items', {title:'', content:'', image:''})} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Item</button>
+                                </div>
+                                <div className="space-y-4">
+                                    {(settings.engineering?.items || []).map((item, idx) => (
+                                        <div key={idx} className="bg-slate-50 p-4 rounded-lg border relative grid grid-cols-1 gap-3">
+                                            <button onClick={() => handleRemoveFromNestedArray('engineering', 'items', idx)} className="absolute top-2 right-2 text-red-500 hover:bg-red-50 p-1 rounded z-10"><Trash2 size={18}/></button>
+                                            <FormInput label="Title" placeholder="Title" value={item.title || ''} onChange={e => handleNestedArrayChange('engineering', 'items', idx, 'title', e.target.value)} />
+                                            <FormTextarea label="Content" placeholder="Content" rows={2} value={item.content || ''} onChange={e => handleNestedArrayChange('engineering', 'items', idx, 'content', e.target.value)} />
+                                            <div className="flex flex-col gap-2">
+                                                <div className="flex gap-2">
+                                                    <FormInput label="Image URL" placeholder="Image URL" value={item.image || ''} onChange={e => handleNestedArrayChange('engineering', 'items', idx, 'image', e.target.value)} />
+                                                    <button onClick={() => openMediaPicker((url) => handleNestedArrayChange('engineering', 'items', idx, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6 shrink-0"><Image size={16}/></button>
+                                                </div>
+                                                {item.image && <img src={item.image.startsWith('http') ? item.image : `${import.meta.env.VITE_API_URL}${item.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
+                                            </div>
+                                        </div>
+                                    ))} 
+                                </div>
                             </div>
-                        </div>
                         </div>
                     )}
 

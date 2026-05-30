@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     heroSlides: [{
         title: String,
-        subtitle: String,
+        description: String,
+        nextText: String,
         cta: {
             text: String,
             link: String
@@ -58,15 +59,11 @@ const schema = new mongoose.Schema({
         badges: [String]
     }],
     engineering: {
-        tagline: String,
         title: String,
-        description: String,
         items: [{
             title: String,
-            description: String,
-            icon: String,
-            hoverColor: String,
-            link: String
+            content: String,
+            image: String
         }]
     },
 

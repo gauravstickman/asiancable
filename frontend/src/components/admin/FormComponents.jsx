@@ -13,7 +13,21 @@ export const FormInput = ({ label, value, onChange, placeholder, type = "text", 
         />
     </div>
 );
-
+export const FormSelect = ({ label, value, onChange, options, className = "" }) => (
+    <div className={`w-full ${className}`}>
+        {label && <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">{label}</label>}
+        <select 
+            value={value} 
+            onChange={onChange} 
+            className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all text-sm appearance-none" 
+        >
+            <option value="" disabled>Select {label}</option>
+            {options.map((opt, idx) => (
+                <option key={idx} value={opt.value || opt}>{opt.label || opt}</option>
+            ))}
+        </select>
+    </div>
+);
 export const FormTextarea = ({ label, value, onChange, placeholder, rows = 3, className = "" }) => (
     <div className={`w-full ${className}`}>
         {label && <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">{label}</label>}

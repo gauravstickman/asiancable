@@ -10,6 +10,11 @@ const productSchema = new mongoose.Schema({
         ref: 'Category',
         required: false
     },
+    industry: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'IndustryPage',
+        required: false
+    },
     features: [{
         type: String
     }],

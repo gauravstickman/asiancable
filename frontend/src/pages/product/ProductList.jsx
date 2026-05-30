@@ -10,6 +10,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [industries, setIndustries] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -18,6 +19,7 @@ const ProductList = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [name, setName] = useState('');
     const [categoryId, setCategoryId] = useState('');
+    const [industryId, setIndustryId] = useState('');
     const [features, setFeatures] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [imagePreview, setImagePreview] = useState('');
@@ -27,6 +29,7 @@ const ProductList = () => {
     useEffect(() => {
         fetchProducts();
         fetchCategories();
+        fetchIndustries();
     }, []);
 
     const fetchProducts = async () => {
@@ -49,6 +52,17 @@ const ProductList = () => {
         }
     };
 
+    const fetchIndustries = async () => {
+        try {
+            const { data } = await API.get('/industry-page');
+            if (data.success) {
+                setIndustries(data.data);
+            }
+        } catch (error) {
+            console.error('Failed to fetch industries', error);
+        }
+    };
+
     const getImageUrl = (img) => {
         if (!img) return '';
         if (img.startsWith('http') || img.startsWith('data:')) return img;
@@ -60,6 +74,7 @@ const ProductList = () => {
             setSelectedProduct(product);
             setName(product.name);
             setCategoryId(product.category?._id || product.category || '');
+            setIndustryId(product.industry?._id || product.industry || '');
             setFeatures(product.features ? product.features.join('\n') : '');
             setImagePreview(getImageUrl(product.image));
             setImageUrl(product.image || '');
@@ -67,6 +82,7 @@ const ProductList = () => {
             setSelectedProduct(null);
             setName('');
             setCategoryId('');
+            setIndustryId('');
             setFeatures('');
             setImagePreview('');
             setImageUrl('');
@@ -85,6 +101,7 @@ const ProductList = () => {
         const payload = {
             name,
             category: categoryId || undefined,
+            industry: industryId || undefined,
             features: features.split('\n').map(f => f.trim()).filter(f => f.length > 0),
             image: imageUrl
         };
@@ -161,7 +178,7 @@ const ProductList = () => {
                                 />
                             </div>
 
-                            <div className="space-y-1.5 md:col-span-2">
+                            <div className="space-y-1.5 md:col-span-1">
                                 <label className="text-sm font-medium text-slate-700">Category (Optional)</label>
                                 <select 
                                     value={categoryId}
@@ -171,6 +188,20 @@ const ProductList = () => {
                                     <option value="">No Category</option>
                                     {categories.map((cat) => (
                                         <option key={cat._id} value={cat._id}>{cat.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div className="space-y-1.5 md:col-span-1">
+                                <label className="text-sm font-medium text-slate-700">Industry (Optional)</label>
+                                <select 
+                                    value={industryId}
+                                    onChange={(e) => setIndustryId(e.target.value)}
+                                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm cursor-pointer"
+                                >
+                                    <option value="">No Industry</option>
+                                    {industries.map((ind) => (
+                                        <option key={ind._id} value={ind._id}>{ind.name}</option>
                                     ))}
                                 </select>
                             </div>
@@ -295,6 +326,7 @@ const ProductList = () => {
                                         <tr className="bg-slate-50 border-b border-slate-200">
                                             <th className="p-4 text-sm font-semibold text-slate-600">Product</th>
                                             <th className="p-4 text-sm font-semibold text-slate-600">Category</th>
+                                            <th className="p-4 text-sm font-semibold text-slate-600">Industry</th>
                                             <th className="p-4 text-sm font-semibold text-slate-600">Features</th>
                                             <th className="p-4 text-sm font-semibold text-slate-600 w-28 text-center">Actions</th>
                                         </tr>
@@ -330,10 +362,23 @@ const ProductList = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td className="p-4">
-                                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
-                                                            {product.category?.name || 'Uncategorized'}
-                                                        </span>
+                                                    <td className="p-4 align-middle">
+                                                        {product.category ? (
+                                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                                                                {product.category.name}
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-slate-400 italic text-xs">None</span>
+                                                        )}
+                                                    </td>
+                                                    <td className="p-4 align-middle">
+                                                        {product.industry ? (
+                                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-800 border border-blue-100">
+                                                                {product.industry.name}
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-slate-400 italic text-xs">None</span>
+                                                        )}
                                                     </td>
                                                     <td className="p-4">
                                                         <div className="text-xs text-slate-600 space-y-1">
@@ -375,7 +420,7 @@ const ProductList = () => {
                                         </AnimatePresence>
                                         {filteredProducts.length === 0 && (
                                             <tr>
-                                                <td colSpan="4" className="p-8 text-center text-slate-500 text-sm">
+                                                <td colSpan="5" className="p-8 text-center text-slate-500 text-sm">
                                                     No products found matching your criteria.
                                                 </td>
                                             </tr>

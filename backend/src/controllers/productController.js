@@ -2,12 +2,13 @@ const Product = require('../models/Product');
 
 exports.createProduct = async (req, res) => {
     try {
-        const { name, category, features, image: bodyImage } = req.body;
+        const { name, category, industry, features, image: bodyImage } = req.body;
         const image = req.file ? req.file.path : (bodyImage || '');
 
         const product = await Product.create({
             name,
             category: category || null,
+            industry: industry || null,
             features: features || [],
             image
         });
@@ -20,7 +21,9 @@ exports.createProduct = async (req, res) => {
 
 exports.getProducts = async (req, res) => {
     try {
-        const products = await Product.find({}).populate('category', 'name');
+        const products = await Product.find({})
+            .populate('category', 'name')
+            .populate('industry', 'name');
         res.json(products);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -29,7 +32,9 @@ exports.getProducts = async (req, res) => {
 
 exports.getProductById = async (req, res) => {
     try {
-        const product = await Product.findById(req.params.id).populate('category', 'name');
+        const product = await Product.findById(req.params.id)
+            .populate('category', 'name')
+            .populate('industry', 'name');
         if (product) {
             res.json(product);
         } else {
@@ -42,12 +47,13 @@ exports.getProductById = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
     try {
-        const { name, category, features } = req.body;
+        const { name, category, industry, features } = req.body;
         const product = await Product.findById(req.params.id);
 
         if (product) {
             product.name = name || product.name;
             if (category !== undefined) product.category = category || null;
+            if (industry !== undefined) product.industry = industry || null;
             if (features !== undefined) product.features = features;
             
             if (req.file) {
