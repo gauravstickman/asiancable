@@ -30,7 +30,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
   // Use fallback hardcoded values initially so it matches the design while loading
   const headerTitle = data?.headerTitle || "Oil & Gas";
   const headerDescription = data?.headerDescription || "Enabling uninterrupted operations across upstream, midstream, and downstream facilities through cabling solutions aligned to safety protocols, reliability requirements, and asset integrity expectations. Specialized cable solutions support energy infrastructure including refineries, petrochemical plants and pipeline protection systems.";
-  const headerImage = data?.headerImage ? (data.headerImage.startsWith("http") ? data.headerImage : `${getBaseUrl()}/${data.headerImage.replace(/\\/g, "/")}`) : "/assets/industry-main.png";
+  const headerImage = data?.headerBgImage ? (data.headerBgImage.startsWith("http") ? data.headerBgImage : `${getBaseUrl()}/${data.headerBgImage.replace(/\\/g, "/")}`) : "/assets/industry-main.png";
   const stats = data?.stats || [
     { value: "3600 Km/Yr", label: "EHV Cable Production" },
     { value: "60+ Yrs", label: "Cable Manufacturing Expertise" },
