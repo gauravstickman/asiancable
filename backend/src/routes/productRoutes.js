@@ -5,13 +5,16 @@ const {
     getProductById,
     getProductBySlug,
     updateProduct,
-    deleteProduct 
+    deleteProduct,
+    migrateSlugs
 } = require('../controllers/productController');
 const protect = require('../middleware/authMiddleware');
 
 const { uploadS3 } = require('../middleware/uploadS3');
 
 const router = express.Router();
+
+router.get('/migrate-slugs', migrateSlugs);
 
 router.route('/')
     .get(getProducts)
