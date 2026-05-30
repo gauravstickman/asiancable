@@ -2,7 +2,15 @@
 
 import { ChevronRight, DownloadIcon } from "lucide-react";
 
-export default function ProductResources() {
+import { getBaseUrl } from "../../../../utils/api";
+
+export default function ProductResources({ data }: { data?: any }) {
+  const getImg = (url?: string) => {
+    if(!url) return "";
+    if(url.startsWith("http")) return url;
+    return `${getBaseUrl()}/${url.replace(/\\/g, "/")}`;
+  };
+
   return (
     <>
       <section className="reveal-section bg-[#ffffff] pt-8 pb-20">
@@ -18,7 +26,7 @@ export default function ProductResources() {
           <div className="relative h-[450px] overflow-hidden rounded-[8px] md:h-[480px]">
             {/* BACKGROUND IMAGE */}
             <img
-              src="/assets/po.jpg"
+              src={data?.catalogueImage ? getImg(data.catalogueImage) : "/assets/po.jpg"}
               alt="Resources"
               className="h-full w-full object-cover"
             />
@@ -38,15 +46,12 @@ export default function ProductResources() {
                 </div>
 
                 {/* TITLE */}
-                <h3 className="mb-2 max-w-[420px] text-[28px] leading-[43px] font-black text-white italic md:mb-8 md:text-[36px]">
-                  Product
-                  <br className="hidden md:block" />
-                  Catalogue
+                <h3 className="mb-2 max-w-[420px] text-[28px] leading-[43px] font-black text-white italic md:mb-8 md:text-[36px]" dangerouslySetInnerHTML={{ __html: data?.catalogueName || 'Product<br className="hidden md:block" />Catalogue' }}>
                 </h3>
 
                 {/* DESCRIPTION */}
                 <p className="text-[16px] leading-[1.7] text-white/90">
-                  A comprehensive guide.
+                  {data?.catalogueDescription || "A comprehensive guide."}
                 </p>
               </div>
 
@@ -55,10 +60,10 @@ export default function ProductResources() {
                 {/* BUTTONS */}
                 <div className="flex flex-col items-center gap-8 md:flex-row">
                   {/* DOWNLOAD BUTTON */}
-                  <button className="flex h-[38px] items-center gap-3 rounded-[6px] bg-white px-3 text-[16px] font-semibold text-[#1E3C8C] transition hover:bg-[#ECECEC] md:h-[48px] md:px-6 md:text-[18px]">
+                  <a href={data?.cataloguePdf ? getImg(data.cataloguePdf) : "#"} target="_blank" rel="noreferrer" className="flex h-[38px] items-center gap-3 rounded-[6px] bg-white px-3 text-[16px] font-semibold text-[#1E3C8C] transition hover:bg-[#ECECEC] md:h-[48px] md:px-6 md:text-[18px]">
                     <DownloadIcon />
                     Download Catalogue
-                  </button>
+                  </a>
 
                   {/* REQUEST */}
                   <button className="flex items-center gap-3 text-[16px] font-medium text-white transition hover:opacity-80 md:text-[18px]">
@@ -71,7 +76,7 @@ export default function ProductResources() {
 
                 {/* FILE SIZE */}
                 <div className="text-[14px] font-medium text-white">
-                  PDF • 2.4 MB
+                  PDF
                 </div>
               </div>
             </div>

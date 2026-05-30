@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-export default function ProductsMegaMenu() {
+export default function ProductsMegaMenu({ industryGroups = {}, typeGroups = {} }) {
   const [activeTab, setActiveTab] =
     useState("industry");
 
@@ -74,269 +74,50 @@ export default function ProductsMegaMenu() {
             {/* INDUSTRY CONTENT */}
             {activeTab === "industry" && (
               <div className="grid grid-cols-3 gap-x-20 gap-y-14">
-
-                <div>
-                  <p className="relative mb-6 pl-4 text-[16px] font-[600] text-[#2D2D2D]">
-
-                    <span className="absolute left-0 top-1 h-6 w-[3px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
-
-                    Telecom cables
-                  </p>
-
-                  <div className="flex flex-col gap-4">
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Optical fibre
-                    </Link>
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Jelly filled
-                    </Link>
+                {Object.entries(industryGroups).map(([indName, prods]) => (
+                  <div key={indName}>
+                    <p className="relative mb-6 pl-4 text-[16px] font-[600] text-[#2D2D2D]">
+                      <span className="absolute left-0 top-1 h-6 w-[3px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
+                      {indName}
+                    </p>
+                    <div className="flex flex-col gap-4">
+                      {prods.map(p => (
+                        <Link
+                          key={p._id}
+                          href={`/product/${p._id}`}
+                          className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                        >
+                          {p.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-
-                <div>
-                  <p className="relative mb-6 pl-4 text-[16px] font-[600] text-[#2D2D2D]">
-
-                    <span className="absolute left-0 top-1 h-6 w-[3px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
-
-                    Railway Cables
-
-                  </p>
-
-                  <div className="flex flex-col gap-4">
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Signalling cables
-                    </Link>
-
-                  
-                  </div>
-                </div>
+                ))}
               </div>
             )}
 
             {/* TYPE CONTENT */}
             {activeTab === "type" && (
               <div className="grid grid-cols-3 gap-x-20 gap-y-14">
-
-                <div>
-                  <p className="relative mb-6 pl-4 text-[16px] font-[600] text-[#2D2D2D]">
-
-                    <span className="absolute left-0 top-1 h-6 w-[3px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
-
-                    Power Cables
-
-                  </p>
-
-                  <div className="flex flex-col gap-4">
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                     Control and instrumentation
-                    </Link>
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      EHV
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-HT                   </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Control & Instrumentation
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Flexible cables 
-                    </Link>
+                {Object.entries(typeGroups).map(([catName, prods]) => (
+                  <div key={catName}>
+                    <p className="relative mb-6 pl-4 text-[16px] font-[600] text-[#2D2D2D]">
+                      <span className="absolute left-0 top-1 h-6 w-[3px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
+                      {catName}
+                    </p>
+                    <div className="flex flex-col gap-4">
+                      {prods.map(p => (
+                        <Link
+                          key={p._id}
+                          href={`/product/${p._id}`}
+                          className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                        >
+                          {p.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-
-                <div>
-                  <p className="relative mb-6 pl-4 text-[16px] font-[600] text-[#2D2D2D]">
-
-                    <span className="absolute left-0 top-1 h-6 w-[3px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
-
-                    Specialty Cables
-
-                  </p>
-
-                  <div className="flex flex-col gap-4">
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Elastomeric
-
-                    </Link>
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      E-Beam
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                     Hybrid
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Green Cables
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Cathodic Protection
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Concentric Cables
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      Submersible Cables
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                     EV Charging Cables
-
-                    </Link>
-                  
-                  </div>
-                </div>
-
-
-                <div>
-                  <p className="relative mb-6 pl-4 text-[16px] font-[600] text-[#2D2D2D]">
-
-                    <span className="absolute left-0 top-1 h-6 w-[3px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
-
-                    Overhead conductors
-
-                  </p>
-
-                  <div className="flex flex-col gap-4">
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      ACSR
-
-                    </Link>
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                    AAC
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                     AAAC
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                    AL-59
-
-                    </Link>
-
-                  
-                  </div>
-
-                  <p className="relative mt-10 mb-6 pl-4 text-[16px] font-[600] text-[#2D2D2D]">
-
-                    <span className="absolute left-0 top-1 h-6 w-[3px] bg-[linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)]" />
-
-                    Exports / International Cables
-
-
-                  </p>
-
-                  <div className="flex flex-col gap-4">
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                      LV Australia
-
-
-                    </Link>
-
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                    LV Europe (IC)
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                     LV US (UL)
-
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-[16px] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                    >
-                    MV Australia
-
-
-                    </Link>
-
-                  
-                  </div>
-                </div>
+                ))}
               </div>
             )}
           </div>
