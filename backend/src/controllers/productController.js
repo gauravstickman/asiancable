@@ -140,3 +140,32 @@ exports.deleteProduct = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+exports.migrateSlugs = async (req, res) => {
+    try {
+        const products = await Product.find({});
+        let updatedCount = 0;
+        
+        for (const product of products) {
+            if (!product.slug || product.slug.trim() === '') {
+                const generatedSlug = product.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                
+                let finalSlug = generatedSlug;
+                let counter = 1;
+                while (await Product.findOne({ slug: finalSlug, _id: { $ne: product._id } })) {
+                    finalSlug = `${generatedSlug}-${counter}`;
+                    counter++;
+                }
+
+                product.slug = finalSlug;
+                await product.save();
+                updatedCount++;
+            }
+        }
+        
+        res.json({ success: true, message: `Migrated ${updatedCount} products to include slugs.`, totalProductsChecked: products.length });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Server Error during migration' });
+    }
+};
