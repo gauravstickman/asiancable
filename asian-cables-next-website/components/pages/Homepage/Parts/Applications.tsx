@@ -1,4 +1,4 @@
-export default function ApplicationsSection() {
+export default function ApplicationsSection({ data }: { data?: any }) {
   return (
     <section className="reveal-section bg-[#ffffff] pt-10 pb-3 md:py-10">
       <div className="mx-auto max-w-[1320px] px-4">

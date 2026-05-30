@@ -313,7 +313,7 @@ const Product = ({ productId }: { productId?: string }) => {
       <ProjectSection data={p.applications} />
 
       <div className="proven-f w">
-        <ProvenFieldSection data={p.projects} />
+        <ProvenFieldSection dynamicData={p.projects} />
       </div>
 
       <Footer />
