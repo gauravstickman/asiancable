@@ -284,7 +284,7 @@ export default function Homepage() {
       <div className="blur-divider">
         <img src="/assets/divider.svg" alt="" className="max-w-[100%]" />
       </div>
-      <AboutUs />
+      <AboutUs dynamicText={aboutText} />
       <FactsSection />
       <EngineeringAccordionSection />
       <ProvenFieldSection />

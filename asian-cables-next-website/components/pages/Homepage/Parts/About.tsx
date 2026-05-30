@@ -44,7 +44,7 @@ export default function AboutUs({ dynamicText }: AboutUsProps) {
   return (
     <section
       ref={sectionRef}
-      className="reveal-section relative flex items-center justify-center bg-[#f8fafc] px-6 pt-20 pb-20 md:pt-5 md:pb-30"
+      className="relative flex items-center justify-center bg-[#f8fafc] px-6 pt-20 pb-20 md:pt-5 md:pb-30"
     >
       <div className="max-w-[758px] text-center">
         <p className="text-[16px] leading-[1.6] font-medium tracking-wide md:text-[23px]">
