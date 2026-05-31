@@ -50,57 +50,57 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-black/10" />
+<div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_32.35%,_#000000_91.59%)]" />
 
         {/* CONTENT */}
-        <div className="relative z-10 mx-auto max-w-[1320px] px-4 pt-[210px] pb-[250px] md:pb-[170px]">
+        <div className="relative z-10 mx-auto max-w-[1320px] px-4 pt-[210px] pb-[250px] md:pt-[228px] md:pb-[130px]">
           {/* TAG */}
-          <div className="mb-5 inline-flex h-[28px] items-center justify-center bg-white/10 px-3 backdrop-blur-md">
-            <span className="text-[14px] tracking-[1px] text-white uppercase">
+          <div className="mb-[19px] inline-flex h-[27px] items-center justify-center bg-[#D8D8D81A] px-2">
+            <span className="text-[14px] tracking-[1px] leading-[21px] text-white uppercase">
               Industries
             </span>
           </div>
 
           {/* TITLE */}
-          <h1 className="mb-7 text-[42px] leading-[0.9] font-black text-white italic md:text-[72px]">
+          <h1 className="mb-[30px] text-[42px] leading-[0.9] font-[700] text-white italic md:text-[72px] md:leading-[79.2px] md:tracking-[-1.44px]">
             {headerTitle}
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="max-w-[880px] text-[20px] leading-[1.7] text-white/90">
+          <p className="max-w-[894px] text-[20px] leading-[34px] text-white/90">
             {headerDescription}
           </p>
         </div>
 
         {/* BOTTOM STATS */}
         <div className="reveal-section absolute bottom-0 left-1/2 z-20 w-full max-w-[90%] -translate-x-1/2 translate-y-1/2 px-4 md:max-w-[1320px]">
-          <div className="grid grid-cols-1 gap-2.5 overflow-hidden rounded-[6px] bg-white p-2.5 shadow-[0px_25px_60px_rgba(0,0,0,0.25)] md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-2 overflow-hidden rounded-[2px] bg-white p-2 shadow-[0px_4px_133.5px_0px_#9D9D9D40] md:grid-cols-3">
             {/* STAT ITEM 1 */}
-            <div className="bg-[#F9f9f9] px-5 py-5 text-center md:px-10 md:py-10 md:text-left">
-              <h3 className="mb-2 bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic md:mb-4 md:text-[52px]">
+            <div className="bg-[#F9f9f9] px-5 py-5 text-center md:px-10 md:py-7 md:text-left">
+              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic md:text-[52px] md:leading-[73.02px]">
                 {stats[0]?.value || "3600 Km/Yr"}
               </h3>
-              <p className="text-[16px] font-[500] text-[#525252]">
+              <p className="text-[15.81px] leading-[23.72px] font-[500] text-[#525252]">
                 {stats[0]?.label || "EHV Cable Production"}
               </p>
             </div>
 
             {/* STAT ITEM 2 */}
-            <div className="bg-[#F9f9f9] px-5 py-5 text-center md:px-10 md:py-10 md:text-left">
-              <h3 className="mb-2 bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic md:mb-4 md:text-[52px]">
+            <div className="bg-[#F9f9f9] px-5 py-5 text-center md:px-10 md:py-7 md:text-left">
+              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic md:text-[52px] md:leading-[73.02px]">
                 {stats[1]?.value || "60+ Yrs"}
               </h3>
-              <p className="text-[16px] font-[500] text-[#525252]">
+              <p className="text-[15.81px] leading-[23.72px] font-[500] text-[#525252]">
                 {stats[1]?.label || "Cable Manufacturing Expertise"}
               </p>
             </div>
 
             {/* STAT ITEM 3 */}
-            <div className="bg-[#1E3C8C] px-5 py-5 text-center md:px-10 md:py-10 md:text-left">
-              <h3 className="mb-2 text-[32px] leading-none font-black text-white italic md:mb-4 md:text-[52px]">
+            <div className="bg-[#1E3C8C] px-5 py-5 text-center md:px-10 md:py-7 md:text-left">
+              <h3 className="text-[32px] leading-none font-black text-white italic md:text-[52px] md:leading-[73.02px]">
                 {stats[2]?.value || "NABL"}
               </h3>
-              <p className="text-[16px] font-[500] text-white/90">
+              <p className="text-[15.81px] leading-[23.72px] font-[500] text-white/90">
                 {stats[2]?.label || "Accredited Testing Lab"}
               </p>
             </div>

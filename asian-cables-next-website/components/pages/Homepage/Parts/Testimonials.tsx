@@ -38,26 +38,26 @@ export default function TestimonialsSection({ dynamicData }: { dynamicData?: any
     : testimonials;
 
   return (
-    <section className="reveal-section overflow-hidden bg-[#ffffff] py-10 md:py-24">
+    <section className="reveal-section overflow-hidden bg-[#ffffff] py-10 md:pt-[140px]">
       <div className="mx-auto max-w-[100%]">
         {/* HEADING */}
-        <div className="mb-10 text-center md:mb-16">
-          <h2 className="text-[32px] leading-none font-black text-[#1E3C8C] italic md:text-[46px]">
+        <div className="mb-10 text-center md:mb-[64px ]">
+          <h2 className="text-[32px]  text-[#1E3C8C] italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
             What Our Clients Say
           </h2>
         </div>
 
         {/* CAROUSEL */}
-        <div className="relative overflow-hidden">
-          <div className="animate-marquee flex w-max gap-6">
+        <div className="relative overflow-hidden md:mb-[37px]">
+          <div className="animate-marquee flex w-max gap-6 md:gap-[32px]">
             {/* FIRST SET */}
             {displayTestimonials.map((item, index) => (
               <div
                 key={index}
-                className="flex h-[290px] max-w-[460px] min-w-[460px] flex-col justify-between rounded-[6px] bg-[#EEF3F6] p-10"
+                className="flex h-[290px] max-w-[460px] min-w-[460px] flex-col justify-between rounded-[2px] bg-[#3CAADF12] p-6"
               >
                 {/* TEXT */}
-                <p className="text-[17px] leading-[1.5] text-[#111111]">
+                <p className="text-[18px] leading-[150%] text-[#03020B]">
                   {item.text}
                 </p>
 
@@ -70,11 +70,17 @@ export default function TestimonialsSection({ dynamicData }: { dynamicData?: any
                   />
 
                   <div>
-                    <h4 className="mb-2 text-[16px] leading-none font-black text-black italic">
+                    <h4 className="mb-[4px] text-[16px] leading-[150%] font-[700] text-[#03020B] italic">
                       {item.name}
                     </h4>
 
-                    <p className="text-[14px] text-[#8B8B8B]">{item.role}</p>
+                    <p className="relative flex items-center gap-[12px] text-[14px] leading-[150%] text-[#767676]"> <span
+    className="absolute left-0 top-0 right-auto h-[20px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  /> <bdi className="block pl-3">{item.role}</bdi></p>
                   </div>
                 </div>
               </div>
@@ -84,7 +90,7 @@ export default function TestimonialsSection({ dynamicData }: { dynamicData?: any
             {displayTestimonials.map((item, index) => (
               <div
                 key={`duplicate-${index}`}
-                className="flex h-[290px] max-w-[460px] min-w-[460px] flex-col justify-between rounded-[6px] bg-[#EEF3F6] p-10"
+                className="flex h-[290px] max-w-[460px] min-w-[460px] flex-col justify-between rounded-[6px] bg-[#3CAADF12] p-6"
               >
                 {/* TEXT */}
                 <p className="text-[17px] leading-[1.5] text-[#111111]">
@@ -104,7 +110,13 @@ export default function TestimonialsSection({ dynamicData }: { dynamicData?: any
                       {item.name}
                     </h4>
 
-                    <p className="text-[14px] text-[#8B8B8B]">{item.role}</p>
+                     <p className="relative flex items-center gap-[12px] text-[14px] leading-[150%] text-[#767676]"> <span
+    className="absolute left-0 top-0 right-auto h-[20px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  /> <bdi className="block pl-3">{item.role}</bdi></p>
                   </div>
                 </div>
               </div>

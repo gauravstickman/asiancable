@@ -317,3 +317,19 @@ color: #1e3c8c;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.fadded img {
+    object-fit: cover;
+    height: 130px;
+    width: 100%;
+    object-position: top;
+}
+
+.fadded {
+    margin-top: -129px;
+    position: relative;
+    z-index: 1;
+}
+.font-dm {
+  font-family: "DM Sans", sans-serif;
+}

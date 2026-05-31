@@ -65,11 +65,11 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
     : accordionData;
 
   return (
-    <section className="reveal-section bg-[#f6f6f6] py-8 md:py-24">
-      <div className="mx-auto max-w-[1320px] px-4">
+    <section className="reveal-section bg-[#f6f6f6] py-8 md:pb-[182px] md:pt-[92px]">
+      <div className="mx-auto max-w-[1272px] px-4 md:px-0">
         {/* HEADING */}
-        <div className="mb-8 text-center md:mb-20">
-          <h2 className="mx-auto max-w-[700px] text-[32px] leading-[1.3] font-black text-[#1E3C8C] italic md:text-[46px]">
+        <div className="mb-8 text-center md:mb-[91px]">
+          <h2 className="mx-auto max-w-[700px] text-[32px]  text-[#1E3C8C] italic  font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
             {dynamicData?.title || "Engineering Trust. Enabling Progress."}
           </h2>
           {dynamicData?.tagline && (
@@ -79,9 +79,9 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
 
         {/* CONTENT */}
         {/* DESKTOP */}
-        <div className="hidden grid-cols-2 items-start gap-16 lg:grid">
+        <div className="hidden grid-cols-2 items-start gap-[80px] lg:grid">
           {/* LEFT IMAGE */}
-          <div className="relative h-[100%] max-h-[590px] overflow-hidden rounded-[6px]">
+          <div className="relative h-[100%] h-[590px] overflow-hidden rounded-[6px]">
             <img
               src={finalAccordionData[activeIndex]?.image}
               alt="Engineering"
@@ -92,7 +92,7 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
           </div>
 
           {/* RIGHT ACCORDION */}
-          <div className="flex flex-col">
+          <div className="flex flex-col pt-2">
             {finalAccordionData.map((item: any, index: number) => {
               const active = activeIndex === index;
 
@@ -100,12 +100,12 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
                 <div key={index} className="relative">
                   <button
                     onMouseEnter={() => setActiveIndex(index)}
-                    className={`w-full cursor-pointer text-left transition ${
-                      index === 0 ? "pt-0 pb-4" : "py-5"
+                    className={`w-full cursor-pointer text-left ${
+                      index === 0 ? "pt-0 pb-[10.6px]" : "py-5"
                     } ${active ? "text-[#1E3C8C]" : "text-[#8B8B8B]"}`}
                   >
                     <h3
-                      className={`text-[23.99px] leading-tight font-black italic transition ${
+                      className={`text-[23.99px] leading-[39.98px] tracking-[-3%] font-[600] italic ${
                         active ? "text-[#1E3C8C]" : "text-[#8B8B8B]"
                       }`}
                     >
@@ -124,7 +124,7 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
                   </div>
 
                   <div
-                    className={`overflow-hidden transition-all duration-500 ${
+                    className={`overflow-hidden transition-all duration-0 ${
                       active
                         ? "max-h-[300px] pb-1 opacity-100"
                         : "max-h-0 opacity-0"
@@ -186,7 +186,7 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
 
                 {/* ACCORDION CONTENT */}
                 <div
-                  className={`overflow-hidden transition-all duration-500 ${
+                  className={`overflow-hidden transition-all duration-0 ${
                     active ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >

@@ -51,6 +51,8 @@ export default function RootLayout({
     <html lang="en" className={`${workSans.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/cfj6tra.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" />
+
       </head>
 
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
