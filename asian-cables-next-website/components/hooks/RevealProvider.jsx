@@ -30,7 +30,7 @@ export default function RevealProvider()
     });
 
     return () => observer.disconnect();
-  }, [pathname.pathname]);
+  }, [pathname]);
 
   return null;
 }
