@@ -169,7 +169,7 @@ export default function Homepage() {
     <>
       <WebsiteNavbar />
       <Swiper
-        key={slides.length}
+        key={slides.map((s) => s._id || s.id).join("-")}
         modules={[Parallax, Autoplay]}
         speed={1200}
         parallax={true}

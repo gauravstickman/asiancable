@@ -105,7 +105,7 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
 
         {/* SLIDER */}
         <Swiper
-          key={projects.length}
+          key={projects.map((p: any) => p._id || p.title).join("-")}
           modules={[Autoplay]}
           spaceBetween={18}
           autoplay={{
