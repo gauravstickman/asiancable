@@ -134,9 +134,10 @@ export default function Homepage() {
   useEffect(() => {
     api.get("/products")
       .then((res) => {
-        const data = res.data;
-        if (Array.isArray(data) && data.length > 0) {
-          const formattedProducts = data.map((p: any) => ({
+        const responseData = res.data;
+        const productsArray = Array.isArray(responseData) ? responseData : (responseData.data || []);
+        if (Array.isArray(productsArray) && productsArray.length > 0) {
+          const formattedProducts = productsArray.map((p: any) => ({
             title: p.name,
             image: p.image
               ? (p.image.startsWith("http")
@@ -285,10 +286,10 @@ export default function Homepage() {
         <img src="/assets/divider.svg" alt="" className="max-w-[100%]" />
       </div>
       <AboutUs dynamicText={aboutText} />
-      <FactsSection />
-      <EngineeringAccordionSection />
-      <ProvenFieldSection />
-      <ProductRangeSection />
+      <FactsSection dynamicData={factsData} />
+      <EngineeringAccordionSection dynamicData={engineeringData} />
+      <ProvenFieldSection dynamicData={provenData} />
+      <ProductRangeSection dynamicData={productsData} />
       <SustainabilitySection />
       <TestimonialsSection dynamicData={testimonialsData} />
       <Blogs dynamicData={blogsData} />
