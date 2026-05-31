@@ -105,6 +105,7 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
 
         {/* SLIDER */}
         <Swiper
+          key={projects.length}
           modules={[Autoplay]}
           spaceBetween={18}
           autoplay={{
