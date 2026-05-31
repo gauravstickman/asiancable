@@ -66,15 +66,15 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
   ].slice(0, 6);
 
   return (
-    <section className="reveal-section bg-[#f5f5f5] py-10 md:pt-[100px]">
+    <section className="reveal-section bg-[#f5f5f5] py-10 md:py-24">
       <div className="mx-auto max-w-[1320px] px-4">
         {/* HEADING */}
-        <div className="mb-8 text-center md:mb-[39px  ]">
-          <h2 className="mb-4 text-[32px]  text-[#1E3C8C] italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
+        <div className="mb-8 text-center md:mb-14">
+          <h2 className="mb-4 text-[32px] leading-none font-black text-[#1E3C8C] italic md:text-[46px]">
             Our Products Range
           </h2>
 
-          <p className="text-[20px] font-medium text-[#5E7BC0] md:text-[24px] leading-[150%]">
+          <p className="text-[20px] font-medium text-[#5E7BC0] md:text-[24px]">
             End-to-End Cable Systems. One Reliable Partner.
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
         <div className="hidden md:grid gap-4 md:grid-cols-12">
           {/* LEFT BIG CARD */}
           <div className="col-span-12 lg:col-span-4">
-            <div className="group relative h-[646px] overflow-hidden rounded-[4px]">
+            <div className="group relative h-[650px] overflow-hidden rounded-[8px]">
               <img
                 src={displayProducts[0].image}
                 alt={displayProducts[0].title}
@@ -94,21 +94,21 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
 
               {/* TITLE */}
               <div className="absolute top-6 left-6">
-                <h3 className="text-[20px] font-[700] text-white italic md:text-[24px] leading-[32px] tracking-[-0.5px]">
+                <h3 className="text-[20px] font-black text-white italic md:text-[34px]">
                   {displayProducts[0].title}
                 </h3>
               </div>
 
               {/* CONTENT */}
-              <div className="absolute right-[18px] bottom-[30px] left-[18px]">
-                <div className="space-y-2 md:space-y-2">
+              <div className="absolute right-6 bottom-6 left-6">
+                <div className="space-y-2 md:space-y-3">
                   {displayProducts[0].points.map((point: string, index: number) => (
                     <div
                       key={index}
-                      className="flex font-dm items-center gap-2 font-[400] text-[16px] leading-[26px] tracking-[-0.5px] text-white"
+                      className="flex items-center gap-2 text-[16px] text-white"
                     >
                       <span>
-                        <Check size={14} />
+                        <Check size={16} />
                       </span>
                       <span>{point}</span>
                     </div>
@@ -116,10 +116,10 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                 </div>
 
                 <div className="absolute right-0 bottom-0 flex justify-end">
-                  <button className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white">
+                  <button className="flex items-center gap-2 text-[16px] text-white">
                     Read More
                     <span>
-                      <ChevronRight size={15} />
+                      <ChevronRight size={16} />
                     </span>
                   </button>
                 </div>
@@ -135,7 +135,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
               {displayProducts.slice(1, 3).map((item, index) => (
                 <div
                   key={index}
-                  className="group relative h-[315px] overflow-hidden rounded-[4px]"
+                  className="group relative h-[315px] overflow-hidden rounded-[8px]"
                 >
                   <img
                     src={item.image}
@@ -147,21 +147,21 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
 
                   {/* TITLE */}
                   <div className="absolute top-5 left-5">
-                    <h3 className="text-[20px] font-black text-white italic md:text-[24px] leading-[32px] tracking-[-0.5px]">
+                    <h3 className="text-[20px] font-black text-white italic md:text-[30px]">
                       {item.title}
                     </h3>
                   </div>
 
                   {/* CONTENT */}
                   <div className="absolute right-5 bottom-5 left-5">
-                    <div className="space-y-2 md:space-y-2">
+                    <div className="space-y-2 md:space-y-3">
                       {item.points.map((point: string, idx: number) => (
-                       <div
-                      key={idx}
-                      className="flex font-dm items-center gap-2 font-[400] text-[16px] leading-[26px] tracking-[-0.5px] text-white"
-                    >
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 text-[15px] text-white"
+                        >
                           <span>
-                            <Check size={14} />
+                            <Check size={16} />
                           </span>
                           <span>{point}</span>
                         </div>
@@ -169,12 +169,12 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </div>
 
                     <div className="absolute right-0 bottom-0 flex justify-end">
-                    <button className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white">
-                    Read More
-                    <span>
-                      <ChevronRight size={15} />
-                    </span>
-                  </button>
+                      <button className="flex items-center gap-2 text-[15px] text-white">
+                        Read More
+                        <span>
+                          <ChevronRight size={16} />
+                        </span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
               {displayProducts.slice(3, 5).map((item, index) => (
                 <div
                   key={index}
-                  className="group relative h-[315px] overflow-hidden rounded-[4px]"
+                  className="group relative h-[315px] overflow-hidden rounded-[8px]"
                 >
                   <img
                     src={item.image}
@@ -198,21 +198,21 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
 
                   {/* TITLE */}
                   <div className="absolute top-5 left-5">
-                    <h3 className="max-w-[300px] text-[20px] font-[700] text-white italic md:text-[24px] leading-[32px] tracking-[-0.5px]">
+                    <h3 className="max-w-[300px] text-[20px] leading-tight font-black text-white italic md:text-[28px]">
                       {item.title}
                     </h3>
                   </div>
 
                   {/* CONTENT */}
                   <div className="absolute right-5 bottom-5 left-5">
-                    <div className="space-y-2 md:space-y-2">
+                    <div className="space-y-2 md:space-y-3">
                       {item.points.map((point: string, idx: number) => (
-                       <div
-                      key={idx}
-                      className="flex font-dm items-center gap-2 font-[400] text-[16px] leading-[26px] tracking-[-0.5px] text-white"
-                    >
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 text-[15px] text-white"
+                        >
                           <span>
-                            <Check size={14} />
+                            <Check size={16} />
                           </span>
                           <span>{point}</span>
                         </div>
@@ -220,12 +220,12 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </div>
 
                     <div className="absolute right-0 bottom-0 flex justify-end">
-                    <button className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white">
-                    Read More
-                    <span>
-                      <ChevronRight size={15} />
-                    </span>
-                  </button>
+                      <button className="flex items-center gap-2 text-[15px] text-white">
+                        Read More
+                        <span>
+                          <ChevronRight size={15} />
+                        </span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -234,7 +234,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
           </div>
 
           {/* BOTTOM WIDE CARD */}
-          <div className="group relative h-[299px] w-[100%] overflow-hidden rounded-[4px] lg:col-span-12">
+          <div className="group relative h-[299px] w-[100%] overflow-hidden rounded-[8px] lg:col-span-12">
             <img
               src={displayProducts[5].image}
               alt={displayProducts[5].title}
@@ -252,14 +252,14 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
 
             {/* CONTENT */}
             <div className="absolute right-6 bottom-6 left-6">
-              <div className="space-y-2 md:space-y-2">
+              <div className="space-y-2 md:space-y-3">
                 {displayProducts[5].points.map((point: string, index: number) => (
                   <div
-                      key={index}
-                      className="flex font-dm items-center gap-2 font-[400] text-[16px] leading-[26px] tracking-[-0.5px] text-white"
-                    >
+                    key={index}
+                    className="flex items-center gap-2 text-[16px] text-white"
+                  >
                     <span>
-                      <Check size={14 } />
+                      <Check size={16} />
                     </span>
                     <span>{point}</span>
                   </div>
@@ -267,12 +267,10 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
               </div>
 
               <div className="absolute right-0 bottom-0 flex justify-end">
-<button className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white">
-                    Read More
-                    <span>
-                      <ChevronRight size={15} />
-                    </span>
-                  </button>
+                <button className="flex items-center gap-2 text-[16px] text-white">
+                  Read More
+                  <span>›</span>
+                </button>
               </div>
             </div>
           </div>
@@ -335,7 +333,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
           </div>
         </div>
       </div>
-      <button className="mx-auto mt-[39px] mb-[60px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
+      <button className="mx-auto mt-10 flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
         View All
         <span>
           {" "}

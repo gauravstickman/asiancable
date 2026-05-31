@@ -37,7 +37,7 @@ const staticSlides = [
     id: 2,
     image: "/assets/home2.png",
     title:
-      "Transforming lives by building\nsustainable world-class infrastructure",
+      "Transforming lives by building sustainable world-class infrastructure",
     description:
       "Delivering world-class power and telecom cables for critical infrastructure across industries",
     nextText: "Innovation First",
@@ -47,7 +47,7 @@ const staticSlides = [
   {
     id: 3,
     image: "/assets/home3.jpg",
-    title: "Powering a future\nthat holds the world",
+    title: "Powering a future that holds the world",
     description:
       "Delivering world-class power and telecom cables for critical infrastructure across industries",
     nextText: "Global Excellence",
@@ -134,10 +134,9 @@ export default function Homepage() {
   useEffect(() => {
     api.get("/products")
       .then((res) => {
-        const responseData = res.data;
-        const productsArray = Array.isArray(responseData) ? responseData : (responseData.data || []);
-        if (Array.isArray(productsArray) && productsArray.length > 0) {
-          const formattedProducts = productsArray.map((p: any) => ({
+        const data = res.data;
+        if (Array.isArray(data) && data.length > 0) {
+          const formattedProducts = data.map((p: any) => ({
             title: p.name,
             image: p.image
               ? (p.image.startsWith("http")
@@ -204,18 +203,18 @@ export default function Homepage() {
             <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_bottom,_rgba(0,140,255,0.35),_transparent_45%)]" />
 
             {/* CONTENT */}
-            <div className="relative z-30 mx-auto flex h-full max-w-[1320px] items-end px-6 pb-[50%] md:pb-[9%]">
-              <div className="md:max-w-[1165px]" data-swiper-parallax="-180">
+            <div className="relative z-30 mx-auto flex h-full max-w-[1320px] items-end px-6 pb-[50%] md:pb-[13%]">
+              <div className="max-w-4xl" data-swiper-parallax="-180">
                 <h1
                   data-swiper-parallax="-50"
-                  className="whitespace-pre-line text-[36px] leading-[42px] font-[700] text-white italic tracking-[-5%] md:text-[64px] md:leading-[71px]"
+                  className="text-[36px] leading-[1.4] font-extrabold text-white italic md:text-[58px] md:leading-tight"
                 >
                   {slide.title}
                 </h1>
 
                 <p
                   data-swiper-parallax="-50"
-                  className="max-w-[456px] mt-[16px]  text-[16px] leading-[26px] text-[#ECECEC] md:text-[18px] md:leading-[26px] tracking-[-0.4%]"
+                  className="mt-2 max-w-xl text-[16px] leading-8 text-white/80 md:text-[18px]"
                 >
                   {slide.description}
                 </p>
@@ -223,11 +222,11 @@ export default function Homepage() {
                 <div data-swiper-parallax="-50">
                   <Link
                     href={slide.buttonLink}
-                    className="border-it mt-[40px] inline-flex items-center gap-1 bg-white px-[29px] py-2 text-[16px] font-[500] text-[#1E3C8C] md:text-[20px] tracking-[-0.46px] md:leading-[29.42px]"
+                    className="border-it mt-6 inline-flex items-center gap-2 bg-white px-5 py-2 text-[16px] font-[500] text-[#1E3C8C] md:text-[20px]"
                   >
                     {slide.buttonText}
 
-                    <ChevronRight size={19} />
+                    <ChevronRight size={20} />
                   </Link>
                 </div>
               </div>
@@ -251,12 +250,12 @@ export default function Homepage() {
             </div>
 
             {/* CONTENT */}
-            <div className="ml-3 w-[100%] pr-[10px] text-left md:w-[auto] md:pr-[auto] mt-[7.29px] mb-[2.31px]">
-              <p className="mb-1 text-left text-[13.12px] leading-[100%] text-white font-[500] lowercase">
+            <div className="ml-3 w-[100%] pr-[10px] text-left md:w-[auto] md:pr-[auto]">
+              <p className="mb-1 text-left text-[13.5px] tracking-wide text-white lowercase">
                 next
               </p>
 
-              <p className="text-[16px] leading-[100%] font-[500] text-white/76">
+              <p className="text-[16px] leading-none font-medium text-white/70">
                 {slides[(current + 1) % slides.length].nextText}
               </p>
 
@@ -286,10 +285,10 @@ export default function Homepage() {
         <img src="/assets/divider.svg" alt="" className="max-w-[100%]" />
       </div>
       <AboutUs dynamicText={aboutText} />
-      <FactsSection dynamicData={factsData} />
-      <EngineeringAccordionSection dynamicData={engineeringData} />
-      <ProvenFieldSection dynamicData={provenData} />
-      <ProductRangeSection dynamicData={productsData} />
+      <FactsSection />
+      <EngineeringAccordionSection />
+      <ProvenFieldSection />
+      <ProductRangeSection />
       <SustainabilitySection />
       <TestimonialsSection dynamicData={testimonialsData} />
       <Blogs dynamicData={blogsData} />

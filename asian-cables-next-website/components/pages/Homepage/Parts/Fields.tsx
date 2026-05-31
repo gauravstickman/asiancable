@@ -90,15 +90,15 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
   }, [dynamicData]);
 
   return (
-    <section className="reveal-section overflow-hidden bg-[#1E3C8C] py-10 md:pt-[149px]">
+    <section className="reveal-section overflow-hidden bg-[#1E3C8C] py-10 md:py-24">
       <div className="mx-auto max-w-[100%]">
         {/* HEADING */}
-        <div className="mb-8 px-4 text-center md:mb-[84px]">
-          <h2 className="mb-[16px] text-[32px]  text-white italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
+        <div className="mb-8 px-4 text-center md:mb-16">
+          <h2 className="mb-5 text-[32px] leading-none font-black text-white italic md:text-[46px]">
             Proven In The Field
           </h2>
 
-          <p className="text-[20px] text-white/50 md:text-[24px] leading-[150%]">
+          <p className="text-[20px] text-white/60 md:text-[24px]">
             Real projects. Demanding environments. Reliable outcomes.
           </p>
         </div>
@@ -124,7 +124,7 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index} className="max-w-[86vw]">
-              <div className="group relative h-[504px] overflow-hidden rounded-[2px]">
+              <div className="group relative h-[504px] overflow-hidden rounded-[6px]">
                 {/* IMAGE */}
                 <img
                   src={project.image}
@@ -136,30 +136,30 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
                 {/* CONTENT */}
-                <div className="absolute inset-0 flex max-w-[80%] flex-col p-5 md:p-8">
+                <div className="absolute inset-0 flex max-w-[80%] flex-col p-6">
                   {/* TAG */}
                   <div className="mb-auto">
-                    <span className="rounded-[2px] bg-white px-3 py-2 text-[14px] leading-[16px] text-[#525252]">
+                    <span className="rounded-[4px] bg-white px-4 py-2 text-[14px] text-[#525252]">
                       {project.tag}
                     </span>
                   </div>
 
                   {/* TEXT */}
                   <div>
-                    <h3 className="mb-[10px] max-w-[90%] text-[22px] leading-[28px] tracking-[-0.5px] font-[700] text-white italic">
+                    <h3 className="mb-4 max-w-[90%] text-[22px] leading-[28px] font-bold text-white italic">
                       {project.title}
                     </h3>
 
-                    <p className="mb-[26px] max-w-[90%] md:max-w-[347px] text-[16px] leading-[26px] tracking-[-0.5px]  text-[#E8E8E8]">
+                    <p className="mb-6 max-w-[90%] text-[16px] leading-[1.7] text-white/85">
                       {project.description}
                     </p>
 
                     {/* BADGES */}
-                    <div className="mb-0 flex flex-wrap gap-[9px]">
+                    <div className="mb-0 flex flex-wrap gap-3">
                       {project.badges.map((badge: string, idx: number) => (
                         <div
                           key={idx}
-                          className="rounded-[4px] bg-white/39 px-4 py-1 text-[16px] leading-[26px] tracking-[-0.5px] text-white"
+                          className="rounded-[4px] bg-white/39 px-4 py-2 text-[16px] text-white backdrop-blur-md"
                         >
                           {badge}
                         </div>
@@ -173,7 +173,7 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
         </Swiper>
 
         {/* BUTTON */}
-        <button className="border-it mx-auto mt-[50px] mb-[81px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] border-transparent bg-[#ffffff] text-[20px] font-medium text-[#1E3C8C] transition transition-all duration-300 hover:border-[1.84px] hover:bg-[#ffffff] hover:[border-image:linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)_1]">
+        <button className="border-it mx-auto mt-10 flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] border-transparent bg-[#ffffff] text-[20px] font-medium text-[#1E3C8C] transition transition-all duration-300 hover:border-[1.84px] hover:bg-[#ffffff] hover:[border-image:linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)_1]">
           View All
           <span>
             {" "}

@@ -21,7 +21,7 @@ export default function TrustedLeaders({ dynamicData, sectionTitle }: { dynamicD
   ].slice(0, 5);
 
   return (
-    <section className="reveal-section bg-[#ffffff] pt-8 pb-10 md:pb-24">
+    <section className="reveal-section bg-[#ffffff] pt-5 pb-10 md:pb-24">
       <div className="mx-auto max-w-[1320px] px-4">
         {/* HEADING */}
         <div className="mb-10 text-center md:mb-20">

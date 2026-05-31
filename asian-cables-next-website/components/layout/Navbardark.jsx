@@ -1,721 +1,117 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
-import ProductsMegaMenu from "./ProductsMegaMenu";
-import { usePathname } from "next/navigation";
+  "use client";
+
+  import { useState, useEffect } from 'react';
+  import Link from "next/link";
+  import { Menu, X, ChevronRight, Search } from 'lucide-react';
 
 const WebsiteNavbarDark = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 50);
-  };
-
-  handleScroll(); // ← ye line add kar
-
-  window.addEventListener(
-    "scroll",
-    handleScroll
-  );
-
-  return () =>
-    window.removeEventListener(
-      "scroll",
-      handleScroll
-    );
-}, []);
-
-  const [showMegaMenu, setShowMegaMenu] = useState(false);
-
-  const [mobileMenuView, setMobileMenuView] =
-  useState("main");
-
-
-const pathname = usePathname();
-
-const isHomePage = pathname === "/";
-
-  const [productsTab, setProductsTab] =
-  useState("industry");
-
-const [openCategory, setOpenCategory] =
-  useState("telecom");
-
-
-useEffect(() => {
-  if (isMenuOpen) {
-    document.body.style.overflow = "hidden";
-    document.body.style.height = "100vh";
-  } else {
-    document.body.style.overflow = "";
-    document.body.style.height = "";
-  }
-
-  return () => {
-    document.body.style.overflow = "";
-    document.body.style.height = "";
-  };
-}, [isMenuOpen]);
-
-
-const isProductsActive =
-  pathname.startsWith("/products");
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav
-      className={`sticky top-0 right-0 left-0 z-50 ${
-        isScrolled || showMegaMenu ? "bg-white" : "bg-white"
-      }`}
-    >
-      {isHomePage && (
-       <div
-    className="absolute top-0 left-0 right-0 h-[5px]"
-    style={{
-      background:
-        "linear-gradient(270deg, #3CAADF 0%, #F04123 60.78%, #FFD212 121.56%)",
-    }}
-     
-  />
-   )}
-      <div className="mx-auto flex h-[74px] max-w-[1274px] items-center justify-between px-3 md:px-0 md:h-[74px]">
+  <nav
+  className={`sticky top-0 z-50 transition-all duration-300 ${
+    isScrolled
+      ? "bg-white/90 backdrop-blur-md shadow-sm"
+      : "bg-transparent"
+  }`}
+>
+      <div className="max-w-[1320px] mx-auto px-6 h-[85px] flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <img
-            src={
-              isScrolled || showMegaMenu
-                ? "assets/LOGO_Dark.svg"
-                : "assets/LOGO_Dark.svg"
-            }
-            alt="Asian Cables"
-            className="h-[34px] max-h-[34px] w-[110px] w-auto max-w-[110px] min-w-[110px]"
-          />
+           <img
+    src={
+      isScrolled
+        ? "/assets/LOGO_Dark.svg"
+        : "/assets/LOGO_Dark.svg"
+    }
+    alt="Asian Cables"
+    className="h-[36px] w-auto transition-all duration-300"
+  />
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden font-dm items-center gap-[35px] md:flex">
-          {/* HOME */}
-          <Link
-            href="/"
-            className={`text-[16px] leading-[26px] tracking-[-0.5px] ${
-    pathname === "/"
-      ? "font-[600]"
-      : "font-[400]"
-  } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
-            }`}
-          >
-            Home
-          </Link>
-
-          {/* PRODUCTS */}
-          <div
-            className="relative"
-            onMouseEnter={() => setShowMegaMenu(true)}
-            
-          >
-            
-            <button
-              className={`flex items-center gap-1  text-[16px] leading-[26px] cursor-pointer tracking-[-0.5px] ${
-                isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
-              } ${
-    isProductsActive || showMegaMenu
-      ? "font-[400]"
-      : "font-[400]"
-  }`}
-            >
-              Products
-              <ChevronDown
-                size={15}
-                className={` ${
-                  showMegaMenu ? "rotate-180" : ""
-                } ${
-    showMegaMenu
-      ? "font-[600]"
-      : "font-[400]"
-  }`}
-              />
-            </button>
-
-            {/* MEGA MENU */}
-            <div
-              className={`fixed top-[74px] left-0 w-full ${
-                showMegaMenu ? "visible opacity-100" : "invisible opacity-0"
+        <div className="hidden md:flex items-center gap-10">
+          {['Home', 'Products', 'The Company', 'Career', 'Investors'].map((item) => (
+            <Link 
+              key={item} 
+              href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+              className={`text-[16px]  font-normal  transition-colors ${
+                isScrolled ? 'text-[#1E3C8C] hover:text-[#1E3C8C]' : 'text-[#1E3C8C] hover:text-[#1E3C8C]'
               }`}
-
-               onMouseEnter={() => setShowMegaMenu(true)}
-  onMouseLeave={() => setShowMegaMenu(false)}
             >
-              <ProductsMegaMenu />
-            </div>
-          </div>
-
-          {/* COMPANY */}
-          <Link
-            href="/company"
-            className={`text-[16px] ${
-    pathname === "/company"
-      ? "font-[600]"
-      : "font-[400]"
-  } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
-            }`}
-          >
-            The Company
-          </Link>
-
-          {/* CAREERS */}
-          <Link
-            href="/career"
-            className={`text-[16px] ${
-    pathname === "/career"
-      ? "font-[600]"
-      : "font-[400]"
-  } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
-            }`}
-          >
-            Careers
-          </Link>
-
-          {/* INVESTOR */}
-          <Link
-            href="/investor"
-            className={`text-[16px] ${
-    pathname === "/investor"
-      ? "font-[600]"
-      : "font-[400]"
-  } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
-            }`}
-          >
-            Investor
-          </Link>
+              {item}
+            </Link>
+          ))}
+        
         </div>
-
-        <div className="xs:hidden ml-[auto] flex items-center gap-6 md:gap-[35px] md:ml-0">
-          <span
-            className={` ${
-              isScrolled || showMegaMenu ? "text-[#1E3A8A]" : "text-[#1E3C8C]"
-            }`}
-          >
-            <Search className="hidden md:block" size={18} />
-          </span>
-          <Link
-            href="/contact"
-            className={`rounded-[2px] px-6 py-2 text-[16px] leading-[26px] font-medium tracking-[-0.5px]  ${
-    pathname === "/contact"
-      ? "font-[600]"
-      : "font-[400]"
-  } ${
-              isScrolled || showMegaMenu
-                ? "bg-[#1E3C8C] text-[#ffffff]"
-                : "bg-[#1E3C8C] text-[#ffffff]"
+           <div className="xs:hidden flex items-center gap-6">
+             <span
+  className={`transition-colors duration-300 ${
+    isScrolled
+      ? "text-[#1E3A8A]"
+      : "text-[#1E3A8A]"
+  }`}
+>
+  <Search size={20} />
+</span>
+          <Link 
+            href="/login" 
+            className={`px-7 py-2 rounded-[2px] text-[16px] font-medium leading-[24px] tracking-[0px] transition-all ${
+              isScrolled 
+                ? 'bg-[#1E3A8A] text-[#ffffff] hover:bg-blue-800' 
+                : 'bg-[#1E3A8A] text-[#ffffff] hover:bg-blue-50'
             }`}
           >
             Contact
           </Link>
-        </div>
+            </div> 
         {/* Mobile Menu Button */}
-       <button
-  className={`ml-3 md:hidden ${
-    isScrolled || showMegaMenu
-      ? "text-slate-900"
-      : "text-white"
-  }`}
-  onClick={() => {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-      setMobileMenuView("main");
-    } else {
-      setIsMenuOpen(true);
-      setMobileMenuView("main");
-    }
-  }}
->
-  {isMenuOpen ? (
-    <X size={30} />
-  ) : (
-    <Menu size={30} />
-  )}
-</button>
+        <button 
+          className={`md:hidden p-2 transition-colors ${
+            isScrolled ? 'text-slate-900' : 'text-white'
+          }`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
       {/* Mobile Menu */}
-     {isMenuOpen && (
-  <div className="fixed inset-0 z-[9999999] bg-white md:hidden akn-mobile-menu">
-
-    {/* TOP BAR */}
-    <div className="relative z-[99999999] flex items-center justify-between px-6 py-4 bg-white border-b">
-
-  {mobileMenuView === "submenu" ? (
-    <button
-      onClick={() => setMobileMenuView("main")}
-      className="text-[#1E3C8C] font-medium"
-    >
-      ← Back
-    </button>
-  ) : (
-    <div />
-  )}
-
-  <button
-    onClick={() => {
-      setIsMenuOpen(false);
-      setMobileMenuView("main");
-    }}
-    className="text-[#1E3C8C] text-[32px] leading-none"
-  >
-    ×
-  </button>
-
-</div>
-
-    {/* MAIN MENU */}
-  <div
-  className={`absolute inset-0 pt-[80px] px-8 bg-white z-10 ${
-  mobileMenuView === "main"
-    ? "translate-x-0"
-    : "-translate-x-full"
-}`}
->
-      <div className="flex flex-col gap-8">
-
-        <Link
-          href="/"
-          onClick={() =>
-            setIsMenuOpen(false)
-          }
-          className="text-[24px] italic font-bold text-[#1E3C8C]"
-        >
-          Home
-        </Link>
-
-        <button
-          onClick={() =>
-            setMobileMenuView("submenu")
-          }
-          className="flex items-center justify-between text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Products
-
-          <span>›</span>
-        </button>
-
-        <Link
-          href="/company"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          The Company
-        </Link>
-
-        <Link
-          href="/career"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Careers
-        </Link>
-
-        <Link
-          href="/investors"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Investors
-        </Link>
-
-        <Link
-          href="/contact"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Contact
-        </Link>
-      </div>
-    </div>
-
-    {/* PRODUCTS SUBMENU */}
- <div
- className={`absolute inset-0 pt-[80px] px-8 bg-white z-10 ${
-  mobileMenuView === "submenu"
-    ? "translate-x-0"
-    : "translate-x-full"
-}`}
->
-   <div className="flex flex-col gap-4">
-
-  {/* TABS */}
-
-  <button
-    onClick={() => {
-      setProductsTab("industry");
-      setOpenCategory("telecom");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "industry"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Industry
-  </button>
-
-  <button
-    onClick={() => {
-      setProductsTab("type");
-      setOpenCategory("power");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "type"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Type
-  </button>
-
-  {/* INDUSTRY */}
-
-  {productsTab === "industry" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-
-      {/* TELECOM */}
-
-      <div className="mb-4 rounded-md border">
-
-        <button
-          onClick={() =>
-            setOpenCategory(
-              openCategory === "telecom"
-                ? ""
-                : "telecom"
-            )
-          }
-          className="flex w-full items-center justify-between p-4"
-        >
-          <span className="font-semibold">
-            Telecom Cables
-          </span>
-        </button>
-
-        {openCategory === "telecom" && (
-          <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-            <Link href="/">Optical Fibre</Link>
-            <Link href="/">Jelly Filled</Link>
-          </div>
-        )}
-      </div>
-
-      {/* RAILWAY */}
-
-      <div className="rounded-md border">
-
-        <button
-          onClick={() =>
-            setOpenCategory(
-              openCategory === "railway"
-                ? ""
-                : "railway"
-            )
-          }
-          className="flex w-full items-center justify-between p-4"
-        >
-          <span className="font-semibold">
-            Railway Cables
-          </span>
-        </button>
-
-        {openCategory === "railway" && (
-          <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-            <Link href="/">
-              Signalling cables
+      {isMenuOpen && (
+        <div className="absolute top-full left-0 right-0 bg-white border-b border-slate-100 p-6 md:hidden animate-fade-in">
+          <div className="flex flex-col gap-6">
+            {['Home', 'About', 'Products', 'Applications', 'Contact'].map((item) => (
+              <Link 
+                key={item} 
+                href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                className="text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-[#1E3A8A]"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
+            <Link 
+              href="/login" 
+              className="w-full py-4 bg-[#1E3C8C] text-white text-center text-xs font-black uppercase tracking-widest"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              contact
             </Link>
           </div>
-        )}
-      </div>
-
-    </div>
-  )}
-
-  {/* TYPE */}
-
-  {productsTab === "type" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-
-      {[
-        {
-          id: "power",
-          title: "Power Cables",
-          items: [
-            "Control and instrumentation",
-            "EHV",
-            "HT",
-            "Control & Instrumentation",
-            "Flexible cables",
-          ],
-        },
-        {
-          id: "specialty",
-          title: "Specialty Cables",
-          items: [
-            "Elastomeric",
-            "E-Beam",
-            "Hybrid",
-            "Green Cables",
-            "Cathodic Protection",
-            "Concentric Cables",
-            "Submersible Cables",
-            "EV Charging Cables",
-          ],
-        },
-        {
-          id: "overhead",
-          title: "Overhead Conductors",
-          items: [
-            "ACSR",
-            "AAC",
-            "AAAC",
-            "AL-59",
-          ],
-        },
-        {
-          id: "exports",
-          title:
-            "Exports / International Cables",
-          items: [
-            "LV Australia",
-            "LV Europe (IC)",
-            "LV US (UL)",
-            "MV Australia",
-          ],
-        },
-      ].map((cat) => (
-        <div
-          key={cat.id}
-          className="mb-4 rounded-md border"
-        >
-
-          <button
-            onClick={() =>
-              setOpenCategory(
-                openCategory === cat.id
-                  ? ""
-                  : cat.id
-              )
-            }
-            className="flex w-full items-center justify-between p-4"
-          >
-            <span className="font-semibold">
-              {cat.title}
-            </span>
-          </button>
-
-          {openCategory === cat.id && (
-            <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-              {cat.items.map((item) => (
-                <Link
-                  key={item}
-                  href="/"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
-      ))}
-    </div>
-  )}
-</div><div className="flex flex-col gap-4">
-
-  {/* TABS */}
-
-  <button
-    onClick={() => {
-      setProductsTab("industry");
-      setOpenCategory("telecom");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "industry"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Industry
-  </button>
-
-  <button
-    onClick={() => {
-      setProductsTab("type");
-      setOpenCategory("power");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "type"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Type
-  </button>
-
-  {/* INDUSTRY */}
-
-  {productsTab === "industry" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-
-      {/* TELECOM */}
-
-      <div className="mb-4 rounded-md border">
-
-        <button
-          onClick={() =>
-            setOpenCategory(
-              openCategory === "telecom"
-                ? ""
-                : "telecom"
-            )
-          }
-          className="flex w-full items-center justify-between p-4"
-        >
-          <span className="font-semibold">
-            Telecom Cables
-          </span>
-        </button>
-
-        {openCategory === "telecom" && (
-          <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-            <Link href="/">Optical Fibre</Link>
-            <Link href="/">Jelly Filled</Link>
-          </div>
-        )}
-      </div>
-
-      {/* RAILWAY */}
-
-      <div className="rounded-md border">
-
-        <button
-          onClick={() =>
-            setOpenCategory(
-              openCategory === "railway"
-                ? ""
-                : "railway"
-            )
-          }
-          className="flex w-full items-center justify-between p-4"
-        >
-          <span className="font-semibold">
-            Railway Cables
-          </span>
-        </button>
-
-        {openCategory === "railway" && (
-          <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-            <Link href="/">
-              Signalling cables
-            </Link>
-          </div>
-        )}
-      </div>
-
-    </div>
-  )}
-
-  {/* TYPE */}
-
-  {productsTab === "type" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-
-      {[
-        {
-          id: "power",
-          title: "Power Cables",
-          items: [
-            "Control and instrumentation",
-            "EHV",
-            "HT",
-            "Control & Instrumentation",
-            "Flexible cables",
-          ],
-        },
-        {
-          id: "specialty",
-          title: "Specialty Cables",
-          items: [
-            "Elastomeric",
-            "E-Beam",
-            "Hybrid",
-            "Green Cables",
-            "Cathodic Protection",
-            "Concentric Cables",
-            "Submersible Cables",
-            "EV Charging Cables",
-          ],
-        },
-        {
-          id: "overhead",
-          title: "Overhead Conductors",
-          items: [
-            "ACSR",
-            "AAC",
-            "AAAC",
-            "AL-59",
-          ],
-        },
-        {
-          id: "exports",
-          title:
-            "Exports / International Cables",
-          items: [
-            "LV Australia",
-            "LV Europe (IC)",
-            "LV US (UL)",
-            "MV Australia",
-          ],
-        },
-      ].map((cat) => (
-        <div
-          key={cat.id}
-          className="mb-4 rounded-md border"
-        >
-
-          <button
-            onClick={() =>
-              setOpenCategory(
-                openCategory === cat.id
-                  ? ""
-                  : cat.id
-              )
-            }
-            className="flex w-full items-center justify-between p-4"
-          >
-            <span className="font-semibold">
-              {cat.title}
-            </span>
-          </button>
-
-          {openCategory === cat.id && (
-            <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-              {cat.items.map((item) => (
-                <Link
-                  key={item}
-                  href="/"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-    </div>
-
-  </div>
-)}
+      )}
     </nav>
+
+    
   );
 };
 

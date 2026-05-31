@@ -42,17 +42,12 @@ export default function AboutUs({ dynamicText }: AboutUsProps) {
   const words = text.split(" ");
 
   return (
-    <>
-    <div className="fadded">
-      <img src="assets/faded.png"/>
-    </div>
     <section
       ref={sectionRef}
-      className="reveal-section1 relative flex items-center justify-center bg-[#ffffff] px-6 pt-20 pb-20 md:pt-[107px] md:pb-[121px]"
+      className="relative flex items-center justify-center bg-[#f8fafc] px-6 pt-20 pb-20 md:pt-5 md:pb-30"
     >
-     
       <div className="max-w-[758px] text-center">
-        <p className="text-[16px] leading-[125%] font-[500] tracking-none md:text-[20px]">
+        <p className="text-[16px] leading-[1.6] font-medium tracking-wide md:text-[23px]">
           {words.map((word, index) => {
             const wordProgress = index / words.length;
 
@@ -74,6 +69,5 @@ export default function AboutUs({ dynamicText }: AboutUsProps) {
         </p>
       </div>
     </section>
-    </>
   );
 }
