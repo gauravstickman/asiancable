@@ -3,10 +3,14 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-export default function RevealProvider() {
-  const pathname = usePathname();
+export default function RevealProvider()
+{
+    const pathname = usePathname();
 
   useEffect(() => {
+    const elements =
+      document.querySelectorAll(".reveal-section");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -15,31 +19,18 @@ export default function RevealProvider() {
           }
         });
       },
-      { threshold: 0.12 }
+      {
+        threshold: 0.12,
+      }
     );
 
-    const observeElements = () => {
-      document.querySelectorAll(".reveal-section:not(.is-visible)").forEach((el) => {
-        observer.observe(el);
-      });
-    };
-
-    observeElements();
-
-    const mutationObserver = new MutationObserver(() => {
-      observeElements();
+    elements.forEach((el) => {
+      el.classList.remove("is-visible");
+      observer.observe(el);
     });
 
-    mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-
-    return () => {
-      observer.disconnect();
-      mutationObserver.disconnect();
-    };
-  }, [pathname]);
+    return () => observer.disconnect();
+  }, [pathname.pathname]);
 
   return null;
 }

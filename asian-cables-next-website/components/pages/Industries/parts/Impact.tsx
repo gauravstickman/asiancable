@@ -37,7 +37,7 @@ export default function AsianCablesImpact({ dynamicData, sectionTitle }: { dynam
       <div className="mx-auto max-w-[1320px] px-4">
         {/* HEADING */}
         <div className="mb-10 text-center md:mb-16">
-          <h2 className="text-[32px] leading-none font-[700] text-white italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
+          <h2 className="text-[32px] leading-none font-black text-white italic md:text-[46px]">
             {sectionTitle || "Asian Cables Impact"}
           </h2>
         </div>
@@ -47,10 +47,10 @@ export default function AsianCablesImpact({ dynamicData, sectionTitle }: { dynam
           {displayImpacts.map((item, index) => (
             <div
               key={index}
-              className="rounded-[10px] bg-[#F5F5F5] p-10 md:min-h-[420px] md:p-[40px]"
+              className="rounded-[10px] bg-[#F5F5F5] p-10 md:min-h-[420px] md:p-8"
             >
               {/* ICON */}
-              <div className="mb-4">
+              <div className="mb-5">
                 <img
                   src={item.icon}
                   alt={item.title}
@@ -59,12 +59,12 @@ export default function AsianCablesImpact({ dynamicData, sectionTitle }: { dynam
               </div>
 
               {/* TITLE */}
-              <h3 className="mb-[10.2px] text-[24px] leading-[1.6] font-black text-[#1E3C8C] italic md:text-[28px] md:leading-[42px]">
+              <h3 className="mb-4 text-[24px] leading-[1.6] font-black text-[#1E3C8C] italic md:text-[28px]">
                 {item.title}
               </h3>
 
               {/* DESCRIPTION */}
-              <p className="text-[16px] leading-[1.6] font-[500] text-[#1E3C8CCC] md:text-[18px] md:leading-[27.2px]">
+              <p className="text-[16px] leading-[1.6] font-[500] text-[#1E3C8CCC] md:text-[18px]">
                 {item.description}
               </p>
             </div>

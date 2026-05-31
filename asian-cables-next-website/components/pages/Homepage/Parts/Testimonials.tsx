@@ -26,7 +26,7 @@ import { getBaseUrl } from "../../../../utils/api";
 export default function TestimonialsSection({ dynamicData }: { dynamicData?: any[] }) {
   const displayTestimonials = dynamicData && dynamicData.length > 0
     ? dynamicData.map((item: any) => ({
-        text: item.quote ? `"${item.quote}"` : "",
+        text: item.quote ? `"${item.quote}"` : item.text ? `"${item.text}"` : item.description ? `"${item.description}"` : "",
         name: item.name,
         role: item.company ? `${item.position || ""} | ${item.company}` : item.position || "",
         image: item.image?.startsWith("http")

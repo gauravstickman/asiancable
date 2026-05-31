@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
 import ProductsMegaMenu from "./ProductsMegaMenu";
 import { usePathname } from "next/navigation";
+import api from "../../utils/api";
 
 const WebsiteNavbarDark = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,6 +45,43 @@ const isHomePage = pathname === "/";
 const [openCategory, setOpenCategory] =
   useState("telecom");
 
+const [industryGroups, setIndustryGroups] = useState({});
+const [typeGroups, setTypeGroups] = useState({});
+
+useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const res = await api.get('/products');
+      const data = Array.isArray(res.data) ? res.data : (res.data.data || []);
+      const indGroups = {};
+      const typGroups = {};
+
+      data.forEach((p) => {
+        if (p.category && p.category.name) {
+          const catName = p.category.name;
+          if (!typGroups[catName]) typGroups[catName] = [];
+          typGroups[catName].push(p);
+        }
+        
+        if (p.industry) {
+          const industries = Array.isArray(p.industry) ? p.industry : [p.industry];
+          industries.forEach((ind) => {
+            if (ind && ind.name) {
+              const indName = ind.name;
+              if (!indGroups[indName]) indGroups[indName] = [];
+              indGroups[indName].push(p);
+            }
+          });
+        }
+      });
+      setIndustryGroups(indGroups);
+      setTypeGroups(typGroups);
+    } catch (err) {
+      console.error("Error fetching products", err);
+    }
+  };
+  fetchProducts();
+}, []);
 
 useEffect(() => {
   if (isMenuOpen) {
@@ -86,8 +124,8 @@ const isProductsActive =
           <img
             src={
               isScrolled || showMegaMenu
-                ? "assets/LOGO_Dark.svg"
-                : "assets/LOGO_Dark.svg"
+                ? "/assets/LOGO_Dark.svg"
+                : "/assets/LOGO_Dark.svg"
             }
             alt="Asian Cables"
             className="h-[34px] max-h-[34px] w-[110px] w-auto max-w-[110px] min-w-[110px]"
@@ -148,7 +186,7 @@ const isProductsActive =
                onMouseEnter={() => setShowMegaMenu(true)}
   onMouseLeave={() => setShowMegaMenu(false)}
             >
-              <ProductsMegaMenu />
+              <ProductsMegaMenu industryGroups={industryGroups} typeGroups={typeGroups} />
             </div>
           </div>
 
