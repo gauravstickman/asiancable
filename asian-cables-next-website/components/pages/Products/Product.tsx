@@ -40,9 +40,9 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
       <section className="bg-[#f6f6f6] md:pt-[64px] pb-15 md:pb-[96px]">
         <div className="mx-auto max-w-[1320px] px-4">
-          <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-center md:gap-14 lg:grid-cols-2">
             {/* LEFT IMAGE */}
-            <div className="mb-8 flex h-[280px] items-center justify-center bg-white md:mb-0 md:h-[592px]">
+            <div className="my-8 flex h-[auto] items-center justify-center bg-white md:my-0 md:h-[592px]">
               <img
                 src={p.image ? getImg(p.image) : "/assets/p-main.png"}
                 alt={p.name || "Control Cable"}

@@ -58,7 +58,7 @@ export default function ProductResources({ data }: { data?: any }) {
                 {/* BUTTONS */}
                 <div className="flex flex-col items-center gap-9 md:flex-row">
                   {/* DOWNLOAD BUTTON */}
-                  <a href={data?.cataloguePdf ? getImg(data.cataloguePdf) : "#"} target="_blank" rel="noreferrer" className="flex h-[38px] items-center gap-2  rounded-[5.52px] bg-white px-3 text-[16px] font-[500] text-[#1E3C8C] transition  md:h-[48px] md:px-5 md:text-[20px] md:leading-[29.42px] md:tracking-[-0.46px]">
+                  <a href={data?.cataloguePdf ? getImg(data.cataloguePdf) : "#"} target="_blank" rel="noreferrer" className="flex whitespace-nowrap h-[38px] items-center gap-2  rounded-[5.52px] bg-white px-3 text-[16px] font-[500] text-[#1E3C8C] transition  md:h-[48px] md:px-5 md:text-[20px] md:leading-[29.42px] md:tracking-[-0.46px]">
                     <DownloadIcon />
                     Download Catalogue
                   </a>
@@ -73,7 +73,7 @@ export default function ProductResources({ data }: { data?: any }) {
                 </div>
 
                 {/* FILE SIZE */}
-                <div className="text-[14px] leaing-[21px] font-[500] text-white">
+                <div className="md:static absolute right-5 bottom-5text-[12px] md:text-[14px] md:leaing-[21px] font-[500] text-white">
                   PDF • 2.4 MB
                 </div>
               </div>

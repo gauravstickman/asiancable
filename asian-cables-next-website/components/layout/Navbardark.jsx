@@ -239,11 +239,11 @@ const isProductsActive =
               isScrolled || showMegaMenu ? "text-[#1E3A8A]" : "text-[#1E3C8C]"
             }`}
           >
-            <Search className="hidden md:block" size={18} />
+            <Search className="" size={18} />
           </span>
           <Link
             href="/contact"
-            className={`rounded-[2px] px-6 py-2 text-[16px] leading-[26px] font-medium tracking-[-0.5px]  ${
+            className={`rounded-[2px] hidden md:block px-6 py-2 text-[16px] leading-[26px] font-medium tracking-[-0.5px]  ${
     pathname === "/contact"
       ? "font-[600]"
       : "font-[400]"
@@ -260,8 +260,8 @@ const isProductsActive =
        <button
   className={`ml-3 md:hidden ${
     isScrolled || showMegaMenu
-      ? "text-slate-900"
-      : "text-white"
+      ? "text-[#1e3c8c]"
+      : "text-[#1e3c8c]"
   }`}
   onClick={() => {
     if (isMenuOpen) {
@@ -285,471 +285,78 @@ const isProductsActive =
      {isMenuOpen && (
   <div className="fixed inset-0 z-[9999999] bg-white md:hidden akn-mobile-menu">
 
-    {/* TOP BAR */}
-    <div className="relative z-[99999999] flex items-center justify-between px-6 py-4 bg-white border-b">
+  
 
-  {mobileMenuView === "submenu" ? (
+      {/* MAIN MENU */}
+   <div
+    className={` absolute inset-0 pt-[80px] px-8 bg-white z-10 transition-transform duration-300 ${
+      mobileMenuView === "main"
+        ? "translate-x-0"
+        : "-translate-x-full"
+    }`}
+  >
+  
+     <div
+      className="absolute w-[100%] h-[80px] inset-0 bg-cover bg-center bg-no-repeat bg-right z-[-1]"
+      style={{
+        backgroundImage: "url('/assets/menu-bg.svg')",
+      }}
+    />
+  
+     {/* CLOSE BUTTON */}
+  <div className="absolute flex justify-end px-6 pt-6 top-0 right-0">
     <button
-      onClick={() => setMobileMenuView("main")}
-      className="text-[#1E3C8C] font-medium"
+      onClick={() => setIsMenuOpen(false)}
+      className="text-[#1E3C8C] text-[40px]  leading-none opacity-0"
     >
-      ← Back
+      ×
     </button>
-  ) : (
-    <div />
-  )}
-
-  <button
-    onClick={() => {
-      setIsMenuOpen(false);
-      setMobileMenuView("main");
-    }}
-    className="text-[#1E3C8C] text-[32px] leading-none"
-  >
-    ×
-  </button>
-
-</div>
-
-    {/* MAIN MENU */}
-  <div
-  className={`absolute inset-0 pt-[80px] px-8 bg-white z-10 ${
-  mobileMenuView === "main"
-    ? "translate-x-0"
-    : "-translate-x-full"
-}`}
->
-      <div className="flex flex-col gap-8">
-
-        <Link
-          href="/"
-          onClick={() =>
-            setIsMenuOpen(false)
-          }
-          className="text-[24px] italic font-bold text-[#1E3C8C]"
-        >
-          Home
-        </Link>
-
-        <button
-          onClick={() =>
-            setMobileMenuView("submenu")
-          }
-          className="flex items-center justify-between text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Products
-
-          <span>›</span>
-        </button>
-
-        <Link
-          href="/company"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          The Company
-        </Link>
-
-        <Link
-          href="/career"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Careers
-        </Link>
-
-        <Link
-          href="/investors"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Investors
-        </Link>
-
-        <Link
-          href="/contact"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Contact
-        </Link>
-      </div>
-    </div>
-
-    {/* PRODUCTS SUBMENU */}
- <div
- className={`absolute inset-0 pt-[80px] px-8 bg-white z-10 ${
-  mobileMenuView === "submenu"
-    ? "translate-x-0"
-    : "translate-x-full"
-}`}
->
-   <div className="flex flex-col gap-4">
-
-  {/* TABS */}
-
-  <button
-    onClick={() => {
-      setProductsTab("industry");
-      setOpenCategory("telecom");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "industry"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Industry
-  </button>
-
-  <button
-    onClick={() => {
-      setProductsTab("type");
-      setOpenCategory("power");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "type"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Type
-  </button>
-
-  {/* INDUSTRY */}
-
-  {productsTab === "industry" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-
-      {/* TELECOM */}
-
-      <div className="mb-4 rounded-md border">
-
-        <button
-          onClick={() =>
-            setOpenCategory(
-              openCategory === "telecom"
-                ? ""
-                : "telecom"
-            )
-          }
-          className="flex w-full items-center justify-between p-4"
-        >
-          <span className="font-semibold">
-            Telecom Cables
-          </span>
-        </button>
-
-        {openCategory === "telecom" && (
-          <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-            <Link href="/">Optical Fibre</Link>
-            <Link href="/">Jelly Filled</Link>
-          </div>
-        )}
-      </div>
-
-      {/* RAILWAY */}
-
-      <div className="rounded-md border">
-
-        <button
-          onClick={() =>
-            setOpenCategory(
-              openCategory === "railway"
-                ? ""
-                : "railway"
-            )
-          }
-          className="flex w-full items-center justify-between p-4"
-        >
-          <span className="font-semibold">
-            Railway Cables
-          </span>
-        </button>
-
-        {openCategory === "railway" && (
-          <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-            <Link href="/">
-              Signalling cables
-            </Link>
-          </div>
-        )}
-      </div>
-
-    </div>
-  )}
-
-  {/* TYPE */}
-
-  {productsTab === "type" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-
-      {[
-        {
-          id: "power",
-          title: "Power Cables",
-          items: [
-            "Control and instrumentation",
-            "EHV",
-            "HT",
-            "Control & Instrumentation",
-            "Flexible cables",
-          ],
-        },
-        {
-          id: "specialty",
-          title: "Specialty Cables",
-          items: [
-            "Elastomeric",
-            "E-Beam",
-            "Hybrid",
-            "Green Cables",
-            "Cathodic Protection",
-            "Concentric Cables",
-            "Submersible Cables",
-            "EV Charging Cables",
-          ],
-        },
-        {
-          id: "overhead",
-          title: "Overhead Conductors",
-          items: [
-            "ACSR",
-            "AAC",
-            "AAAC",
-            "AL-59",
-          ],
-        },
-        {
-          id: "exports",
-          title:
-            "Exports / International Cables",
-          items: [
-            "LV Australia",
-            "LV Europe (IC)",
-            "LV US (UL)",
-            "MV Australia",
-          ],
-        },
-      ].map((cat) => (
-        <div
-          key={cat.id}
-          className="mb-4 rounded-md border"
-        >
-
-          <button
+  </div>
+        <div className="flex flex-col gap-9 mt-6">
+  
+          <h4>
+          <Link
+            href="/"
             onClick={() =>
-              setOpenCategory(
-                openCategory === cat.id
-                  ? ""
-                  : cat.id
-              )
+              setIsMenuOpen(false)
             }
-            className="flex w-full items-center justify-between p-4"
+            className="text-[24px] italic font-bold text-[#1E3C8C]"
           >
-            <span className="font-semibold">
-              {cat.title}
-            </span>
-          </button>
-
-          {openCategory === cat.id && (
-            <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-              {cat.items.map((item) => (
-                <Link
-                  key={item}
-                  href="/"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          )}
+            Home
+          </Link>
+          </h4>
+  
+          <h4><Link
+            href="/company"
+            className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
+          >
+            The Company
+          </Link></h4>
+  
+          <h4><Link
+            href="/career"
+            className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
+          >
+            Careers
+          </Link></h4>
+  
+          <h4><Link
+            href="/investors"
+            className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
+          >
+            Investors
+          </Link></h4>
+  
+          <h4><Link
+            href="/contact"
+            className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
+          >
+            Contact
+          </Link></h4>
         </div>
-      ))}
-    </div>
-  )}
-</div><div className="flex flex-col gap-4">
-
-  {/* TABS */}
-
-  <button
-    onClick={() => {
-      setProductsTab("industry");
-      setOpenCategory("telecom");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "industry"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Industry
-  </button>
-
-  <button
-    onClick={() => {
-      setProductsTab("type");
-      setOpenCategory("power");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "type"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Type
-  </button>
-
-  {/* INDUSTRY */}
-
-  {productsTab === "industry" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-
-      {/* TELECOM */}
-
-      <div className="mb-4 rounded-md border">
-
-        <button
-          onClick={() =>
-            setOpenCategory(
-              openCategory === "telecom"
-                ? ""
-                : "telecom"
-            )
-          }
-          className="flex w-full items-center justify-between p-4"
-        >
-          <span className="font-semibold">
-            Telecom Cables
-          </span>
-        </button>
-
-        {openCategory === "telecom" && (
-          <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-            <Link href="/">Optical Fibre</Link>
-            <Link href="/">Jelly Filled</Link>
-          </div>
-        )}
       </div>
 
-      {/* RAILWAY */}
 
-      <div className="rounded-md border">
-
-        <button
-          onClick={() =>
-            setOpenCategory(
-              openCategory === "railway"
-                ? ""
-                : "railway"
-            )
-          }
-          className="flex w-full items-center justify-between p-4"
-        >
-          <span className="font-semibold">
-            Railway Cables
-          </span>
-        </button>
-
-        {openCategory === "railway" && (
-          <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-            <Link href="/">
-              Signalling cables
-            </Link>
-          </div>
-        )}
-      </div>
-
-    </div>
-  )}
-
-  {/* TYPE */}
-
-  {productsTab === "type" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-
-      {[
-        {
-          id: "power",
-          title: "Power Cables",
-          items: [
-            "Control and instrumentation",
-            "EHV",
-            "HT",
-            "Control & Instrumentation",
-            "Flexible cables",
-          ],
-        },
-        {
-          id: "specialty",
-          title: "Specialty Cables",
-          items: [
-            "Elastomeric",
-            "E-Beam",
-            "Hybrid",
-            "Green Cables",
-            "Cathodic Protection",
-            "Concentric Cables",
-            "Submersible Cables",
-            "EV Charging Cables",
-          ],
-        },
-        {
-          id: "overhead",
-          title: "Overhead Conductors",
-          items: [
-            "ACSR",
-            "AAC",
-            "AAAC",
-            "AL-59",
-          ],
-        },
-        {
-          id: "exports",
-          title:
-            "Exports / International Cables",
-          items: [
-            "LV Australia",
-            "LV Europe (IC)",
-            "LV US (UL)",
-            "MV Australia",
-          ],
-        },
-      ].map((cat) => (
-        <div
-          key={cat.id}
-          className="mb-4 rounded-md border"
-        >
-
-          <button
-            onClick={() =>
-              setOpenCategory(
-                openCategory === cat.id
-                  ? ""
-                  : cat.id
-              )
-            }
-            className="flex w-full items-center justify-between p-4"
-          >
-            <span className="font-semibold">
-              {cat.title}
-            </span>
-          </button>
-
-          {openCategory === cat.id && (
-            <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-              {cat.items.map((item) => (
-                <Link
-                  key={item}
-                  href="/"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-    </div>
 
   </div>
 )}

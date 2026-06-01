@@ -109,7 +109,7 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
           {/* BUTTON */}
           <button
             onClick={() => setOpen(!open)}
-            className="flex h-[28px] w-[auto] items-center justify-between rounded-[3.29px] border border-[#6D82C2] bg-[#4D64AD] px-2 text-[12px] text-white md:h-[33px] gap-[6px] md:px-3 md:text-[16px] md:leading-[17.29px]"
+            className="flex h-[28px] w-[auto] one-line items-center justify-between rounded-[3.29px] border border-[#6D82C2] bg-[#4D64AD] px-2 text-[12px] text-white md:h-[33px] gap-[6px] md:px-3 md:text-[16px] md:leading-[17.29px]"
           >
             <span>{selected}</span>
 
@@ -122,7 +122,7 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
 
           {/* MENU */}
           {open && (
-            <div className="absolute top-[35px] md:top-[38px] left-0 z-50 w-[280px] max-h-[300px] overflow-y-auto rounded-[4px] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.08)]">
+            <div className="absolute top-[35px]  md:top-[38px] left-0 z-50 w-[280px] max-h-[300px] overflow-y-auto rounded-[4px] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.08)]">
               {categories.map((item, index) => (
                 <button
                   key={index}
@@ -145,7 +145,7 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
 
         {/* SEARCH INPUT */}
         <div className="flex-1">
-          <div className="relative">
+          <div className="relative one-line-big">
             {/* BUTTON */}
             <button
               onClick={() => setOpenSelect(!openSelect)}
