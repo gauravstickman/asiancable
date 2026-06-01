@@ -73,7 +73,7 @@ export default function ProductsMegaMenu({ industryGroups = {}, typeGroups = {} 
 
             {/* INDUSTRY CONTENT */}
             {activeTab === "industry" && (
-              <div className="grid grid-cols-3 gap-x-20 gap-y-14 masonry">
+              <div className=" grid-cols-3 gap-x-20 gap-y-14 masonry">
                 {Object.entries(industryGroups).map(([indName, prods]) => (
                   <div key={indName} className="break-inside-avoid masonry-item">
                 <p className="relative flex items-center mb-[15px] h-[24px] pl-3 text-[16px] font-[600] leading-[106%] text-[#2D2D2D]">
@@ -103,9 +103,9 @@ export default function ProductsMegaMenu({ industryGroups = {}, typeGroups = {} 
 
             {/* TYPE CONTENT */}
             {activeTab === "type" && (
-              <div className="grid grid-cols-3 gap-x-20 gap-y-14">
+              <div className=" grid-cols-3 gap-x-20 gap-y-14 masonry">
                 {Object.entries(typeGroups).map(([catName, prods]) => (
-                  <div key={catName}>
+                  <div key={catName} className="break-inside-avoid masonry-item">
                     <p className="relative flex items-center mb-[15px] h-[24px] pl-3 text-[16px] font-[600] leading-[106%] text-[#2D2D2D]">
  <span
     className="absolute left-0 top-0 right-auto h-[24px] w-[3px]"
