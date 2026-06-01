@@ -12,7 +12,7 @@ interface FactsProps {
 export default function FactsSection({ dynamicData }: FactsProps) {
   return (
     <section className="reveal-section bg-[#ffffff] px-[20px] pb-10 md:px-0 md:pb-[100px]">
-      <div className="mx-auto max-w-[1272px] px-3 md:px-2 md:py-3 shadow-[0px_4px_133.5px_0px_#9D9D9D40]">
+      <div className="mx-auto max-w-[1272px] px-[10px] py-[10px] md:px-2 md:py-3 shadow-[0px_4px_133.5px_0px_#9D9D9D40]">
         <div className="md:flex grid grid-cols-12 gap-3">
           {/* LEFT SIDE */}
           <div className="col-span-12 flex flex-col gap-6 md:gap-3 lg:col-span-8 md:max-w-[862px]">
@@ -42,7 +42,7 @@ export default function FactsSection({ dynamicData }: FactsProps) {
             </div>
 
             {/* BOTTOM CARDS */}
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3 pb-5 md:pb-0">
               {/* CARD 1 */}
               <div className="group flex flex-col justify-between border border-[#f9f9f9] bg-[#f9f9f9] p-5 transition-all duration-300 hover:bg-[#1E3C8C]">
                 <div>
@@ -85,7 +85,7 @@ export default function FactsSection({ dynamicData }: FactsProps) {
 
           {/* RIGHT SIDE */}
           <div className="relative col-span-12 hidden md:block lg:col-span-4">
-            <div className="h-full border border-[#f9f9f9] bg-[#f9f9f9]">
+            <div className="h-full border border-[#f9f9f9] bg-[#ffffff]">
               {/* IMAGE */}
               <div className="relative h-[450px] overflow-hidden">
                 <img

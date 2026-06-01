@@ -33,8 +33,8 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
   ].slice(0, 2);
 
   return (
-    <section className="reveal-section mt-24 bg-[#ffffff] pt-24 pb-10 md:pt-[74px]">
-      <div className="mx-auto max-w-[1320px] px-4">
+    <section className="reveal-section mt-24 bg-[#ffffff] pt-24 md:pb-10 md:pt-[74px]">
+      <div className="mx-auto max-w-[1320px] md:px-4 px-6">
         {/* HEADING */}
         <div className="mt-7 mb-10 text-center md:mt-0">
           <h2 className="mb-5 text-[32px] leading-none font-[700] text-[#1E3C8C] italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
@@ -50,7 +50,7 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
         <div className="grid grid-cols-1 gap-12 md:gap-[23.67px] lg:grid-cols-12">
           {/* LARGE CARD */}
           <div className="lg:col-span-7">
-            <div className="group relative h-[720px] overflow-hidden rounded-[8px]">
+            <div className="group relative h-[506px] md:h-[720px] overflow-hidden rounded-[4px] md:rounded-[8px]">
               {/* IMAGE */}
               <img
                 src={displayProjects[0].image}
@@ -75,12 +75,12 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
                 </div>
 
                 {/* TITLE */}
-                <h3 className=" max-w-[90%] text-[16px] leading-[1.7] font-black text-white italic md:text-[28px] md:leading-[50.4px]">
+                <h3 className="mb-[10px] max-w-[90%] text-[16px] leading-[28px] leading-[-0.5px] font-black text-white italic md:text-[28px] md:leading-[50.4px]">
                   {displayProjects[0].title}
                 </h3>
 
                 {/* DESC */}
-                <p className="mb-4 max-w-[85%] text-[14px] leading-[1.8] text-white/85 md:text-[18px] md:leading-[36px]">
+                <p className="mb-6 max-w-[85%] text-[14px] leading-[26px] leading-[-0.5px] text-white/85 md:text-[18px] md:leading-[36px]">
                   {displayProjects[0].description}
                 </p>
 
@@ -89,7 +89,7 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
                   {(displayProjects[0].tags || []).map((tag: string, index: number) => (
                     <div
                       key={index}
-                      className="flex h-[32px] items-center justify-center rounded-[5px]  bg-white/39 px-4 text-[12px] text-white tracking-[-0.5px] md:h-[32px] md:bg-white/15 md:px-4 md:text-[16px] md:leading-[26px]"
+                      className="flex h-[32px] items-center justify-center rounded-[5px]  bg-white/39 px-4 text-[14px] text-white tracking-[-0.5px] md:h-[32px] md:bg-white/15 md:px-4 md:text-[16px] md:leading-[26px]"
                     >
                       {tag}
                     </div>
@@ -101,7 +101,7 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
 
           {/* SMALL CARD */}
           <div className="lg:col-span-5">
-            <div className="group relative h-[720px] overflow-hidden rounded-[8px]">
+            <div className="group relative h-[506px] md:h-[720px] overflow-hidden rounded-[4px] md:rounded-[8px]">
               {/* IMAGE */}
               <img
                 src={displayProjects[1].image}
@@ -126,12 +126,12 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
                 </div>
 
                 {/* TITLE */}
-                <h3 className=" max-w-[90%] text-[16px] leading-[1.7] font-black text-white italic md:text-[28px] md:leading-[50.4px]">
+                <h3 className="mb-[10px] max-w-[90%] text-[16px] leading-[28px] leading-[-0.5px] font-black text-white italic md:text-[28px] md:leading-[50.4px]">
                   {displayProjects[1].title}
                 </h3>
 
                 {/* DESC */}
-                <p className="mb-4 max-w-[85%] text-[14px] leading-[1.8] text-white/85 md:text-[18px] md:leading-[36px]">
+                <p className="mb-6 max-w-[85%] text-[14px] leading-[26px] leading-[-0.5px] text-white/85 md:text-[18px] md:leading-[36px]">
                   {displayProjects[1].description}
                 </p>
 
@@ -140,7 +140,7 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
                   {(displayProjects[1].tags || []).map((tag: string, index: number) => (
                    <div
                       key={index}
-                      className="flex h-[32px] items-center justify-center rounded-[5px]  bg-white/39 px-4 text-[12px] text-white tracking-[-0.5px] md:h-[32px] md:bg-white/15 md:px-4 md:text-[16px] md:leading-[26px]"
+                      className="flex h-[32px] items-center justify-center rounded-[5px]  bg-white/39 px-4 text-[14px] text-white tracking-[-0.5px] md:h-[32px] md:bg-white/15 md:px-4 md:text-[16px] md:leading-[26px]"
                     >
                       
                       {tag}

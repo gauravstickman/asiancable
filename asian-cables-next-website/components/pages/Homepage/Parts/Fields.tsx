@@ -124,8 +124,8 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
           className="!overflow-visible"
         >
           {projects.map((project, index) => (
-            <SwiperSlide key={index} className="md:max-w-[60vw]">
-              <div className="group relative h-[504px] overflow-hidden rounded-[2px]">
+            <SwiperSlide key={index} className="max-w-[90vw] md:max-w-[60vw]">
+              <div className="group relative h-[506px] overflow-hidden rounded-[2px]">
                 {/* IMAGE */}
                 <img
                   src={project.image}
@@ -174,7 +174,7 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
         </Swiper>
 
         {/* BUTTON */}
-        <button className="border-it mx-auto mt-[50px] mb-[81px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] border-transparent bg-[#ffffff] text-[20px] font-medium text-[#1E3C8C] transition transition-all duration-300 hover:border-[1.84px] hover:bg-[#ffffff] hover:[border-image:linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)_1]">
+        <button className="border-it mx-auto mt-[36px] md:mt-[50px] mb-[14px] md:mb-[81px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] border-transparent bg-[#ffffff] text-[20px] font-medium text-[#1E3C8C] transition transition-all duration-300 hover:border-[1.84px] hover:bg-[#ffffff] hover:[border-image:linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)_1]">
           View All
           <span>
             {" "}

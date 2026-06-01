@@ -70,7 +70,8 @@ const [openCategory, setOpenCategory] =
   useState("Power Cables");
 
   return (    
-    <div className="fixed inset-0 z-[99999999] h-[calc(100%-80px)] bg-white top-[70px] mx-[10px] rounded-[12px]">
+    <div className="fixed inset-0 z-[99999999] h-[calc(100%-80px)] bg-white top-[70px] mx-[10px] rounded-[12px] oveflow-y-auto
+  ">
 
       <div className="absolute right-0 top-0 z-20  px-5 py-5">
         <div className="flex items-center justify-right gap-5">

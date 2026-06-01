@@ -66,7 +66,7 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
 
   return (
     <section className="reveal-section bg-[#f6f6f6] py-8 md:pb-[182px] md:pt-[92px]">
-      <div className="mx-auto max-w-[1272px] px-4 md:px-0">
+      <div className="mx-auto max-w-[1272px] px-5 md:px-0">
         {/* HEADING */}
         <div className="mb-8 text-center md:mb-[91px]">
           <h2 className="mx-auto max-w-[700px] text-[32px]  text-[#1E3C8C] italic  font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
@@ -146,7 +146,7 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
 
         {/* MOBILE */}
         {/* MOBILE */}
-        <div className="flex flex-col gap-6 lg:hidden">
+        <div className="flex flex-col gap-4 lg:hidden">
           {finalAccordionData.map((item: any, index: number) => {
             const active = activeIndex === index;
 
@@ -165,7 +165,7 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
                   className="w-full text-left"
                 >
                   <h3
-                    className={`text-[24px] leading-tight font-black italic transition ${
+                    className={`text-[23.99px] leading-[39.99px] font-[700] tracking-[-3%] italic transition ${
                       active ? "text-[#1E3C8C]" : "text-[#8B8B8B]"
                     }`}
                   >
@@ -191,20 +191,20 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
                   }`}
                 >
                   {/* IMAGE */}
-                  <div className="mt-5 overflow-hidden rounded-[6px]">
+                  <div className="mt-5 overflow-hidden rounded-[4px]">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-[240px] w-full object-cover"
+                      className="h-[369px] w-full object-cover"
                     />
                   </div>
 
                   {/* TEXT */}
-                  <p className="mt-5 text-[16px] leading-[1.5] text-[#6B6B6B]">
+                  <p className="mt-[21.33px] text-[16px] leading-[17.33px] tracking-[-0.4%] text-[#6B6B6B]">
                     {item.content}
                   </p>
 
-                  <button className="mt-5 text-[16px] font-medium text-[#1E3C8C]">
+                  <button className="mt-[10.66px] text-[16px] leading-[15.99px] tracking-[-0.4%]  font-medium text-[#1E3C8C]">
                     Learn more
                   </button>
                 </div>

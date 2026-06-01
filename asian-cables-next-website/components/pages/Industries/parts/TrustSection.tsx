@@ -24,7 +24,7 @@ export default function TrustedLeaders({ dynamicData, sectionTitle }: { dynamicD
     <section className="reveal-section bg-[#ffffff] pt-8 pb-10 md:pb-24">
       <div className="mx-auto max-w-[1320px] px-4">
         {/* HEADING */}
-        <div className="mb-10 text-center md:mb-20">
+        <div className="mb-10 text-center md:mb-20 hidden md:block">
           <h2 className="text-[23px] leading-none font-black text-[#7A7A7A] italic">
             {sectionTitle || "Trusted by Industry Leaders"}
           </h2>

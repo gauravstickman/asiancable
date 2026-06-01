@@ -42,9 +42,9 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
 
   return (
     <section className="reveal-section bg-[#f6f6f6] py-10 md:py-24">
-      <div className="mx-auto max-w-[1320px] px-4">
+      <div className="mx-auto max-w-[1320px] md:px-4">
         {/* TOP */}
-        <div className="md-gap-0 mb-14 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="md-gap-0 mb-14 flex flex-col gap-6 md:flex-row md:items-center md:justify-between px-5 md:px-0">
           {/* HEADING */}
           <h2 className="text-[32px] leading-none font-black text-[#1E3C8C] italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
             {sectionTitle || "Cables for Oil & Gas"}
@@ -61,7 +61,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
         </div>
 
         {/* CARDS */}
-        <div className="hide-scrollbar flex grid-cols-1 flex-nowrap gap-6 overflow-auto md:grid md:grid-cols-2 lg:grid-cols-4">
+        <div className="hide-scrollbar flex grid-cols-1 flex-nowrap gap-2 md:gap-6 overflow-auto md:grid md:grid-cols-2 lg:grid-cols-4 md:pl-0 p-5">
           {displayProducts.map((item, index) => (
             <div
               key={index}

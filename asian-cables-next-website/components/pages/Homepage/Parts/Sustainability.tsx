@@ -10,14 +10,14 @@ export default function SustainabilitySection() {
       />
 
       {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="hidden md:block absolute inset-0 bg-black/30" />
 
       {/* CONTENT */}
-      <div className="relative z-10 mx-auto h-full max-w-[1280px] px-6 md:px-0">
+      <div className="relative z-10 mx-auto h-full max-w-[1280px] px-5 md:px-6 md:px-0">
         {/* TOP CONTENT */}
         <div className="pt-10 md:pt-[131px]">
           {/* HEADING */}
-          <h2 className="mb-[33px] max-w-[645px] text-[32px] leading-[1.3] font-black tracking-[-3%] text-white italic md:text-[48px] md:leading-[57px]">
+          <h2 className="mb-[33px] max-w-[645px] text-[32px] leading-[47px] font-black tracking-[-3%] text-white italic md:text-[48px] md:leading-[57px]">
             We transform lives by building sustainable world-class
             infrastructure.
           </h2>
@@ -25,13 +25,13 @@ export default function SustainabilitySection() {
           {/* BUTTONS */}
           <div className="flex flex-col items-start gap-[29px] md:flex-row md:items-center">
             {/* PRIMARY BUTTON */}
-            <button className="flex h-[48px] items-center gap-2 rounded-[5.52px] bg-white px-6 text-[18px] font-[500] text-[#1E3C8C] shadow-lg transition md:text-[20px] md:leading-[29.42px] md:tracking-[-0.46px]">
+            <button className="flex h-[48px] items-center gap-2 rounded-[5.52px] bg-white px-6 text-[18px] font-[500] text-[#1E3C8C] shadow-lg transition md:text-[20px] leading-[29.42px] tracking-[-0.46px]">
               Our Sustainability Practices
               <ChevronRight size={18} />
             </button>
 
             {/* SECONDARY LINK */}
-            <button className="flex items-center gap-2 text-[18px] font-[500] text-white transition md:text-[20px] md:leading-[29.42px] md:tracking-[-0.46px]">
+            <button className="flex items-center gap-2 text-[18px] font-[500] text-white transition md:text-[20px] leading-[29.42px] tracking-[-0.46px]">
               View Certifications
               <ChevronRight size={18} />
             </button>
@@ -39,8 +39,8 @@ export default function SustainabilitySection() {
         </div>
 
         {/* BOTTOM FEATURES */}
-        <div className="right-6 bottom-20 left-6 mt-25  md:mt-[234.61px]">
-          <div className="md:flex md:gap-[95px] grid grid-cols-1 gap-10">
+        <div className="right-6 bottom-20 left-6 mt-[124px]  md:mt-[234.61px]">
+          <div className="md:flex md:gap-[95px] grid grid-cols-1 gap-6">
             {/* ITEM */}
             <div className="flex items-center gap-[18px]  md:max-w-[276px]">
               {/* ICON */}

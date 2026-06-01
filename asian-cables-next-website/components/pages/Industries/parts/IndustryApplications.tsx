@@ -53,7 +53,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
           {/* LEFT COLUMN */}
           <div className="col-span-12 flex flex-col gap-4 lg:col-span-6">
             {/* LARGE CARD */}
-            <div className="group relative h-[440px] overflow-hidden rounded-[8px] md:h-[620px]">
+            <div className="group relative h-[440px] overflow-hidden rounded-[4px] md:rounded-[8px] md:h-[620px]">
               <img
                 src={displayApplications[0].image}
                 alt=""
@@ -64,21 +64,21 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A2F7A]/90 via-black/10 to-transparent" />
 
               {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col justify-end p-8">
+              <div className="absolute inset-0 flex flex-col justify-end p-[24px] md:p-8">
                 {/* TAG */}
                 <div className="mb-[16px]">
-                  <span className="inline-flex h-[32px] items-center justify-center rounded-[8px]  bg-white/20 px-3 text-[12px] tracking-[1px] text-white uppercase  md:h-[40px] md:px-4 md:text-[13px] md:leading-[19.5px]">
+                  <span className="inline-flex h-[32px] items-center justify-center rounded-[8px]  bg-white/20 px-3 text-[12px] tracking-[1px] text-white uppercase  md:h-[40px] md:px-4 md:text-[13px] leading-[19.5px]">
                     {displayApplications[0].tag || "PRIMARY APPLICATION"}
                   </span>
                 </div>
 
                 {/* TITLE */}
-                <h3 className="mb-[12.3px] text-[28px] leading-[0.95] font-black text-white italic md:text-[38px] md:leading-[41.8px]">
+                <h3 className="mb-[12.3px] text-[28px] leading-[32px]  tracking-[-0.5px] font-black text-white italic md:text-[38px] md:leading-[41.8px]">
                   {displayApplications[0].title}
                 </h3>
 
                 {/* DESC */}
-                <p className="max-w-[80%] text-[16px] leading-[1.7] text-white md:text-[17px] md:leading-[27.2px] md:text-white/90">
+                <p className="md:max-w-[80%] text-[14px] leading-[22px] tracking-[-0.5px] text-white md:text-[17px] md:leading-[27.2px] md:text-white/90">
                   {displayApplications[0].description}
                 </p>
               </div>
@@ -96,12 +96,12 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
               {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <h3 className="mb-2 text-[18px] leading-none font-black text-white italic md:text-[32px] md:leading-[38.4px]">
+              <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
+                <h3 className="mb-1 md:mb-2 text-[18px] leading-[24px] font-black text-white italic md:text-[32px] md:leading-[38.4px]">
                   {displayApplications[3].title}
                 </h3>
 
-                <p className="max-w-[70%] text-[14px] leading-[1.7] text-white md:text-[16px] md:leading-[25.6px] md:text-white/90">
+                <p className="md:max-w-[70%] text-[14px] leading-[22px] text-white md:text-[16px] md:leading-[25.6px] md:text-white/90">
                   {displayApplications[3].description}
                 </p>
               </div>
@@ -121,12 +121,12 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
 
               {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <h3 className="mb-4 text-[18px] leading-none font-black text-white italic md:text-[32px] md:leading-[38.4px]">
+              <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
+                <h3 className="mb-1 md:mb-4 text-[18px] leading-[24px] font-black text-white italic md:text-[32px] md:leading-[38.4px]">
                   {displayApplications[1].title}
                 </h3>
 
-                <p className="text-[14px] leading-[1.8] text-white md:text-white/90 md:text-[15px] md:leading-[24px]">
+                <p className="text-[14px] leading-[22px] text-white md:text-white/90 md:text-[15px] md:leading-[24px]">
                   {displayApplications[1].description}
                 </p>
               </div>
@@ -146,12 +146,12 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
 
               {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <h3 className="mb-[10px] text-[18px] leading-none font-black text-white italic md:text-[28px] md:leading-[33.6px]">
+              <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
+                <h3 className="mb-[4px] md:mb-[10px] text-[18px] leading-[24px] font-black text-white italic md:text-[28px] md:leading-[33.6px]">
                   {displayApplications[2].title}
                 </h3>
 
-                <p className="text-[14px] leading-[1.8] text-white md:text-white/90 md:text-[14px] md:leading-[22.4px] md:max-w-[214px]">
+                <p className="text-[14px] leading-[22px] text-white md:text-white/90 md:text-[14px] md:leading-[22.4px] md:max-w-[214px]">
                   {displayApplications[2].description}
                 </p>
               </div>

@@ -569,4 +569,9 @@ color: #1e3c8c;
   footer#footer {
     padding: 0px 24px;
 }
+.impact-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 }

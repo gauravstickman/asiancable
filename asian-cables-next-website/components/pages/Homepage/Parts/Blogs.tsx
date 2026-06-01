@@ -41,7 +41,7 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
 
   return (
     <section className="reveal-section bg-[#f6f6f6] py-10 md:pt-[84.5px]">
-      <div className="mx-auto max-w-[1280px] px-4 md:px-0">
+      <div className="mx-auto max-w-[1280px] px-5 md:px-0">
         {/* HEADING */}
         <div className="mb-10 text-center md:mb-[70.5px]">
           <h2 className="text-[32px]  text-[#1E3C8C] italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">

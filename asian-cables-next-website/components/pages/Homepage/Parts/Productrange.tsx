@@ -66,15 +66,15 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
   ].slice(0, 6);
 
   return (
-    <section className="reveal-section bg-[#f5f5f5] py-10 md:pt-[100px]">
-      <div className="mx-auto max-w-[1320px] px-4">
+    <section className="reveal-section bg-[#f5f5f5] pt-[72px] py-10 md:pt-[100px]">
+      <div className="mx-auto max-w-[1320px] md:px-4">
         {/* HEADING */}
-        <div className="mb-8 text-center md:mb-[39px  ]">
-          <h2 className="mb-4 text-[32px]  text-[#1E3C8C] italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
+        <div className="mb-8 text-center md:px-0 px-4 md:mb-[39px]">
+          <h2 className="mb-2 md:mb-4 text-[32px]  text-[#1E3C8C] italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
             Our Products Range
           </h2>
 
-          <p className="text-[20px] font-medium text-[#5E7BC0] md:text-[24px] leading-[150%]">
+          <p className="text-[20px] leading-[106%] font-[500] text-[#5E7BC0] md:text-[24px] md:leading-[150%]">
             End-to-End Cable Systems. One Reliable Partner.
           </p>
         </div>
@@ -234,7 +234,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
           </div>
 
           {/* BOTTOM WIDE CARD */}
-          <div className="group relative h-[299px] w-[100%] overflow-hidden rounded-[4px] lg:col-span-12">
+          <div className="group relative h-[299px] w-[100%]  overflow-hidden rounded-[4px] lg:col-span-12">
             <img
               src={displayProducts[5].image}
               alt={displayProducts[5].title}
@@ -279,12 +279,12 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
         </div>
 
         {/* MOBILE */}
-        <div className="hide-scrollbar relative overflow-x-auto md:hidden">
-          <div className="flex w-max gap-4 pr-1">
+        <div className="hide-scrollbar relative overflow-x-auto px-1 md:hidden">
+          <div className="flex w-max gap-2 pr-1">
             {displayProducts.map((item, index) => (
               <div
                 key={index}
-                className="relative h-[600px] w-[82vw] shrink-0 overflow-hidden rounded-[10px]"
+                className="relative h-[600px] w-[85vw] shrink-0 overflow-hidden rounded-[4px]"
               >
                 {/* IMAGE */}
                 <img
@@ -335,7 +335,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
           </div>
         </div>
       </div>
-      <button className="border-it-b mx-auto mt-[39px] mb-[60px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
+      <button className="border-it-b mx-auto mt-[39px] mb-[32px] md:mb-[60px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
         View All
         <span>
           {" "}
