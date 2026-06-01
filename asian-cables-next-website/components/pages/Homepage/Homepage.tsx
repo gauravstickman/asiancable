@@ -302,14 +302,14 @@ export default function Homepage() {
               </p>
 
               {/* BULLETS */}
-              <div className="mt-3 flex items-center gap-2">
+              <div className="mt-[9px] flex items-center gap-2">
                 {slides.map((_, index) => {
                   const isActive = index === (current + 1) % slides.length;
 
                   return (
                     <div
                       key={index}
-                      className="relative h-[1.6px] flex-1 overflow-hidden rounded-full bg-[#A2A2A2]"
+                      className="relative h-[1.6px] flex-1 overflow-hidden rounded-full bg-[#ffffff]"
                     >
                       <div
                         className={`absolute top-0 left-0 h-full bg-[#1E3C8C] ${isActive ? "animate-progress" : "w-0"
@@ -323,7 +323,7 @@ export default function Homepage() {
           </div>
         </button>
 
-         {/* NEXT CARD */}
+         {/* NEXT CARD Desktop */}
         <button
           onClick={() => swiperRef.current?.slideNext()}
           className="hidden md:block absolute right-[20px] bottom-[20px] left-[20px] z-40 w-[auto] overflow-hidden rounded-[0px] md:border md:border-[#383838] bg-black/40 shadow-[0px_4px_17.9px_0px_#00000040] backdrop-blur-xl transition-all duration-500  md:right-20 md:bottom-40 md:left-[auto] md:w-[250px] md:rounded-[10px]"

@@ -110,7 +110,7 @@ const isHomePage = pathname === "/";
     <>
     {isHomePage && (
        <div
-    className="absolute top-0 left-0 right-0 h-[5px]"
+    className="relative top-0 left-0 right-0 h-[5px]"
     style={{
       background:
         "linear-gradient(270deg, #3CAADF 0%, #F04123 60.78%, #FFD212 121.56%)",
@@ -118,6 +118,7 @@ const isHomePage = pathname === "/";
      
   />
    )}
+   
     <nav
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
         isScrolled || showMegaMenu ? "bg-white shadow-sm" : "bg-transparent"
@@ -407,24 +408,32 @@ h-[30px]
 
     {/* MAIN MENU */}
  <div
-  className={`absolute inset-0 pt-[80px] px-8 bg-white z-10 transition-transform duration-300 ${
+  className={` absolute inset-0 pt-[80px] px-8 bg-white z-10 transition-transform duration-300 ${
     mobileMenuView === "main"
       ? "translate-x-0"
       : "-translate-x-full"
   }`}
 >
 
+   <div
+    className="absolute w-[100%] h-[80px] inset-0 bg-cover bg-center bg-no-repeat bg-right z-[-1]"
+    style={{
+      backgroundImage: "url('/assets/menu-bg.svg')",
+    }}
+  />
+
    {/* CLOSE BUTTON */}
-<div className="flex justify-end px-6 pt-6">
+<div className="absolute flex justify-end px-6 pt-6 top-0 right-0">
   <button
     onClick={() => setIsMenuOpen(false)}
-    className="text-[#1E3C8C] text-[36px] leading-none"
+    className="text-[#1E3C8C] text-[40px]  leading-none opacity-0"
   >
     ×
   </button>
 </div>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-9 mt-6">
 
+        <h4>
         <Link
           href="/"
           onClick={() =>
@@ -434,34 +443,35 @@ h-[30px]
         >
           Home
         </Link>
+        </h4>
 
-        <Link
+        <h4><Link
           href="/company"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
+          className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
         >
           The Company
-        </Link>
+        </Link></h4>
 
-        <Link
+        <h4><Link
           href="/career"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
+          className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
         >
           Careers
-        </Link>
+        </Link></h4>
 
-        <Link
+        <h4><Link
           href="/investors"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
+          className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
         >
           Investors
-        </Link>
+        </Link></h4>
 
-        <Link
+        <h4><Link
           href="/contact"
-          className="text-[24px] italic font-bold text-[#9AA4C0]"
+          className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
         >
           Contact
-        </Link>
+        </Link></h4>
       </div>
     </div>
 

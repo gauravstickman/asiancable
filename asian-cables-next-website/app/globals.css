@@ -551,3 +551,15 @@ color: #1e3c8c;
     padding: 0px 10px;
     height: 30px;
 } */
+
+
+
+.fadded-mbl {
+    position: absolute;
+    bottom: -3px;
+    z-index: 1;
+}
+
+.fadded-mbl img {
+    height: 180px;
+}
