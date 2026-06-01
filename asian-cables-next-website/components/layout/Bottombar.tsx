@@ -97,7 +97,7 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
   const currentCategoryProducts = productsByCategory[selected] || [];
 
   return (
-    <div className="w-full relative rounded-sm bg-[#1E3C8C]">
+    <div className="w-full rounded-sm bg-[#1E3C8C] md:static relative">
       <div className="mx-auto flex h-12.5 max-w-330 items-center gap-2 px-3 md:gap-6 md:px-8">
         {/* CATEGORY LABEL */}
         <div className="text-[10px] font-medium whitespace-nowrap text-white md:text-[16px] md:leading-[17.29px]">
@@ -145,7 +145,7 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
 
         {/* SEARCH INPUT */}
         <div className="flex-1">
-          <div className="one-line-big">
+          <div className="md:relative one-line-big">
             {/* BUTTON */}
             <button
               onClick={() => setOpenSelect(!openSelect)}
@@ -162,7 +162,7 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
 
             {/* MENU */}
             {openSelect && (
-              <div className="absolute top-[50px] md:top-[38px] left-0 z-50 w-full max-h-[300px] overflow-y-auto rounded-[4px] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.08)] z-[auto]">
+              <div className="absolute top-[50px] top-[35px] md:top-[38px] left-0 z-50 w-full max-h-[300px] overflow-y-auto rounded-[4px] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.08)] z-[auto]">
                 {currentCategoryProducts.map((item, index) => (
                   <button
                     key={index}
