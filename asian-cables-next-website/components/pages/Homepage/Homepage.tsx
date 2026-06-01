@@ -279,7 +279,54 @@ export default function Homepage() {
         {/* NEXT CARD */}
         <button
           onClick={() => swiperRef.current?.slideNext()}
-          className="absolute right-[20px] bottom-[20px] left-[20px] z-40 w-[auto] overflow-hidden rounded-[0px] md:border md:border-[#383838] bg-[linear-gradient(90deg,_#3178C0_0%,_#F4D3B6_100%)] md:bg-black/40 shadow-[0px_4px_17.9px_0px_#00000040] backdrop-blur-xl transition-all duration-500  md:right-20 md:bottom-40 md:left-[auto] md:w-[250px] md:rounded-[10px]"
+          className="md:hidden absolute right-[20px] bottom-[20px] left-[20px] z-40 w-[auto] overflow-hidden rounded-[0px] md:border md:border-[#383838] bg-[linear-gradient(90deg,_#3178C0_0%,_#F4D3B6_100%)] md:bg-black/40 shadow-[0px_4px_17.9px_0px_#00000040] backdrop-blur-xl transition-all duration-500  md:right-20 md:bottom-40 md:left-[auto] md:w-[250px] md:rounded-[10px]"
+        >
+          <div className="flex">
+            {/* IMAGE */}
+            <div className="h-[58px] w-[58px] shrink-0 overflow-hidden md:h-[66px]">
+              <img
+                src={slides[(current + 1) % slides.length].image}
+                alt="next"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            {/* CONTENT */}
+            <div className="ml-3 w-[100%] pr-[10px] text-left md:w-[auto] md:pr-[auto] mt-[7.29px] mb-[2.31px]">
+              <p className="mb-1 text-left text-[13.12px] leading-[100%] text-white font-[500] lowercase">
+                next
+              </p>
+
+              <p className="text-[16px] leading-[100%] font-[500] text-white/76">
+                {slides[(current + 1) % slides.length].nextText}
+              </p>
+
+              {/* BULLETS */}
+              <div className="mt-3 flex items-center gap-2">
+                {slides.map((_, index) => {
+                  const isActive = index === (current + 1) % slides.length;
+
+                  return (
+                    <div
+                      key={index}
+                      className="relative h-[1.6px] flex-1 overflow-hidden rounded-full bg-[#A2A2A2]"
+                    >
+                      <div
+                        className={`absolute top-0 left-0 h-full bg-[#1E3C8C] ${isActive ? "animate-progress" : "w-0"
+                          }`}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </button>
+
+         {/* NEXT CARD */}
+        <button
+          onClick={() => swiperRef.current?.slideNext()}
+          className="hidden md:block absolute right-[20px] bottom-[20px] left-[20px] z-40 w-[auto] overflow-hidden rounded-[0px] md:border md:border-[#383838] bg-black/40 shadow-[0px_4px_17.9px_0px_#00000040] backdrop-blur-xl transition-all duration-500  md:right-20 md:bottom-40 md:left-[auto] md:w-[250px] md:rounded-[10px]"
         >
           <div className="flex">
             {/* IMAGE */}
