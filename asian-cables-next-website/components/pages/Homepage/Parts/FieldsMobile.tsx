@@ -1,8 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ChevronRight, ArrowRight } from "lucide-react";
+import { EffectCoverflow, Pagination, Keyboard, Mousewheel, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 import { getBaseUrl } from "../../../../utils/api";
 import "swiper/css";
 
@@ -73,7 +77,7 @@ const staticProjects = [
   },
 ];
 
-export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[] }) {
+export default function ProvenFieldSectionMobile({ dynamicData }: { dynamicData?: any[] }) {
   const [projects, setProjects] = useState<any[]>(staticProjects);
 
   useEffect(() => {
@@ -90,7 +94,7 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
   }, [dynamicData]);
 
   return (
-    <section className="reveal-section overflow-hidden bg-[#1E3C8C] py-10 md:pt-[149px] hidden md:block">
+    <section className="reveal-section proven overflow-hidden bg-[#1E3C8C] py-10 md:pt-[149px] md:hidden">
       <div className="mx-auto max-w-[100%]">
         {/* HEADING */}
         <div className="mb-8 px-4 text-center md:mb-[84px]">
@@ -104,27 +108,26 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
         </div>
 
         {/* SLIDER */}
-        <Swiper
-          key={projects.length}
-          modules={[Autoplay]}
-          spaceBetween={18}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          slidesPerView={"auto"}
-          centeredSlides={true}
-          grabCursor={true}
-          loop={true}
-          breakpoints={{
-            1200: {
-              slidesPerView: projects.length >= 2 ? 2 : 1,
-            },
-          }}
-          className="!overflow-visible"
-        >
+     <Swiper
+  modules={[Autoplay, EffectCoverflow]}
+  effect="coverflow"
+    centeredSlides={true}
+  slidesPerView={1.3}
+  centeredSlidesBounds={true}
+autoplay={true}
+  loop
+  grabCursor
+  spaceBetween={0}
+  coverflowEffect={{
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 3,
+    slideShadows: false,
+  }}
+>
           {projects.map((project, index) => (
-            <SwiperSlide key={index} className="max-w-[90vw] md:max-w-[60vw]">
+            <SwiperSlide key={index} className="">
               <div className="group relative h-[506px] overflow-hidden rounded-[2px]">
                 {/* IMAGE */}
                 <img

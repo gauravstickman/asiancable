@@ -49,7 +49,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-12 gap-4">
+        <div className="grid grid-cols-12 md:gap-4 gap-[10px]">
           {/* LEFT COLUMN */}
           <div className="col-span-12 flex flex-col gap-4 lg:col-span-6">
             {/* LARGE CARD */}

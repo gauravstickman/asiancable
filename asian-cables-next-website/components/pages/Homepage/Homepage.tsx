@@ -14,6 +14,7 @@ import EngineeringAccordionSection from "./Parts/Enginnering";
 import TestimonialsSection from "./Parts/Testimonials";
 import Blogs from "./Parts/Blogs";
 import ProvenFieldSection from "./Parts/Fields";
+import ProvenFieldSectionMobile from "./Parts/FieldsMobile";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Parallax, Autoplay } from "swiper/modules";
@@ -376,6 +377,7 @@ export default function Homepage() {
       <FactsSection dynamicData={factsData} />
       <EngineeringAccordionSection dynamicData={engineeringData} />
       <ProvenFieldSection dynamicData={provenData} />
+      <ProvenFieldSectionMobile dynamicData={provenData}  />
       <ProductRangeSection dynamicData={productsData} />
       <SustainabilitySection />
       <TestimonialsSection dynamicData={testimonialsData} />

@@ -6,8 +6,10 @@ import WebsiteNavbarDark from "../../../components/layout/Navbardark";
 import Footer from "../../../components/layout/Footer";
 import BottomBar from "../../../components/layout/Bottombar";
 import ProjectSection from "../Homepage/Parts/Applications";
-import ProvenFieldSection from "../Homepage/Parts/Fields";
 import ProductResources from "./parts/ProductResources";
+import ProvenFieldSection from "../Homepage/Parts/Fields";
+import ProvenFieldSectionMobile from "../Homepage/Parts/FieldsMobile";
+
 const Product = ({ productSlug }: { productSlug?: string }) => {
   const [data, setData] = useState<any>(null);
 
@@ -382,8 +384,11 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
       <ProjectSection data={p.applications} />
 
-      <div className="proven-f w flex justify-center">
+      <div className="proven-f w flex justify-center md:mb-[50px]">
         <ProvenFieldSection dynamicData={p.projects} />
+      </div>
+      <div className="proven-f w flex justify-center">
+        <ProvenFieldSectionMobile dynamicData={p.projects} />
       </div>
 
       <Footer />

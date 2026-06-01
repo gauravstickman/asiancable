@@ -73,7 +73,7 @@ export default function ApplicationsSection({ data }: { data?: any[] }) {
           {/* RIGHT COLUMN */}
           <div className="col-span-12 flex flex-col gap-4 lg:col-span-5">
             {/* TOP 2 SMALL CARDS */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:gap-4 gap-[10px]">
               {/* POWER PLANTS */}
               <div className="group relative h-[234px] overflow-hidden rounded-[4px] md:h-[315px]">
                 <img

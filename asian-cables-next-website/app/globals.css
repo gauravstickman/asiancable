@@ -575,3 +575,9 @@ color: #1e3c8c;
     justify-content: center;
 }
 }
+
+.proven-f button.border-it
+{
+  display: none;
+}
+
