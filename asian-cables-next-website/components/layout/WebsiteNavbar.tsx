@@ -185,7 +185,7 @@ const isHomePage = pathname === "/";
             {/* MEGA MENU */}
             <div
               className={`fixed top-[74px] left-0 w-full ${
-                showMegaMenu ? "visible opacity-100" : "visible opacity-100"
+                showMegaMenu ? "visible opacity-100" : "invisible opacity-0"
               }`}
 
                onMouseEnter={() => setShowMegaMenu(true)}
