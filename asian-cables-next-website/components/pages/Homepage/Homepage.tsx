@@ -123,7 +123,7 @@ export default function Homepage() {
     api.get("/blogs")
       .then((res) => {
         const data = res.data;
-        const blogsArray = Array.isArray(data) ? data : (data.data || data.blogs || []);
+        const blogsArray = Array.isArray(data) ? data : (data.value || data.data || data.blogs || []);
         if (blogsArray.length > 0) {
           setBlogsData(blogsArray);
         }
@@ -168,6 +168,7 @@ export default function Homepage() {
     <>
       <WebsiteNavbar />
       <Swiper
+        key={slides.map((s) => s._id || s.id).join("-")}
         modules={[Parallax, Autoplay]}
         speed={1200}
         parallax={true}
@@ -202,22 +203,19 @@ export default function Homepage() {
             {/* BLUE OVERLAY */}
             <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_bottom,_rgba(0,140,255,0.35),_transparent_45%)]" />
 
-            {/* CONTENT */}
-            <div className="relative z-30 mx-auto flex h-full max-w-[1320px] items-end px-6 pb-[50%] md:pb-[13%]">
-              <div className="max-w-4xl" data-swiper-parallax="-180">
+            <div className="relative z-30 mx-auto flex h-full max-w-[1320px] items-end px-6 pb-[50%] md:pb-[9%]">
+              <div className="md:max-w-[1165px]" data-swiper-parallax="-180">
                 <h1
                   data-swiper-parallax="-50"
-                  className="text-[36px] leading-[1.4] font-extrabold text-white italic md:text-[58px] md:leading-tight"
-                >
-                  {slide.title}
-                </h1>
+                  className="whitespace-pre-line text-[36px] leading-[42px] font-[700] text-white italic tracking-[-5%] md:text-[64px] md:leading-[71px]"
+                  dangerouslySetInnerHTML={{ __html: slide.title }}
+                />
 
                 <p
                   data-swiper-parallax="-50"
-                  className="mt-2 max-w-xl text-[16px] leading-8 text-white/80 md:text-[18px]"
-                >
-                  {slide.description}
-                </p>
+                  className="max-w-[456px] mt-[16px] text-[16px] leading-[26px] text-[#ECECEC] md:text-[18px] md:leading-[26px] tracking-[-0.4%]"
+                  dangerouslySetInnerHTML={{ __html: slide.description }}
+                />
 
                 <div data-swiper-parallax="-50">
                  
@@ -328,9 +326,7 @@ export default function Homepage() {
           </div>
         </button>
       </Swiper>
-      <div className="blur-divider">
-        <img src="/assets/divider.svg" alt="" className="max-w-[100%]" />
-      </div>
+      
       <AboutUs dynamicText={aboutText} />
       <FactsSection />
       <EngineeringAccordionSection />

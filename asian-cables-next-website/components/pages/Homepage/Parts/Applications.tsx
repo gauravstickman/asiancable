@@ -1,4 +1,36 @@
-export default function ApplicationsSection({ data }: { data?: any }) {
+import { getBaseUrl } from "../../../../utils/api";
+
+export default function ApplicationsSection({ data }: { data?: any[] }) {
+  const getImg = (url?: string) => {
+    if (!url) return "";
+    if (url.startsWith("http")) return url;
+    return `${getBaseUrl()}/${url.replace(/\\/g, "/")}`;
+  };
+
+  const app1 = data && data.length > 0 ? data[0] : {
+    title: "Oil & Gas",
+    description: "Enabling uninterrupted operations across upstream, midstream, and downstream facilities through cabling solutions aligned to safety protocols, reliability requirements, and asset integrity expectations.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop"
+  };
+
+  const app2 = data && data.length > 1 ? data[1] : {
+    title: "Power Plants",
+    description: "Reliable cable systems engineered for thermal, hydro and renewable power generation facilities.",
+    image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=1200&auto=format&fit=crop"
+  };
+
+  const app3 = data && data.length > 2 ? data[2] : {
+    title: "Utilities",
+    description: "Efficient cabling solutions for utility distribution, substations and critical infrastructure systems.",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+  };
+
+  const app4 = data && data.length > 3 ? data[3] : {
+    title: "Industrial & Heavy Engineering",
+    description: "Advanced cable infrastructure supporting manufacturing, heavy equipment, automation and industrial operations.",
+    image: "https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=1400&auto=format&fit=crop"
+  };
+
   return (
     <section className="reveal-section bg-[#ffffff] pt-10 pb-3 md:py-10">
       <div className="mx-auto max-w-[1320px] px-4">
@@ -13,8 +45,8 @@ export default function ApplicationsSection({ data }: { data?: any }) {
           <div className="col-span-12 row-span-2 lg:col-span-7">
             <div className="group relative h-[440px] overflow-hidden rounded-[10px] md:h-[650px]">
               <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop"
-                alt="Oil & Gas"
+                src={getImg(app1.image) || "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop"}
+                alt={app1.title}
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               />
 
@@ -27,15 +59,12 @@ export default function ApplicationsSection({ data }: { data?: any }) {
                   PRIMARY USE
                 </span>
 
-                <h3 className="mb-6 text-[28px] leading-none font-black italic md:text-[42px]">
-                  Oil & Gas
+                <h3 className="mb-[36px] text-[28px] leading-none font-black italic md:text-[42px] md:leading-[32px] md:tracking-[-0.5px]">
+                  {app1.title}
                 </h3>
 
-                <p className="text-[16px] leading-[1.7] text-white/90 md:text-[16px]">
-                  Enabling uninterrupted operations across upstream, midstream,
-                  and downstream facilities through cabling solutions aligned to
-                  safety protocols, reliability requirements, and asset
-                  integrity expectations.
+                <p className="text-[16px] leading-[1.7] text-white/90 md:text-[16px] md:leading-[22px] md:tracking-[-0.5px]">
+                  {app1.description}
                 </p>
               </div>
             </div>
@@ -48,8 +77,8 @@ export default function ApplicationsSection({ data }: { data?: any }) {
               {/* POWER PLANTS */}
               <div className="group relative h-[234px] overflow-hidden rounded-[10px] md:h-[315px]">
                 <img
-                  src="https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=1200&auto=format&fit=crop"
-                  alt="Power Plants"
+                  src={getImg(app2.image) || "https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=1200&auto=format&fit=crop"}
+                  alt={app2.title}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
 
@@ -59,15 +88,15 @@ export default function ApplicationsSection({ data }: { data?: any }) {
                 {/* CONTENT */}
                 <div className="absolute inset-0 flex flex-col justify-end p-5">
                   {/* TITLE */}
-                  <h3 className="mb-0 text-[18px] leading-tight font-black text-white italic transition-all duration-500 group-hover:mb-4 md:text-[24px]">
-                    Power Plants
+                  <h3 className="mb-0 text-[18px] leading-tight font-black text-white italic transition-all duration-500 group-hover:mb-4 md:text-[24px] md:leading-[32px] md:tracking-[-0.5px]">
+                    {app2.title}
                   </h3>
 
                   {/* DESCRIPTION */}
                   <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:max-h-[120px] group-hover:opacity-100">
-                    <p className="text-[14px] leading-[1.7] text-white/90">
-                      Reliable cable systems engineered for thermal, hydro and
-                      renewable power generation facilities.
+                                    <p className="text-[16px] leading-[1.7] text-white/90 md:text-[16px] md:leading-[22px] md:tracking-[-0.5px]">
+
+                      {app2.description}
                     </p>
                   </div>
                 </div>
@@ -76,8 +105,8 @@ export default function ApplicationsSection({ data }: { data?: any }) {
               {/* UTILITIES */}
               <div className="group relative h-[234px] overflow-hidden rounded-[10px] md:h-[315px]">
                 <img
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
-                  alt="Utilities"
+                  src={getImg(app3.image) || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"}
+                  alt={app3.title}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
 
@@ -87,15 +116,15 @@ export default function ApplicationsSection({ data }: { data?: any }) {
                 {/* CONTENT */}
                 <div className="absolute inset-0 flex flex-col justify-end p-5">
                   {/* TITLE */}
-                  <h3 className="mb-0 text-[18px] leading-tight font-black text-white italic transition-all duration-500 group-hover:mb-4 md:text-[28px]">
-                    Utilities
+                  <h3 className="mb-0 text-[18px] leading-tight font-black text-white italic transition-all duration-500 group-hover:mb-4 md:text-[24px] md:leading-[22px] md:tracking-[-0.5px]">
+                    {app3.title}
                   </h3>
 
                   {/* DESCRIPTION */}
                   <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:max-h-[120px] group-hover:opacity-100">
-                    <p className="text-[14px] leading-[1.7] text-white/90">
-                      Efficient cabling solutions for utility distribution,
-                      substations and critical infrastructure systems.
+                                    <p className="text-[16px] leading-[1.7] text-white/90 md:text-[16px] md:leading-[22px] md:tracking-[-0.5px]">
+
+                      {app3.description}
                     </p>
                   </div>
                 </div>
@@ -105,8 +134,8 @@ export default function ApplicationsSection({ data }: { data?: any }) {
             {/* BOTTOM WIDE CARD */}
             <div className="group relative h-[234px] overflow-hidden rounded-[10px] md:h-[315px]">
               <img
-                src="https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=1400&auto=format&fit=crop"
-                alt="Industrial & Heavy Engineering"
+                src={getImg(app4.image) || "https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=1400&auto=format&fit=crop"}
+                alt={app4.title}
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
 
@@ -116,15 +145,14 @@ export default function ApplicationsSection({ data }: { data?: any }) {
               {/* CONTENT */}
               <div className="absolute inset-0 flex flex-col justify-end p-6">
                 {/* TITLE */}
-                <h3 className="mb-0 max-w-[500px] text-[18px] leading-tight font-black text-white italic transition-all duration-500 group-hover:mb-4 md:text-[28px]">
-                  Industrial & Heavy Engineering
+                <h3 className="mb-0 max-w-[500px] text-[18px] leading-tight font-black text-white italic transition-all duration-500 group-hover:mb-4 md:text-[24px] md:leading-[22px] md:tracking-[-0.5px]">
+                  {app4.title}
                 </h3>
 
                 {/* DESCRIPTION */}
                 <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:max-h-[120px] group-hover:opacity-100">
-                  <p className="max-w-[520px] text-[15px] leading-[1.8] text-white/90">
-                    Advanced cable infrastructure supporting manufacturing,
-                    heavy equipment, automation and industrial operations.
+                <p className="text-[16px] leading-[1.7] text-white/90 md:text-[16px] md:leading-[22px] md:tracking-[-0.5px]">
+                    {app4.description}
                   </p>
                 </div>
               </div>

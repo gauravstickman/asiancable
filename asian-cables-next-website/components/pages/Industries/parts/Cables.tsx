@@ -46,7 +46,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
         {/* TOP */}
         <div className="md-gap-0 mb-14 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* HEADING */}
-          <h2 className="text-[32px] leading-none font-black text-[#1E3C8C] italic md:text-[46px]">
+          <h2 className="text-[32px] leading-none font-black text-[#1E3C8C] italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
             {sectionTitle || "Cables for Oil & Gas"}
           </h2>
 
@@ -79,28 +79,34 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
               {/* CONTENT */}
               <div className="relative flex min-h-[262px] flex-col p-7">
                 {/* GRADIENT */}
-                <div className="absolute right-0 bottom-0 h-[160px] w-[160px] bg-[radial-gradient(circle,_rgba(255,210,18,0.18)_0%,_transparent_70%)]" />
-
+     {/* BACKGROUND IMAGE */}
+               <div className="absolute right-0 bottom-0 h-[100%] w-[100%]">
+  <img
+    src="/assets/obg.png"
+    alt=""
+    className="h-full w-full object-cover object-bottom opacity-[0.4]"
+  />
+</div>
                 {/* TITLE */}
-                <p className="relative z-10 mb-4 text-[17px] leading-[1.7] font-[600] text-[#1E3C8C]">
+                <p className="relative z-10 mb-3 text-[17px] leading-[23.8px] font-[600] text-[#1E3C8C]">
                   {item.title}
                 </p>
 
                 {/* DESC */}
-                <p className="relative z-10 text-[12px] leading-[1.8] text-[#6F6F6F]">
+                <p className="relative z-10 text-[12px] leading-[180%] text-[#6F6F6F]">
                   {item.description}
                 </p>
 
                 {/* CTA */}
                 {item.link ? (
-                  <Link href={item.link} className="relative z-10 mt-auto inline-flex items-center gap-2 pt-5 text-[15px] font-semibold text-[#525252] transition hover:text-[#1E3C8C] max-w-max">
+                  <Link href={item.link} className="relative z-10 mt-auto inline-flex items-center gap-2 pt-5 text-[15px] font-[500] leading-[22.5px] text-[#525252] transition hover:text-[#1E3C8C] max-w-max">
                     Know more
-                    <span className="text-[18px] leading-none">›</span>
+                    <span className="text-[18px] leading-none"><ChevronRight size={16}/></span>
                   </Link>
                 ) : (
-                  <button className="relative z-10 mt-auto flex items-center gap-2 pt-5 text-[15px] font-semibold text-[#525252] transition hover:text-[#1E3C8C]">
+                  <button className="relative z-10 mt-auto flex items-center gap-2 pt-5 text-[15px] font-[500] leading-[22.5px] text-[#525252] transition hover:text-[#1E3C8C]">
                     Know more
-                    <span className="text-[18px] leading-none">›</span>
+                    <span className="text-[18px] leading-none"><ChevronRight size={16}/></span>
                   </button>
                 )}
               </div>

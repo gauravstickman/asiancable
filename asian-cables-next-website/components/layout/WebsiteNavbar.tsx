@@ -34,7 +34,8 @@ const [typeGroups, setTypeGroups] = useState<Record<string, any[]>>({});
 useEffect(() => {
   const fetchProducts = async () => {
     try {
-      const { data } = await api.get('/products');
+      const res = await api.get('/products');
+      const data = Array.isArray(res.data) ? res.data : (res.data.data || []);
       const indGroups: Record<string, any[]> = {};
       const typGroups: Record<string, any[]> = {};
 
@@ -44,10 +45,16 @@ useEffect(() => {
           if (!typGroups[catName]) typGroups[catName] = [];
           typGroups[catName].push(p);
         }
-        if (p.industry && p.industry.name) {
-          const indName = p.industry.name;
-          if (!indGroups[indName]) indGroups[indName] = [];
-          indGroups[indName].push(p);
+        
+        if (p.industry) {
+          const industries = Array.isArray(p.industry) ? p.industry : [p.industry];
+          industries.forEach((ind: any) => {
+            if (ind && ind.name) {
+              const indName = ind.name;
+              if (!indGroups[indName]) indGroups[indName] = [];
+              indGroups[indName].push(p);
+            }
+          });
         }
       });
       setIndustryGroups(indGroups);

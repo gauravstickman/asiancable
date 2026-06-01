@@ -47,7 +47,6 @@ export default function FactsSection({ dynamicData }: FactsProps) {
               <div className="group flex flex-col justify-between border border-[#f9f9f9] bg-[#f9f9f9] p-5 transition-all duration-300 hover:bg-[#1E3C8C]">
                 <div>
                   <h3 className="mb-8 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic transition-all duration-300 group-hover:bg-none group-hover:text-white md:mb-20 md:text-[48px]">
-                    {dynamicData?.decades?.title || "6+"} {dynamicData?.decades?.subtitle && <span className="hidden"></span>}{/* Handled differently maybe? Usually Title is large text */}
                     {dynamicData?.decades?.title ? dynamicData.decades.title : "6+ Decades"}
                   </h3>
 
