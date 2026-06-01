@@ -46,8 +46,11 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
         <img
           src={headerImage}
           alt={headerTitle}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover hidden md:block"
         />
+
+<img src="/assets/industry-bg.jpg" alt={headerTitle} className="absolute inset-0 h-full w-full object-cover position-top md:hidden" />
+
 
         {/* OVERLAY */}
 <div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_32.35%,_#000000_91.59%)]" />
@@ -67,7 +70,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="max-w-[894px] text-[20px] leading-[34px] text-white/90">
+          <p className="max-w-[894px] text-[18px] leading-[30px] text-white md:text-[20px] md:leading-[34px] md:text-white/90">
             {headerDescription}
           </p>
         </div>

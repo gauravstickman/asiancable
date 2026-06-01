@@ -189,10 +189,14 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
                 </div>
               </div>
               {/* DIVIDER */}
-              <div className="my-4 h-[2px] w-[152px]  md:my-0 md:h-[50px] md:w-[3px]"  style={{
+              <div className="my-4 h-[2px] w-[152px]  md:my-0 md:h-[50px] md:w-[3px] hidden md:block"  style={{
       background:
         "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
-    }} />
+    }} /> 
+    <div className="my-4 h-[2px] w-[152px]  md:my-0 md:h-[50px] md:w-[3px] md:hidden"  style={{
+      background:
+        "linear-gradient(272deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }} />    
 
               {/* ITEM */}
               <div className="flex flex-col items-center justify-between">
@@ -207,9 +211,13 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
                 </div>
               </div>
               {/* DIVIDER */}
- <div className="my-4 h-[2px] w-[152px]  md:my-0 md:h-[50px] md:w-[3px]"  style={{
+ <div className="my-4 h-[2px] w-[152px]  md:my-0 md:h-[50px] md:w-[3px] hidden md:block"  style={{
       background:
         "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }} /> 
+    <div className="my-4 h-[2px] w-[152px]  md:my-0 md:h-[50px] md:w-[3px] md:hidden"  style={{
+      background:
+        "linear-gradient(272deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
     }} />              {/* ITEM */}
               <div className="flex flex-col items-center justify-between">
                 <div className="text-center md:text-left">
