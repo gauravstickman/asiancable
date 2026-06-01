@@ -124,7 +124,7 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
           className="!overflow-visible"
         >
           {projects.map((project, index) => (
-            <SwiperSlide key={index} className="max-w-[86vw]">
+            <SwiperSlide key={index} className="max-w-[60vw]">
               <div className="group relative h-[504px] overflow-hidden rounded-[2px]">
                 {/* IMAGE */}
                 <img

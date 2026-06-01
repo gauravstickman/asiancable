@@ -154,7 +154,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
               </p>
 
               {/* BUTTON */}
-              <button className="h-[56px] rounded-[4px] bg-[#1E3C8C] px-7 text-[16px] font-[600] text-white transition">
+              <button className="border-it-w h-[56px] rounded-[4px] bg-[#1E3C8C] px-7 text-[16px] font-[600] text-white transition">
                 Request Technical Consultation
               </button>
             </div>
@@ -355,7 +355,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
       <ProjectSection data={p.applications} />
 
-      <div className="proven-f w">
+      <div className="proven-f w flex justify-center">
         <ProvenFieldSection dynamicData={p.projects} />
       </div>
 

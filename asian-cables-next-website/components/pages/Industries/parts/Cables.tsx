@@ -51,7 +51,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
           </h2>
 
           {/* BUTTON */}
-          <button className="flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-[#ffffff] transition hover:bg-[#1E3C8C]">
+          <button className="border-it-b flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-[#ffffff] transition hover:bg-[#1E3C8C]">
             View All
             <span>
               {" "}
