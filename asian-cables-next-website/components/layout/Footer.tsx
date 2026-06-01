@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden text-white" id="footer">
+    <footer className="relative overflow-hidden text-white md:px-0 px-5" id="footer">
       <div className="absolute inset-0">
         <img
           src="/assets/footer.png"
