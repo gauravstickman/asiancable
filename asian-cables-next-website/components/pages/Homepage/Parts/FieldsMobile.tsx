@@ -112,7 +112,7 @@ export default function ProvenFieldSectionMobile({ dynamicData }: { dynamicData?
   modules={[Autoplay, EffectCoverflow]}
   effect="coverflow"
     centeredSlides={true}
-  slidesPerView={1.3}
+  slidesPerView={1.15}
   centeredSlidesBounds={true}
 autoplay={true}
   loop
@@ -133,14 +133,14 @@ autoplay={true}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105 rounded-[2px]"
                 />
 
                 {/* OVERLAY */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
                 {/* CONTENT */}
-                <div className="absolute inset-0 flex max-w-[80%] flex-col p-5 md:p-8">
+                <div className="absolute inset-0 flex max-w-[100%] flex-col p-5 md:p-8">
                   {/* TAG */}
                   <div className="mb-auto">
                     <span className="rounded-[2px] bg-white px-3 py-2 text-[14px] leading-[16px] text-[#525252]">
@@ -150,11 +150,11 @@ autoplay={true}
 
                   {/* TEXT */}
                   <div>
-                    <h3 className="mb-[10px] max-w-[90%] text-[22px] leading-[28px] tracking-[-0.5px] font-[700] text-white italic">
+                    <h3 className="mb-[10px] max-w-[100%] text-[22px] leading-[28px] tracking-[-0.5px] font-[700] text-white italic">
                       {project.title}
                     </h3>
 
-                    <p className="mb-[26px] max-w-[90%] md:max-w-[347px] text-[16px] leading-[26px] tracking-[-0.5px]  text-[#E8E8E8]">
+                    <p className="mb-[26px] max-w-[100%] md:max-w-[347px] text-[16px] leading-[26px] tracking-[-0.5px]  text-[#E8E8E8]">
                       {project.description}
                     </p>
 
@@ -163,7 +163,7 @@ autoplay={true}
                       {project.badges.map((badge: string, idx: number) => (
                         <div
                           key={idx}
-                          className="rounded-[4px] bg-white/39 px-4 py-1 text-[16px] leading-[26px] tracking-[-0.5px] text-white"
+                          className="rounded-[4px] bg-white/39 px-4 py-1  text-[14px] md:text-[16px] leading-[26px] tracking-[-0.5px] text-white"
                         >
                           {badge}
                         </div>

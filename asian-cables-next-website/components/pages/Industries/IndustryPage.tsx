@@ -76,11 +76,11 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
         </div>
 
         {/* BOTTOM STATS */}
-        <div className="reveal-section absolute bottom-0 left-1/2 z-20 w-full max-w-[90%] -translate-x-1/2 translate-y-1/2 px-4 md:max-w-[1320px]">
+        <div className="reveal-section relative bottom-0 left-1/2 z-20 w-full max-w-[90%] -translate-x-1/2 translate-y-1/2 px-4 md:max-w-[1320px]">
           <div className="grid grid-cols-1 gap-2 overflow-hidden rounded-[2px] bg-white p-2 shadow-[0px_4px_133.5px_0px_#9D9D9D40] md:grid-cols-3">
             {/* STAT ITEM 1 */}
             <div className="bg-[#F9f9f9] px-5 py-5 text-center md:px-10 md:py-7 md:text-left">
-              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic md:text-[52px] md:leading-[73.02px]">
+              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[30px] leading-[40px] font-black text-transparent italic md:text-[45px] md:leading-[63.02px]">
                 {stats[0]?.value || "3600 Km/Yr"}
               </h3>
               <p className="text-[15.81px] leading-[23.72px] font-[500] text-[#525252]">
@@ -90,7 +90,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
 
             {/* STAT ITEM 2 */}
             <div className="bg-[#F9f9f9] px-5 py-5 text-center md:px-10 md:py-7 md:text-left">
-              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic md:text-[52px] md:leading-[73.02px]">
+              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[30px] leading-[40px] font-black text-transparent italic md:text-[45px] md:leading-[63.02px]">
                 {stats[1]?.value || "60+ Yrs"}
               </h3>
               <p className="text-[15.81px] leading-[23.72px] font-[500] text-[#525252]">
@@ -100,7 +100,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
 
             {/* STAT ITEM 3 */}
             <div className="bg-[#1E3C8C] px-5 py-5 text-center md:px-10 md:py-7 md:text-left">
-              <h3 className="text-[32px] leading-none font-black text-white italic md:text-[52px] md:leading-[73.02px]">
+              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[30px] leading-[40px] font-black text-transparent italic md:text-[45px] md:leading-[63.02px]">
                 {stats[2]?.value || "NABL"}
               </h3>
               <p className="text-[15.81px] leading-[23.72px] font-[500] text-white/90">

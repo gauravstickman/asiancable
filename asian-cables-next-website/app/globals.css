@@ -581,3 +581,12 @@ color: #1e3c8c;
   display: none;
 }
 
+.proven .swiper-slide {
+  opacity: 0.6;
+}
+
+
+.proven .swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+}
