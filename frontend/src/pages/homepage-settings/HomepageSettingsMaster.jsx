@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import { toast } from 'react-toastify';
 import MediaPicker from '../../components/common/MediaPicker';
-import { Save, Plus, Trash2, Image, Layout, Settings, FileText, BarChart2, Briefcase, Star, PenTool, BookOpen } from 'lucide-react';
+import { Save, Plus, Trash2, Image, Layout, Settings, FileText, BarChart2, Briefcase, Star, PenTool, BookOpen, Leaf } from 'lucide-react';
 import { FormInput, FormTextarea, ImageInput } from '../../components/admin/FormComponents';
 
 const HomepageSettingsMaster = () => {
@@ -20,7 +20,10 @@ const HomepageSettingsMaster = () => {
         { id: 'applications', label: 'Applications', icon: Layout },
         { id: 'provenFields', label: 'Proven Fields', icon: Briefcase },
         { id: 'testimonials', label: 'Testimonials', icon: Star },
-        { id: 'engineering', label: 'Engineering', icon: PenTool }
+        { id: 'engineering', label: 'Engineering', icon: PenTool },
+        { id: 'productRange', label: 'Our Products Range', icon: BookOpen },
+        { id: 'sustainability', label: 'Sustainability', icon: Leaf },
+        { id: 'latestBlogs', label: 'Latest Blogs', icon: FileText }
     ];
 
     const fetchSettings = async () => {
@@ -98,7 +101,7 @@ const HomepageSettingsMaster = () => {
     };
 
     const handleAddToArray = (section, defaultObj) => {
-        handleChange(section, null, [...settings[section], defaultObj]);
+        handleChange(section, null, [...(settings[section] || []), defaultObj]);
     };
 
     const handleAddToNestedArray = (section, arrayField, defaultObj) => {
@@ -106,7 +109,7 @@ const HomepageSettingsMaster = () => {
     };
 
     const handleRemoveFromArray = (section, index) => {
-        const newArray = [...settings[section]];
+        const newArray = [...(settings[section] || [])];
         newArray.splice(index, 1);
         handleChange(section, null, newArray);
     };
@@ -137,7 +140,7 @@ const HomepageSettingsMaster = () => {
 
             <div className="flex flex-col md:flex-row gap-6 items-start">
                 {/* Sidebar Navigation */}
-                <div className="w-full md:w-64 shrink-0 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-24">
+                <div className="w-full md:w-64 shrink-0 bg-white rounded-xl shadow-sm border border-slate-200 overflow-y-auto max-h-[calc(100vh-140px)] sticky top-24">
                     <div className="flex flex-col py-2">
                         {tabs.map(tab => {
                             const Icon = tab.icon;
@@ -374,6 +377,111 @@ const HomepageSettingsMaster = () => {
                                         </div>
                                     ))} 
                                 </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Our Products Range */}
+                    {activeTab === 'productRange' && (
+                        <div>
+                            <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
+                                <h2 className="text-xl font-semibold text-slate-800">Our Products Range</h2>
+                                <button onClick={() => handleAddToArray('productRange', {title: '', image: '', points: [], link: ''})} className="text-blue-600 text-sm font-medium flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors"><Plus size={16}/> Add Product</button>
+                            </div>
+                            <div className="space-y-4">
+                                {(settings.productRange || []).map((product, idx) => (
+                                    <div key={idx} className="bg-slate-50 p-4 rounded-lg border relative grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        <button onClick={() => handleRemoveFromArray('productRange', idx)} className="absolute top-2 right-2 text-red-500 hover:bg-red-50 p-1 rounded z-10"><Trash2 size={18}/></button>
+                                        <FormInput label="Product Title" placeholder="Product Title (e.g. Specialty Cables)" value={product.title || ''} onChange={e => handleArrayChange('productRange', idx, 'title', e.target.value)} />
+                                        <FormInput label="Read More Link" placeholder="Read More Link (e.g. /products)" value={product.link || ''} onChange={e => handleArrayChange('productRange', idx, 'link', e.target.value)} />
+                                        <div className="md:col-span-2">
+                                            <FormInput label="Features / Points (comma separated)" placeholder="Point 1, Point 2, Point 3" value={Array.isArray(product.points) ? product.points.join(', ') : (typeof product.points === 'string' ? product.points : '')} onChange={e => handleArrayChange('productRange', idx, 'points', e.target.value.split(',').map(s=>s.trim()))} />
+                                        </div>
+                                        <div className="md:col-span-2 flex flex-col gap-2">
+                                            <div className="flex gap-2">
+                                                <FormInput label="Image URL" placeholder="Image URL" value={product.image || ''} onChange={e => handleArrayChange('productRange', idx, 'image', e.target.value)} />
+                                                <button onClick={() => openMediaPicker((url) => handleArrayChange('productRange', idx, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6 shrink-0"><Image size={16}/></button>
+                                            </div>
+                                            {product.image && <img src={product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL}${product.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
+                                        </div>
+                                    </div>
+                                ))} 
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Sustainability */}
+                    {activeTab === 'sustainability' && (
+                        <div>
+                            <div className="mb-6 pb-4 border-b border-slate-100">
+                                <h2 className="text-xl font-semibold text-slate-800">Sustainability Section</h2>
+                            </div>
+                            <div className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="md:col-span-2">
+                                        <FormTextarea label="Heading / Tagline" placeholder="We transform lives by building sustainable world-class infrastructure." rows={3} value={settings.sustainability?.heading || ''} onChange={e => handleChange('sustainability', 'heading', e.target.value)} />
+                                    </div>
+                                    <div className="md:col-span-2 flex flex-col gap-2">
+                                        <div className="flex gap-2">
+                                            <FormInput label="Background Image URL" placeholder="Background Image URL" value={settings.sustainability?.bgImage || ''} onChange={e => handleChange('sustainability', 'bgImage', e.target.value)} />
+                                            <button onClick={() => openMediaPicker((url) => handleChange('sustainability', 'bgImage', url))} className="bg-slate-100 px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
+                                        </div>
+                                        {settings.sustainability?.bgImage && <img src={settings.sustainability?.bgImage.startsWith('http') ? settings.sustainability?.bgImage : `${import.meta.env.VITE_API_URL}${settings.sustainability?.bgImage}`} alt="Preview" className="h-24 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
+                                    </div>
+                                    <FormInput label="Primary Button Text" value={settings.sustainability?.primaryBtnText || ''} onChange={e => handleChange('sustainability', 'primaryBtnText', e.target.value)} />
+                                    <FormInput label="Primary Button Link" value={settings.sustainability?.primaryBtnLink || ''} onChange={e => handleChange('sustainability', 'primaryBtnLink', e.target.value)} />
+                                    <FormInput label="Secondary Button Text" value={settings.sustainability?.secondaryBtnText || ''} onChange={e => handleChange('sustainability', 'secondaryBtnText', e.target.value)} />
+                                    <FormInput label="Secondary Button Link" value={settings.sustainability?.secondaryBtnLink || ''} onChange={e => handleChange('sustainability', 'secondaryBtnLink', e.target.value)} />
+                                </div>
+                                
+                                <div className="mt-6 border-t border-slate-100 pt-6">
+                                    <h3 className="text-lg font-medium text-slate-800 mb-4">Sustainability Features (Environment, Safety, etc.)</h3>
+                                    <div className="space-y-4">
+                                        {(settings.sustainability?.features || []).map((feature, idx) => (
+                                            <div key={idx} className="bg-slate-50 p-4 rounded-lg border relative grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                <FormInput label="Feature Title" value={feature.title || ''} onChange={e => handleNestedArrayChange('sustainability', 'features', idx, 'title', e.target.value)} />
+                                                <FormInput label="Description" value={feature.description || ''} onChange={e => handleNestedArrayChange('sustainability', 'features', idx, 'description', e.target.value)} />
+                                                <div className="md:col-span-2 flex flex-col gap-2">
+                                                    <div className="flex gap-2">
+                                                        <FormInput label="Icon URL" value={feature.icon || ''} onChange={e => handleNestedArrayChange('sustainability', 'features', idx, 'icon', e.target.value)} />
+                                                        <button onClick={() => openMediaPicker((url) => handleNestedArrayChange('sustainability', 'features', idx, 'icon', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6 shrink-0"><Image size={16}/></button>
+                                                    </div>
+                                                    {feature.icon && <img src={feature.icon.startsWith('http') ? feature.icon : `${import.meta.env.VITE_API_URL}${feature.icon}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Latest Blogs */}
+                    {activeTab === 'latestBlogs' && (
+                        <div>
+                            <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
+                                <h2 className="text-xl font-semibold text-slate-800">Latest Blogs (Latest From Asian Cables)</h2>
+                                <button onClick={() => handleAddToArray('latestBlogs', {tag: '', title: '', description: '', image: '', link: ''})} className="text-blue-600 text-sm font-medium flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors"><Plus size={16}/> Add Blog</button>
+                            </div>
+                            <div className="space-y-4">
+                                {(settings.latestBlogs || []).map((blog, idx) => (
+                                    <div key={idx} className="bg-slate-50 p-4 rounded-lg border relative grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        <button onClick={() => handleRemoveFromArray('latestBlogs', idx)} className="absolute top-2 right-2 text-red-500 hover:bg-red-50 p-1 rounded z-10"><Trash2 size={18}/></button>
+                                        <FormInput label="Tag / Category" placeholder="Tag (e.g. Event or Blog)" value={blog.tag || ''} onChange={e => handleArrayChange('latestBlogs', idx, 'tag', e.target.value)} />
+                                        <FormInput label="Blog Title" placeholder="Title" value={blog.title || ''} onChange={e => handleArrayChange('latestBlogs', idx, 'title', e.target.value)} />
+                                        <FormInput label="Read More Link" placeholder="Read More Link (e.g. /blogs)" value={blog.link || ''} onChange={e => handleArrayChange('latestBlogs', idx, 'link', e.target.value)} />
+                                        <div className="md:col-span-2">
+                                            <FormTextarea label="Description" placeholder="Description" rows={3} value={blog.description || ''} onChange={e => handleArrayChange('latestBlogs', idx, 'description', e.target.value)} />
+                                        </div>
+                                        <div className="md:col-span-2 flex flex-col gap-2">
+                                            <div className="flex gap-2">
+                                                <FormInput label="Image URL" placeholder="Image URL" value={blog.image || ''} onChange={e => handleArrayChange('latestBlogs', idx, 'image', e.target.value)} />
+                                                <button onClick={() => openMediaPicker((url) => handleArrayChange('latestBlogs', idx, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6 shrink-0"><Image size={16}/></button>
+                                            </div>
+                                            {blog.image && <img src={blog.image.startsWith('http') ? blog.image : `${import.meta.env.VITE_API_URL}${blog.image}`} alt="Preview" className="h-24 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
+                                        </div>
+                                    </div>
+                                ))} 
                             </div>
                         </div>
                     )}

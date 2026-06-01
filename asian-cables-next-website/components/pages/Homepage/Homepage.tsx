@@ -79,22 +79,25 @@ export default function Homepage() {
   const [testimonialsData, setTestimonialsData] = useState<any[]>([]);
   const [blogsData, setBlogsData] = useState<any[]>([]);
   const [productsData, setProductsData] = useState<any[]>([]);
+  const [sustainabilityData, setSustainabilityData] = useState<any>(null);
 
   useEffect(() => {
     api.get("/homepage-settings")
       .then((res) => {
         const data = res.data;
-        if (data.success && data.data && data.data.heroSlides && data.data.heroSlides.length > 0) {
-          const fetchedSlides = data.data.heroSlides.map((item: any, index: number) => ({
-            ...item,
-            id: item._id || index,
-            buttonText: item.cta?.text || item.buttonText,
-            buttonLink: item.cta?.link || item.buttonLink,
-            image: item.image?.startsWith("http")
-              ? item.image
-              : `${getBaseUrl()}${item.image}`,
-          }));
-          setSlides(fetchedSlides);
+        if (data.success && data.data) {
+          if (data.data.heroSlides && data.data.heroSlides.length > 0) {
+            const fetchedSlides = data.data.heroSlides.map((item: any, index: number) => ({
+              ...item,
+              id: item._id || index,
+              buttonText: item.cta?.text || item.buttonText,
+              buttonLink: item.cta?.link || item.buttonLink,
+              image: item.image?.startsWith("http")
+                ? item.image
+                : `${getBaseUrl()}${item.image}`,
+            }));
+            setSlides(fetchedSlides);
+          }
           if (data.data.aboutUs) {
             setAboutText(data.data.aboutUs.description || data.data.aboutUs.text || data.data.aboutUs.content || "");
           } else if (data.data.about) {
@@ -114,43 +117,55 @@ export default function Homepage() {
           if (data.data.testimonials && data.data.testimonials.length > 0) {
             setTestimonialsData(data.data.testimonials);
           }
+          if (data.data.sustainability) {
+            setSustainabilityData({
+              ...data.data.sustainability,
+              bgImage: data.data.sustainability.bgImage
+                ? (data.data.sustainability.bgImage.startsWith("http")
+                  ? data.data.sustainability.bgImage
+                  : `${getBaseUrl()}${data.data.sustainability.bgImage.startsWith('/') ? data.data.sustainability.bgImage : '/' + data.data.sustainability.bgImage}`)
+                : "",
+              features: (data.data.sustainability.features || []).map((f: any) => ({
+                ...f,
+                icon: f.icon
+                  ? (f.icon.startsWith("http")
+                    ? f.icon
+                    : `${getBaseUrl()}${f.icon.startsWith('/') ? f.icon : '/' + f.icon}`)
+                  : ""
+              }))
+            });
+          }
+          if (data.data.productRange && data.data.productRange.length > 0) {
+            const formattedProducts = data.data.productRange.map((p: any) => ({
+              title: p.title,
+              image: p.image
+                ? (p.image.startsWith("http")
+                  ? p.image
+                  : `${getBaseUrl()}${p.image.startsWith('/') ? p.image : '/' + p.image}`)
+                : "",
+              points: Array.isArray(p.points) ? p.points : [],
+              link: p.link || "/products",
+            }));
+            setProductsData(formattedProducts);
+          }
+          if (data.data.latestBlogs && data.data.latestBlogs.length > 0) {
+            const formattedBlogs = data.data.latestBlogs.map((b: any) => ({
+              tag: b.tag || "Blog",
+              title: b.title,
+              description: b.description || "",
+              image: b.image
+                ? (b.image.startsWith("http")
+                  ? b.image
+                  : `${getBaseUrl()}${b.image.startsWith('/') ? b.image : '/' + b.image}`)
+                : "",
+              link: b.link || "/blogs"
+            }));
+            setBlogsData(formattedBlogs);
+          }
           console.log("API DATA:", data.data);
         }
       })
       .catch((error) => console.warn("Error fetching homepage settings:", error));
-  }, []);
-
-  useEffect(() => {
-    api.get("/blogs")
-      .then((res) => {
-        const data = res.data;
-        const blogsArray = Array.isArray(data) ? data : (data.value || data.data || data.blogs || []);
-        if (blogsArray.length > 0) {
-          setBlogsData(blogsArray);
-        }
-      })
-      .catch((error) => console.warn("Error fetching blogs:", error));
-  }, []);
-
-  useEffect(() => {
-    api.get("/products")
-      .then((res) => {
-        const responseData = res.data;
-        const productsArray = Array.isArray(responseData) ? responseData : (responseData.data || []);
-        if (Array.isArray(productsArray) && productsArray.length > 0) {
-          const formattedProducts = productsArray.map((p: any) => ({
-            title: p.name,
-            image: p.image
-              ? (p.image.startsWith("http")
-                ? p.image
-                : `${getBaseUrl()}/${p.image.replace(/\\/g, "/")}`)
-              : "",
-            points: p.features || [],
-          }));
-          setProductsData(formattedProducts);
-        }
-      })
-      .catch((error) => console.warn("Error fetching products:", error));
   }, []);
 
   // Auto slide
@@ -379,7 +394,7 @@ export default function Homepage() {
       <ProvenFieldSection dynamicData={provenData} />
       <ProvenFieldSectionMobile dynamicData={provenData}  />
       <ProductRangeSection dynamicData={productsData} />
-      <SustainabilitySection />
+      <SustainabilitySection dynamicData={sustainabilityData} />
       <TestimonialsSection dynamicData={testimonialsData} />
       <Blogs dynamicData={blogsData} />
       <Footer />

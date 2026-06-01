@@ -191,7 +191,7 @@ const isHomePage = pathname === "/";
                onMouseEnter={() => setShowMegaMenu(true)}
   onMouseLeave={() => setShowMegaMenu(false)}
             >
-              <ProductsMegaMenu />
+              <ProductsMegaMenu industryGroups={industryGroups} typeGroups={typeGroups} />
             </div>
           </div>
 
@@ -370,6 +370,8 @@ h-[30px]
         onClose={() =>
           setShowProductsMenu(false)
         }
+        industryGroups={industryGroups}
+        typeGroups={typeGroups}
       />
     )}
 

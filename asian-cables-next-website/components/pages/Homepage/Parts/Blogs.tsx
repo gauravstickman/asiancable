@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronRight, ArrowRight } from "lucide-react";
+import Link from "next/link";
 const blogs = [
   {
     tag: "Event",
@@ -36,8 +37,9 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
           : item.image
           ? `${getBaseUrl()}${item.image}`
           : "/assets/sustainability-bg.jpg",
+        link: item.link || "/blogs",
       }))
-    : blogs;
+    : blogs.map(b => ({ ...b, link: "/blogs" }));
 
   return (
     <section className="reveal-section bg-[#f6f6f6] py-10 md:pt-[84.5px]">
@@ -88,10 +90,10 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
                 )}
 
                 {/* READ MORE */}
-                <button className="flex items-center gap-3 text-[14px] leading-[150%] text-white">
+                <Link href={blog.link} className="flex items-center gap-3 text-[14px] leading-[150%] text-white hover:underline mt-auto self-start">
                   Read More
                   <ArrowRight size={18} />
-                </button>
+                </Link>
               </div>
             </div>
           ))}

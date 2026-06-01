@@ -5,8 +5,8 @@ import { getBaseUrl } from "../../../../utils/api";
 
 export default function ProductResources({ data }: { data?: any }) {
   const getImg = (url?: string) => {
-    if(!url) return "";
-    if(url.startsWith("http")) return url;
+    if (!url) return "";
+    if (url.startsWith("http")) return url;
     return `${getBaseUrl()}/${url.replace(/\\/g, "/")}`;
   };
   return (
@@ -39,7 +39,7 @@ export default function ProductResources({ data }: { data?: any }) {
                 {/* ICON */}
                 <div className="mb-[45.2px]">
                   <div className="flex h-[35px] w-[35px] items-center md:h-[60px] md:w-[60px]">
-                    <img src="assets/folder.svg" alt="" className="w-100" />
+                    <img src="/assets/folder.svg" alt="" className="w-100" />
                   </div>
                 </div>
 

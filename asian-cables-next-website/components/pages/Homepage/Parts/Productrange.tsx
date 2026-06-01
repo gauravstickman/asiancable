@@ -1,4 +1,5 @@
 import { ChevronRight, Check } from "lucide-react";
+import Link from "next/link";
 
 export default function ProductRangeSection({ dynamicData }: { dynamicData?: any[] }) {
   const staticProducts = [
@@ -116,12 +117,12 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                 </div>
 
                 <div className="absolute right-0 bottom-0 flex justify-end">
-                  <button className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white">
+                  <Link href={displayProducts[0].link || "/products"} className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
                     </span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -169,12 +170,12 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </div>
 
                     <div className="absolute right-0 bottom-0 flex justify-end">
-                    <button className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white">
+                    <Link href={item.link || "/products"} className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
                     </span>
-                  </button>
+                  </Link>
                     </div>
                   </div>
                 </div>
@@ -220,12 +221,12 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </div>
 
                     <div className="absolute right-0 bottom-0 flex justify-end">
-                    <button className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white">
+                    <Link href={item.link || "/products"} className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
                     </span>
-                  </button>
+                  </Link>
                     </div>
                   </div>
                 </div>
@@ -267,12 +268,12 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
               </div>
 
               <div className="absolute right-0 bottom-0 flex justify-end">
-<button className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white">
+                <Link href={displayProducts[5].link || "/products"} className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
                     </span>
-                  </button>
+                  </Link>
               </div>
             </div>
           </div>
@@ -324,10 +325,10 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
 
                   {/* BUTTON */}
                   <div className="absolute right-4 bottom-6 flex justify-end">
-                    <button className="flex items-center gap-2 text-[16px] text-white">
+                    <Link href={item.link || "/products"} className="flex items-center gap-2 text-[16px] text-white hover:underline">
                       Read More
                       <span>›</span>
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

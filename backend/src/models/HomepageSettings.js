@@ -66,6 +66,32 @@ const schema = new mongoose.Schema({
             image: String
         }]
     },
+    productRange: [{
+        title: String,
+        image: String,
+        points: [String],
+        link: String
+    }],
+    sustainability: {
+        bgImage: String,
+        heading: String,
+        primaryBtnText: String,
+        primaryBtnLink: String,
+        secondaryBtnText: String,
+        secondaryBtnLink: String,
+        features: [{
+            title: String,
+            description: String,
+            icon: String
+        }]
+    },
+    latestBlogs: [{
+        tag: String,
+        title: String,
+        description: String,
+        image: String,
+        link: String
+    }],
 
 }, { timestamps: true, collection: 'homepagesettings' });
 
