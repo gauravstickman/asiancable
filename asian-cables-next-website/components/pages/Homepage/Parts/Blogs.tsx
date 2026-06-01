@@ -6,7 +6,7 @@ const blogs = [
     tag: "Event",
     title: "Conferences & Summits",
     description: "",
-    image: "assets/Picture18.png",
+    image: "assets/Picture18.png.png",
   },
   {
     tag: "Blog",
