@@ -171,28 +171,55 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
             </div>
           </div>
 
-          {/* BOTTOM STATS */}
+            {/* BOTTOM STATS */}
           <div className="rounded-[8px] bg-[#F6F6F6] px-10 py-7">
             <div className="flex flex-col items-center justify-between md:flex-row md:px-8">
-              {(p.stats && p.stats.length > 0 ? p.stats : [
-                { value: "3600 km", label: "annual cable manufacturing capacity" },
-                { value: "60+", label: "Decades of Cable Manufacturing Expertise" },
-                { value: "90+", label: "Presence in Countries" }
-              ]).map((stat: any, idx: number) => (
-                <div key={idx} className="flex flex-col items-center justify-between md:flex-row w-full md:w-auto">
-                  <div className="text-center md:text-left mb-4 md:mb-0">
-                    <h3 className="text-[26px] leading-[1.4] font-[700] text-[#1E3C8C] italic md:text-[34px] md:leading-[43.66px]">
-                      {stat.value}
-                    </h3>
-                    <p className="text-[14px] leading-[15.59px] text-[#1E3C8C] max-w-[200px]">
-                      {stat.label}
-                    </p>
-                  </div>
-                  {idx < (p.stats?.length || 3) - 1 && (
-                    <div className="my-4 h-[2px] w-[152px] md:my-0 md:h-[50px] md:w-[3px] md:ml-8 md:mr-8" style={{ background: "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)" }} />
-                  )}
+              {/* ITEM */}
+              <div className="flex flex-col items-center justify-between">
+                <div className="text-center md:text-left">
+                  <h3 className="text-[26px] leading-[1.4] font-[700] text-[#1E3C8C] italic md:text-[34px] md:leading-[43.66px]">
+                    3600 km
+                  </h3>
+
+                  <p className="text-[14px] leading-[15.59px] text-[#1E3C8C]">
+                    annual cable manufacturing capacity
+                  </p>
                 </div>
-              ))}
+              </div>
+              {/* DIVIDER */}
+              <div className="my-4 h-[2px] w-[152px]  md:my-0 md:h-[50px] md:w-[3px]"  style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }} />
+
+              {/* ITEM */}
+              <div className="flex flex-col items-center justify-between">
+                <div className="text-center md:text-left">
+                  <h3 className="text-[26px] leading-[1.4] font-[700] text-[#1E3C8C] italic md:text-[34px] md:leading-[43.66px]">
+                    6+
+                  </h3>
+
+                  <p className="text-[14px] leading-[15.59px] text-[#1E3C8C]">
+                    Decades of Cable Manufacturing Expertise
+                  </p>
+                </div>
+              </div>
+              {/* DIVIDER */}
+ <div className="my-4 h-[2px] w-[152px]  md:my-0 md:h-[50px] md:w-[3px]"  style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }} />              {/* ITEM */}
+              <div className="flex flex-col items-center justify-between">
+                <div className="text-center md:text-left">
+                  <h3 className="text-[26px] leading-[1.4] font-[700] text-[#1E3C8C] italic md:text-[34px] md:leading-[43.66px]">
+                    90+
+                  </h3>
+
+                  <p className="text-[14px] leading-[15.59px] text-[#1E3C8C]">
+                    Presence in Countries
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
