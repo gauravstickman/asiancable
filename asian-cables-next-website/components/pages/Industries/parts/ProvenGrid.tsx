@@ -33,8 +33,8 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
   ].slice(0, 2);
 
   return (
-    <section className="reveal-section mt-24 bg-[#ffffff] pt-24 md:pb-10 md:mt-[74px]">
-      <div className="mx-auto max-w-[1320px] md:px-4 px-6">
+    <section className="reveal-section pt-[275px]  bg-[#ffffff] md:pt-24 md:pb-10 ">
+      <div className="mx-auto max-w-[1320px] mt-24 md:px-4 px-6 md:mt-[74px]">
         {/* HEADING */}
         <div className="mt-7 mb-10 text-center md:mt-0">
           <h2 className="mb-5 text-[32px] leading-none font-[700] text-[#1E3C8C] italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
