@@ -279,7 +279,7 @@ export default function Homepage() {
         {/* NEXT CARD */}
         <button
           onClick={() => swiperRef.current?.slideNext()}
-          className="absolute right-[20px] bottom-[20px] left-[20px] z-40 w-[auto] overflow-hidden rounded-[0px] border border-[#383838] bg-black/40 shadow-[0px_4px_17.9px_0px_#00000040] backdrop-blur-xl transition-all duration-500 hover:bg-black/60 md:right-20 md:bottom-40 md:left-[auto] md:w-[250px] md:rounded-[10px]"
+          className="absolute right-[20px] bottom-[20px] left-[20px] z-40 w-[auto] overflow-hidden rounded-[0px] md:border md:border-[#383838] bg-[linear-gradient(90deg,_#3178C0_0%,_#F4D3B6_100%)] md:bg-black/40 shadow-[0px_4px_17.9px_0px_#00000040] backdrop-blur-xl transition-all duration-500  md:right-20 md:bottom-40 md:left-[auto] md:w-[250px] md:rounded-[10px]"
         >
           <div className="flex">
             {/* IMAGE */}
@@ -322,6 +322,7 @@ export default function Homepage() {
             </div>
           </div>
         </button>
+      <div className="fadded-mbl md:hidden"> <img src="assets/faded.png"/> </div>
       </Swiper>
       
       <AboutUs dynamicText={aboutText} />

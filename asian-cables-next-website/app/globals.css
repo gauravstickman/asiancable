@@ -523,3 +523,31 @@ color: #1e3c8c;
     background: linear-gradient(#ffffff, #ffffff) padding-box padding-box, linear-gradient(270deg, #3caadf 0%, #f04123 50%, #ffd212 100%) border-box;
     border: 2px solid #0000;
 }
+.fadded-mbl {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: -3px;
+}
+
+.fadded-mbl img {
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+}
+
+/* .mobile-menu-btn
+{
+  backdrop-filter: blur(50px);
+    box-shadow: 0px 4px 20px 0px #0000001A;
+    background-color: #ffffff10;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 11px;
+    letter-spacing: -0.46px;
+    padding: 0px 10px;
+    height: 30px;
+} */

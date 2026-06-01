@@ -43,7 +43,7 @@ export default function AboutUs({ dynamicText }: AboutUsProps) {
 
   return (
     <>
-    <div className="fadded">
+    <div className="fadded hidden md:block">
       <img src="assets/faded.png"/>
     </div>
     <section

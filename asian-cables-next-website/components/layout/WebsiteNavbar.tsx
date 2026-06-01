@@ -12,13 +12,24 @@ const WebsiteNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+ useEffect(() => {
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 50);
+  };
+
+  handleScroll(); 
+
+  window.addEventListener(
+    "scroll",
+    handleScroll
+  );
+
+  return () =>
+    window.removeEventListener(
+      "scroll",
+      handleScroll
+    );
+}, []);
 
   const [showMegaMenu, setShowMegaMenu] = useState(false);
 
@@ -68,18 +79,6 @@ useEffect(() => {
   };
   fetchProducts();
 }, []);
-
-useEffect(() => {
-  if (isMenuOpen) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
-
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, [isMenuOpen]);
 
 useEffect(() => {
   if (isMenuOpen) {
@@ -265,11 +264,13 @@ const isHomePage = pathname === "/";
 <button
   onClick={() => setShowProductsMenu(true)}
   className={`
+    mobile-menu-btn
     relative md:hidden
     inline-flex
     sparkle
     items-center
     gap-2
+    font-dm
     overflow-hidden
     rounded-[6px]
     px-5
@@ -278,15 +279,24 @@ const isHomePage = pathname === "/";
     font-[500]
     transition-all
     duration-300
+    backdrop-blur-[50px]
+shadow-[0px_4px_20px_0px_#0000001A]
+bg-white/[0.06]
+text-[14px]
+font-semibold
+leading-[11px]
+tracking-[-0.46px]
+px-[10px]
+h-[30px]
     ${
       isScrolled
-        ? "bg-[#1E3C8C] text-white"
+        ? "bg-[#1E3C8C] text-red"
         : "bg-transparent text-white"
     }
   `}
 >
   <span
-    className="absolute inset-0 rounded-[6px] pointer-events-none"
+    className="absolute font-dm inset-0 rounded-[6px] pointer-events-none"
     style={{
       boxShadow: "inset 0 0 0 2px transparent",
       background:
