@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-    LayoutDashboard, 
-    Layers, 
-    Package, 
-    Settings, 
+import {
+    LayoutDashboard,
+    Layers,
+    Package,
+    Settings,
     LogOut,
     TrendingUp,
     Users,
@@ -41,8 +41,8 @@ const Sidebar = ({ isOpen, onClose }) => {
                 // { path: '/admin/blogs', name: 'Blogs', icon: FileText },
             ]
         },
-        { 
-            group: 'Configuration', 
+        {
+            group: 'Configuration',
             items: [
                 { path: '/admin/settings', name: 'Settings', icon: Settings },
             ]
@@ -57,9 +57,9 @@ const Sidebar = ({ isOpen, onClose }) => {
             {/* Branding & Mobile Close */}
             <div className="p-6 flex items-center justify-between">
                 <Link to="/admin" className="flex items-center gap-3 group" onClick={onClose}>
-                    <img src="/logo.svg" alt="Asian Cables" className="h-10 w-auto" />
+                    <img src="logo.svg" alt="Asian Cables" className="h-10 w-auto" />
                 </Link>
-                <button 
+                <button
                     onClick={onClose}
                     className="p-2 text-slate-400 hover:text-white lg:hidden"
                 >
@@ -84,8 +84,8 @@ const Sidebar = ({ isOpen, onClose }) => {
                                         onClick={onClose}
                                         className={cn(
                                             "flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm font-medium",
-                                            isActive 
-                                                ? "bg-blue-600/10 text-blue-400 border border-blue-500/20 shadow-sm" 
+                                            isActive
+                                                ? "bg-blue-600/10 text-blue-400 border border-blue-500/20 shadow-sm"
                                                 : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
                                         )}
                                     >
