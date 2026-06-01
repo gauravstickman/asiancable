@@ -6,20 +6,20 @@ const blogs = [
     tag: "Event",
     title: "Conferences & Summits",
     description: "",
-    image: "/assets/sustainability-bg.jpg",
+    image: "assets/Picture18.png",
   },
   {
     tag: "Blog",
     title: "Festivals & Live Experiences",
     description:
       "Best for creative and large public events with high traffic and multi-location challenges.",
-    image: "/assets/sustainability-bg.jpg",
+    image: "assets/Picture16.png",
   },
   {
     tag: "Event",
     title: "Trade Shows & Exhibitions",
     description: "",
-    image: "/assets/sustainability-bg.jpg",
+    image: "assets/Picture22.png",
   },
 ];
 
@@ -98,7 +98,7 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
         </div>
 
         {/* VIEW ALL BUTTON */}
-        <button className="mx-auto flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
+        <button className="border-it-b mx-auto flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
           View All
           <span>
             {" "}

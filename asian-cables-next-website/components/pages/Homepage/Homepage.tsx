@@ -219,14 +219,57 @@ export default function Homepage() {
                 />
 
                 <div data-swiper-parallax="-50">
-                  <Link
-                    href={slide.buttonLink}
-                    className="border-it mt-[40px] inline-flex items-center gap-1 bg-white px-[29px] py-2 text-[16px] font-[500] text-[#1E3C8C] md:text-[20px] tracking-[-0.46px] md:leading-[29.42px]"
-                  >
-                    {slide.buttonText}
+              <Link
+  href={slide.buttonLink}
+  className="sparkle
+    group
+    relative
+    mt-6
+    inline-flex
+    items-center
+    gap-2
+    rounded-[6px]
+    bg-white
+    px-5
+    py-2
+    text-[16px]
+    font-[500]
+    text-[#1E3C8C]
+    transition-all
+    duration-300
+    hover:bg-transparent
+    hover:text-white
+    md:text-[20px]
+  "
+>
+  {slide.buttonText}
 
-                    <ChevronRight size={19} />
-                  </Link>
+  <ChevronRight size={20} />
+
+  <span
+    className="
+      absolute
+      inset-0
+      rounded-[6px]
+      opacity-0
+      group-hover:opacity-100
+      transition-opacity
+      duration-300
+      pointer-events-none
+    "
+    style={{
+      boxShadow:
+        "inset 0 0 0 2px transparent",
+      borderRadius: "6px",
+      background:
+        "linear-gradient(270deg,#3CAADF 0%,#F04123 50%,#FFD212 100%)",
+      WebkitMask:
+        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      WebkitMaskComposite: "xor",
+      padding: "2px",
+    }}
+  />
+</Link>
                 </div>
               </div>
             </div>

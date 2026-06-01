@@ -335,7 +335,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
           </div>
         </div>
       </div>
-      <button className="mx-auto mt-[39px] mb-[60px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
+      <button className="border-it-b mx-auto mt-[39px] mb-[60px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
         View All
         <span>
           {" "}

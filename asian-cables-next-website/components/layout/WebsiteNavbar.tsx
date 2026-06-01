@@ -5,6 +5,9 @@ import { Menu, X, Search, ChevronDown } from "lucide-react";
 import ProductsMegaMenu from "./ProductsMegaMenu";
 import api from "@/utils/api";
 
+import MobileProductMenu from "../../components/layout/MobileProductMenu";
+import { usePathname } from "next/navigation";
+
 const WebsiteNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -93,13 +96,35 @@ useEffect(() => {
   };
 }, [isMenuOpen]);
 
+const [showProductsMenu, setShowProductsMenu] =
+  useState(false);
+
+
+  const pathname = usePathname();
+
+const isHomePage = pathname === "/";
+
+  const isProductsActive =
+  pathname.startsWith("/products");
+
   return (
+    <>
+    {isHomePage && (
+       <div
+    className="absolute top-0 left-0 right-0 h-[5px]"
+    style={{
+      background:
+        "linear-gradient(270deg, #3CAADF 0%, #F04123 60.78%, #FFD212 121.56%)",
+    }}
+     
+  />
+   )}
     <nav
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
         isScrolled || showMegaMenu ? "bg-white shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-3 md:h-[85px] md:px-6">
+      <div className="mx-auto flex h-[74px] max-w-[1274px] items-center justify-between px-3 md:px-0 md:h-[74px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <img
@@ -109,16 +134,20 @@ useEffect(() => {
                 : "/assets/footer-logo.svg"
             }
             alt="Asian Cables"
-            className="h-[34px] max-h-[34px] w-[110px] w-auto max-w-[110px] min-w-[110px] transition-all duration-300"
+            className="h-[34px] max-h-[34px] w-[110px] w-auto max-w-[110px] min-w-[110px]"
           />
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden items-center gap-10 md:flex">
+        <div className="hidden font-dm items-center gap-[35px] md:flex">
           {/* HOME */}
-          <Link
+         <Link
             href="/"
-            className={`text-[16px] transition-colors ${
+            className={`text-[16px] leading-[26px] tracking-[-0.5px] ${
+    pathname === "/"
+      ? "font-[600]"
+      : "font-[400]"
+  } ${
               isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
             }`}
           >
@@ -126,93 +155,214 @@ useEffect(() => {
           </Link>
 
           {/* PRODUCTS */}
-          <div
+           <div
             className="relative"
             onMouseEnter={() => setShowMegaMenu(true)}
-            onMouseLeave={() => setShowMegaMenu(false)}
+            
           >
             
             <button
-              className={`flex items-center gap-1 text-[16px] transition-colors ${
+              className={`flex items-center gap-1  text-[16px] leading-[26px] cursor-pointer tracking-[-0.5px] ${
                 isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
               } ${
-    showMegaMenu
-      ? "font-[500]"
-      : "font-normal"
+    isProductsActive || showMegaMenu
+      ? "font-[400]"
+      : "font-[400]"
   }`}
             >
-              Products
+             Products
               <ChevronDown
                 size={15}
-                className={`transition-transform duration-300 ${
+                className={` ${
                   showMegaMenu ? "rotate-180" : ""
                 } ${
     showMegaMenu
-      ? "font-[500]"
-      : "font-normal"
+      ? "font-[600]"
+      : "font-[400]"
   }`}
               />
             </button>
 
             {/* MEGA MENU */}
             <div
-              className={`fixed top-[85px] left-0 w-full transition-all duration-300 ${
+              className={`fixed top-[74px] left-0 w-full ${
                 showMegaMenu ? "visible opacity-100" : "invisible opacity-0"
               }`}
+
+               onMouseEnter={() => setShowMegaMenu(true)}
+  onMouseLeave={() => setShowMegaMenu(false)}
             >
-              <ProductsMegaMenu industryGroups={industryGroups} typeGroups={typeGroups} />
+              <ProductsMegaMenu />
             </div>
           </div>
 
           {/* COMPANY */}
-          <Link
+             <Link
             href="/company"
-            className={`text-[16px] transition-colors ${
+            className={`text-[16px] ${
+    pathname === "/company"
+      ? "font-[600]"
+      : "font-[400]"
+  } ${
               isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
             }`}
           >
             The Company
           </Link>
 
-          {/* CAREERS */}
+             {/* CAREERS */}
           <Link
             href="/career"
-            className={`text-[16px] transition-colors ${
+            className={`text-[16px] ${
+    pathname === "/career"
+      ? "font-[600]"
+      : "font-[400]"
+  } ${
               isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
             }`}
           >
             Careers
           </Link>
 
-          {/* INVESTOR */}
+         {/* INVESTOR */}
           <Link
             href="/investor"
-            className={`text-[16px] transition-colors ${
+            className={`text-[16px] ${
+    pathname === "/investor"
+      ? "font-[600]"
+      : "font-[400]"
+  } ${
               isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
             }`}
           >
             Investor
           </Link>
         </div>
-
-        <div className="xs:hidden ml-[auto] flex items-center gap-6 md:ml-0">
-          <span
-            className={`transition-colors duration-300 ${
+        <div className="xs:hidden ml-[auto] flex items-center gap-6 md:gap-[35px] md:ml-0">
+         <span
+            className={` ${
               isScrolled || showMegaMenu ? "text-[#1E3A8A]" : "text-white"
             }`}
           >
-            <Search className="hidden md:block" size={20} />
+            <Search className="hidden md:block" size={18} />
           </span>
-          <Link
-            href="/login"
-            className={`rounded-[2px] px-7 py-2 text-[16px] leading-[24px] font-medium tracking-[0px] transition-all ${
+           <Link
+            href="/contact"
+            className={`rounded-[2px] px-6 py-2 text-[16px] hidden md:block leading-[26px] font-medium tracking-[-0.5px]  ${
+    pathname === "/contact"
+      ? "font-[600]"
+      : "font-[400]"
+  } ${
               isScrolled || showMegaMenu
-                ? "bg-[#1E3A8A] text-white hover:bg-blue-800"
-                : "bg-white text-[#1E3A8A] hover:bg-blue-50"
+                ? "bg-[#1E3C8C] text-white hover:bg-blue-800"
+                : "bg-white text-[#1E3C8C] hover:bg-blue-50"
             }`}
           >
             Contact
           </Link>
+
+      
+<button
+  onClick={() => setShowProductsMenu(true)}
+  className={`
+    relative md:hidden
+    inline-flex
+    sparkle
+    items-center
+    gap-2
+    overflow-hidden
+    rounded-[6px]
+    px-5
+    py-2
+    text-[16px]
+    font-[500]
+    transition-all
+    duration-300
+    ${
+      isScrolled
+        ? "bg-[#1E3C8C] text-white"
+        : "bg-transparent text-white"
+    }
+  `}
+>
+  <span
+    className="absolute inset-0 rounded-[6px] pointer-events-none"
+    style={{
+      boxShadow: "inset 0 0 0 2px transparent",
+      background:
+        "linear-gradient(270deg,#3CAADF 0%,#F04123 50%,#FFD212 100%)",
+      WebkitMask:
+        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      WebkitMaskComposite: "xor",
+      padding: "2px",
+    }}
+  />
+
+  <span className="relative z-10">
+    Products
+  </span>
+  <ChevronDown
+        size={18}
+        className="relative z-10"
+      />
+</button>
+
+
+ {/* <Link
+  href="/contact"
+  className={`
+    relative
+    inline-flex
+    items-center
+    gap-2
+    overflow-hidden
+    rounded-[6px]
+    px-5
+    py-2
+    text-[16px]
+    font-[500]
+    transition-all
+    duration-300
+    ${
+      isScrolled
+        ? "bg-[#1E3C8C] text-white"
+        : "bg-transparent text-white"
+    }
+  `}
+>
+  <span
+    className="
+      absolute
+      inset-0
+      rounded-[6px]
+      pointer-events-none
+    "
+    style={{
+      boxShadow: "inset 0 0 0 2px transparent",
+      background:
+        "linear-gradient(270deg,#3CAADF 0%,#F04123 50%,#FFD212 100%)",
+      WebkitMask:
+        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      WebkitMaskComposite: "xor",
+      padding: "2px",
+    }}
+  />
+
+  <span className="relative z-10">
+    Contact Us
+  </span>
+</Link> */}
+
+
+ {/* PRODUCTS MENU */}
+    {showProductsMenu && (
+      <MobileProductMenu
+        onClose={() =>
+          setShowProductsMenu(false)
+        }
+      />
+    )}
+
         </div>
         {/* Mobile Menu Button */}
        <button
@@ -243,40 +393,26 @@ useEffect(() => {
      {isMenuOpen && (
   <div className="fixed inset-0 z-[9999999] bg-white md:hidden akn-mobile-menu">
 
-    {/* TOP BAR */}
-    <div className="relative z-[99999999] flex items-center justify-between px-6 py-4 bg-white border-b">
 
-  {mobileMenuView === "submenu" ? (
-    <button
-      onClick={() => setMobileMenuView("main")}
-      className="text-[#1E3C8C] font-medium"
-    >
-      ← Back
-    </button>
-  ) : (
-    <div />
-  )}
 
+    {/* MAIN MENU */}
+ <div
+  className={`absolute inset-0 pt-[80px] px-8 bg-white z-10 transition-transform duration-300 ${
+    mobileMenuView === "main"
+      ? "translate-x-0"
+      : "-translate-x-full"
+  }`}
+>
+
+   {/* CLOSE BUTTON */}
+<div className="flex justify-end px-6 pt-6">
   <button
-    onClick={() => {
-      setIsMenuOpen(false);
-      setMobileMenuView("main");
-    }}
-    className="text-[#1E3C8C] text-[32px] leading-none"
+    onClick={() => setIsMenuOpen(false)}
+    className="text-[#1E3C8C] text-[36px] leading-none"
   >
     ×
   </button>
-
 </div>
-
-    {/* MAIN MENU */}
-  <div
-  className={`absolute inset-0 pt-[80px] px-8 bg-white z-10 transition-transform duration-300 ${
-  mobileMenuView === "main"
-    ? "translate-x-0"
-    : "-translate-x-full"
-}`}
->
       <div className="flex flex-col gap-8">
 
         <Link
@@ -288,17 +424,6 @@ useEffect(() => {
         >
           Home
         </Link>
-
-        <button
-          onClick={() =>
-            setMobileMenuView("submenu")
-          }
-          className="flex items-center justify-between text-[24px] italic font-bold text-[#9AA4C0]"
-        >
-          Products
-
-          <span>›</span>
-        </button>
 
         <Link
           href="/company"
@@ -330,99 +455,13 @@ useEffect(() => {
       </div>
     </div>
 
-    {/* PRODUCTS SUBMENU */}
- <div
- className={`absolute inset-0 pt-[80px] px-8 bg-white z-10 transition-transform duration-300 ${
-  mobileMenuView === "submenu"
-    ? "translate-x-0"
-    : "translate-x-full"
-}`}
->
-   <div className="flex flex-col gap-4">
 
-  {/* TABS */}
-
-  <button
-    onClick={() => {
-      setProductsTab("industry");
-      setOpenCategory("telecom");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "industry"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Industry
-  </button>
-
-  <button
-    onClick={() => {
-      setProductsTab("type");
-      setOpenCategory("power");
-    }}
-    className={`text-left text-[24px] italic font-bold ${
-      productsTab === "type"
-        ? "text-[#21409A]"
-        : "text-[#9AA4C0]"
-    }`}
-  >
-    Cables by Type
-  </button>
-
-  {/* INDUSTRY */}
-
-  {productsTab === "industry" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-      {Object.entries(industryGroups).map(([indName, prods]) => (
-        <div key={indName} className="mb-4 rounded-md border">
-          <button
-            onClick={() => setOpenCategory(openCategory === indName ? "" : indName)}
-            className="flex w-full items-center justify-between p-4"
-          >
-            <span className="font-semibold">{indName}</span>
-          </button>
-          {openCategory === indName && (
-            <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-              {prods.map(p => (
-                <Link key={p._id} href={`/product/${p._id}`}>{p.name}</Link>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  )}
-
-  {/* TYPE */}
-
-  {productsTab === "type" && (
-    <div className="mt-4 border-l border-[#D4DFF7] pl-4">
-      {Object.entries(typeGroups).map(([catName, prods]) => (
-        <div key={catName} className="mb-4 rounded-md border">
-          <button
-            onClick={() => setOpenCategory(openCategory === catName ? "" : catName)}
-            className="flex w-full items-center justify-between p-4"
-          >
-            <span className="font-semibold">{catName}</span>
-          </button>
-          {openCategory === catName && (
-            <div className="px-4 pb-4 flex flex-col gap-3 text-[#666]">
-              {prods.map(p => (
-                <Link key={p._id} href={`/product/${p._id}`}>{p.name}</Link>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-    </div>
 
   </div>
 )}
     </nav>
+        </>
+
   );
 };
 
