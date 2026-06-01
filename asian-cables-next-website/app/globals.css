@@ -588,6 +588,7 @@ color: #1e3c8c;
     -webkit-line-clamp: 1;
     overflow: hidden;
     width: 80px;
+            text-align: left;
 }
 
 .one-line-big span {
@@ -596,7 +597,8 @@ color: #1e3c8c;
     -webkit-line-clamp: 1;
     overflow: hidden;
     width: 100%;
-    max-width: 130px;
+    max-width: 120px;
+            text-align: left;
 }
   footer#footer {
     padding: 0px 24px;
