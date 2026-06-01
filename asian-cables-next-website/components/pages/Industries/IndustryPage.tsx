@@ -90,7 +90,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
 
             {/* STAT ITEM 2 */}
             <div className="bg-[#F9f9f9] px-5 py-5 text-center md:px-7 md:py-7 md:text-left">
-              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[30px] leading-[40px] font-black text-transparent italic md:text-[45px] md:leading-[55px]">
+              <h3 className="inset-0 bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[30px] leading-[40px] font-black text-transparent italic md:text-[45px] md:leading-[55px]">
                 {stats[1]?.value || "60+ Yrs"}
               </h3>
               <p className="mt-[10px] text-[15.81px] leading-[23.72px] font-[500] text-[#525252]">
@@ -100,7 +100,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
 
             {/* STAT ITEM 3 */}
             <div className="bg-[#1E3C8C] px-5 py-5 text-center md:px-7 md:py-7 md:text-left">
-              <h3 className="bg-[linear-gradient(270.87deg,_#3CAADF_3.87%,_#F04123_63.34%,_#FFD212_122.81%)] bg-clip-text text-[30px] leading-[40px] font-black text-transparent italic md:text-[45px] md:leading-[55px]">
+              <h3 className=" text-[30px] leading-[40px] font-black text-[#ffffff] italic md:text-[45px] md:leading-[55px]">
                 {stats[2]?.value || "NABL"}
               </h3>
               <p className="mt-[10px] text-[15.81px] leading-[23.72px] font-[500] text-white/90">
