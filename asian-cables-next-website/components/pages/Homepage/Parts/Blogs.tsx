@@ -54,7 +54,7 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
           {displayBlogs.map((blog, index) => (
             <div
               key={index}
-              className="group relative h-[317px] min-w-[82vw] overflow-hidden rounded-[4px] md:h-[509px] md:min-w-[100%] md:rounded-[6px]"
+              className="group relative h-[327px] min-w-[82vw] overflow-hidden rounded-[4px] md:h-[509px] md:min-w-[100%] md:rounded-[6px]"
             >
               {/* IMAGE */}
               <img

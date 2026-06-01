@@ -57,7 +57,7 @@ export default function TestimonialsSection({ dynamicData }: { dynamicData?: any
                 className="flex h-[290px] max-w-[460px] min-w-[460px] flex-col justify-between rounded-[2px] bg-[#3CAADF12] p-6"
               >
                 {/* TEXT */}
-                <p className="text-[18px] leading-[150%] text-[#03020B]">
+                <p className="text-[16px] md:text-[18px] leading-[150%] text-[#03020B]">
                   {item.text}
                 </p>
 

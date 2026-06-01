@@ -563,3 +563,10 @@ color: #1e3c8c;
 .fadded-mbl img {
     height: 180px;
 }
+
+@media(max-width:767px)
+{
+  footer#footer {
+    padding: 0px 24px;
+}
+}

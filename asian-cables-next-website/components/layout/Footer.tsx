@@ -2,12 +2,12 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden text-white md:px-0 px-5" id="footer">
+    <footer className="relative overflow-hidden text-white" id="footer">
       <div className="absolute inset-0">
         <img
           src="/assets/footer.png"
           alt="Footer Background"
-          className="h-full w-full object-cover object-right md:object-right-top"
+          className="h-full w-full object-cover object-left md:object-right-top"
         />
 
         {/* DARK OVERLAY */}
@@ -19,7 +19,7 @@ const Footer = () => {
       </div>
       <div className="relative z-10 mx-auto max-w-[1272px]  pt-[50px]">
         {/* TOP CTA */}
-        <div className="mb-[51px] flex flex-col gap-6 rounded-[6px] bg-white/13 px-[30px] py-[20px] lg:flex-row lg:items-center lg:justify-between">
+        <div className="mb-[51px] flex flex-col gap-6 rounded-[6px] bg-white/13 px-[20px] md:px-[30px] py-[20px] lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h2 className="text-[20px] leading-[24px] tracking-[-1%] mb-[16px] font-black italic md:text-[20px]">
               Connect with us
@@ -74,7 +74,7 @@ const Footer = () => {
             </div>
 
             {/* TEXT */}
-            <p className="mb-[68px] font-dm max-w-[412px] text-[16px] leading-[26px] tracking-[-0.5px] text-[#F3F3F3]/83">
+            <p className="mb-[24px] md:mb-[68px] font-dm max-w-[412px] text-[16px] leading-[26px] tracking-[-0.5px] text-[#F3F3F3]/83">
               We offer a comprehensive portfolio of cables & conductors. Serving
               infrastructure and industrial systems central to sustainability
               and future growth in a globally connected world.
