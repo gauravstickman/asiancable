@@ -124,7 +124,7 @@ const isHomePage = pathname === "/";
         isScrolled || showMegaMenu ? "bg-white shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[74px] max-w-[1274px] items-center justify-between px-3 md:px-0 md:h-[74px]">
+      <div className="mx-auto flex h-[64px] md:h-[74px] max-w-[1274px] items-center justify-between px-3 md:px-0 md:h-[74px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <img
