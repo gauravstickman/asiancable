@@ -200,6 +200,20 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
             </div>
           </div>
 
+
+             <Link
+            href="/industries"
+            className={`text-[16px] ${
+    pathname === "/industries"
+      ? "font-[600]"
+      : "font-[400]"
+  } ${
+              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
+            }`}
+          >
+           Industries
+          </Link>
+
           {/* COMPANY */}
              <Link
             href="/company"
@@ -530,6 +544,13 @@ h-[30px]
 </div>
 
         <h4><Link
+          href="/industries"
+          className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
+        >
+          Industries
+        </Link></h4>
+
+           <h4><Link
           href="/career"
           className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
         >

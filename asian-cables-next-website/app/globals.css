@@ -332,7 +332,10 @@ color: #1e3c8c;
 
 
 /* updated */
-
+.custom-grid, .break-inside-avoid.masonry-item {
+    position: relative;
+    z-index: 1;
+}
 /* SPARK EFFECT */
 .border-it::after, .border-it-b::after, .border-it-w::after {
  content: "";
