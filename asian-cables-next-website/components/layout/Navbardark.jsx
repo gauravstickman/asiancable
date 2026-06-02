@@ -235,50 +235,106 @@ onMouseEnter={() => {
 
         <Link
           href="/industries/renewables"
-          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
           Renewables
         </Link>
 
         <Link
           href="/industries/infrastructure"
-          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+      className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
           Infrastructure
         </Link>
 
         <Link
           href="/industries/industrial"
-          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
           Industrial
         </Link>
 
         <Link
           href="/industries/transportation"
-          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+       className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
           Transportation
         </Link>
 
         <Link
           href="/industries/oil-gas"
-          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+      className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
           Oil & Gas
         </Link>
 
         <Link
           href="/industries/utilities"
-          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+         className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
           Utilities
         </Link>
 
         <Link
           href="/industries/manufacturing"
-          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
           Manufacturing
         </Link>
 

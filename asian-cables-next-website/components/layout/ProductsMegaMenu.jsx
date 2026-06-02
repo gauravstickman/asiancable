@@ -10,7 +10,7 @@ const allProducts = Object.values(industryGroups).flat();
     <>
       <div className=" border-t border-[#ffffff] bg-white">
 
-        <div className="max-w-[1320px] mx-auto px-6 py-14">
+        <div className="max-w-[1320px] mx-auto px-6 py-10">
 
           <div className="grid grid-cols-12 gap-14">
 

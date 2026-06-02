@@ -26,6 +26,7 @@ export default function MobileProductMenu({
 
   const [openCategory, setOpenCategory] =
     useState("");
+   const allProducts = Object.values(industryGroups).flat();
 
   return (    
     <div className="fixed inset-0 z-[99999999] h-[calc(100%-80px)] bg-white top-[70px] mx-[10px] rounded-[12px] overflow-y-auto">
@@ -41,207 +42,27 @@ export default function MobileProductMenu({
         </div>
       </div>
 
-      <div className="mb-4 overflow-hidden rounded-md px-5">
-        <button
-          onClick={() =>
-            setMainAccordion(
-              mainAccordion === "industry"
-                ? ""
-                : "industry"
-            )
-          }
-          className={`flex w-full items-center rounded-[5.52px] justify-between px-4 py-4 mt-15 transition-all duration-300 ${
-            mainAccordion === "industry"
-              ? "bg-[#21409A] text-white"
-              : "bg-[#F8F8F8] text-[#21409A]"
-          }`}
-        >
-          <h4 className="flex items-center gap-2">
-            <bdi>
-              <img
-                src="/assets/menu-cable.svg"
-                className={`w-[23px] h-[23px] object-contain transition ${
-                  mainAccordion === "industry"
-                    ? "brightness-100"
-                    : "brightness-[0.4]"  
-                }`}
-                alt=""
-              />
-            </bdi>
-            <span className="text-[20px] leading-[29px] tracking-[-0.46px] italic font-[700]">
-              Cables by Industry
-            </span>
-          </h4>
-          <ChevronDown
-            className={`transition-transform ${
-              mainAccordion === "industry"
-                ? "rotate-180"
-                : ""
-            }`}
-          />
-        </button>
 
-        {mainAccordion === "industry" && (
-          <div className="py-4">
-            <div className="border-l-[1.5px] border-[#BFDBFF] pl-4">
-              {Object.entries(industryGroups).map(([indName, prods]) => (
-                <div
-                  key={indName}
-                  className="mb-3 overflow-hidden bg-white"
-                >
-                  <button
-                    onClick={() =>
-                      setOpenCategory(
-                        openCategory === indName
-                          ? ""
-                          : indName
-                      )
-                    }
-                    className="flex w-full items-center justify-between px-4 py-4 rounded-[8px] border border-[#D9DDE7]"
-                  >
-                    <div className="flex items-center justify-left gap-3 relative">
-                      <span
-                        className="absolute left-0 top-[-4px] right-auto h-[20px] w-[3px]"
-                        style={{
-                          background:
-                            "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
-                        }}
-                      />   
-                      <span className="pl-3 font-[600] text-[16px] leading-[106%] text-[#0F0F0F] text-left">
-                        {indName}
-                      </span>
-                    </div>
-                    <ChevronDown
-                      size={18}
-                      className={`transition-transform ${
-                        openCategory === indName
-                          ? "rotate-180"
-                          : ""
-                      }`}
-                    />
-                  </button>
+<div className="grid grid-cols-1 gap-x-20 gap-y-3 p-5">
+  <h4 className="font-[700]">All Products</h4>
+  {allProducts.map((p) => (
+    <Link
+      key={p._id}
+      href={`/product/${p.slug}`}
+      className="relative flex items-center pl-3 text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+    >
+      <span
+        className="absolute left-0 top-[8px] h-[18px] w-[3px]"
+        style={{
+          background:
+            "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+        }}
+      />
 
-                  {openCategory === indName && (
-                    <div className="px-5 py-1">
-                      {prods.map(p => (
-                        <Link
-                          key={p._id}
-                          href={`/product/${p.slug}`}
-                          onClick={onClose}
-                          className="block w-full py-2 text-left text-[#5C5C5C] text-[16px] leading-[206%] font-[400] hover:text-[#21409A]"
-                        >
-                          {p.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="mb-4 overflow-hidden rounded-md px-5">
-        <button
-          onClick={() =>
-            setMainAccordion(
-              mainAccordion === "type"
-                ? ""
-                : "type"
-            )
-          }
-          className={`flex w-full items-center rounded-[5.52px] justify-between px-4 py-4 transition-all duration-300 ${
-            mainAccordion === "type"
-              ? "bg-[#21409A] text-white"
-              : "bg-[#F8F8F8] text-[#21409A]"
-          }`}
-        >
-          <h4 className="flex items-center gap-2">
-            <bdi>
-              <img
-                src="/assets/menu-cable.svg"
-                className={`w-[23px] h-[23px] object-contain transition ${
-                  mainAccordion === "type"
-                    ? "brightness-100"
-                    : "brightness-[0.4]"
-                }`}
-                alt=""
-              />
-            </bdi>
-            <span className="text-[20px] leading-[29px] tracking-[-0.46px] italic font-[700]">
-              Cables by Type
-            </span>
-          </h4>
-          <ChevronDown
-            className={`transition-transform ${
-              mainAccordion === "type"
-                ? "rotate-180"
-                : ""
-            }`}
-          />
-        </button>
-
-        {mainAccordion === "type" && (
-          <div className="py-4">
-            <div className="border-l border-[#D9E3F7] pl-4">
-              {Object.entries(typeGroups).map(([catName, prods]) => (
-                <div
-                  key={catName}
-                  className="mb-3 overflow-hidden bg-white"
-                >
-                  <button
-                    onClick={() =>
-                      setOpenCategory(
-                        openCategory === catName
-                          ? ""
-                          : catName
-                      )
-                    }
-                    className="flex w-full items-center justify-between px-4 py-4 rounded-[8px] border border-[#D9DDE7]"
-                  >
-                    <div className="flex items-center justify-left gap-3 relative">
-                      <span
-                        className="absolute left-0 top-[-4px] right-auto h-[20px] w-[3px]"
-                        style={{
-                          background:
-                            "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
-                        }}
-                      />   
-                      <span className="pl-3 font-[600] text-[16px] leading-[106%] text-[#0F0F0F] text-left">
-                        {catName}
-                      </span>
-                    </div>
-                    <ChevronDown
-                      size={18}
-                      className={`transition-transform ${
-                        openCategory === catName
-                          ? "rotate-180"
-                          : ""
-                      }`}
-                    />
-                  </button>
-
-                  {openCategory === catName && (
-                    <div className="px-5 py-1">
-                      {prods.map(p => (
-                        <Link
-                          key={p._id}
-                          href={`/product/${p.slug}`}
-                          onClick={onClose}
-                          className="block w-full py-2 text-left text-[#5C5C5C] text-[16px] leading-[206%] font-[400] hover:text-[#21409A]"
-                        >
-                          {p.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+      {p.name}
+    </Link>
+  ))}
+</div>
     </div>
   );
 }

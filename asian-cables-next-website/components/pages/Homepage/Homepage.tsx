@@ -69,7 +69,7 @@ const staticSlides = [
 
 export default function Homepage() {
   const swiperRef = useRef<any>(null);
-
+const isMobile = window.innerWidth < 768;
   const [current, setCurrent] = useState(0);
   const [slides, setSlides] = useState<any[]>(staticSlides);
   const [aboutText, setAboutText] = useState<string>("");
@@ -185,19 +185,29 @@ export default function Homepage() {
     <>
       <WebsiteNavbar />
       <Swiper
-        key={slides.length}
-        modules={[Parallax, Autoplay]}
-        speed={1200}
-        parallax={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
-        className="main-banner relative h-screen w-full overflow-hidden bg-black"
-      >
+  key={slides.length}
+  modules={[Autoplay, ...(isMobile ? [] : [Parallax])]}
+  parallax={!isMobile}
+  speed={isMobile ? 700 : 1200}
+  loop={true}
+  observer={true}
+  observeParents={true}
+  autoplay={{
+    delay: 4000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+  }}
+  onSwiper={(swiper) => {
+    swiperRef.current = swiper;
+
+    // Safari/iPhone autoplay kick
+    setTimeout(() => {
+      swiper.autoplay.start();
+    }, 100);
+  }}
+  onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
+  className="main-banner relative h-screen w-full overflow-hidden bg-black"
+>
         {slides.map((slide, index) => (
           <SwiperSlide key={slide.id}>
             {/* BG IMAGE */}
