@@ -56,7 +56,7 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
       <div className="mx-auto flex h-12.5 max-w-330 items-center gap-2 px-3 md:gap-6 md:px-8">
         {/* PRODUCT LABEL */}
         <div className="text-[10px] font-medium whitespace-nowrap text-white md:text-[16px] md:leading-[17.29px]">
-          Product :
+          Products :
         </div>
 
         {/* SEARCH INPUT */}

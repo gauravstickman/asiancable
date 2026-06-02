@@ -75,7 +75,11 @@ const staticProjects = [
 
 export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[] }) {
   const [projects, setProjects] = useState<any[]>(staticProjects);
-
+const displayProjects =
+  projects.length <= 4
+    ? [...projects, ...projects, ...projects]
+    : projects;
+    
   useEffect(() => {
     if (dynamicData && dynamicData.length > 0) {
       const fetchedProjects = dynamicData.map((item: any) => ({
@@ -123,7 +127,7 @@ export default function ProvenFieldSection({ dynamicData }: { dynamicData?: any[
           }}
           className="!overflow-visible"
         >
-          {projects.map((project, index) => (
+          {displayProjects.map((project, index) => (
             <SwiperSlide key={index} className="max-w-[90vw] md:max-w-[60vw]">
               <div className="group relative h-[506px] overflow-hidden rounded-[2px]">
                 {/* IMAGE */}

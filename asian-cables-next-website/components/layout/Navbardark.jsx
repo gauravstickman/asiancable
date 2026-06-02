@@ -19,7 +19,7 @@ const WebsiteNavbarDark = () => {
     setIsScrolled(window.scrollY > 50);
   };
 
-  handleScroll(); // ← ye line add kar
+  handleScroll(); 
 
   window.addEventListener(
     "scroll",
