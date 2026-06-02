@@ -489,7 +489,7 @@ h-[30px]
 </button>
 
   {showCompanyMenu && (
-    <div className="mt-6 flex flex-col gap-5 pl-0">
+    <div className="mt-6 flex flex-col gap-3 pl-0">
 
       <h5><Link
         href="/about-us"
@@ -571,7 +571,7 @@ h-[30px]
           Contact
         </Link></h4>
 
-     <div className="mt-auto pt-10">
+     <div className="mt-auto pt-5">
 
   {/* PHONE */}
   <div className="relative mb-8 flex items-start gap-4  items-center pl-4">
@@ -604,7 +604,7 @@ h-[30px]
   </div>
 
   {/* EMAIL */}
-  <div className="relative mb-10 flex items-start gap-4 items-center pl-4">
+  <div className="relative mb-8 flex items-start gap-4 items-center pl-4">
 
      <span
     className="absolute left-0 top-0 right-auto h-[100%] w-[2px]"
