@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { Lock, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import API from '../../api/axios';
+import logoDark from '../../assets/LOGO_Dark.svg';
 
 const ResetPassword = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -41,7 +42,7 @@ const ResetPassword = () => {
             >
                 <div className="text-center mb-8">
                     <div className="flex justify-center mb-6">
-                        <img src="/LOGO_Dark.svg" alt="Asian Cables Logo" className="h-16 w-auto" />
+                        <img src={logoDark} alt="Asian Cables Logo" className="h-16 w-auto" />
                     </div>
                     <h1 className="text-3xl font-bold mb-2">Reset Password</h1>
                     <p className="text-slate-400">Enter your new password below</p>

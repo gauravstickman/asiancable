@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Mail, Loader2, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
+import logoDark from '../../assets/LOGO_Dark.svg';
 import API from '../../api/axios';
 
 const ForgotPassword = () => {
@@ -47,7 +48,7 @@ const ForgotPassword = () => {
             >
                 <div className="text-center mb-8">
                     <div className="flex justify-center mb-6">
-                        <img src="/LOGO_Dark.svg" alt="Asian Cables Logo" className="h-16 w-auto" />
+                        <img src={logoDark} alt="Asian Cables Logo" className="h-16 w-auto" />
                     </div>
                     <h1 className="text-3xl font-bold mb-2">Forgot Password</h1>
                     <p className="text-slate-400">Enter your email to receive a password reset link</p>
