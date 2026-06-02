@@ -290,7 +290,7 @@ onMouseEnter={() => {
         </Link>
 
         <Link
-          href="/industries/oil-gas"
+          href="/industries/oil-and-gas"
       className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
           <span

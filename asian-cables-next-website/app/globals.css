@@ -630,9 +630,21 @@ color: #1e3c8c;
     position: relative;
     text-align: center;
 }
-
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+#__next {
+  overflow-x: hidden;
+}
 @media(max-width:767px)
 {
+  body .floating-bar
+  {
+        width: calc(100vw - 16%);
+    margin-right: -5%;
+  }
   body .f-part:after {
     right: -1px !important;
 }

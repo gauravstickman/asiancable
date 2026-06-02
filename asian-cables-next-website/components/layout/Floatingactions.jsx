@@ -129,7 +129,7 @@ export default function FloatingActions() {
 
       {/* POPUP */}
       {openDownloads && (
-        <div className="absolute bottom-full right-0 mb-0 w-[96vw] md:w-[420px] overflow-hidden rounded-[12px] border border-[#E5E5E5] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.15)]">
+        <div className="absolute bottom-full right-0 mb-0 floating-bar md:w-[420px] overflow-hidden rounded-[12px] border border-[#E5E5E5] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.15)]">
 
           {/* HEADER */}
           <div className="flex items-center justify-between border-b border-[#E5E5E5] px-5 py-4 mb-3">
@@ -141,7 +141,7 @@ export default function FloatingActions() {
               </div>
 
               <p className="text-[20px] font-[500] text-[#21409A]">
-                Downloads
+                Downloads 1
               </p>
             </div>
 
