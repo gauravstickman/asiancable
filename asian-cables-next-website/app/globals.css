@@ -389,10 +389,10 @@ color: #1e3c8c;
   animation: mirrorSpark 2.2s linear infinite;
 }
 
-.border-it:hover::after, .border-it-b:hover::after, .border-it-w:hover::after {
+/* .border-it:hover::after, .border-it-b:hover::after, .border-it-w:hover::after {
   animation-play-state: paused;
   visibility: hidden;
-}
+} */
 
 
 
@@ -491,11 +491,11 @@ color: #1e3c8c;
   pointer-events: none;
 }
 
-.sparkle:hover::after {
+/* .sparkle:hover::after {
   animation-play-state: paused;
   visibility: hidden;
 
-}
+} */
 .sparkle
 {
   position: relative;
@@ -612,4 +612,24 @@ color: #1e3c8c;
 .proven .swiper-slide-active {
   transform: scale(1);
   opacity: 1;
+}
+
+.f-part:after {
+    content: "";
+    background: #E1E2E580;
+    position: absolute;
+    right: -12.5px;
+    height: 32px;
+    width: 1px;
+}
+
+.f-part {
+    position: relative;
+}
+
+@media(max-width:767px)
+{
+  body .f-part:after {
+    right: -5px;
+}
 }

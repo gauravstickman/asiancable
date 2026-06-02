@@ -87,23 +87,23 @@ export default function FactsSection({ dynamicData }: FactsProps) {
           <div className="relative col-span-12 hidden md:block lg:col-span-4">
             <div className="h-full border border-[#f9f9f9] bg-[#ffffff]">
               {/* IMAGE */}
-              <div className="relative h-[450px] overflow-hidden">
-                <img
-                  src={dynamicData?.annual?.image || "/assets/pdc.png"}
-                  alt="Manufacturing"
-                  className="h-full w-full object-cover"
-                />
+              <div className="group relative h-[450px] overflow-hidden">
+  <img
+    src={dynamicData?.annual?.image || "/assets/pdc.png"}
+    alt="Manufacturing"
+    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+  />
 
-                {/* OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+  {/* OVERLAY */}
+  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
 
-                {/* BIG TEXT */}
-                <div className="absolute top-8 left-8">
-                  <h2 className="text-[48px] leading-none font-black text-white italic md:text-[64px]">
-                    {dynamicData?.annual?.value || "3600 Km"}
-                  </h2>
-                </div>
-              </div>
+  {/* BIG TEXT */}
+  <div className="absolute top-8 left-8">
+    <h2 className="text-[48px] leading-none font-black text-white italic md:text-[64px]">
+      {dynamicData?.annual?.value || "3600 Km"}
+    </h2>
+  </div>
+</div>
 
               {/* CONTENT */}
               <div className="absolute bottom-[10px] p-8">
