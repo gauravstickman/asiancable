@@ -1,5 +1,10 @@
 import { ChevronRight, Check } from "lucide-react";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function ProductRangeSection({ dynamicData }: { dynamicData?: any[] }) {
   const staticProducts = [
@@ -280,14 +285,29 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
         </div>
 
         {/* MOBILE */}
-        <div className="hide-scrollbar relative overflow-x-auto px-1 md:hidden">
-          <div className="flex w-max gap-2 pr-1">
-            {displayProducts.map((item, index) => (
-              <div
-                key={index}
-                className="relative h-[600px] w-[85vw] shrink-0 overflow-hidden rounded-[4px]"
-              >
-                {/* IMAGE */}
+
+        <div className=" px-5 md:hidden">
+  <Swiper
+  
+  modules={[Pagination, Autoplay]}
+  slidesPerView={1}
+  loop={true}
+  pagination={{
+    clickable: true,
+  }}
+  autoplay={{
+    delay: 4000,
+    disableOnInteraction: false,
+  }}
+  className="mx-5"
+  >
+    {displayProducts.map((item, index) => (
+      <SwiperSlide key={index}>
+
+        {/* SAME CARD CONTENT */}
+        <div className="relative h-[600px] overflow-hidden rounded-[4px]">
+          
+  {/* IMAGE */}
                 <img
                   src={item.image}
                   alt={item.title}
@@ -331,10 +351,13 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </Link>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+
         </div>
+
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
       </div>
       <button className="border-it-b mx-auto mt-[39px] mb-[32px] md:mb-[60px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
         View All

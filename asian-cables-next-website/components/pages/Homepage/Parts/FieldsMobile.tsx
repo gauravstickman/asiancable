@@ -112,7 +112,7 @@ export default function ProvenFieldSectionMobile({ dynamicData }: { dynamicData?
   modules={[Autoplay, EffectCoverflow]}
   effect="coverflow"
     centeredSlides={true}
-  slidesPerView={1.15}
+  slidesPerView={1.1}
   centeredSlidesBounds={true}
 autoplay={true}
   loop

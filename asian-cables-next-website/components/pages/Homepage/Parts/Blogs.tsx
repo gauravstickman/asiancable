@@ -2,6 +2,11 @@
 
 import { ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
 const blogs = [
   {
     tag: "Event",
@@ -51,8 +56,70 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
           </h2>
         </div>
 
+
+{/* MOBILE SLIDER */}
+<div className="md:hidden mb-10 blog-slider">
+  <Swiper
+    modules={[Pagination, Autoplay]}
+    slidesPerView={1}
+      spaceBetween={8}
+  loop
+
+    autoplay={{
+      delay: 3000,
+      disableOnInteraction: false,
+    }}
+  >
+    {displayBlogs.map((blog, index) => (
+      <SwiperSlide key={index}>
+        <div className="relative h-[327px] overflow-hidden rounded-[4px]">
+          
+          {/* IMAGE */}
+          <img
+            src={blog.image}
+            alt={blog.title}
+            className="h-full w-full object-cover"
+          />
+
+          {/* OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+
+          {/* CONTENT */}
+          <div className="absolute inset-0 flex flex-col p-5">
+
+            <div className="mb-[19px]">
+              <span className="inline-flex h-[27px] items-center rounded-[4px] bg-white px-3 text-[14px] font-[500] text-[#525252]">
+                {blog.tag}
+              </span>
+            </div>
+
+            <h3 className="mb-[7px] max-w-[90%] text-[20px] italic font-[700] leading-[120%] text-white">
+              {blog.title}
+            </h3>
+
+            {blog.description && (
+              <p className="mb-[16px] max-w-[90%] text-[14px] leading-[150%] text-white">
+                {blog.description}
+              </p>
+            )}
+
+            <Link
+              href={blog.link}
+              className="mt-auto flex items-center gap-3 text-[14px] text-white"
+            >
+              Read More
+              <ArrowRight size={18} />
+            </Link>
+
+          </div>
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
+
         {/* BLOG GRID */}
-        <div className="hide-scrollbar mb-10 flex grid-cols-1 gap-2 overflow-x-auto md:mb-14 md:grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="hidden md:grid hide-scrollbar mb-10 flex grid-cols-1 gap-2 overflow-x-auto md:mb-14 md:grid md:grid-cols-2 lg:grid-cols-3">
           {displayBlogs.map((blog, index) => (
             <div
               key={index}

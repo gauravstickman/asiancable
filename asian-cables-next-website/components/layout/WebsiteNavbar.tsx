@@ -1,13 +1,17 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Menu, X, Search, ChevronDown,  } from "lucide-react";
+import {
+  Phone,
+  Mail,
+} from "lucide-react";
 import ProductsMegaMenu from "./ProductsMegaMenu";
 import api from "@/utils/api";
 
+
 import MobileProductMenu from "../../components/layout/MobileProductMenu";
 import { usePathname } from "next/navigation";
-
 const WebsiteNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -105,6 +109,7 @@ const isHomePage = pathname === "/";
 
   const isProductsActive =
   pathname.startsWith("/products");
+const [showCompanyMenu, setShowCompanyMenu] = useState(false);
 
   return (
     <>
@@ -423,6 +428,7 @@ h-[30px]
 
    {/* CLOSE BUTTON */}
 <div className="absolute flex justify-end px-6 pt-6 top-0 right-0">
+ 
   <button
     onClick={() => setIsMenuOpen(false)}
     className="text-[#1E3C8C] text-[40px]  leading-none opacity-0"
@@ -430,7 +436,8 @@ h-[30px]
     ×
   </button>
 </div>
-      <div className="flex flex-col gap-9 mt-6">
+<span className="m-logo absolute top-6 left-6"> <img src="/assets/LOGO_Dark.svg"/></span>
+      <div className="flex flex-col gap-6 mt-6">
 
         <h4>
         <Link
@@ -444,12 +451,83 @@ h-[30px]
         </Link>
         </h4>
 
-        <h4><Link
-          href="/company"
-          className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
-        >
-          The Company
-        </Link></h4>
+     <div>
+  <button
+  onClick={() =>
+    setShowCompanyMenu(!showCompanyMenu)
+  }
+  className={`flex items-center gap-3 text-[24px] leading-[26px] italic font-[700] transition-colors duration-300 ${
+    showCompanyMenu
+      ? "text-[#1E3C8C]"
+      : "text-[#9AA4C0]"
+  }`}
+>
+  <h4>The Company</h4>
+
+  <ChevronDown
+    size={22}
+    className={`transition-transform duration-300 ${
+      showCompanyMenu
+        ? "rotate-180"
+        : ""
+    }`}
+  />
+</button>
+
+  {showCompanyMenu && (
+    <div className="mt-6 flex flex-col gap-5 pl-0">
+
+      <h5><Link
+        href="/about-us"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        About us
+      </Link></h5>
+
+      <h5><Link
+        href="/leadership"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Leadership
+      </Link></h5>
+
+      <h5><Link
+        href="/rpg-group"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        RPG Group
+      </Link></h5>
+
+      <h5><Link
+        href="/csr"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        CSR
+      </Link></h5>
+
+      <h5><Link
+        href="/resources"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Resources
+      </Link></h5>
+
+      <h5><Link
+        href="/manufacturing"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Manufacturing
+      </Link></h5>  
+
+      <h5><Link
+        href="/clientele"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Clientele
+      </Link></h5>
+    </div>
+  )}
+</div>
 
         <h4><Link
           href="/career"
@@ -471,6 +549,93 @@ h-[30px]
         >
           Contact
         </Link></h4>
+
+     <div className="mt-auto pt-10">
+
+  {/* PHONE */}
+  <div className="relative mb-8 flex items-start gap-4  items-center pl-4">
+
+    <span
+    className="absolute left-0 top-0 right-auto h-[100%] w-[2px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />
+
+    <Phone
+      size={24}
+      className="mt-1 text-[#1E3C8C]"
+    />
+
+    <div>
+      <a
+        href="tel:+912212345678"
+        className="block text-[16px] leading-[24px] font-[600] text-[#1E3C8C]"
+      >
+        +91 22 1234 5678
+      </a>
+
+      <p className="text-[13px] leading-[19.5px] font-[400] text-[#767676]">
+        Mon-Sat, 9AM-6PM IST
+      </p>
+    </div>
+  </div>
+
+  {/* EMAIL */}
+  <div className="relative mb-10 flex items-start gap-4 items-center pl-4">
+
+     <span
+    className="absolute left-0 top-0 right-auto h-[100%] w-[2px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />
+
+    <Mail
+      size={24}
+      className="mt-1 text-[#1E3C8C]"
+    />
+
+    <div>
+      <a
+        href="mailto:info@asiancables.com"
+        className="block text-[16px] leading-[24px] font-[600] text-[#1E3C8C]"
+      >
+        info@asiancables.com
+      </a>
+
+      <p className="text-[13px] leading-[19.5px] font-[400] text-[#767676]">
+        Response within 24 hours
+      </p>
+    </div>
+  </div>
+
+  {/* SOCIAL */}
+  <div className="flex gap-4">
+
+    {/* SOCIAL */}
+            <div className="flex items-center gap-2">
+              <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">
+                <img src="/assets/in.svg" alt="" className="max-w-[16px]" />
+              </div>
+
+              <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">
+                <img src="/assets/x.svg" alt="" className="max-w-[16px]" />
+              </div>
+
+              <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">
+                <img src="/assets/fb.svg" alt="" className="max-w-[16px]" />
+              </div>
+
+              <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">
+                <img src="/assets/yt.svg" alt="" className="max-w-[16px]" />
+              </div>
+            </div>
+          </div>
+
+</div>
       </div>
     </div>
 

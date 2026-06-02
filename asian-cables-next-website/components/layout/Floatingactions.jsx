@@ -5,6 +5,7 @@ import {
   Download,
   Phone,
   FileText,
+  ChevronDown,
   X,
 } from "lucide-react";
 import Link from "next/link";
@@ -82,8 +83,8 @@ export default function FloatingActions() {
 
   return (
     <>
-      {/* FLOATING BAR */}
-   <div
+  {/* FLOATING BAR */}
+ <div
   className={`fixed left-0 right-0 md:right-auto m-auto w-[96%] md:min-w-[589px] md:w-[auto] md:left-1/2 bottom-3 md:bottom-6 z-[999999] md:-translate-x-1/2 transition-all duration-500 ${
     show && !hideAtFooter
       ? "translate-y-0 opacity-100"
@@ -93,19 +94,19 @@ export default function FloatingActions() {
   <div className="flex overflow-visible rounded-md border border-blue-200 bg-white/65 border-[1px] shadow-[0px_20px_60px_0px_#00000026] p-2 md:justify-center justify-between gap-[10px] md:gap-[25px]">
 
     {/* COMPANY */}
-    <Link href="#" className="flex  f-part flex min-h-[45px] items-center rounded-[4px]  gap-1 md:gap-[10px]   text-[12px] leading-[18px]  md:text-[15px] md:leading-[22.5px] font-[15px] text-[#1E3C8C] font-[500] bg-white/60  w-[40%] justify-center">
+    <Link href="#" className="flex  f-part f-first flex min-h-[45px] items-center rounded-[4px]  gap-1 md:gap-[10px]   text-[12px] leading-[18px]  md:text-[15px] md:leading-[22.5px] font-[15px] text-[#1E3C8C] font-[500] bg-white/60  w-[35%] md:w-[40%] justify-center">
       <FileText className="h-[15px] w-[15px] md:h-5 md:w-5" />
       Company Overview
     </Link>
 
     {/* CONTACT */}
-    <Link href="#"  className="flex f-part min-h-[45px]  flex items-center rounded-[4px]  gap-1 md:gap-[10px]   text-[12px] leading-[18px] md:text-[15px] md:leading-[22.5px] font-[15px] text-[#1E3C8C] font-[500] bg-white/60  w-[33%] justify-center w-[30%]">
+    <Link href="#"  className="flex f-part min-h-[45px]  flex items-center rounded-[4px]  gap-1 md:gap-[10px]   text-[12px] leading-[18px] md:text-[15px] md:leading-[22.5px] font-[15px] text-[#1E3C8C] font-[500] bg-white/60  w-[35%] justify-center md:w-[30%]">
       <Phone className="h-[15px] w-[15px] md:h-5 md:w-5" />
       Contact us
     </Link>
 
     {/* DOWNLOADS */}
-    <div className="relative w-[33%] justify-center md:w-[30%]">
+    <div className="relative justify-center w-[40%] md:w-[30%]">
 
       <button
         onClick={() =>
@@ -114,7 +115,16 @@ export default function FloatingActions() {
         className="flex min-h-[45px] download-btn rounded-[4px] items-center gap-1 md:gap-2 bg-[#1E3C8C]  text-[12px] leading-[18px]  md:text-[15px] md:leading-[1.2] md:text-sm text-white hover:bg-[#1E3C8C] w-[100%] h-[100%] justify-center"
       >
         <Download   className="h-[15px] w-[15px] md:h-5 md:w-5" />
-        Downloads
+        Downloads  <ChevronDown
+                        size={15}
+                        className={` ${
+                          openDownloads ? "rotate-180" : ""
+                        } ${
+            openDownloads
+              ? "font-[600]"
+              : "font-[400]"
+          }`}
+                      />
       </button>
 
       {/* POPUP */}
