@@ -103,30 +103,15 @@ export default function ProductsMegaMenu({ industryGroups = {}, typeGroups = {} 
 
             {/* TYPE CONTENT */}
             {activeTab === "type" && (
-              <div className="grid-cols-3 gap-x-20 gap-y-14 masonry">
-                {Object.entries(typeGroups).map(([catName, prods]) => (
-                  <div key={catName} className="break-inside-avoid masonry-item">
-                    <p className="relative flex items-center mb-[15px] h-[24px] pl-3 text-[16px] font-[600] leading-[106%] text-[#2D2D2D]">
- <span
-    className="absolute left-0 top-0 right-auto h-[24px] w-[3px]"
-    style={{
-      background:
-        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
-    }}
-  />  
-                      {catName}
-                    </p>
-                    <div className="flex flex-col gap-4">
-                      {prods.map(p => (
-                        <Link
-                          key={p._id}
-                          href={`/product/${p.slug}`}
-                          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
-                        >
-                          {p.name}
-                        </Link>
-                      ))}
-                    </div>
+              <div className="custom-grid grid grid-cols-3 gap-x-20 gap-y-4">
+                {Object.values(typeGroups).flat().map((p) => (
+                  <div key={p._id} className="break-inside-avoid">
+                    <Link
+                      href={`/product/${p.slug}`}
+                      className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A] block"
+                    >
+                      {p.name}
+                    </Link>
                   </div>
                 ))}
               </div>
