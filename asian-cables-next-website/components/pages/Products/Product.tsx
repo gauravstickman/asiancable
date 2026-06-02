@@ -82,10 +82,13 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
                   { label: "Conductor", value: "Annealed Copper", icon: "/assets/p-2.svg" },
                   { label: "Insulation", value: "PVC / XLPE", icon: "/assets/p-3.svg" },
                   { label: "Shielding", value: "Individual / Overall Screening Options", icon: "/assets/p-4.svg" }
-                ]).map((spec: any, idx: number) => (
+                ]).map((spec: any, idx: number) => {
+                  const defaultIcons = ["/assets/p-1.svg", "/assets/p-2.svg", "/assets/p-3.svg", "/assets/p-4.svg"];
+                  const displayIcon = spec.icon || defaultIcons[idx % 4] || "/assets/p-1.svg";
+                  return (
                   <div key={idx} className="flex items-center items-center gap-2">
                     <div className="flex h-7 w-7 shrink-0 items-center justify-center">
-                      <img src={spec.icon || "/assets/p-1.svg"} alt="" className="w-8" />
+                      <img src={displayIcon} alt="" className="w-8" />
                     </div>
 
                     <div>
@@ -98,7 +101,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
                       </span>
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
 
               {/* IDEAL FOR */}
@@ -252,7 +255,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
             <div className="relative min-h-[520px] overflow-hidden rounded-[6px] bg-white lg:col-span-7">
               {/* BACKGROUND IMAGE */}
               <img
-                src="/assets/Container-2.png"
+                src={p.featuresImage ? getImg(p.featuresImage) : "/assets/Container-2.png"}
                 alt=""
                 className="object-right-topss absolute top-0 right-0 h-full w-[55%] object-cover"
               />

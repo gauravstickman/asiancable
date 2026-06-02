@@ -25,7 +25,8 @@ const productSchema = new mongoose.Schema({
     },
     specifications: [{
         label: String,
-        value: String
+        value: String,
+        icon: String
     }],
     idealFor: [{
         type: String
@@ -62,6 +63,9 @@ const productSchema = new mongoose.Schema({
     features: [{
         type: String
     }],
+    featuresImage: {
+        type: String,
+    },
     image: {
         type: String,
     },

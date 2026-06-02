@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
 import {
     LayoutDashboard,
     Layers,
@@ -57,7 +58,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             {/* Branding & Mobile Close */}
             <div className="p-6 flex items-center justify-between">
                 <Link to="/admin" className="flex items-center gap-3 group" onClick={onClose}>
-                    <img src="logo.svg" alt="Asian Cables" className="h-10 w-auto" />
+                    <img src={logo} alt="Asian Cables" className="h-10 w-auto" />
                 </Link>
                 <button
                     onClick={onClose}

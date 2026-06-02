@@ -2,7 +2,7 @@ const Product = require('../models/Product');
 
 exports.createProduct = async (req, res) => {
     try {
-        const { name, category, industry, description, specifications, idealFor, overviewDescription, standards, features, catalogueName, catalogueDescription, catalogueImage, cataloguePdf, applications, projects, stats, image: bodyImage, overviewImage: bodyOverviewImage } = req.body;
+        const { name, category, industry, description, specifications, idealFor, overviewDescription, standards, features, featuresImage, catalogueName, catalogueDescription, catalogueImage, cataloguePdf, applications, projects, stats, image: bodyImage, overviewImage: bodyOverviewImage } = req.body;
         const image = req.files && req.files.image ? req.files.image[0].path : (bodyImage || '');
         const overviewImage = req.files && req.files.overviewImage ? req.files.overviewImage[0].path : (bodyOverviewImage || '');
 
@@ -20,6 +20,7 @@ exports.createProduct = async (req, res) => {
             overviewImage,
             standards: standards ? JSON.parse(standards) : [],
             features: features ? JSON.parse(features) : [],
+            featuresImage,
             catalogueName,
             catalogueDescription,
             catalogueImage,
@@ -79,7 +80,7 @@ exports.getProductBySlug = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
     try {
-        const { name, category, industry, description, specifications, idealFor, overviewDescription, standards, features, catalogueName, catalogueDescription, catalogueImage, cataloguePdf, applications, projects, stats } = req.body;
+        const { name, category, industry, description, specifications, idealFor, overviewDescription, standards, features, featuresImage, catalogueName, catalogueDescription, catalogueImage, cataloguePdf, applications, projects, stats } = req.body;
         const product = await Product.findById(req.params.id);
 
         if (product) {
@@ -95,6 +96,7 @@ exports.updateProduct = async (req, res) => {
             if (overviewDescription !== undefined) product.overviewDescription = overviewDescription;
             if (standards !== undefined) product.standards = JSON.parse(standards);
             if (features !== undefined) product.features = JSON.parse(features);
+            if (featuresImage !== undefined) product.featuresImage = featuresImage;
             
             if (catalogueName !== undefined) product.catalogueName = catalogueName;
             if (catalogueDescription !== undefined) product.catalogueDescription = catalogueDescription;

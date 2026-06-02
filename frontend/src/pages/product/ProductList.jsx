@@ -21,6 +21,8 @@ const ProductList = () => {
     const [categoryId, setCategoryId] = useState('');
     const [industryId, setIndustryId] = useState('');
     const [features, setFeatures] = useState('');
+    const [featuresImage, setFeaturesImage] = useState('');
+    const [featuresImagePreview, setFeaturesImagePreview] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [imagePreview, setImagePreview] = useState('');
     
@@ -99,6 +101,8 @@ const ProductList = () => {
             setCategoryId(product.category?._id || product.category || '');
             setIndustryId(product.industry?._id || product.industry || '');
             setFeatures(product.features ? product.features.join('\n') : '');
+            setFeaturesImage(product.featuresImage || '');
+            setFeaturesImagePreview(getImageUrl(product.featuresImage));
             
             setDescription(product.description || '');
             setSpecificationsArray(product.specifications || []);
@@ -125,6 +129,8 @@ const ProductList = () => {
             setCategoryId('');
             setIndustryId('');
             setFeatures('');
+            setFeaturesImage('');
+            setFeaturesImagePreview('');
             
             setDescription('');
             setSpecificationsArray([]);
@@ -161,6 +167,7 @@ const ProductList = () => {
             category: categoryId || undefined,
             industry: industryId || undefined,
             features: JSON.stringify(features.split('\n').map(f => f.trim()).filter(f => f.length > 0)),
+            featuresImage,
             description,
             specifications: JSON.stringify(specificationsArray),
             idealFor: JSON.stringify(idealFor.split('\n').map(f => f.trim()).filter(f => f.length > 0)),
@@ -295,9 +302,18 @@ const ProductList = () => {
                                 </div>
                                 <div className="space-y-3">
                                     {specificationsArray.map((spec, idx) => (
-                                        <div key={idx} className="flex gap-2 items-start">
-                                            <input type="text" value={spec.label || ''} onChange={(e) => { const arr = [...specificationsArray]; arr[idx].label = e.target.value; setSpecificationsArray(arr); }} className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm" placeholder="Label (e.g. Voltage Rating)" />
-                                            <input type="text" value={spec.value || ''} onChange={(e) => { const arr = [...specificationsArray]; arr[idx].value = e.target.value; setSpecificationsArray(arr); }} className="flex-[2] px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm" placeholder="Value (e.g. Up to 11 kV)" />
+                                        <div key={idx} className="flex gap-2 items-center bg-slate-50 p-2 rounded-lg border border-slate-200">
+                                            <div className="flex-1 flex flex-col gap-2">
+                                                <div className="flex gap-2">
+                                                    <input type="text" value={spec.label || ''} onChange={(e) => { const arr = [...specificationsArray]; arr[idx].label = e.target.value; setSpecificationsArray(arr); }} className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm" placeholder="Label (e.g. Voltage Rating)" />
+                                                    <input type="text" value={spec.value || ''} onChange={(e) => { const arr = [...specificationsArray]; arr[idx].value = e.target.value; setSpecificationsArray(arr); }} className="flex-[2] px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm" placeholder="Value (e.g. Up to 11 kV)" />
+                                                </div>
+                                                <div className="flex gap-2 items-center">
+                                                    <input type="text" value={spec.icon || ''} onChange={(e) => { const arr = [...specificationsArray]; arr[idx].icon = e.target.value; setSpecificationsArray(arr); }} className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm" placeholder="Icon URL (Optional)" />
+                                                    <button type="button" onClick={() => { setArrayPickerTarget({ type: 'spec', index: idx }); setPickerTarget('array'); setPickerOpen(true); }} className="bg-white px-3 py-2 border border-slate-300 rounded-lg text-sm hover:bg-slate-100 transition-colors" title="Choose Icon"><Image size={16}/></button>
+                                                    {spec.icon && <img src={getImageUrl(spec.icon)} alt="Icon" className="h-8 w-8 object-contain bg-white border border-slate-200 p-1 rounded" />}
+                                                </div>
+                                            </div>
                                             <button type="button" onClick={() => {
                                                 const arr = [...specificationsArray]; arr.splice(idx, 1); setSpecificationsArray(arr);
                                             }} className="text-red-500 hover:bg-red-50 p-2 rounded shrink-0"><Trash2 size={18}/></button>
@@ -393,6 +409,37 @@ const ProductList = () => {
                                     className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm resize-none"
                                     placeholder="Accurate signal transmission...&#10;Flexible and durable..."
                                 />
+                            </div>
+
+                            <div className="space-y-1.5 md:col-span-1">
+                                <label className="text-sm font-medium text-slate-700">Key Features Image</label>
+                                <div className="flex gap-2 mb-2">
+                                    <input 
+                                        type="text" 
+                                        value={featuresImage}
+                                        onChange={(e) => {
+                                            setFeaturesImage(e.target.value);
+                                            setFeaturesImagePreview(getImageUrl(e.target.value));
+                                        }}
+                                        className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm"
+                                        placeholder="Features image URL..."
+                                    />
+                                    <button 
+                                        type="button"
+                                        onClick={() => {
+                                            setPickerTarget('featuresImage');
+                                            setPickerOpen(true);
+                                        }}
+                                        className="bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg transition-colors border border-slate-300 flex items-center justify-center gap-1.5 text-slate-650 font-semibold text-sm cursor-pointer"
+                                    >
+                                        <Image size={18} /> Choose
+                                    </button>
+                                </div>
+                                {featuresImagePreview && (
+                                    <div className="relative w-24 h-24 rounded-lg overflow-hidden border border-slate-300 shadow-sm bg-slate-50 flex items-center justify-center">
+                                        <img src={featuresImagePreview} alt="Preview" className="w-full h-full object-contain p-1" />
+                                    </div>
+                                )}
                             </div>
 
                             <div className="col-span-1 md:col-span-2 pt-4 border-t border-slate-200 mt-4">
@@ -780,6 +827,9 @@ const ProductList = () => {
                     } else if (pickerTarget === 'overviewImage') {
                         setOverviewImage(url);
                         setOverviewImagePreview(getImageUrl(url));
+                    } else if (pickerTarget === 'featuresImage') {
+                        setFeaturesImage(url);
+                        setFeaturesImagePreview(getImageUrl(url));
                     } else if (pickerTarget === 'catalogue') {
                         setCatalogueImage(url);
                     } else if (pickerTarget === 'array' && arrayPickerTarget) {
@@ -791,6 +841,10 @@ const ProductList = () => {
                             const arr = [...projectsArray];
                             arr[arrayPickerTarget.index].image = url;
                             setProjectsArray(arr);
+                        } else if (arrayPickerTarget.type === 'spec') {
+                            const arr = [...specificationsArray];
+                            arr[arrayPickerTarget.index].icon = url;
+                            setSpecificationsArray(arr);
                         }
                     }
                 }} 
