@@ -36,7 +36,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
   return (
     <>
       <WebsiteNavbarDark />
-      <BottomBar currentProduct={p} />
+      {/* <BottomBar currentProduct={p} /> */}
 
       <section className="bg-[#f6f6f6] md:pt-[64px] pb-15 md:pb-[96px]">
         <div className="mx-auto max-w-[1320px] px-4">

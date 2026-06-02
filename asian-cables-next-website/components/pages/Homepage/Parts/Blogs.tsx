@@ -82,7 +82,7 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
           />
 
           {/* OVERLAY */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,_#000000_0%,_rgba(0,0,0,0)_66.11%)]" />
 
           {/* CONTENT */}
           <div className="absolute inset-0 flex flex-col p-5">
@@ -105,7 +105,7 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
 
             <Link
               href={blog.link}
-              className="mt-auto flex items-center gap-3 text-[14px] text-white"
+              className="flex items-center gap-3 text-[14px] text-white"
             >
               Read More
               <ArrowRight size={18} />
@@ -133,7 +133,7 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
               />
 
               {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,_#000000_0%,_rgba(0,0,0,0)_66.11%)]" />
 
               {/* CONTENT */}
               <div className="absolute inset-0 flex flex-col p-5">
@@ -157,7 +157,7 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
                 )}
 
                 {/* READ MORE */}
-                <Link href={blog.link} className="flex items-center gap-3 text-[14px] leading-[150%] text-white hover:underline mt-auto self-start">
+                <Link href={blog.link} className="flex items-center gap-3 text-[14px] leading-[150%] text-white hover:underline mt-auto1 self-start">
                   Read More
                   <ArrowRight size={18} />
                 </Link>

@@ -77,7 +77,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
               </div>
 
               {/* CONTENT */}
-              <div className="relative flex min-h-[262px] flex-col p-7">
+              <div className="relative flex min-h-[268px] flex-col p-7">
                 {/* GRADIENT */}
      {/* BACKGROUND IMAGE */}
                <div className="absolute right-0 bottom-0 h-[100%] w-[100%]">

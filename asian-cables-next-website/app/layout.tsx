@@ -12,19 +12,22 @@ const workSans = Work_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://asian-cables-next-website.vercel.app"),
+  icons: {
+    icon: "/favicon.png",
+  },
 
-  title: "Asian Cables | Mining & Telecom Cable Manufacturer",
+  title: "Asian Cables | An RPG Group Company",
   description:
     "Asian Cables delivers world-class power and telecom cable solutions for mining, industrial, utility, and critical infrastructure projects worldwide.",
 
   openGraph: {
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/favicon.png",
         width: 1200,
         height: 630,
         alt: "Asian Cables",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
   },
@@ -32,11 +35,11 @@ export const metadata: Metadata = {
   twitter: {
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/favicon.png",
         width: 1200,
         height: 630,
         alt: "Asian Cables",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
   },

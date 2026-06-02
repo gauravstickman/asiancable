@@ -106,6 +106,8 @@ useEffect(() => {
 const isProductsActive =
   pathname.startsWith("/products");
 const [showCompanyMenu, setShowCompanyMenu] = useState(false);
+const [showIndustryMenu, setShowIndustryMenu] = useState(false);
+const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
 
   return (
     <nav
@@ -156,7 +158,10 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
           {/* PRODUCTS */}
           <div
             className="relative"
-            onMouseEnter={() => setShowMegaMenu(true)}
+           onMouseEnter={() => {
+  setShowIndustryMenu(false);
+  setShowMegaMenu(true);
+}}
             
           >
             
@@ -196,18 +201,91 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
           </div>
 
 
- <Link
-            href="/industries"
-            className={`text-[16px] ${
-    pathname === "/industries"
+ <div
+  className="relative"
+  onMouseEnter={() => setShowIndustryMenu(true)}
+  onMouseLeave={() => setShowIndustryMenu(false)}
+>
+  <button
+onMouseEnter={() => {
+  setShowMegaMenu(false);
+  setShowIndustryMenu(true);
+}}
+  className={`flex items-center gap-1 text-[16px] ${
+    pathname === "/company"
       ? "font-[600]"
       : "font-[400]"
   } ${
               isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
             }`}
-          >
-            Industries
-          </Link>
+>
+  Industries
+
+  <ChevronDown
+    size={16}
+    className={`transition-transform duration-300 ${
+      showIndustryMenu ? "rotate-180" : ""
+    }`}
+  />
+</button>
+
+  {showIndustryMenu && (
+    <div className="absolute top-full left-0 z-50 min-w-[280px] rounded-[6px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+      <div className="flex flex-col gap-2">
+
+        <Link
+          href="/industries/renewables"
+          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          Renewables
+        </Link>
+
+        <Link
+          href="/industries/infrastructure"
+          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          Infrastructure
+        </Link>
+
+        <Link
+          href="/industries/industrial"
+          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          Industrial
+        </Link>
+
+        <Link
+          href="/industries/transportation"
+          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          Transportation
+        </Link>
+
+        <Link
+          href="/industries/oil-gas"
+          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          Oil & Gas
+        </Link>
+
+        <Link
+          href="/industries/utilities"
+          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          Utilities
+        </Link>
+
+        <Link
+          href="/industries/manufacturing"
+          className="text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          Manufacturing
+        </Link>
+
+      </div>
+    </div>
+  )}
+</div>
 
 
           {/* COMPANY */}
@@ -303,9 +381,8 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
 
       {/* Mobile Menu */}
      {isMenuOpen && (
-  <div className="fixed inset-0 z-[9999999] bg-white md:hidden akn-mobile-menu">
-
-  
+   <div className="fixed inset-0 z-[9999999] bg-white md:hidden akn-mobile-menu overflow-auto">
+ <div className="h-[calc(100vh_-_80px)] overflow-y-auto overscroll-contain">
 
     {/* MAIN MENU */}
  <div
@@ -334,7 +411,7 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
   </button>
 </div>
 <span className="m-logo absolute top-6 left-6"> <img src="/assets/LOGO_Dark.svg"/></span>
-      <div className="flex flex-col gap-6 mt-6">
+      <div className="flex flex-col gap-6 mt-6 overflow-it">
 
         <h4>
         <Link
@@ -426,12 +503,82 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
   )}
 </div>
 
-        <h4><Link
-          href="/industries"
-          className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
-        >
-          Industries
-        </Link></h4>
+     <div>
+  <button
+  onClick={() =>
+    setShowIndustryMobileMenu(!showIndustryMobileMenu)
+  }
+  className={`flex items-center gap-3 text-[24px] leading-[26px] italic font-[700] transition-colors duration-300 ${
+    showIndustryMobileMenu
+      ? "text-[#1E3C8C]"
+      : "text-[#9AA4C0]"
+  }`}
+>
+  <h4>Industries</h4>
+
+  <ChevronDown
+    size={22}
+    className={`transition-transform duration-300 ${
+      showIndustryMobileMenu
+        ? "rotate-180"
+        : ""
+    }`}
+  />
+</button>
+
+  {showIndustryMobileMenu && (
+    <div className="mt-6 flex flex-col gap-3 pl-0">
+
+      <h5><Link
+        href="/industries/renewables"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Renewables</Link></h5>
+
+      <h5><Link
+        href="/industries/infrastructure"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Infrastructure
+      </Link></h5>
+
+      <h5><Link
+        href="/industries/industrial"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Industrial
+      </Link></h5>
+
+      <h5><Link
+        href="/industries/transportation"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Transportation
+      </Link></h5>
+
+      <h5><Link
+        href="/industries/oil-and-gas"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Oil & Gas
+      </Link></h5>
+
+      <h5><Link
+        href="/industries/manufacturing"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Manufacturing
+      </Link></h5>  
+
+      <h5><Link
+        href="/industries/utilities"
+        className="text-[20px] italic font-[700] text-[#8B8B8B]"
+      >
+        Utilities
+      </Link></h5>
+    </div>
+  )}
+</div>
 
            <h4><Link
           href="/career"
@@ -517,7 +664,7 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
   </div>
 
   {/* SOCIAL */}
-  <div className="flex gap-4">
+  <div className="flex gap-4 pb-3">
 
     {/* SOCIAL */}
             <div className="flex items-center gap-2">
@@ -543,7 +690,7 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
       </div>
     </div>
 
-
+</div>
   </div>
 )}
     </nav>

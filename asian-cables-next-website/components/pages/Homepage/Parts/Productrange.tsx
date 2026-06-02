@@ -291,10 +291,9 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
   
   modules={[Pagination, Autoplay]}
   slidesPerView={1}
-  loop={true}
-  pagination={{
-    clickable: true,
-  }}
+   spaceBetween={8}
+  loop
+ 
   autoplay={{
     delay: 4000,
     disableOnInteraction: false,
