@@ -69,7 +69,7 @@ const staticSlides = [
 
 export default function Homepage() {
   const swiperRef = useRef<any>(null);
-const isMobile = window.innerWidth < 768;
+
   const [current, setCurrent] = useState(0);
   const [slides, setSlides] = useState<any[]>(staticSlides);
   const [aboutText, setAboutText] = useState<string>("");
@@ -186,7 +186,6 @@ const isMobile = window.innerWidth < 768;
       <WebsiteNavbar />
       <Swiper
         key={slides.length}
-        
         modules={[Parallax, Autoplay]}
         speed={1200}
         parallax={true}
