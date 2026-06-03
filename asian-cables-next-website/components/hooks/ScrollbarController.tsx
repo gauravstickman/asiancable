@@ -4,25 +4,21 @@ import { useEffect } from "react";
 
 export function ScrollbarController() {
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
 
     const handleScroll = () => {
-      document.documentElement.classList.add("show-scrollbar");
-
+      document.body.classList.add('is-scrolling');
       clearTimeout(timer);
-
       timer = setTimeout(() => {
-        document.documentElement.classList.remove("show-scrollbar");
+        document.body.classList.remove('is-scrolling');
       }, 800);
     };
 
-    window.addEventListener("scroll", handleScroll);
-
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
       clearTimeout(timer);
     };
   }, []);
-
   return null;
 }

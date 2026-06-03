@@ -657,13 +657,30 @@ body {
   background-clip: content-box;
 }
 
-.swiper-slide,
-.swiper-slide img,
-.swiper-slide .overlay {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0px;
+}
+
+body.is-scrolling * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.35) transparent;
+}
+
+body.is-scrolling *::-webkit-scrollbar {
+  width: 4px;
+}
+
+body.is-scrolling *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.is-scrolling *::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 99px;
 }
 
 #__next {
