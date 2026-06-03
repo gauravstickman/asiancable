@@ -233,7 +233,7 @@ export default function Homepage() {
               <div className="md:max-w-[1165px]" data-swiper-parallax="-180">
                 <h1
                   data-swiper-parallax="-50"
-                  className="whitespace-pre-line text-[36px] leading-[42px] font-[700] text-white italic tracking-[-5%] md:text-[64px] md:leading-[71px]"
+                  className="whitespace-pre-line text-[36px] leading-[42px] font-[700] text-white italic tracking-[-0.03em] md:text-[64px] md:leading-[71px]"
                   dangerouslySetInnerHTML={{ __html: slide.title }}
                 />
 
