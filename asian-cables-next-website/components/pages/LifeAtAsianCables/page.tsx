@@ -1,14 +1,32 @@
 "use client";
+
 import Footer from "../../layout/Footer";
 import WebsiteNavbar from "../../layout/WebsiteNavbar";
+import TestimonialsSection from "../Homepage/Parts/Testimonials";
+import CultureValuesSection from "./parts/CultureValuesSection";
+import DayInLifeSection from "./parts/DayInLifeSection";
+import ExperienceSection from "./parts/ExperienceSection";
+import Hero from "./parts/Hero";
+import LifeBeyondWorkSection from "./parts/LifeBeyondWorkSection";
+import OpenRolesSection from "./parts/OpenRolesSection";
+import WhyWorkSection from "./parts/Whyworksection";
+
 const Life = () => {
-return (
-  <div>
-    <WebsiteNavbar />
-    <div><br></br> <br></br> <br></br>Start from here</div>
-    <Footer />
-  </div>
-);
+  return (
+    <div>
+      <WebsiteNavbar />
+
+    <Hero/>
+    <WhyWorkSection/> 
+<CultureValuesSection/>
+<ExperienceSection/>
+<TestimonialsSection/> 
+<DayInLifeSection/>
+<LifeBeyondWorkSection/>
+<OpenRolesSection/>
+      <Footer />
+    </div>
+  );
 };
 
 export default Life;
