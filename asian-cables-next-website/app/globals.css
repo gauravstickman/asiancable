@@ -728,6 +728,8 @@ body.is-scrolling *::-webkit-scrollbar-thumb {
   html,
   body {
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
   }
 }
 

@@ -158,8 +158,8 @@ console.log("pathname =", pathname);
           <img
             src={
               isScrolled || showMegaMenu
-                ? "/assets/LOGO_Dark.svg"
-                : "/assets/footer-logo.svg"
+                ? "/assets/LOGO_Dark.png"
+                : "/assets/footer-logo.png"
             }
             alt="Asian Cables"
             className="h-[34px] max-h-[34px] w-[110px] w-auto max-w-[110px] min-w-[110px]"
@@ -592,7 +592,7 @@ h-[30px]
     ×
   </button>
 </div>
-<span className="m-logo absolute top-6 left-6"> <img src="/assets/LOGO_Dark.svg"/></span>
+<span className="m-logo absolute top-6 left-6"> <img src="/assets/LOGO_Dark.png"/></span>
       <div className="flex flex-col gap-6 mt-6 overflow-it">
 
         <h4>

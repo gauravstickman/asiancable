@@ -64,12 +64,12 @@ export default function ProductResources({ data }: { data?: any }) {
                   </a>
 
                   {/* REQUEST */}
-                  <button className="flex h-[38px] items-center gap-2  rounded-[5.52px] bg-none px-3 text-[16px] font-[500] text-[#ffffff] transition  md:h-[48px] md:px-5 md:text-[20px] md:leading-[29.42px] md:tracking-[-0.46px]">
+                  {/* <button className="flex h-[38px] items-center gap-2  rounded-[5.52px] bg-none px-3 text-[16px] font-[500] text-[#ffffff] transition  md:h-[48px] md:px-5 md:text-[20px] md:leading-[29.42px] md:tracking-[-0.46px]">
                     Request Datasheet
                     <span className="leading-none">
                       <ChevronRight />
                     </span>
-                  </button>
+                  </button> */}
                 </div>
 
               
