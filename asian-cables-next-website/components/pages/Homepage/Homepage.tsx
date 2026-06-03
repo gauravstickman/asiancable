@@ -230,10 +230,10 @@ export default function Homepage() {
          <div className="overlay1" />
           <div className="overlay2" />
             <div className="relative z-30 mx-auto flex h-full max-w-[1320px] items-end px-6 pb-[50%] md:pb-[9%]">
-              <div className="md:max-w-[1165px]" data-swiper-parallax="-180">
+              <div className="md:max-w-[1165px] md:w-[100%]"  data-swiper-parallax="-180">
                 <h1
                   data-swiper-parallax="-50"
-                  className="whitespace-pre-line text-[36px] leading-[42px] font-[700] text-white italic tracking-[-0.03em] md:text-[64px] md:leading-[71px]"
+                  className="text-[36px] leading-[42px] font-[700] text-white italic tracking-[-0.03em]  md:text-[64px] md:leading-[71px]"
                   dangerouslySetInnerHTML={{ __html: slide.title }}
                 />
 
