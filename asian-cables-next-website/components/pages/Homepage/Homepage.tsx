@@ -227,12 +227,8 @@ export default function Homepage() {
               />
             </div>
 
-            {/* DARK OVERLAY */}
-            <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/75 via-black/45 to-black/20" />
-
-            {/* BLUE OVERLAY */}
-            <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_bottom,_rgba(0,140,255,0.35),_transparent_45%)]" />
-
+         <div className="overlay1" />
+          <div className="overlay2" />
             <div className="relative z-30 mx-auto flex h-full max-w-[1320px] items-end px-6 pb-[50%] md:pb-[9%]">
               <div className="md:max-w-[1165px]" data-swiper-parallax="-180">
                 <h1
