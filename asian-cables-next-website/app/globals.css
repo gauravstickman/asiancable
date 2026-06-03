@@ -630,42 +630,42 @@ color: #1e3c8c;
     position: relative;
     text-align: center;
 }
-html {
-  scrollbar-gutter: stable;
-}
-
-/* Hidden by default */
-::-webkit-scrollbar {
-  width: 0;
-  transition: width 0.3s ease;
-}
-
-/* Show while scrolling */
-html.show-scrollbar::-webkit-scrollbar {
-  width: 8px;
-}
-
-html.show-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 20px;
-}
-
-/* Firefox */
-html {
-  scrollbar-width: none;
-}
-
-html.show-scrollbar {
-  scrollbar-width: thin;
-}
 /* html,
 body {
   overflow-x: hidden;
   width: 100%;
 } */
- body {
-  overflow-x: clip;
+
+/* 1. Target the overall scrollbar (width and background) */
+::-webkit-scrollbar {
+  width: 12px;       /* Vertical scrollbar width */
+  height: 12px;      /* Horizontal scrollbar height */
+  background: transparent; /* Makes the track invisible so content shows through */
 }
+
+/* 2. The scrollbar handle/thumb */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.35); /* Semi-transparent grey (like Mac) */
+  border-radius: 10px;               /* Rounded ends */
+  border: 3px solid transparent;     /* Creates the floating overlay gap effect */
+  background-clip: content-box;      /* Keeps the border from coloring the thumb */
+}
+
+/* 3. Make the thumb darker on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+  background-clip: content-box;
+}
+
+.swiper-slide,
+.swiper-slide img,
+.swiper-slide .overlay {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
 #__next {
   overflow-x: hidden;
 }
