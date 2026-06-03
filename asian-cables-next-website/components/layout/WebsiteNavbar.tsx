@@ -414,8 +414,8 @@ console.log("pathname =", pathname);
       : "font-[400]"
   } ${
               isScrolled || showMegaMenu
-                ? "bg-[#1E3C8C] text-white hover:bg-blue-800"
-                : "bg-white text-[#1E3C8C] hover:bg-blue-50"
+                ? "bg-[#1E3C8C] text-white"
+                : "bg-white text-[#1E3C8C]"
             }`}
           >
             Contact
@@ -574,6 +574,7 @@ h-[30px]
       : "-translate-x-full"
   }`}
 >
+  
 
    <div
     className="absolute w-[100%] h-[80px] inset-0 bg-cover bg-center bg-no-repeat bg-right z-[-1]"
