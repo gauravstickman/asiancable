@@ -701,7 +701,10 @@ body.is-scrolling *::-webkit-scrollbar-thumb {
 
   will-change: opacity;
 }
-
+html
+{
+      overflow-x: hidden;
+}
 .overlay2 {
   position: absolute;
   inset: 0;
