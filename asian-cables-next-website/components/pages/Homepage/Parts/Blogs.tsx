@@ -58,21 +58,30 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
 
 
 {/* MOBILE SLIDER */}
-<div className="md:hidden mb-10 blog-slider">
-  <Swiper
-    modules={[Pagination, Autoplay]}
-    slidesPerView={1}
-      spaceBetween={8}
-  loop
-
-    autoplay={{
-      delay: 3000,
-      disableOnInteraction: false,
-    }}
-  >
+<div className="mb-10 blog-slider">
+ <Swiper
+  modules={[Pagination, Autoplay]}
+  slidesPerView={1}
+  spaceBetween={8}
+  loop={true}
+  autoplay={{
+    delay: 3000,
+    disableOnInteraction: false,
+  }}
+  breakpoints={{
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 12,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 16,
+    },
+  }}
+>
     {displayBlogs.map((blog, index) => (
       <SwiperSlide key={index}>
-        <div className="relative h-[327px] overflow-hidden rounded-[4px]">
+        <div className="relative h-[327px] md:h-[509px] overflow-hidden rounded-[4px]">
           
           {/* IMAGE */}
           <img
