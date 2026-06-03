@@ -724,6 +724,13 @@ body.is-scrolling *::-webkit-scrollbar-thumb {
   will-change: opacity;
 }
 
+@supports (-webkit-touch-callout: none) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
 #__next {
   overflow-x: hidden;
 }
