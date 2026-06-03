@@ -739,6 +739,7 @@ onMouseEnter={() => {
 </div>
   </div>
 )}
+<Bottombar/>
     </nav>
   );
 };
