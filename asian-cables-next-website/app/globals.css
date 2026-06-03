@@ -748,7 +748,11 @@ html,
 body {
   overscroll-behavior-x: none;
 }
-
+.main-banner .swiper-slide h1 span {
+  overflow: visible;
+  display: inline;
+  padding-right: 4px;
+}
 @media(max-width:767px)
 {
   body .floating-bar
