@@ -736,12 +736,17 @@ span.m-logo img {
   }
 }
 body {
-  overflow-x: clip; /* Clips without creating a new scroll container */
+  overflow-x: clip; 
   max-width: 100%;
 }
 
 #__next {
   overflow-x: hidden;
+}
+
+html,
+body {
+  overscroll-behavior-x: none;
 }
 
 @media(max-width:767px)
