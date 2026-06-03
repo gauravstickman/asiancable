@@ -81,13 +81,13 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
 >
     {displayBlogs.map((blog, index) => (
       <SwiperSlide key={index}>
-        <div className="relative h-[327px] md:h-[509px] overflow-hidden rounded-[4px]">
+        <div className="group relative h-[327px] md:h-[509px] overflow-hidden rounded-[4px]">
           
           {/* IMAGE */}
           <img
             src={blog.image}
             alt={blog.title}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover transition duration-700  group-hover:scale-105" loading="eager" draggable="false"
           />
 
           {/* OVERLAY */}
@@ -127,53 +127,6 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
   </Swiper>
 </div>
 
-        {/* BLOG GRID */}
-        <div className="hidden md:grid hide-scrollbar mb-10 flex grid-cols-1 gap-2 overflow-x-auto md:mb-14 md:grid md:grid-cols-2 lg:grid-cols-3">
-          {displayBlogs.map((blog, index) => (
-            <div
-              key={index}
-              className="group relative h-[327px] min-w-[82vw] overflow-hidden rounded-[4px] md:h-[509px] md:min-w-[100%] md:rounded-[6px]"
-            >
-              {/* IMAGE */}
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              />
-
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,_#000000_0%,_rgba(0,0,0,0)_66.11%)]" />
-
-              {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col p-5">
-                {/* TAG */}
-                <div className="mb-[19px]">
-                  <span className="rounded-[4px] bg-white px-3 inline-flex items-center h-[27px] text-[14px] leading-[16px] font-[500] text-[#525252]">
-                    {blog.tag}
-                  </span>
-                </div>
-
-                {/* TITLE */}
-                <h3 className="mb-[7px] max-w-[90%] text-[20px] font-[700] text-white italic md:text-[24px] leading-[120%]">
-                  {blog.title}
-                </h3>
-
-                {/* DESCRIPTION */}
-                {blog.description && (
-                  <p className="mb-[16px] max-w-[90%] text-[14px] leading-[150%] text-white">
-                    {blog.description}
-                  </p>
-                )}
-
-                {/* READ MORE */}
-                <Link href={blog.link} className="flex items-center gap-3 text-[14px] leading-[150%] text-white hover:underline mt-auto1 self-start">
-                  Read More
-                  <ArrowRight size={18} />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* VIEW ALL BUTTON */}
         <button className="border-it-b mx-auto flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">

@@ -739,6 +739,9 @@ span.m-logo img {
 #__next {
   overflow-x: hidden;
 }
+.site-wrapper {
+  overflow-x: hidden;
+}
 @media(max-width:767px)
 {
   body .floating-bar
