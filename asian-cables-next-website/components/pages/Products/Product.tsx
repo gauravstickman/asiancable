@@ -4,7 +4,7 @@ import api, { getBaseUrl } from "../../../utils/api";
 import { CircleCheck, Award } from "lucide-react";
 import WebsiteNavbarDark from "../../../components/layout/Navbardark";
 import Footer from "../../../components/layout/Footer";
-import BottomBar from "../../../components/layout/Bottombar";
+// import BottomBar from "../../../components/layout/Bottombar";
 import ProjectSection from "../Homepage/Parts/Applications";
 import ProductResources from "./parts/ProductResources";
 import ProvenFieldSection from "../Homepage/Parts/Fields";
@@ -36,7 +36,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
   return (
     <>
       <WebsiteNavbarDark />
-      <BottomBar currentProduct={p} />
+      {/* <BottomBar currentProduct={p} /> */}
 
       <section className="bg-[#f6f6f6] md:pt-[64px] pb-15 md:pb-[96px]">
         <div className="mx-auto max-w-[1320px] px-4">

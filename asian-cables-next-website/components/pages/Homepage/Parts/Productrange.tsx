@@ -304,7 +304,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
       <SwiperSlide key={index}>
 
         {/* SAME CARD CONTENT */}
-        <div className="relative h-[600px] overflow-hidden rounded-[4px]">
+        <div className="relative h-[480px] overflow-hidden rounded-[4px]">
           
   {/* IMAGE */}
                 <img

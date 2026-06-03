@@ -134,9 +134,9 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
                       {item.content}
                     </p>
 
-                    <button className="text-[16px] font-medium text-[#1E3C8C] hover:underline">
+                    {/* <button className="text-[16px] font-medium text-[#1E3C8C] hover:underline">
                       Learn more
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               );
@@ -204,9 +204,9 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
                     {item.content}
                   </p>
 
-                  <button className="mt-[10.66px] text-[16px] leading-[15.99px] tracking-[-0.4%]  font-medium text-[#1E3C8C]">
+                  {/* <button className="mt-[10.66px] text-[16px] leading-[15.99px] tracking-[-0.4%]  font-medium text-[#1E3C8C]">
                     Learn more
-                  </button>
+                  </button> */}
                 </div>
               </div>
             );

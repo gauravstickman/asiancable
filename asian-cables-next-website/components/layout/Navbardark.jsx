@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
+import Bottombar from "../layout/Bottombar";
 import {
   Phone,
   Mail,
@@ -738,6 +739,7 @@ onMouseEnter={() => {
 </div>
   </div>
 )}
+<Bottombar currentProduct={p} />  
     </nav>
   );
 };

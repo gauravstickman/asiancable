@@ -128,7 +128,7 @@ autoplay={true}
 >
           {projects.map((project, index) => (
             <SwiperSlide key={index} className="">
-              <div className="group relative h-[506px] overflow-hidden rounded-[2px]">
+              <div className="group relative h-[480px] overflow-hidden rounded-[2px]">
                 {/* IMAGE */}
                 <img
                   src={project.image}

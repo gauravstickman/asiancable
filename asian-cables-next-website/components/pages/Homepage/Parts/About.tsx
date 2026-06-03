@@ -44,7 +44,8 @@ export default function AboutUs({ dynamicText }: AboutUsProps) {
   return (
     <>
     <div className="fadded hidden md:block">
-      <img src="assets/faded.png"/>
+      <img src="/assets/faded.png" loading="eager"
+    draggable="false"/>
     </div>
     <section
       ref={sectionRef}

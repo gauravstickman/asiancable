@@ -396,7 +396,8 @@ export default function Homepage() {
             </div>
           </div>
         </button>
-      <div className="fadded-mbl md:hidden"> <img src="assets/faded.png"/> </div>
+      <div className="fadded-mbl md:hidden"> <img src="/assets/faded.png" loading="eager"
+    draggable="false"/> </div>
       </Swiper>
       
       <AboutUs dynamicText={aboutText} />
