@@ -723,7 +723,9 @@ body.is-scrolling *::-webkit-scrollbar-thumb {
 
   will-change: opacity;
 }
-
+span.m-logo img {
+    max-width: 120px;
+}
 @supports (-webkit-touch-callout: none) {
   html,
   body {
