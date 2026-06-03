@@ -22,6 +22,8 @@ import BlogList from './pages/blog/BlogList';
 import HomepageSettingsMaster from './pages/homepage-settings/HomepageSettingsMaster';
 import IndustryPageList from './pages/homepage-settings/IndustryPageList';
 import IndustryPageSettings from './pages/homepage-settings/IndustryPageSettings';
+import ManufacturingSettings from './pages/homepage-settings/ManufacturingSettings';
+import AboutSettings from './pages/homepage-settings/AboutSettings';
 import Settings from './pages/settings/Settings';
 
 function App() {
@@ -55,6 +57,8 @@ function App() {
             <Route path="homepage-settings" element={<HomepageSettingsMaster />} />
             <Route path="industry-page" element={<IndustryPageList />} />
             <Route path="industry-page/:id" element={<IndustryPageSettings />} />
+            <Route path="manufacturing-page" element={<ManufacturingSettings />} />
+            <Route path="about-page" element={<AboutSettings />} />
             
             <Route path="settings" element={<Settings />} />
           </Route>

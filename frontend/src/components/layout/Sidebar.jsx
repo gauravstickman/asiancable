@@ -13,7 +13,9 @@ import {
     Zap,
     X,
     FileText,
-    MessageSquare
+    MessageSquare,
+    Factory,
+    Info
 } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/authSlice';
@@ -35,7 +37,9 @@ const Sidebar = ({ isOpen, onClose }) => {
             group: 'Content Management',
             items: [
                 { path: '/admin/homepage-settings', name: 'Home', icon: LayoutDashboard },
+                { path: '/admin/about-page', name: 'About', icon: Info },
                 { path: '/admin/industry-page', name: 'Industries', icon: FileText },
+                { path: '/admin/manufacturing-page', name: 'Manufacturing', icon: Factory },
                 // { path: '/admin/categories', name: 'Categories', icon: Layers },
                 { path: '/admin/products', name: 'Products', icon: Package },
                 // { path: '/admin/blog-categories', name: 'Blog Categories', icon: Layers },

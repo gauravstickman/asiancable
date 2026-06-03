@@ -17,7 +17,6 @@ const HomepageSettingsMaster = () => {
         { id: 'heroSlides', label: 'Hero Slider', icon: Image },
         { id: 'aboutUs', label: 'About Us', icon: FileText },
         { id: 'facts', label: 'Facts & Impact', icon: BarChart2 },
-        { id: 'applications', label: 'Applications', icon: Layout },
         { id: 'provenFields', label: 'Proven Fields', icon: Briefcase },
         { id: 'testimonials', label: 'Testimonials', icon: Star },
         { id: 'engineering', label: 'Engineering', icon: PenTool },
@@ -40,6 +39,8 @@ const HomepageSettingsMaster = () => {
     }, []);
 
     const handleSave = async () => {
+        if (!validateSettings()) return;
+
         setLoading(true);
         try {
             await API.put('/homepage-settings', settings);
@@ -101,11 +102,11 @@ const HomepageSettingsMaster = () => {
     };
 
     const handleAddToArray = (section, defaultObj) => {
-        handleChange(section, null, [...(settings[section] || []), defaultObj]);
+        handleChange(section, null, [defaultObj, ...(settings[section] || [])]);
     };
 
     const handleAddToNestedArray = (section, arrayField, defaultObj) => {
-        handleChange(section, arrayField, [...(settings[section][arrayField] || []), defaultObj]);
+        handleChange(section, arrayField, [defaultObj, ...(settings[section][arrayField] || [])]);
     };
 
     const handleRemoveFromArray = (section, index) => {
@@ -118,6 +119,109 @@ const HomepageSettingsMaster = () => {
         const newArray = [...settings[section][arrayField]];
         newArray.splice(index, 1);
         handleChange(section, arrayField, newArray);
+    };
+
+    const validateSettings = () => {
+        // Hero Slider
+        if ((settings.heroSlides || []).length === 0) {
+            toast.error('Hero Slider: At least one slide is required');
+            return false;
+        }
+        for (let i = 0; i < settings.heroSlides.length; i++) {
+            const s = settings.heroSlides[i];
+            if (!s.title?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} title is required`); return false; }
+            if (!s.description?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} description is required`); return false; }
+            if (!s.image?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} image is required`); return false; }
+            if (!s.cta?.text?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} button text is required`); return false; }
+            if (!s.cta?.link?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} button link is required`); return false; }
+        }
+
+        // About Us
+        if (!settings.aboutUs?.description?.trim()) {
+            toast.error('About Us: Description is required');
+            return false;
+        }
+
+        // Facts
+        if (!settings.facts?.presence?.title?.trim() || !settings.facts?.presence?.image?.trim()) {
+            toast.error('Facts: Global Presence title and image are required');
+            return false;
+        }
+        if (!settings.facts?.decades?.title?.trim() || !settings.facts?.decades?.subtitle?.trim()) {
+            toast.error('Facts: Decades title and subtitle are required');
+            return false;
+        }
+        if (!settings.facts?.capacity?.title?.trim() || !settings.facts?.capacity?.subtitle?.trim()) {
+            toast.error('Facts: Capacity title and subtitle are required');
+            return false;
+        }
+        if (!settings.facts?.annual?.value?.trim() || !settings.facts?.annual?.title?.trim()) {
+            toast.error('Facts: Annual Revenue value and title are required');
+            return false;
+        }
+
+        // Applications validation removed
+
+        // Proven Fields
+        for (let i = 0; i < (settings.provenFields || []).length; i++) {
+            const f = settings.provenFields[i];
+            if (!f.title?.trim() || !f.image?.trim()) {
+                toast.error(`Proven Fields: Field #${i + 1} must have title and image`);
+                return false;
+            }
+        }
+
+        // Testimonials
+        for (let i = 0; i < (settings.testimonials || []).length; i++) {
+            const t = settings.testimonials[i];
+            if (!t.name?.trim() || !t.quote?.trim()) {
+                toast.error(`Testimonials: Testimonial #${i + 1} must have name and quote`);
+                return false;
+            }
+        }
+
+        // Engineering
+        if (!settings.engineering?.title?.trim()) {
+            toast.error('Engineering: Section title is required');
+            return false;
+        }
+        for (let i = 0; i < (settings.engineering?.items || []).length; i++) {
+            const item = settings.engineering.items[i];
+            if (!item.title?.trim() || !item.content?.trim()) {
+                toast.error(`Engineering: Item #${i + 1} must have title and content`);
+                return false;
+            }
+        }
+
+        // Product Range
+        for (let i = 0; i < (settings.productRange || []).length; i++) {
+            const p = settings.productRange[i];
+            if (!p.title?.trim() || !p.image?.trim()) {
+                toast.error(`Product Range: Product #${i + 1} must have title and image`);
+                return false;
+            }
+        }
+
+        // Sustainability
+        if (!settings.sustainability?.heading?.trim()) {
+            toast.error('Sustainability: Heading / Tagline is required');
+            return false;
+        }
+        if (!settings.sustainability?.bgImage?.trim()) {
+            toast.error('Sustainability: Background image is required');
+            return false;
+        }
+
+        // Latest Blogs
+        for (let i = 0; i < (settings.latestBlogs || []).length; i++) {
+            const b = settings.latestBlogs[i];
+            if (!b.title?.trim() || !b.image?.trim()) {
+                toast.error(`Latest Blogs: Blog #${i + 1} must have title and image`);
+                return false;
+            }
+        }
+
+        return true;
     };
 
     if (!settings) return <div className="p-6">Loading...</div>;
@@ -257,35 +361,6 @@ const HomepageSettingsMaster = () => {
                                 </div>
                             </div>
                         </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Applications */}
-                    {activeTab === 'applications' && (
-                        <div>
-                            <div className="mb-6 pb-4 border-b border-slate-100">
-                                <h2 className="text-xl font-semibold text-slate-800">Applications (Industries We Serve)</h2>
-                            </div>
-                            <div className="space-y-6">
-                        {['main', 'small1', 'small2', 'wide'].map((key) => (
-                            <div key={key} className="bg-slate-50 p-4 rounded-lg border">
-                                <h3 className="font-medium text-slate-700 mb-2 uppercase text-xs tracking-wider">{key} Block</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    <FormInput label="Title" placeholder="Title" value={settings.applications?.[key]?.title || ''} onChange={e => handleNestedChange('applications', key, 'title', e.target.value)} />
-                                    {key === 'main' && (
-                                        <FormInput label="Description" placeholder="Description" value={settings.applications?.[key]?.description || ''} onChange={e => handleNestedChange('applications', key, 'description', e.target.value)} />
-                                    )}
-                                    <div className={`flex flex-col gap-2 ${key === 'main' ? 'md:col-span-2' : ''}`}>
-                                        <div className="flex gap-2">
-                                            <FormInput label="Image URL" placeholder="Image URL" value={settings.applications?.[key]?.image || ''} onChange={e => handleNestedChange('applications', key, 'image', e.target.value)} />
-                                            <button onClick={() => openMediaPicker((url) => handleNestedChange('applications', key, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
-                                        </div>
-                                        {settings.applications?.[key]?.image && <img src={settings.applications?.[key]?.image.startsWith('http') ? settings.applications?.[key]?.image : `${import.meta.env.VITE_API_URL}${settings.applications?.[key]?.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
-                                    </div>
-                                </div>
-                            </div>
-                                ))} 
                             </div>
                         </div>
                     )}
