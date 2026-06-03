@@ -199,6 +199,10 @@ export default function Homepage() {
         className="main-banner relative h-screen w-full overflow-hidden bg-black"
       >
         {slides.map((slide, index) => (
+
+
+
+
           <SwiperSlide key={slide.id}>
             {/* BG IMAGE */}
             {/* <div
@@ -207,10 +211,19 @@ export default function Homepage() {
 > */}
 
             <div className="absolute inset-0 overflow-hidden">
+              {/* for desktop */}
+
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="h-full w-full scale-110 object-cover"
+                className="h-full w-full scale-110 object-cover hidden md:block"
+              />
+{/* for mobile */}
+
+               <img
+                src={slide.image}
+                alt={slide.title}
+                className="h-full object-cover md:hidden"
               />
             </div>
 
@@ -291,6 +304,8 @@ export default function Homepage() {
             </div>
           </SwiperSlide>
         ))}
+
+        
 
         {/* NEXT CARD */}
         <button

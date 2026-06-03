@@ -630,10 +630,41 @@ color: #1e3c8c;
     position: relative;
     text-align: center;
 }
-html,
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Hidden by default */
+::-webkit-scrollbar {
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+/* Show while scrolling */
+html.show-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.show-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
+
+html.show-scrollbar {
+  scrollbar-width: thin;
+}
+/* html,
 body {
   overflow-x: hidden;
   width: 100%;
+} */
+ body {
+  overflow-x: clip;
 }
 #__next {
   overflow-x: hidden;

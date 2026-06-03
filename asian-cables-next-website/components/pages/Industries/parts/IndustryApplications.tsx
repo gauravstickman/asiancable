@@ -109,54 +109,102 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
           </div>
 
           {/* MIDDLE COLUMN */}
-          <div className="col-span-6 lg:col-span-3">
-            <div className="group relative h-full min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[900px]">
-              <img
-                src={displayApplications[1].image}
-                alt=""
-                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              />
+        <div className="col-span-6 lg:col-span-3">
+  <div className="grid h-full gap-4 grid-rows-2">
 
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+    {/* TOP CARD */}
+    <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
+      <img
+        src={displayApplications[1].image}
+        alt=""
+        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+      />
 
-              {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
-                <h3 className="mb-1 md:mb-4 text-[18px] leading-[24px] font-black text-white italic md:text-[32px] md:leading-[38.4px]">
-                  {displayApplications[1].title}
-                </h3>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
 
-                <p className="text-[14px] leading-[22px] text-white md:text-white/90 md:text-[15px] md:leading-[24px]">
-                  {displayApplications[1].description}
-                </p>
-              </div>
-            </div>
-          </div>
+      <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
+        <h3 className="mb-1 md:mb-4 text-[18px] leading-[24px] font-black text-white italic md:text-[32px] md:leading-[38.4px]">
+          {displayApplications[1].title}
+        </h3>
+
+        <p className="text-[14px] leading-[22px] text-white md:text-white/90 md:text-[15px] md:leading-[24px]">
+          {displayApplications[1].description}
+        </p>
+      </div>
+    </div>
+
+    {/* BOTTOM CARD */}
+    <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
+      <img
+        src={displayApplications[2].image}
+        alt=""
+        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+
+      <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
+        <h3 className="mb-1 md:mb-4 text-[18px] leading-[24px] font-black text-white italic md:text-[32px] md:leading-[38.4px]">
+          {displayApplications[2].title}
+        </h3>
+
+        <p className="text-[14px] leading-[22px] text-white md:text-white/90 md:text-[15px] md:leading-[24px]">
+          {displayApplications[2].description}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
           {/* RIGHT COLUMN */}
-          <div className="col-span-6 lg:col-span-3">
-            <div className="group relative h-full min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[900px]">
-              <img
-                src={displayApplications[2].image}
-                alt=""
-                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              />
+         <div className="col-span-6 lg:col-span-3">
+  <div className="grid h-full gap-4 grid-rows-2">
 
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+    {/* TOP CARD */}
+    <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
+      <img
+        src={displayApplications[2].image}
+        alt=""
+        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+      />
 
-              {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
-                <h3 className="mb-[4px] md:mb-[10px] text-[18px] leading-[24px] font-black text-white italic md:text-[28px] md:leading-[33.6px]">
-                  {displayApplications[2].title}
-                </h3>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
 
-                <p className="text-[14px] leading-[22px] text-white md:text-white/90 md:text-[14px] md:leading-[22.4px] md:max-w-[214px]">
-                  {displayApplications[2].description}
-                </p>
-              </div>
-            </div>
-          </div>
+      <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
+        <h3 className="mb-[4px] md:mb-4 text-[18px] leading-[24px] font-black text-white italic md:text-[28px]">
+          {displayApplications[2].title}
+        </h3>
+
+        <p className="text-[14px] leading-[22px] text-white md:max-w-[214px]">
+          {displayApplications[2].description}
+        </p>
+      </div>
+    </div>
+
+    {/* BOTTOM CARD */}
+    <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
+      <img
+        src={displayApplications[3].image}
+        alt=""
+        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+
+      <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
+        <h3 className="mb-[4px] md:mb-4  leading-[24px] font-black text-white italic md:text-[28px]">
+          {displayApplications[3].title}
+        </h3>
+
+        <p className="text-[14px] leading-[22px] text-white md:max-w-[214px]">
+          {displayApplications[3].description}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
         </div>
       </div>
     </section>

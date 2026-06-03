@@ -110,8 +110,19 @@ const isHomePage = pathname === "/";
   const isProductsActive =
   pathname.startsWith("/products");
 const [showCompanyMenu, setShowCompanyMenu] = useState(false);
-const [showIndustryMenu, setShowIndustryMenu] = useState(false);
-const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
+ const [showIndustryMenu, setShowIndustryMenu] = useState(false);
+// const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
+
+const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(
+  pathname.startsWith("/industries")
+);
+
+useEffect(() => {
+  if (pathname.startsWith("/industries")) {
+    setShowIndustryMobileMenu(true);
+  }
+}, [pathname]);
+console.log("pathname =", pathname);
   return (
     <>
        <div
@@ -573,15 +584,18 @@ h-[30px]
       <div className="flex flex-col gap-6 mt-6 overflow-it">
 
         <h4>
-        <Link
-          href="/"
-          onClick={() =>
-            setIsMenuOpen(false)
-          }
-          className="text-[24px] italic font-bold text-[#1E3C8C]"
-        >
-          Home
-        </Link>
+<Link
+  href="/"
+  onClick={() => setIsMenuOpen(false)}
+  
+  className={`text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] ${
+    pathname === "/"
+      ? "!text-[#1E3C8C]"
+      : "!text-[#9AA4C0]"
+  }`}
+>
+  Home
+</Link>
         </h4>
 
      <div>
@@ -692,49 +706,70 @@ h-[30px]
 
       <h5><Link
         href="/industries/renewables"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+        className={`text-[20px] italic font-[700] text-[#8B8B8B] ${
+    pathname === `/industries/renewables`
+      ? "text-[#21409A] font-[600]"
+      : "text-[#5C5C5C] hover:text-[#21409A]"
+  }`} >  
         Renewables</Link></h5>
 
       <h5><Link
         href="/industries/infrastructure"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+         className={`text-[20px] italic font-[700] text-[#8B8B8B] ${
+    pathname === `/industries/infrastructure`
+      ? "text-[#21409A] font-[600]"
+      : "text-[#5C5C5C] hover:text-[#21409A]"
+  }`} >   
         Infrastructure
       </Link></h5>
 
       <h5><Link
         href="/industries/industrial"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+      className={`text-[20px] italic font-[700] text-[#8B8B8B] ${
+    pathname === `/industries/industrial`
+      ? "text-[#21409A] font-[600]"
+      : "text-[#5C5C5C] hover:text-[#21409A]"
+  }`} >  
         Industrial
       </Link></h5>
 
       <h5><Link
         href="/industries/transportation"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+        className={`text-[20px] italic font-[700] text-[#8B8B8B] ${
+    pathname === `/industries/transportation`
+      ? "text-[#21409A] font-[600]"
+      : "text-[#5C5C5C] hover:text-[#21409A]"
+  }`} >  
         Transportation
       </Link></h5>
 
       <h5><Link
         href="/industries/oil-and-gas"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+       className={`text-[20px] italic font-[700] text-[#8B8B8B] ${
+    pathname === `/industries/oil-and-gas`
+      ? "text-[#21409A] font-[600]"
+      : "text-[#5C5C5C] hover:text-[#21409A]"
+  }`} >  
         Oil & Gas
       </Link></h5>
 
       <h5><Link
         href="/industries/manufacturing"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+        className={`text-[20px] italic font-[700] text-[#8B8B8B] ${
+    pathname === `/industries/manufacturing`
+      ? "text-[#21409A] font-[600]"
+      : "text-[#5C5C5C] hover:text-[#21409A]"
+  }`} >  
         Manufacturing
       </Link></h5>  
 
       <h5><Link
         href="/industries/utilities"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+       className={`text-[20px] italic font-[700] text-[#8B8B8B] ${
+    pathname === `/industries/utilities`
+      ? "text-[#21409A] font-[600]"
+      : "text-[#5C5C5C] hover:text-[#21409A]"
+  }`} >  
         Utilities
       </Link></h5>
     </div>

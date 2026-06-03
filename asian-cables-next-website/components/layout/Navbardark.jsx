@@ -142,18 +142,7 @@ const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
         {/* Desktop Links */}
         <div className="hidden font-dm items-center gap-[35px] md:flex">
           {/* HOME */}
-          <Link
-            href="/"
-            className={`text-[16px] leading-[26px] tracking-[-0.5px] ${
-    pathname === "/"
-      ? "font-[600]"
-      : "font-[400]"
-  } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
-            }`}
-          >
-            Home
-          </Link>
+       
 
           {/* PRODUCTS */}
           <div

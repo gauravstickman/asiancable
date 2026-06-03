@@ -3,6 +3,7 @@ import { Work_Sans } from "next/font/google";
 import RevealHook from "@/components/hooks/RevealProvider";
 import FloatingBar from "@/components/layout/Floatingactions";
 import "./globals.css";
+import { ScrollbarController } from "../components/hooks/ScrollbarController";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -59,6 +60,7 @@ export default function RootLayout({
       </head>
 
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <ScrollbarController/>
         {children}
         <RevealHook />
         <FloatingBar />

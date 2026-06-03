@@ -43,12 +43,14 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
 
       <section className="overflow-hidden1 relative md:mb-0 mb-[-300px]">
         {/* BACKGROUND IMAGE */}
+        {/* for desktop */}
+
         <img
           src={headerImage}
           alt={headerTitle}
           className="absolute inset-0 h-full w-full object-cover hidden md:block"
         />
-
+{/* for mobile */}
 <img src="/assets/industry-bg.jpg" alt={headerTitle} className="absolute inset-0 h-full w-full object-cover position-top md:hidden" />
 
 
