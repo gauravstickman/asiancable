@@ -25,7 +25,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
     }
   }, [productSlug]);
 
-  const p = data || {};
+  const productData = data || {};
   
   const getImg = (url?: string) => {
     if(!url) return "";
@@ -36,7 +36,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
   return (
     <>
       <WebsiteNavbarDark />
-      {/* <BottomBar currentProduct={p} /> */}
+      {/* <BottomBar currentProduct={productData} /> */}
 
       <section className="bg-[#f6f6f6] md:pt-[64px] pb-15 md:pb-[96px]">
         <div className="mx-auto max-w-[1320px] px-4">
@@ -44,8 +44,8 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
             {/* LEFT IMAGE */}
             <div className="my-8 flex h-[auto] items-center justify-center bg-white md:my-0 md:h-[592px]">
               <img
-                src={p.image ? getImg(p.image) : "/assets/p-main.png"}
-                alt={p.name || "Control Cable"}
+                src={productData.image ? getImg(productData.image) : "/assets/p-main.png"}
+                alt={productData.name || "Control Cable"}
                 className="object-contain md:w-[88%]"
               />
             </div>
@@ -55,13 +55,13 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
               {/* TAG */}
               <div className="mb-[10px] inline-flex h-[30px] items-center justify-center bg-white px-3">
                 <span className="text-[14px] font-[500] tracking-[0px] text-[#767676] uppercase">
-                  {p.category?.name || p.category || "Power Cables"}
+                  {productData.category?.name || productData.category || "Power Cables"}
                 </span>
               </div>
 
               {/* TITLE */}
               <h1 className="mb-[18px] text-[32px] leading-[1.3] font-[700] text-[#1E3C8C] italic md:text-[56px] md:leading-[61.2px] md:tracking-[1.12px]">
-                {p.name || (
+                {productData.name || (
                   <>
                     Control and
                     <br />
@@ -72,12 +72,12 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
               {/* DESCRIPTION */}
               <p className="mb-[24px] max-w-[100%] text-[16px] leading-[27.2px] text-[#525252] md:text-[17px]">
-                {p.description || "Multicore, multi-pair control and instrumentation constructions with screening, individual pair shielding, and specialised jacketing options for chemical, temperature or EM-noisy environments; available in high-core counts (up to 61 cores and above) and varied pair configurations per plant specs."}
+                {productData.description || "Multicore, multi-pair control and instrumentation constructions with screening, individual pair shielding, and specialised jacketing options for chemical, temperature or EM-noisy environments; available in high-core counts (up to 61 cores and above) and varied pair configurations per plant specs."}
               </p>
 
               {/* FEATURES */}
               <div className="mb-[33px] grid grid-cols-2 gap-y-8">
-                {(p.specifications && p.specifications.length > 0 ? p.specifications : [
+                {(productData.specifications && productData.specifications.length > 0 ? productData.specifications : [
                   { label: "Voltage Rating", value: "Up to 11 kV", icon: "/assets/p-1.svg" },
                   { label: "Conductor", value: "Annealed Copper", icon: "/assets/p-2.svg" },
                   { label: "Insulation", value: "PVC / XLPE", icon: "/assets/p-3.svg" },
@@ -122,7 +122,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
                 {/* TAGS */}
                 <div className="flex flex-wrap gap-3">
-                  {(p.idealFor && p.idealFor.length > 0 ? p.idealFor : [
+                  {(productData.idealFor && productData.idealFor.length > 0 ? productData.idealFor : [
                     "Oil & gas",
                     "Petrochemicals",
                     "Power plants",
@@ -155,7 +155,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
               {/* DESCRIPTION */}
               <p className="mb-[36px] text-[18px] font-[400] leading-[32.4px] text-[#6F6F6F]">
-                {p.overviewDescription || "Asian Cables Instrumentation cables are designed for accurate signal transmission in industrial control and monitoring systems. These cables feature high-quality copper conductors, advanced insulation materials and shielding options to minimize signal interference. Ideal for industries where precise data and signal transmission are critical for operational reliability."}
+                {productData.overviewDescription || "Asian Cables Instrumentation cables are designed for accurate signal transmission in industrial control and monitoring systems. These cables feature high-quality copper conductors, advanced insulation materials and shielding options to minimize signal interference. Ideal for industries where precise data and signal transmission are critical for operational reliability."}
               </p>
 
               {/* BUTTON */}
@@ -168,7 +168,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
             <div className="relative">
               <div className="overflow-hidden rounded-[8px] shadow-[0px_20px_60px_rgba(0,0,0,0.12)]">
                 <img
-                  src={p.overviewImage ? getImg(p.overviewImage) : "/assets/image99.png"}
+                  src={productData.overviewImage ? getImg(productData.overviewImage) : "/assets/image99.png"}
                   alt="Product Overview"
                   className="h-[480px] w-full object-cover md:h-[487px]"
                 />
@@ -238,7 +238,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
         </div>
       </section>
 
-      <ProductResources data={p} />
+      <ProductResources data={productData} />
 
       <section className="reveal-section bg-[#f6f6f6] py-15 md:pt-[99px] md:pb-[100px]">
         <div className="mx-auto max-w-[1320px] px-4">
@@ -255,7 +255,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
             <div className="relative min-h-[520px] overflow-hidden rounded-[6px] bg-white lg:col-span-7">
               {/* BACKGROUND IMAGE */}
               <img
-                src={p.featuresImage ? getImg(p.featuresImage) : "/assets/Container-2.png"}
+                src={productData.featuresImage ? getImg(productData.featuresImage) : "/assets/Container-2.png"}
                 alt=""
                 className="object-right-topss absolute top-0 right-0 h-full w-[55%] object-cover"
               />
@@ -272,7 +272,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
                 {/* FEATURES */}
                 <div className="space-y-5 md:space-y-[33px]">
-                  {(p.features && p.features.length > 0 ? p.features : [
+                  {(productData.features && productData.features.length > 0 ? productData.features : [
                     "Accurate signal transmission with minimal interference",
                     "Shielded construction options for noise reduction",
                     "Flexible and durable cable construction",
@@ -338,7 +338,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
                   {/* CERTIFICATIONS */}
                   <div className="flex flex-wrap items-center justify-center gap-3 md:gap-8">
-                    {(p.isoCertifications && p.isoCertifications.length > 0 ? p.isoCertifications : ["ISO 9001", "ISO 14001", "ISO 45001"]).map(
+                    {(productData.isoCertifications && productData.isoCertifications.length > 0 ? productData.isoCertifications : ["ISO 9001", "ISO 14001", "ISO 45001"]).map(
                       (item: string, index: number) => (
                         <span
                           key={index}
@@ -374,7 +374,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
                   {/* LIST */}
                   <div className="space-y-4 md:space-y-[15px]">
-                    {(p.standards && p.standards.length > 0 ? p.standards : ["IEC Standards", "BS Standards", "IS Standards"]).map(
+                    {(productData.standards && productData.standards.length > 0 ? productData.standards : ["IEC Standards", "BS Standards", "IS Standards"]).map(
                       (item: string, index: number) => (
                         <div key={index} className="flex items-center gap-2">
                           <div className="h-[6px] w-[6px] rounded-full bg-[#1E3C8C]" />
@@ -393,13 +393,13 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
         </div>
       </section>
 
-      <ProjectSection data={p.applications} />
+      <ProjectSection data={productData.applications} />
 
       <div className="proven-f w flex justify-center md:mb-[50px]">
-        <ProvenFieldSection dynamicData={p.projects} />
+        <ProvenFieldSection dynamicData={productData.projects} />
       </div>
       <div className="proven-f w flex justify-center">
-        <ProvenFieldSectionMobile dynamicData={p.projects} />
+        <ProvenFieldSectionMobile dynamicData={productData.projects} />
       </div>
 
       <Footer />

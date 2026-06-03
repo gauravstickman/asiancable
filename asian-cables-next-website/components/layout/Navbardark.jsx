@@ -739,7 +739,6 @@ onMouseEnter={() => {
 </div>
   </div>
 )}
-<Bottombar currentProduct={p} />  
     </nav>
   );
 };
