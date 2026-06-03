@@ -1,0 +1,188 @@
+"use client";
+
+import { ChevronRight } from "lucide-react";
+import React, { useState } from "react";
+
+const certificationData = [
+  {
+    id: 1,
+    title: "ISO 9001",
+    subtitle: "Certifications",
+    icon: "/assets/manufacturing/image 5.png",
+  },
+   {
+    id: 1,
+    title: "ISO 9001",
+    subtitle: "Certifications",
+    icon: "/assets/manufacturing/image 5.png",
+  },
+  {
+    id: 2,
+    title: "ISO 14001",
+    subtitle: "Certifications",
+    icon: "/assets/manufacturing/image 5 (1).png",
+  },
+  {
+    id: 3,
+    title: "ISO 45001",
+    subtitle: "Certifications",
+    icon: "/assets/manufacturing/image 5 (2).png",
+  },
+  {
+    id: 4,
+    title: "IEC",
+    subtitle: "Compliance",
+    icon: "/assets/manufacturing/image 5 (3).png",
+  },
+  {
+    id: 5,
+    title: "IS",
+    subtitle: "Compliance",
+    icon: "/assets/manufacturing/image 5 (4).png",
+  },
+  {
+    id: 6,
+    title: "BS",
+    subtitle: "Compliance",
+    icon: "/assets/manufacturing/image 5 (5).png",
+  },
+  {
+    id: 7,
+    title: "AS/NZS",
+    subtitle: "Compliance",
+    icon: "/assets/manufacturing/image 6.png",
+  },
+];
+
+const accreditationData = [
+  {
+    id: 1,
+    title: "NABL Accredited Laboratory",
+    subtitle: "Accreditations",
+    icon: "/assets/manufacturing/image 6 (1).png",
+  },
+  {
+    id: 2,
+    title: "DSIR Recognised R&D",
+    subtitle: "Accreditations",
+    icon: "/assets/manufacturing/image 6 (2).png",
+  },
+  {
+    id: 3,
+    title: "IGBC Platinum Facility",
+    subtitle: "Accreditations",
+    icon: "/assets/manufacturing/image 6 (3).png",
+  },
+];
+
+const QualityControlAssurance = () => {
+  const [activeTab, setActiveTab] = useState("certifications");
+
+  const displayedData =
+    activeTab === "certifications" ? certificationData : accreditationData;
+
+  return (
+    <section className="w-full bg-white py-20">
+      <div className="mx-auto w-[90vw] px-4">
+        {/* Heading */}
+        <h2 className="mb-10 text-center text-[42px] font-bold text-[#163B8C] italic">
+          Quality Control & Assurance
+        </h2>
+
+        {/* Tabs */}
+        {/* <div className="flex justify-center items-center gap-5 mb-12">
+          <button
+            onClick={() => setActiveTab("certifications")}
+            className={`px-8 py-3 text-sm font-medium transition-all duration-300
+              ${
+                activeTab === "certifications"
+                  ? "bg-[#163B8C] text-white"
+                  : "text-gray-500 hover:text-[#163B8C]"
+              }`}
+          >
+            Certifications
+          </button>
+
+          <button
+            onClick={() => setActiveTab("accreditations")}
+            className={`px-4 py-3 text-sm font-medium transition-all duration-300
+              ${
+                activeTab === "accreditations"
+                  ? "bg-[#163B8C] text-white"
+                  : "text-gray-500 hover:text-[#163B8C]"
+              }`}
+          >
+            Accreditations
+          </button>
+        </div> */}
+        <div className="mb-12 flex items-center justify-center gap-3">
+          <button
+            onClick={() => setActiveTab("certifications")}
+            className={`relative overflow-hidden cursor-pointer px-8 py-3 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
+              activeTab === "certifications"
+                ? "bg-[#163B8C] text-white shadow-lg shadow-blue-500/20"
+                : "text-gray-500 hover:text-[#163B8C]"
+            }`}
+          >
+            Certifications
+          </button>
+
+          <button
+            onClick={() => setActiveTab("accreditations")}
+            className={`relative overflow-hidden cursor-pointer px-4 py-3 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
+              activeTab === "accreditations"
+                ? "bg-[#163B8C] text-white shadow-lg shadow-blue-500/20"
+                : "text-gray-500 hover:text-[#163B8C]"
+            }`}
+          >
+            Accreditations
+          </button>
+        </div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {displayedData.map((item) => (
+            <div
+              key={item.id}
+              className="flex h-[78px] cursor-pointer items-center justify-between rounded-[6px] bg-[#F5F6FA] px-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  src={item.icon}
+                  alt={item.title}
+                  className="h-[42px] w-[42px] object-contain"
+                />
+
+                <div>
+                  <h3 className="text-[16px] font-medium text-[#6E6E6E]">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-[16px] text-[#6E6E6E] font-medium">{item.subtitle}</p>
+                </div>
+              </div>
+              <img
+                src="/assets/manufacturing/Download.png"
+                alt="Download icon"
+                className="h-5 w-5"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* View All */}
+        <div className="mt-16 flex justify-center">
+          <button className="border-it-b mx-auto flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
+            View All
+            <span>
+              {" "}
+              <ChevronRight size={18} />
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default QualityControlAssurance;
