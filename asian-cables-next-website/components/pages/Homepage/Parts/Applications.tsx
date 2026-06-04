@@ -55,9 +55,9 @@ export default function ApplicationsSection({ data }: { data?: any[] }) {
 
               {/* Content */}
               <div className="absolute right-5 bottom-10 left-5 max-w-[520px] text-white md:right-0 md:left-10">
-                <span className="mb-[24px] inline-block rounded-[6px] bg-white/30 px-4 py-2 text-[13px] font-[600] tracking-[1px] leading-[19.5px] md:bg-white/30">
+                {/* <span className="mb-[24px] inline-block rounded-[6px] bg-white/30 px-4 py-2 text-[13px] font-[600] tracking-[1px] leading-[19.5px] md:bg-white/30">
                   PRIMARY USE
-                </span>
+                </span> */}
 
                 <h3 className="mb-[36px] text-[28px] leading-none font-black italic md:text-[42px] md:leading-[32px] md:tracking-[-0.5px]">
                   {app1.title}

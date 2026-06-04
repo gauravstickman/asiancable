@@ -51,7 +51,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
           className="absolute inset-0 h-full w-full object-cover hidden md:block"
         />
 {/* for mobile */}
-<img src="/assets/industry-bg.jpg" alt={headerTitle} className="absolute inset-0 h-full w-full object-cover position-top md:hidden" />
+<img src={headerImage} alt={headerTitle} className="absolute inset-0 h-full w-full object-cover position-top md:hidden" />
 
 
         {/* OVERLAY */}

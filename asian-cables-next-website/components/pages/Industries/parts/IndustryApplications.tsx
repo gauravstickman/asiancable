@@ -26,6 +26,18 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
       image: "/assets/ia2.jpg",
       wide: true,
     },
+    {
+      title: "Storage Facilities",
+      description: "Fire-resistant cables for tank farms and depots",
+      image: "/assets/ia2.jpg",
+      wide: true,
+    },
+    {
+      title: "Storage Facilities",
+      description: "Fire-resistant cables for tank farms and depots",
+      image: "/assets/ia2.jpg",
+      wide: true,
+    }
   ];
 
   const dynamicItems = (dynamicData || []).map((p: any) => ({
@@ -36,7 +48,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
   const displayApplications = [
     ...dynamicItems,
     ...fallbackApplications.slice(dynamicItems.length)
-  ].slice(0, 4);
+  ].slice(0, 6);
 
   return (
     <section className="reveal-section bg-[#ffffff] py-10 md:py-24">
@@ -66,11 +78,11 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
               {/* CONTENT */}
               <div className="absolute inset-0 flex flex-col justify-end p-[24px] md:p-8">
                 {/* TAG */}
-                <div className="mb-[16px]">
+                {/* <div className="mb-[16px]">
                   <span className="inline-flex h-[32px] items-center justify-center rounded-[8px]  bg-white/20 px-3 text-[12px] tracking-[1px] text-white uppercase  md:h-[40px] md:px-4 md:text-[13px] leading-[19.5px]">
                     {displayApplications[0].tag || "PRIMARY APPLICATION"}
                   </span>
-                </div>
+                </div> */}
 
                 {/* TITLE */}
                 <h3 className="mb-[12.3px] text-[28px] leading-[32px]  tracking-[-0.5px] font-black text-white italic md:text-[38px] md:leading-[41.8px]">
@@ -164,7 +176,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
     {/* TOP CARD */}
     <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
       <img
-        src={displayApplications[2].image}
+        src={displayApplications[4].image}
         alt=""
         className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
       />
@@ -173,11 +185,11 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
 
       <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
         <h3 className="mb-[4px] md:mb-4 text-[18px] leading-[24px] font-black text-white italic md:text-[28px]">
-          {displayApplications[2].title}
+          {displayApplications[4].title}
         </h3>
 
         <p className="text-[14px] leading-[22px] text-white md:max-w-[214px]">
-          {displayApplications[2].description}
+          {displayApplications[4].description}
         </p>
       </div>
     </div>
@@ -185,7 +197,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
     {/* BOTTOM CARD */}
     <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
       <img
-        src={displayApplications[3].image}
+        src={displayApplications[5].image}
         alt=""
         className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
       />
@@ -194,11 +206,11 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
 
       <div className="absolute inset-0 flex flex-col justify-end p-[18px] md:p-6">
         <h3 className="mb-[4px] md:mb-4  leading-[24px] font-black text-white italic md:text-[28px]">
-          {displayApplications[3].title}
+          {displayApplications[5].title}
         </h3>
 
         <p className="text-[14px] leading-[22px] text-white md:max-w-[214px]">
-          {displayApplications[3].description}
+          {displayApplications[5].description}
         </p>
       </div>
     </div>

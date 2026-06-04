@@ -1,9 +1,10 @@
 "use client";
-
+import { useRef } from "react";
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import api from "@/utils/api";
+import { usePathname } from "next/navigation";
 
 export default function BottomBar({ currentProduct }: { currentProduct?: any }) {
   const router = useRouter();
@@ -13,6 +14,28 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
 
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const menuRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target as Node)
+    ) {
+      setOpenSelect(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener(
+      "mousedown",
+      handleClickOutside
+    );
+  };
+}, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,17 +62,37 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
   }, [currentProduct]);
 
   // Handle currentProduct changes when page loads/transitions
-  useEffect(() => {
-    if (currentProduct && currentProduct.name) {
-      setSelectedSelect(currentProduct.name);
-    }
-  }, [currentProduct]);
+useEffect(() => {
+  if (currentProduct?.name) {
+    setSelectedSelect(currentProduct.name);
+  }
+}, [currentProduct?.slug]);
 
   const handleProductSelect = (product: any) => {
     setSelectedSelect(product.name);
     setOpenSelect(false);
     router.push(`/product/${product.slug}`);
   };
+
+
+  const pathname = usePathname();
+
+const currentSlug = pathname.startsWith("/product/")
+  ? pathname.split("/product/")[1]
+  : null;
+
+
+  useEffect(() => {
+  if (currentSlug && products.length) {
+    const current = products.find(
+      (p) => p.slug === currentSlug
+    );
+
+    if (current) {
+      setSelectedSelect(current.name);
+    }
+  }
+}, [currentSlug, products]);
 
   return (
     <div className="w-full rounded-sm bg-[#1E3C8C] md:static relative">
@@ -61,13 +104,15 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
 
         {/* SEARCH INPUT */}
         <div className="flex-1">
-          <div className="md:relative one-line-big">
+          <div className="md:relative one-line-big" ref={menuRef}>
             {/* BUTTON */}
             <button
               onClick={() => setOpenSelect(!openSelect)}
               className="flex h-[30.47px] w-full items-center justify-between rounded-[3.29px] border border-[#ffffff] bg-[#ffffff] px-2 text-[12px] text-[#777777] md:h-[33px] gap-[6px] md:px-3 md:text-[16px] md:leading-[17.29px]"
             >
-              <span className="text-[#777777] truncate">{selectedSelect}</span>
+              <span className="text-[#777777] truncate">
+  {currentProduct?.name || selectedSelect}
+</span>
 
               <ChevronDown
                 className={`text-[#1E3C8C] h-4 w-4 transition duration-300 md:h-[14px] md:w-[14px] shrink-0 ${
@@ -78,7 +123,7 @@ export default function BottomBar({ currentProduct }: { currentProduct?: any }) 
 
             {/* MENU */}
             {openSelect && (
-              <div className="absolute top-[50px] top-[35px] md:top-[38px] left-0 z-50 w-full max-h-[300px] overflow-y-auto rounded-[4px] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.08)] z-[auto]">
+              <div className="absolute top-[50px] top-[35px] md:top-[38px] left-0 z-50 w-full akn-bottom-bar bottom-menu max-h-[300px] overflow-y-auto rounded-[4px] bg-white shadow-[0px_10px_40px_rgba(0,0,0,0.08)] z-[auto]">
                 {products.map((item, index) => (
                   <button
                     key={index}

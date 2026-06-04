@@ -179,7 +179,7 @@ const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
 
             {/* MEGA MENU */}
             <div
-              className={`fixed top-[74px] left-0 w-full ${
+              className={`fixed top-[74px] left-0 w-full z-[1] ${
                 showMegaMenu ? "visible opacity-100" : "invisible opacity-0"
               }`}
 
@@ -739,7 +739,7 @@ onMouseEnter={() => {
 </div>
   </div>
 )}
-<Bottombar/>
+<Bottombar />
     </nav>
   );
 };
