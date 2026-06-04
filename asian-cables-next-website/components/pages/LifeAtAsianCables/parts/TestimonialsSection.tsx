@@ -1,172 +1,138 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 
-// Import Swiper styles
 import "swiper/css";
-import "swiper/css/navigation";
 
-const values = [
+const testimonials = [
   {
-    title: "Nurturing Talent",
-    image: "/assets/Lifeofasiancables/carasel1.png",
-    points: [
-      "Opportunities to learn, grow, and lead",
-      "Exposure to diverse projects and cross-functional collaboration",
-      "Recognition that rewards initiative, innovation, and ownership",
-    ],
+    name: "poonam Rankawat",
+    role: "Design",
+    company: "Asian Cables",
+    text: "My journey at KEC Asian Cables has been defined by continuous learning, meaningful opportunities, and a strong sense of purpose. Culture is the soul of any organisation—it reflects its beliefs and values, and more importantly, how they are lived every day. At KEC Asian Cables, this is evident in a positive and engaging work environment where motivation and job satisfaction are visible across all levels. The balance between accountability and support empowers individuals to take ownership while staying aligned and inspired. KEC Asian Cables' commitment to diversity, along with its active encouragement of women in leadership, creates an inclusive space where talent is recognised, voices are heard, and individuals are empowered to grow and lead with confidence.",
+    tags: ["inspired", "supported","Growing", "Energized","proud"],
   },
   {
-    title: "Touching Lives",
-    image: "/assets/Lifeofasiancables/carasel2.png",
-    points: [
-      "Meaningful work that powers progress in homes and industries",
-      "A supportive environment where personal and professional well-being matter",
-    ],
+    name: "Sitendra Pandey",
+    role: "Manager – Business Excellence",
+    company: "Asian Cables",
+    text: "My time at Asian Cables has been both rewarding and impactful. The organisation's emphasis on discipline, performance, and continuous improvement creates an environment where consistent results and long-term value are prioritised. What truly distinguishes the culture is the positive and engaging work atmosphere, where a sense of motivation and satisfaction is reflected across all levels. This balance between accountability and a supportive environment encourages individuals to take ownership while staying connected and driven. This experience has further strengthened my ability to drive outcomes, collaborate effectively across functions, and maintain a structured, solution-oriented approach in dynamic situations.",
+    tags: ["inspired", "supported","Growing", "Energized","proud"],
   },
   {
-    title: "Outperforming Together",
-    image: "/assets/Lifeofasiancables/carasel3.png",
-    points: [
-      "Clear goals, transparent feedback, and recognition for excellence",
-      "Collaborative teams that celebrate shared success",
-      "Continuous improvement as a way of life",
-    ],
-  },
-  {
-    title: "Happiness",
-    image: "/assets/Lifeofasiancables/carasel4.png",
-    points: [
-      "A workplace where people enjoy what they do",
-      "Celebrations, camaraderie, and a sense of belonging",
-      "Work-life balance that respects individual needs",
-    ],
+    name: "Amit Barasara",
+    role: "Manager – Quality",
+    company: "11 Years at Asian Cables",
+    text: "Every day at KEC Asian Cables, I feel a sense of purpose and pride in what I do. I have been trusted with meaningful responsibilities and given room to grow professionally. The 5-Day Work Week Initiative has been a game-changer for my personal well-being—it gives me the balance to recharge and come back stronger. Here, I don't just feel like an employee—I feel valued, heard, and part of something bigger.",
+    tags: ["inspired", "supported","Growing", "Energized","proud"],
   },
 ];
 
-const CultureValuesSection = () => {
+export default function TestimonialsSection() {
   return (
-    <section className="bg-white py-10">
-      <div className="max-w-[1440px] mx-auto">
-        {/* Heading - Left Padding Diya */}
-        <div className="mb-[40px] md:mb-[60px] pl-4 md:pl-8 lg:pl-12">
+    <section className="bg-[#21409A] py-16 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
+
+        {/* Heading */}
+        <div className="mb-10 mx-12 md:mb-12 text-center md:text-left">
           <h2
-            className="text-[#21409A] text-[18px] md:text-[20px] font-bold italic leading-none"
+            className="text-white text-[32px] md:text-[40px] lg:text-[48px] font-bold italic leading-none"
             style={{ fontFamily: "Magistral" }}
           >
-            Our Culture & Core Values
+            Hear From Our People
           </h2>
 
-          <p className="mt-3 max-w-[900px] text-[#5F5F5F] text-[13px] md:text-[14px] leading-[22px] md:leading-[26px]">
-            Our culture is anchored in the core values of the RPG Group,
-            which inspires us to act with integrity and pursue excellence.
-            We nurture an inclusive, entrepreneurial, and people-first
-            culture where every individual is valued and empowered to make
-            a difference.
+          <p className="text-white/80 text-[15px] md:text-[16px] m mt-3">
+            Real voices from real journeys.
           </p>
         </div>
 
-        {/* Carousel - 4 Cards Visible */}
-        <div className="relative px-4 md:px-8 lg:px-12">
+        {/* Carousel */}
+        <div className="relative px-6 md:px-10">
           <Swiper
-            modules={[Navigation]}
-            slidesPerView={1}
-            spaceBetween={15}
-            navigation={{
-              nextEl: ".swiper-button-next-custom",
-              prevEl: ".swiper-button-prev-custom",
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 15,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 15,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 16,
-              },
-              1280: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-            }}
-            className="culture-carousel"
+            slidesPerView="auto"
+            spaceBetween={24}
+            grabCursor={true}
+            className="testimonials-carousel"
           >
-            {values.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="group relative h-[380px] overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+            {testimonials.map((item, index) => (
+              <SwiperSlide key={index} className="!w-auto">
+                <div
+                  className="
+                    bg-white
+                    rounded-[10px]
+                    p-6
+                    gap-6
+                    w-[538px]
+                    max-w-[90vw]
+                    h-[518px]
+                    transition-all
+                    duration-300
+                    hover:scale-105
+                    hover:shadow-2xl
+                    flex
+                    flex-col
+                  "
+                >
+                  {/* Quote */}
+                  <div className="text-[#21409A] text-[48px] font-bold leading-none">
+                    ❝
+                  </div>
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/35 group-hover:bg-black/40 transition-all duration-300" />
+                  {/* Text */}
+                  <p className="text-[#555] text-[14px] leading-[26px] line-clamp-5 flex-1">
+                    {item.text}
+                  </p>
 
-                  {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="text-[18px] md:text-[20px] font-medium mb-2">
-                      {item.title}
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.slice(0, 4).map((tag, i) => (
+                      <span
+                        key={i}
+                        className="
+                          px-3 py-1
+                          rounded-full
+                          bg-[#F0F2F8]
+                          text-[#666]
+                          text-[11px]
+                          font-medium
+                        "
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Divider */}
+                  <div className="h-px bg-[#E5E5E5]" />
+
+                  {/* User */}
+                  <div>
+                    <h3 className="text-[18px] font-bold text-[#111]">
+                      {item.name}
                     </h3>
 
-                    <ul className="space-y-1.5">
-                      {item.points.map((point, i) => (
-                        <li key={i} className="flex gap-1.5 text-[11px] md:text-[12px] leading-[18px]">
-                          <span className="text-[12px] md:text-[14px]">•</span>
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-[#666] text-[13px] mt-1">
+                      {item.role}
+                    </p>
+
+                    <p className="text-[#36A9E1] text-[11px] mt-1 font-medium">
+                      {item.company}
+                    </p>
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
-
-          {/* Custom Navigation Buttons */}
-          <button
-            className="swiper-button-prev-custom absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#21409A] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
-            aria-label="Previous slide"
-          >
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          
-          <button
-            className="swiper-button-next-custom absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-[#21409A] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
-            aria-label="Next slide"
-          >
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
         </div>
+
       </div>
 
       <style jsx global>{`
-        .culture-carousel {
+        .testimonials-carousel {
           padding: 10px 0 20px 0;
-        }
-        
-        @media (max-width: 768px) {
-          .swiper-button-prev-custom,
-          .swiper-button-next-custom {
-            display: none;
-          }
         }
       `}</style>
     </section>
   );
-};
-
-export default CultureValuesSection;
+}

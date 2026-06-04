@@ -120,6 +120,7 @@ export default function ExperienceSection() {
               key={tab.id}
               onClick={() => setActiveTab(index)}
               className={`
+                relative
                 flex-1
                 min-w-[200px]
                 lg:min-w-[320px]
@@ -129,7 +130,7 @@ export default function ExperienceSection() {
                 transition-all
                 ${
                   activeTab === index
-                    ? "bg-[#F4F6FA] border-b-4 border-[#21409A]"
+                    ? "bg-[#F4F6FA]"
                     : ""
                 }
               `}
@@ -141,6 +142,11 @@ export default function ExperienceSection() {
               <div className="text-[16px] sm:text-[18px] lg:text-[20px] mt-2">
                 {tab.title}
               </div>
+
+              {/* Active tab indicator — gradient underline */}
+              {activeTab === index && (
+                <span className="absolute left-0 right-0 bottom-0 h-1 bg-gradient-to-r from-[#F7931E] to-[#36A9E1]" />
+              )}
             </button>
           ))}
         </div>
