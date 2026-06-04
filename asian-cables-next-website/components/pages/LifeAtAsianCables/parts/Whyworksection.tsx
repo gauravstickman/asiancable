@@ -16,7 +16,6 @@ const WhyWorkSection = () => {
               alt="Why Work at Asian Cables"
               width={520}
               height={420}
-              
               className="w-full h-[260px] sm:h-[360px] lg:h-[420px] object-cover rounded-lg"
             />
           </div>
@@ -49,7 +48,6 @@ const WhyWorkSection = () => {
         </div>
 
         {/* Floating Action Bar */}
-        {/*
         <div className="flex justify-center mt-8 lg:-mt-[16px] relative ">
           <div
             className="
@@ -71,7 +69,7 @@ const WhyWorkSection = () => {
               py-2
             "
           >
-            {/* Open Roles *}
+            {/* Open Roles */}
             <button
               className="
                 flex items-center gap-2
@@ -90,7 +88,7 @@ const WhyWorkSection = () => {
               Open Roles
             </button>
 
-            {/* Pricing Calculator *}
+            {/* Pricing Calculator */}
             <button
               className="
                 flex items-center gap-2
@@ -109,7 +107,7 @@ const WhyWorkSection = () => {
               Pricing Calculator
             </button>
 
-            {/* Downloads *}
+            {/* Downloads */}
             <button
               className="
                 flex items-center gap-2
@@ -126,7 +124,6 @@ const WhyWorkSection = () => {
             </button>
           </div>
         </div>
-        */}
 
       </div>
     </section>

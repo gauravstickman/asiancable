@@ -10,7 +10,6 @@ const jobs = [
     location: "Mumbai, India",
     experience: "8–12 years experience",
     salary: "₹15–20 LPA",
-    
   },
   {
     category: "Sales",
