@@ -1,10 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/navigation";
 
 const values = [
   {
@@ -18,7 +21,7 @@ const values = [
   },
   {
     title: "Touching Lives",
-    image: "/assets/Lifeofasiancables/carasel3.png",
+    image: "/assets/Lifeofasiancables/carasel2.png",
     points: [
       "Meaningful work that powers progress in homes and industries",
       "A supportive environment where personal and professional well-being matter",
@@ -26,7 +29,7 @@ const values = [
   },
   {
     title: "Outperforming Together",
-    image: "/assets/Lifeofasiancables/carasel2.png",
+    image: "/assets/Lifeofasiancables/carasel3.png",
     points: [
       "Clear goals, transparent feedback, and recognition for excellence",
       "Collaborative teams that celebrate shared success",
@@ -36,9 +39,6 @@ const values = [
   {
     title: "Happiness",
     image: "/assets/Lifeofasiancables/carasel4.png",
-    // Narrow source (239x504) — center the subject so the face/shoulders
-    // aren't cropped when object-cover zooms it to fill the card width.
-    position: "center 30%",
     points: [
       "A workplace where people enjoy what they do",
       "Celebrations, camaraderie, and a sense of belonging",
@@ -72,45 +72,80 @@ const CultureValuesSection = () => {
         {/* Carousel */}
         <div className="relative">
           <Swiper
-            slidesPerView="auto"
-            spaceBetween={24}
-            grabCursor={true}
+            modules={[Navigation]}
+            slidesPerView={1}
+            spaceBetween={20}
+            navigation={{
+              nextEl: ".swiper-button-next-custom",
+              prevEl: ".swiper-button-prev-custom",
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+              1280: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
             className="culture-carousel"
           >
             {values.map((item, index) => (
-              <SwiperSlide key={index} className="!w-auto">
-                <div className="culture-card group relative flex flex-col overflow-hidden text-white">
-                  {/* Image fills the entire card edge-to-edge (object-cover),
-                      anchored to the top so the top portion stays visible */}
+              <SwiperSlide key={index}>
+                <div className="group relative h-[460px] overflow-hidden rounded-[10px] transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    sizes="(max-width: 640px) 90vw, 450px"
-                    style={{ objectPosition: item.position ?? "center top" }}
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+                  <div className="absolute inset-0 bg-black/35 group-hover:bg-black/40 transition-all duration-300" />
 
-                  {/* Content (positioned by the card's padding) */}
-                  <h3 className="relative z-10 text-[22px] md:text-[24px] font-medium">
-                    {item.title}
-                  </h3>
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                    <h3 className="text-[22px] md:text-[24px] font-medium mb-3">
+                      {item.title}
+                    </h3>
 
-                  <ul className="relative z-10 space-y-2">
-                    {item.points.map((point, i) => (
-                      <li key={i} className="flex gap-2 text-[13px] md:text-[14px] leading-[22px]">
-                        <span className="text-[16px]">•</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="space-y-2">
+                      {item.points.map((point, i) => (
+                        <li key={i} className="flex gap-2 text-[13px] md:text-[14px] leading-[22px]">
+                          <span className="text-[16px]">•</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          <button
+            className="swiper-button-prev-custom absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-100 text-[#21409A] w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+            aria-label="Previous slide"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button
+            className="swiper-button-next-custom absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-gray-100 text-[#21409A] w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+            aria-label="Next slide"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -118,26 +153,12 @@ const CultureValuesSection = () => {
         .culture-carousel {
           padding: 10px 0 20px 0;
         }
-
-        .culture-card {
-          width: 398.57px;
-          max-width: 90vw;
-          height: 488.33px;
-          border-radius: 8.55px;
-          padding: 246.83px 42.74px 12px 23px;
-          gap: 17.1px;
-          transition: width 0.3s ease, height 0.3s ease,
-            border-radius 0.3s ease, padding 0.3s ease, gap 0.3s ease,
-            box-shadow 0.3s ease;
-        }
-
-        .culture-card:hover {
-          width: 447.22px;
-          height: 547.93px;
-          border-radius: 9.59px;
-          padding: 276.96px 47.96px 12px 28px;
-          gap: 19.18px;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+        
+        @media (max-width: 768px) {
+          .swiper-button-prev-custom,
+          .swiper-button-next-custom {
+            display: none;
+          }
         }
       `}</style>
     </section>
