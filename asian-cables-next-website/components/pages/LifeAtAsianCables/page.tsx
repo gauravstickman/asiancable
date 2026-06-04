@@ -11,7 +11,7 @@ import LifeBeyondWorkSection from "./parts/LifeBeyondWorkSection";
 import OpenRolesSection from "./parts/OpenRolesSection";
 import WhyWorkSection from "./parts/Whyworksection";
 
-const Lifepage = () => {
+const Life = () => {
   return (
     <div>
       <WebsiteNavbar />
@@ -29,4 +29,4 @@ const Lifepage = () => {
   );
 };
 
-export default Lifepage;
+export default Life;

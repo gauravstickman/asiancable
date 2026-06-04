@@ -15,6 +15,7 @@ export default function LifeBeyondWorkSection() {
           >
             Life Beyond Work
           </h2>
+          
 
           <p className="max-w-[1150px] mt-5 text-[#5F5F5F] text-[16px] lg:text-[20px] leading-[28px] lg:leading-[38px]">
             We believe great workplaces are built on meaningful human
