@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { BriefcaseBusiness, MapPin, Clock3 } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  MapPin,
+  Clock3,
+  ChevronRight,
+} from "lucide-react";
 
 const jobs = [
   {
@@ -10,7 +15,6 @@ const jobs = [
     location: "Mumbai, India",
     experience: "8–12 years experience",
     salary: "₹15–20 LPA",
-    
   },
   {
     category: "Sales",
@@ -40,142 +44,179 @@ export default function OpenRolesSection() {
   const [activeTab, setActiveTab] = useState("All Roles");
 
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
-
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-10">
-
+    <section className="w-full bg-white py-[40px]">
+      <div className="max-w-[1440px] mx-auto px-[81px]">
+        {/* Top Section */}
+        <div className="w-full flex items-start justify-between mb-[60px]">
+          {/* Left */}
           <div>
             <h2
-              className="text-[#21409A] text-[42px] lg:text-[54px] font-bold italic leading-none"
+              className="
+                text-[#1E3C8C]
+                text-[46px]
+                font-bold
+                italic
+                leading-[55px]
+                tracking-[-0.92px]
+              "
               style={{ fontFamily: "Magistral" }}
             >
               Open Roles
             </h2>
 
-            <p className="text-[#777] mt-2 text-sm">
+            <p
+              className="
+                mt-[8px]
+                text-[#666666]
+                text-[18px]
+                leading-[30px]
+              "
+              style={{ fontFamily: "Work Sans" }}
+            >
               3 positions open
             </p>
           </div>
 
           {/* Tabs */}
-          <div className="flex flex-wrap gap-1 mt-6 lg:mt-0">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`
-                  px-5 py-3 text-sm transition-all rounded
-                  ${
-                    activeTab === tab
-                      ? "bg-[#21409A] text-white"
-                      : "bg-[#F4F5F8] text-[#666]"
-                  }
-                `}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+          <div className="flex gap-[8px]">
+            {tabs.map((tab) => {
+              const active = activeTab === tab;
 
+              return (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`
+                    h-[41px]
+                    px-[18px]
+                    rounded-[4px]
+                    text-[14px]
+                    font-medium
+                    transition-all
+                    ${
+                      active
+                        ? "bg-[#1E3C8C] text-white border border-[#1E3C8C]"
+                        : "bg-[#F6F6F6] text-[#555555] border border-transparent"
+                    }
+                  `}
+                  style={{ fontFamily: "Work Sans" }}
+                >
+                  {tab}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Job List */}
-        <div className="border border-[#ECECEC] rounded-lg overflow-hidden">
-
+        {/* Jobs */}
+        <div className="flex flex-col gap-[16px]">
           {jobs.map((job, index) => (
             <div
               key={index}
-              className={`
-                flex flex-col lg:flex-row
-                lg:items-center
+              className="
+                h-[123px]
+                bg-[#FAFAFA]
+                flex
+                items-center
                 justify-between
-                px-6 lg:px-8
-                py-8
-                bg-white
-                ${
-                  index !== jobs.length - 1
-                    ? "border-b border-[#ECECEC]"
-                    : ""
-                }
-              `}
+                px-[32px]
+              "
             >
               {/* Left Side */}
-              <div className="flex gap-4">
-
-                {/* Icon */}
+              <div className="flex items-center gap-[24px]">
+                {/* Icon Box */}
                 <div
-                  className={`
-                    w-12 h-12
-                    rounded-lg
-                    bg-[#F8F8F8]
+                  className="
+                    w-[40px]
+                    h-[40px]
+                    rounded-[8px]
+                    bg-white
                     flex
                     items-center
                     justify-center
-                  `}
+                  "
                 >
                   <BriefcaseBusiness
-                    size={20}
-                    className="text-[#21409A]"
+                    size={18}
+                    className="text-[#1E3C8C]"
+                    strokeWidth={1.8}
                   />
                 </div>
 
                 {/* Content */}
                 <div>
-                  {/* Job Title */}
-                  <h3 className="text-[#21409A] text-[20px] font-semibold leading-[28px]">
+                  <h3
+                    className="
+                      text-[#1E3C8C]
+                      text-[20px]
+                      font-medium
+                      leading-[30px]
+                      tracking-[0px]
+                    "
+                    style={{ fontFamily: "Work Sans", fontWeight: 500 }}
+                  >
                     {job.title}
                   </h3>
 
-                  {/* Details */}
-                  <div className="flex flex-wrap gap-5 mt-3 text-[#777] text-[13px]">
-
+                  <div
+                    className="
+                      flex
+                      items-center
+                      gap-[28px]
+                      mt-[12px]
+                      text-[14px]
+                      text-[#808080]
+                    "
+                    style={{ fontFamily: "Work Sans" }}
+                  >
                     <span className="flex items-center gap-2">
-                      <BriefcaseBusiness size={13} />
+                      <BriefcaseBusiness size={14} />
                       {job.category}
                     </span>
 
                     <span className="flex items-center gap-2">
-                      <MapPin size={13} />
+                      <MapPin size={14} />
                       {job.location}
                     </span>
 
                     <span className="flex items-center gap-2">
-                      <Clock3 size={13} />
+                      <Clock3 size={14} />
                       {job.experience}
                     </span>
 
                     <span>{job.salary}</span>
-
                   </div>
                 </div>
-
               </div>
 
-              {/* Apply Button */}
+              {/* Button */}
               <button
-                className={`
-                  mt-5 lg:mt-0
-                  bg-[#21409A]
-                  hover:bg-[#1A347F]
+                className="
+                  w-[148px]
+                  h-[39px]
+                  rounded-[4.39px]
+                  bg-[#1E3C8C]
                   text-white
-                  text-sm
+                  flex
+                  items-center
+                  justify-center
+                  gap-[7px]
+                  text-[14px]
                   font-medium
-                  px-8
-                  py-3
-                  rounded
+                  shadow-[0px_2px_6px_rgba(0,0,0,0.12)]
                   transition-all
-                `}
+                  duration-300
+                  hover:bg-[#15306e]
+                  hover:scale-105
+                "
+                style={{ fontFamily: "Work Sans" }}
               >
-                Apply now 〉
+                Apply now
+                <ChevronRight size={15} />
               </button>
-
             </div>
           ))}
-
         </div>
-
       </div>
     </section>
   );

@@ -1,17 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useState, useEffect } from "react";
-
-// Import Swiper styles
-import "swiper/css";
+import { useRef, useState } from "react";
 
 const values = [
-  
   {
     title: "Nurturing Talent",
     image: "/assets/Lifeofasiancables/carasel1.png",
+    position: "center 95%",
     points: [
       "Opportunities to learn, grow, and lead",
       "Exposure to diverse projects and cross-functional collaboration",
@@ -21,6 +17,7 @@ const values = [
   {
     title: "Touching Lives",
     image: "/assets/Lifeofasiancables/carasel3.png",
+    position: "center center",
     points: [
       "Meaningful work that powers progress in homes and industries",
       "A supportive environment where personal and professional well-being matter",
@@ -29,6 +26,7 @@ const values = [
   {
     title: "Outperforming Together",
     image: "/assets/Lifeofasiancables/carasel2.png",
+    position: "center center",
     points: [
       "Clear goals, transparent feedback, and recognition for excellence",
       "Collaborative teams that celebrate shared success",
@@ -38,11 +36,9 @@ const values = [
   {
     title: "Happiness",
     image: "/assets/Lifeofasiancables/carasel4.png",
-    // Narrow source (239x504) — center the subject so the face/shoulders
-    // aren't cropped when object-cover zooms it to fill the card width.
-    position: "center 30%",
+    position: "center 40%",
     points: [
-      "A workplace where people enjoy what they do",
+      "A workplace where people enjoy what you do",
       "Celebrations, camaraderie, and a sense of belonging",
       "Work-life balance that respects individual needs",
     ],
@@ -50,51 +46,71 @@ const values = [
 ];
 
 const CultureValuesSection = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return (
-      <section className="bg-white py-10">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <div className="mb-[40px] md:mb-[60px] pl-4 md:pl-8 lg:pl-12">
-            <h2
-              className="text-[#21409A] text-[28px] md:text-[36px] lg:text-[44px] font-bold italic leading-none"
-              style={{ fontFamily: "Magistral" }}
-            >
-              Our Culture & Core Values
-            </h2>
-
-            <p className="mt-4 max-w-[1100px] text-[#5F5F5F] text-[14px] md:text-[16px] leading-[24px] md:leading-[28px]">
-              Our culture is anchored in the core values of the RPG Group,
-              which inspires us to act with integrity and pursue excellence.
-              We nurture an inclusive, entrepreneurial, and people-first
-              culture where every individual is valued and empowered to make
-              a difference.
-            </p>
-          </div>
-          <div className="relative h-[488px]" />
-        </div>
-      </section>
-    );
-  }
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
 
   return (
-    <section className="bg-white py-10">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-        {/* Heading */}
-        <div className="mb-[40px] md:mb-[60px] pl-4 md:pl-8 lg:pl-12">
+    <section
+      style={{
+        width: "100%",
+        background: "#FFFFFF",
+        paddingTop: "40px",
+        paddingBottom: "40px",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1440px",
+          margin: "0 auto",
+          paddingLeft: "80px",
+          paddingRight: "80px",
+        }}
+      >
+        {/* Heading - Left Aligned */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            textAlign: "left",
+            gap: "10px",
+            marginBottom: "60px",
+          }}
+        >
           <h2
-            className="text-[#21409A] text-[28px] md:text-[36px] lg:text-[44px] font-bold italic leading-none"
-            style={{ fontFamily: "Magistral" }}
+            style={{
+              fontFamily: "Magistral",
+              fontWeight: 700,
+              fontStyle: "italic",
+              fontSize: "46px",
+              lineHeight: "55.2px",
+              letterSpacing: "-0.92px",
+              color: "#1E3C8C",
+              margin: 0,
+            }}
           >
             Our Culture & Core Values
           </h2>
 
-          <p className="mt-4 max-w-[1100px] text-[#5F5F5F] text-[14px] md:text-[16px] leading-[24px] md:leading-[28px]">
+          <p
+            style={{
+              width: "1280px",
+              height: "62px",
+              fontFamily: "Work Sans",
+              fontWeight: 400,
+              fontSize: "18px",
+              lineHeight: "30.6px",
+              letterSpacing: "0px",
+              color: "#525252",
+              margin: 0,
+              textAlign: "left",
+              opacity: 1,
+            }}
+          >
             Our culture is anchored in the core values of the RPG Group,
             which inspires us to act with integrity and pursue excellence.
             We nurture an inclusive, entrepreneurial, and people-first
@@ -103,75 +119,171 @@ const CultureValuesSection = () => {
           </p>
         </div>
 
-        {/* Carousel */}
-        <div className="relative">
-          <Swiper
-            slidesPerView="auto"
-            spaceBetween={24}
-            grabCursor={true}
-            className="culture-carousel"
+        {/* Cards */}
+        <div className="relative overflow-hidden">
+          <div
+            ref={sliderRef}
+            className="flex gap-[39px] overflow-x-auto cursor-grab active:cursor-grabbing scrollbar-hide"
+            style={{
+              width: "1784.8026123046875px",
+              height: "547.9329223632812px",
+              marginLeft: "-172px",
+              scrollBehavior: "smooth",
+            }}
+            onMouseDown={(e) => {
+              isDown.current = true;
+              startX.current =
+                e.pageX - sliderRef.current!.offsetLeft;
+              scrollLeft.current =
+                sliderRef.current!.scrollLeft;
+            }}
+            onMouseLeave={() => {
+              isDown.current = false;
+            }}
+            onMouseUp={() => {
+              isDown.current = false;
+            }}
+            onMouseMove={(e) => {
+              if (!isDown.current) return;
+              e.preventDefault();
+
+              const x =
+                e.pageX - sliderRef.current!.offsetLeft;
+
+              const walk =
+                (x - startX.current) * 1.5;
+
+              sliderRef.current!.scrollLeft =
+                scrollLeft.current - walk;
+            }}
           >
-            {values.map((item, index) => (
-              <SwiperSlide key={index} className="!w-auto">
-                <div className="culture-card group relative flex flex-col overflow-hidden text-white">
-                  {/* Image fills the entire card edge-to-edge (object-cover),
-                      anchored to the top so the top portion stays visible */}
+            {values.map((item, index) => {
+              const isActive = activeCard === index;
+
+              return (
+                <div
+                  key={index}
+                  onMouseEnter={() =>
+                    setActiveCard(index)
+                  }
+                  onMouseLeave={() =>
+                    setActiveCard(null)
+                  }
+                  className="relative overflow-hidden cursor-pointer"
+                  style={{
+                    width: isActive
+                      ? "447.21875px"
+                      : "411.0078125px",
+
+                    height: isActive
+                      ? "547.9329223632812px"
+                      : "503.5672302246094px",
+
+                    borderRadius: isActive
+                      ? "9.59px"
+                      : "8.82px",
+
+                    paddingTop: isActive
+                      ? "276.96px"
+                      : "254.54px",
+
+                    paddingRight: isActive
+                      ? "47.96px"
+                      : "44.08px",
+
+                    paddingBottom: "12px",
+
+                    paddingLeft: isActive
+                      ? "28px"
+                      : "25px",
+
+                    transition: "all .35s ease",
+                    flexShrink: 0,
+                  }}
+                >
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    sizes="(max-width: 640px) 90vw, 450px"
-                    style={{ objectPosition: item.position ?? "center top" }}
+                    sizes="450px"
                     className="object-cover"
+                    style={{
+                      objectPosition:
+                        item.position ||
+                        "center center",
+                    }}
                   />
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
 
-                  {/* Content (positioned by the card's padding) */}
-                  <h3 className="relative z-10 text-[22px] md:text-[24px] font-medium">
-                    {item.title}
-                  </h3>
+                  <div
+                    className="relative z-10 flex flex-col"
+                    style={{
+                      gap: isActive
+                        ? "19.18px"
+                        : "17.63px",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: "Work Sans",
+                        fontWeight: 500,
+                        fontSize: "23.51px",
+                        lineHeight: "35.26px",
+                        letterSpacing: "0px",
+                        color: "#FFFFFF",
+                        margin: 0,
+                      }}
+                    >
+                      {item.title}
+                    </h3>
 
-                  <ul className="relative z-10 space-y-2">
-                    {item.points.map((point, i) => (
-                      <li key={i} className="flex gap-2 text-[13px] md:text-[14px] leading-[22px]">
-                        <span className="text-[16px]">•</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul
+                      style={{
+                        width:
+                          "322.8559875488281px",
+                        height: "146px",
+                        margin: 0,
+                        paddingLeft: "18px",
+                        listStyle: "none",
+                      }}
+                    >
+                      {item.points.map(
+                        (point, i) => (
+                          <li
+                            key={i}
+                            style={{
+                              fontFamily: "Work Sans",
+                              fontWeight: 400,
+                              fontStyle: "Regular",
+                              fontSize: "17.1px",
+                              lineHeight: "29.06px",
+                              letterSpacing: "0px",
+                              color: "#FFFFFF",
+                              marginBottom: "4px",
+                            }}
+                          >
+                            • {point}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       <style jsx global>{`
-        .culture-carousel {
-          padding: 10px 0 20px 0;
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
 
-        .culture-card {
-          width: 398.57px;
-          max-width: 90vw;
-          height: 488.33px;
-          border-radius: 8.55px;
-          padding: 246.83px 42.74px 12px 23px;
-          gap: 17.1px;
-          transition: width 0.3s ease, height 0.3s ease,
-            border-radius 0.3s ease, padding 0.3s ease, gap 0.3s ease,
-            box-shadow 0.3s ease;
-        }
-
-        .culture-card:hover {
-          width: 447.22px;
-          height: 547.93px;
-          border-radius: 9.59px;
-          padding: 276.96px 47.96px 12px 28px;
-          gap: 19.18px;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </section>
