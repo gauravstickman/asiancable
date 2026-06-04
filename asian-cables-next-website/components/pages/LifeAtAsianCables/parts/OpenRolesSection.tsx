@@ -10,6 +10,7 @@ const jobs = [
     location: "Mumbai, India",
     experience: "8–12 years experience",
     salary: "₹15–20 LPA",
+    
   },
   {
     category: "Sales",
@@ -105,14 +106,14 @@ export default function OpenRolesSection() {
 
                 {/* Icon */}
                 <div
-                  className="
+                  className={`
                     w-12 h-12
                     rounded-lg
                     bg-[#F8F8F8]
                     flex
                     items-center
                     justify-center
-                  "
+                  `}
                 >
                   <BriefcaseBusiness
                     size={20}
@@ -154,7 +155,7 @@ export default function OpenRolesSection() {
 
               {/* Apply Button */}
               <button
-                className="
+                className={`
                   mt-5 lg:mt-0
                   bg-[#21409A]
                   hover:bg-[#1A347F]
@@ -165,7 +166,7 @@ export default function OpenRolesSection() {
                   py-3
                   rounded
                   transition-all
-                "
+                `}
               >
                 Apply now 〉
               </button>

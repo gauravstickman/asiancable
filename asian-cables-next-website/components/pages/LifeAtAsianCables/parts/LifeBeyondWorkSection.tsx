@@ -15,6 +15,7 @@ export default function LifeBeyondWorkSection() {
           >
             Life Beyond Work
           </h2>
+          
 
           <p className="max-w-[1150px] mt-5 text-[#5F5F5F] text-[16px] lg:text-[20px] leading-[28px] lg:leading-[38px]">
             We believe great workplaces are built on meaningful human
@@ -35,6 +36,7 @@ export default function LifeBeyondWorkSection() {
               src="/assets/Lifeofasiancables/lifebeyondwork1.png"
               alt="Life Beyond Work"
               fill
+              sizes="(max-width: 1024px) 100vw, 60vw"
               className="object-cover hover:scale-105 transition duration-500"
             />
           </div>
@@ -47,6 +49,7 @@ export default function LifeBeyondWorkSection() {
                 src="/assets/Lifeofasiancables/lifebeyondwork2.png"
                 alt="Team Meeting"
                 fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover hover:scale-105 transition duration-500"
               />
             </div>
@@ -56,6 +59,7 @@ export default function LifeBeyondWorkSection() {
                 src="/assets/Lifeofasiancables/lifebeyondwork3.png"
                 alt="Discussion"
                 fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover hover:scale-105 transition duration-500"
               />
             </div>
@@ -65,6 +69,7 @@ export default function LifeBeyondWorkSection() {
                 src="/assets/Lifeofasiancables/lifebeyondwork4.png"
                 alt="Event"
                 fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover hover:scale-105 transition duration-500"
               />
             </div>
@@ -74,6 +79,7 @@ export default function LifeBeyondWorkSection() {
                 src="/assets/Lifeofasiancables/lifebeyondwork5.png"
                 alt="Conference"
                 fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover hover:scale-105 transition duration-500"
               />
             </div>

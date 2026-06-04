@@ -26,7 +26,7 @@ const Hero = () => {
 
             {/* Heading */}
             <h1
-              className="
+              className={`
                 max-w-[522px]
                 text-[34px]
                 sm:text-[42px]
@@ -36,7 +36,7 @@ const Hero = () => {
                 tracking-[-1.44px]
                 font-bold italic
                 mb-4 sm:mb-6
-              "
+              `}
               style={{
                 fontFamily: "Magistral, sans-serif",
               }}
@@ -48,7 +48,7 @@ const Hero = () => {
 
             {/* Paragraph */}
             <p
-              className="
+              className={`
                 max-w-[711px]
                 text-[16px]
                 md:text-[20px]
@@ -58,7 +58,7 @@ const Hero = () => {
                 font-normal
                 text-white/95
                 mb-6 sm:mb-8
-              "
+              `}
               style={{
                 fontFamily: "Work Sans, sans-serif",
               }}
@@ -71,7 +71,7 @@ const Hero = () => {
 
             {/* Button */}
  <button
-  className="
+  className={`
     bg-white
     text-[#1F3A93]
     px-[29.42px]
@@ -83,7 +83,7 @@ const Hero = () => {
     duration-300
     hover:bg-transparent
     hover:text-white
-  "
+  `}
   onMouseEnter={(e) => {
     e.currentTarget.style.border = "2px solid";
     e.currentTarget.style.borderImage =

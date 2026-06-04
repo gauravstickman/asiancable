@@ -11,6 +11,7 @@ import {
   Users,
 } from "lucide-react";
 
+
 const tabs = [
   {
     id: 1,
@@ -43,7 +44,7 @@ const tabs = [
     id: 2,
     number: "02",
     title: "Benefits & Well-being",
-    image: "/assets/Lifeofasiancables/experience2.png",
+    image: "/assets/Lifeofasiancables/experience1.png",
     heading: "Supporting your well-being",
     description:
       "We care about our employees and provide benefits that support physical, emotional and financial well-being.",
@@ -71,7 +72,7 @@ const tabs = [
     id: 3,
     number: "03",
     title: "Diversity & Inclusion",
-    image: "/assets/Lifeofasiancables/experience3.png",
+    image: "/assets/Lifeofasiancables/experience1.png",
     heading: "A workplace where everyone belongs",
     description:
       "We celebrate diverse perspectives and create an inclusive culture where everyone can thrive.",
@@ -120,6 +121,7 @@ export default function ExperienceSection() {
               key={tab.id}
               onClick={() => setActiveTab(index)}
               className={`
+                relative
                 flex-1
                 min-w-[200px]
                 lg:min-w-[320px]
@@ -129,7 +131,7 @@ export default function ExperienceSection() {
                 transition-all
                 ${
                   activeTab === index
-                    ? "bg-[#F4F6FA] border-b-4 border-[#21409A]"
+                    ? "bg-[#F4F6FA]"
                     : ""
                 }
               `}
@@ -141,6 +143,11 @@ export default function ExperienceSection() {
               <div className="text-[16px] sm:text-[18px] lg:text-[20px] mt-2">
                 {tab.title}
               </div>
+
+              {/* Active tab indicator — gradient underline */}
+              {activeTab === index && (
+                <span className="absolute left-0 right-0 bottom-0 h-1 bg-gradient-to-r from-[#F7931E] to-[#36A9E1]" />
+              )}
             </button>
           ))}
         </div>
