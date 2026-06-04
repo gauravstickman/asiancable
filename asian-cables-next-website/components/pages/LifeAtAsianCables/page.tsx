@@ -2,7 +2,7 @@
 
 import Footer from "../../layout/Footer";
 import WebsiteNavbar from "../../layout/WebsiteNavbar";
-import TestimonialsSection from "../Homepage/Parts/Testimonials";
+import TestimonialsSection from "./parts/TestimonialsSection";
 import CultureValuesSection from "./parts/CultureValuesSection";
 import DayInLifeSection from "./parts/DayInLifeSection";
 import ExperienceSection from "./parts/ExperienceSection";
