@@ -115,7 +115,7 @@ export default function InfrastructureHighlights() {
     <section className="overflow-hidden bg-white py-20">
       <div className="mx-auto w-[90vw]">
         {/* Heading */}
-        <h2 className="mb-12 text-center text-[48px] font-bold text-[#1E3C8C] italic">
+        <h2 className="font-[magistral] text-[46px] leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C] text-center">
           Infrastructure Highlights
         </h2>
 
@@ -133,26 +133,24 @@ export default function InfrastructureHighlights() {
                 <div className="flex items-center justify-between gap-20">
                   {/* Left Side */}
                   <div className="max-w-1/2">
-                    <h3 className="mb-4 text-[32px] font-[500px] text-[#1E3C8C]">
+                    <h3 className="font-[work_sans] text-[32px] leading-[26px] font-medium tracking-[-0.03em] text-[#1E3C8C]">
                       {item.title}
                     </h3>
-
-                    <p className="mb-10 text-[16px] leading-7 font-normal text-[#646A69]">
+                    <p className="font-[work_sans] text-[18px] leading-[26px] font-normal tracking-[-0.004em] text-[#646A69] mb-4 mt-6">
                       {item.description}
                     </p>
-
-                    <div className="space-y-8">
+                    <div className="space-y-2 pt-3">
                       {item.points.map((point, index) => (
                         <div key={index}>
-                          <h4 className="text-[22px] font-extrabold text-[#1E3C8C] italic">
+                          <h4 className="font-[magistral] text-[20px] leading-[44px] font-bold italic text-[#1E3C8C] text-start">
                             {point.title}
                           </h4>
 
-                          <p className="mt-1 text-[15px] font-normal text-[#1E3C8C]">
+                          <p className="font-[work_sans] text-[16px] leading-[19.5px] font-normal text-[#1E3C8C] text-start">
                             {point.subtitle}
                           </p>
                           <div
-                            className="my-3 h-0.5 w-18"
+                            className="my-6 h-0.5 w-18"
                             style={{
                               background:
                                 "linear-gradient(90deg, #3CAADF 0%, #F04123 50%, #FFD212 100%)",

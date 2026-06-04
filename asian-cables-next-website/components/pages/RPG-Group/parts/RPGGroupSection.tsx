@@ -66,12 +66,6 @@ export default function RPGGroupSection() {
               alt="RPG Group"
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
-
-            {/* SOFT OVERLAY */}
-            {/* <div className="absolute inset-0 bg-gradient-to-tr from-[#0D1C4A]/10 via-transparent to-white/10" /> */}
-
-            {/* SHINE EFFECT */}
-            {/* <div className="absolute top-0 -left-40 h-full w-24 rotate-12 bg-white/20 blur-2xl transition-all duration-1000 group-hover:left-[120%]" /> */}
           </div>
         </div>
       </div>

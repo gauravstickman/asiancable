@@ -21,26 +21,26 @@ export default function SpecialisedProductionFacilities() {
       <div className="mx-auto w-[90vw]">
         {/* Heading */}
         <div className="pt-12 text-center">
-          <h2 className="text-[48px] leading-tight font-bold text-[#1E3C8C] italic">
+          <h2 className="font-[magistral] text-[46px] leading-[61.6px] tracking-[-0.92px] font-bold italic text-center text-[#1E3C8C]">
             Specialised Production Facilities
           </h2>
 
-          <p className="mt-2 text-[15px] text-[#525252]">
+          <p className="font-[work_sans] text-[18px] leading-[30.6px] font-normal text-center">
             2 dedicated state-of-the-art production units.
           </p>
         </div>
 
         {/* Tabs */}
         <div className="mt-8 flex justify-center">
-          <div className="flex h-[52px] items-center rounded-[6px] bg-[#F3F3F3] px-4 py-4">
+          <div className="flex h-[52px] items-center rounded-[6px] bg-[#F3F3F3] px-2 py-2">
             {units.map((unit) => (
               <button
                 key={unit.id}
                 onClick={() => setActiveUnit(unit.id)}
-                className={`h-[30px] min-w-[100px] cursor-pointer rounded-[4px] px-8 text-[16px] font-medium transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                className={`h-[30px] min-w-[100px] cursor-pointer rounded-[4px] px-6 text-[16px] font-medium transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                   activeUnit === unit.id
-                    ? `bg-[#1D4694] text-white shadow-[0_4px_12px_rgba(29,70,148,0.18)]`
-                    : `bg-transparent text-[#5A5A5A] hover:bg-white/60 hover:text-[#1D4694] hover:shadow-[0_2px_8px_rgba(0,0,0,0.05)]`
+                    ? `bg-[#1D4694] text-white font-[work_sans] text-[18px] leading-[30.6px]  font-normal text-center shadow-[0_4px_12px_rgba(29,70,148,0.18)]`
+                    : `bg-transparent font-[work_sans] text-[18px] leading-[30.6px] font-normal text-center text-[#5A5A5A] hover:bg-white/60 hover:text-[#1D4694] hover:shadow-[0_2px_8px_rgba(0,0,0,0.05)]`
                 } `}
               >
                 {unit.name}

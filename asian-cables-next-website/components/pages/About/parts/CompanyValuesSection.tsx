@@ -8,10 +8,10 @@ export default function CompanyValuesSection() {
     <section className="bg-[#F8F9FB] py-16">
       <div className="mx-auto max-w-[1280px] px-4">
         <div className="mb-12">
-          <h1 className="text-center text-[40px] font-bold text-[#1E3C8C] italic">
+          <h1 className="mb-4 font-[magistral] text-[46px] leading-[42.17px] font-bold italic text-[#1E3C8C] text-center">
             Built on Precision. Driven by Purpose.
           </h1>
-          <p className="text-center text-[16px] font-normal text-[#525252]">
+          <p className="font-[work_sans] text-[19.77px] leading-[31.62px] font-normal text-[#525252] text-center">
             Engineering systems that power certainty across industries,
             infrastructure, and everyday life.
           </p>
@@ -25,10 +25,10 @@ export default function CompanyValuesSection() {
                 <img src="/assets/about/eyeIcon.png" alt="Purpose Icon" />
                 
               </div>
-              <h2 className="block text-[34px] text-[#ffffff] italic transition-colors duration-300 group-hover:text-white">
+              <h2 className="block mb-3 text-[34px] text-[#ffffff] italic transition-colors duration-300 group-hover:text-white">
                   Our Vision
                 </h2>
-              <p className="max-w-[600px] text-[16px] text-[#FFFFFF]">
+              <p className="font-[work_sans] text-[18px] leading-[28px] font-normal text-[#FFFFFF]">
                 To reduce risk in irreversible system choices by engineering
                 high-performance solutions that deliver quiet assurance and
                 confident progress.
@@ -46,7 +46,7 @@ export default function CompanyValuesSection() {
                 </h2>
               </div>
 
-              <p className="text-[15px] leading-[28px] text-[#6B7280] transition-colors duration-300 group-hover:text-white/90">
+              <p className="font-[work_sans] text-[18px] leading-[28px] font-normal text-[#525252] transition-colors duration-300 group-hover:text-white">
                 To be the force of certainty in every environment, empowering
                 the systems that drive progress and the spaces that define human
                 life.
@@ -59,7 +59,7 @@ export default function CompanyValuesSection() {
         <div className="grid grid-cols-12 gap-4">
           {/* Purpose Card */}
           <div className="col-span-12 md:col-span-6">
-            <div className="group h-full rounded-[8px] border border-[#DDE3EF] bg-white p-8 shadow-[0px_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 hover:bg-[#1E3C8C]">
+            <div className="group h-full rounded-[8px] border border-[#DDE3EF] bg-white p-8 shadow-[0px_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 hover:text-white hover:bg-[#1E3C8C]">
               <div className="mb-5 flex items-center gap-8">
                 <img src="/assets/about/targetIcon.png" alt="Purpose Icon" />
                 <h2 className="text-[34px] font-black text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
@@ -67,7 +67,7 @@ export default function CompanyValuesSection() {
                 </h2>
               </div>
 
-              <p className="text-[15px] leading-[28px] text-[#6B7280] transition-colors duration-300 group-hover:text-white/90">
+              <p className="font-[work_sans] text-[18px] leading-[28px] font-normal text-[#525252] transition-colors duration-300 group-hover:text-white">
                 To enable safer, smarter, and more reliable environments through
                 engineering solutions that connect industries, infrastructure,
                 and everyday life.
@@ -85,7 +85,7 @@ export default function CompanyValuesSection() {
                 </h2>
               </div>
 
-              <p className="text-[15px] leading-[28px] text-[#6B7280] transition-colors duration-300 group-hover:text-white/90">
+              <p className="font-[work_sans] text-[18px] leading-[28px] font-normal text-[#525252] transition-colors duration-300 group-hover:text-white">
                 To lead with integrity, build with precision, and foster
                 partnerships grounded in trust, accountability, and long-term
                 progress.

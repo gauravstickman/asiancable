@@ -57,7 +57,7 @@ export default function GovernanceSection() {
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-4">
         {/* Heading */}
-        <h2 className="mb-14 text-center text-[43px] leading-[1.15] font-bold text-[#1E3C8C] italic">
+        <h2 className="mb-14 font-[magistral] text-[46px] leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C] text-center">
           Shaped by Governance. Built on Quality.
           <br />
           Proven across Critical Applications.
@@ -76,13 +76,13 @@ export default function GovernanceSection() {
                 />
               </div>
 
-              <h3 className="mb-6 text-[43px] leading-[1.1] font-bold text-[#FFFFFF] italic">
+              <h3 className="mb-6 font-[magistral] text-[46.82px] text-white leading-[51.51px] font-bold italic">
                 RPG Governance &
                 <br />
                 Institutional Credibility
               </h3>
 
-              <p className="max-w-[480px] text-[15px] leading-[30px] font-normal text-[#FFFFFFE5]">
+              <p className="font-[400] text-[17.56px] leading-[31.61px] tracking-[0] font-[Work_Sans] text-[#FFFFFFE5]">
                 Asian Cables operates under the governance framework of the RPG
                 Group, one of India's most respected business groups, known for
                 its professional management, ethical standards, and long-term
@@ -104,7 +104,7 @@ export default function GovernanceSection() {
                     {card.icon}
                   </div>
 
-                  <h4 className="text-[24px] font-bold text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
+                  <h4 className="font-bold italic text-[24px] leading-[29.27px] tracking-[0] font-[Magistral] transition-colors duration-300 group-hover:text-white">
                     {card.title}
                   </h4>
                 </div>
@@ -118,7 +118,7 @@ export default function GovernanceSection() {
                   {card.icon}
                 </div>
 
-                <h4 className="text-[24px] font-bold text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
+                <h4 className="font-bold italic text-[24px] leading-[29.27px] tracking-[0] font-[Magistral] transition-colors duration-300 group-hover:text-white">
                   {card.title}
                 </h4>
               </div>

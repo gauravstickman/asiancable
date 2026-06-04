@@ -1,4 +1,3 @@
-
 import { Dot } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -35,7 +34,6 @@ function ManufacturingHeader() {
           alt="Manufacturing Hero"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-
         {/* Gradient Overlay */}
         <div
           className="absolute inset-0"
@@ -44,9 +42,8 @@ function ManufacturingHeader() {
               "linear-gradient(to right, rgba(30,40,52,0.72) 0%, rgba(30,40,52,0.45) 38%, rgba(30,40,52,0.12) 65%, rgba(30,40,52,0.0) 100%)",
           }}
         />
-
         {/* Content */}
-        <div className="relative z-10 mx-auto ml-13 w-full px-8 pt-40 pb-[60px] text-white">
+        <div className="relative z-10 mx-auto max-w-7xl px-3 pt-45 pb-[60px] text-white">
           {/* Breadcrumb */}
           <nav className="mb-7 flex flex-wrap items-center gap-1.5 text-xs">
             {breadcrumbs.map((item, index) => (
@@ -54,12 +51,14 @@ function ManufacturingHeader() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="text-white/75 transition-colors duration-300 hover:text-white"
+                    className="font-worksans text-[16px] leading-[36px] font-normal text-[#FFFFFFD4]"
                   >
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="font-bold text-white">{item.label}</span>
+                  <span className="font-worksans text-[16px] leading-[36px] font-medium tracking-[0px] text-[#FFFFFF]">
+                    {item.label}
+                  </span>
                 )}
 
                 {index < breadcrumbs.length - 1 && (
@@ -70,18 +69,19 @@ function ManufacturingHeader() {
           </nav>
 
           {/* Heading */}
-          <h1 className="mb-5 text-[54px] leading-[1.08] font-black tracking-[-2px] text-white italic">
+          <h1 className="font-[Magistral] text-[54px] leading-[64.6px] font-bold tracking-[-1.44px] italic">
             Precision led Manufacturing
           </h1>
 
           {/* Subtitle */}
-          <p className="max-w-1/3 text-[18px] leading-[1.65] font-normal text-[#FFFFFF]">
-            Integrated manufacturing facilities built for scale, precision, and
-            consistent quality.
+          <p className="pt-[10px] font-[Work_Sans] text-[20px] leading-[33px] font-normal tracking-[-0.5px]">
+            Integrated manufacturing facilities built for scale,
+            <br />
+            precision, and consistent quality.
           </p>
 
           {/* Stats */}
-          <div className="mt-35 flex flex-wrap items-start gap-[55px]">
+          <div className="mt-18 flex flex-wrap items-start gap-[55px]">
             {stats.map((stat) => (
               <div key={stat.label} className="relative">
                 {stat.highlight && (
@@ -89,30 +89,23 @@ function ManufacturingHeader() {
                     className="pointer-events-none absolute top-1/2 left-1/2 h-[260px] w-[220px] -translate-x-1/2 -translate-y-1/2 opacity-90 blur-[80px]"
                     style={{
                       background: `
-        radial-gradient(
-          ellipse at center,
-          #7A1F0A 0%,
-          #8B250F 25%,
-          #B54708 55%,
-          #D97706 80%,
-          transparent 100%
-        )
-      `,
+                              radial-gradient(
+                                ellipse at center,
+                                #7A1F0A 0%,
+                                #8B250F 25%,
+                                #B54708 55%,
+                                #D97706 80%,
+                                transparent 100%
+                              )
+                            `,
                     }}
                   />
                 )}
 
-                <p
-                  className={`relative z-10 m-0 text-[45px] leading-none font-black text-white ${stat.value !== "2" ? "italic" : ""} `}
-                >
+                <p className="relative font-[magistral] text-[38px] leading-[83.02px] font-bold text-white italic">
                   {stat.value}
                 </p>
-
-                <p
-                  className={`mt-2 text-[11px] font-normal tracking-[0.02em] ${
-                    stat.highlight ? "relative z-0 text-white" : "text-white"
-                  }`}
-                >
+                <p className="relative font-worksans text-[15.81px] leading-[23.72px] font-medium text-[#FFFFFFB5]">
                   {stat.label}
                 </p>
               </div>

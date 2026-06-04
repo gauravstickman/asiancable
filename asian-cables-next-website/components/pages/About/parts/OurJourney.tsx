@@ -35,8 +35,7 @@ const timelineData = [
   },
   {
     year: "2001",
-    description:
-      "Merger of RPC Cables Ltd. into KEC International Ltd.",
+    description: "Merger of RPC Cables Ltd. into KEC International Ltd.",
     image: "/assets/about/industryIcons.png",
   },
   {
@@ -88,7 +87,7 @@ export default function OurJourney() {
       <div className="mx-auto max-w-[1400px] px-6">
         {/* Title */}
 
-        <h2 className="mb-12 text-center text-[54px] font-black italic text-[#1E3C8C]">
+        <h2 className="mb-9 text-center font-[magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
           Our Journey
         </h2>
       </div>
@@ -97,16 +96,21 @@ export default function OurJourney() {
 
       <div className="mb-12 overflow-hidden">
         <div className="relative">
-          <div className="animate-marquee flex w-max gap-6">
+          <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-white to-transparent" />
+
+          {/* Right Fade */}
+          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-32 bg-gradient-to-l from-white to-transparent" />
+
+          <div className="animate-marquee flex w-max gap-[50px]">
             {/* FIRST SET */}
             {timelineData.map((item) => (
               <button
                 key={item.year}
                 onClick={() => setSelectedYear(item.year)}
-                className={`min-w-[100px] cursor-pointer flex items-center justify-center transition-all duration-300 ${
+                className={`font-worksans flex min-w-[100px] cursor-pointer items-center justify-center  leading-[57.67px] font-semibold text-[#1E3C8C] transition-all duration-300 ${
                   selectedYear === item.year
                     ? "text-[48px] font-black text-[#1E3C8C]"
-                    : "text-[24px] font-semibold text-[#C8D0E3]"
+                    : "text-[28px] font-semibold text-[#C8D0E3]"
                 }`}
               >
                 {item.year}
@@ -118,10 +122,10 @@ export default function OurJourney() {
               <button
                 key={`dup-${item.year}`}
                 onClick={() => setSelectedYear(item.year)}
-                className={`min-w-[100px] cursor-pointer flex items-center justify-center transition-all duration-300 ${
+                className={`font-worksans flex min-w-[100px] cursor-pointer items-center justify-center  leading-[57.67px] font-semibold text-[#1E3C8C] transition-all duration-300 ${
                   selectedYear === item.year
                     ? "text-[48px] font-black text-[#1E3C8C]"
-                    : "text-[24px] font-semibold text-[#C8D0E3]"
+                    : "text-[28px] font-semibold text-[#C8D0E3]"
                 }`}
               >
                 {item.year}
@@ -134,26 +138,30 @@ export default function OurJourney() {
       {/* Content */}
 
       <div className="mx-auto max-w-[1400px] px-6">
-        <div className="grid grid-cols-1 overflow-hidden rounded-lg bg-[#FFFFFF] border border-[#FFFFFF] shadow-md lg:grid-cols-2">
+        <div className="grid grid-cols-1 overflow-hidden rounded-lg border border-[#FFFFFF] bg-[#FFFFFF] shadow-md lg:grid-cols-2">
           {/* Image */}
 
           <div className="h-[500px]">
-            <img src={imageSrc} alt="Our journey" className="h-full w-full object-cover" />
+            <img
+              src={imageSrc}
+              alt="Our journey"
+              className="h-full w-full object-cover"
+            />
           </div>
 
           {/* Content */}
 
           <div
             className={`flex flex-col justify-center bg-white p-12 transition-all duration-300 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+              visible ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
             }`}
             aria-live="polite"
           >
-            <h3 className="mb-8 text-[56px] font-light text-[#1E3C8C]">
+            <h3 className="mb-3 text-[56px] font-light text-[#1E3C8C]">
               {selectedData.year}
             </h3>
 
-            <p className="max-w-[420px] text-[25px] font-medium leading-[180%] text-[#666]">
+            <p className=" font-worksans text-[16px] leading-[27.2px] font-normal text-[#666]">
               {selectedData.description}
             </p>
           </div>

@@ -8,6 +8,7 @@ function AboutHeader() {
     { label: "The Company", href: "/company" },
     { label: "About" },
   ];
+
   const stats = [
     {
       value: "90+",
@@ -25,6 +26,7 @@ function AboutHeader() {
       line2: "Manufacturing Capacity",
     },
   ];
+
   return (
     <main className="bg-white text-slate-900">
       <section className="relative min-h-[700px] overflow-hidden">
@@ -35,20 +37,22 @@ function AboutHeader() {
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
         {/* Content */}
-        <div className="relative z-10 mx-auto ml-13 w-full px-8 pt-40 pb-[60px] text-white">
+        <div className="relative z-10 mx-auto max-w-7xl px-3 pt-60 pb-[60px] text-white">
           {/* Breadcrumb */}
-          <nav className="mb-7 flex flex-wrap items-center gap-1.5 text-xs">
+          <nav className="mb-4 flex flex-wrap items-center gap-1.5 text-xs">
             {breadcrumbs.map((item, index) => (
               <React.Fragment key={item.label}>
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="text-white/75 transition-colors duration-300 hover:text-white"
+                    className="font-worksans text-[16px] leading-[36px] font-normal text-[#FFFFFFD4]"
                   >
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="font-bold text-white">{item.label}</span>
+                  <span className="font-worksans text-[16px] leading-[36px] font-medium tracking-[0px] text-[#FFFFFF]">
+                    {item.label}
+                  </span>
                 )}
 
                 {index < breadcrumbs.length - 1 && (
@@ -57,25 +61,29 @@ function AboutHeader() {
               </React.Fragment>
             ))}
           </nav>
+
           {/* Heading */}
-          <h1 className="mb-5 text-[54px] leading-[1.08] font-black tracking-[-2px] text-white italic">
-            Reliability, <span className="block italic">Redefined.</span>
+          <h1 className="font-[magistral] text-[68px] leading-[64.6px] tracking-[-1.44px] font-bold italic">
+            Reliability,
+            <span className="block font-[magistral] text-[68px] leading-[64.6px] tracking-[-1.44px] font-bold italic">
+              Redefined.
+            </span>
           </h1>
+
           {/* Stats */}
-          <div className="mt-35 flex flex-wrap items-start gap-[55px]">
+          <div className="mt-14 flex flex-wrap items-start gap-36">
             {stats.map((stat) => (
-              <div key={stat.value} className="relative">
-                <p
-                  className={`relative z-10 m-0 text-[45px] leading-none font-black text-white ${stat.value !== "2" ? "italic" : ""} `}
-                >
+              <div key={stat.value}>
+                <p className="font-[magistral] text-[38px] leading-[83.02px] font-bold italic text-white">
                   {stat.value}
                 </p>
-                <div className="mt-3">
-                  <p className="text-[12px] font-medium text-[#FFFFFFB5]">
+
+                <div>
+                  <p className="font-worksans text-[15.81px] leading-[23.72px] font-medium text-[#FFFFFFB5]">
                     {stat.line1}
                   </p>
 
-                  <p className="text-[12px] font-medium text-[#FFFFFFB5]">
+                  <p className="font-worksans text-[15.81px] leading-[23.72px] font-medium text-[#FFFFFFB5]">
                     {stat.line2}
                   </p>
                 </div>

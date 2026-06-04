@@ -31,10 +31,10 @@ const verticals = [
 
 export default function BusinessVerticals() {
   return (
-    <section className="bg-[#F8F8F8] py-20">
+    <section className="bg-[#F8F8F8] py-15">
       <div className="mx-auto w-[92%] max-w-[1250px]">
         {/* HEADING */}
-        <h2 className="mb-14 text-center text-[38px] font-[700] tracking-[-1px] text-[#1E3C8C] italic">
+        <h2 className="font-magistral mb-10 text-hero text-center text-[46px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
           Business Verticals
         </h2>
 
@@ -43,17 +43,17 @@ export default function BusinessVerticals() {
           {verticals.map((item, index) => (
             <div
               key={index}
-              className="group flex h-[260px] flex-col items-center justify-center rounded-[4px] border border-[#EFEFEF] bg-white px-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)]"
+              className="group relative flex h-[321px] w-[401px] flex-col items-center justify-center rounded-[4px] border-2 border-white bg-white p-[2px] px-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)]"
             >
-              <div className="mb-7 flex h-[72px] w-[72px] items-center justify-center transition-all duration-300 group-hover:scale-105">
+              <div className="mb-7 flex h-[72px] w-[72px] items-start justify-center transition-all duration-300 group-hover:scale-105">
                 <img
                   src={item.icon}
                   alt=""
-                  className="h-[60px] w-[60px] object-contain"
+                  className="h-[80px] w-[80px] object-contain"
                 />
               </div>
 
-              <h3 className="text-[15px] mt-7 tracking-wide leading-[24px] font-[500] text-[#1E3C8C]">
+              <h3 className="font-inter  text-center mt-13 text-[20px] font-medium tracking-[0px] text-[#1E3C8C]">
                 {item.title}
               </h3>
             </div>

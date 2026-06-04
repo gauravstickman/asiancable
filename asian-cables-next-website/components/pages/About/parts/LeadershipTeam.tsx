@@ -79,11 +79,11 @@ export default function LeadershipTeam() {
                 {/* Content */}
                 <div className="mt-4 px-2 flex items-start justify-between">
                   <div>
-                    <h3 className="text-[15px] tracking-wide  font-medium text-[#1D1F1E]">
+                    <h3 className="font-[500] text-[16px] leading-[24px] tracking-[-0.004em] text-[#1D1F1E] font-[Figtree]">
                       {leader.name}
                     </h3>
 
-                    <p className="mt-1 text-[12px] font-normal text-[#646A69]">
+                    <p className="font-[figtree] font-normal text-[14px] leading-[20px] tracking-[-0.004em] text-[#646A69] mb-2">
                       {leader.role}
                     </p>
                   </div>
@@ -91,7 +91,7 @@ export default function LeadershipTeam() {
                   <img
                     src="/assets/about/linkdinIcon.png"
                     alt="LinkedIn"
-                    className="h-8 w-8 object-contain cursor-pointer"
+                    className="h-6 w-6 object-contain cursor-pointer"
                   />
                 </div>
               </div>
@@ -110,11 +110,11 @@ export default function LeadershipTeam() {
 
                 <div className="mt-4 px-2 flex items-start justify-between">
                   <div>
-                    <h3 className="text-[15px] tracking-wide font-medium text-[#1D1F1E]">
+                    <h3 className="font-[500] text-[16px] leading-[24px] tracking-[-0.004em] text-[#1D1F1E] font-[Figtree]">
                       {leader.name}
                     </h3>
 
-                    <p className="mt-1 font-normal text-[13px] text-[#646A69]">
+                    <p className="font-[figtree] font-normal text-[14px] leading-[20px] tracking-[-0.004em] text-[#646A69] mb-2">
                       {leader.role}
                     </p>
                   </div>
@@ -122,7 +122,7 @@ export default function LeadershipTeam() {
                   <img
                     src="/assets/about/linkdinIcon.png"
                     alt="LinkedIn"
-                    className="h-8 w-8 object-contain cursor-pointer"
+                    className="h-6 w-6 object-contain cursor-pointer"
                   />
                 </div>
               </div>

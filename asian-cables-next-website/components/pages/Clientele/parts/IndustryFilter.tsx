@@ -89,7 +89,7 @@
 
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const industries = [
   { id: "all", label: "All Industries" },
@@ -140,6 +140,14 @@ export default function IndustryFilter() {
   const [region, setRegion] = useState("international");
   const [industry, setIndustry] = useState("all");
 
+  // Emit filter changes so sibling components can listen
+  useEffect(() => {
+    const ev = new CustomEvent("client-filter-change", {
+      detail: { region, industry },
+    });
+    window.dispatchEvent(ev);
+  }, [region, industry]);
+
   return (
     <section className="relative z-20 w-full py-8 bg-white">
       <div className="mx-auto flex w-[92%] max-w-[1380px] flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -169,11 +177,12 @@ export default function IndustryFilter() {
               text-[13px]
               font-[600]
               transition-all
+              cursor-pointer
               duration-300
               ${
                 region === "international"
-                  ? "bg-[#163B8C] text-white shadow-md"
-                  : "text-[#6B7280] hover:text-[#163B8C]"
+                  ? "bg-[#163B8C] text-white font-[Work_Sans] font-semibold text-[15px] leading-[22.5px] tracking-normal text-center shadow-md"
+                  : "font-[Work_Sans] font-semibold text-[15px] leading-[22.5px] tracking-normal text-center hover:text-[#163B8C]"
               }
             `}
           >
@@ -192,13 +201,14 @@ export default function IndustryFilter() {
               px-5
               py-2.5
               text-[13px]
+              cursor-pointer
               font-[600]
               transition-all
               duration-300
               ${
                 region === "domestic"
-                  ? "bg-[#163B8C] text-white shadow-md"
-                  : "text-[#6B7280] hover:text-[#163B8C]"
+                  ? "bg-[#163B8C] text-white font-[Work_Sans] font-semibold text-[15px] leading-[22.5px] tracking-normal text-center shadow-md"
+                  : "font-[Work_Sans] font-semibold text-[15px] leading-[22.5px] tracking-normal text-center hover:text-[#163B8C]"
               }
             `}
           >
@@ -231,6 +241,7 @@ export default function IndustryFilter() {
                   gap-2
                   whitespace-nowrap
                   text-[13px]
+                  cursor-pointer  
                   font-[500]
                   transition-all
                   duration-300
@@ -246,7 +257,7 @@ export default function IndustryFilter() {
                   active={active}
                 />
 
-                <span className="relative top-[0.5px]">
+                <span className="relative top-[0.5px] font-[Work_Sans] font-medium text-[13px] leading-[19.5px] tracking-normal text-center">
                   {item.label}
                 </span>
               </button>

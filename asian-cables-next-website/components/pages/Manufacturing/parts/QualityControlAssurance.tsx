@@ -85,43 +85,16 @@ const QualityControlAssurance = () => {
     <section className="w-full bg-white py-20">
       <div className="mx-auto w-[90vw] px-4">
         {/* Heading */}
-        <h2 className="mb-10 text-center text-[42px] font-bold text-[#163B8C] italic">
+        <h2 className="font-[magistral] text-[46px] leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C] text-center">
           Quality Control & Assurance
         </h2>
-
-        {/* Tabs */}
-        {/* <div className="flex justify-center items-center gap-5 mb-12">
+        <div className="mb-12 pt-10 flex items-center justify-center gap-2">
           <button
             onClick={() => setActiveTab("certifications")}
-            className={`px-8 py-3 text-sm font-medium transition-all duration-300
-              ${
-                activeTab === "certifications"
-                  ? "bg-[#163B8C] text-white"
-                  : "text-gray-500 hover:text-[#163B8C]"
-              }`}
-          >
-            Certifications
-          </button>
-
-          <button
-            onClick={() => setActiveTab("accreditations")}
-            className={`px-4 py-3 text-sm font-medium transition-all duration-300
-              ${
-                activeTab === "accreditations"
-                  ? "bg-[#163B8C] text-white"
-                  : "text-gray-500 hover:text-[#163B8C]"
-              }`}
-          >
-            Accreditations
-          </button>
-        </div> */}
-        <div className="mb-12 flex items-center justify-center gap-3">
-          <button
-            onClick={() => setActiveTab("certifications")}
-            className={`relative overflow-hidden cursor-pointer px-8 py-3 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
+            className={`relative overflow-hidden cursor-pointer px-12 py-2 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
               activeTab === "certifications"
-                ? "bg-[#163B8C] text-white shadow-lg shadow-blue-500/20"
-                : "text-gray-500 hover:text-[#163B8C]"
+                ? "bg-[#163B8C] font-[work_sans] text-[15px] leading-[22.5px] font-medium text-center text-white shadow-lg shadow-blue-500/20"
+                : "font-[work_sans] text-[15px] leading-[22.5px] font-medium text-[#767676F2] text-center hover:text-[#163B8C]"
             }`}
           >
             Certifications
@@ -129,10 +102,10 @@ const QualityControlAssurance = () => {
 
           <button
             onClick={() => setActiveTab("accreditations")}
-            className={`relative overflow-hidden cursor-pointer px-4 py-3 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
+            className={`relative overflow-hidden cursor-pointer rounded-[2px] px-12 py-2 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
               activeTab === "accreditations"
-                ? "bg-[#163B8C] text-white shadow-lg shadow-blue-500/20"
-                : "text-gray-500 hover:text-[#163B8C]"
+                ? "bg-[#163B8C] font-[work_sans] text-[15px] leading-[22.5px] font-medium text-center text-white shadow-lg shadow-blue-500/20"
+                : "font-[work_sans] text-[15px] leading-[22.5px] font-medium text-[#767676F2] text-center hover:text-[#163B8C]"
             }`}
           >
             Accreditations
@@ -154,11 +127,11 @@ const QualityControlAssurance = () => {
                 />
 
                 <div>
-                  <h3 className="text-[16px] font-medium text-[#6E6E6E]">
+                  <h3 className="font-[work_sans] text-[16px] leading-[24px] font-medium text-[#6E6E6E]">
                     {item.title}
                   </h3>
 
-                  <p className="text-[16px] text-[#6E6E6E] font-medium">{item.subtitle}</p>
+                  <p className="font-[work_sans] text-[16px] leading-[24px] font-medium text-[#6E6E6E]">{item.subtitle}</p>
                 </div>
               </div>
               <img
