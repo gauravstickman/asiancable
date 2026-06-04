@@ -20,6 +20,7 @@ const testimonials = [
     tags: ["inspired", "supported","Growing", "Energized","proud"],
   },
   {
+    
     name: "Amit Barasara",
     role: "Manager – Quality",
     company: "11 Years at Asian Cables",

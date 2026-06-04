@@ -16,6 +16,7 @@ const WhyWorkSection = () => {
               alt="Why Work at Asian Cables"
               width={520}
               height={420}
+              
               className="w-full h-[260px] sm:h-[360px] lg:h-[420px] object-cover rounded-lg"
             />
           </div>

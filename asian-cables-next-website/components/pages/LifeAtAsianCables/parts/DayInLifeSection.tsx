@@ -8,6 +8,7 @@ export default function DayInLifeSection() {
     <section className="bg-white py-12 md:py-[80px]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px]">
 
+
         {/* Heading */}
         <h2
           className="text-[#21409A] text-[30px] sm:text-[36px] lg:text-[44px] font-bold italic mb-8 lg:mb-12"

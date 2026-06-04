@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 const values = [
+  
   {
     title: "Nurturing Talent",
     image: "/assets/Lifeofasiancables/carasel1.png",
