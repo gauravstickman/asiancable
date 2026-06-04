@@ -114,32 +114,6 @@ const CultureValuesSection = () => {
         </div>
       </div>
 
-      <style jsx global>{`
-        .culture-carousel {
-          padding: 10px 0 20px 0;
-        }
-
-        .culture-card {
-          width: 398.57px;
-          max-width: 90vw;
-          height: 488.33px;
-          border-radius: 8.55px;
-          padding: 246.83px 42.74px 12px 23px;
-          gap: 17.1px;
-          transition: width 0.3s ease, height 0.3s ease,
-            border-radius 0.3s ease, padding 0.3s ease, gap 0.3s ease,
-            box-shadow 0.3s ease;
-        }
-
-        .culture-card:hover {
-          width: 447.22px;
-          height: 547.93px;
-          border-radius: 9.59px;
-          padding: 276.96px 47.96px 12px 28px;
-          gap: 19.18px;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
-        }
-      `}</style>
     </section>
   );
 };
