@@ -167,7 +167,6 @@ export default function OpenRolesSection() {
                       sm:leading-[30px]
                       tracking-[0px]
                     "
-                    style={{ fontFamily: "Work Sans", fontWeight: 500 }}
                   >
                     {job.title}
                   </h3>

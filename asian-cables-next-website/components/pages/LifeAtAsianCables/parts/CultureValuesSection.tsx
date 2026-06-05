@@ -83,7 +83,6 @@ const CultureValuesSection = () => {
         >
           <h2
             style={{
-              fontFamily: "Magistral",
               fontWeight: 700,
               fontStyle: "italic",
               fontSize: "clamp(28px, 5vw, 46px)",
@@ -99,7 +98,6 @@ const CultureValuesSection = () => {
           <p
             style={{
               maxWidth: "1280px",
-              fontFamily: "Work Sans",
               fontWeight: 400,
               fontSize: "18px",
               lineHeight: "30.6px",
@@ -184,7 +182,6 @@ const CultureValuesSection = () => {
                 >
                   <h3
                     style={{
-                      fontFamily: "Work Sans",
                       fontWeight: 500,
                       fontSize: "23.51px",
                       lineHeight: "35.26px",
@@ -209,7 +206,6 @@ const CultureValuesSection = () => {
                       <li
                         key={i}
                         style={{
-                          fontFamily: "Work Sans",
                           fontWeight: 400,
                           fontStyle: "Regular",
                           fontSize: "17.1px",

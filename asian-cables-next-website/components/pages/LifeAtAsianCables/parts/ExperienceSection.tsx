@@ -103,9 +103,8 @@ export default function ExperienceSection() {
         <div className="flex justify-center mb-10 lg:mb-12">
           <h2
             className="text-center text-[#1E3C8C] font-bold italic text-[32px] sm:text-[40px] lg:text-[46px] leading-[1.15] lg:leading-[55.2px] tracking-[-0.92px]"
-            style={{ fontFamily: "Magistral, 'Inter', sans-serif" }}
           >
-            What You&apos;ll Experience
+            What You'll Experience
           </h2>
         </div>
 
@@ -130,7 +129,6 @@ export default function ExperienceSection() {
                 <div
                   className="text-[32px] sm:text-[34px] lg:text-[40px] leading-[1.1] lg:leading-[45px] mb-2"
                   style={{
-                    fontFamily: "Magistral, 'Inter', sans-serif",
                     fontWeight: 700,
                     fontStyle: "italic",
                     letterSpacing: "-0.92px",
@@ -142,7 +140,6 @@ export default function ExperienceSection() {
                 <div
                   className="text-[18px] sm:text-[20px] lg:text-[24px] leading-[1.3] lg:leading-[33px]"
                   style={{
-                    fontFamily: "Inter, sans-serif",
                     fontWeight: 500,
                     color: "#1E3C8C",
                   }}
@@ -182,7 +179,6 @@ export default function ExperienceSection() {
                 <h3
                   className="text-[26px] sm:text-[30px] lg:text-[36px] leading-[1.15]"
                   style={{
-                    fontFamily: "Magistral, 'Inter', sans-serif",
                     fontWeight: 700,
                     fontStyle: "italic",
                     letterSpacing: "-0.92px",
@@ -196,7 +192,6 @@ export default function ExperienceSection() {
                 <p
                   className="text-[16px] sm:text-[18px] lg:text-[20px] leading-[28px] lg:leading-[30px]"
                   style={{
-                    fontFamily: "Work Sans, sans-serif",
                     fontWeight: 400,
                     color: "#555",
                     margin: 0,
@@ -223,7 +218,6 @@ export default function ExperienceSection() {
                         <h4
                           className="text-[16px] leading-tight mb-2"
                           style={{
-                            fontFamily: "Work Sans, sans-serif",
                             fontWeight: 500,
                             color: "#1E3C8C",
                           }}
@@ -233,7 +227,6 @@ export default function ExperienceSection() {
                         <p
                           className="text-[14px] leading-[20px]"
                           style={{
-                            fontFamily: "Work Sans, sans-serif",
                             fontWeight: 400,
                             color: "#666",
                             margin: 0,

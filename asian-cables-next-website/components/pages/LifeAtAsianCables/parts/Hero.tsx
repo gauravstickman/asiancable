@@ -37,9 +37,7 @@ const Hero = () => {
                 font-bold italic
                 mb-4 sm:mb-6
               `}
-              style={{
-                fontFamily: "Magistral, sans-serif",
-              }}
+             
             >
               Your Connection to
               <br />
@@ -59,9 +57,7 @@ const Hero = () => {
                 text-white/95
                 mb-6 sm:mb-8
               `}
-              style={{
-                fontFamily: "Work Sans, sans-serif",
-              }}
+             
             >
               At Asian Cables, part of RPG Group, we don't just
               manufacture wires and cables — we power industries,
