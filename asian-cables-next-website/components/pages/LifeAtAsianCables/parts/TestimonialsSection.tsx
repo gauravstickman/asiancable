@@ -38,9 +38,9 @@ const loopCards = [
 export default function TestimonialsSection() {
   return (
     <section className="bg-[#21409A] py-[40px] overflow-hidden">
-      <div className="max-w-[1440px] mx-auto">
+      <div className="max-w-[1280px] mx-auto">
         {/* Heading */}
-        <div className="mb-10 lg:mb-[60px] px-5 sm:px-8 lg:px-12">
+        <div className="mb-10 lg:mb-[60px] md:px-0 px-5">
           <h2
             className="
               text-white
@@ -80,7 +80,7 @@ export default function TestimonialsSection() {
             <div
               key={index}
               aria-hidden={index >= testimonials.length}
-              className="ts-card bg-white rounded-[10px] p-6 flex flex-col overflow-hidden h-[436px]"
+              className="ts-card bg-white rounded-[10px] group p-6 flex flex-col h-[436px]"
             >
               {/* Quote */}
               <div className="w-[30px] h-[27px]">
@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
 
               {/* Content */}
               <p
-                className="mt-6 text-[18px] leading-[28px] text-[#555555] font-normal overflow-hidden line-clamp-6"
+                className="mt-6 text-[18px] leading-[28px] text-[#555555] font-normal  line-clamp-3 transition-all duration-300 group-hover:line-clamp-6"
                 
               >
                 {item.text}
@@ -105,7 +105,7 @@ export default function TestimonialsSection() {
               <div className="flex-1" />
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-3 pb-6 border-b border-[#E2E2E2]">
+              <div className="flex flex-wrap gap-3 pb-6 border-b border-[#E2E2E2] group-hover:hidden">
                 {item.tags.map((tag, i) => (
                   <span
                     key={i}
@@ -130,12 +130,12 @@ export default function TestimonialsSection() {
 
               {/* Footer */}
               <div className="pt-6">
-                <h3
+                <p
                   className="text-[24px] font-semibold leading-[26px] text-black"
                   
                 >
                   {item.name}
-                </h3>
+                </p>
 
                 <p
                   className="mt-2 text-[16px] font-medium text-[#767676]"

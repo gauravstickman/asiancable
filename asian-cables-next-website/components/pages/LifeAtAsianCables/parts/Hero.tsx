@@ -1,10 +1,12 @@
+import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react'
-
+Link
 const Hero = () => {
   return (
     <div>
         <section
-        className="relative min-h-screen bg-cover bg-[position:75%_center] lg:bg-center"
+        className="relative  bg-cover bg-[position:75%_center] lg:bg-center"
         style={{
           backgroundImage:
             "url('/assets/Lifeofasiancables/ImageWithFallback.png')",
@@ -14,8 +16,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/45" />
 
         {/* Content */}
-        <div className="relative z-10 flex min-h-screen items-center">
-          <div className="max-w-[711px] px-6 sm:px-0 ml-0 sm:ml-8 md:ml-16 lg:ml-20 text-white">
+        <div className="relative z-10 flex  items-center">
+          <div className="max-w-[711px] mt-[185px] mb-[78.61px] px-5 sm:px-0 ml-0 sm:ml-8 md:ml-16 lg:ml-20 text-white">
 
             {/* Breadcrumb */}
             <div className="mb-4 sm:mb-6 text-xs sm:text-sm flex items-center gap-2">
@@ -39,9 +41,7 @@ const Hero = () => {
               `}
              
             >
-              Your Connection to
-              <br />
-              Brighter Future
+              Your Connection to  Brighter Future
             </h1>
 
             {/* Paragraph */}
@@ -55,7 +55,7 @@ const Hero = () => {
                 tracking-[-0.5px]
                 font-normal
                 text-white/95
-                mb-6 sm:mb-8
+                mb-9 sm:mb-8
               `}
              
             >
@@ -66,41 +66,57 @@ const Hero = () => {
             </p>
 
             {/* Button */}
- <button
-  className={`
-    w-full
-    sm:w-auto
+ 
+ <Link
+  href="#openroles"
+  className="sparkle
+    group
+    relative
     inline-flex
     items-center
-    justify-center
     gap-2
+    rounded-[6px]
     bg-white
-    text-[#1F3A93]
+    px-5
+    py-2
     text-[16px]
-    px-[29.42px]
-    py-[14px]
-    sm:py-[9.19px]
-    rounded-[8px]
-    sm:rounded-[5.52px]
-    border border-transparent
-    font-semibold
+    font-[500]
+    text-[#1E3C8C]
     transition-all
     duration-300
     hover:bg-transparent
     hover:text-white
-  `}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.border = "2px solid";
-    e.currentTarget.style.borderImage =
-      "linear-gradient(90deg,#FFD600,#FF4D4D,#00BFFF) 1";
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.border = "1px solid transparent";
-    e.currentTarget.style.borderImage = "";
-  }}
+    md:text-[20px]
+  "
 >
-  Explore Open Roles 〉
-</button>
+  Explore Open Roles
+
+  <ChevronRight size={20} />
+
+  <span
+    className="
+      absolute
+      inset-0
+      rounded-[6px]
+      opacity-0
+      group-hover:opacity-100
+      transition-opacity
+      duration-300
+      pointer-events-none
+    "
+    style={{
+      boxShadow:
+        "inset 0 0 0 2px transparent",
+      borderRadius: "6px",
+      background:
+        "linear-gradient(270deg,#3CAADF 0%,#F04123 50%,#FFD212 100%)",
+      WebkitMask:
+        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      WebkitMaskComposite: "xor",
+      padding: "2px",
+    }}
+  />
+</Link>
           </div>
         </div>
       </section>

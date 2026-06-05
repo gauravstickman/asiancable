@@ -6,6 +6,7 @@ import {
   MapPin,
   Clock3,
   ChevronRight,
+  Building2,
 } from "lucide-react";
 
 const jobs = [
@@ -44,7 +45,7 @@ export default function OpenRolesSection() {
   const [activeTab, setActiveTab] = useState("All Roles");
 
   return (
-    <section className="w-full bg-white py-[40px]">
+    <section className="w-full bg-white py-[40px]" id="openroles">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[81px]">
         {/* Top Section */}
         <div className="w-full flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between mb-10 lg:mb-[60px]">
@@ -157,7 +158,7 @@ export default function OpenRolesSection() {
 
                 {/* Content */}
                 <div>
-                  <h3
+                  <p
                     className="
                       text-[#1E3C8C]
                       text-[17px]
@@ -169,7 +170,7 @@ export default function OpenRolesSection() {
                     "
                   >
                     {job.title}
-                  </h3>
+                  </p>
 
                   <div
                     className="
@@ -187,7 +188,7 @@ export default function OpenRolesSection() {
                     
                   >
                     <span className="flex items-center gap-2">
-                      <BriefcaseBusiness size={14} />
+                      <Building2 size={14} />
                       {job.category}
                     </span>
 

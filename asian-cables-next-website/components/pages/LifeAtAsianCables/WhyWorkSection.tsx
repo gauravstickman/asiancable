@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const WhyWorkSection = () => {
   return (
-    <section className="bg-white mt-[10] md:mt-[40px] py-[40px]">
+    <section className="bg-white py-[40px]">
       <div className="max-w-[1440px] mx-auto px-4">
         <div className="max-w-[1274px] lg:min-h-[596px] mx-auto flex flex-col lg:flex-row gap-[36px] lg:gap-[60px]">
 
@@ -18,11 +18,11 @@ const WhyWorkSection = () => {
           </div>
 
           {/* Right Content */}
-          <div className="w-full lg:w-[552px] flex flex-col justify-center gap-[8px] md:gap-[16px]">
+          <div className="w-full lg:w-[552px] flex flex-col justify-center gap-[36px]">
 
             {/* Heading */}
             <h2
-                className="text-[#1E3C8C] text-[28px] md:text-[36px] leading-[42px] font-bold italic tracking-[-0.92px]"
+              className="text-[#1E3C8C] text-[36px] leading-[42px] font-bold italic tracking-[-0.92px]"
             >
               Why Work at Asian Cables
             </h2>
@@ -38,7 +38,7 @@ const WhyWorkSection = () => {
 
             {/* Paragraph 1 */}
             <p
-              className="mt-[12px] text-[#525252] text-[16px] leading-[26px] md:text-[20px] md:leading-[36px] font-[400]"
+              className="text-[#555555] text-[20px] leading-[36px] font-normal"
             >
               Founded in 1959, Asian Cables has been a pioneer in delivering
               quality wires and cables across India and abroad. We are part of
@@ -49,7 +49,7 @@ const WhyWorkSection = () => {
 
             {/* Paragraph 2 */}
             <p
-              className="text-[#555555] text-[16px] leading-[26px] md:text-[20px] md:leading-[36px] font-[400]"
+              className="text-[#555555] text-[20px] leading-[36px] font-normal"
             >
               When you join Asian Cables, you don't just build a career — you
               help power progress.

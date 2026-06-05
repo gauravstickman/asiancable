@@ -64,7 +64,7 @@ export default function DayInLifeSection() {
 
           {/* Right Text */}
           <div className="max-w-full lg:max-w-[420px]">
-            <p className="text-[#555] text-[16px] lg:text-[20px] leading-[30px] lg:leading-[42px]">
+            <p className="text-[#555] text-[16px] md:text-[18px] leading-[30px] md:leading-[30.6px]">
               In this section, we follow a junior engineer through
               a full working day at Asian Cables — from morning
               meetings and shop floor time to the everyday

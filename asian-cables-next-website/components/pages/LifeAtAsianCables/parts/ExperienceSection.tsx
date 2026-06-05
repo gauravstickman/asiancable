@@ -9,6 +9,10 @@ import {
   Heart,
   ShieldCheck,
   Users,
+  UserStar,
+  BriefcaseBusiness,
+  Medal,
+  HeartPulse,
 } from "lucide-react";
 
 const tabs = [
@@ -27,7 +31,7 @@ const tabs = [
         text: "Workshops across manufacturing, engineering, quality, and business functions.",
       },
       {
-        icon: <UserRound size={20} />,
+        icon: <UserStar size={20} />,
         title: "Leadership & Mentorship Programmes",
         text: "Structured leadership tracks and one-on-one mentorship programmes.",
       },
@@ -42,25 +46,36 @@ const tabs = [
     id: 2,
     number: "02",
     title: "Benefits & Well-being",
-    image: "/assets/Lifeofasiancables/experience1.png",
-    heading: "Supporting your well-being",
+    image: "/assets/Lifeofasiancables/experience2.png",
+    heading: "Taking care of you — and your family.",
     description:
-      "We care about our employees and provide benefits that support physical, emotional and financial well-being.",
+      "A holistic benefits programme designed around health, financial security, work-life balance, and community — because people do their best work when they feel supported.",
     cards: [
       {
-        icon: <Heart size={20} />,
-        title: "Health & Wellness",
-        text: "Comprehensive medical and wellness support.",
+        icon: <HeartPulse size={20} />,
+        title: "Comprehensive Health & Insurance",
+        text: "Medical coverage, annual check-ups, life and accident insurance for you and your family.",
+      },
+      {
+        icon: <Medal size={20} />,
+        title: "Competitive Compensation & Rewards",
+        text: "Market-linked salary, annual bonuses, and a recognition programme including performance awards and spot recognitions.",
+      },
+      {
+        icon: <BriefcaseBusiness size={20} />,
+        title: "Work-Life Balance",
+        text: "Generous leave — vacation, sick, parental — flexible work options, and wellness programmes including EAP and fitness classes.",
       },
       {
         icon: <ShieldCheck size={20} />,
-        title: "Insurance Coverage",
-        text: "Security and protection for employees and families.",
+        title: "Financial Security",
+        text: "Provident Fund, gratuity, retirement benefits (NPS / Pension), and employee loan facilities.",
       },
+      
       {
         icon: <Users size={20} />,
-        title: "Work-Life Balance",
-        text: "Flexible and employee-friendly culture.",
+        title: "Community & Fun",
+        text: "Team events, sports tournaments, and festival celebrations — we make sure you enjoy the journey.",
       },
     ],
   },
@@ -68,25 +83,25 @@ const tabs = [
     id: 3,
     number: "03",
     title: "Diversity & Inclusion",
-    image: "/assets/Lifeofasiancables/experience1.png",
-    heading: "A workplace where everyone belongs",
+    image: "/assets/Lifeofasiancables/experience3.jpg",
+    heading: "Everyone belongs here.",
     description:
-      "We celebrate diverse perspectives and create an inclusive culture where everyone can thrive.",
+      "At Asian Cables, everyone belongs. We welcome colleagues of all backgrounds, genders, and experiences.",
     cards: [
       {
-        icon: <Users size={20} />,
-        title: "Inclusive Teams",
-        text: "Respectful and collaborative environment.",
+        icon: <BookOpen size={20} />,
+        title: "Every Voice Is Respected",
+        text: "We echo RPG's founding value of a happy, equitable workplace where every voice is heard.",
       },
       {
-        icon: <Heart size={20} />,
-        title: "Equal Opportunities",
-        text: "Growth opportunities for everyone.",
+        icon: <UserStar size={20} />,
+        title: "Returners, Graduates & Veterans",
+        text: "Whether you are returning from a career break, a fresh graduate, or an experienced professional, you will find support and opportunity here.",
       },
       {
-        icon: <ShieldCheck size={20} />,
-        title: "Safe Workplace",
-        text: "A culture built on trust and respect.",
+        icon: <MapPin size={20} />,
+        title: "Zero Tolerance for Discrimination",
+        text: "A firm, uncompromising commitment to a workplace free from discrimination of any kind.",
       },
     ],
   },
@@ -98,18 +113,132 @@ export default function ExperienceSection() {
 
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-[80px] py-[40px]">
+      <div className="mx-auto w-full max-w-[1280px]  px-2 md:px-0 py-[40px]">
         {/* Heading */}
-        <div className="flex justify-center mb-10 lg:mb-12">
+        <div className="flex justify-left mb-10 lg:mb-12">
           <h2
-            className="text-center text-[#1E3C8C] font-bold italic text-[32px] sm:text-[40px] lg:text-[46px] leading-[1.15] lg:leading-[55.2px] tracking-[-0.92px]"
+            className="text-center text-[#1E3C8C] font-bold italic text-[32px] md:text-[40px] lg:text-[46px] leading-[1.15] lg:leading-[55.2px] tracking-[-0.92px]"
           >
             What You'll Experience
           </h2>
         </div>
 
+
+<div className="md:hidden px-5">
+  {tabs.map((tab, index) => (
+    <div
+      key={tab.id}
+      className="border-b border-[#E5E7EB]"
+    >
+      <button
+        onClick={() => setActiveTab(index)}
+        className="relative w-full px-6 py-5 text-left"
+        style={{
+          background:
+            activeTab === index
+              ? "#F4F6FA"
+              : "transparent",
+        }}
+      >
+        <h4
+          className="mb-2 text-[32px] leading-[1.1]"
+          style={{
+            fontWeight: 700,
+            fontStyle: "italic",
+            letterSpacing: "-0.92px",
+            color:
+              activeTab === index
+                ? "#1E3C8C"
+                : "#525252",
+          }}
+        >
+          {tab.number}
+        </h4>
+
+        <div
+          className="font-dm text-[18px]"
+          style={{
+            fontWeight: 500,
+            color:
+              activeTab === index
+                ? "#1E3C8C"
+                : "#525252",
+          }}
+        >
+          {tab.title}
+        </div>
+
+        {activeTab === index && (
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[5px]"
+            style={{
+              background:
+                "linear-gradient(269.81deg, #3CAADF 45.65%, #F04123 84.54%, #FFD212 123.44%)",
+            }}
+          />
+        )}
+      </button>
+
+      {activeTab === index && (
+        <div className="py-6 px-2">
+          <div className="flex flex-col gap-6">
+            <Image
+              src={tab.image}
+              alt={tab.title}
+              width={474}
+              height={616}
+              className="h-[300px] w-full rounded-[8px] object-cover"
+            />
+
+            <h3
+              className="text-[26px] leading-[1.15]"
+              style={{
+                fontWeight: 700,
+                fontStyle: "italic",
+                color: "#1E3C8C",
+              }}
+            >
+              {tab.heading}
+            </h3>
+
+            <p className="text-[16px] leading-[28px] text-[#555]">
+              {tab.description}
+            </p>
+
+            <div className="flex flex-col gap-4">
+              {tab.cards.map((card, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-4 rounded-[8px] bg-[#F6F9FF] p-5"
+                >
+                  <div className="mt-[2px] text-[#1E3C8C]">
+                    {card.icon}
+                  </div>
+
+                  <div>
+                    <p className="mb-2 text-[14px] md:text-[16px] font-medium text-[#1E3C8C]">
+                      {card.title}
+                    </p>
+
+                    <p className="text-[12px] md:text-[14px] leading-[20px] text-[#666]">
+                      {card.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
         {/* Tab Buttons Container */}
-        <div className="w-full max-w-[1274px] mx-auto">
+        <div className="w-full max-w-[1274px] mx-auto hidden md:block">
+          
+
+          
           {/* Tab buttons row */}
           <div className="flex flex-col sm:flex-row">
             {tabs.map((tab, index) => (
@@ -126,22 +255,22 @@ export default function ExperienceSection() {
                     activeTab === index ? "#F4F6FA" : "transparent",
                 }}
               >
-                <div
+                <h4
                   className="text-[32px] sm:text-[34px] lg:text-[40px] leading-[1.1] lg:leading-[45px] mb-2"
                   style={{
                     fontWeight: 700,
                     fontStyle: "italic",
                     letterSpacing: "-0.92px",
-                    color: "#1E3C8C",
+  color: activeTab === index ? "#1E3C8C" : "#525252",
                   }}
                 >
                   {tab.number}
-                </div>
+                </h4>
                 <div
-                  className="text-[18px] sm:text-[20px] lg:text-[24px] leading-[1.3] lg:leading-[33px]"
+                  className="font-dm text-[18px] sm:text-[20px] lg:text-[24px] leading-[1.3] lg:leading-[33px]"
                   style={{
                     fontWeight: 500,
-                    color: "#1E3C8C",
+  color: activeTab === index ? "#1E3C8C" : "#525252",
                   }}
                 >
                   {tab.title}
@@ -215,7 +344,7 @@ export default function ExperienceSection() {
                         {card.icon}
                       </div>
                       <div className="flex-1">
-                        <h4
+                        <p
                           className="text-[16px] leading-tight mb-2"
                           style={{
                             fontWeight: 500,
@@ -223,7 +352,7 @@ export default function ExperienceSection() {
                           }}
                         >
                           {card.title}
-                        </h4>
+                        </p>
                         <p
                           className="text-[14px] leading-[20px]"
                           style={{

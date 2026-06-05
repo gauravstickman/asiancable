@@ -17,7 +17,7 @@ export default function LifeBeyondWorkSection() {
           </h2>
           
 
-          <p className="max-w-[1150px] mt-5 text-[#5F5F5F] text-[16px] lg:text-[20px] leading-[28px] lg:leading-[38px]">
+          <p className="max-w-[100%] mt-5 text-[#525252] text-[16px] lg:text-[18px] leading-[28px] lg:leading-[36px]">
             We believe great workplaces are built on meaningful human
             connections. Across our locations, employees come together
             through celebrations, team engagement activities, learning

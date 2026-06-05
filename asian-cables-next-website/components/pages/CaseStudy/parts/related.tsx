@@ -95,10 +95,11 @@ const sliderData =
           </span>
         </button>
         </div>
-         
+      </div>   
+        <div className="mx-auto max-w-[100%] ">
 
 {/* MOBILE SLIDER */}
-<div className=" case-slider max-w-[100%] pb-6">
+<div className=" case-slider max-w-[100%] pb-6 pl-5 md:pl-[50px]">
  <Swiper
   modules={[Pagination, Autoplay]}
   spaceBetween={18}
@@ -108,20 +109,24 @@ const sliderData =
     disableOnInteraction: false,
   }}
   breakpoints={{
-    
+     320: {
+      slidesPerView: 1.1,
+      spaceBetween: 18,
+      centeredSlides: false,
+    },
     768: {
       slidesPerView: 3,
       spaceBetween: 18,
     },
     1024: {
-      slidesPerView: 3,
+      slidesPerView: 2.5,
       spaceBetween: 18,
 
     },
   }}
 >
   {sliderData.map((blog, index) => (
-  <SwiperSlide key={index}
+  <SwiperSlide key={index} className="pb-10  md:min-w-[513px]"
 >
          <div className="overflow-hidden rounded-[12px] bg-white shadow-[0px_4px_24px_0px_#00000026] md:shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
     
@@ -157,7 +162,7 @@ const sliderData =
 
     {/* CONTENT */}
     <div className="p-6">
-      <p className="mb-3 md:line-clamp-2 text-[16px] leading-[24px] md:text-[20px] font-[500] md:leading-[30px] text-[#1E3C8C]">
+      <p className="mb-3 md:line-clamp-2 text-[16px] leading-[24px] md:text-[20px] font-[600] md:leading-[30px] text-[#1E3C8C]">
         {blog.title}
       </p>
 

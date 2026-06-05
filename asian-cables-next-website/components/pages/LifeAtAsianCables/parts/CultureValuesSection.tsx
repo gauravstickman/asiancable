@@ -58,17 +58,16 @@ const CultureValuesSection = () => {
       style={{
         width: "100%",
         background: "#FFFFFF",
-        paddingTop: "40px",
+        paddingTop: "50px",
         paddingBottom: "40px",
       }}
     >
       <div
         style={{
-          maxWidth: "1440px",
+          maxWidth: "1280px",
           margin: "0 auto",
-          paddingLeft: "clamp(20px, 5vw, 80px)",
-          paddingRight: "clamp(20px, 5vw, 80px)",
         }}
+        className="md:px-0 px-5"
       >
         {/* Heading - Left Aligned */}
         <div
@@ -82,31 +81,15 @@ const CultureValuesSection = () => {
           }}
         >
           <h2
-            style={{
-              fontWeight: 700,
-              fontStyle: "italic",
-              fontSize: "clamp(28px, 5vw, 46px)",
-              lineHeight: 1.2,
-              letterSpacing: "-0.92px",
-              color: "#1E3C8C",
-              margin: 0,
-            }}
+                 className="text-[#1E3C8C] text-[28px] md:text-[36px] leading-[42px] font-bold italic tracking-[-0.92px]"
+
           >
             Our Culture & Core Values
           </h2>
 
           <p
-            style={{
-              maxWidth: "1280px",
-              fontWeight: 400,
-              fontSize: "18px",
-              lineHeight: "30.6px",
-              letterSpacing: "0px",
-              color: "#525252",
-              margin: 0,
-              textAlign: "left",
-              opacity: 1,
-            }}
+                         className="mt-[12px] text-[#525252] text-[16px] leading-[26px] md:text-[20px] md:leading-[36px] font-[400]"
+
           >
             Our culture is anchored in the core values of the RPG Group,
             which inspires us to act with integrity and pursue excellence.
@@ -119,7 +102,7 @@ const CultureValuesSection = () => {
 
       {/* Cards — full-bleed infinite auto-scrolling carousel */}
       <div className="cv-marquee">
-        <div className="cv-track">
+        <div className="cv-track flex items-center">
           {loopCards.map((item, index) => {
             const isActive = activeCard === index;
 
@@ -129,33 +112,38 @@ const CultureValuesSection = () => {
                 aria-hidden={index >= values.length}
                 onMouseEnter={() => setActiveCard(index)}
                 onMouseLeave={() => setActiveCard(null)}
-                className="cv-card relative overflow-hidden cursor-pointer"
+                className="cv-card relative overflow-hidden cursor-pointer z-[9]"
                 style={{
+                    scale: isActive
+                    ? "1.1"
+                    : "1",
+
+
                   width: isActive
-                    ? "447.21875px"
+                    ? "411.0078125px"
                     : "411.0078125px",
 
                   height: isActive
-                    ? "547.9329223632812px"
+                    ? "503.5672302246094px"
                     : "503.5672302246094px",
 
                   borderRadius: isActive
                     ? "9.59px"
-                    : "8.82px",
+                    : "9.59px",
 
                   paddingTop: isActive
                     ? "276.96px"
-                    : "254.54px",
+                    : "276.96px",
 
                   paddingRight: isActive
                     ? "47.96px"
-                    : "44.08px",
+                    : "47.96px",
 
                   paddingBottom: "12px",
 
                   paddingLeft: isActive
                     ? "28px"
-                    : "25px",
+                    : "28px",
 
                   transition: "all .35s ease",
                 }}
@@ -175,12 +163,12 @@ const CultureValuesSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
 
                 <div
-                  className="relative z-10 flex flex-col"
+                  className="relative z-10 flex flex-col bottom-8"
                   style={{
-                    gap: isActive ? "19.18px" : "17.63px",
+                    gap: isActive ? "19.18px" : "19.18px",
                   }}
                 >
-                  <h3
+                  <p
                     style={{
                       fontWeight: 500,
                       fontSize: "23.51px",
@@ -191,14 +179,14 @@ const CultureValuesSection = () => {
                     }}
                   >
                     {item.title}
-                  </h3>
+                  </p>
 
                   <ul
                     style={{
                       width: "322.8559875488281px",
                       height: "146px",
                       margin: 0,
-                      paddingLeft: "18px",
+                      paddingLeft: "5px",
                       listStyle: "none",
                     }}
                   >
@@ -207,7 +195,7 @@ const CultureValuesSection = () => {
                         key={i}
                         style={{
                           fontWeight: 400,
-                          fontStyle: "Regular",
+                          fontStyle: "  Regular",
                           fontSize: "17.1px",
                           lineHeight: "29.06px",
                           letterSpacing: "0px",
@@ -229,9 +217,7 @@ const CultureValuesSection = () => {
       <style jsx global>{`
         .cv-marquee {
           width: 100%;
-          overflow: hidden;
-          /* room for the hover-expanded card so it isn't clipped */
-          padding-bottom: 50px;
+            padding-bottom: 50px;
         }
 
         .cv-track {

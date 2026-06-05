@@ -38,7 +38,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #f8fafc;
+  background-color: #ffffff;
   color: #334155;
 }
 
@@ -815,6 +815,7 @@ body {
           width: max-content;
           will-change: transform;
           animation: ts-scroll 50s linear infinite;
+          align-items:start;
         }
 
         /* Per-card right margin (not flex gap) keeps both halves of the track
