@@ -40,7 +40,6 @@ const WhyWorkSection = () => {
             {/* Paragraph 1 */}
             <p
               className="text-[#555555] text-[20px] leading-[36px] font-normal"
-              style={{ fontFamily: "Work Sans" }}
             >
               Founded in 1959, Asian Cables has been a pioneer in delivering
               quality wires and cables across India and abroad. We are part of
@@ -52,7 +51,6 @@ const WhyWorkSection = () => {
             {/* Paragraph 2 */}
             <p
               className="text-[#555555] text-[20px] leading-[36px] font-normal"
-              style={{ fontFamily: "Work Sans" }}
             >
               When you join Asian Cables, you don't just build a career — you
               help power progress.

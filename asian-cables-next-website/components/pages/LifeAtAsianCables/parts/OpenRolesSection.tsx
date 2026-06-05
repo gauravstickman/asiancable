@@ -75,7 +75,7 @@ export default function OpenRolesSection() {
                 sm:text-[18px]
                 leading-[30px]
               "
-              style={{ fontFamily: "Work Sans" }}
+              
             >
               3 positions open
             </p>
@@ -105,7 +105,7 @@ export default function OpenRolesSection() {
                         : "bg-[#F6F6F6] text-[#555555] border border-transparent"
                     }
                   `}
-                  style={{ fontFamily: "Work Sans" }}
+                  
                 >
                   {tab}
                 </button>
@@ -185,7 +185,7 @@ export default function OpenRolesSection() {
                       sm:text-[14px]
                       text-[#808080]
                     "
-                    style={{ fontFamily: "Work Sans" }}
+                    
                   >
                     <span className="flex items-center gap-2">
                       <BriefcaseBusiness size={14} />
@@ -229,7 +229,7 @@ export default function OpenRolesSection() {
                   hover:bg-[#15306e]
                   hover:scale-105
                 "
-                style={{ fontFamily: "Work Sans" }}
+                
               >
                 Apply now
                 <ChevronRight size={15} />

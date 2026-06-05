@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
               leading-[30.6px]
               font-normal
             "
-            style={{ fontFamily: "Work Sans" }}
+            
           >
             Real voices from real journeys.
           </p>
@@ -97,7 +97,7 @@ export default function TestimonialsSection() {
               {/* Content */}
               <p
                 className="mt-6 text-[18px] leading-[28px] text-[#555555] font-normal overflow-hidden line-clamp-6"
-                style={{ fontFamily: "Work Sans" }}
+                
               >
                 {item.text}
               </p>
@@ -121,7 +121,7 @@ export default function TestimonialsSection() {
                       text-[16px]
                       leading-none
                     "
-                    style={{ fontFamily: "Work Sans" }}
+                    
                   >
                     {tag}
                   </span>
@@ -132,21 +132,21 @@ export default function TestimonialsSection() {
               <div className="pt-6">
                 <h3
                   className="text-[24px] font-semibold leading-[26px] text-black"
-                  style={{ fontFamily: "Work Sans" }}
+                  
                 >
                   {item.name}
                 </h3>
 
                 <p
                   className="mt-2 text-[16px] font-medium text-[#767676]"
-                  style={{ fontFamily: "Work Sans" }}
+                  
                 >
                   {item.role}
                 </p>
 
                 <p
                   className="mt-2 text-[12px] font-normal text-[#3CAADF]"
-                  style={{ fontFamily: "Work Sans" }}
+                  
                 >
                   {item.company}
                 </p>
