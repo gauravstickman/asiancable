@@ -801,3 +801,63 @@ body {
   margin-right:18px;
 }
 }
+
+
+ .ts-marquee {
+          width: 100%;
+          overflow: hidden;
+          /* vertical breathing room so a hover-scaled card isn't clipped */
+          padding-top: 16px;
+          padding-bottom: 16px;
+        }
+
+        .ts-track {
+          display: flex;
+          width: max-content;
+          will-change: transform;
+          animation: ts-scroll 50s linear infinite;
+        }
+
+        /* Per-card right margin (not flex gap) keeps both halves of the track
+           exactly equal in width, so translateX(-50%) loops with no half-gap
+           jump. 18px matches the original slide spacing. */
+        .ts-track .ts-card {
+          flex: 0 0 auto;
+          /* fluid on small screens, capped at the original 538px. All cards
+             share the same width, so the two track halves stay equal and
+             translateX(-50%) remains seamless. */
+          width: min(538px, 86vw);
+          margin-right: 18px;
+          /* hover scale — independent of the track's translateX, so it works
+             while the carousel is auto-scrolling */
+          position: relative;
+          z-index: 1;
+          transition: transform 0.35s ease;
+        }
+
+        /* Smoothly scale the hovered card up and lift it above neighbors. */
+        .ts-track .ts-card:hover {
+          transform: scale(1.05);
+          z-index: 10;
+        }
+
+        /* Pause on hover; CSS freezes the exact position and resumes from
+           there when the pointer leaves. */
+        .ts-marquee:hover .ts-track {
+          animation-play-state: paused;
+        }
+
+        @keyframes ts-scroll {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .ts-track {
+            animation: none;
+          }
+        }

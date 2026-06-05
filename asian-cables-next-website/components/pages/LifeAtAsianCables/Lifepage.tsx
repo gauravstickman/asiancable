@@ -9,14 +9,14 @@ import ExperienceSection from "./parts/ExperienceSection";
 import Hero from "./parts/Hero";
 import LifeBeyondWorkSection from "./parts/LifeBeyondWorkSection";
 import OpenRolesSection from "./parts/OpenRolesSection";
-import WhyworkSection from "./parts/Whyworksection";
+import WhyWorkSection from "./parts/WhyWorkSection";
 
-const Life = () => {
+const Lifepage = () => {
   return (
     <div>
       <WebsiteNavbar />
     <Hero/>
-    <WhyworkSection/> 
+    <WhyWorkSection/> 
 <CultureValuesSection/>
 <ExperienceSection/>
 <TestimonialsSection/> 
@@ -28,4 +28,4 @@ const Life = () => {
   );
 };
 
-export default Life;
+export default Lifepage;
