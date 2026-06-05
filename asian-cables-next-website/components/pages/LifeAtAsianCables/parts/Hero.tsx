@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div>
         <section
-        className="relative min-h-screen bg-cover bg-center"
+        className="relative min-h-screen bg-cover bg-[position:75%_center] lg:bg-center"
         style={{
           backgroundImage:
             "url('/assets/Lifeofasiancables/ImageWithFallback.png')",
@@ -72,11 +72,20 @@ const Hero = () => {
             {/* Button */}
  <button
   className={`
+    w-full
+    sm:w-auto
+    inline-flex
+    items-center
+    justify-center
+    gap-2
     bg-white
     text-[#1F3A93]
+    text-[16px]
     px-[29.42px]
-    py-[9.19px]
-    rounded-[5.52px]
+    py-[14px]
+    sm:py-[9.19px]
+    rounded-[8px]
+    sm:rounded-[5.52px]
     border border-transparent
     font-semibold
     transition-all

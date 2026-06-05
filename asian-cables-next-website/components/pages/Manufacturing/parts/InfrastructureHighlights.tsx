@@ -1,4 +1,3 @@
- 
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -112,78 +111,86 @@ export default function InfrastructureHighlights() {
   };
 
   return (
-    <section className="overflow-hidden bg-white py-20">
+    <section className="scrollbar-hide overflow-hidden bg-white py-20">
       <div className="mx-auto w-[90vw]">
         {/* Heading */}
-        <h2 className="font-[magistral] text-[46px] leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C] text-center">
+        <h2 className="text-center font-[magistral] mb-14 text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
           Infrastructure Highlights
         </h2>
 
         {/* Carousel */}
         <div
           ref={scrollRef}
-          className="[scrollbar-width:none] overflow-x-auto overflow-y-hidden scroll-smooth [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="scrollbar-hide [scrollbar-width:none] overflow-x-auto overflow-y-hidden scroll-smooth [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
         >
-          <div className="flex snap-x snap-mandatory gap-6">
+          <div className="flex h-[728px] w-[1236px] snap-x snap-mandatory gap-6 rounded-[4px]">
             {infrastructureData.map((item) => (
               <div
                 key={item.id}
-                className="min-w-[90vw] snap-start bg-[#F7F8FC] p-10"
+                className="min-w-[1236px] snap-start bg-[#F7F8FC] p-10 p-[64px]"
               >
                 <div className="flex items-center justify-between gap-20">
                   {/* Left Side */}
                   <div className="max-w-1/2">
-                    <h3 className="font-[work_sans] text-[32px] leading-[26px] font-medium tracking-[-0.03em] text-[#1E3C8C]">
-                      {item.title}
-                    </h3>
-                    <p className="font-[work_sans] text-[18px] leading-[26px] font-normal tracking-[-0.004em] text-[#646A69] mb-4 mt-6">
-                      {item.description}
-                    </p>
-                    <div className="space-y-2 pt-3">
+                    <div className="h-[232px] w-[520px] gap-[0px] !p-0 !m-0">
+                      <span className="text-[32px] leading-[26px] font-medium tracking-[-0.03em] text-[#1E3C8C]">
+                        {item.title}
+                      </span>
+                      <p className="mt-6 mb-4 font-[work_sans] text-[18px] leading-[26px] font-normal tracking-[-0.004em] text-[#646A69]">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="h-[274px] w-[274px] gap-[13px] space-y-[6px] pt-15">
                       {item.points.map((point, index) => (
                         <div key={index}>
-                          <h4 className="font-[magistral] text-[20px] leading-[44px] font-bold italic text-[#1E3C8C] text-start">
+                          <h4 className="text-start font-[magistral] text-[20px] leading-[44px] font-bold text-[#1E3C8C] italic">
                             {point.title}
                           </h4>
 
-                          <p className="font-[work_sans] text-[16px] leading-[19.5px] font-normal text-[#1E3C8C] text-start">
+                          <p className="text-start text-[16px] leading-[19.5px] font-normal text-[#1E3C8C]">
                             {point.subtitle}
                           </p>
-                          <div
-                            className="my-6 h-0.5 w-18"
-                            style={{
-                              background:
-                                "linear-gradient(90deg, #3CAADF 0%, #F04123 50%, #FFD212 100%)",
-                            }}
-                          />
+                          {index !== item.points.length - 1 && (
+                            <div
+                              className="my-6 h-0.5 w-18"
+                              style={{
+                                background:
+                                  "linear-gradient(90deg, #3CAADF 0%, #F04123 50%, #FFD212 100%)",
+                              }}
+                            />
+                          )}
                         </div>
                       ))}
                     </div>
 
                     {/* Arrows */}
-                    <div className="mt-12 flex gap-2">
+                    <div className="mt-25 flex h-[32px] w-[80px] gap-[16px]">
                       <button
                         onClick={prevSlide}
-                        className="cursor-pointer rounded-full p-2 transition-all duration-500 ease-out hover:-translate-x-1 hover:scale-110 hover:bg-[#1E3C8C]/10 active:scale-95"
+                        className="cursor-pointer"
                       >
-                        <ChevronLeft size={25} />
+                        <ChevronLeft size={25} className="text-[#646A69]"  />
                       </button>
 
                       <button
                         onClick={nextSlide}
-                        className="cursor-pointer rounded-full p-2 transition-all duration-500 ease-out hover:translate-x-1 hover:scale-110 hover:bg-[#1E3C8C]/10 active:scale-95"
+                        className="cursor-pointer"
                       >
-                        <ChevronRight size={25} />
+                        <ChevronRight size={25} className="text-[#646A69]" />
                       </button>
                     </div>
                   </div>
 
                   {/* Image */}
-                  <div className="h-130 w-140 shrink-0 overflow-hidden">
+                  <div className="">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-full w-full object-cover"
+                      className="h-[488px] w-[488px] rounded-[4px] object-cover"
                     />
                   </div>
                 </div>

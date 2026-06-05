@@ -26,12 +26,12 @@ export default function CoreValues() {
     <section className="bg-white py-20">
       <div className="mx-auto w-[92%] max-w-[1250px]">
         {/* TITLE */}
-        <h2 className="mb-14 text-center text-[38px] font-[700] tracking-[-1px] text-[#1E3C8C] italic">
+        <p className="font-bold italic text-[46px] leading-[61.6px] mb-6 tracking-[-2.8px] text-center text-[#1E3C8C] font-[magistral]">
           Core Values
-        </h2>
+        </p>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-[32px] md:grid-cols-2 xl:grid-cols-4">
           {values.map((item, index) => (
             <div
               key={index}
@@ -47,12 +47,12 @@ export default function CoreValues() {
               </div>
 
               {/* TITLE */}
-              <h3 className="font-[inter] font-medium text-[22px] text-interTitle text-[#1E3C8C] text-center tracking-[0px]">
+              <span className="font-inter font-medium text-[22px] leading-[33px] tracking-[0px] text-center text-[#1E3C8C]">
                 {item.title}
-              </h3>
+              </span>
 
               {/* DESC */}
-              <p className="font-[work_sans] text-[14px] text-caption text-center font-normal tracking-[0px] text-[#6F6F6FB2]">
+              <p className="dm-font text-[14px] text-caption text-center font-normal tracking-[0px] text-[#6F6F6FB2]">
                 {item.desc}
               </p>
             </div>

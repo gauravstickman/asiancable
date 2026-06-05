@@ -35,7 +35,8 @@ const timelineData = [
   },
   {
     year: "2001",
-    description: "Merger of RPC Cables Ltd. into KEC International Ltd.",
+    description: "Merger of ",
+    description1: "RPC Cables Ltd. into KEC International Ltd.",
     image: "/assets/about/industryIcons.png",
   },
   {
@@ -94,7 +95,7 @@ export default function OurJourney() {
 
       {/* Timeline - Full Width */}
 
-      <div className="mb-12 overflow-hidden">
+      <div className="mb-12 overflow-hidden ">
         <div className="relative">
           <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-white to-transparent" />
 
@@ -107,7 +108,7 @@ export default function OurJourney() {
               <button
                 key={item.year}
                 onClick={() => setSelectedYear(item.year)}
-                className={`font-worksans flex min-w-[100px] cursor-pointer items-center justify-center  leading-[57.67px] font-semibold text-[#1E3C8C] transition-all duration-300 ${
+                className={`font-[work_sans] flex min-w-[100px] cursor-pointer items-center justify-center  leading-[57.67px] font-semibold text-[#1E3C8C] transition-all duration-300 ${
                   selectedYear === item.year
                     ? "text-[48px] font-black text-[#1E3C8C]"
                     : "text-[28px] font-semibold text-[#C8D0E3]"
@@ -136,9 +137,9 @@ export default function OurJourney() {
       </div>
 
       {/* Content */}
-
-      <div className="mx-auto max-w-[1400px] px-6">
-        <div className="grid grid-cols-1 overflow-hidden rounded-lg border border-[#FFFFFF] bg-[#FFFFFF] shadow-md lg:grid-cols-2">
+       <div className="w-full bg-gray-50 pb-[2px]">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid grid-cols-1 overflow-hidden rounded-lg bg-[#FFFFFF] lg:grid-cols-2">
           {/* Image */}
 
           <div className="h-[500px]">
@@ -152,20 +153,22 @@ export default function OurJourney() {
           {/* Content */}
 
           <div
-            className={`flex flex-col justify-center bg-white p-12 transition-all duration-300 ${
-              visible ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+            className={`flex flex-col justify-center bg-[#FFFFFF] p-12 transition-all duration-300 ${
+              visible ? "translate-y-0 opacity-300 bg-[#FFFFFF]" : "-translate-y-2 opacity-0"
             }`}
             aria-live="polite"
           >
-            <h3 className="mb-3 text-[56px] font-light text-[#1E3C8C]">
+            <span className="font-medium text-[38.45px] leading-[57.67px] tracking-[0px] text-[#1E3C8C]">
               {selectedData.year}
-            </h3>
+            </span>
 
-            <p className=" font-worksans text-[16px] leading-[27.2px] font-normal text-[#666]">
-              {selectedData.description}
-            </p>
+            <span className=" font-worksans text-[16px] leading-[27.2px] font-normal text-[#666]">
+              {selectedData.description} <span className="font-['Work_Sans'] font-semibold text-[16px] leading-[27.2px] tracking-[0px] text-[#525252]">{selectedData.description1}</span>
+            </span>
+            
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

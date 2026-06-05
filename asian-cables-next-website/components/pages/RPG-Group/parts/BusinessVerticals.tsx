@@ -53,9 +53,9 @@ export default function BusinessVerticals() {
                 />
               </div>
 
-              <h3 className="font-inter  text-center mt-13 text-[20px] font-medium tracking-[0px] text-[#1E3C8C]">
+              <p className="font-inter  text-center mt-13 text-[20px] font-medium tracking-[0px] text-[#1E3C8C]">
                 {item.title}
-              </h3>
+              </p>
             </div>
           ))}
         </div>

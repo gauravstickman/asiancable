@@ -25,7 +25,7 @@ export default function SpecialisedProductionFacilities() {
             Specialised Production Facilities
           </h2>
 
-          <p className="font-[work_sans] text-[18px] leading-[30.6px] font-normal text-center">
+          <p className=" text-[18px] leading-[30.6px] font-normal text-center">
             2 dedicated state-of-the-art production units.
           </p>
         </div>

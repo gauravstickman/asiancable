@@ -23,16 +23,14 @@ function ClienteleHeader() {
   ];
   return (
     <main className="bg-white text-slate-900">
-      <section className="relative min-h-[700px] overflow-hidden">
+      <section className="relative min-h-[600px] overflow-hidden">
         {/* Background Image */}
         <img
           src="/assets/clientele/clienteleheaderIcons.png"
           alt="Manufacturing Hero"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        {/* Content */}
-        <div className="relative z-10 mx-auto ml-13 w-full px-8 pt-55 pb-[60px] text-white">
-          {/* Breadcrumb */}
+        <div className="relative z-10 mx-auto px-2 max-w-7xl pt-60 pb-[60px] text-white">
           <nav className="mb-7 flex flex-wrap items-center gap-1.5 text-xs">
             {breadcrumbs.map((item, index) => (
               <React.Fragment key={item.label}>
@@ -55,7 +53,6 @@ function ClienteleHeader() {
               </React.Fragment>
             ))}
           </nav>
-
           {/* Heading */}
           <h1 className="font-[Magistral] text-[68px] leading-[64.6px] font-bold tracking-[-1.44px] text-white italic">
             Trusted By{" "}
@@ -63,7 +60,6 @@ function ClienteleHeader() {
               Industry Leaders
             </span>
           </h1>
-
           {/* Stats */}
           <div className="mt-15 flex flex-wrap items-start gap-[49px]">
             {stats.map((stat) => (
@@ -71,7 +67,7 @@ function ClienteleHeader() {
                 <p className="relative font-[magistral] text-[36px] leading-[83.02px] font-bold text-white italic">
                   {stat.value}
                 </p>
-                <p className="font-[work_sans] relative text-[15.81px] leading-[23.72px] font-medium text-[#FFFFFFB5]">
+                <p className="relative font-[work_sans] text-[15.81px] leading-[23.72px] font-medium text-[#FFFFFFB5]">
                   {stat.label}
                 </p>
               </div>

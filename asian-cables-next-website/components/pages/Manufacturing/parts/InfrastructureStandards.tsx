@@ -1,6 +1,6 @@
- 
+"use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const highlightedCards = [
   {
@@ -78,6 +78,47 @@ const infrastructureData = [
 ];
 
 function InfrastructureStandards() {
+  // ✅ ADDED ONLY FOR SLIDER
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const duration = 4000;
+  const cardWidth = 270;
+
+  useEffect(() => {
+    const startTime = Date.now();
+
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+
+      const percentage = (elapsed / duration) * 100;
+
+      if (percentage >= 100) {
+        setProgress(0);
+
+        setCurrentSlide((prev) => prev + 1);
+      } else {
+        setProgress(percentage);
+      }
+    }, 16);
+
+    return () => clearInterval(interval);
+  }, [currentSlide]);
+  useEffect(() => {
+    if (currentSlide === certificationCards.length) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentSlide(0);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setIsTransitioning(true);
+          });
+        });
+      }, 700);
+    }
+  }, [currentSlide]);
+
   return (
     <section className="relative w-full overflow-hidden bg-[#1E3C8C] py-20">
       <div className="relative z-10 mx-auto w-[90vw] max-w-[1400px]">
@@ -91,9 +132,9 @@ function InfrastructureStandards() {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               width: "300px",
-              height: "1350px",
+              height: "1420px",
               top: "0",
-              left: "-100px",
+              left: "-90px",
               bottom: "-10",
             }}
           />
@@ -104,7 +145,7 @@ function InfrastructureStandards() {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
-          <article className=" relative overflow-hidden rounded-[6px] bg-white shadow-[0_40px_120px_rgba(0,0,0,0.16)]">
+          <article className="relative min-h-[700px] overflow-hidden rounded-[6px] bg-white shadow-[0_40px_120px_rgba(0,0,0,0.16)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(30,60,140,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.97))]" />
             <div
               className="pointer-events-none absolute top-0 left-0 h-full w-[55%] bg-cover bg-left bg-no-repeat opacity-90"
@@ -114,15 +155,12 @@ function InfrastructureStandards() {
               }}
             />
 
-            {/* Content - Positioned on the RIGHT side */}
             <div className="relative z-10 flex sm:p-10 lg:p-12">
               <div className="max-w-xl text-left">
-                {/* Title */}
                 <h2 className="font-[magistral] text-[32px] leading-[61.6px] font-bold text-[#1E3C8C] italic">
                   Standards-Led Manufacturing
                 </h2>
 
-                {/* Description */}
                 <div className="space-y-4">
                   <p className="font-[work_sans] text-[19px] leading-[34.2px] font-normal text-[#1E3C8C]">
                     Manufacturing is aligned to internationally recognised
@@ -185,59 +223,51 @@ function InfrastructureStandards() {
           </div>
         </div>
 
-        <div className="mt-14">
-          <p className="font-[magistral] text-[24px] text-center leading-[46.2px] font-bold italic text-[#FFFFFF]">
+        {/* ========================= */}
+        {/* 🔥 ONLY FIXED SECTION BELOW */}
+        {/* ========================= */}
+
+        <div className="mt-25">
+          <p className="text-center font-[magistral] text-[24px] leading-[32px] font-bold text-white italic">
             Certifications & Standards
           </p>
 
-          {/* CAROUSEL - Full width, no gaps */}
-          <div className="relative right-1/2 left-1/2 mt-8 -mr-[50vw] -ml-[50vw] w-screen">
-            <div className="overflow-hidden">
-              <div className="animate-marquee flex w-max gap-4 md:gap-5">
-                {/* FIRST SET */}
-                {certificationCards.map((card, index) => (
-                  <div
-                    key={index}
-                    className="flex h-[180px] w-[250px] flex-shrink-0 cursor-pointer flex-col items-center justify-center rounded-[18px] bg-[#F9F9F9] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                  >
-                    <div className="rounded-[17.61px] bg-[#F7F9FF] p-3">
-                      <img
-                        src={card.icon}
-                        alt={card.title}
-                        className="h-11 w-11 object-contain"
-                      />
-                    </div>
-                    <h4 className="font-[work_sans] text-[20.55px] leading-[26.71px] font-semibold text-[#0A0A0A] text-center">
-                      {card.title}
-                    </h4>
-                    <p className="font-[work_sans] text-[14px] leading-[26.71px] font-light text-[#000000] text-center">
-                      {card.description}
-                    </p>
+          <div className="relative mt-15 w-full  ">
+            <div
+              className="flex justify-start gap-[36px] transition-transform duration-700 ease-in-out"
+              style={{
+                transform: `translateX(-${currentSlide * cardWidth}px)`,
+                transition: isTransitioning
+                  ? "transform 700ms ease-in-out"
+                  : "none",
+              }}
+            >
+              {[...certificationCards, ...certificationCards].map((card, i) => (
+                <div
+                  key={i}
+                  className="flex h-[175px] w-[232.5px] flex-shrink-0 flex-col items-center justify-center rounded-[17.61px] bg-[#F9F9F9] p-5"
+                >
+                  <div className="rounded-[17.61px] bg-[#F7F9FF] p-3">
+                    <img src={card.icon} className="h-11 w-11 object-contain" />
                   </div>
-                ))}
+                  <h4 className="text-center font-[work_sans] text-[18px] font-semibold text-black">
+                    {card.title}
+                  </h4>
+                  <p className="text-center font-[work_sans] text-[14px] text-black/70">
+                    {card.description}
+                  </p>
+                </div>
+              ))}
+            </div>
 
-                {/* DUPLICATE SET */}
-                {certificationCards.map((card, index) => (
-                  <div
-                    key={`duplicate-${index}`}
-                    className="flex h-[180px] w-[250px] flex-shrink-0 cursor-pointer flex-col items-center justify-center rounded-[18px] bg-[#F9F9F9] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                  >
-                    <div className="rounded-[17.61px] bg-[#F7F9FF] p-3">
-                      <img
-                        src={card.icon}
-                        alt={card.title}
-                        className="h-11 w-11 object-contain"
-                      />
-                    </div>
-                    <h4 className="font-[work_sans] text-[20.55px] leading-[26.71px] font-semibold text-[#0A0A0A] text-center">
-                      {card.title}
-                    </h4>
-                    <p className="font-[work_sans] text-[14px] leading-[26.71px] font-light text-[#000000] text-center">
-                      {card.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+            {/* 🔥 GRADIENT LOADER */}
+            <div className="mt-6 h-[3px] w-full rounded-full bg-white/20">
+              <div
+                className="h-full bg-gradient-to-r from-[#3CAADF] via-[#F04123] to-[#FFD212]"
+                style={{
+                  width: `${progress}%`,
+                }}
+              />
             </div>
           </div>
         </div>

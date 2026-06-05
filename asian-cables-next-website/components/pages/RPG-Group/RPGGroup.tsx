@@ -12,7 +12,9 @@ import GroupEcosystem from "./parts/GroupEcosystem";
 function RPGGroup() {
   return (
     <div>
-      <WebsiteNavbar />
+       <div>
+        <WebsiteNavbar/>
+       </div>
       <RPGGroupHeader />
       <div className="relative h-[10px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-l from-[#3CAADF] via-[#F04123] to-[#FFD212]" />

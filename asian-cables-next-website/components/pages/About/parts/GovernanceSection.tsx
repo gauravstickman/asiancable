@@ -1,88 +1,97 @@
 "use client";
 
-import { Award, MapPin, TrendingUp, Users } from "lucide-react";
+const cards = [
+  {
+    title: "Consistent Quality & Accredited Testing",
+    icon: "/assets/about/awardIcon.png",
+  },
+  {
+    title: "Proven Track Record in Critical Projects",
+    icon: "/assets/about/mapIcon.png",
+  },
+  {
+    title: "Custom Engineering & Application",
+    title1: "Specific Solutions",
+    icon: "/assets/about/mapIcon.png",
+  },
+  {
+    title: "Wide, End-to-End Product Portfolio",
+    icon: "/assets/about/trendingIcon.png",
+  },
+];
+
+function FeatureCard({
+  title,
+  title1,
+  icon,
+  tall = false,
+}: {
+  title: string;
+  icon: string;
+  title1?: string;
+  tall?: boolean;
+}) {
+  return (
+   <div
+  className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9] transition-all duration-300 hover:bg-[#1E3C8C]
+    ${tall ? "h-[238.5px]" : "h-[238.5px]"}`}
+>
+  <div className=" w-full flex items-center  justify-center gap-6 w-full flex-row">
+    
+    <img
+      src={icon}
+      alt=""
+      aria-hidden="true"
+      className="h-[46.82432556152344px] w-[46.82432556152344px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+    />
+
+    <h4 className="font-[magistral] text-[24px] leading-[29.27px] font-bold italic text-[#1E3C8C] transition-colors duration-300 group-hover:text-white">
+      {title}
+      <br/>
+      <span>{title1}</span>
+    </h4>
+
+  </div>
+</div>
+  );
+}
 
 export default function GovernanceSection() {
-  const cards = [
-    {
-      title: "Consistent Quality & Accredited Testing",
-      icon: (
-        <img
-          src="/assets/about/awardIcon.png"
-          alt="Quality Icon"
-          className="h-10 w-10"
-        />
-      ),
-    },
-    {
-      title: "Proven Track Record in Critical Projects",
-      icon: (
-        <img
-          src="/assets/about/mapIcon.png"
-          alt="Track Record Icon"
-          className="h-10 w-10"
-        />
-      ),
-    },
-    {
-      title: "Custom Engineering & Application-Specific Solutions",
-      icon: (
-        <img
-          src="/assets/about/mapIcon.png"
-          alt="Map Pin Icon"
-          className="h-10 w-10"
-        />
-      ),
-    },
-    {
-      title: "Wide, End-to-End Product Portfolio",
-      icon: (
-        <img
-          src="/assets/about/trendingIcon.png"
-          alt="Trending Up Icon"
-          className="h-10 w-10"
-        />
-      ),
-    },
-  ];
-
   return (
     <section className="relative overflow-hidden bg-white py-20">
-      {/* Bottom Right Background */}
       <img
         src="/assets/about/foudationIcon.png"
         alt=""
-        className="pointer-events-none absolute right-0 bottom-0 z-0 object-contain"
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 right-0 z-0 w-[min(720px,55vw)] object-contain object-right-bottom"
       />
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-4">
-        {/* Heading */}
-        <h2 className="mb-14 font-[magistral] text-[46px] leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C] text-center">
+        <h2 className="mb-14 text-center font-[magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] italic text-[#1E3C8C]">
           Shaped by Governance. Built on Quality.
           <br />
           Proven across Critical Applications.
         </h2>
 
-        {/* Grid */}
-        <div className="grid grid-cols-12 gap-4 rounded-[4px] bg-[#FFFFFF] p-3">
+        <div className="grid grid-cols-12 gap-4 bg-[#FFFFFF] p-4">
           {/* Left Blue Card */}
-          <div className="col-span-12 lg:col-span-6">
-            <div className="h-full rounded-[8px] bg-[#1E3C8C] p-8 shadow-lg">
+          <div className="col-span-12 lg:col-span-6 lg:row-span-2">
+            <div className="flex h-[536px] flex-col rounded-[4px] bg-[#1E3C8C] p-10">
               <div className="mb-8">
                 <img
                   src="/assets/about/teamsIcon.png"
-                  alt="RPG Group Logo"
-                  className="h-12 object-contain"
+                  alt="RPG Group"
+                  className="h-12 w-auto object-contain"
                 />
               </div>
 
-              <h3 className="mb-6 font-[magistral] text-[46.82px] text-white leading-[51.51px] font-bold italic">
+              <h3 className="mb-6 font-[magistral] text-[46px] leading-[52px] font-bold italic text-white">
                 RPG Governance &
                 <br />
                 Institutional Credibility
               </h3>
 
-              <p className="font-[400] text-[17.56px] leading-[31.61px] tracking-[0] font-[Work_Sans] text-[#FFFFFFE5]">
+              <p className="font-[work_sans] text-[17px] leading-[32px] text-[#FFFFFFE5]">
                 Asian Cables operates under the governance framework of the RPG
                 Group, one of India's most respected business groups, known for
                 its professional management, ethical standards, and long-term
@@ -92,38 +101,25 @@ export default function GovernanceSection() {
             </div>
           </div>
 
-          {/* Right Cards */}
+          {/* Top Right Card */}
           <div className="col-span-12 lg:col-span-6">
-            <div className="grid h-full gap-4">
-              {cards.slice(0, 2).map((card) => (
-                <div
-                  key={card.title}
-                  className="group flex items-center gap-5 rounded-[8px] bg-[#F9F9F9] p-8 shadow-sm transition-all duration-300 hover:bg-[#1E3C8C]"
-                >
-                  <div className="text-[#1E3C8C] transition-colors duration-300 group-hover:text-[#F7A928]">
-                    {card.icon}
-                  </div>
-
-                  <h4 className="font-bold italic text-[24px] leading-[29.27px] tracking-[0] font-[Magistral] transition-colors duration-300 group-hover:text-white">
-                    {card.title}
-                  </h4>
-                </div>
-              ))}
-            </div>
+            <FeatureCard {...cards[0]} tall />
           </div>
-          {cards.slice(2).map((card) => (
-            <div key={card.title} className="col-span-12 md:col-span-6">
-              <div className="group flex h-[160px] items-center gap-5 rounded-[4px] bg-[#F9F9F9] p-8 shadow-sm transition-all duration-300 hover:bg-[#1E3C8C]">
-                <div className="text-[#1E3C8C] transition-colors duration-300 group-hover:text-[#F7A928]">
-                  {card.icon}
-                </div>
 
-                <h4 className="font-bold italic text-[24px] leading-[29.27px] tracking-[0] font-[Magistral] transition-colors duration-300 group-hover:text-white">
-                  {card.title}
-                </h4>
-              </div>
-            </div>
-          ))}
+          {/* Middle Right Card */}
+          <div className="col-span-12 lg:col-span-6">
+            <FeatureCard {...cards[1]} tall />
+          </div>
+
+          {/* Bottom Left */}
+          <div className="col-span-12 lg:col-span-6">
+            <FeatureCard {...cards[2]} />
+          </div>
+
+          {/* Bottom Right */}
+          <div className="col-span-12 lg:col-span-6">
+            <FeatureCard {...cards[3]} />
+          </div>
         </div>
       </div>
     </section>

@@ -98,103 +98,64 @@ export default function ExperienceSection() {
 
   return (
     <section className="w-full bg-white">
-      <div 
-        className="mx-auto"
-        style={{
-          maxWidth: "1440px",
-          width: "100%",
-          paddingTop: "40px",
-          paddingRight: "80px",
-          paddingBottom: "40px",
-          paddingLeft: "80px",
-          gap: "60px",
-          opacity: 1,
-        }}
-      >
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-[80px] py-[40px]">
         {/* Heading */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-10 lg:mb-12">
           <h2
-            className="text-center"
-            style={{
-              width: "497px",
-              height: "56px",
-              color: "#1E3C8C",
-              fontFamily: "Magistral, 'Inter', sans-serif",
-              fontWeight: 700,
-              fontStyle: "italic",
-              fontSize: "46px",
-              lineHeight: "55.2px",
-              letterSpacing: "-0.92px",
-              textAlign: "center",
-            }}
+            className="text-center text-[#1E3C8C] font-bold italic text-[32px] sm:text-[40px] lg:text-[46px] leading-[1.15] lg:leading-[55.2px] tracking-[-0.92px]"
+            style={{ fontFamily: "Magistral, 'Inter', sans-serif" }}
           >
-            What You'll Experience
+            What You&apos;ll Experience
           </h2>
         </div>
 
         {/* Tab Buttons Container */}
-        <div style={{ width: "100%", maxWidth: "1274px", margin: "0 auto" }}>
+        <div className="w-full max-w-[1274px] mx-auto">
           {/* Tab buttons row */}
-          <div className="flex" style={{ gap: 0 }}>
+          <div className="flex flex-col sm:flex-row">
             {tabs.map((tab, index) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(index)}
+                className="relative flex-1 text-left cursor-pointer px-6 py-5 transition-colors"
                 style={{
-                  width: "426.6666564941406px",
-                  height: "171px",
-                  opacity: 1,
                   borderBottomWidth: "1px",
                   borderBottomStyle: "solid",
-                  borderBottomColor: activeTab === index ? "transparent" : "#E5E7EB",
-                  background: activeTab === index ? "#F4F6FA" : "transparent",
-                  padding: "0",
-                  cursor: "pointer",
-                  textAlign: "left",
-                  position: "relative",
+                  borderBottomColor:
+                    activeTab === index ? "transparent" : "#E5E7EB",
+                  background:
+                    activeTab === index ? "#F4F6FA" : "transparent",
                 }}
               >
-                <div className="px-6 py-5">
-                  <div
-                    style={{
-                      fontFamily: "Magistral, 'Inter', sans-serif",
-                      fontWeight: 700,
-                      fontStyle: "italic",
-                      fontSize: "40px",
-                      lineHeight: "45px",
-                      letterSpacing: "-0.92px",
-                      color: "#1E3C8C",
-                      marginBottom: "8px",
-                    }}
-                  >
-                    {tab.number}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: 500,
-                      fontStyle: "normal",
-                      fontSize: "24px",
-                      lineHeight: "33px",
-                      letterSpacing: "0px",
-                      color: "#1E3C8C",
-                      width: "330.6666564941406px",
-                      height: "33px",
-                      opacity: 1,
-                    }}
-                  >
-                    {tab.title}
-                  </div>
+                <div
+                  className="text-[32px] sm:text-[34px] lg:text-[40px] leading-[1.1] lg:leading-[45px] mb-2"
+                  style={{
+                    fontFamily: "Magistral, 'Inter', sans-serif",
+                    fontWeight: 700,
+                    fontStyle: "italic",
+                    letterSpacing: "-0.92px",
+                    color: "#1E3C8C",
+                  }}
+                >
+                  {tab.number}
                 </div>
+                <div
+                  className="text-[18px] sm:text-[20px] lg:text-[24px] leading-[1.3] lg:leading-[33px]"
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontWeight: 500,
+                    color: "#1E3C8C",
+                  }}
+                >
+                  {tab.title}
+                </div>
+
                 {activeTab === index && (
                   <div
+                    className="absolute bottom-0 left-0 right-0 h-[5px]"
                     style={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: "5px",
-                      background: "linear-gradient(269.81deg, #3CAADF 45.65%, #F04123 84.54%, #FFD212 123.44%)",
+                      background:
+                        "linear-gradient(269.81deg, #3CAADF 45.65%, #F04123 84.54%, #FFD212 123.44%)",
                     }}
                   />
                 )}
@@ -203,48 +164,27 @@ export default function ExperienceSection() {
           </div>
 
           {/* Content Area */}
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "1274px",
-              minHeight: "712px",
-              opacity: 1,
-              gap: "36px",
-              padding: "48px",
-              backgroundColor: "transparent",
-            }}
-          >
-            <div className="flex gap-9 flex-wrap lg:flex-nowrap">
+          <div className="w-full p-6 sm:p-8 lg:p-12">
+            <div className="flex flex-col gap-8 lg:flex-row lg:gap-9">
               {/* Image */}
-              <div style={{ width: "474px", height: "616px", flexShrink: 0 }}>
+              <div className="w-full lg:w-[474px] lg:flex-shrink-0">
                 <Image
                   src={current.image}
                   alt={current.title}
                   width={474}
                   height={616}
-                  style={{ borderRadius: "8px", width: "100%", height: "100%", objectFit: "cover" }}
+                  className="w-full h-[300px] sm:h-[420px] lg:h-[616px] object-cover rounded-[8px]"
                 />
               </div>
 
               {/* Side Text Container */}
-              <div
-                style={{
-                  width: "672px",
-                  height: "616px",
-                  gap: "36px",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
+              <div className="flex w-full flex-col gap-6 lg:gap-9 lg:w-[672px]">
                 <h3
+                  className="text-[26px] sm:text-[30px] lg:text-[36px] leading-[1.15]"
                   style={{
-                    width: "672px",
-                    height: "43px",
                     fontFamily: "Magistral, 'Inter', sans-serif",
                     fontWeight: 700,
                     fontStyle: "italic",
-                    fontSize: "36px",
-                    lineHeight: "100%",
                     letterSpacing: "-0.92px",
                     color: "#1E3C8C",
                     margin: 0,
@@ -254,14 +194,10 @@ export default function ExperienceSection() {
                 </h3>
 
                 <p
+                  className="text-[16px] sm:text-[18px] lg:text-[20px] leading-[28px] lg:leading-[30px]"
                   style={{
-                    width: "672px",
-                    height: "120px",
                     fontFamily: "Work Sans, sans-serif",
                     fontWeight: 400,
-                    fontSize: "20px",
-                    lineHeight: "30px",
-                    letterSpacing: "0px",
                     color: "#555",
                     margin: 0,
                   }}
@@ -270,53 +206,35 @@ export default function ExperienceSection() {
                 </p>
 
                 {/* 3 Cards Container */}
-                <div
-                  style={{
-                    width: "672px",
-                    height: "405px",
-                    gap: "24px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
+                <div className="flex flex-col gap-4 sm:gap-6">
                   {current.cards.map((card, idx) => (
                     <div
                       key={idx}
-                      style={{
-                        width: "672px",
-                        height: "119px",
-                        gap: "24px",
-                        borderRadius: "8px",
-                        padding: "24px",
-                        backgroundColor: "#F6F9FF", // ✅ Ek hi bg for all 3 cards
-                        display: "flex",
-                        alignItems: "flex-start",
-                      }}
+                      className="flex w-full items-start gap-4 sm:gap-6 rounded-[8px] p-5 sm:p-6"
+                      style={{ backgroundColor: "#F6F9FF" }}
                     >
-                      <div style={{ flexShrink: 0, marginTop: "2px", color: "#1E3C8C" }}>
+                      <div
+                        className="flex-shrink-0 mt-[2px]"
+                        style={{ color: "#1E3C8C" }}
+                      >
                         {card.icon}
                       </div>
-                      <div style={{ flex: 1 }}>
+                      <div className="flex-1">
                         <h4
+                          className="text-[16px] leading-tight mb-2"
                           style={{
                             fontFamily: "Work Sans, sans-serif",
                             fontWeight: 500,
-                            fontSize: "16px",
-                            lineHeight: "100%",
-                            letterSpacing: "0px",
                             color: "#1E3C8C",
-                            marginBottom: "8px",
                           }}
                         >
                           {card.title}
                         </h4>
                         <p
+                          className="text-[14px] leading-[20px]"
                           style={{
                             fontFamily: "Work Sans, sans-serif",
                             fontWeight: 400,
-                            fontSize: "14px",
-                            lineHeight: "20px",
-                            letterSpacing: "0px",
                             color: "#666",
                             margin: 0,
                           }}

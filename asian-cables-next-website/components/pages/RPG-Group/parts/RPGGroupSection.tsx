@@ -35,24 +35,26 @@ export default function RPGGroupSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <div className="mt-7 space-y-2 sm:mt-8">
+          <div className="mt-7 space-y-2 sm:mt-4">
             {content.descriptions.map((text, index) => (
               <p
                 key={index}
-                className="text-[15px] leading-[28px] text-[#525252] sm:text-[15px] sm:leading-[30px]"
+                className="font-normal text-[18px] leading-[27.2px] tracking-[0px] text-[#525252]"
               >
                 {text}
               </p>
             ))}
-          </div>
 
-          {/* BUTTON */}
-          <button className="border-it-b flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
+            <button className="border-it-b !mt-4 flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
              {content.buttonText}
             <span>
               <ChevronRight size={18} />
             </span>
           </button>
+          </div>
+
+          {/* BUTTON */}
+          
         </div>
 
         {/* RIGHT IMAGE */}

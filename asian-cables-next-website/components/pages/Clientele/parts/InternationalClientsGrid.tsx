@@ -155,7 +155,7 @@ export default function InternationalClientsGrid() {
               {/* COMPACT CARD CONTENT (default) */}
               <div className="relative z-20">
                 <div className="flex items-start justify-between">
-                  <div className="mt-7 flex h-[46px] w-[46px] items-center justify-center rounded-xl bg-white shadow-sm transition-all duration-300 group-hover:scale-105">
+                  <div className="mt-7 flex h-[46px] w-[46px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:scale-105">
                     <img src={client.icon} alt={client.name} className="h-6 w-6 object-contain" />
                   </div>
 
@@ -165,9 +165,9 @@ export default function InternationalClientsGrid() {
                   </div>
                 </div>
 
-                <h3 className="mt-7 font-[Work_Sans] font-medium text-[20px] leading-[30px] tracking-[0] text-[#1E3C8C] transition-colors duration-300 group-hover:text-[#0f2f75]">
+                <p className="mt-7 font-['Work_Sans'] font-medium text-[20px] leading-[30px] tracking-[0px] text-[#1E3C8C] transition-colors duration-300 group-hover:text-[#0f2f75]">
                   {client.name}
-                </h3>
+                </p>
 
                 <div className="mt-5">
                   <span className="inline-flex font-[Work_Sans] items-center rounded-full bg-[#1E3C8C1A] px-3 py-[6px] text-[10px] font-semibold tracking-wide text-[#1E3C8C]">

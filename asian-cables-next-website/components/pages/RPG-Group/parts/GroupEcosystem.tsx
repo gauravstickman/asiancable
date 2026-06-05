@@ -22,32 +22,29 @@ const cards = [
 
 export default function GroupEcosystem() {
   return (
-    <section className="py-12 overflow-hidden">
+    <section className="overflow-hidden py-12">
       {/* HEADER */}
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <h2 className="font-[magistral] text-[46px] font-bold italic text-hero text-[#1E3C8C] text-center tracking-[0px]">
+        <h2 className="text-hero text-center font-[magistral] text-[46px] font-bold tracking-[0px] text-[#1E3C8C] italic">
           The RPG Group Ecosystem
         </h2>
-        <p className="font-[work_sans] font-normal text-body text-[19.77px] text-[#525252] text-center tracking-[0px]">
-          A diversified conglomerate with leading brands across multiple industries
+        <p className="dm-font text-body text-center text-[19.77px] font-normal tracking-[0px] text-[#525252]">
+          A diversified conglomerate with leading brands across multiple
+          industries
         </p>
       </div>
 
       {/* MARQUEE WRAPPER */}
-      <div className="relative mt-15 py-8 w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+      <div className="relative right-1/2 left-1/2 mt-15 -mr-[50vw] -ml-[50vw] w-screen py-8">
         <div className="overflow-hidden">
           <div className="animate-marquee flex w-max gap-8 bg-gray-50">
             {[...cards, ...cards].map((card, index) => (
               <div
                 key={index}
-                className={`group relative flex flex-col w-[408px] h-[364px]
-                border border-transparent shadow-sm
-                transition-all duration-300
-                hover:bg-[#163B8C]/5
-                hover:shadow-[0_8px_30px_rgba(22,59,140,0.12)]`}
+                className={`group relative flex h-[364px] w-[408px] flex-col rounded-t-[8.6px] shadow-sm transition-all duration-10 ease-in-out hover:rounded-[8.6px] hover:border hover:border-[2.87px] hover:border-[#1E3C8C99] hover:shadow-[0_8px_30px_rgba(22,59,140,0.12)]`}
               >
                 {/* TOP SECTION */}
-                <div className="flex-1 flex items-center justify-center bg-white">
+                <div className="flex flex-1 items-center justify-center rounded-t-[8px] bg-white">
                   <img
                     src={card.icon}
                     // alt={card.title}
@@ -56,14 +53,13 @@ export default function GroupEcosystem() {
                 </div>
 
                 {/* BOTTOM SECTION */}
-                <div className="flex-1 bg-[#F3F4F6] p-5 flex flex-col justify-start">
-                  <p className="font-worksans font-medium text-subheading text-[#525252] tracking-[0px] text-center]">
+                <div className="flex flex-1 flex-col justify-start bg-[#1E3C8C0F] p-5">
+                  <p className="text-center text-[20.06px] leading-[25.79px] font-medium tracking-[0px] text-[#525252]">
                     {card.description}
                   </p>
                 </div>
               </div>
             ))}
-
           </div>
         </div>
       </div>

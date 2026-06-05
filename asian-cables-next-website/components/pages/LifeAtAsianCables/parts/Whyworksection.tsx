@@ -4,7 +4,7 @@ const WhyWorkSection = () => {
   return (
     <section className="bg-white py-[40px]">
       <div className="max-w-[1440px] mx-auto px-4">
-        <div className="max-w-[1274px] min-h-[596px] mx-auto flex flex-col lg:flex-row gap-[60px]">
+        <div className="max-w-[1274px] lg:min-h-[596px] mx-auto flex flex-col lg:flex-row gap-[36px] lg:gap-[60px]">
 
           {/* Left Image */}
           <div className="w-full lg:w-[656px] flex-shrink-0">
@@ -13,11 +13,7 @@ const WhyWorkSection = () => {
               alt="Why Work at Asian Cables"
               width={656}
               height={596}
-              className="w-full h-[596px] object-cover rounded-[8.55px]"
-              style={{
-                width: "100%",
-                height: "596px",
-              }}
+              className="w-full h-[300px] sm:h-[420px] lg:h-[596px] object-cover rounded-[8.55px]"
             />
           </div>
 

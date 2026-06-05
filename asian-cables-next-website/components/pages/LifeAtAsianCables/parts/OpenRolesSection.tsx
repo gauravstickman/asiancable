@@ -45,18 +45,21 @@ export default function OpenRolesSection() {
 
   return (
     <section className="w-full bg-white py-[40px]">
-      <div className="max-w-[1440px] mx-auto px-[81px]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[81px]">
         {/* Top Section */}
-        <div className="w-full flex items-start justify-between mb-[60px]">
+        <div className="w-full flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between mb-10 lg:mb-[60px]">
           {/* Left */}
           <div>
             <h2
               className="
                 text-[#1E3C8C]
-                text-[46px]
+                text-[32px]
+                sm:text-[40px]
+                lg:text-[46px]
                 font-bold
                 italic
-                leading-[55px]
+                leading-[1.15]
+                lg:leading-[55px]
                 tracking-[-0.92px]
               "
               style={{ fontFamily: "Magistral" }}
@@ -68,7 +71,8 @@ export default function OpenRolesSection() {
               className="
                 mt-[8px]
                 text-[#666666]
-                text-[18px]
+                text-[16px]
+                sm:text-[18px]
                 leading-[30px]
               "
               style={{ fontFamily: "Work Sans" }}
@@ -78,7 +82,7 @@ export default function OpenRolesSection() {
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-[8px]">
+          <div className="flex flex-wrap gap-[8px]">
             {tabs.map((tab) => {
               const active = activeTab === tab;
 
@@ -88,9 +92,11 @@ export default function OpenRolesSection() {
                   onClick={() => setActiveTab(tab)}
                   className={`
                     h-[41px]
-                    px-[18px]
+                    px-[14px]
+                    sm:px-[18px]
                     rounded-[4px]
-                    text-[14px]
+                    text-[13px]
+                    sm:text-[14px]
                     font-medium
                     transition-all
                     ${
@@ -114,21 +120,27 @@ export default function OpenRolesSection() {
             <div
               key={index}
               className="
-                h-[123px]
                 bg-[#FAFAFA]
                 flex
-                items-center
-                justify-between
-                px-[32px]
+                flex-col
+                gap-4
+                md:flex-row
+                md:items-center
+                md:justify-between
+                md:h-[123px]
+                p-5
+                md:px-[32px]
+                md:py-0
               "
             >
               {/* Left Side */}
-              <div className="flex items-center gap-[24px]">
+              <div className="flex items-start sm:items-center gap-[16px] sm:gap-[24px]">
                 {/* Icon Box */}
                 <div
                   className="
                     w-[40px]
                     h-[40px]
+                    flex-shrink-0
                     rounded-[8px]
                     bg-white
                     flex
@@ -148,9 +160,11 @@ export default function OpenRolesSection() {
                   <h3
                     className="
                       text-[#1E3C8C]
-                      text-[20px]
+                      text-[17px]
+                      sm:text-[20px]
                       font-medium
-                      leading-[30px]
+                      leading-[26px]
+                      sm:leading-[30px]
                       tracking-[0px]
                     "
                     style={{ fontFamily: "Work Sans", fontWeight: 500 }}
@@ -161,10 +175,14 @@ export default function OpenRolesSection() {
                   <div
                     className="
                       flex
+                      flex-wrap
                       items-center
-                      gap-[28px]
+                      gap-x-[20px]
+                      gap-y-[6px]
+                      sm:gap-x-[28px]
                       mt-[12px]
-                      text-[14px]
+                      text-[13px]
+                      sm:text-[14px]
                       text-[#808080]
                     "
                     style={{ fontFamily: "Work Sans" }}
@@ -192,7 +210,9 @@ export default function OpenRolesSection() {
               {/* Button */}
               <button
                 className="
-                  w-[148px]
+                  w-full
+                  md:w-[148px]
+                  flex-shrink-0
                   h-[39px]
                   rounded-[4.39px]
                   bg-[#1E3C8C]

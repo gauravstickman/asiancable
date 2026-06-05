@@ -12,58 +12,62 @@ function ManufacturingHeader() {
   ];
 
   return (
-    <section className="relative h-screen min-h-[760px] overflow-hidden bg-white">
+    <section className="relative min-h-[680px] overflow-hidden bg-white">
       {/* Background Image */}
-
       <img
         src="/assets/rpggroup/rpgheaderIcon.png"
         alt="RPG Group"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
+
       {/* White Fade Overlay */}
       <div className="absolute inset-0 z-10 bg-gradient-to-r from-white via-white/92 via-[42%] to-transparent" />
+
       {/* Soft Extra Blur Layer */}
       <div className="absolute inset-0 z-10 bg-white/8 backdrop-blur-[1px]" />
-      {/* Content Container */}
-      <div className="relative z-20 flex h-full items-center">
-        <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-12">
-          {/* Left Content */}
-          <div className="max-w-[760px] pt-10">
-            {/* Breadcrumb */}
-            <nav className="mb-10 flex items-center gap-1 text-[14px]">
-              {breadcrumbs.map((item, index) => (
-                <React.Fragment key={item.label}>
-                  {item.href ? (
-                    <Link
-                      href={item.href}
-                      className="font-medium text-[#9A9A9A] transition-colors duration-300 hover:text-[#1E3C8C]"
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <span className="font-semibold text-[#5B5B5B]">
-                      {item.label}
-                    </span>
-                  )}
 
-                  {index < breadcrumbs.length - 1 && (
-                    <Dot className="h-4 w-4 text-[#BEBEBE]" />
-                  )}
-                </React.Fragment>
-              ))}
-            </nav>
-            <h1 className="w-full text-[60px] leading-[0.95] font-black tracking-[-3px] text-[#1E3C8C] italic ">
-              RPG GROUP
-              <br />
-              Powered by Passion.Driven
-              <br />
-               by Ethics.
-            </h1>
-            <p className="mt-10 max-w-[550px] text-[16px] leading-[1.6] font-normal text-[#767676]">
-              For nearly four decades, Asian Cables has been at the forefront of
-              cable manufacturing excellence
-            </p>
-          </div>
+      {/* Content Container */}
+      <div className="relative z-20 mx-auto max-w-7xl">
+        {/* Left Content aligned exactly like second component */}
+        <div className="pt-58 pb-[64px]">
+          {/* Breadcrumb */}
+          <nav className="mb-7 flex flex-wrap items-center gap-1.5">
+            {breadcrumbs.map((item, index) => (
+              <React.Fragment key={item.label}>
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className="font-['Work_Sans'] font-normal text-[16px] leading-[36px] tracking-[0px] text-[#AAAAAA]"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span className="font-['Work_Sans'] font-medium text-[16px] leading-[36px] tracking-[0px] text-[#4B4B4B]">
+                    {item.label}
+                  </span>
+                )}
+
+                {index < breadcrumbs.length - 1 && (
+                  <Dot className="h-6 w-6 text-[#BEBEBE]" />
+                )}
+              </React.Fragment>
+            ))}
+          </nav>
+
+          {/* Heading */}
+          <h1 className="font-[Magistral] text-[64px] leading-[68px] tracking-[-1.44px] font-bold italic text-[#1E3C8C]">
+            RPG GROUP
+            <br />
+            Powered by Passion.Driven
+            <br />
+            by Ethics.
+          </h1>
+
+          {/* Subtitle */}
+          <p className="mt-[27px] max-w-[550px] font-['Work_Sans'] font-normal text-[20px] leading-[31px] tracking-[0px] text-[#767676]">
+            For nearly four decades, Asian Cables has been at the forefront of
+            cable manufacturing excellence
+          </p>
         </div>
       </div>
     </section>

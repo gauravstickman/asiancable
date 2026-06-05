@@ -43,11 +43,11 @@ export default function LeadershipTeam() {
         {/* Header */}
         <div className="mb-10 px-5 flex items-center justify-between">
           <div>
-            <h2 className="text-[46px] font-bold text-[#1E3C8C] italic">
+            <h2 className="font-[magistral] text-[46px] leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C]">
               Leadership Team
             </h2>
 
-            <p className="font-normal text-[16px] text-[#525252]">
+            <p className="mt-3 font-[work_sans] text-[17px] leading-[25.5px] font-normal text-[#525252]">
               Meet the visionaries driving Asian Cables forward
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function LeadershipTeam() {
 
         {/* Marquee */}
         <div className="relative">
-          <div className="animate-marquee flex w-max gap-6">
+          <div className="animate-marquee hover:[animation-play-state:paused] flex w-max gap-[33px]">
             {/* First Set */}
             {leaders.map((leader, index) => (
               <div key={index} className="max-w-[260px] min-w-[260px]">
@@ -72,18 +72,18 @@ export default function LeadershipTeam() {
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="h-[340px] w-full object-cover"
+                    className="h-[371px] w-[314px] rounded-[4px] full object-cover"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="mt-4 px-2 flex items-start justify-between">
-                  <div>
-                    <h3 className="font-[500] text-[16px] leading-[24px] tracking-[-0.004em] text-[#1D1F1E] font-[Figtree]">
+                <div className="flex w-full flex-row items-start justify-between h-auto gap-[4px] rounded-[4px] p-[16px]">
+                  <div >
+                    <p className="text-[16px] leading-[24px] font-medium tracking-[-0.4%] text-[#1D1F1E]">
                       {leader.name}
-                    </h3>
+                    </p>
 
-                    <p className="font-[figtree] font-normal text-[14px] leading-[20px] tracking-[-0.004em] text-[#646A69] mb-2">
+                    <p className=" text-[14px] leading-[20px] font-normal tracking-[-0.004em] text-[#646A69]">
                       {leader.role}
                     </p>
                   </div>
@@ -104,17 +104,17 @@ export default function LeadershipTeam() {
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="h-[340px] w-full object-cover"
+                    className="h-[371px] w-[314px] rounded-[4px] full object-cover"
                   />
                 </div>
 
-                <div className="mt-4 px-2 flex items-start justify-between">
-                  <div>
-                    <h3 className="font-[500] text-[16px] leading-[24px] tracking-[-0.004em] text-[#1D1F1E] font-[Figtree]">
+                <div className="flex w-full flex-row items-start justify-between h-auto gap-[4px] rounded-[4px] p-[16px]">
+                  <div >
+                    <h3 className="font-[figtree] text-[16px] leading-[24px] font-medium tracking-[-0.010] text-[#1D1F1E]">
                       {leader.name}
                     </h3>
 
-                    <p className="font-[figtree] font-normal text-[14px] leading-[20px] tracking-[-0.004em] text-[#646A69] mb-2">
+                    <p className="font-[figtree] text-[14px] leading-[20px] font-normal tracking-[-0.004em] text-[#646A69]">
                       {leader.role}
                     </p>
                   </div>
