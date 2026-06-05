@@ -23,7 +23,6 @@ const WhyWorkSection = () => {
             {/* Heading */}
             <h2
               className="text-[#1E3C8C] text-[36px] leading-[42px] font-bold italic tracking-[-0.92px]"
-              style={{ fontFamily: "Magistral" }}
             >
               Why Work at Asian Cables
             </h2>
