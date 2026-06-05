@@ -123,101 +123,118 @@ const HomepageSettingsMaster = () => {
 
     const validateSettings = () => {
         // Hero Slider
-        if ((settings.heroSlides || []).length === 0) {
-            toast.error('Hero Slider: At least one slide is required');
-            return false;
-        }
-        for (let i = 0; i < settings.heroSlides.length; i++) {
-            const s = settings.heroSlides[i];
-            if (!s.title?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} title is required`); return false; }
-            if (!s.description?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} description is required`); return false; }
-            if (!s.image?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} image is required`); return false; }
-            if (!s.cta?.text?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} button text is required`); return false; }
-            if (!s.cta?.link?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} button link is required`); return false; }
+        if (activeTab === 'heroSlides') {
+            if ((settings.heroSlides || []).length === 0) {
+                toast.error('Hero Slider: At least one slide is required');
+                return false;
+            }
+            for (let i = 0; i < settings.heroSlides.length; i++) {
+                const s = settings.heroSlides[i];
+                if (!s.title?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} title is required`); return false; }
+                if (!s.description?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} description is required`); return false; }
+                if (!s.image?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} image is required`); return false; }
+                if (!s.mobileImage?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} mobile image is required`); return false; }
+                if (!s.cta?.text?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} button text is required`); return false; }
+                if (!s.cta?.link?.trim()) { toast.error(`Hero Slider: Slide #${i + 1} button link is required`); return false; }
+            }
         }
 
         // About Us
-        if (!settings.aboutUs?.description?.trim()) {
-            toast.error('About Us: Description is required');
-            return false;
+        if (activeTab === 'aboutUs') {
+            if (!settings.aboutUs?.description?.trim()) {
+                toast.error('About Us: Description is required');
+                return false;
+            }
         }
 
         // Facts
-        if (!settings.facts?.presence?.title?.trim() || !settings.facts?.presence?.image?.trim()) {
-            toast.error('Facts: Global Presence title and image are required');
-            return false;
+        if (activeTab === 'facts') {
+            if (!settings.facts?.presence?.title?.trim() || !settings.facts?.presence?.image?.trim()) {
+                toast.error('Facts: Global Presence title and image are required');
+                return false;
+            }
+            if (!settings.facts?.decades?.title?.trim() || !settings.facts?.decades?.subtitle?.trim()) {
+                toast.error('Facts: Decades title and subtitle are required');
+                return false;
+            }
+            if (!settings.facts?.capacity?.title?.trim() || !settings.facts?.capacity?.subtitle?.trim()) {
+                toast.error('Facts: Capacity title and subtitle are required');
+                return false;
+            }
+            if (!settings.facts?.annual?.value?.trim() || !settings.facts?.annual?.title?.trim()) {
+                toast.error('Facts: Annual Revenue value and title are required');
+                return false;
+            }
         }
-        if (!settings.facts?.decades?.title?.trim() || !settings.facts?.decades?.subtitle?.trim()) {
-            toast.error('Facts: Decades title and subtitle are required');
-            return false;
-        }
-        if (!settings.facts?.capacity?.title?.trim() || !settings.facts?.capacity?.subtitle?.trim()) {
-            toast.error('Facts: Capacity title and subtitle are required');
-            return false;
-        }
-        if (!settings.facts?.annual?.value?.trim() || !settings.facts?.annual?.title?.trim()) {
-            toast.error('Facts: Annual Revenue value and title are required');
-            return false;
-        }
-
-        // Applications validation removed
 
         // Proven Fields
-        for (let i = 0; i < (settings.provenFields || []).length; i++) {
-            const f = settings.provenFields[i];
-            if (!f.title?.trim() || !f.image?.trim()) {
-                toast.error(`Proven Fields: Field #${i + 1} must have title and image`);
-                return false;
+        if (activeTab === 'provenFields') {
+            for (let i = 0; i < (settings.provenFields || []).length; i++) {
+                const f = settings.provenFields[i];
+                if (!f.title?.trim() || !f.image?.trim()) {
+                    toast.error(`Proven Fields: Field #${i + 1} must have title and image`);
+                    return false;
+                }
             }
         }
 
         // Testimonials
-        for (let i = 0; i < (settings.testimonials || []).length; i++) {
-            const t = settings.testimonials[i];
-            if (!t.name?.trim() || !t.quote?.trim()) {
-                toast.error(`Testimonials: Testimonial #${i + 1} must have name and quote`);
-                return false;
+        if (activeTab === 'testimonials') {
+            for (let i = 0; i < (settings.testimonials || []).length; i++) {
+                const t = settings.testimonials[i];
+                if (!t.name?.trim() || !t.quote?.trim()) {
+                    toast.error(`Testimonials: Testimonial #${i + 1} must have name and quote`);
+                    return false;
+                }
             }
         }
 
         // Engineering
-        if (!settings.engineering?.title?.trim()) {
-            toast.error('Engineering: Section title is required');
-            return false;
-        }
-        for (let i = 0; i < (settings.engineering?.items || []).length; i++) {
-            const item = settings.engineering.items[i];
-            if (!item.title?.trim() || !item.content?.trim()) {
-                toast.error(`Engineering: Item #${i + 1} must have title and content`);
+        if (activeTab === 'engineering') {
+            if (!settings.engineering?.title?.trim()) {
+                toast.error('Engineering: Section title is required');
                 return false;
+            }
+            for (let i = 0; i < (settings.engineering?.items || []).length; i++) {
+                const item = settings.engineering.items[i];
+                if (!item.title?.trim() || !item.content?.trim()) {
+                    toast.error(`Engineering: Item #${i + 1} must have title and content`);
+                    return false;
+                }
             }
         }
 
         // Product Range
-        for (let i = 0; i < (settings.productRange || []).length; i++) {
-            const p = settings.productRange[i];
-            if (!p.title?.trim() || !p.image?.trim()) {
-                toast.error(`Product Range: Product #${i + 1} must have title and image`);
-                return false;
+        if (activeTab === 'productRange') {
+            for (let i = 0; i < (settings.productRange || []).length; i++) {
+                const p = settings.productRange[i];
+                if (!p.title?.trim() || !p.image?.trim()) {
+                    toast.error(`Product Range: Product #${i + 1} must have title and image`);
+                    return false;
+                }
             }
         }
 
         // Sustainability
-        if (!settings.sustainability?.heading?.trim()) {
-            toast.error('Sustainability: Heading / Tagline is required');
-            return false;
-        }
-        if (!settings.sustainability?.bgImage?.trim()) {
-            toast.error('Sustainability: Background image is required');
-            return false;
+        if (activeTab === 'sustainability') {
+            if (!settings.sustainability?.heading?.trim()) {
+                toast.error('Sustainability: Heading / Tagline is required');
+                return false;
+            }
+            if (!settings.sustainability?.bgImage?.trim()) {
+                toast.error('Sustainability: Background image is required');
+                return false;
+            }
         }
 
         // Latest Blogs
-        for (let i = 0; i < (settings.latestBlogs || []).length; i++) {
-            const b = settings.latestBlogs[i];
-            if (!b.title?.trim() || !b.image?.trim()) {
-                toast.error(`Latest Blogs: Blog #${i + 1} must have title and image`);
-                return false;
+        if (activeTab === 'latestBlogs') {
+            for (let i = 0; i < (settings.latestBlogs || []).length; i++) {
+                const b = settings.latestBlogs[i];
+                if (!b.title?.trim() || !b.image?.trim()) {
+                    toast.error(`Latest Blogs: Blog #${i + 1} must have title and image`);
+                    return false;
+                }
             }
         }
 
@@ -288,6 +305,13 @@ const HomepageSettingsMaster = () => {
                                         <button onClick={() => openMediaPicker((url) => handleArrayChange('heroSlides', idx, 'image', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
                                     </div>
                                     {slide.image && <img src={slide.image.startsWith('http') ? slide.image : `${import.meta.env.VITE_API_URL}${slide.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
+                                </div>
+                                <div className="md:col-span-2 flex flex-col gap-2">
+                                    <div className="flex gap-2">
+                                        <FormInput label="Mobile Image URL" placeholder="Mobile Image URL" value={slide.mobileImage || ''} onChange={e => handleArrayChange('heroSlides', idx, 'mobileImage', e.target.value)} />
+                                        <button onClick={() => openMediaPicker((url) => handleArrayChange('heroSlides', idx, 'mobileImage', url))} className="bg-white px-3 border rounded text-sm h-10 mt-6"><Image size={16}/></button>
+                                    </div>
+                                    {slide.mobileImage && <img src={slide.mobileImage.startsWith('http') ? slide.mobileImage : `${import.meta.env.VITE_API_URL}${slide.mobileImage}`} alt="Mobile Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                 </div>
                             </div>
                                 ))} 

@@ -44,6 +44,9 @@ app.use('/api/industry-page', require('./routes/industryPageRoutes'));
 app.use('/api/homepage-settings', require('./routes/homepageSettingsRoutes'));
 app.use('/api/manufacturing-page', require('./routes/manufacturingPageRoutes'));
 app.use('/api/about-page', require('./routes/aboutPageRoutes'));
+app.use('/api/leadership-page', require('./routes/leadershipPageRoutes'));
+app.use('/api/sustainability-page', require('./routes/sustainabilityPageRoutes'));
+app.use('/api/resources-page', require('./routes/resourcesPageRoutes'));
 
 app.get('/', (req, res) => {
     res.send('API is running...');

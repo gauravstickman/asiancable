@@ -40,6 +40,7 @@ const manufacturingPageSchema = new mongoose.Schema({
     heroTitle: { type: String, default: 'State-of-the-Art Manufacturing' },
     heroDescription: { type: String, default: 'Delivering world-class cable manufacturing with cutting-edge technology and unmatched precision.' },
     heroBgImage: { type: String, default: '' },
+    heroMobileBgImage: { type: String, default: '' },
     heroStats: [statSchema],
 
     // Infrastructure Highlights Section

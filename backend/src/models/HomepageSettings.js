@@ -9,7 +9,8 @@ const schema = new mongoose.Schema({
             text: String,
             link: String
         },
-        image: String
+        image: String,
+        mobileImage: String
     }],
     aboutUs: {
         description: String
@@ -46,10 +47,10 @@ const schema = new mongoose.Schema({
         }
     },
     applications: {
-        main: { title: String, description: String, image: String },
-        small1: { title: String, image: String },
-        small2: { title: String, image: String },
-        wide: { title: String, image: String }
+        main: { title: String, description: String, image: String, link: { type: String, default: '' } },
+        small1: { title: String, image: String, link: { type: String, default: '' } },
+        small2: { title: String, image: String, link: { type: String, default: '' } },
+        wide: { title: String, image: String, link: { type: String, default: '' } }
     },
     provenFields: [{
         tag: String,

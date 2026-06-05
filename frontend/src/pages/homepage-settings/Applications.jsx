@@ -7,10 +7,10 @@ import MediaPicker from '../../components/common/MediaPicker';
 const Applications = () => {
     const [loading, setLoading] = useState(false);
     const [applications, setApplications] = useState({
-        main: { title: '', description: '', image: '' },
-        small1: { title: '', image: '' },
-        small2: { title: '', image: '' },
-        wide: { title: '', image: '' }
+        main: { title: '', description: '', image: '', link: '' },
+        small1: { title: '', image: '', link: '' },
+        small2: { title: '', image: '', link: '' },
+        wide: { title: '', image: '', link: '' }
     });
     
     // Media Picker States
@@ -89,6 +89,10 @@ const Applications = () => {
                                     </button>
                                 </div>
                             </div>
+                            <div className="space-y-1">
+                                <label className="text-sm font-medium text-slate-700">Link URL</label>
+                                <input type="text" value={applications.main?.link || ''} onChange={(e) => setApplications({ ...applications, main: { ...applications.main, link: e.target.value } })} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., /applications/oil-gas" />
+                            </div>
                             <div className="space-y-1 md:col-span-2">
                                 <label className="text-sm font-medium text-slate-700">Description</label>
                                 <textarea value={applications.main?.description || ''} onChange={(e) => setApplications({ ...applications, main: { ...applications.main, description: e.target.value } })} rows={4} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-sm" placeholder="Write description..." />
@@ -114,6 +118,10 @@ const Applications = () => {
                                     </button>
                                 </div>
                             </div>
+                            <div className="space-y-1 md:col-span-2">
+                                <label className="text-sm font-medium text-slate-700">Link URL</label>
+                                <input type="text" value={applications.small1?.link || ''} onChange={(e) => setApplications({ ...applications, small1: { ...applications.small1, link: e.target.value } })} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., /applications/power-plants" />
+                            </div>
                         </div>
                     </div>
                     
@@ -135,6 +143,10 @@ const Applications = () => {
                                     </button>
                                 </div>
                             </div>
+                            <div className="space-y-1 md:col-span-2">
+                                <label className="text-sm font-medium text-slate-700">Link URL</label>
+                                <input type="text" value={applications.small2?.link || ''} onChange={(e) => setApplications({ ...applications, small2: { ...applications.small2, link: e.target.value } })} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., /applications/utilities" />
+                            </div>
                         </div>
                     </div>
                     
@@ -155,6 +167,10 @@ const Applications = () => {
                                         Choose
                                     </button>
                                 </div>
+                            </div>
+                            <div className="space-y-1 md:col-span-2">
+                                <label className="text-sm font-medium text-slate-700">Link URL</label>
+                                <input type="text" value={applications.wide?.link || ''} onChange={(e) => setApplications({ ...applications, wide: { ...applications.wide, link: e.target.value } })} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., /applications/industrial" />
                             </div>
                         </div>
                     </div>

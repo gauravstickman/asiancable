@@ -221,9 +221,9 @@ export default function Homepage() {
 {/* for mobile */}
 
                <img
-                src={slide.image}
+                src={slide.mobileImage || slide.image}
                 alt={slide.title}
-                className="h-full object-cover md:hidden"
+                className="h-full w-full object-cover md:hidden"
               />
             </div>
 

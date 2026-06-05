@@ -536,6 +536,11 @@ const ProductList = () => {
                                             </div>
                                             
                                             <div className="space-y-1.5 md:col-span-2">
+                                                <label className="text-sm font-medium text-slate-700">Link URL</label>
+                                                <input type="text" value={app.link || ''} onChange={(e) => { const arr = [...applicationsArray]; arr[idx].link = e.target.value; setApplicationsArray(arr); }} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm" placeholder="Link URL" />
+                                            </div>
+
+                                            <div className="space-y-1.5 md:col-span-2">
                                                 <label className="text-sm font-medium text-slate-700">Description</label>
                                                 <textarea rows={2} value={app.description || ''} onChange={(e) => { const arr = [...applicationsArray]; arr[idx].description = e.target.value; setApplicationsArray(arr); }} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm resize-none" placeholder="Description" />
                                             </div>

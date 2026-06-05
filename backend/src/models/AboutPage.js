@@ -33,6 +33,7 @@ const aboutPageSchema = new mongoose.Schema({
     // Hero Section
     heroTitle: { type: String, default: 'About Asian Cables' },
     heroImage: { type: String, default: '' },
+    heroMobileImage: { type: String, default: '' },
     heroStats: [statSchema],
 
     // Built On Section

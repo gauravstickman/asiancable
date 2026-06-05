@@ -47,7 +47,8 @@ const productSchema = new mongoose.Schema({
     applications: [{
         title: String,
         description: String,
-        image: String
+        image: String,
+        link: { type: String, default: '' }
     }],
     projects: [{
         tag: String,

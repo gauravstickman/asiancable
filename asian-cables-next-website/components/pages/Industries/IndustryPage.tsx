@@ -31,6 +31,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
   const headerTitle = data?.headerTitle || "Oil & Gas";
   const headerDescription = data?.headerDescription || "Enabling uninterrupted operations across upstream, midstream, and downstream facilities through cabling solutions aligned to safety protocols, reliability requirements, and asset integrity expectations. Specialized cable solutions support energy infrastructure including refineries, petrochemical plants and pipeline protection systems.";
   const headerImage = data?.headerBgImage ? (data.headerBgImage.startsWith("http") ? data.headerBgImage : `${getBaseUrl()}/${data.headerBgImage.replace(/\\/g, "/")}`) : "/assets/industry-main.png";
+  const headerMobileImage = data?.headerMobileBgImage ? (data.headerMobileBgImage.startsWith("http") ? data.headerMobileBgImage : `${getBaseUrl()}/${data.headerMobileBgImage.replace(/\\/g, "/")}`) : headerImage;
   const stats = data?.stats || [
     { value: "3600 Km/Yr", label: "EHV Cable Production" },
     { value: "60+ Yrs", label: "Cable Manufacturing Expertise" },
@@ -51,7 +52,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
           className="absolute inset-0 h-full w-full object-cover hidden md:block"
         />
 {/* for mobile */}
-<img src={headerImage} alt={headerTitle} className="absolute inset-0 h-full w-full object-cover position-top md:hidden" />
+<img src={headerMobileImage} alt={headerTitle} className="absolute inset-0 h-full w-full object-cover position-top md:hidden" />
 
 
         {/* OVERLAY */}

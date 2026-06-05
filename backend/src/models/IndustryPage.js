@@ -30,7 +30,8 @@ const applicationSchema = new mongoose.Schema({
     title: String,
     image: String,
     description: String,
-    tag: String
+    tag: String,
+    link: { type: String, default: '' }
 });
 
 const schema = new mongoose.Schema({
@@ -39,6 +40,7 @@ const schema = new mongoose.Schema({
 
     // Hero Header
     headerBgImage: { type: String, default: '/src/assets/industry-main.png' },
+    headerMobileBgImage: { type: String, default: '' },
     headerTag: { type: String, default: 'Industries' },
     headerTitle: { type: String, default: 'Oil & Gas' },
     headerDescription: { type: String, default: 'Enabling uninterrupted operations across upstream...' },

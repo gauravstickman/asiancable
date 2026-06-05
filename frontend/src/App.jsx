@@ -24,6 +24,9 @@ import IndustryPageList from './pages/homepage-settings/IndustryPageList';
 import IndustryPageSettings from './pages/homepage-settings/IndustryPageSettings';
 import ManufacturingSettings from './pages/homepage-settings/ManufacturingSettings';
 import AboutSettings from './pages/homepage-settings/AboutSettings';
+import LeadershipSettings from './pages/homepage-settings/LeadershipSettings';
+import SustainabilitySettings from './pages/homepage-settings/SustainabilitySettings';
+import ResourcesSettings from './pages/homepage-settings/ResourcesSettings';
 import Settings from './pages/settings/Settings';
 
 function App() {
@@ -59,6 +62,10 @@ function App() {
             <Route path="industry-page/:id" element={<IndustryPageSettings />} />
             <Route path="manufacturing-page" element={<ManufacturingSettings />} />
             <Route path="about-page" element={<AboutSettings />} />
+            <Route path="leadership-page" element={<LeadershipSettings />} />
+            <Route path="sustainability-page" element={<SustainabilitySettings />} />
+            <Route path="resources-page" element={<ResourcesSettings />} />
+            
             
             <Route path="settings" element={<Settings />} />
           </Route>

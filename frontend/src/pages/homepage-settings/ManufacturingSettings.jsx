@@ -38,97 +38,115 @@ const ManufacturingSettings = () => {
 
     const validateSettings = () => {
         // ── Hero Section ──
-        if (!settings.heroTitle?.trim()) {
-            toast.error('Hero Section: Main Title is required');
-            return false;
-        }
-        if (!settings.heroDescription?.trim()) {
-            toast.error('Hero Section: Description is required');
-            return false;
-        }
-        for (let i = 0; i < (settings.heroStats || []).length; i++) {
-            const s = settings.heroStats[i];
-            if (!s.value?.trim() || !s.label?.trim()) {
-                toast.error(`Hero Section: Stat #${i + 1} must have both value and label`);
+        if (activeTab === 'hero') {
+            if (!settings.heroTitle?.trim()) {
+                toast.error('Hero Section: Main Title is required');
                 return false;
+            }
+            if (!settings.heroDescription?.trim()) {
+                toast.error('Hero Section: Description is required');
+                return false;
+            }
+            if (!settings.heroBgImage?.trim()) {
+                toast.error('Hero Section: Background Image is required');
+                return false;
+            }
+            if (!settings.heroMobileBgImage?.trim()) {
+                toast.error('Hero Section: Mobile Background Image is required');
+                return false;
+            }
+            for (let i = 0; i < (settings.heroStats || []).length; i++) {
+                const s = settings.heroStats[i];
+                if (!s.value?.trim() || !s.label?.trim()) {
+                    toast.error(`Hero Section: Stat #${i + 1} must have both value and label`);
+                    return false;
+                }
             }
         }
 
         // ── Infrastructure Highlights ──
-        if (!settings.infraTitle?.trim()) {
-            toast.error('Infrastructure: Section Title is required');
-            return false;
-        }
-        if (!settings.infraImage?.trim()) {
-            toast.error('Infrastructure: Section Image is required');
-            return false;
-        }
-        if (!settings.infraDescription?.trim()) {
-            toast.error('Infrastructure: Description is required');
-            return false;
-        }
-        for (let i = 0; i < (settings.infraHighlights || []).length; i++) {
-            const h = settings.infraHighlights[i];
-            if (!h.title?.trim() || !h.subtitle?.trim()) {
-                toast.error(`Infrastructure: Highlight #${i + 1} must have both title and subtitle`);
+        if (activeTab === 'infrastructure') {
+            if (!settings.infraTitle?.trim()) {
+                toast.error('Infrastructure: Section Title is required');
                 return false;
+            }
+            if (!settings.infraImage?.trim()) {
+                toast.error('Infrastructure: Section Image is required');
+                return false;
+            }
+            if (!settings.infraDescription?.trim()) {
+                toast.error('Infrastructure: Description is required');
+                return false;
+            }
+            for (let i = 0; i < (settings.infraHighlights || []).length; i++) {
+                const h = settings.infraHighlights[i];
+                if (!h.title?.trim() || !h.subtitle?.trim()) {
+                    toast.error(`Infrastructure: Highlight #${i + 1} must have both title and subtitle`);
+                    return false;
+                }
             }
         }
 
         // ── Production Units ──
-        if (!settings.productionTitle?.trim()) {
-            toast.error('Production Units: Section Title is required');
-            return false;
-        }
-        for (let i = 0; i < (settings.productionUnits || []).length; i++) {
-            const u = settings.productionUnits[i];
-            if (!u.name?.trim() || !u.image?.trim()) {
-                toast.error(`Production Units: Unit #${i + 1} must have both name and image`);
+        if (activeTab === 'production') {
+            if (!settings.productionTitle?.trim()) {
+                toast.error('Production Units: Section Title is required');
                 return false;
+            }
+            for (let i = 0; i < (settings.productionUnits || []).length; i++) {
+                const u = settings.productionUnits[i];
+                if (!u.name?.trim() || !u.image?.trim()) {
+                    toast.error(`Production Units: Unit #${i + 1} must have both name and image`);
+                    return false;
+                }
             }
         }
 
         // ── Global Standards ──
-        if (!settings.globalTitle?.trim()) {
-            toast.error('Global Standards: Section Title is required');
-            return false;
-        }
-        if (!settings.standardsCardTitle?.trim() || !settings.standardsCardDescription?.trim()) {
-            toast.error('Global Standards: Standards Card must have title and description');
-            return false;
-        }
-        for (let i = 0; i < (settings.standardsCardStats || []).length; i++) {
-            const s = settings.standardsCardStats[i];
-            if (!s.value?.trim() || !s.label?.trim()) {
-                toast.error(`Global Standards: Stat #${i + 1} must have both value and label`);
+        if (activeTab === 'global') {
+            if (!settings.globalTitle?.trim()) {
+                toast.error('Global Standards: Section Title is required');
                 return false;
             }
-        }
-        for (let i = 0; i < (settings.featureCards || []).length; i++) {
-            const c = settings.featureCards[i];
-            if (!c.title?.trim() || !c.description?.trim()) {
-                toast.error(`Global Standards: Feature Card #${i + 1} must have title and description`);
+            if (!settings.standardsCardTitle?.trim() || !settings.standardsCardDescription?.trim()) {
+                toast.error('Global Standards: Standards Card must have title and description');
                 return false;
             }
-        }
-        for (let i = 0; i < (settings.certifications || []).length; i++) {
-            const c = settings.certifications[i];
-            if (!c.name?.trim() || !c.description?.trim()) {
-                toast.error(`Global Standards: Certification #${i + 1} must have name and description`);
-                return false;
+            for (let i = 0; i < (settings.standardsCardStats || []).length; i++) {
+                const s = settings.standardsCardStats[i];
+                if (!s.value?.trim() || !s.label?.trim()) {
+                    toast.error(`Global Standards: Stat #${i + 1} must have both value and label`);
+                    return false;
+                }
+            }
+            for (let i = 0; i < (settings.featureCards || []).length; i++) {
+                const c = settings.featureCards[i];
+                if (!c.title?.trim() || !c.description?.trim()) {
+                    toast.error(`Global Standards: Feature Card #${i + 1} must have title and description`);
+                    return false;
+                }
+            }
+            for (let i = 0; i < (settings.certifications || []).length; i++) {
+                const c = settings.certifications[i];
+                if (!c.name?.trim() || !c.description?.trim()) {
+                    toast.error(`Global Standards: Certification #${i + 1} must have name and description`);
+                    return false;
+                }
             }
         }
 
         // ── Quality Control ──
-        if (!settings.qualityTitle?.trim()) {
-            toast.error('Quality Control: Section Title is required');
-            return false;
-        }
-        for (let i = 0; i < (settings.qualityItems || []).length; i++) {
-            const q = settings.qualityItems[i];
-            if (!q.title?.trim() || !q.logo?.trim()) {
-                toast.error(`Quality Control: Item #${i + 1} must have title and logo`);
+        if (activeTab === 'quality') {
+            if (!settings.qualityTitle?.trim()) {
+                toast.error('Quality Control: Section Title is required');
                 return false;
+            }
+            for (let i = 0; i < (settings.qualityItems || []).length; i++) {
+                const q = settings.qualityItems[i];
+                if (!q.title?.trim() || !q.logo?.trim()) {
+                    toast.error(`Quality Control: Item #${i + 1} must have title and logo`);
+                    return false;
+                }
             }
         }
 
@@ -292,6 +310,37 @@ const ManufacturingSettings = () => {
                                                 alt="Hero Preview"
                                                 className="h-28 rounded-lg border border-slate-200 object-cover bg-slate-50"
                                                 onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x112?text=No+Image'; }}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                                {/* Mobile Background Image */}
+                                <div className="md:col-span-2 mt-4">
+                                    <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+                                        Mobile Background Image
+                                    </label>
+                                    <div className="flex gap-2 items-center">
+                                        <input
+                                            type="text"
+                                            value={settings.heroMobileBgImage || ''}
+                                            onChange={e => handleChange('heroMobileBgImage', e.target.value)}
+                                            placeholder="Image URL or choose from media library"
+                                            className="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none text-sm"
+                                        />
+                                        <button
+                                            onClick={() => openMediaPicker((url) => handleChange('heroMobileBgImage', url))}
+                                            className="px-4 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 hover:text-blue-600 transition-colors font-medium text-sm flex items-center gap-2 whitespace-nowrap"
+                                        >
+                                            <Image size={16} /> Choose
+                                        </button>
+                                    </div>
+                                    {settings.heroMobileBgImage && (
+                                        <div className="mt-3">
+                                            <img
+                                                src={settings.heroMobileBgImage.startsWith('http') ? settings.heroMobileBgImage : `${import.meta.env.VITE_API_URL}${settings.heroMobileBgImage}`}
+                                                alt="Hero Mobile Preview"
+                                                className="h-28 w-28 rounded-lg border border-slate-200 object-cover bg-slate-50"
+                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/112x112?text=No+Image'; }}
                                             />
                                         </div>
                                     )}

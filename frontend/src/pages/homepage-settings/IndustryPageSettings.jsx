@@ -51,7 +51,18 @@ const IndustryPageSettings = () => {
         fetchSettings();
     }, []);
 
+    const validateSettings = () => {
+        if (activeTab === 'hero') {
+            if (!settings.name?.trim()) { toast.error('Hero Section: Industry Name is required'); return false; }
+            if (!settings.headerTitle?.trim()) { toast.error('Hero Section: Title is required'); return false; }
+            if (!settings.headerBgImage?.trim()) { toast.error('Hero Section: Background Image is required'); return false; }
+            if (!settings.headerMobileBgImage?.trim()) { toast.error('Hero Section: Mobile Background Image is required'); return false; }
+        }
+        return true;
+    };
+
     const handleSave = async () => {
+        if (!validateSettings()) return;
         setLoading(true);
         try {
             await API.put(`/industry-page/${id}`, settings);
@@ -185,6 +196,18 @@ const IndustryPageSettings = () => {
                                 {settings.headerBgImage && (
                                     <div className="mt-2">
                                         {settings.headerBgImage && <img src={settings.headerBgImage.startsWith('http') ? settings.headerBgImage : `${import.meta.env.VITE_API_URL}${settings.headerBgImage}`} alt="Preview" className="h-20 rounded border border-slate-200 object-contain bg-slate-50" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
+                                    </div>
+                                )}
+                            </div>
+                            <div className="space-y-1 md:col-span-2 mt-4">
+                                <label className="text-sm font-medium text-slate-700">Mobile Background Image</label>
+                                <div className="flex gap-2 items-center">
+                                    <input type="text" value={settings.headerMobileBgImage || ''} onChange={e => handleChange('headerMobileBgImage', e.target.value)} className="flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+                                    <button onClick={() => openMediaPicker((url) => handleChange('headerMobileBgImage', url))} className="bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg border text-sm font-semibold flex items-center gap-1"><Image size={16}/> Choose</button>
+                                </div>
+                                {settings.headerMobileBgImage && (
+                                    <div className="mt-2">
+                                        <img src={settings.headerMobileBgImage.startsWith('http') ? settings.headerMobileBgImage : `${import.meta.env.VITE_API_URL}${settings.headerMobileBgImage}`} alt="Mobile Preview" className="h-20 w-20 rounded border border-slate-200 object-cover bg-slate-50" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />
                                     </div>
                                 )}
                             </div>
@@ -365,6 +388,7 @@ const IndustryPageSettings = () => {
                                 <button onClick={() => handleRemoveFromArray('applications', idx)} className="absolute top-2 right-2 text-red-500 hover:bg-red-50 p-1 rounded"><Trash2 size={18}/></button>
                                     <FormInput label="Title" placeholder="Title" value={app.title || ''} onChange={e => handleArrayChange('applications', idx, 'title', e.target.value)} />
                                     <FormInput label="Tag" placeholder="Tag (e.g. PRIMARY APPLICATION)" value={app.tag || ''} onChange={e => handleArrayChange('applications', idx, 'tag', e.target.value)} />
+                                    <FormInput label="Link" placeholder="Link URL" value={app.link || ''} onChange={e => handleArrayChange('applications', idx, 'link', e.target.value)} className="md:col-span-2" />
                                     <FormTextarea label="Description" placeholder="Description" rows={2} value={app.description || ''} onChange={e => handleArrayChange('applications', idx, 'description', e.target.value)} className="md:col-span-2" />
                                     <div className="md:col-span-2 flex flex-col gap-2">
                                         <div className="flex gap-2">

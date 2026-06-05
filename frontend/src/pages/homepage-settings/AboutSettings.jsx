@@ -75,71 +75,89 @@ const AboutSettings = () => {
 
     const validateSettings = () => {
         // Hero Section
-        if (!settings.heroTitle?.trim()) {
-            toast.error('Hero Section: Main Title is required');
-            return false;
-        }
-        for (let i = 0; i < (settings.heroStats || []).length; i++) {
-            const stat = settings.heroStats[i];
-            if (!stat.value?.trim() || !stat.label?.trim()) {
-                toast.error(`Hero Section: Stat #${i + 1} must have both value and label`);
+        if (activeTab === 'hero') {
+            if (!settings.heroTitle?.trim()) {
+                toast.error('Hero Section: Main Title is required');
                 return false;
+            }
+            if (!settings.heroImage?.trim()) {
+                toast.error('Hero Section: Background Image is required');
+                return false;
+            }
+            if (!settings.heroMobileImage?.trim()) {
+                toast.error('Hero Section: Mobile Image is required');
+                return false;
+            }
+            for (let i = 0; i < (settings.heroStats || []).length; i++) {
+                const stat = settings.heroStats[i];
+                if (!stat.value?.trim() || !stat.label?.trim()) {
+                    toast.error(`Hero Section: Stat #${i + 1} must have both value and label`);
+                    return false;
+                }
             }
         }
 
         // Built On Section
-        if (!settings.builtOnTitle?.trim() || !settings.builtOnSubtitle?.trim()) {
-            toast.error('Built On Section: Title and Subtitle are required');
-            return false;
-        }
-        for (let i = 0; i < (settings.valueCards || []).length; i++) {
-            const card = settings.valueCards[i];
-            if (!card.title?.trim() || !card.description?.trim()) {
-                toast.error(`Built On Section: Feature Card #${i + 1} must have title and description`);
+        if (activeTab === 'builton') {
+            if (!settings.builtOnTitle?.trim() || !settings.builtOnSubtitle?.trim()) {
+                toast.error('Built On Section: Title and Subtitle are required');
                 return false;
+            }
+            for (let i = 0; i < (settings.valueCards || []).length; i++) {
+                const card = settings.valueCards[i];
+                if (!card.title?.trim() || !card.description?.trim()) {
+                    toast.error(`Built On Section: Feature Card #${i + 1} must have title and description`);
+                    return false;
+                }
             }
         }
 
         // Our Journey Section
-        if (!settings.journeyTitle?.trim()) {
-            toast.error('Our Journey Section: Section Title is required');
-            return false;
-        }
-        for (let i = 0; i < (settings.journeyCards || []).length; i++) {
-            const card = settings.journeyCards[i];
-            if (!card.year?.trim() || !card.description?.trim() || !card.image?.trim()) {
-                toast.error(`Our Journey Section: Milestone #${i + 1} must have year, image, and description`);
+        if (activeTab === 'journey') {
+            if (!settings.journeyTitle?.trim()) {
+                toast.error('Our Journey Section: Section Title is required');
                 return false;
+            }
+            for (let i = 0; i < (settings.journeyCards || []).length; i++) {
+                const card = settings.journeyCards[i];
+                if (!card.year?.trim() || !card.description?.trim() || !card.image?.trim()) {
+                    toast.error(`Our Journey Section: Milestone #${i + 1} must have year, image, and description`);
+                    return false;
+                }
             }
         }
 
         // Governance Section
-        if (!settings.governanceTitle?.trim()) {
-            toast.error('Governance Section: Section Title is required');
-            return false;
-        }
-        if (!settings.governancePrimaryTitle?.trim() || !settings.governancePrimaryIcon?.trim() || !settings.governancePrimaryDescription?.trim()) {
-            toast.error('Governance Section: Primary Governance Card must have title, icon, and description');
-            return false;
-        }
-        for (let i = 0; i < (settings.governanceCards || []).length; i++) {
-            const card = settings.governanceCards[i];
-            if (!card.title?.trim() || !card.icon?.trim()) {
-                toast.error(`Governance Section: Card #${i + 1} must have title and icon`);
+        if (activeTab === 'governance') {
+            if (!settings.governanceTitle?.trim()) {
+                toast.error('Governance Section: Section Title is required');
                 return false;
+            }
+            if (!settings.governancePrimaryTitle?.trim() || !settings.governancePrimaryIcon?.trim() || !settings.governancePrimaryDescription?.trim()) {
+                toast.error('Governance Section: Primary Governance Card must have title, icon, and description');
+                return false;
+            }
+            for (let i = 0; i < (settings.governanceCards || []).length; i++) {
+                const card = settings.governanceCards[i];
+                if (!card.title?.trim() || !card.icon?.trim()) {
+                    toast.error(`Governance Section: Card #${i + 1} must have title and icon`);
+                    return false;
+                }
             }
         }
 
         // Leadership Section
-        if (!settings.leadershipTitle?.trim() || !settings.leadershipSubtitle?.trim()) {
-            toast.error('Leadership Section: Title and Subtitle are required');
-            return false;
-        }
-        for (let i = 0; i < (settings.leadershipMembers || []).length; i++) {
-            const member = settings.leadershipMembers[i];
-            if (!member.name?.trim() || !member.designation?.trim() || !member.image?.trim()) {
-                toast.error(`Leadership Section: Member #${i + 1} must have name, designation, and image`);
+        if (activeTab === 'leadership') {
+            if (!settings.leadershipTitle?.trim() || !settings.leadershipSubtitle?.trim()) {
+                toast.error('Leadership Section: Title and Subtitle are required');
                 return false;
+            }
+            for (let i = 0; i < (settings.leadershipMembers || []).length; i++) {
+                const member = settings.leadershipMembers[i];
+                if (!member.name?.trim() || !member.designation?.trim() || !member.image?.trim()) {
+                    toast.error(`Leadership Section: Member #${i + 1} must have name, designation, and image`);
+                    return false;
+                }
             }
         }
 
@@ -241,6 +259,24 @@ const AboutSettings = () => {
                                                 alt="Hero Banner Preview"
                                                 className="w-full h-40 rounded-xl border border-slate-200 object-cover bg-slate-50"
                                                 onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/800x200?text=No+Image'; }}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="mt-4">
+                                    <ImageInput
+                                        label="Hero Banner Mobile Image"
+                                        value={settings.heroMobileImage || ''}
+                                        onChange={e => handleChange('heroMobileImage', e.target.value)}
+                                        onChoose={() => openMediaPicker((url) => handleChange('heroMobileImage', url))}
+                                    />
+                                    {settings.heroMobileImage && (
+                                        <div className="mt-3">
+                                            <img
+                                                src={settings.heroMobileImage.startsWith('http') ? settings.heroMobileImage : `${import.meta.env.VITE_API_URL}${settings.heroMobileImage}`}
+                                                alt="Hero Mobile Preview"
+                                                className="w-40 h-40 rounded-xl border border-slate-200 object-cover bg-slate-50"
+                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x400?text=No+Image'; }}
                                             />
                                         </div>
                                     )}
