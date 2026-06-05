@@ -1,4 +1,5 @@
 import { getBaseUrl } from "../../../../utils/api";
+import Link from "next/link";
 
 export default function IndustryApplications({ dynamicData, sectionTitle }: { dynamicData?: any[], sectionTitle?: string }) {
   const fallbackApplications = [
@@ -65,7 +66,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
           {/* LEFT COLUMN */}
           <div className="col-span-12 flex flex-col gap-4 lg:col-span-6">
             {/* LARGE CARD */}
-            <div className="group relative h-[440px] overflow-hidden rounded-[4px] md:rounded-[8px] md:h-[620px]">
+            <Link href={displayApplications[0].link || "#"} className="group relative block h-[440px] overflow-hidden rounded-[4px] md:rounded-[8px] md:h-[620px]">
               <img
                 src={displayApplications[0].image}
                 alt=""
@@ -94,10 +95,10 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
                   {displayApplications[0].description}
                 </p>
               </div>
-            </div>
+            </Link>
 
             {/* WIDE CARD */}
-            <div className="group relative h-[234px] overflow-hidden rounded-[8px] md:h-[310px]">
+            <Link href={displayApplications[3].link || "#"} className="group relative block h-[234px] overflow-hidden rounded-[8px] md:h-[310px]">
               <img
                 src={displayApplications[3].image}
                 alt=""
@@ -117,7 +118,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
                   {displayApplications[3].description}
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* MIDDLE COLUMN */}
@@ -125,7 +126,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
   <div className="grid h-full gap-4 grid-rows-2">
 
     {/* TOP CARD */}
-    <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
+    <Link href={displayApplications[1].link || "#"} className="group relative block min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
       <img
         src={displayApplications[1].image}
         alt=""
@@ -143,10 +144,10 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
           {displayApplications[1].description}
         </p>
       </div>
-    </div>
+    </Link>
 
     {/* BOTTOM CARD */}
-    <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
+    <Link href={displayApplications[2].link || "#"} className="group relative block min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
       <img
         src={displayApplications[2].image}
         alt=""
@@ -164,7 +165,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
           {displayApplications[2].description}
         </p>
       </div>
-    </div>
+    </Link>
 
   </div>
 </div>
@@ -174,7 +175,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
   <div className="grid h-full gap-4 grid-rows-2">
 
     {/* TOP CARD */}
-    <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
+    <Link href={displayApplications[4].link || "#"} className="group relative block min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
       <img
         src={displayApplications[4].image}
         alt=""
@@ -192,10 +193,10 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
           {displayApplications[4].description}
         </p>
       </div>
-    </div>
+    </Link>
 
     {/* BOTTOM CARD */}
-    <div className="group relative min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
+    <Link href={displayApplications[5].link || "#"} className="group relative block min-h-[234px] overflow-hidden rounded-[8px] md:min-h-[442px]">
       <img
         src={displayApplications[5].image}
         alt=""
@@ -213,7 +214,7 @@ export default function IndustryApplications({ dynamicData, sectionTitle }: { dy
           {displayApplications[5].description}
         </p>
       </div>
-    </div>
+    </Link>
 
   </div>
 </div>
