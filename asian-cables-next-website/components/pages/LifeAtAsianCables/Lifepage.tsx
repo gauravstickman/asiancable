@@ -9,14 +9,14 @@ import ExperienceSection from "./parts/ExperienceSection";
 import Hero from "./parts/Hero";
 import LifeBeyondWorkSection from "./parts/LifeBeyondWorkSection";
 import OpenRolesSection from "./parts/OpenRolesSection";
-import WhyWorkSection from "./parts/WhyWorkSection";
+import WhyWorksection from "./parts/Whyworksection";
 
 const Lifepage = () => {
   return (
     <div>
       <WebsiteNavbar />
     <Hero/>
-    <WhyWorkSection/> 
+    <WhyWorksection/> 
 <CultureValuesSection/>
 <ExperienceSection/>
 <TestimonialsSection/> 
