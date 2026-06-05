@@ -9,7 +9,7 @@ import ExperienceSection from "./parts/ExperienceSection";
 import Hero from "./parts/Hero";
 import LifeBeyondWorkSection from "./parts/LifeBeyondWorkSection";
 import OpenRolesSection from "./parts/OpenRolesSection";
-import WhyWorksection from "./parts/Whyworksection";
+import WhyWorksection from "./parts/WhyWorksection";
 
 const Lifepage = () => {
   return (

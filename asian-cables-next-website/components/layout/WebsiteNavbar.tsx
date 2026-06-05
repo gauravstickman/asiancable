@@ -106,6 +106,7 @@ const [showProductsMenu, setShowProductsMenu] =
   const pathname = usePathname();
 
 const isHomePage = pathname === "/";
+const isRPGgroup = pathname === "/rpg-group";
 
   const isProductsActive =
   pathname.startsWith("/products");
@@ -157,7 +158,7 @@ console.log("pathname =", pathname);
 >
           <img
             src={
-              isScrolled || showMegaMenu
+              isScrolled || showMegaMenu || isRPGgroup
                 ? "/assets/LOGO_Dark.png"
                 : "/assets/footer-logo.png"
             }
@@ -183,9 +184,9 @@ console.log("pathname =", pathname);
             
             <button
               className={`flex items-center gap-1  text-[16px] leading-[26px] cursor-pointer tracking-[-0.5px] ${
-                isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
+                isScrolled || showMegaMenu || isRPGgroup ? "text-[#1E3C8C]" : "text-white"
               } ${
-    isProductsActive || showMegaMenu
+    isProductsActive || showMegaMenu || isRPGgroup
       ? "font-[400]"
       : "font-[400]"
   }`}
@@ -232,7 +233,7 @@ console.log("pathname =", pathname);
       ? "font-[600]"
       : "font-[400]"
   } ${
-    isScrolled || showMegaMenu
+    isScrolled || showMegaMenu || isRPGgroup
       ? "text-[#1E3C8C]"
       : "text-white"
   }`}
@@ -364,7 +365,7 @@ console.log("pathname =", pathname);
       ? "font-[600]"
       : "font-[400]"
   } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
+              isScrolled || showMegaMenu || isRPGgroup ? "text-[#1E3C8C]" : "text-white"
             }`}
           >
             The Company
@@ -378,7 +379,7 @@ console.log("pathname =", pathname);
       ? "font-[600]"
       : "font-[400]"
   } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
+              isScrolled || showMegaMenu || isRPGgroup ? "text-[#1E3C8C]" : "text-white"
             }`}
           >
             Careers
@@ -392,7 +393,7 @@ console.log("pathname =", pathname);
       ? "font-[600]"
       : "font-[400]"
   } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-white"
+              isScrolled || showMegaMenu || isRPGgroup ? "text-[#1E3C8C]" : "text-white"
             }`}
           >
             Investor
@@ -401,7 +402,7 @@ console.log("pathname =", pathname);
         <div className="xs:hidden ml-[auto] flex items-center gap-6 md:gap-[35px] md:ml-0">
          <span
             className={` ${
-              isScrolled || showMegaMenu ? "text-[#1E3A8A]" : "text-white"
+              isScrolled || showMegaMenu || isRPGgroup ? "text-[#1E3A8A]" : "text-white"
             }`}
           >
             <Search className="hidden md:block" size={18} />
@@ -413,7 +414,7 @@ console.log("pathname =", pathname);
       ? "font-[600]"
       : "font-[400]"
   } ${
-              isScrolled || showMegaMenu
+              isScrolled || showMegaMenu || isRPGgroup
                 ? "bg-[#1E3C8C] text-white"
                 : "bg-white text-[#1E3C8C]"
             }`}
@@ -450,7 +451,7 @@ tracking-[-0.46px]
 px-[10px]
 h-[30px]
     ${
-      isScrolled
+      isScrolled || isRPGgroup
         ? "bg-[#1E3C8C] text-red"
         : "bg-transparent text-white"
     }

@@ -17,7 +17,7 @@ function ManufacturingHeader() {
       <img
         src="/assets/rpggroup/rpgheaderIcon.png"
         alt="RPG Group"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-cover object-top"
       />
 
       {/* White Fade Overlay */}
