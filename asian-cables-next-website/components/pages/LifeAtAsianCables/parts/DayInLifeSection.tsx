@@ -12,7 +12,7 @@ export default function DayInLifeSection() {
         {/* Heading */}
         <h2
           className="text-[#21409A] text-[30px] sm:text-[36px] lg:text-[44px] font-bold italic mb-8 lg:mb-12"
-          style={{ fontFamily: "Magistral" }}
+          
         >
           A Day in the Life
         </h2>

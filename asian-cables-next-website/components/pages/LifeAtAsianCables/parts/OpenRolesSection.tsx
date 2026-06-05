@@ -62,7 +62,7 @@ export default function OpenRolesSection() {
                 lg:leading-[55px]
                 tracking-[-0.92px]
               "
-              style={{ fontFamily: "Magistral" }}
+              
             >
               Open Roles
             </h2>

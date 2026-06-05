@@ -11,7 +11,7 @@ export default function LifeBeyondWorkSection() {
         <div className="mb-8 lg:mb-12">
           <h2
             className="text-[#21409A] text-[30px] sm:text-[36px] lg:text-[44px] font-bold italic leading-none"
-            style={{ fontFamily: "Magistral" }}
+            
           >
             Life Beyond Work
           </h2>

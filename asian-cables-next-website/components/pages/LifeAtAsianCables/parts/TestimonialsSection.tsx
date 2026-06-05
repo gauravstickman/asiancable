@@ -53,7 +53,7 @@ export default function TestimonialsSection() {
               lg:leading-[55.2px]
               tracking-[-0.92px]
             "
-            style={{ fontFamily: "Magistral" }}
+            
           >
             Hear From Our People
           </h2>
