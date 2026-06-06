@@ -27,6 +27,11 @@ import AboutSettings from './pages/homepage-settings/AboutSettings';
 import LeadershipSettings from './pages/homepage-settings/LeadershipSettings';
 import SustainabilitySettings from './pages/homepage-settings/SustainabilitySettings';
 import ResourcesSettings from './pages/homepage-settings/ResourcesSettings';
+import InvestorSettings from './pages/homepage-settings/InvestorSettings';
+import ContactSettings from './pages/homepage-settings/ContactSettings';
+import ClienteleSettings from './pages/homepage-settings/ClienteleSettings';
+import CaseStudyList from './pages/case-studies/CaseStudyList';
+import CaseStudyForm from './pages/case-studies/CaseStudyForm';
 import Settings from './pages/settings/Settings';
 
 function App() {
@@ -65,8 +70,12 @@ function App() {
             <Route path="leadership-page" element={<LeadershipSettings />} />
             <Route path="sustainability-page" element={<SustainabilitySettings />} />
             <Route path="resources-page" element={<ResourcesSettings />} />
-            
-            
+            <Route path="investor-page" element={<InvestorSettings />} />
+            <Route path="contact-page" element={<ContactSettings />} />
+            <Route path="clientele-page" element={<ClienteleSettings />} />
+            <Route path="case-studies" element={<CaseStudyList />} />
+            <Route path="case-studies/new" element={<CaseStudyForm />} />
+            <Route path="case-studies/edit/:id" element={<CaseStudyForm />} />
             <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>

@@ -16,7 +16,8 @@ import {
     MessageSquare,
     Factory,
     Info,
-    Leaf
+    Leaf,
+    Briefcase
 } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/authSlice';
@@ -44,6 +45,10 @@ const Sidebar = ({ isOpen, onClose }) => {
                 { path: '/admin/resources-page', name: 'Resources', icon: FileText },
                 { path: '/admin/industry-page', name: 'Industries', icon: FileText },
                 { path: '/admin/manufacturing-page', name: 'Manufacturing', icon: Factory },
+                { path: '/admin/investor-page', name: 'Investors', icon: TrendingUp },
+                { path: '/admin/contact-page', name: 'Contact Us', icon: MessageSquare },
+                { path: '/admin/clientele-page', name: 'Clientèle', icon: Users },
+                { path: '/admin/case-studies', name: 'Case Studies', icon: Briefcase },
                 // { path: '/admin/categories', name: 'Categories', icon: Layers },
                 { path: '/admin/products', name: 'Products', icon: Package },
                 // { path: '/admin/blog-categories', name: 'Blog Categories', icon: Layers },

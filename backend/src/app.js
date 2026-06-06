@@ -47,7 +47,10 @@ app.use('/api/about-page', require('./routes/aboutPageRoutes'));
 app.use('/api/leadership-page', require('./routes/leadershipPageRoutes'));
 app.use('/api/sustainability-page', require('./routes/sustainabilityPageRoutes'));
 app.use('/api/resources-page', require('./routes/resourcesPageRoutes'));
-
+app.use('/api/investor-page', require('./routes/investorPageRoutes'));
+app.use('/api/contact-page', require('./routes/contactPageRoutes'));
+app.use('/api/clientele-page', require('./routes/clientelePageRoutes'));
+app.use('/api/case-studies', require('./routes/caseStudyRoutes'));
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
