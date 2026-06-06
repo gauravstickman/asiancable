@@ -1,8 +1,8 @@
 
 "use client";
 
-import { MapIcon, MapPinIcon } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { MapPinIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const clients = [
   {

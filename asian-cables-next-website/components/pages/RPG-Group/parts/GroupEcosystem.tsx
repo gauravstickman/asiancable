@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 const cards = [
   {
     icon: "/assets/rpggroup/img-1.png",

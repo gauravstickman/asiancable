@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const highlightedCards = [
   {
@@ -78,12 +78,19 @@ const infrastructureData = [
 ];
 
 function InfrastructureStandards() {
-  // ✅ ADDED ONLY FOR SLIDER
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const duration = 4000;
   const cardWidth = 270;
+
+  const standardsData = [
+    {
+      title: "Standards-Led Manufacturing",
+      description:
+        "Manufacturing is aligned to internationally recognised standards including IEC, BS, AS/NZS, and IS, ensuring consistent performance across diverse infrastructure applications. This enables seamless integration into global projects across utilities, industrial systems, and specialised environments.",
+    },
+  ];
 
   useEffect(() => {
     const startTime = Date.now();
@@ -157,44 +164,18 @@ function InfrastructureStandards() {
 
             <div className="relative z-10 flex sm:p-10 lg:p-12">
               <div className="max-w-xl text-left">
-                <h2 className="font-[magistral] text-[32px] leading-[61.6px] font-bold text-[#1E3C8C] italic">
-                  Standards-Led Manufacturing
-                </h2>
-
-                <div className="space-y-4">
-                  <p className="font-[work_sans] text-[19px] leading-[34.2px] font-normal text-[#1E3C8C]">
-                    Manufacturing is aligned to internationally recognised
-                    standards including IEC, BS, AS/NZS, and IS, ensuring
-                    consistent performance across diverse infrastructure
-                    applications. This enables seamless integration into global
-                    projects across utilities, industrial systems, and
-                    specialised environments.
-                  </p>
-                </div>
-
-                <div className="mt-5">
-                  {infrastructureData.map((items, index) => (
-                    <div key={index} className="space-y-2">
-                      <h4 className="font-[magistral] text-[20px] leading-[34px] font-bold text-[#1E3C8C] italic">
-                        {items.title}
-                      </h4>
-
-                      <p className="font-[work_sans] text-[16px] leading-[21px] font-normal text-[#1E3C8CB2]">
-                        {items.subtitle}
+                {standardsData.map((item, index) => (
+                  <div key={index}>
+                    <h2 className="font-[magistral] text-[32px] leading-[61.6px] font-bold text-[#1E3C8C] italic">
+                      {item.title}
+                    </h2>
+                    <div className="space-y-4">
+                      <p className="text-[19px] leading-[34.2px] font-normal text-[#1E3C8C]">
+                        {item.description}
                       </p>
-
-                      {index !== infrastructureData.length - 1 && (
-                        <div
-                          className="my-4 h-0.5 w-18"
-                          style={{
-                            background:
-                              "linear-gradient(90deg, #3CAADF 0%, #F04123 50%, #FFD212 100%)",
-                          }}
-                        />
-                      )}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           </article>
@@ -222,17 +203,12 @@ function InfrastructureStandards() {
             ))}
           </div>
         </div>
-
-        {/* ========================= */}
-        {/* 🔥 ONLY FIXED SECTION BELOW */}
-        {/* ========================= */}
-
         <div className="mt-25">
           <p className="text-center font-[magistral] text-[24px] leading-[32px] font-bold text-white italic">
             Certifications & Standards
           </p>
 
-          <div className="relative mt-15 w-full  ">
+          <div className="relative mt-15 w-full">
             <div
               className="flex justify-start gap-[36px] transition-transform duration-700 ease-in-out"
               style={{
@@ -250,17 +226,17 @@ function InfrastructureStandards() {
                   <div className="rounded-[17.61px] bg-[#F7F9FF] p-3">
                     <img src={card.icon} className="h-11 w-11 object-contain" />
                   </div>
-                  <h4 className="text-center font-[work_sans] text-[18px] font-semibold text-black">
+                  <h4 className="text-center text-[18px] font-semibold text-black">
                     {card.title}
                   </h4>
-                  <p className="text-center font-[work_sans] text-[14px] text-black/70">
+                  <p className="text-center text-[14px] text-black/70">
                     {card.description}
                   </p>
                 </div>
               ))}
             </div>
 
-            {/* 🔥 GRADIENT LOADER */}
+            {/* GRADIENT LOADER */}
             <div className="mt-6 h-[3px] w-full rounded-full bg-white/20">
               <div
                 className="h-full bg-gradient-to-r from-[#3CAADF] via-[#F04123] to-[#FFD212]"
