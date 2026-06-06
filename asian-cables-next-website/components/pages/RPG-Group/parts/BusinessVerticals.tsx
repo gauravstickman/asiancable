@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 const verticals = [
   {
     title: "Infrastructure & Engineering",
@@ -52,7 +50,6 @@ export default function BusinessVerticals() {
                   className="h-[80px] w-[80px] object-contain"
                 />
               </div>
-
               <p className="font-inter  text-center mt-13 text-[20px] font-medium tracking-[0px] text-[#1E3C8C]">
                 {item.title}
               </p>

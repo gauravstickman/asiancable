@@ -34,10 +34,14 @@ function GlobalPresenceSection() {
       title: (
         <>
           <span className="text-[#FF9800]">19</span>
-          <span  className={`inline-block bg-gradient-to-r from-[#FFD212] via-[#F04123] to-[#3CAADF] bg-clip-text text-transparent ${
+          <span
+            className={`inline-block bg-gradient-to-r from-[#FFD212] via-[#F04123] to-[#3CAADF] bg-clip-text text-transparent ${
               animate ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
             } transition-all duration-700`}
-            style={{ transitionDelay: "360ms" }}>79</span>
+            style={{ transitionDelay: "360ms" }}
+          >
+            79
+          </span>
         </>
       ),
       label: "Founded",
@@ -55,7 +59,7 @@ function GlobalPresenceSection() {
             USD
           </span>{" "}
           <span
-               className={`inline-block bg-gradient-to-r from-[#FFD212] via-[#F04123] to-[#3CAADF] bg-clip-text text-transparent ${
+            className={`inline-block bg-gradient-to-r from-[#FFD212] via-[#F04123] to-[#3CAADF] bg-clip-text text-transparent ${
               animate ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
             } transition-all duration-700`}
             style={{ transitionDelay: "360ms" }}
@@ -107,9 +111,7 @@ function GlobalPresenceSection() {
       />
 
       <div className="absolute inset-0 bg-[#002B8F]/70" />
-
       <div className="absolute top-[-120px] right-[-220px] h-[520px] w-[520px] rounded-full bg-[#FF5A1F]/40 blur-[140px]" />
-
       <div className="absolute bottom-[-250px] left-[18%] h-[420px] w-[420px] rounded-full bg-[#FFB11F]/35 blur-[140px]" />
 
       {/* Main Container */}

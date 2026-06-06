@@ -19,6 +19,15 @@ const cards = [
     icon: "/assets/about/trendingIcon.png",
   },
 ];
+const governanceContent = [
+  {
+    icon: "/assets/about/teamsIcon.png",
+    alt: "RPG Group",
+    title: ["RPG Governance &", "Institutional Credibility"],
+    description:
+      "Asian Cables operates under the governance framework of the RPG Group, one of India's most respected business groups, known for its professional management, ethical standards, and long-term value creation. This ensures transparency, accountability, and institutional reliability across operations and partnerships.",
+  },
+];
 
 function FeatureCard({
   title,
@@ -32,27 +41,24 @@ function FeatureCard({
   tall?: boolean;
 }) {
   return (
-   <div
-  className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9] transition-all duration-300 hover:bg-[#1E3C8C]
-    ${tall ? "h-[238.5px]" : "h-[238.5px]"}`}
->
-  <div className=" w-full flex items-center  justify-center gap-6 w-full flex-row">
-    
-    <img
-      src={icon}
-      alt=""
-      aria-hidden="true"
-      className="h-[46.82432556152344px] w-[46.82432556152344px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
-    />
+    <div
+      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9] transition-all duration-300 hover:bg-[#1E3C8C] ${tall ? "h-[238.5px]" : "h-[238.5px]"}`}
+    >
+      <div className="flex w-full flex-row items-center justify-center gap-6">
+        <img
+          src={icon}
+          alt=""
+          aria-hidden="true"
+          className="h-[46.82432556152344px] w-[46.82432556152344px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+        />
 
-    <h4 className="font-[magistral] text-[24px] leading-[29.27px] font-bold italic text-[#1E3C8C] transition-colors duration-300 group-hover:text-white">
-      {title}
-      <br/>
-      <span>{title1}</span>
-    </h4>
-
-  </div>
-</div>
+        <h4 className="font-[magistral] text-[24px] leading-[29.27px] font-bold text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
+          {title}
+          <br />
+          <span>{title1}</span>
+        </h4>
+      </div>
+    </div>
   );
 }
 
@@ -63,11 +69,11 @@ export default function GovernanceSection() {
         src="/assets/about/foudationIcon.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 z-0 w-[min(720px,55vw)] object-contain object-right-bottom"
+        className="pointer-events-none absolute right-0 bottom-0 z-0 w-[min(720px,55vw)] object-contain object-right-bottom"
       />
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-4">
-        <h2 className="mb-14 text-center font-[magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] italic text-[#1E3C8C]">
+        <h2 className="mb-14 text-center font-[magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
           Shaped by Governance. Built on Quality.
           <br />
           Proven across Critical Applications.
@@ -75,31 +81,35 @@ export default function GovernanceSection() {
 
         <div className="grid grid-cols-12 gap-4 bg-[#FFFFFF] p-4">
           {/* Left Blue Card */}
-          <div className="col-span-12 lg:col-span-6 lg:row-span-2">
-            <div className="flex h-[536px] flex-col rounded-[4px] bg-[#1E3C8C] p-10">
-              <div className="mb-8">
-                <img
-                  src="/assets/about/teamsIcon.png"
-                  alt="RPG Group"
-                  className="h-12 w-auto object-contain"
-                />
+          {governanceContent.map((item, index) => (
+            <div
+              key={index}
+              className="col-span-12 lg:col-span-6 lg:row-span-2"
+            >
+              <div className="flex h-[494px] flex-col rounded-[4px] bg-[#1E3C8C] p-10">
+                <div className="mb-8">
+                  <img
+                    src={item.icon}
+                    alt={item.alt}
+                    className="h-12 w-auto object-contain"
+                  />
+                </div>
+
+                <h3 className="mb-6 font-[magistral] text-[46px] leading-[52px] font-bold text-white italic">
+                  {item.title.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
+                </h3>
+
+                <p className="text-[17px] leading-[32px] text-[#FFFFFFE5]">
+                  {item.description}
+                </p>
               </div>
-
-              <h3 className="mb-6 font-[magistral] text-[46px] leading-[52px] font-bold italic text-white">
-                RPG Governance &
-                <br />
-                Institutional Credibility
-              </h3>
-
-              <p className="font-[work_sans] text-[17px] leading-[32px] text-[#FFFFFFE5]">
-                Asian Cables operates under the governance framework of the RPG
-                Group, one of India's most respected business groups, known for
-                its professional management, ethical standards, and long-term
-                value creation. This ensures transparency, accountability, and
-                institutional reliability across operations and partnerships.
-              </p>
             </div>
-          </div>
+          ))}
 
           {/* Top Right Card */}
           <div className="col-span-12 lg:col-span-6">

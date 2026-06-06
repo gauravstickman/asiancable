@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const content = {
   heading: [
@@ -51,17 +51,13 @@ export default function RPGGroupSection() {
               <ChevronRight size={18} />
             </span>
           </button>
-          </div>
-
-          {/* BUTTON */}
-          
+          </div>          
         </div>
 
         {/* RIGHT IMAGE */}
         <div className="relative w-full max-w-[640px]">
           {/* IMAGE CONTAINER */}
           <div className="group relative">
-        
             {/* IMAGE */}
             <img
               src={content.image}

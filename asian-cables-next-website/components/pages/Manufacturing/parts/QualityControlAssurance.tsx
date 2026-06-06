@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronRight } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const certificationData = [
   {
@@ -148,7 +148,6 @@ const QualityControlAssurance = () => {
           <button className="border-it-b mx-auto flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
             View All
             <span>
-              {" "}
               <ChevronRight size={18} />
             </span>
           </button>
