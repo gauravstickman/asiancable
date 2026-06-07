@@ -66,9 +66,9 @@ body {
   @apply bg-white border-r border-slate-200;
 }
 
-.glass-card {
+/* .glass-card {
   @apply bg-white border border-slate-200 rounded-lg shadow-[0_1px_3px_rgba(0, 0, 0, 0.02)] transition-all duration-200 hover:shadow-md hover:shadow-slate-200/50 hover:border-slate-300;
-}
+} */
 
 .premium-gradient {
   background: #4f46e5;
@@ -577,11 +577,6 @@ body {
     break-inside: avoid;
     margin-bottom: 40px;
   }
-}
-
-
-.bbb {
-  backdrop-filter: drop-shadow(2px 4px 6px black);
 }
 
 
