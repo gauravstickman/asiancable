@@ -567,8 +567,45 @@ color: #1e3c8c;
   margin-bottom: 40px;
 }
 }
+
+
+.bbb {
+    backdrop-filter: drop-shadow(2px 4px 6px black);
+}
+
+.g-border {position: relative; cursor: pointer;}
+
+.g-border:hover:after {
+    position: absolute;
+    border: 2px solid #1E3C8C99;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+    content: "";
+    border-radius: 10px;
+}
+
+
 @media(max-width:767px)
 {
+  .v-box {
+    border: 1.3px solid #E1E2E5;
+    padding: 20px;
+}
+  .industries{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.industries::-webkit-scrollbar {
+  display: none !important;
+}
+  .wire-prop {
+    max-width: 60%;
+    left: -18% !important;
+    top: -35px !important;
+}
   .i-stats {
     left: 0;
     right: 0;

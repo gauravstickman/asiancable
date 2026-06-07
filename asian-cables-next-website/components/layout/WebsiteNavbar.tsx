@@ -541,8 +541,8 @@ h-[30px]
         {/* Mobile Menu Button */}
        <button
   className={`ml-3 transition-colors md:hidden ${
-    isScrolled || showMegaMenu
-      ? "text-slate-900"
+    isScrolled || showMegaMenu || isRPGgroup
+      ? "text-[#1e3c8c]"
       : "text-white"
   }`}
   onClick={() => {

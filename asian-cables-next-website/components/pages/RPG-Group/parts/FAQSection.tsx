@@ -35,10 +35,10 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-[#FFFFFF] py-20">
+    <section className="bg-[#FFFFFF] py-10 md:py-20">
       <div className="mx-auto w-[92%] max-w-[950px]">
         {/* TITLE */}
-        <h2 className="mb-14 text-center text-[38px] font-[700] tracking-[-1px] text-[#1E3C8C] italic">
+        <h2 className="mb-8 md:mb-14 text-center text-[32px] md:text-[38px] font-[700] tracking-[-1px] text-[#1E3C8C] italic">
           FAQ
         </h2>
 
@@ -58,7 +58,7 @@ export default function FAQSection() {
                   className="flex w-full items-center justify-between px-7 py-6 text-left transition-all duration-300"
                 >
                   <span
-                    className={`pr-5 text-[18px] leading-[24px] font-[500] transition-all duration-300 ${
+                    className={`pr-5 text-[14px] md:text-[18px] leading-[24px] font-[500] transition-all duration-300 ${
                       isActive
                         ? "text-[#1E3C8C]"
                         : "text-[#646A69] group-hover:text-[#1E3C8C]"
@@ -94,7 +94,7 @@ export default function FAQSection() {
                         isActive ? "translate-y-0 pb-6" : "-translate-y-2 pb-0"
                       } `}
                     >
-                      <p className="max-w-[90%] text-[16px] leading-[26px] text-[#646A69] transition-all duration-300">
+                      <p className="max-w-[100%] text-[14px] leading-[20px] md:text-[16px] md:leading-[26px] text-[#646A69] transition-all duration-300">
                         {faq.answer}
                       </p>
                     </div>

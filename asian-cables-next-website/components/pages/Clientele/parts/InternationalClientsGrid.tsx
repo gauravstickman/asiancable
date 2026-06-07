@@ -134,38 +134,38 @@ export default function InternationalClientsGrid() {
   });
 
   return (
-    <section className="relative overflow-hidden py-14">
+    <section className="relative overflow-hidden pb-10 md:py-14">
       {/* LEFT BLUR BACKGROUND */}
       <img
         src="/assets/clientele/clientbgImage.png"
         alt=""
-        className="pointer-events-none absolute bottom-0 left-0 z-0 h-auto w-full object-cover opacity-90"
+        className="hidden h-full md:block pointer-events-none absolute bottom-0 left-0 z-0 h-auto w-full object-cover opacity-90"
       />
 
       {/* RIGHT SIDE GLOW */}
-      <div className="absolute right-0 bottom-0 z-0 h-[260px] w-[260px] rounded-full bg-orange-200/40 blur-3xl" />
+      <div className="hidden md:block  absolute right-0 bottom-0 z-0 h-[260px] w-[260px] rounded-full bg-orange-200/40 blur-3xl" />
 
-      <div className="relative z-10 mx-auto w-[92%] max-w-[1380px]">
-        <div className="grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-3">
+      <div className="relative z-10 mx-auto w-[92%] max-w-[1274px]">
+        <div className="grid grid-cols-2 gap-5 md:gap-7 md:grid-cols-2 xl:grid-cols-3">
           {filteredClients.map((client) => (
             <div
               key={client.id}
-              className="group relative h-[246px] w-full min-w-0 overflow-hidden rounded-[6px] border border-[#F7F7F7] bg-[#F7F7F7] px-5 py-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#dbe2f2] hover:bg-white hover:shadow-[0_10px_30px_rgba(22,59,140,0.08)]"
+              className="group relative h-[170px] md:h-[247px] w-full min-w-0 overflow-hidden rounded-[6px] border border-[#F7F7F7] bg-[#F7F7F7] px-2 py-2 md:px-5 md:py-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#dbe2f2] hover:bg-white hover:shadow-[0_10px_30px_rgba(22,59,140,0.08)]"
             >
               {/* COMPACT CARD CONTENT (default) */}
               <div className="relative z-20">
                 <div className="flex items-start justify-between">
-                  <div className="mt-7 flex h-[46px] w-[46px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:scale-105">
-                    <img src={client.icon} alt={client.name} className="h-6 w-6 object-contain" />
+                  <div className="md:mt-7 flex h-[48px] w-[48px] md:h-[72px] md:w-[72px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:scale-105">
+                    <img src={client.icon} alt={client.name} className="h-7 w-7 md:h-10 md:w-10 object-contain" />
                   </div>
 
                   <div className="flex items-center gap-1 text-[11px] font-medium text-[#8a8fa3]">
                     <MapPinIcon className="h-3.5 w-3.5 object-contain opacity-70" />
-                    <span className="font-[Work_Sans] font-normal text-[14px] leading-[21px] tracking-[0]">{client.country}</span>
+                    <span className="font-[Work_Sans] font-normal text-[12px] leading-[14.9px] md:text-[14px] md:leading-[21px] tracking-[0]">{client.country}</span>
                   </div>
                 </div>
 
-                <p className="mt-7 font-['Work_Sans'] font-medium text-[20px] leading-[30px] tracking-[0px] text-[#1E3C8C] transition-colors duration-300 group-hover:text-[#0f2f75]">
+                <p className="md:mt-7 mt-3 font-['Work_Sans'] font-medium text-[14px] leading-[21px] md:text-[20px] md:leading-[30px] tracking-[0px] text-[#1E3C8C] transition-colors duration-300 group-hover:text-[#0f2f75]">
                   {client.name}
                 </p>
 
@@ -177,7 +177,7 @@ export default function InternationalClientsGrid() {
               </div>
 
               {/* HOVER OVERLAY (reveals full background image + description) */}
-              <div className="absolute inset-0 z-30 rounded-[6px] overflow-hidden opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-out">
+              <div className="md:block hidden absolute inset-0 z-30 rounded-[6px] overflow-hidden opacity-0  group-hover:opacity-100 transition-all duration-700 ease-out">
                 <img
                   src="/assets/manufacturing/image 2.png"
                   alt=""
@@ -187,10 +187,14 @@ export default function InternationalClientsGrid() {
                 <div className="absolute inset-0 bg-black/50" />
 
                 <div className="relative z-40 flex h-full flex-col justify-center px-8 text-white">
-                  <h3 className="font-[Work_Sans] font-medium text-[28px] leading-[30px] tracking-[0]">{client.name}</h3>
-                  <p className="mt-4 max-w-[70%] text-[15px] leading-7 opacity-90">{client.description}</p>
-
-                  <div className="mt-6">
+                   <div className=" flex h-[72px] w-[72px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:translate-y-[-80px]">
+                    <img src={client.icon} alt={client.name} className="h-10 w-10 object-contain" />
+                  </div>
+                  <div className="transition-all duration-300 group-hover:translate-y-[-35px]">
+                  <p className="font-[Work_Sans] font-medium text-[20px] leading-[30px] tracking-[0px]">{client.name}</p  >
+                  <p className="mt-4 max-w-[100%] text-[15px] leading-7 opacity-90">{client.description}</p>
+                    </div>
+                  <div className="mt-6 transition-all duration-300 group-hover:translate-y-[-40px]">
                     <span className="inline-flex items-center rounded-full bg-gray-800 px-3 py-2 text-[12px] font-semibold tracking-wide text-white/90">
                       {client.tag}
                     </span>

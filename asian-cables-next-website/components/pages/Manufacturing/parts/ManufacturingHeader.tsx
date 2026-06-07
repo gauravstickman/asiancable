@@ -27,7 +27,7 @@ function ManufacturingHeader() {
   ];
   return (
     <main className="bg-white text-slate-900">
-      <section className="relative min-h-[700px] overflow-hidden">
+      <section className="relative md:min-h-[613px] overflow-hidden">
         {/* Background Image */}
         <img
           src="/assets/manufacturing/Rectangle 2707.png"
@@ -43,20 +43,20 @@ function ManufacturingHeader() {
           }}
         />
         {/* Content */}
-        <div className="relative z-10 mx-auto max-w-7xl px-3 pt-45 pb-[60px] text-white">
+        <div className="relative z-10 m-auto max-w-[1280px] px-5 md:px-0 pt-45 pb-[60px] text-white">
           {/* Breadcrumb */}
-          <nav className="mb-7 flex flex-wrap items-center gap-1.5 text-xs">
+          <nav className="md:mb-7 flex flex-wrap items-center md:gap-1.5 text-xs">
             {breadcrumbs.map((item, index) => (
               <React.Fragment key={item.label}>
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="font-worksans text-[16px] leading-[36px] font-normal text-[#FFFFFFD4]"
+                    className="font-worksans text-[14px] md:text-[16px] leading-[36px] font-normal text-[#FFFFFFD4]"
                   >
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="font-worksans text-[16px] leading-[36px] font-medium tracking-[0px] text-[#FFFFFF]">
+                  <span className="font-worksans text-[14px] md:text-[16px]  leading-[36px] font-medium tracking-[0px] text-[#FFFFFF]">
                     {item.label}
                   </span>
                 )}
@@ -69,21 +69,21 @@ function ManufacturingHeader() {
           </nav>
 
           {/* Heading */}
-          <h1 className="font-[Magistral] text-[54px] leading-[64.6px] font-bold tracking-[-1.44px] italic">
+          <h1 className="font-[Magistral] text-[36px] leading-[140%] md:text-[54px] md:leading-[64.6px] font-bold tracking-[-1.44px] italic">
             Precision led Manufacturing
           </h1>
 
           {/* Subtitle */}
-          <p className="pt-[10px] font-[Work_Sans] text-[20px] leading-[33px] font-normal tracking-[-0.5px]">
+          <p className="pt-[10px] font-[Work_Sans] text-[14px] leading-[26px] md:text-[20px] md:leading-[33px] font-normal tracking-[-0.5px]">
             Integrated manufacturing facilities built for scale,
             <br />
             precision, and consistent quality.
           </p>
 
           {/* Stats */}
-          <div className="mt-18 flex flex-wrap items-start gap-[55px]">
+          <div className="mt-10 md:mt-18 flex flex-wrap items-start gap-5 md:gap-[55px]">
             {stats.map((stat) => (
-              <div key={stat.label} className="relative">
+              <div key={stat.label} className="relative md:w-[auto] w-[47%]">
                 {stat.highlight && (
                   <div
                     className="pointer-events-none absolute top-1/2 left-1/2 h-[260px] w-[220px] -translate-x-1/2 -translate-y-1/2 opacity-90 blur-[80px]"
@@ -102,10 +102,10 @@ function ManufacturingHeader() {
                   />
                 )}
 
-                <p className="relative font-[magistral] text-[38px] leading-[83.02px] font-bold text-white italic">
+                <p className="relative font-[magistral] text-[24px] leading-[50px] md:text-[38px] md:leading-[83.02px] font-bold text-white italic">
                   {stat.value}
                 </p>
-                <p className="relative font-worksans text-[15.81px] leading-[23.72px] font-medium text-[#FFFFFFB5]">
+                <p className="relative font-worksans text-[14px] md:leading-[21px] md:text-[15.81px] md:leading-[23.72px] font-medium text-[#FFFFFFB5]">
                   {stat.label}
                 </p>
               </div>

@@ -128,11 +128,11 @@ function InfrastructureStandards() {
 
   return (
     <section className="relative w-full overflow-hidden bg-[#1E3C8C] py-20">
-      <div className="relative z-10 mx-auto w-[90vw] max-w-[1400px]">
+      <div className="relative z-10 mx-auto w-[100%] max-w-[1272px] px-5 md:px-0">
         {/* Heading with Wire Image positioned nearby */}
         <div className="relative mb-10 h-full text-center">
           <div
-            className="pointer-events-none absolute z-20"
+            className="pointer-events-none wire-prop absolute z-20"
             style={{
               backgroundImage: "url('/assets/manufacturing/wireImage.png')",
               backgroundSize: "contain",
@@ -146,52 +146,75 @@ function InfrastructureStandards() {
             }}
           />
 
-          <p className="text-center font-[magistral] text-[46px] leading-[70.4px] font-bold tracking-[-1.44px] text-[#FFFFFF] italic">
+          <p className="text-center font-[magistral] text-[28px] leading-[40px] md:text-[46px] md:leading-[70.4px] font-bold tracking-[-1.44  px] text-[#FFFFFF] italic">
             Built for Global Infrastructure Standards
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
-          <article className="relative min-h-[700px] overflow-hidden rounded-[6px] bg-white shadow-[0_40px_120px_rgba(0,0,0,0.16)]">
+        <div className="grid gap-[36px] md:gap-6 lg:grid-cols-[1.5fr_1fr]">
+          <article className="relative min-h-[620px] md:min-h-[700px] overflow-hidden rounded-[6px] bg-white shadow-[0_40px_120px_rgba(0,0,0,0.16)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(30,60,140,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.97))]" />
             <div
-              className="pointer-events-none absolute top-0 left-0 h-full w-[55%] bg-cover bg-left bg-no-repeat opacity-90"
+              className="pointer-events-none absolute top-0 left-0 h-full w-[100%] md:w-[55%] bg-cover bg-left bg-no-repeat opacity-90"
               style={{
                 backgroundImage: "url('/assets/manufacturing/bgImage.png')",
                 backgroundPosition: "left center",
               }}
             />
 
-            <div className="relative z-10 flex sm:p-10 lg:p-12">
+            <div className="relative z-10 flex p-5 sm:p-10 lg:p-12">
               <div className="max-w-xl text-left">
                 {standardsData.map((item, index) => (
                   <div key={index}>
-                    <h2 className="font-[magistral] text-[32px] leading-[61.6px] font-bold text-[#1E3C8C] italic">
+                    <h2 className="md:mb-0 mb-3 font-[magistral] text-[20px] leading-[160%]  md:text-[32px] md:leading-[61.6px] font-bold text-[#1E3C8C] italic">
                       {item.title}
                     </h2>
                     <div className="space-y-4">
-                      <p className="text-[19px] leading-[34.2px] font-normal text-[#1E3C8C]">
+                      <p className="text-[16px] leading-[150%] md:text-[19px] md:leading-[34.2px] font-normal text-[#1E3C8C]">
                         {item.description}
                       </p>
                     </div>
+                     <div className="md:mt-5 mt-9">
+                  {infrastructureData.map((items, index) => (
+                    <div key={index} className="md:space-y-2">
+                      <h4 className="font-[magistral] text-[18px] md:text-[20px] leading-[34px] font-bold text-[#1E3C8C] italic">
+                        {items.title}
+                      </h4>
+
+                      <p className="font-[work_sans] text-[14px] md:text-[16px] leading-[21px] font-normal text-[#1E3C8CB2]">
+                        {items.subtitle}
+                      </p>
+
+                      {index !== infrastructureData.length - 1 && (
+                        <div
+                          className="my-4 h-0.5 w-18"
+                          style={{
+                            background:
+                              "linear-gradient(90deg, #3CAADF 0%, #F04123 50%, #FFD212 100%)",
+                          }}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
                   </div>
                 ))}
               </div>
             </div>
           </article>
 
-          <div className="grid gap-6">
+          <div className="grid gap-[36px] md:gap-6">
             {highlightedCards.slice(1).map((card) => (
               <article
                 key={card.id}
-                className="relative overflow-hidden rounded-[6px] bg-slate-950 text-white shadow-[0_20px_60px_rgba(0,0,0,0.2)]"
+                className="relative overflow-hidden rounded-[4px] bg-slate-950 text-white shadow-[0_20px_60px_rgba(0,0,0,0.2)] md:min-h-[auto] min-h-[353px] z-[91]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url('${card.image}')` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/45 to-black/80" />
-                <div className="relative z-10 flex h-full flex-col justify-end p-8 sm:p-10">
+                <div className="relative z-10 flex h-full flex-col justify-end p-5 md:p-8 sm:p-10">
                   <h3 className="mt-6 text-[24px] leading-tight font-bold text-[#FFFFFF] italic">
                     {card.title}
                   </h3>
@@ -203,7 +226,7 @@ function InfrastructureStandards() {
             ))}
           </div>
         </div>
-        <div className="mt-25">
+        <div className="m t-15 md:mt-25">
           <p className="text-center font-[magistral] text-[24px] leading-[32px] font-bold text-white italic">
             Certifications & Standards
           </p>
@@ -237,7 +260,7 @@ function InfrastructureStandards() {
             </div>
 
             {/* GRADIENT LOADER */}
-            <div className="mt-6 h-[3px] w-full rounded-full bg-white/20">
+            <div className="mt-6 h-[3px] w-full rounded-full bg-white/20 hidden">
               <div
                 className="h-full bg-gradient-to-r from-[#3CAADF] via-[#F04123] to-[#FFD212]"
                 style={{

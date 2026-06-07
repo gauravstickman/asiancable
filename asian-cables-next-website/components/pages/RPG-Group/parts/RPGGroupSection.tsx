@@ -21,11 +21,11 @@ const content = {
 export default function RPGGroupSection() {
   return (
     <section className="overflow-hidden py-14 sm:py-16 lg:py-24">
-      <div className="mx-auto flex w-[92%] max-w-[1280px] flex-col-reverse items-center justify-between gap-12 lg:flex-row lg:gap-20">
+      <div className="mx-auto flex px-5 md:px-0 w-[100%] max-w-[1274px] flex-col-reverse items-center justify-between gap-12 lg:flex-row lg:gap-20">
         {/* LEFT CONTENT */}
         <div className="w-full max-w-[580px] text-center lg:text-left">
           {/* HEADING */}
-          <h2 className="text-[35px] font-[700] text-[#1E3C8C] italic sm:text-[36px] tracking-[-1px] sm:leading-[70px] lg:max-w-[540px] lg:text-[46px] lg:leading-[55px]">
+          <h2 className="md:text-[35px] font-[700] text-[#1E3C8C] italic text-[29px] tracking-[-1px] leading-[125%] md:leading-[70px] lg:max-w-[540px] lg:text-[46px] lg:leading-[55px]">
             {content.heading.map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -34,18 +34,27 @@ export default function RPGGroupSection() {
             ))}
           </h2>
 
+            <div className="group relative md:hidden">
+            {/* IMAGE */}
+            <img
+              src={content.image}
+              alt="RPG Group"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            />
+          </div>
+
           {/* DESCRIPTION */}
           <div className="mt-7 space-y-2 sm:mt-4">
             {content.descriptions.map((text, index) => (
               <p
                 key={index}
-                className="font-normal text-[18px] leading-[27.2px] tracking-[0px] text-[#525252]"
+                className="font-normal text-[16px] leading-[160%] md:text-[18px] md:leading-[27.2px] tracking-[0px] text-[#525252]"
               >
                 {text}
               </p>
             ))}
 
-            <button className="border-it-b !mt-4 flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
+            <button className="border-it-w mx-auto md:ml-0 flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] mt-8 md:mt-[30px] md:mb-[37.61px]">
              {content.buttonText}
             <span>
               <ChevronRight size={18} />
@@ -55,7 +64,7 @@ export default function RPGGroupSection() {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="relative w-full max-w-[640px]">
+        <div className="relative w-full max-w-[640px] hidden md:block">
           {/* IMAGE CONTAINER */}
           <div className="group relative">
             {/* IMAGE */}
