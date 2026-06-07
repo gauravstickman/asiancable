@@ -31,11 +31,32 @@ exports.getCaseStudyById = async (req, res) => {
     }
 };
 
+// @desc    Get single case study by slug
+// @route   GET /api/case-studies/slug/:slug
+// @access  Public
+exports.getCaseStudyBySlug = async (req, res) => {
+    try {
+        const caseStudy = await CaseStudy.findOne({ slug: req.params.slug });
+        
+        if (!caseStudy) {
+            return res.status(404).json({ message: 'Case study not found' });
+        }
+        
+        res.status(200).json(caseStudy);
+    } catch (error) {
+        console.error('Error in getCaseStudyBySlug:', error);
+        res.status(500).json({ message: 'Server Error', error: error.message });
+    }
+};
+
 // @desc    Create case study
 // @route   POST /api/case-studies
 // @access  Private/Admin
 exports.createCaseStudy = async (req, res) => {
     try {
+        if (req.body.title && !req.body.slug) {
+            req.body.slug = req.body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        }
         const caseStudy = await CaseStudy.create(req.body);
         res.status(201).json(caseStudy);
     } catch (error) {
@@ -55,6 +76,11 @@ exports.updateCaseStudy = async (req, res) => {
             return res.status(404).json({ message: 'Case study not found' });
         }
         
+        // Enforce slug matches the title always
+        if (req.body.title) {
+            req.body.slug = req.body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        }
+
         caseStudy = await CaseStudy.findByIdAndUpdate(
             req.params.id,
             req.body,

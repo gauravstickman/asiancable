@@ -1,30 +1,14 @@
 "use client";
 
-const specifications = [
-  {
-    label: "Products Supplied",
-    value:
-      "Fibre Optic Cable — Steel Wire Armoured, Fire Survival & Flame Retardant",
-  },
-  {
-    label: "Standards / Approvals",
-    value: "ADNOC Approval",
-  },
-  {
-    label: "Key Customisation",
-    value: "3 km single drum length, Embossed cable identification",
-  },
-  {
-    label: "Volume Delivered",
-    value: "1,072 km",
-  },
-  {
-    label: "Supply Year",
-    value: "2025",
-  },
-];
+import { CaseStudyData } from "../types";
 
-export default function CaseStudySpecs() {
+interface CaseStudySpecsProps {
+  data: CaseStudyData;
+}
+
+export default function CaseStudySpecs({ data }: CaseStudySpecsProps) {
+  const specifications = data.specifications;
+  
   return (
     <section className=" max-w-[1320px] mx-auto bg-white ">
       <div className="mr-auto max-w-[830px] px-5 reveal-section">

@@ -5,6 +5,11 @@ const caseStudySchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add a title']
     },
+    slug: {
+        type: String,
+        required: [true, 'Please add a slug'],
+        unique: true
+    },
     industry: {
         type: String,
         required: [true, 'Please add an industry']

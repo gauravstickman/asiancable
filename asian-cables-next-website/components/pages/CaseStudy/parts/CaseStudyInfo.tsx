@@ -1,7 +1,12 @@
 "use client";
 import { Building, Flame, MapPin, Calendar, Download } from "lucide-react";
+import { CaseStudyData } from "../types";
 
-export default function CaseStudyInfo() {
+interface CaseStudyInfoProps {
+  data: CaseStudyData;
+}
+
+export default function CaseStudyInfo({ data }: CaseStudyInfoProps) {
   return (
     <section className="pt-[36px] md:pt-[60px] pb-[48px] md:pt-[60px] md:pb-[48px] bg-white">
       <div className="mx-auto max-w-[1280px] md:px-0 px-5 reveal-section">
@@ -22,9 +27,7 @@ export default function CaseStudyInfo() {
               </h2>
 
               <p className="text-[16px] leading-[26px] md:text-[20px] md:leading-[34px] text-[#525252]">
-               When Tecnimont required a large-scale supply of fibre optic cables for ADNOC facilities, the
-requirements were uncompromising — steel wire armoured design, fire survival capability, and
-drum lengths long enough to minimise installation joints across demanding oil and gas environments.
+               {data.overview}
               </p>
             </div>
 
@@ -41,11 +44,7 @@ drum lengths long enough to minimise installation joints across demanding oil an
               </h2>
 
               <p className="text-[16px] leading-[26px] md:text-[20px] md:leading-[34px] text-[#525252]">
-              The project required Asian Cables to develop a specialised steel wire armoured fibre optic cable
-with both fire survival and flame retardant properties — a combination rarely supplied at this
-volume. Additional complexity came from the need for 3 km single drum lengths, which required
-precise manufacturing control, along with embossed cable identification for full field traceability.
-ADNOC project approval was a non-negotiable prerequisite for supply.
+              {data.challenge}
               </p>
             </div>
           </div>
@@ -74,7 +73,7 @@ ADNOC project approval was a non-negotiable prerequisite for supply.
                       Industry
                     </span>
                     <p className="text-[16px] font-[600] text-[#454545]">
-                      Oil & Gas
+                      {data.industry}
                     </p>
                     </div>
                   </div>
@@ -88,7 +87,7 @@ ADNOC project approval was a non-negotiable prerequisite for supply.
                       Client
                     </span>
                     <p className="text-[16px] font-[600] text-[#454545]">
-                      ADNOC
+                      {data.client}
                     </p>
                     </div>
                   </div>
@@ -102,7 +101,7 @@ ADNOC project approval was a non-negotiable prerequisite for supply.
                       Location
                     </span>
                     <p className="text-[16px] font-[600] text-[#454545]">
-                      UAE / Italy
+                      {data.location}
                     </p>
                     </div>
                   </div>
@@ -116,7 +115,7 @@ ADNOC project approval was a non-negotiable prerequisite for supply.
                       Year
                     </span>
                     <p className="text-[16px] font-[600] text-[#454545]">
-                      2025
+                      {data.year}
                     </p>
                   </div>
                   </div>
@@ -145,11 +144,7 @@ ADNOC project approval was a non-negotiable prerequisite for supply.
               </h2>
 
               <p className="text-[16px] leading-[26px] md:text-[20px] md:leading-[34px] text-[#525252]">
-               Asian Cables engineered a steel wire armoured fibre optic cable with fire survival and flame
-retardant properties, manufactured at the Mysore facility. A 3 km single drum length was
-achieved, significantly reducing the number of field joints required during installation. Embossed
-printing on the cable jacket ensured clear identification and traceability across the project site.
-Full ADNOC project approval was secured prior to supply.
+               {data.solution}
               </p>
             </div>
 
@@ -166,10 +161,7 @@ Full ADNOC project approval was secured prior to supply.
               </h2>
 
               <p className="text-[16px] leading-[26px] md:text-[20px] md:leading-[34px] text-[#525252]">
-              A total of 1,072 km of steel wire armoured fibre optic cables were delivered within the committed
-project schedule. The client acknowledged timely delivery and compliance with project-specific
-quality requirements. The supply directly supported uninterrupted project execution at ADNOC
-facilities.
+              {data.outcome}
               </p>
             </div>
 

@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-500: #4f46e5; /* Precise Indigo */
+  --color-primary-500: #4f46e5;
+  /* Precise Indigo */
   --color-primary-600: #4338ca;
   --color-primary-700: #3730a3;
   --color-slate-50: #f8fafc;
@@ -17,7 +18,7 @@
 }
 
 :root {
-    font-family: "Work Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
@@ -30,10 +31,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-h1, h2, h3, h4, h5, h6
-{
-  font-family:"magistral";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "magistral";
 }
+
 body {
   margin: 0;
   min-width: 320px;
@@ -46,7 +53,11 @@ body {
   body {
     @apply selection:bg-indigo-50 selection:text-indigo-700;
   }
-  h1, h2, h3, h4 {
+
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply tracking-tight font-semibold;
   }
 }
@@ -56,7 +67,7 @@ body {
 }
 
 .glass-card {
-  @apply bg-white border border-slate-200 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all duration-200 hover:shadow-md hover:shadow-slate-200/50 hover:border-slate-300;
+  @apply bg-white border border-slate-200 rounded-lg shadow-[0_1px_3px_rgba(0, 0, 0, 0.02)] transition-all duration-200 hover:shadow-md hover:shadow-slate-200/50 hover:border-slate-300;
 }
 
 .premium-gradient {
@@ -74,8 +85,15 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -97,30 +115,33 @@ body {
 .swiper-wrapper {
   transition-timing-function: linear !important;
 }
+
 .blur-divider img {
-    width: 100%;
-    position: relative;
-    top: -120px;
-    z-index: 99;
-    height: 120px;
-    object-fit: cover;
-    object-position: top;
+  width: 100%;
+  position: relative;
+  top: -120px;
+  z-index: 99;
+  height: 120px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .proven-f section {
-    background: #fff;
+  background: #fff;
 }
 
 .proven-f h2 {
-    color: #1e3c8c;
+  color: #1e3c8c;
 }
 
 .proven-f button {
-    background: #1e3c8c;
-    color: #fff;
+  background: #1e3c8c;
+  color: #fff;
 }
 
-.proven-f h2 + p {color: #1e3c8c;}
+.proven-f h2+p {
+  color: #1e3c8c;
+}
 
 @keyframes heroFade {
   0% {
@@ -174,12 +195,10 @@ body {
 .border-it:hover {
   background:
     linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(
-      270deg,
+    linear-gradient(270deg,
       #3CAADF 0%,
       #F04123 50%,
-      #FFD212 100%
-    ) border-box;
+      #FFD212 100%) border-box;
 
   border: 1.84px solid transparent;
 }
@@ -201,15 +220,13 @@ body {
 .border-it:hover {
   background:
     linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(
-      270deg,
+    linear-gradient(270deg,
       #3CAADF 0%,
       #F04123 50%,
-      #FFD212 100%
-    ) border-box;
+      #FFD212 100%) border-box;
 
   border: 1.84px solid transparent;
-color: #1e3c8c;
+  color: #1e3c8c;
   cursor: pointer;
 }
 
@@ -224,12 +241,10 @@ color: #1e3c8c;
   width: 35%;
   height: 400%;
 
-  background: linear-gradient(
-    270deg,
-    #3CAADF 0%,
-    #F04123 50%,
-    #FFD212 100%
-  );
+  background: linear-gradient(270deg,
+      #3CAADF 0%,
+      #F04123 50%,
+      #FFD212 100%);
 
   border-radius: inherit;
 
@@ -265,15 +280,14 @@ color: #1e3c8c;
   }
 }
 
-.border-it > * 
-{
+.border-it>* {
   position: relative;
   z-index: 2;
 }
 
 .download-btn {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .main-banner .swiper-slide {
@@ -289,7 +303,7 @@ color: #1e3c8c;
   transition:
     transform 700ms ease,
     opacity 700ms ease;
-    
+
 }
 
 .proven .swiper-slide-active {
@@ -318,39 +332,41 @@ color: #1e3c8c;
 
 
 .fadded img {
-    object-fit: cover;
-    height: 130px;
-    width: 100%;
-    object-position: top;
+  object-fit: cover;
+  height: 130px;
+  width: 100%;
+  object-position: top;
 }
 
 .fadded {
-    margin-top: -129px;
-    position: relative;
-    z-index: 1;
+  margin-top: -129px;
+  position: relative;
+  z-index: 1;
 }
 
 
 /* updated */
-.custom-grid, .break-inside-avoid.masonry-item {
-    position: relative;
-    z-index: 1;
-} 
+.custom-grid,
+.break-inside-avoid.masonry-item {
+  position: relative;
+  z-index: 1;
+}
+
 /* SPARK EFFECT */
-.border-it::after, .border-it-b::after, .border-it-w::after {
- content: "";
+.border-it::after,
+.border-it-b::after,
+.border-it-w::after {
+  content: "";
   position: absolute;
   bottom: -100%;
   left: -80%;
   width: 20%;
   height: 400%;
 
-  background: linear-gradient(
-    270deg,
-    #3CAADF 0%,
-    #F04123 50%,
-    #FFD212 100%
-  );
+  background: linear-gradient(270deg,
+      #3CAADF 0%,
+      #F04123 50%,
+      #FFD212 100%);
 
   border-radius: inherit;
 
@@ -388,7 +404,9 @@ color: #1e3c8c;
   }
 }
 
-.border-it::after, .border-it-b::after, .border-it-w::after {
+.border-it::after,
+.border-it-b::after,
+.border-it-w::after {
   animation: mirrorSpark 2.2s linear infinite;
 }
 
@@ -399,7 +417,9 @@ color: #1e3c8c;
 
 
 
-.border-it, .border-it-b, .border-it-w {
+.border-it,
+.border-it-b,
+.border-it-w {
   position: relative;
   overflow: hidden;
   border-radius: 5px;
@@ -412,12 +432,10 @@ color: #1e3c8c;
   cursor: pointer;
   background:
     linear-gradient(#1E3C8C, #1E3C8C) padding-box,
-    linear-gradient(
-      270deg,
+    linear-gradient(270deg,
       #3CAADF 0%,
       #F04123 50%,
-      #FFD212 100%
-    ) border-box;
+      #FFD212 100%) border-box;
 
   border: 2px solid transparent;
 
@@ -430,12 +448,10 @@ color: #1e3c8c;
   cursor: pointer;
   background:
     linear-gradient(#f5f5f5, #f5f5f5) padding-box,
-    linear-gradient(
-      270deg,
+    linear-gradient(270deg,
       #3CAADF 0%,
       #F04123 50%,
-      #FFD212 100%
-    ) border-box; 
+      #FFD212 100%) border-box;
 
   border: 2px solid transparent;
 
@@ -447,12 +463,10 @@ color: #1e3c8c;
   cursor: pointer;
   background:
     linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(
-      270deg,
+    linear-gradient(270deg,
       #3CAADF 0%,
       #F04123 50%,
-      #FFD212 100%
-    ) border-box; 
+      #FFD212 100%) border-box;
 
   border: 2px solid transparent;
 
@@ -462,9 +476,8 @@ color: #1e3c8c;
 
 
 
-.sparkle::after
-{
- content: "";
+.sparkle::after {
+  content: "";
   position: absolute;
 
   bottom: -100%;
@@ -473,12 +486,10 @@ color: #1e3c8c;
   width: 20%;
   height: 400%;
 
-  background: linear-gradient(
-    270deg,
-    #3CAADF 0%,
-    #F04123 50%,
-    #FFD212 100%
-  );
+  background: linear-gradient(270deg,
+      #3CAADF 0%,
+      #F04123 50%,
+      #FFD212 100%);
 
   border-radius: inherit;
 
@@ -499,8 +510,7 @@ color: #1e3c8c;
   visibility: hidden;
 
 } */
-.sparkle
-{
+.sparkle {
   position: relative;
   overflow: hidden;
 }
@@ -510,25 +520,26 @@ color: #1e3c8c;
 }
 
 .proven-f .border-it:hover {
-    cursor: pointer;
-    color: #1f4aa8;
-    background: linear-gradient(#ffffff, #ffffff) padding-box padding-box, linear-gradient(270deg, #3caadf 0%, #f04123 50%, #ffd212 100%) border-box;
-    border: 2px solid #0000;
+  cursor: pointer;
+  color: #1f4aa8;
+  background: linear-gradient(#ffffff, #ffffff) padding-box padding-box, linear-gradient(270deg, #3caadf 0%, #f04123 50%, #ffd212 100%) border-box;
+  border: 2px solid #0000;
 }
+
 .fadded-mbl {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1;
-    margin-bottom: -3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: -3px;
 }
 
 .fadded-mbl img {
-    width: 100%;
-    height: 155px;
-    object-fit: cover;
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
 }
 
 /* .mobile-menu-btn
@@ -547,63 +558,107 @@ color: #1e3c8c;
 
 
 .fadded-mbl {
-    position: absolute;
-    bottom: -3px;
-    z-index: 1;
+  position: absolute;
+  bottom: -3px;
+  z-index: 1;
 }
 
 .fadded-mbl img {
-    height: 180px;
-}
-@media(min-width:768px)
-{
-  .masonry {
-  column-count: 3;
-  column-gap: 80px;
+  height: 180px;
 }
 
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 40px;
+@media(min-width:768px) {
+  .masonry {
+    column-count: 3;
+    column-gap: 80px;
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 40px;
+  }
 }
+
+
+.bbb {
+  backdrop-filter: drop-shadow(2px 4px 6px black);
 }
-@media(max-width:767px)
-{
+
+.g-border {
+  position: relative;
+  cursor: pointer;
+}
+
+.g-border:hover:after {
+  position: absolute;
+  border: 2px solid #1E3C8C99;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: block;
+  content: "";
+  border-radius: 10px;
+}
+
+
+@media(max-width:767px) {
+  .v-box {
+    border: 1.3px solid #E1E2E5;
+    padding: 20px;
+  }
+
+  .industries {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .industries::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .wire-prop {
+    max-width: 60%;
+    left: -18% !important;
+    top: -35px !important;
+  }
+
   .i-stats {
     left: 0;
     right: 0;
     margin: 0 auto;
-}
-.one-line span {
+  }
+
+  .one-line span {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
     width: 80px;
-            text-align: left;
-}
+    text-align: left;
+  }
 
-.one-line-big span {
+  .one-line-big span {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
     width: 100%;
     max-width: 96%;
-            text-align: left;
-}
+    text-align: left;
+  }
+
   footer#footer {
     padding: 0px 24px;
-}
-.impact-part {
+  }
+
+  .impact-part {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+  }
 }
 
-.proven-f button.border-it
-{
+.proven-f button.border-it {
   display: none;
 }
 
@@ -618,18 +673,19 @@ color: #1e3c8c;
 }
 
 .f-part:after {
-    content: "";
-    background: #E1E2E580;
-    position: absolute;
-    right: -12.5px;
-    height: 32px;
-    width: 1px;
+  content: "";
+  background: #E1E2E580;
+  position: absolute;
+  right: -12.5px;
+  height: 32px;
+  width: 1px;
 }
 
 .f-part {
-    position: relative;
-    text-align: center;
+  position: relative;
+  text-align: center;
 }
+
 /* html,
 body {
   overflow-x: hidden;
@@ -638,17 +694,24 @@ body {
 
 /* 1. Target the overall scrollbar (width and background) */
 ::-webkit-scrollbar {
-  width: 12px;       /* Vertical scrollbar width */
-  height: 12px;      /* Horizontal scrollbar height */
-  background: transparent; /* Makes the track invisible so content shows through */
+  width: 12px;
+  /* Vertical scrollbar width */
+  height: 12px;
+  /* Horizontal scrollbar height */
+  background: transparent;
+  /* Makes the track invisible so content shows through */
 }
 
 /* 2. The scrollbar handle/thumb */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.35); /* Semi-transparent grey (like Mac) */
-  border-radius: 10px;               /* Rounded ends */
-  border: 3px solid transparent;     /* Creates the floating overlay gap effect */
-  background-clip: content-box;      /* Keeps the border from coloring the thumb */
+  background: rgba(0, 0, 0, 0.35);
+  /* Semi-transparent grey (like Mac) */
+  border-radius: 10px;
+  /* Rounded ends */
+  border: 3px solid transparent;
+  /* Creates the floating overlay gap effect */
+  background-clip: content-box;
+  /* Keeps the border from coloring the thumb */
 }
 
 /* 3. Make the thumb darker on hover */
@@ -686,12 +749,10 @@ body.is-scrolling *::-webkit-scrollbar-thumb {
   inset: 0;
   z-index: 10;
 
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.45) 50%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.45) 50%,
+      rgba(0, 0, 0, 0.2) 100%);
 
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
@@ -701,20 +762,19 @@ body.is-scrolling *::-webkit-scrollbar-thumb {
 
   will-change: opacity;
 }
-html
-{
-      overflow-x: hidden;
+
+html {
+  overflow-x: hidden;
 }
+
 .overlay2 {
   position: absolute;
   inset: 0;
   z-index: 10;
 
-  background: radial-gradient(
-    circle at bottom,
-    rgba(0, 140, 255, 0.35) 0%,
-    transparent 45%
-  );
+  background: radial-gradient(circle at bottom,
+      rgba(0, 140, 255, 0.35) 0%,
+      transparent 45%);
 
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
@@ -724,10 +784,13 @@ html
 
   will-change: opacity;
 }
+
 span.m-logo img {
-    max-width: 120px;
+  max-width: 120px;
 }
+
 @supports (-webkit-touch-callout: none) {
+
   html,
   body {
     overflow-x: hidden;
@@ -735,8 +798,9 @@ span.m-logo img {
     max-width: 100%;
   }
 }
+
 body {
-  overflow-x: clip; 
+  overflow-x: clip;
   max-width: 100%;
 }
 
@@ -748,6 +812,7 @@ html,
 body {
   overscroll-behavior-x: none;
 }
+
 .main-banner .swiper-slide h1 span {
   overflow: visible;
   display: inline;
@@ -764,100 +829,105 @@ body {
 
 /* 4. The scrollbar thumb (the part you drag) */
 .bottom-menu::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Semi-transparent black */
   border-radius: 10px;
-  border: 2px solid transparent; /* Creates the "floating" gap effect */
+  border: 2px solid transparent;
+  /* Creates the "floating" gap effect */
   background-clip: content-box;
 }
 
 /* 5. Show and style the scrollbar when hovering the container */
 .bottom-menu:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(102, 102, 102, 0.4); /* Darker on hover */
+  background-color: rgba(102, 102, 102, 0.4);
+  /* Darker on hover */
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 /* 6. Enlarge and highlight thumb when directly hovered */
 .bottom-menu::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(120, 117, 117, 0.6); 
+  background-color: rgba(120, 117, 117, 0.6);
 }
 
 
-@media(max-width:767px)
-{
-  body .floating-bar
-  {
-        width: calc(100vw - 16%);
+@media(max-width:767px) {
+  body .floating-bar {
+    width: calc(100vw - 16%);
     margin-right: -5%;
   }
+
   body .f-part:after {
     right: -1px !important;
-}
-.f-first svg {
+  }
+
+  .f-first svg {
     position: relative;
     left: 10px;
-}
-.blog-slider .swiper-slide {
-  margin-right:18px;
-}
+  }
+
+  .blog-slider .swiper-slide {
+    margin-right: 18px;
+  }
 }
 
- .ts-marquee {
-          width: 100%;
-          overflow: hidden;
-          /* vertical breathing room so a hover-scaled card isn't clipped */
-          padding-top: 16px;
-          padding-bottom: 16px;
-        }
+.ts-marquee {
+  width: 100%;
+  overflow: hidden;
+  /* vertical breathing room so a hover-scaled card isn't clipped */
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
 
-        .ts-track {
-          display: flex;
-          width: max-content;
-          will-change: transform;
-          animation: ts-scroll 50s linear infinite;
-          align-items:start;
-        }
+.ts-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: ts-scroll 50s linear infinite;
+  align-items: start;
+}
 
-        /* Per-card right margin (not flex gap) keeps both halves of the track
+/* Per-card right margin (not flex gap) keeps both halves of the track
            exactly equal in width, so translateX(-50%) loops with no half-gap
            jump. 18px matches the original slide spacing. */
-        .ts-track .ts-card {
-          flex: 0 0 auto;
-          /* fluid on small screens, capped at the original 538px. All cards
+.ts-track .ts-card {
+  flex: 0 0 auto;
+  /* fluid on small screens, capped at the original 538px. All cards
              share the same width, so the two track halves stay equal and
              translateX(-50%) remains seamless. */
-          width: min(538px, 86vw);
-          margin-right: 18px;
-          /* hover scale — independent of the track's translateX, so it works
+  width: min(538px, 86vw);
+  margin-right: 18px;
+  /* hover scale — independent of the track's translateX, so it works
              while the carousel is auto-scrolling */
-          position: relative;
-          z-index: 1;
-          transition: transform 0.35s ease;
-        }
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s ease;
+}
 
-        /* Smoothly scale the hovered card up and lift it above neighbors. */
-        .ts-track .ts-card:hover {
-          transform: scale(1.05);
-          z-index: 10;
-        }
+/* Smoothly scale the hovered card up and lift it above neighbors. */
+.ts-track .ts-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
 
-        /* Pause on hover; CSS freezes the exact position and resumes from
+/* Pause on hover; CSS freezes the exact position and resumes from
            there when the pointer leaves. */
-        .ts-marquee:hover .ts-track {
-          animation-play-state: paused;
-        }
+.ts-marquee:hover .ts-track {
+  animation-play-state: paused;
+}
 
-        @keyframes ts-scroll {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
-        }
+@keyframes ts-scroll {
+  from {
+    transform: translateX(0);
+  }
 
-        @media (prefers-reduced-motion: reduce) {
-          .ts-track {
-            animation: none;
-          }
-        }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-track {
+    animation: none;
+  }
+}

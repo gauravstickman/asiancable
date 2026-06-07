@@ -7,6 +7,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
+
 const casestudies = [
   {
     tag: "OIL & GAS",
@@ -64,19 +65,36 @@ const casestudies = [
     link: "/case-study/grid-upgrade",
   },
 ];
+interface RelatedProps {
+  currentCategory?: string;
+  currentTitle?: string;
+  allCaseStudies?: any[];
+}
 
+export default function Related({ currentCategory, currentTitle, allCaseStudies = [] }: RelatedProps) {
+  // Use API data if available, otherwise fallback to static data
+  const dataSource = allCaseStudies && allCaseStudies.length > 0 ? allCaseStudies : casestudies;
 
-export default function Related() {
- const displayBlogs = casestudies.map(blog => ({
-  ...blog,
-  link: "/case-study",
-}));
+  if (!dataSource || dataSource.length === 0) return null;
 
+  const displayBlogs = dataSource.map(blog => ({
+    ...blog,
+    link: blog.link || "/case-study",
+  }));
 
-const sliderData =
-  displayBlogs.length <= 3
-    ? [...displayBlogs, ...displayBlogs]
-    : displayBlogs;
+  // First, get case studies in the same category (excluding current)
+  const sameCategory = displayBlogs.filter((blog) => {
+    if (currentTitle && blog.title === currentTitle) return false;
+    if (!currentCategory) return true;
+    
+    return blog.tag.toLowerCase() === currentCategory.toLowerCase();
+  });
+
+  const finalCasestudies = [...sameCategory];
+
+  if (finalCasestudies.length === 0) return null;
+
+  const sliderData = finalCasestudies;
 
   return (
     <section className="reveal-section bg-[#ffffff] py-10 md:pt-[84.5px]">
@@ -103,7 +121,7 @@ const sliderData =
  <Swiper
   modules={[Pagination, Autoplay]}
   spaceBetween={18}
-  loop={true}
+  loop={sliderData.length >= 3}
   autoplay={{
     delay: 3000,
     disableOnInteraction: false,
@@ -172,7 +190,7 @@ const sliderData =
 
       {/* Tags */}
       <div className="mb-6 flex flex-wrap gap-3">
-       {blog.badges.map((badge, idx) => (
+       {blog.badges.map((badge: string, idx: number) => (
   <span
     key={idx}
     className=" h-[26px] md:h-[34px] rounded-[4px] bg-[#BECFFF40] px-3 py-1 text-[14px] leading-[20px] md:text-[16px] md:leading-[26px] text-[#767676]"

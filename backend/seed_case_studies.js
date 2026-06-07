@@ -10,10 +10,15 @@ const seedCaseStudies = async () => {
         await mongoose.connect(process.env.MONGO_URI);
         console.log('Connected to MongoDB');
 
+        // Clear existing case studies
+        await CaseStudy.deleteMany();
+        console.log('Cleared existing case studies');
+
         const caseStudies = [
             // Industry 1: Oil & Gas
             {
                 title: 'Supply of Fire Resistant Cables for Offshore Platform',
+                slug: 'supply-fire-resistant-cables-offshore-platform',
                 subtitle: 'Providing robust and safe cabling solutions in harsh marine environments.',
                 client: 'Oceanic Oil Corp',
                 industry: 'Oil & Gas',
@@ -36,6 +41,7 @@ const seedCaseStudies = async () => {
             },
             {
                 title: 'Instrumentation Cables for Refinery Expansion',
+                slug: 'instrumentation-cables-refinery-expansion',
                 subtitle: 'Upgrading the control systems of a major oil refinery.',
                 client: 'PetroGlobal Industries',
                 industry: 'Oil & Gas',
@@ -59,6 +65,7 @@ const seedCaseStudies = async () => {
             // Industry 2: Renewable Energy
             {
                 title: 'Solar Farm DC Cabling Network',
+                slug: 'solar-farm-dc-cabling-network',
                 subtitle: 'Connecting a 500MW solar farm to the main grid.',
                 client: 'SunPower Energy Ltd',
                 industry: 'Renewable Energy',
@@ -81,6 +88,7 @@ const seedCaseStudies = async () => {
             },
             {
                 title: 'Offshore Wind Farm Subsea Cabling',
+                slug: 'offshore-wind-farm-subsea-cabling',
                 subtitle: 'Transmitting clean energy from offshore wind turbines to the mainland.',
                 client: 'Breeze Energy',
                 industry: 'Renewable Energy',
@@ -104,6 +112,7 @@ const seedCaseStudies = async () => {
             // Industry 3: Infrastructure
             {
                 title: 'Metro Rail Network Electrification',
+                slug: 'metro-rail-network-electrification',
                 subtitle: 'Providing power and control cables for a new city metro network.',
                 client: 'MetroTransit Authority',
                 industry: 'Infrastructure',
@@ -126,6 +135,7 @@ const seedCaseStudies = async () => {
             },
             {
                 title: 'Smart City Data Center Connectivity',
+                slug: 'smart-city-data-center-connectivity',
                 subtitle: 'High-speed fiber optic networking for a central data hub.',
                 client: 'TechHub Infrastructure',
                 industry: 'Infrastructure',

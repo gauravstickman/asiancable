@@ -61,10 +61,10 @@ export default function RootLayout({
 
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <div className="site-wrapper">
-        <ScrollbarController/>
-        {children}
-        <RevealHook />
-        <FloatingBar />
+          <ScrollbarController />
+          {children}
+          <RevealHook />
+          <FloatingBar />
         </div>
       </body>
     </html>

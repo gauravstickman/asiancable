@@ -5,15 +5,21 @@ import MainBanner from './parts/main-banner'
 import Related from './parts/related'
 import CaseStudyInfo from './parts/CaseStudyInfo'
 import CaseStudySpecs from './parts/CaseStudySpecs'
+import { CaseStudyData } from './types'
 
-function Casestudypage() {
+interface CasestudypageProps {
+  data: CaseStudyData;
+  allCaseStudies?: any[];
+}
+
+function Casestudypage({ data, allCaseStudies = [] }: CasestudypageProps) {
   return (
     <>
 <WebsiteNavbar/>
-<MainBanner/>
-<CaseStudyInfo/>
-<CaseStudySpecs/>
-<Related/>
+<MainBanner data={data}/>
+<CaseStudyInfo data={data}/>
+<CaseStudySpecs data={data}/>
+<Related currentCategory={data.category} currentTitle={data.title} allCaseStudies={allCaseStudies} />
 <Footer/>
 
     </>
