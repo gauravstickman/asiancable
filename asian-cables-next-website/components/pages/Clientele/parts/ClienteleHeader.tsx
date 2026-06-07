@@ -23,27 +23,29 @@ function ClienteleHeader() {
   ];
   return (
     <main className="bg-white text-slate-900">
-      <section className="relative min-h-[600px] overflow-hidden">
+      <section className="relative md:min-h-[613px] overflow-hidden">
         {/* Background Image */}
         <img
           src="/assets/clientele/clienteleheaderIcons.png"
           alt="Manufacturing Hero"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="relative z-10 mx-auto px-2 max-w-7xl pt-60 pb-[60px] text-white">
-          <nav className="mb-7 flex flex-wrap items-center gap-1.5 text-xs">
+  <div  className="absolute inset-0 bg-[linear-gradient(270deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.2)_50%,_rgba(0,0,0,0.6)_100%)]" />
+        
+        <div className="relative z-10 m-auto max-w-[1280px] px-5 md:px-0 pt-45 pb-[60px] text-white">
+          <nav className="md:mb-7 flex flex-wrap items-center md:gap-1.5 text-xs">
             {breadcrumbs.map((item, index) => (
               <React.Fragment key={item.label}>
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="font-worksans text-[16px] leading-[36px] font-normal text-[#FFFFFFD4]"
+                    className="font-worksans text-[14px] md:text-[16px] leading-[36px] font-normal text-[#FFFFFFD4]"
                   >
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="font-worksans text-[16px] leading-[36px] font-medium tracking-[0px] text-[#FFFFFF]">
-                    {item.label}
+                  <span className="font-worksans text-[14px] md:text-[16px]  leading-[36px] font-medium tracking-[0px] text-[#FFFFFF]">
+                      {item.label}
                   </span>
                 )}
 
@@ -54,20 +56,18 @@ function ClienteleHeader() {
             ))}
           </nav>
           {/* Heading */}
-          <h1 className="font-[Magistral] text-[68px] leading-[64.6px] font-bold tracking-[-1.44px] text-white italic">
-            Trusted By{" "}
-            <span className="block font-[Magistral] text-[68px] leading-[64.6px] font-bold tracking-[-1.44px] italic">
+          <h1 className="font-[Magistral] text-[36px] leading-[140%] md:text-[54px] md:leading-[64.6px] font-bold tracking-[-1.44px] italic">
+            Trusted By<br/>
               Industry Leaders
-            </span>
           </h1>
           {/* Stats */}
-          <div className="mt-15 flex flex-wrap items-start gap-[49px]">
+          <div className="mt-10 md:mt-18 flex flex-wrap items-start gap-5 md:gap-[55px]">
             {stats.map((stat) => (
-              <div key={stat.label} className="relative">
-                <p className="relative font-[magistral] text-[36px] leading-[83.02px] font-bold text-white italic">
+              <div key={stat.label} className="relative md:w-[auto] w-[45%]">
+                <p className="relative font-[magistral] text-[24px] leading-[50px] md:text-[38px] md:leading-[83.02px] font-bold text-white italic">
                   {stat.value}
                 </p>
-                <p className="relative font-[work_sans] text-[15.81px] leading-[23.72px] font-medium text-[#FFFFFFB5]">
+                <p className="relative font-worksans text-[14px] md:leading-[21px] md:text-[15.81px] md:leading-[23.72px] font-medium text-[#FFFFFFB5]">
                   {stat.label}
                 </p>
               </div>
@@ -76,6 +76,7 @@ function ClienteleHeader() {
         </div>
       </section>
     </main>
+    
   );
 }
 

@@ -121,7 +121,8 @@ export default function OpenRolesSection() {
             <div
               key={index}
               className="
-                bg-[#FAFAFA]
+              bg-[#FFFFFF]
+                md:bg-[#FAFAFA]
                 flex
                 flex-col
                 gap-4
@@ -129,9 +130,11 @@ export default function OpenRolesSection() {
                 md:items-center
                 md:justify-between
                 md:h-[123px]
-                p-5
+                md:p-5
                 md:px-[32px]
                 md:py-0
+                pb-[30px]
+                md:pb-[0]
               "
             >
               {/* Left Side */}
@@ -143,7 +146,7 @@ export default function OpenRolesSection() {
                     h-[40px]
                     flex-shrink-0
                     rounded-[8px]
-                    bg-white
+                    bg-[#F6F6F6]
                     flex
                     items-center
                     justify-center
@@ -161,7 +164,7 @@ export default function OpenRolesSection() {
                   <p
                     className="
                       text-[#1E3C8C]
-                      text-[17px]
+                      text-[16px]
                       sm:text-[20px]
                       font-medium
                       leading-[26px]
@@ -204,12 +207,41 @@ export default function OpenRolesSection() {
 
                     <span>{job.salary}</span>
                   </div>
+                   {/* Button */}
+              <button
+                className="
+                md:hidden
+                mt-6
+                  w-[148px]
+                  flex-shrink-0
+                  h-[39px]
+                  rounded-[4.39px]
+                  bg-[#1E3C8C]
+                  text-white
+                  flex
+                  items-center
+                  justify-center
+                  gap-[7px]
+                  text-[14px]
+                  font-medium
+                  shadow-[0px_2px_6px_rgba(0,0,0,0.12)]
+                  transition-all
+                  duration-300
+                  hover:bg-[#15306e]
+                  hover:scale-105
+                "
+                
+              >
+                Apply now
+                <ChevronRight size={15} />
+              </button>
                 </div>
+                
               </div>
 
               {/* Button */}
               <button
-                className="
+                className="hidden md:flex
                   w-full
                   md:w-[148px]
                   flex-shrink-0
@@ -217,7 +249,6 @@ export default function OpenRolesSection() {
                   rounded-[4.39px]
                   bg-[#1E3C8C]
                   text-white
-                  flex
                   items-center
                   justify-center
                   gap-[7px]

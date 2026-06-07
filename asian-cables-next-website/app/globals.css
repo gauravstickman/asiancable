@@ -584,6 +584,11 @@ body {
   backdrop-filter: drop-shadow(2px 4px 6px black);
 }
 
+
+.bbb {
+  backdrop-filter: drop-shadow(2px 4px 6px black);
+}
+
 .g-border {
   position: relative;
   cursor: pointer;

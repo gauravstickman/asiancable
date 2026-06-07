@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
+import "swiper/css";
 const values = [
   {
     title: "Nurturing Talent",
@@ -52,7 +55,12 @@ const loopCards = [...values, ...values];
 
 const CultureValuesSection = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
-
+const [mobileActive, setMobileActive] = useState(0);
+const mobileSlides =
+  values.length <= 4
+    ? [...values, ...values, ...values]
+    : values;
+    
   return (
     <section
       style={{
@@ -101,7 +109,7 @@ const CultureValuesSection = () => {
       </div>
 
       {/* Cards — full-bleed infinite auto-scrolling carousel */}
-      <div className="cv-marquee">
+      <div className="cv-marquee hidden md:block">
         <div className="cv-track flex items-center">
           {loopCards.map((item, index) => {
             const isActive = activeCard === index;
@@ -213,6 +221,73 @@ const CultureValuesSection = () => {
           })}
         </div>
       </div>
+
+      
+<div className="block md:hidden">
+ <Swiper
+  modules={[Autoplay]}
+  centeredSlides
+  slidesPerView={1.2}
+  spaceBetween={0}
+  loop
+  speed={600}
+  autoplay={{
+    delay: 3000,
+    disableOnInteraction: false,
+  }}
+  onSlideChange={(swiper) =>
+  setMobileActive(swiper.realIndex)
+}
+>
+    {mobileSlides.map((item, index) => (
+      <SwiperSlide key={index}>
+        {({ isActive }) => (
+          <div
+            className={`relative h-[440px] overflow-hidden rounded-[10px] transition-all duration-500 ${
+              isActive
+                ? "scale-100 opacity-100"
+                : "scale-[0.92] opacity-70"
+            }`}
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
+
+            <div className="absolute bottom-0 left-0 z-10 p-6">
+              <p className="mb-4 text-[24px] font-medium text-white">
+                {item.title}
+              </p>
+
+              <div
+                className={`overflow-hidden transition-all duration-500 ${
+                  isActive
+                    ? "max-h-[300px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <ul className="space-y-2">
+                  {item.points.map((point, i) => (
+                    <li
+                      key={i}
+                      className="text-[16px] leading-[28px] text-white"
+                    >
+                      • {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
 
       <style jsx global>{`
         .cv-marquee {

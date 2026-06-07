@@ -4,12 +4,7 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 const certificationData = [
-  {
-    id: 1,
-    title: "ISO 9001",
-    subtitle: "Certifications",
-    icon: "/assets/manufacturing/image 5.png",
-  },
+ 
    {
     id: 1,
     title: "ISO 9001",
@@ -20,13 +15,13 @@ const certificationData = [
     id: 2,
     title: "ISO 14001",
     subtitle: "Certifications",
-    icon: "/assets/manufacturing/image 5 (1).png",
+    icon: "/assets/manufacturing/for.png",
   },
   {
     id: 3,
     title: "ISO 45001",
     subtitle: "Certifications",
-    icon: "/assets/manufacturing/image 5 (2).png",
+    icon: "/assets/manufacturing/ff.png",
   },
   {
     id: 4,
@@ -38,19 +33,37 @@ const certificationData = [
     id: 5,
     title: "IS",
     subtitle: "Compliance",
-    icon: "/assets/manufacturing/image 5 (4).png",
+    icon: "/assets/manufacturing/bsi.png",
   },
   {
     id: 6,
     title: "BS",
     subtitle: "Compliance",
-    icon: "/assets/manufacturing/image 5 (5).png",
+    icon: "/assets/manufacturing/bsc.png",
   },
   {
     id: 7,
     title: "AS/NZS",
     subtitle: "Compliance",
-    icon: "/assets/manufacturing/image 6.png",
+    icon: "/assets/manufacturing/aus.png",
+  },
+  {
+    id: 8,
+    title: "NABL Accredited Laboratory",
+    subtitle: "Accreditations",
+    icon: "/assets/manufacturing/nabl.png",
+  },
+  {
+    id: 9,
+    title: "DSIR Recognised R&D",
+    subtitle: "Accreditations",
+    icon: "/assets/manufacturing/dsir.png",
+  },
+  {
+    id: 10,
+    title: "IGBC Platinum Facility",
+    subtitle: "Accreditations",
+    icon: "/assets/manufacturing/igbc.png",
   },
 ];
 
@@ -82,19 +95,19 @@ const QualityControlAssurance = () => {
     activeTab === "certifications" ? certificationData : accreditationData;
 
   return (
-    <section className="w-full bg-white py-20">
-      <div className="mx-auto w-[90vw] px-4">
+    <section className="w-full bg-white py-[56px] md:py-20">
+      <div className="mx-auto max-w-[1274px] px-5 md:px-0">
         {/* Heading */}
-        <h2 className="font-[magistral] text-[46px] leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C] text-center">
+        <h2 className="font-[magistral] text-[32px] leading-[100%] tracking-[-2%] md:text-[46px] md:leading-[55.2px] md:  tracking-[-0.92px] font-bold italic text-[#1E3C8C] text-center">
           Quality Control & Assurance
         </h2>
         <div className="mb-12 pt-10 flex items-center justify-center gap-2">
           <button
             onClick={() => setActiveTab("certifications")}
-            className={`relative overflow-hidden cursor-pointer px-12 py-2 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
+            className={`relative overflow-hidden cursor-pointer px-6 py-2 font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
               activeTab === "certifications"
-                ? "bg-[#163B8C] font-[work_sans] text-[15px] leading-[22.5px] font-medium text-center text-white shadow-lg shadow-blue-500/20"
-                : "font-[work_sans] text-[15px] leading-[22.5px] font-medium text-[#767676F2] text-center hover:text-[#163B8C]"
+                ? "bg-[#163B8C] font-[work_sans] text-[14px] md:text-[15px] leading-[22.5px] font-medium text-center text-white shadow-lg shadow-blue-500/20"
+                : "font-[work_sans] text-[14px] md:text-[15px] leading-[22.5px] font-medium text-[#767676F2] text-center hover:text-[#163B8C]"
             }`}
           >
             Certifications
@@ -102,10 +115,10 @@ const QualityControlAssurance = () => {
 
           <button
             onClick={() => setActiveTab("accreditations")}
-            className={`relative overflow-hidden cursor-pointer rounded-[2px] px-12 py-2 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
+            className={`relative overflow-hidden cursor-pointer rounded-[2px] px-6 py-2 text-sm font-medium transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] ${
               activeTab === "accreditations"
-                ? "bg-[#163B8C] font-[work_sans] text-[15px] leading-[22.5px] font-medium text-center text-white shadow-lg shadow-blue-500/20"
-                : "font-[work_sans] text-[15px] leading-[22.5px] font-medium text-[#767676F2] text-center hover:text-[#163B8C]"
+                ? "bg-[#163B8C] font-[work_sans] text-[14px] md:text-[15px] leading-[22.5px] font-medium text-center text-white shadow-lg shadow-blue-500/20"
+                : "font-[work_sans] text-[14px] md:text-[15px] leading-[22.5px] font-medium text-[#767676F2] text-center hover:text-[#163B8C]"
             }`}
           >
             Accreditations
@@ -127,9 +140,9 @@ const QualityControlAssurance = () => {
                 />
 
                 <div>
-                  <h3 className="font-[work_sans] text-[16px] leading-[24px] font-medium text-[#6E6E6E]">
+                  <p className="font-[work_sans] text-[16px] leading-[24px] font-medium text-[#6E6E6E]">
                     {item.title}
-                  </h3>
+                  </p >
 
                   <p className="font-[work_sans] text-[16px] leading-[24px] font-medium text-[#6E6E6E]">{item.subtitle}</p>
                 </div>

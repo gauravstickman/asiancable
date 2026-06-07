@@ -47,19 +47,19 @@ export default function IndustryFilter() {
 
   return (
     <section className="relative z-20 w-full bg-white py-8">
-      <div className="mx-auto flex w-[92%] max-w-[1380px] flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mx-auto flex px-5 md:px-0 w-[100%] max-w-[1274px] flex-col md:items-center gap-6 lg:flex-row lg:items-center lg:justify-between">
         {/* LEFT REGION TABS */}
-        <div className="flex w-fit items-center rounded-[4px] bg-white p-[6px] shadow-lg">
+        <div className="flex md:w-fit w-[94%] md:mr-auto md:ml-0 m-auto justify-between rounded-[4px] bg-white gap-2 p-[6px] shadow-lg">
           {/* INTERNATIONAL */}
           <button
             onClick={() => setRegion("international")}
             className={`flex cursor-pointer items-center gap-2 rounded-[4px] px-5 py-2.5 text-[13px] font-[600] transition-all duration-300 ${
               region === "international"
-                ? "bg-[#163B8C] text-center font-[Work_Sans] text-[15px] leading-[22.5px] font-semibold tracking-normal text-white shadow-md"
-                : "text-center font-[Work_Sans] text-[15px] leading-[22.5px] font-semibold tracking-normal hover:text-[#163B8C]"
+                ? "bg-[#163B8C] text-center font-[Work_Sans] text-[14px] md:text-[15px] leading-[22.5px] font-semibold tracking-normal text-white shadow-md"
+                : "text-center font-[Work_Sans] text-[14px] md:text-[15px] leading-[22.5px] font-semibold tracking-normal hover:text-[#163B8C]"
             } `}
           >
-            <span className="text-[13px]">🌎</span>
+            <span className="w-[18px]"><img src="/assets/clientele/globe.png"/></span>
             <span>International</span>
           </button>
 
@@ -72,14 +72,14 @@ export default function IndustryFilter() {
                 : "text-center font-[Work_Sans] text-[15px] leading-[22.5px] font-semibold tracking-normal hover:text-[#163B8C]"
             } `}
           >
-            <span className="text-[13px]">🇮🇳</span>
+            <span className="w-[18px]"><img src="/assets/clientele/flag-of-india.png"/></span>
             <span>Domestic</span>
           </button>
         </div>
 
         {/* RIGHT INDUSTRY FILTERS */}
-        <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
-          {industries.map((item) => {
+<div className="industries md:pb-0 pb-4 flex overflow-x-auto whitespace-nowrap gap-[45px] md:gap-4 md:flex-wrap md:overflow-visible md:whitespace-normal md:gap-x-7 md:gap-y-4 scrollbar-hide">          
+  {industries.map((item) => {
             const active = industry === item.id;
 
             return (

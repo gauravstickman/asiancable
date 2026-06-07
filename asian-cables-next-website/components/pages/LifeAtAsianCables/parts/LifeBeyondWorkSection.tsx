@@ -28,10 +28,10 @@ export default function LifeBeyondWorkSection() {
         </div>
 
         {/* Gallery */}
-        <div className="grid lg:grid-cols-[1.25fr_1fr] gap-4">
+        <div className="grid lg:grid-cols-[1.25fr_1fr] gap-3 md:gap-4">
 
           {/* Left Large Image */}
-          <div className="relative h-[430px] lg:h-[620px] overflow-hidden rounded-[10px]">
+          <div className="relative h-[315px] lg:h-[620px] overflow-hidden rounded-[10px]">
             <Image
               src="/assets/Lifeofasiancables/lifebeyondwork1.png"
               alt="Life Beyond Work"
@@ -42,9 +42,9 @@ export default function LifeBeyondWorkSection() {
           </div>
 
           {/* Right Grid */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
 
-            <div className="relative h-[210px] lg:h-[302px] overflow-hidden rounded-[10px]">
+            <div className="relative h-[184px] lg:h-[302px] overflow-hidden rounded-[10px]">
               <Image
                 src="/assets/Lifeofasiancables/lifebeyondwork2.png"
                 alt="Team Meeting"
@@ -54,7 +54,7 @@ export default function LifeBeyondWorkSection() {
               />
             </div>
 
-            <div className="relative h-[210px] lg:h-[302px] overflow-hidden rounded-[10px]">
+            <div className="relative h-[184px] lg:h-[302px] overflow-hidden rounded-[10px]">
               <Image
                 src="/assets/Lifeofasiancables/lifebeyondwork3.png"
                 alt="Discussion"
@@ -64,7 +64,7 @@ export default function LifeBeyondWorkSection() {
               />
             </div>
 
-            <div className="relative h-[210px] lg:h-[302px] overflow-hidden rounded-[10px]">
+            <div className="relative h-[184px] lg:h-[302px] overflow-hidden rounded-[10px]">
               <Image
                 src="/assets/Lifeofasiancables/lifebeyondwork4.png"
                 alt="Event"
@@ -74,7 +74,7 @@ export default function LifeBeyondWorkSection() {
               />
             </div>
 
-            <div className="relative h-[210px] lg:h-[302px] overflow-hidden rounded-[10px]">
+            <div className="relative h-[184px] lg:h-[302px] overflow-hidden rounded-[10px]">
               <Image
                 src="/assets/Lifeofasiancables/lifebeyondwork5.png"
                 alt="Conference"

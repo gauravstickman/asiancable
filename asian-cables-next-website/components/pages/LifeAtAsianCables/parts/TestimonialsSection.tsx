@@ -1,5 +1,8 @@
 "use client";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
+import "swiper/css";
 const testimonials = [
   {
     name: "Poonam Rankawat",
@@ -34,6 +37,11 @@ const loopCards = [
   ...testimonials,
   ...testimonials,
 ];
+
+const mobileTestimonials =
+  testimonials.length <= 4
+    ? [...testimonials, ...testimonials, ...testimonials]
+    : testimonials;
 
 export default function TestimonialsSection() {
   return (
@@ -74,7 +82,7 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Slider — full-bleed auto-scrolling marquee (outer container removed) */}
-      <div className="ts-marquee">
+      <div className="ts-marquee md:block hidden">
         <div className="ts-track">
           {loopCards.map((item, index) => (
             <div
@@ -155,6 +163,97 @@ export default function TestimonialsSection() {
           ))}
         </div>
       </div>
+
+
+      <div className="block md:hidden">
+  <Swiper
+    modules={[Autoplay]}
+    centeredSlides
+    slidesPerView={1.2}
+    spaceBetween={0}
+    loop
+    speed={600}
+    autoplay={{
+      delay: 3000,
+      disableOnInteraction: false,
+    }}
+  >
+    {mobileTestimonials.map((item, index) => (
+      <SwiperSlide key={index}>
+        {({ isActive }) => (
+          <div
+            className={`bg-white rounded-[10px] p-6 flex flex-col 
+            transition-all duration-500 ${
+              isActive
+                ? "scale-100 opacity-100 h-auto"
+                : "scale-[0.92] opacity-70 h-[343px]"
+            }`}
+          >
+            {/* Quote */}
+            <div className="w-[30px] h-[27px]">
+              <svg
+                width="30"
+                height="27"
+                viewBox="0 0 30 27"
+                fill="#1E3C8C"
+              >
+                <path d="M0 27V15.8C0 9.6 1.6 5 4.8 2C8 0 12 0 12 0V5C9.6 5 8 5.8 7 7.2C6 8.6 5.4 10.6 5.2 13H12V27H0ZM18 27V15.8C18 9.6 19.6 5 22.8 2C26 0 30 0 30 0V5C27.6 5 26 5.8 25 7.2C24 8.6 23.4 10.6 23.2 13H30V27H18Z" />
+              </svg>
+            </div>
+
+            <p
+              className={`mt-6 text-[14px] leading-[24px] md:text-[18px] md:leading-[28px] text-[#767676]
+              transition-all duration-500 ${
+    isActive
+      ? "line-clamp-6"
+      : "line-clamp-3"
+  } `}
+            >
+              {item.text}
+            </p>
+
+            <div className="flex-1" />
+
+            <div
+              className={`flex mt-3 flex-wrap gap-3 pb-6 border-b border-[#E2E2E2]
+              transition-all duration-500 ${
+                isActive
+                  ? "opacity-100"
+                  : "opacity-100"
+              }`}
+            >
+              {item.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="md:h-[34px] px-2 md:px-4 rounded-[68px]
+                  flex items-center justify-center
+                  bg-[#BECFFF33] text-[#767676] text-[12px] leading-[26px] md:text-[16px]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="pt-3">
+              <p className="text-[16px] md:text-[24px] font-semibold leading-[26px] text-black">
+                {item.name}
+              </p>
+
+              <p className="mt-1 text-[16px] font-medium text-[#767676]">
+                {item.role}
+              </p>
+
+              <p className="mt-1 text-[10px] md:text-[12px] font-normal text-[#3CAADF]">
+                {item.company}
+              </p>
+            </div>
+          </div>
+        )}
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
+
     </section>
   );
 }
