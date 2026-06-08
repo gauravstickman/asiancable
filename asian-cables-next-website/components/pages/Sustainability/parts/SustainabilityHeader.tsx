@@ -41,7 +41,7 @@ function SustainabilityHeader({ data }: { data?: any }) {
         <img
           src={bgImage}
           alt="Sustainability Hero"
-          className="absolute inset-0 h-full w-full object-cover object-center hidden md:block"
+          className="absolute inset-0  w-full object-cover object-center hidden md:block"
         />
         {/* Mobile Background Image can be handled via CSS or another img tag if data.heroMobileImage is used, but following existing layout we keep it simple or use heroMobileImage if provided */}
         <img
@@ -49,9 +49,10 @@ function SustainabilityHeader({ data }: { data?: any }) {
           alt="Sustainability Hero Mobile"
           className="absolute inset-0 h-full w-full object-cover object-center md:hidden block"
         />
+        <div className="absolute inset-0 bg-[linear-gradient(270deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.2)_50%,_rgba(0,0,0,0.6)_100%)]" />
 
         {/* Content */}
-        <div className="relative z-10 mx-auto max-w-7xl px-3 pt-55 pb-[60px] text-white">
+        <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-3 pt-55 pb-[60px] text-white">
           {/* Breadcrumb */}
           <nav className="mb-4 flex flex-wrap items-center gap-1.5 text-xs">
             {breadcrumbs.map((item, index) => (
@@ -59,12 +60,12 @@ function SustainabilityHeader({ data }: { data?: any }) {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="font-worksans text-[16px] leading-[36px] font-normal text-[#FFFFFFD4]"
+                    className="font-worksans text-[14px] md:text-[16px] leading-[36px] font-normal text-[#FFFFFFD4]"
                   >
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="font-worksans text-[16px] leading-[36px] font-medium tracking-[0px] text-[#FFFFFF]">
+                  <span className="font-worksans text-[14px] md:text-[16px] leading-[36px] font-medium tracking-[0px] text-[#FFFFFF]">
                     {item.label}
                   </span>
                 )}
@@ -77,21 +78,22 @@ function SustainabilityHeader({ data }: { data?: any }) {
           </nav>
 
           {/* Heading */}
+
           <h1 
-            className="font-[magistral] text-[68px] leading-[64.6px] font-bold tracking-[-1.44px] italic"
+            className="font-[magistral] text-[36px] leading-[140%] md:text-[68px] md:leading-[64.6px]  font-bold tracking-[-1.44px] italic"
             dangerouslySetInnerHTML={{ __html: heroTitle.replace(/\n/g, '<br/>') }}
           />
 
           {/* Stats */}
-          <div className="flex w-[851px] h-[208px] gap-[24px] pl-[16px] relative mt-8 mb-2">
-            <div className="mt-13 grid max-w-[920px] h-[208px] grid-cols-2 gap-[24px]">
+          <div className="flex md:w-[851px] md:h-[208px] gap-[24px]  md:pl-[16px] relative mt-8 mb-2">
+            <div className="mt-13 grid md:max-w-[920px] md:h-[208px] grid-cols-2 gap-[24px]">
               {stats.map((stat: any) => (
-                <div key={stat.value}>
-                  <h3 className="font-[magistral] text-[42px] leading-[36.46px] font-bold italic tracking-[0px] text-white">
+                <div key={stat.value} className="md:w-[auto]">
+                <p className="relative font-[magistral] text-[24px] leading-[50px] md:text-[38px] md:leading-[83.02px] font-bold text-white italic">
                     {stat.value}
-                  </h3>
+                  </p>
 
-                  <p className="text-[16px] mt-2 leading-[19.5px] font-normal tracking-[0px] text-[#FFFFFFCC]">
+                <p className="relative font-worksans text-[14px] md:leading-[21px] md:text-[15.81px] md:leading-[23.72px] font-medium text-[#FFFFFFB5]">
                     {stat.label || stat.description}
                   </p>
                 </div>

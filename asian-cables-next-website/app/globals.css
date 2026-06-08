@@ -568,6 +568,15 @@ body {
 }
 
 @media(min-width:768px) {
+
+.sustain-card:not(:first-child) {
+    max-width: 467px;
+    
+}
+.sustain-card:not(:first-child) .sustain-desc {
+    display: none;
+}
+
   .masonry {
     column-count: 3;
     column-gap: 80px;
@@ -606,7 +615,14 @@ body {
     border: 1.3px solid #E1E2E5;
     padding: 20px;
   }
+.about-box:nth-child(3) div {
+    display: flex;
+    column-gap: 5px;
+}
 
+.about-box:nth-child(3) {
+    min-width: 100%;
+}
   .industries {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -937,4 +953,13 @@ body {
 }
 .group:hover {
    cursor: pointer;
+}
+
+
+.company-slider .swiper-slide.swiper-slide-next, .company-slider .swiper-slide.swiper-slide-prev {
+    opacity: 0.2;
+}
+.company-slider .swiper-slide
+{
+box-shadow: 3px 43px 250px 0px #0000000D;
 }

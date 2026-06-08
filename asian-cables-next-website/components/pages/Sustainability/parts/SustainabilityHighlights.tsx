@@ -41,19 +41,19 @@ function SustainabilityHighlights({ data }: { data?: any }) {
   const slides = [...baseSlides, ...baseSlides];
 
   return (
-    <section className="bg-[#F5F5F5] py-20">
-      <div className="mx-auto max-w-[1280px] px-6">
-        <h2 className="mb-8 text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
+    <section className="md:bg-[#F5F5F5] pb-15 md:pt-20 md:pb-20">
+      <div className="mx-auto max-w-[1280px] px-5">
+        <h2 className="mb-8 text-[30px] leading-[40px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
           {data?.highlightsTitle || "Sustainability Highlights"}
         </h2>
       </div>
       <div className="relative overflow-hidden">
-        <div className="animate-marquee flex w-max gap-[24px]">
+        <div className="animate-marquee flex w-max gap-3 md:gap-[24px]">
             {/* FIRST SET */}
             {baseSlides.map((slide: any, index: number) => (
               <div
                 key={index}
-                className="sustain-card relative  w-[779.33px] h-[718px]  flex-shrink-0 overflow-hidden rounded-lg"
+                className="sustain-card relative w-[88vw] md:w-[779.33px] h-[418px] md:h-[718px]  flex-shrink-0 overflow-hidden rounded-lg"
               >
                 <img
                   src={slide.image}
@@ -61,11 +61,11 @@ function SustainabilityHighlights({ data }: { data?: any }) {
                   className="absolute top-[1px] left-[1px] w-[779.33px] h-[718px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-                <div className="absolute right-20 bottom-5 left-10 text-white">
-                  <h3 className="font-[Magistral] text-[28px] leading-[50.4px] font-bold tracking-[0px] text-[#FFFFFF] italic">
+                <div className="absolute md:right-10 md:bottom-5 md:left-10 left-3 right-3 bottom-4 text-white">
+                  <h3 className="font-[Magistral] text-[20px] leading-[28px] md:text-[28px] md:leading-[50.4px] font-bold tracking-[0px] text-[#FFFFFF] italic">
                     {slide.title}
                   </h3>
-                  <p className="mt-2 mb-4 text-[18px] leading-[24px] font-normal tracking-[0px] text-[#FFFFFFE5]">
+                  <p className="mt-2 sustain-desc mb-4 text-[16px] md:text-[18px] leading-[24px] font-normal tracking-[0px] text-[#FFFFFFE5]">
                     {slide.description}
                   </p>
                 </div>
@@ -76,12 +76,12 @@ function SustainabilityHighlights({ data }: { data?: any }) {
             {baseSlides.map((slide: any, index: number) => (
               <div
                 key={`duplicate-${index}`}
-                className="sustain-card relative h-[420px]  w-[779.33px] h-[718px] flex-shrink-0 overflow-hidden rounded-lg"
+                className="sustain-card relative h-[420px]  w-[100%] md:h-[718px] flex-shrink-0 overflow-hidden rounded-lg"
               >
                 <img
                   src={slide.image}
                   alt={slide.title}
-                  className="absolute top-[1px] left-[1px] w-[779.33px] h-[718px] object-cover"
+                  className="absolute top-[1px] left-[1px] w-[100%] h-[718px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                 <div className="absolute right-20 bottom-5 left-10 text-white">
@@ -114,6 +114,8 @@ function SustainabilityHighlights({ data }: { data?: any }) {
           :global(.animate-marquee) {
             animation: marquee 40s linear infinite;
           }
+            
+    
         `}</style>
     </section>
   );

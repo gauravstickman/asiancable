@@ -38,20 +38,20 @@ const leaders = [
 export default function LeadershipTeam() {
   return (
     <section className="overflow-hidden bg-white py-16">
-      <div className="mx-auto max-w-[1400px] px-6">
+      <div className="mx-auto max-w-[1400px] md:px-6 px-5">
         {/* Header */}
-        <div className="mb-10 px-5 flex items-center justify-between">
+        <div className="mb-10 md:px-5 flex md:flex-row flex-col md:items-center md:justify-between">
           <div>
-            <h2 className="font-[magistral] text-[46px] leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C]">
+            <h2 className="font-[magistral]  text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C]">
               Leadership Team
             </h2>
 
-            <p className="mt-3 font-[work_sans] text-[17px] leading-[25.5px] font-normal text-[#525252]">
+            <p className="mt-4 font-[work_sans] text-[16px] leading-[150%] md:text-[17px] md:leading-[25.5px] font-normal text-[#525252]">
               Meet the visionaries driving Asian Cables forward
             </p>
           </div>
           <div>
-            <button className="border-it-b cursor-pointer mx-auto flex items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] px-5 py-2 text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
+            <button className="border-it-b cursor-pointer md:mx-auto flex items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] px-5 py-2 text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px] md:mt-0 mt-5">
               View Leadership
               <span>
                 <ChevronRight size={18} />
@@ -65,13 +65,13 @@ export default function LeadershipTeam() {
           <div className="animate-marquee hover:[animation-play-state:paused] flex w-max gap-[33px]">
             {/* First Set */}
             {leaders.map((leader, index) => (
-              <div key={index} className="max-w-[260px] min-w-[260px]">
+              <div key={index} className="md:max-w-[260px] min-w-[260px]">
                 {/* Image */}
                 <div className="overflow-hidden rounded-[4px]">
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="h-[371px] w-[314px] rounded-[4px] full object-cover"
+                    className="h-[371px] md:w-[314px] w-[80vw] rounded-[4px] full object-cover"
                   />
                 </div>
 

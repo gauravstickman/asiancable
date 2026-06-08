@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 const timelineData = [
   {
     year: "1959",
@@ -37,7 +42,7 @@ const timelineData = [
     year: "2001",
     description: "Merger of ",
     description1: "RPC Cables Ltd. into KEC International Ltd.",
-    image: "/assets/about/industryIcons.png",
+    image: "/assets/about/personIcon1.png",
   },
   {
     year: "2010",
@@ -70,11 +75,31 @@ export default function OurJourney() {
   const [selectedYear, setSelectedYear] = useState("2001");
   const [visible, setVisible] = useState(true);
 
+const timelineRef = useRef<HTMLDivElement>(null);
+const [activeIndex, setActiveIndex] = useState(6);
+const yearsRef = useRef<HTMLDivElement>(null);
+const swiperRef = useRef<any>(null);
   const selectedData =
     timelineData.find((item) => item.year === selectedYear) || timelineData[0];
 
   // Keep the left image static so only the content area updates
-  const imageSrc = timelineData[0].image;
+const currentIndex = timelineData.findIndex(
+  (item) => item.year === selectedYear
+);
+
+const prevData =
+  timelineData[
+    (currentIndex - 1 + timelineData.length) %
+      timelineData.length
+  ];
+
+const nextData =
+  timelineData[
+    (currentIndex + 1) %
+      timelineData.length
+  ];
+
+
 
   useEffect(() => {
     // trigger a small fade-out then fade-in when the year changes
@@ -83,92 +108,132 @@ export default function OurJourney() {
     return () => clearTimeout(t);
   }, [selectedYear]);
 
+  
+useEffect(() => {
+  const container = yearsRef.current;
+
+  if (!container) return;
+
+  const activeButton = container.querySelector(
+    `[data-year="${activeIndex}"]`
+  ) as HTMLElement;
+
+  if (!activeButton) return;
+
+  const left =
+    activeButton.offsetLeft -
+    container.clientWidth / 2 +
+    activeButton.clientWidth / 2;
+
+  container.scrollTo({
+    left,
+    behavior: "smooth",
+  });
+}, [activeIndex]);
+
   return (
-    <section className="bg-white py-20">
-      <div className="mx-auto max-w-[1400px] px-6">
+    <section className="bg-white py-20  company-slider">
+      <div className="mx-auto max-w-[1274px] px-6">
         {/* Title */}
 
-        <h2 className="mb-9 text-center font-[magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
+        <h2 className="mb-9 text-center font-[magistral] text-[32px] leading-[40px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
           Our Journey
         </h2>
       </div>
 
       {/* Timeline - Full Width */}
 
-      <div className="mb-12 overflow-hidden">
-        <div className="relative">
-          <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-white to-transparent" />
+  <div className="mb-12 overflow-hidden">
+  <div className="relative">
+    <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-white to-transparent" />
 
-          {/* Right Fade */}
-          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-32 bg-gradient-to-l from-white to-transparent" />
+    <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-white to-transparent" />
 
-          <div className="animate-marquee flex w-max gap-[50px]">
-            {/* FIRST SET */}
-            {timelineData.map((item) => (
-              <button
-                key={item.year}
-                onClick={() => setSelectedYear(item.year)}
-                className={`flex min-w-[100px] cursor-pointer items-center justify-center font-[work_sans] leading-[57.67px] font-semibold text-[#1E3C8C] transition-all duration-300 ${
-                  selectedYear === item.year
-                    ? "text-[48px] font-black text-[#1E3C8C]"
-                    : "text-[28px] font-semibold text-[#C8D0E3]"
-                }`}
-              >
-                {item.year}
-              </button>
-            ))}
+<div
+  ref={yearsRef}
+  className="flex justify-center gap-8 mb-10"
+>
+  {timelineData.map((item, index) => (
+  <button
+  key={item.year}
+  data-year={index}
+  
+  onClick={() => {
+    swiperRef.current?.slideTo(index);
+  }}
+  className={`transition-all shrink-0 duration-300 ${
+  activeIndex === index
+    ? "text-[40px] font-bold text-[#1E3C8C]"
+    : "text-[24px] text-[#C8D0E3]"
+}`}
+>
 
-            {/* DUPLICATE FOR CONTINUOUS SCROLL */}
-            {timelineData.map((item) => (
-              <button
-                key={`dup-${item.year}`}
-                onClick={() => setSelectedYear(item.year)}
-                className={`font-worksans flex min-w-[100px] cursor-pointer items-center justify-center leading-[57.67px] font-semibold text-[#1E3C8C] transition-all duration-300 ${
-                  selectedYear === item.year
-                    ? "text-[48px] font-black text-[#1E3C8C]"
-                    : "text-[28px] font-semibold text-[#C8D0E3]"
-                }`}
-              >
-                {item.year}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+
+      <span
+        className={`${
+          activeIndex === index
+            ? "text-[40px] font-bold"
+            : "text-[24px]"
+        }`}
+      >
+        {item.year}
+      </span>
+    </button>
+  ))}
+</div>
+  </div>
+</div>
 
       {/* Content */}
-      <div className="w-full bg-gray-50 pb-[2px]">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="grid grid-cols-1 overflow-hidden rounded-lg bg-[#FFFFFF] lg:grid-cols-2">
-            {/* Image */}
-            <div className="h-[500px]">
-              <img
-                src={imageSrc}
-                alt="Our journey"
-                className="h-full w-full object-cover"
-              />
-            </div>
+      <div className="w-full bg-white md:pb-[2px]">
+        <div className="md:ml-[5%] mr-auto max-w-[100%]">
+    <Swiper
+  slidesPerView={1.25}
+  centeredSlides={true}
+  spaceBetween={10}
+  onSwiper={(swiper) => {
+    swiperRef.current = swiper;
+  }}
+  onSlideChange={(swiper) => {
+    setActiveIndex(swiper.activeIndex);
+  }}
+  className="pb-10 md:pb-0"
+>
+  {timelineData.map((item) => (
+    <SwiperSlide key={item.year}>
+      <div className="grid grid-cols-1 rounded-lg bg-white lg:grid-cols-2">
 
-            {/* Content */}
-            <div
-              className={`flex flex-col justify-center bg-[#FFFFFF] p-12 transition-all duration-300 ${
-                visible
-                  ? "translate-y-0 bg-[#FFFFFF] opacity-300"
-                  : "-translate-y-2 opacity-0"
-              }`}
-              aria-live="polite"
-            >
-              <span className="text-[38.45px] leading-[57.67px] font-medium tracking-[0px] text-[#1E3C8C]">
-                {selectedData.year}
+        {/* Image */}
+        <div className="relative h-[280] md:h-[480] overflow-hidden">
+          <img
+            src={item.image}
+            alt={item.year}
+            className="h-full w-full object-cover"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col justify-center p-5 md:p-12">
+          <span className="text-[20px] md:text-[38px] text-[#1E3C8C]">
+            {item.year}
+          </span>
+
+          <p className="text-[#666]">
+            {item.description}
+
+            {item.description1 && (
+              <span className="font-semibold text-[#525252]">
+                {item.description1}
               </span>
-              <span className="font-worksans text-[16px] leading-[27.2px] font-normal text-[#666]">
-                {selectedData.description}{" "}
-                <span className="font-['Work_Sans'] text-[16px] leading-[27.2px] font-semibold tracking-[0px] text-[#525252]">
-                  {selectedData.description1}
-                </span>
-              </span>
-            </div>
-          </div>
+            )}
+          </p>
+        </div>
+
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+    
         </div>
       </div>
     </section>

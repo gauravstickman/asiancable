@@ -29,7 +29,7 @@ const governanceContent = [
   },
 ];
 
-function FeatureCard({
+function  FeatureCard({
   title,
   title1,
   icon,
@@ -42,17 +42,17 @@ function FeatureCard({
 }) {
   return (
     <div
-      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9] transition-all duration-300 hover:bg-[#1E3C8C] ${tall ? "h-[238.5px]" : "h-[238.5px]"}`}
+      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9] transition-all duration-300 hover:bg-[#1E3C8C] ${tall ? "h-[157px]" : "h-[238.5px]"}`}
     >
-      <div className="flex w-full flex-row items-center justify-center gap-6">
+      <div className="flex w-full md:p-0 p-5 flex-row items-center justify-center gap-6">
         <img
           src={icon}
           alt=""
           aria-hidden="true"
-          className="h-[46.82432556152344px] w-[46.82432556152344px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+          className="resource-img  h-[46.82432556152344px] w-[46.82432556152344px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
         />
 
-        <h4 className="font-[magistral] text-[24px] leading-[29.27px] font-bold text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
+        <h4 className="font-[magistral] text-[20px] md:text-[24px] leading-[29.27px] font-bold text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
           {title}
           <br />
           <span>{title1}</span>
@@ -64,7 +64,7 @@ function FeatureCard({
 
 export default function GovernanceSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-20">
+    <section className="relative overflow-hidden bg-white py-10 md:py-20">
       <img
         src="/assets/about/foudationIcon.png"
         alt=""
@@ -72,21 +72,21 @@ export default function GovernanceSection() {
         className="pointer-events-none absolute right-0 bottom-0 z-0 w-[min(720px,55vw)] object-contain object-right-bottom"
       />
 
-      <div className="relative z-10 mx-auto max-w-[1280px] px-4">
-        <h2 className="mb-14 text-center font-[magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
+      <div className="relative z-10 mx-auto max-w-[1280px] px-5">
+        <h2 className="mb-8 md:mb-14 text-center font-[magistral] text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
           Shaped by Governance. Built on Quality.
           <br />
           Proven across Critical Applications.
         </h2>
 
-        <div className="grid grid-cols-12 gap-4 bg-[#FFFFFF] p-4">
+        <div className="grid grid-cols-12 gap-4 bg-[#FFFFFF] md:p-4">
           {/* Left Blue Card */}
           {governanceContent.map((item, index) => (
             <div
               key={index}
               className="col-span-12 lg:col-span-6 lg:row-span-2"
             >
-              <div className="flex h-[494px] flex-col rounded-[4px] bg-[#1E3C8C] p-10">
+              <div className="flex md:h-[494px] flex-col rounded-[4px] bg-[#1E3C8C] p-5 md:p-10">
                 <div className="mb-8">
                   <img
                     src={item.icon}
@@ -95,7 +95,7 @@ export default function GovernanceSection() {
                   />
                 </div>
 
-                <h3 className="mb-6 font-[magistral] text-[46px] leading-[52px] font-bold text-white italic">
+                <h3 className="mb-6 font-[magistral] text-[24px] leading-[160%] md:text-[46px] md:leading-[52px] font-bold text-white italic">
                   {item.title.map((line, i) => (
                     <span key={i}>
                       {line}
@@ -104,7 +104,7 @@ export default function GovernanceSection() {
                   ))}
                 </h3>
 
-                <p className="text-[17px] leading-[32px] text-[#FFFFFFE5]">
+                <p className="text-[16px] leading-[31.60px] md:text-[17px] md:leading-[32px] text-[#FFFFFFE5]">
                   {item.description}
                 </p>
               </div>

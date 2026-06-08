@@ -639,7 +639,7 @@ h-[30px]
     <div className="mt-6 flex flex-col gap-3 pl-0">
 
       <h5><Link
-        href="/about-us"
+        href="/about"
         className="text-[20px] italic font-[700] text-[#8B8B8B]"
       >
         About us
