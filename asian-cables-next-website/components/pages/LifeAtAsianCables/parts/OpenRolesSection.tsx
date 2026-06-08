@@ -41,7 +41,7 @@ const tabs = [
   "Finance",
 ];
 
-export default function OpenRolesSection() {
+export default function OpenRolesSection({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState("All Roles");
 
   return (
@@ -65,7 +65,7 @@ export default function OpenRolesSection() {
               "
               
             >
-              Open Roles
+              {data?.openRolesTitle || "Open Roles"}
             </h2>
 
             <p
@@ -78,7 +78,7 @@ export default function OpenRolesSection() {
               "
               
             >
-              3 positions open
+              {data?.openRolesDescription || "3 positions open"}
             </p>
           </div>
 

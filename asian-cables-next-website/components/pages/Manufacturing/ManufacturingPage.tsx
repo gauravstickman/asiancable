@@ -7,15 +7,15 @@ import ProductionFacilities from "./parts/ProductionFacilities";
 import InfrastructureHighlights from "./parts/InfrastructureHighlights";
 import InfrastructureStandards from "./parts/InfrastructureStandards";
 
-export default function ManufacturingPage() {
+export default function ManufacturingPage({ data }: { data?: any }) {
   return (
     <>
       <WebsiteNavbar />
-        <ManufacturingHeader />
-        <InfrastructureHighlights />
-        <ProductionFacilities/>
-        <InfrastructureStandards/>
-        <QualityControlAssurance/>
+        <ManufacturingHeader data={data} />
+        <InfrastructureHighlights data={data} />
+        <ProductionFacilities data={data} />
+        <InfrastructureStandards data={data} />
+        <QualityControlAssurance data={data} />
       <Footer />
     </>
   );

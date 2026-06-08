@@ -2,25 +2,7 @@
 
 import React from "react";
 
-const topContent = {
-  title: "Global Presence",
-  description:
-    "Operating across 135+ countries with world-class manufacturing and distribution facilities",
-};
-
-const bottomStats = [
-  {
-    value: "35K+",
-    label: "Employees",
-    divider: true,
-  },
-  {
-    value: "135+",
-    label: "Countries",
-  },
-];
-
-function GlobalPresenceSection() {
+function GlobalPresenceSection({ data }: { data?: any }) {
   const [animate, setAnimate] = React.useState(false);
 
   React.useEffect(() => {
@@ -28,51 +10,39 @@ function GlobalPresenceSection() {
     return () => clearTimeout(t);
   }, []);
 
-  const statsData = [
-    {
-      id: 1,
-      title: (
-        <>
-         1979
-        </>
-      ),
-      label: "Founded",
-    },
-    {
-      id: 2,
-      title: (
-        <>
-        
-            USD 5.2
-        </>
-      ),
-      label: "Group Turnover",
-    },
-    {
-      id: 3,
-      title: (
-        <>
-            DR. R P
-            Goenka
-        </>
-      ),
-      label: "Founder",
-      colSpan: true,
-    },
+  const topContent = {
+    title: data?.globalTitle || "Global Presence",
+    description: data?.globalDescription || "Operating across 135+ countries with world-class manufacturing and distribution facilities",
+  };
+
+  const bottomStats = data?.globalMainStats?.length > 0 ? data.globalMainStats.map((stat: any, index: number) => ({
+    value: stat.value,
+    label: stat.label,
+    divider: index < data.globalMainStats.length - 1
+  })) : [
+    { value: "35K+", label: "Employees", divider: true },
+    { value: "135+", label: "Countries" },
+  ];
+
+  const statsData = data?.globalCards?.length > 0 ? data.globalCards.map((card: any, index: number) => ({
+    id: index + 1,
+    title: <>{card.value}</>,
+    label: card.label,
+    colSpan: index === data.globalCards.length - 1
+  })) : [
+    { id: 1, title: <>1979</>, label: "Founded" },
+    { id: 2, title: <>USD 5.2<br/>billion</>, label: "Group Turnover" },
+    { id: 3, title: <>DR. R P<br/>Goenka</>, label: "Founder", colSpan: true },
   ];
 
   return (
     <section className="relative overflow-hidden bg-[#002B8F] py-15 md:py-24">
       {/* Background */}
       <img
-        src="/assets/rpggroup/bgIcons1.png"
+        src={data?.globalImage ? (data.globalImage.startsWith('http') ? data.globalImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.globalImage}`) : "/assets/rpggroup/bgIcons1.png"}
         alt="Background"
         className="absolute inset-0 h-full w-full object-cover"
       />
-
-      {/* <div className="absolute inset-0 bg-[#002B8F]/70" /> */}
-      {/* <div className="absolute top-[-120px] right-[-220px] h-[520px] w-[520px] rounded-full bg-[#FF5A1F]/40 blur-[140px]" /> */}
-      {/* <div className="absolute bottom-[-250px] left-[18%] h-[420px] w-[420px] rounded-full bg-[#FFB11F]/35 blur-[140px]" /> */}
 
       {/* Main Container */}
       <div className="relative z-20 mx-auto max-w-[1235px] px-6">
@@ -103,7 +73,7 @@ function GlobalPresenceSection() {
 
                 {/* BOTTOM STATS */}
                 <div className="flex items-end md:mt-0 md:mb-0 mb-10 gap-18">
-                  {bottomStats.map((item, index) => (
+                  {bottomStats.map((item: any, index: number) => (
                     <div key={index}>
                       <div className="flex relative items-end gap-5">
                         <h3 className="font-[Magistral] text-[20px] leading-[26px] md:text-[36px] md:leading-[54px] font-bold tracking-[0px] text-white italic">
@@ -130,7 +100,7 @@ function GlobalPresenceSection() {
                 <div className="flex flex-col gap-[18px]">
                   <p className="font-[magistral] text-[18px] leading-[26px] md:text-[42px] md:leading-[45px] font-bold tracking-[0px] italic">
                  <span className="pr-1.5 bg-[linear-gradient(270.13deg,#3CAADF_4.69%,#F04123_52.29%,#FFD212_99.89%)] bg-clip-text text-transparent">
-{statsData[0].title}</span>
+{statsData[0]?.title}</span>
                   </p>
 
                   <p className="font-[work_sans] text-[14px] md:text-[18px] leading-[19.5px] font-normal tracking-normal text-[#000000CC]">
@@ -144,13 +114,11 @@ function GlobalPresenceSection() {
                 <div className="flex flex-col gap-[18px]">
                   <p className="font-[magistral] text-[18px] leading-[26px] md:text-[42px] md:leading-[45px] font-bold tracking-[0px] italic">
                     <span className="pr-1.5   bg-[linear-gradient(270.13deg,#3CAADF_4.69%,#F04123_52.29%,#FFD212_99.89%)] bg-clip-text text-transparent">
-USD 5.2</span><br/>
-<span className="pr-1.5   bg-[linear-gradient(270.13deg,#3CAADF_4.69%,#F04123_52.29%,#FFD212_99.89%)] bg-clip-text text-transparent">
-billion</span> 
+{statsData[1]?.title}</span>
                   </p>
 
                   <p className="text-[14px] md:text-[18px] leading-[19.5px] font-normal tracking-normal text-[#000000CC]">
-                    {statsData[1].label}
+                    {statsData[1]?.label}
                   </p>
                 </div>
               </div>
@@ -160,11 +128,11 @@ billion</span>
                 <div className="flex flex-col gap-[18px]">
                   <p className="font-[magistral] text-[18px] leading-[26px] md:text-[42px] md:leading-[45px] font-bold tracking-[0px] italic">
                    <span className="pr-1.5  bg-[linear-gradient(270.13deg,#3CAADF_4.69%,#F04123_52.29%,#FFD212_99.89%)] bg-clip-text text-transparent">
- {statsData[2].title}</span>
+ {statsData[2]?.title}</span>
                   </p>
 
                   <p className="font-[work_sans] text-[14px] md:text-[18px] leading-[19.5px] font-normal tracking-normal text-[#000000CC]">
-                    {statsData[2].label}
+                    {statsData[2]?.label}
                   </p>
                 </div>
               </div>

@@ -2,20 +2,26 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import {
-  BookOpen,
-  UserRound,
-  MapPin,
-  Heart,
-  ShieldCheck,
-  Users,
-  UserStar,
-  BriefcaseBusiness,
-  Medal,
-  HeartPulse,
-} from "lucide-react";
+import * as LucideIcons from "lucide-react";
 
-const tabs = [
+// Dynamic Icon component
+const DynamicIcon = ({ name, size = 20 }: { name: string; size?: number }) => {
+  // If it's a URL, render an image
+  if (name.startsWith('http') || name.startsWith('/')) {
+    return <Image src={name} alt="Icon" width={size} height={size} className="object-contain" />;
+  }
+
+  // Otherwise, try to find the Lucide icon
+  const IconComponent = (LucideIcons as any)[name];
+  if (IconComponent) {
+    return <IconComponent size={size} />;
+  }
+
+  // Fallback
+  return <LucideIcons.CheckCircle size={size} />;
+};
+
+const staticTabs = [
   {
     id: 1,
     number: "01",
@@ -26,17 +32,17 @@ const tabs = [
       "We invest in our people through structured learning programmes, skill-building workshops, and leadership development initiatives. Whether you're a fresh graduate or a seasoned professional, there's always room to grow at Asian Cables.",
     cards: [
       {
-        icon: <BookOpen size={20} />,
+        icon: <DynamicIcon name="BookOpen" size={20} />,
         title: "Functional, technical, and behavioural training",
         text: "Workshops across manufacturing, engineering, quality, and business functions.",
       },
       {
-        icon: <UserStar size={20} />,
+        icon: <DynamicIcon name="UserStar" size={20} />,
         title: "Leadership & Mentorship Programmes",
         text: "Structured leadership tracks and one-on-one mentorship programmes.",
       },
       {
-        icon: <MapPin size={20} />,
+        icon: <DynamicIcon name="MapPin" size={20} />,
         title: "Move Across Roles & Locations",
         text: "Opportunities to expand horizons across functions and geographies.",
       },
@@ -52,28 +58,28 @@ const tabs = [
       "A holistic benefits programme designed around health, financial security, work-life balance, and community — because people do their best work when they feel supported.",
     cards: [
       {
-        icon: <HeartPulse size={20} />,
+        icon: <DynamicIcon name="HeartPulse" size={20} />,
         title: "Comprehensive Health & Insurance",
         text: "Medical coverage, annual check-ups, life and accident insurance for you and your family.",
       },
       {
-        icon: <Medal size={20} />,
+        icon: <DynamicIcon name="Medal" size={20} />,
         title: "Competitive Compensation & Rewards",
         text: "Market-linked salary, annual bonuses, and a recognition programme including performance awards and spot recognitions.",
       },
       {
-        icon: <BriefcaseBusiness size={20} />,
+        icon: <DynamicIcon name="BriefcaseBusiness" size={20} />,
         title: "Work-Life Balance",
         text: "Generous leave — vacation, sick, parental — flexible work options, and wellness programmes including EAP and fitness classes.",
       },
       {
-        icon: <ShieldCheck size={20} />,
+        icon: <DynamicIcon name="ShieldCheck" size={20} />,
         title: "Financial Security",
         text: "Provident Fund, gratuity, retirement benefits (NPS / Pension), and employee loan facilities.",
       },
-      
+
       {
-        icon: <Users size={20} />,
+        icon: <DynamicIcon name="Users" size={20} />,
         title: "Community & Fun",
         text: "Team events, sports tournaments, and festival celebrations — we make sure you enjoy the journey.",
       },
@@ -89,17 +95,17 @@ const tabs = [
       "At Asian Cables, everyone belongs. We welcome colleagues of all backgrounds, genders, and experiences.",
     cards: [
       {
-        icon: <BookOpen size={20} />,
+        icon: <DynamicIcon name="BookOpen" size={20} />,
         title: "Every Voice Is Respected",
         text: "We echo RPG's founding value of a happy, equitable workplace where every voice is heard.",
       },
       {
-        icon: <UserStar size={20} />,
+        icon: <DynamicIcon name="UserStar" size={20} />,
         title: "Returners, Graduates & Veterans",
         text: "Whether you are returning from a career break, a fresh graduate, or an experienced professional, you will find support and opportunity here.",
       },
       {
-        icon: <MapPin size={20} />,
+        icon: <DynamicIcon name="MapPin" size={20} />,
         title: "Zero Tolerance for Discrimination",
         text: "A firm, uncompromising commitment to a workplace free from discrimination of any kind.",
       },
@@ -107,141 +113,162 @@ const tabs = [
   },
 ];
 
-export default function ExperienceSection() {
+export default function ExperienceSection({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState(0);
-  const current = tabs[activeTab];
+
+  const tabs = data?.experiencePoints?.length > 0 ? data.experiencePoints.map((pt: any, index: number) => {
+    const imageUrl = pt.image?.startsWith('http')
+      ? pt.image
+      : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${pt.image}`;
+
+    return {
+      id: index + 1,
+      number: `0${index + 1}`,
+      title: pt.title,
+      image: imageUrl,
+      heading: pt.heading,
+      description: pt.description,
+      cards: (pt.cards || []).map((card: any) => ({
+        icon: <DynamicIcon name={card.image || 'CheckCircle'} size={20} />,
+        title: card.title,
+        text: card.description,
+      }))
+    };
+  }) : staticTabs;
+
+  const current = tabs[activeTab] || tabs[0];
 
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto w-full max-w-[1280px]  px-2 md:px-0 py-[40px]">
-        {/* Heading */}
-        <div className="flex justify-left mb-10 lg:mb-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] pt-12 md:pt-[60px] lg:pt-[80px]">
+        {/* Top Header */}
+        <div className="mb-10 lg:mb-[60px] flex justify-center">
           <h2
             className="text-center text-[#1E3C8C] font-bold italic text-[32px] md:text-[40px] lg:text-[46px] leading-[1.15] lg:leading-[55.2px] tracking-[-0.92px]"
           >
-            What You'll Experience
+            {data?.experienceTitle || "Experience that Powers Your Growth"}
           </h2>
         </div>
 
 
-<div className="md:hidden px-5">
-  {tabs.map((tab, index) => (
-    <div
-      key={tab.id}
-      className="border-b border-[#E5E7EB]"
-    >
-      <button
-        onClick={() => setActiveTab(index)}
-        className="relative w-full px-6 py-5 text-left"
-        style={{
-          background:
-            activeTab === index
-              ? "#F4F6FA"
-              : "transparent",
-        }}
-      >
-        <h4
-          className="mb-2 text-[32px] leading-[1.1]"
-          style={{
-            fontWeight: 700,
-            fontStyle: "italic",
-            letterSpacing: "-0.92px",
-            color:
-              activeTab === index
-                ? "#1E3C8C"
-                : "#525252",
-          }}
-        >
-          {tab.number}
-        </h4>
-
-        <div
-          className="font-dm text-[18px]"
-          style={{
-            fontWeight: 500,
-            color:
-              activeTab === index
-                ? "#1E3C8C"
-                : "#525252",
-          }}
-        >
-          {tab.title}
-        </div>
-
-        {activeTab === index && (
-          <div
-            className="absolute bottom-0 left-0 right-0 h-[5px]"
-            style={{
-              background:
-                "linear-gradient(269.81deg, #3CAADF 45.65%, #F04123 84.54%, #FFD212 123.44%)",
-            }}
-          />
-        )}
-      </button>
-
-      {activeTab === index && (
-        <div className="py-6 px-2">
-          <div className="flex flex-col gap-6">
-            <Image
-              src={tab.image}
-              alt={tab.title}
-              width={474}
-              height={616}
-              className="h-[300px] w-full rounded-[8px] object-cover"
-            />
-
-            <h3
-              className="text-[26px] leading-[1.15]"
-              style={{
-                fontWeight: 700,
-                fontStyle: "italic",
-                color: "#1E3C8C",
-              }}
+        <div className="md:hidden px-5">
+          {tabs.map((tab: any, index: number) => (
+            <div
+              key={tab.id}
+              className="border-b border-[#E5E7EB]"
             >
-              {tab.heading}
-            </h3>
-
-            <p className="text-[16px] leading-[28px] text-[#555]">
-              {tab.description}
-            </p>
-
-            <div className="flex flex-col gap-4">
-              {tab.cards.map((card, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-4 rounded-[8px] bg-[#F6F9FF] p-5"
+              <button
+                onClick={() => setActiveTab(index)}
+                className="relative w-full px-6 py-5 text-left"
+                style={{
+                  background:
+                    activeTab === index
+                      ? "#F4F6FA"
+                      : "transparent",
+                }}
+              >
+                <h4
+                  className="mb-2 text-[32px] leading-[1.1]"
+                  style={{
+                    fontWeight: 700,
+                    fontStyle: "italic",
+                    letterSpacing: "-0.92px",
+                    color:
+                      activeTab === index
+                        ? "#1E3C8C"
+                        : "#525252",
+                  }}
                 >
-                  <div className="mt-[2px] text-[#1E3C8C]">
-                    {card.icon}
-                  </div>
+                  {tab.number}
+                </h4>
 
-                  <div>
-                    <p className="mb-2 text-[14px] md:text-[16px] font-medium text-[#1E3C8C]">
-                      {card.title}
+                <div
+                  className="font-dm text-[18px]"
+                  style={{
+                    fontWeight: 500,
+                    color:
+                      activeTab === index
+                        ? "#1E3C8C"
+                        : "#525252",
+                  }}
+                >
+                  {tab.title}
+                </div>
+
+                {activeTab === index && (
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-[5px]"
+                    style={{
+                      background:
+                        "linear-gradient(269.81deg, #3CAADF 45.65%, #F04123 84.54%, #FFD212 123.44%)",
+                    }}
+                  />
+                )}
+              </button>
+
+              {activeTab === index && (
+                <div className="py-6 px-2">
+                  <div className="flex flex-col gap-6">
+                    <Image
+                      src={tab.image}
+                      alt={tab.title}
+                      width={474}
+                      height={616}
+                      className="h-[300px] w-full rounded-[8px] object-cover"
+                    />
+
+                    <h3
+                      className="text-[26px] leading-[1.15]"
+                      style={{
+                        fontWeight: 700,
+                        fontStyle: "italic",
+                        color: "#1E3C8C",
+                      }}
+                    >
+                      {tab.heading}
+                    </h3>
+
+                    <p className="text-[16px] leading-[28px] text-[#555]">
+                      {tab.description}
                     </p>
 
-                    <p className="text-[12px] md:text-[14px] leading-[20px] text-[#666]">
-                      {card.text}
-                    </p>
+                    <div className="flex flex-col gap-4">
+                      {tab.cards.map((card: any, idx: number) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-4 rounded-[8px] bg-[#F6F9FF] p-5"
+                        >
+                          <div className="mt-[2px] text-[#1E3C8C]">
+                            {card.icon}
+                          </div>
+
+                          <div>
+                            <p className="mb-2 text-[14px] md:text-[16px] font-medium text-[#1E3C8C]">
+                              {card.title}
+                            </p>
+
+                            <p className="text-[12px] md:text-[14px] leading-[20px] text-[#666]">
+                              {card.text}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              ))}
+              )}
             </div>
-          </div>
+          ))}
         </div>
-      )}
-    </div>
-  ))}
-</div>
 
         {/* Tab Buttons Container */}
         <div className="w-full max-w-[1274px] mx-auto hidden md:block">
-          
 
-          
+
+
           {/* Tab buttons row */}
           <div className="flex flex-col sm:flex-row">
-            {tabs.map((tab, index) => (
+            {tabs.map((tab: any, index: number) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(index)}
@@ -261,7 +288,7 @@ export default function ExperienceSection() {
                     fontWeight: 700,
                     fontStyle: "italic",
                     letterSpacing: "-0.92px",
-  color: activeTab === index ? "#1E3C8C" : "#525252",
+                    color: activeTab === index ? "#1E3C8C" : "#525252",
                   }}
                 >
                   {tab.number}
@@ -270,7 +297,7 @@ export default function ExperienceSection() {
                   className="font-dm text-[18px] sm:text-[20px] lg:text-[24px] leading-[1.3] lg:leading-[33px]"
                   style={{
                     fontWeight: 500,
-  color: activeTab === index ? "#1E3C8C" : "#525252",
+                    color: activeTab === index ? "#1E3C8C" : "#525252",
                   }}
                 >
                   {tab.title}
@@ -331,7 +358,7 @@ export default function ExperienceSection() {
 
                 {/* 3 Cards Container */}
                 <div className="flex flex-col gap-4 sm:gap-6">
-                  {current.cards.map((card, idx) => (
+                  {current.cards.map((card: any, idx: number) => (
                     <div
                       key={idx}
                       className="flex w-full items-start gap-4 sm:gap-6 rounded-[8px] p-5 sm:p-6"

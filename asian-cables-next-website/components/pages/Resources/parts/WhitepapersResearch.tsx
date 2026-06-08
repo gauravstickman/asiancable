@@ -2,45 +2,61 @@
 
 import { ChevronRight, Download } from "lucide-react";
 
-const sample = [
-  {
-    title: "Future of Cable Technology in Renewable Energy",
-    desc: "Comprehensive analysis of cable requirements for solar and wind installations",
-    author: "Dr. Rajesh Kumar, CTO",
-    date: "March 2024",
-    href: "/assets/resources/whitepaper-1.pdf",
-  },
-  {
-    title: "Smart Grid Integration: Challenges and Solutions",
-    desc: "Technical insights on integrating advanced cables with smart grid infrastructure",
-    author: "Priya Sharma, Head of R&D",
-    date: "February 2024",
-    href: "/assets/resources/whitepaper-2.pdf",
-  },
-  {
-    title: "Sustainability in Cable Manufacturing",
-    desc: "Our approach to eco-friendly manufacturing and circular economy practices",
-    author: "Amit Patel, VP Operations",
-    date: "January 2024",
-    href: "/assets/resources/whitepaper-3.pdf",
-  },
-];
+export default function WhitepapersResearch({ data }: { data?: any }) {
+  const sample = data?.whitepapersList && data.whitepapersList.length > 0
+    ? data.whitepapersList.map((item: any) => ({
+        title: item.title,
+        desc: item.description,
+        author: item.author,
+        date: item.date,
+        href: item.downloadLink || "#",
+        icon: item.icon || "/assets/resources/Lightbulb.png",
+        downloadText: item.downloadText || "Download",
+      }))
+    : [
+        {
+          title: "Future of Cable Technology in Renewable Energy",
+          desc: "Comprehensive analysis of cable requirements for solar and wind installations",
+          author: "Dr. Rajesh Kumar, CTO",
+          date: "March 2024",
+          href: "/assets/resources/whitepaper-1.pdf",
+          icon: "/assets/resources/Lightbulb.png",
+          downloadText: "Download",
+        },
+        {
+          title: "Smart Grid Integration: Challenges and Solutions",
+          desc: "Technical insights on integrating advanced cables with smart grid infrastructure",
+          author: "Priya Sharma, Head of R&D",
+          date: "February 2024",
+          href: "/assets/resources/whitepaper-2.pdf",
+          icon: "/assets/resources/Lightbulb.png",
+          downloadText: "Download",
+        },
+        {
+          title: "Sustainability in Cable Manufacturing",
+          desc: "Our approach to eco-friendly manufacturing and circular economy practices",
+          author: "Amit Patel, VP Operations",
+          date: "January 2024",
+          href: "/assets/resources/whitepaper-3.pdf",
+          icon: "/assets/resources/Lightbulb.png",
+          downloadText: "Download",
+        },
+      ];
 
-export default function WhitepapersResearch() {
   return (
     <section className="reveal-section bg-white py-8 md:py-16">
       <div className="mx-auto max-w-[1320px] px-4">
         <div className="mb-8 flex items-center justify-between">
           <h2 className="font-[Magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
-            Whitepapers & Research
+            {data?.whitepapersTitle || "Whitepapers & Research"}
           </h2>
 
-          <button className="border-it-b flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
+          <a href={data?.whitepapersViewAllLink || "#"} className="border-it-b flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
             View All
             <span>
               <ChevronRight size={18} />
             </span>
-          </button>
+          </a>
         </div>
 
         <div className="flex w-[1270px] flex-col gap-[24px]">
@@ -51,7 +67,7 @@ export default function WhitepapersResearch() {
             >
               <div className="mr-6 mt-5">
                 <img
-                  src="/assets/resources/Lightbulb.png"
+                  src={item.icon}
                   alt="icon"
                   className="h-10 w-10 object-contain"
                 />
@@ -80,7 +96,7 @@ export default function WhitepapersResearch() {
                   className="flex items-center gap-2 text-center text-[14px] leading-[21px] font-semibold tracking-[0px] text-[#1E3C8C]"
                 >
                   <Download size={16} />
-                  <span>Download</span>
+                  <span>{item.downloadText}</span>
                 </a>
               </div>
             </div>

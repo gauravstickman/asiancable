@@ -51,6 +51,8 @@ app.use('/api/investor-page', require('./routes/investorPageRoutes'));
 app.use('/api/contact-page', require('./routes/contactPageRoutes'));
 app.use('/api/clientele-page', require('./routes/clientelePageRoutes'));
 app.use('/api/case-studies', require('./routes/caseStudyRoutes'));
+app.use('/api/rpg-group-page', require('./routes/rpgGroupPageRoutes'));
+app.use('/api/life-at-asian-cables', require('./routes/lifeAtAsianCablesRoutes'));
 app.get('/', (req, res) => {
     res.send('API is running...');
 });

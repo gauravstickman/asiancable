@@ -1,29 +1,42 @@
 import { Zap } from "lucide-react";
 
-const sustainabilityItems = [
-  "Committed to sustainable operations",
-  "Advancing the green economy and reducing our ecological footprint",
-  "Preserving and enhancing natural capital",
-  "Comprehensive environmental stewardship",
-  "Healthier planet & a sustainable future",
-];
 interface HeaderItem {
   id: number;
   name: string;
   title: string;
   description: string;
 }
-const headerItems: HeaderItem[] = [
-  {
-    id: 1,
-    name: "Our Sustainability",
-    title: "Outlook",
-    description:
-      "At Asian Cables, sustainability is an integral part of our manufacturing philosophy and business operations. Our facilities and processes are designed to deliver high-performance cable solutions while minimizing environmental impact and ensuring responsible resource management. As encapsulated in our sustainability purpose, “We transform lives by building sustainable world-class infrastructure.”",
-  },
-];
 
-function SustainabilityOutlook() {
+function SustainabilityOutlook({ data }: { data?: any }) {
+  const sustainabilityItems = data?.commitments?.length > 0 
+    ? data.commitments.map((c: any) => c.text)
+    : [
+        "Committed to sustainable operations",
+        "Advancing the green economy and reducing our ecological footprint",
+        "Preserving and enhancing natural capital",
+        "Comprehensive environmental stewardship",
+        "Healthier planet & a sustainable future",
+      ];
+
+  const headerTitle = data?.ourSustainabilityTitle || "Our Sustainability\nOutlook";
+  const titleParts = headerTitle.split('\n');
+  const name = titleParts[0] || "Our Sustainability";
+  const title = titleParts[1] || "Outlook";
+
+  const headerItems: HeaderItem[] = [
+    {
+      id: 1,
+      name: name,
+      title: title,
+      description: data?.ourSustainabilityDescription ||
+        "At Asian Cables, sustainability is an integral part of our manufacturing philosophy and business operations. Our facilities and processes are designed to deliver high-performance cable solutions while minimizing environmental impact and ensuring responsible resource management. As encapsulated in our sustainability purpose, “We transform lives by building sustainable world-class infrastructure.”",
+    },
+  ];
+
+  const image = data?.ourSustainabilityImage
+    ? (data.ourSustainabilityImage.startsWith('http') ? data.ourSustainabilityImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.ourSustainabilityImage}`)
+    : "/assets/sustainability/img-5.png";
+
   return (
     <section className="flex w-full items-center justify-center bg-[#f5f5f5] py-25">
       <div className="relative top-[-14px] left-[3px] flex w-[1267px] flex-col gap-4 bg-[#FFFFFF] p-4">
@@ -32,7 +45,7 @@ function SustainabilityOutlook() {
             {/* Left Side */}
             <div className="relative">
               <img
-                src="/assets/sustainability/img-5.png"
+                src={image}
                 alt="Sustainability Outlook"
                 className="W-[714PX] h-[726px] rounded-[3.91px] object-cover"
               />
@@ -54,7 +67,7 @@ function SustainabilityOutlook() {
 
             {/* Right Side */}
             <div className="h-[726px] w-[502px] bg-[#FFFFFF]">
-              {sustainabilityItems.map((item, index) => (
+              {sustainabilityItems.map((item: string, index: number) => (
                 <div
                   key={index}
                   className="flex h-[145.2px] w-[502.86px] flex-row items-center justify-start gap-[24px] border-b border-[#E1E2E5] bg-[#F8F8F8] p-[36px]"

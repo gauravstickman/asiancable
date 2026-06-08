@@ -247,16 +247,6 @@ const SustainabilitySettings = () => {
                                             onChange={e => handleChange('heroImage', e.target.value)}
                                             onChoose={() => openMediaPicker((url) => handleChange('heroImage', url))}
                                         />
-                                        {settings.heroImage && (
-                                            <div className="mt-3">
-                                                <img
-                                                    src={settings.heroImage.startsWith('http') ? settings.heroImage : `${import.meta.env.VITE_API_URL}${settings.heroImage}`}
-                                                    alt="Hero Desktop Preview"
-                                                    className="w-full h-32 rounded-xl border border-slate-200 object-cover"
-                                                    onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1920x1080?text=No+Image'; }}
-                                                />
-                                            </div>
-                                        )}
                                     </div>
                                     <div>
                                         <ImageInput
@@ -265,16 +255,6 @@ const SustainabilitySettings = () => {
                                             onChange={e => handleChange('heroMobileImage', e.target.value)}
                                             onChoose={() => openMediaPicker((url) => handleChange('heroMobileImage', url))}
                                         />
-                                        {settings.heroMobileImage && (
-                                            <div className="mt-3">
-                                                <img
-                                                    src={settings.heroMobileImage.startsWith('http') ? settings.heroMobileImage : `${import.meta.env.VITE_API_URL}${settings.heroMobileImage}`}
-                                                    alt="Hero Mobile Preview"
-                                                    className="w-32 h-48 rounded-xl border border-slate-200 object-cover mx-auto"
-                                                    onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/768x1024?text=No+Image'; }}
-                                                />
-                                            </div>
-                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -353,16 +333,6 @@ const SustainabilitySettings = () => {
                                         onChange={e => handleChange('ourSustainabilityImage', e.target.value)}
                                         onChoose={() => openMediaPicker((url) => handleChange('ourSustainabilityImage', url))}
                                     />
-                                    {settings.ourSustainabilityImage && (
-                                        <div className="mt-3">
-                                            <img
-                                                src={settings.ourSustainabilityImage.startsWith('http') ? settings.ourSustainabilityImage : `${import.meta.env.VITE_API_URL}${settings.ourSustainabilityImage}`}
-                                                alt="Section Preview"
-                                                className="w-full max-w-md h-48 rounded-xl border border-slate-200 object-cover"
-                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/800x400?text=No+Image'; }}
-                                            />
-                                        </div>
-                                    )}
                                 </div>
                             </div>
 
@@ -389,16 +359,6 @@ const SustainabilitySettings = () => {
                                                         onChange={e => handleArrayChange('commitments', idx, 'icon', e.target.value)}
                                                         onChoose={() => openMediaPicker((url) => handleArrayChange('commitments', idx, 'icon', url))}
                                                     />
-                                                    {item.icon && (
-                                                        <div className="mt-3">
-                                                            <img
-                                                                src={item.icon.startsWith('http') ? item.icon : `${import.meta.env.VITE_API_URL}${item.icon}`}
-                                                                alt="Icon Preview"
-                                                                className="h-12 w-12 rounded object-contain bg-white border border-slate-200 p-2"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/48x48?text=No+Image'; }}
-                                                            />
-                                                        </div>
-                                                    )}
                                                 </div>
                                                 
                                                 <div className="space-y-4">
@@ -466,16 +426,6 @@ const SustainabilitySettings = () => {
                                                         onChange={e => handleArrayChange('certifications', idx, 'image', e.target.value)}
                                                         onChoose={() => openMediaPicker((url) => handleArrayChange('certifications', idx, 'image', url))}
                                                     />
-                                                    {cert.image && (
-                                                        <div className="mt-3 flex justify-center">
-                                                            <img
-                                                                src={cert.image.startsWith('http') ? cert.image : `${import.meta.env.VITE_API_URL}${cert.image}`}
-                                                                alt="Badge Preview"
-                                                                className="h-20 rounded object-contain bg-white border border-slate-200 p-2"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/80x80?text=No+Image'; }}
-                                                            />
-                                                        </div>
-                                                    )}
                                                 </div>
                                                 
                                                 <div>
@@ -552,16 +502,6 @@ const SustainabilitySettings = () => {
                                                         onChange={e => handleArrayChange('highlights', idx, 'image', e.target.value)}
                                                         onChoose={() => openMediaPicker((url) => handleArrayChange('highlights', idx, 'image', url))}
                                                     />
-                                                    {item.image && (
-                                                        <div className="mt-3">
-                                                            <img
-                                                                src={item.image.startsWith('http') ? item.image : `${import.meta.env.VITE_API_URL}${item.image}`}
-                                                                alt="Background Preview"
-                                                                className="h-32 w-full rounded object-cover border border-slate-200"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x300?text=No+Image'; }}
-                                                            />
-                                                        </div>
-                                                    )}
                                                 </div>
                                                 
                                                 <div>

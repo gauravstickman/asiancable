@@ -6,14 +6,14 @@ import CertificationsAccreditations from "./parts/CertificationsAccreditations";
 import SustainabilityOutlook from "./parts/SustainabilityOutlook";
 import SustainabilityHighlights from "./parts/SustainabilityHighlights";
 
-function Sustainability() {
+function Sustainability({ data }: { data?: any }) {
   return (
     <div>
       <WebsiteNavbar />
-      <SustainabilityHeader />
-      <SustainabilityOutlook/>
-      <CertificationsAccreditations />
-      <SustainabilityHighlights/>
+      <SustainabilityHeader data={data} />
+      <SustainabilityOutlook data={data} />
+      <CertificationsAccreditations data={data} />
+      <SustainabilityHighlights data={data} />
       <Footer />
     </div>
   ); 

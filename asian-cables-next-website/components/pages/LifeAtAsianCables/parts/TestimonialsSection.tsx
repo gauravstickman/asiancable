@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
-const testimonials = [
+
+const staticTestimonials = [
   {
     name: "Poonam Rankawat",
     role: "Manager – Design",
@@ -27,23 +28,31 @@ const testimonials = [
   },
 ];
 
-// 3 unique testimonials -> 6 base cards -> duplicated to 12 for the loop.
-// The track's second half is an exact copy of the first, so translateX(-50%)
-// lands precisely on the copy: no jump, flicker, or reset. The 6-card loop
-// unit is wider than any viewport, so no empty space appears even on ultrawide.
-const loopCards = [
-  ...testimonials,
-  ...testimonials,
-  ...testimonials,
-  ...testimonials,
-];
+export default function TestimonialsSection({ data }: { data?: any }) {
+  const testimonials = data?.testimonials?.length > 0 ? data.testimonials.map((t: any) => ({
+    name: t.name,
+    role: t.role,
+    company: "Asian Cables", // Fallback to maintain design
+    text: t.quote,
+    tags: ["Inspired", "Supported", "Growing", "Energized", "Proud"], // Fallback to maintain design
+  })) : staticTestimonials;
 
-const mobileTestimonials =
-  testimonials.length <= 4
-    ? [...testimonials, ...testimonials, ...testimonials]
-    : testimonials;
+  // 3 unique testimonials -> 6 base cards -> duplicated to 12 for the loop.
+  // The track's second half is an exact copy of the first, so translateX(-50%)
+  // lands precisely on the copy: no jump, flicker, or reset. The 6-card loop
+  // unit is wider than any viewport, so no empty space appears even on ultrawide.
+  const loopCards = [
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+  ];
 
-export default function TestimonialsSection() {
+  const mobileTestimonials =
+    testimonials.length <= 4
+      ? [...testimonials, ...testimonials, ...testimonials]
+      : testimonials;
+
   return (
     <section className="bg-[#21409A] py-[40px] overflow-hidden">
       <div className="max-w-[1280px] mx-auto">
@@ -63,7 +72,7 @@ export default function TestimonialsSection() {
             "
             
           >
-            Hear From Our People
+            {data?.testimonialsTitle || "Hear From Our People"}
           </h2>
 
           <p

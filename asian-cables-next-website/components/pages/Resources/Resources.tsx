@@ -6,19 +6,19 @@ import CableSelectionTool from "./parts/CableSelectionTool";
 import ProductResource from "./parts/ProductResource";
 import CaseStudies from "./parts/CaseStudies";
 
-function Resources() {
+function Resources({ data }: { data?: any }) {
   return (
     <div>
       <WebsiteNavbar />
-      <ResourcesHeader/>
+      <ResourcesHeader data={data} />
        <div className="relative h-[10px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-l from-[#3CAADF] via-[#F04123] to-[#FFD212]" />
         <div className="absolute inset-0 bg-gradient-to-l from-[#3CAADF] via-[#F04123] to-[#FFD212] opacity-40 blur-[12px]" />
       </div>
-      <CableSelectionTool/>
-      <ProductResource/>   
-      <WhitepapersResearch/>
-      <CaseStudies/>
+      <CableSelectionTool data={data} />
+      <ProductResource data={data} />   
+      <WhitepapersResearch data={data} />
+      <CaseStudies data={data} />
       <Footer />
     </div>
   );

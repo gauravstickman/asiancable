@@ -2,42 +2,53 @@
 
 import { useState } from "react";
 
-const units = [
-  {
-    id: 1,
-    name: "Unit 1, Vadodara",
-  },
-  {
-    id: 2,
-    name: "Unit 2, Mysuru",
-  },
-];
+export default function SpecialisedProductionFacilities({ data }: { data?: any }) {
+  const units = data?.productionUnits?.length > 0 ? data.productionUnits.map((u: any, idx: number) => ({
+    id: idx + 1,
+    name: u.name,
+    image: u.image ? (u.image.startsWith('http') ? u.image : `${process.env.NEXT_PUBLIC_BASE_URL}${u.image}`) : '/assets/manufacturing/Preview Image.png'
+  })) : [
+    {
+      id: 1,
+      name: "Unit 1, Vadodara",
+      image: "/assets/manufacturing/Preview Image.png"
+    },
+    {
+      id: 2,
+      name: "Unit 2, Mysuru",
+      image: "/assets/manufacturing/Preview Image.png"
+    },
+  ];
 
-export default function SpecialisedProductionFacilities() {
-  const [activeUnit, setActiveUnit] = useState(2);
+  const [activeUnit, setActiveUnit] = useState(units[0]?.id || 1);
+  const activeImage = units.find((u: any) => u.id === activeUnit)?.image || '/assets/manufacturing/Preview Image.png';
 
   return (
     <section className="w-full overflow-hidden bg-white">
       <div className="mx-auto w-[100%] md:px-9">
         {/* Heading */}
         <div className="md:pt-12 pt-[1] text-center">
+          {/* Desktop Title & Subtitle */}
           <h2 className="hidden md:block font-[magistral] text-[46px] leading-[61.6px] tracking-[-0.92px] font-bold italic text-center text-[#1E3C8C]">
-            Specialised Production Facilities
+            {data?.productionTitle || "Specialised Production Facilities"}
           </h2>
+          <p className="hidden md:block text-[20px] leading-[106%] md:text-[#525252] text-[#738ABE] md:text-[18px] md:leading-[30.6px] font-normal text-center mt-2">
+            {data?.productionSubtitle || "2 dedicated state-of-the-art production units."}
+          </p>
 
-           <h2 className="md:hidden mb-2 font-[magistral] text-[32px] leading-[100%] tracking-[-0.92px] font-bold italic text-center text-[#1E3C8C]">
-            Production Units
+          {/* Mobile Title & Subtitle */}
+          <h2 className="md:hidden mb-2 font-[magistral] text-[32px] leading-[100%] tracking-[-0.92px] font-bold italic text-center text-[#1E3C8C]">
+            {data?.productionTitleMobile || "Production Units"}
           </h2>
-
-          <p className="text-[20px] leading-[106%] md:text-[#525252] text-[#738ABE] md:text-[18px] md:leading-[30.6px] font-normal text-center">
-            2 dedicated state-of-the-art production units.
+          <p className="md:hidden text-[20px] leading-[106%] md:text-[#525252] text-[#738ABE] md:text-[18px] md:leading-[30.6px] font-normal text-center">
+            {data?.productionSubtitleMobile || "2 dedicated state-of-the-art production units."}
           </p>
         </div>
 
         {/* Tabs */}
         <div className="mt-8 flex justify-center">
-          <div className="flex h-[52px] items-center rounded-[6px] bg-[#F3F3F3] gap-3 md:gap-4 px-[10px] py-[10px]">
-            {units.map((unit) => (
+          <div className="flex h-[52px] items-center rounded-[6px] bg-[#F3F3F3] gap-3 md:gap-4 px-[10px] py-[10px] flex-wrap">
+            {units.map((unit: any) => (
               <button
                 key={unit.id}
                 onClick={() => setActiveUnit(unit.id)}
@@ -54,12 +65,12 @@ export default function SpecialisedProductionFacilities() {
         </div>
 
         {/* Background Image Section */}
-        <div className="relative h-[450px ] md:h-[700px] w-full">
+        <div className="relative h-[450px ] md:h-[700px] w-full mt-4">
           {/* Background Image */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
             style={{
-              backgroundImage: "url('/assets/manufacturing/Preview Image.png')",
+              backgroundImage: `url('${activeImage}')`,
             }}
           />
 

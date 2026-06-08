@@ -4,7 +4,7 @@ import { Dot } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-function ManufacturingHeader() {
+function ManufacturingHeader({ data }: { data?: any }) {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "The Company", href: "/company" },
@@ -15,9 +15,14 @@ function ManufacturingHeader() {
     <section className="relative min-h-[630px] overflow-hidden bg-white">
       {/* Background Image */}
       <img
-        src="/assets/rpggroup/rpgheaderIcon.png"
+        src={data?.heroImage ? (data.heroImage.startsWith('http') ? data.heroImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.heroImage}`) : "/assets/rpggroup/rpgheaderIcon.png"}
         alt="RPG Group"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-cover object-center hidden md:block"
+      />
+      <img
+        src={data?.heroMobileImage ? (data.heroMobileImage.startsWith('http') ? data.heroMobileImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.heroMobileImage}`) : (data?.heroImage ? (data.heroImage.startsWith('http') ? data.heroImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.heroImage}`) : "/assets/rpggroup/rpgheaderIcon.png")}
+        alt="RPG Group"
+        className="absolute inset-0 h-full w-full object-cover object-center block md:hidden"
       />
 
       {/* White Fade Overlay */}
@@ -55,22 +60,15 @@ function ManufacturingHeader() {
           </nav>
 
           {/* Heading */}
-          <h1 className="md:block hidden md:mt-0 mt-2 font-[Magistral] text-[36px] leading-[140%] md:text-[64px] md:leading-[68px] tracking-[-1.44px] font-bold italic text-[#1E3C8C]">
-            RPG GROUP
-            <br />
-            Powered by Passion. Driven
-            <br />
-            by Ethics.
+          <h1 className="md:block hidden md:mt-0 mt-2 font-[Magistral] text-[36px] leading-[140%] md:text-[64px] md:leading-[68px] tracking-[-1.44px] font-bold italic text-[#1E3C8C]" dangerouslySetInnerHTML={{ __html: data?.heroTitle ? data.heroTitle.replace(/\n/g, '<br/>') : 'RPG GROUP<br/>Powered by Passion. Driven<br/>by Ethics.' }}>
           </h1>
 
-          <h1 className="md:hidden md:mt-0 mt-2 font-[Magistral] text-[36px] leading-[140%] md:text-[64px] md:leading-[68px] tracking-[-1.44px] font-bold italic text-[#1E3C8C]">
-            RPG GROUP Powered by Passion. Driven by Ethics.
+          <h1 className="md:hidden md:mt-0 mt-2 font-[Magistral] text-[36px] leading-[140%] md:text-[64px] md:leading-[68px] tracking-[-1.44px] font-bold italic text-[#1E3C8C]" dangerouslySetInnerHTML={{ __html: data?.heroTitle ? data.heroTitle.replace(/\n/g, ' ') : 'RPG GROUP Powered by Passion. Driven by Ethics.' }}>
           </h1>
 
           {/* Subtitle */}
           <p className="mt-[27px] max-w-[550px] font-['Work_Sans'] font-normal text-[18px] md:text-[20px] leading-[31px] tracking-[0px] text-[#767676]">
-            For nearly four decades, Asian Cables has been at the forefront of
-            cable manufacturing excellence
+            {data?.heroDescription || "For nearly four decades, Asian Cables has been at the forefront of cable manufacturing excellence"}
           </p>
         </div>
       </div>

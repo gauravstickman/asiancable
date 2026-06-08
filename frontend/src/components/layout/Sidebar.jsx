@@ -47,6 +47,8 @@ const Sidebar = ({ isOpen, onClose }) => {
                 { path: '/admin/manufacturing-page', name: 'Manufacturing', icon: Factory },
                 { path: '/admin/investor-page', name: 'Investors', icon: TrendingUp },
                 { path: '/admin/contact-page', name: 'Contact Us', icon: MessageSquare },
+                { path: '/admin/rpg-group', name: 'RPG Group', icon: Info },
+                { path: '/admin/life-at-asian-cables', name: 'Life at Asian Cables', icon: Briefcase },
                 { path: '/admin/clientele-page', name: 'Clientèle', icon: Users },
                 { path: '/admin/case-studies', name: 'Case Studies', icon: Briefcase },
                 // { path: '/admin/categories', name: 'Categories', icon: Layers },

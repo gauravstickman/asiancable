@@ -35,6 +35,13 @@ const qualityItemSchema = new mongoose.Schema({
     file: { type: String, default: '' }
 });
 
+const infraSlideSchema = new mongoose.Schema({
+    title: { type: String, default: '' },
+    description: { type: String, default: '' },
+    image: { type: String, default: '' },
+    highlights: [infrastructureHighlightSchema]
+});
+
 const manufacturingPageSchema = new mongoose.Schema({
     // Hero Section
     heroTitle: { type: String, default: 'State-of-the-Art Manufacturing' },
@@ -46,14 +53,13 @@ const manufacturingPageSchema = new mongoose.Schema({
     // Infrastructure Highlights Section
     infraTitle: { type: String, default: 'Infrastructure Highlights' },
     infraBadgeText: { type: String, default: 'Zero Accidents' },
-    infraImage: { type: String, default: '' },
-    infraDescription: { type: String, default: 'Manufacturing is distributed across two specialised facilities in Vadodara and Mysuru, each aligned to specific cable categories and voltage ranges.' },
-    infraReadMoreLink: { type: String, default: '/manufacturing' },
-    infraHighlights: [infrastructureHighlightSchema],
+    infraSlides: [infraSlideSchema],
 
     // Production Units Section
-    productionTitle: { type: String, default: 'Production Units' },
-    productionSubtitle: { type: String, default: '12 state-of-the-art facilities strategically located across India' },
+    productionTitle: { type: String, default: 'Specialised Production Facilities' },
+    productionTitleMobile: { type: String, default: 'Production Units' },
+    productionSubtitle: { type: String, default: '2 dedicated state-of-the-art production units.' },
+    productionSubtitleMobile: { type: String, default: '2 dedicated state-of-the-art production units.' },
     productionUnits: [productionUnitSchema],
 
     // Built for Global Infrastructure Standards Section

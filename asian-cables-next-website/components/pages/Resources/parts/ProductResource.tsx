@@ -3,7 +3,7 @@
 import { ChevronRight, DownloadIcon } from "lucide-react";
 import React from "react";
 
-export default function ProductResource() {
+export default function ProductResource({ data }: { data?: any }) {
   const resources = [
     {
       title: "Product Catalogue",

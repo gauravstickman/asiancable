@@ -4,7 +4,7 @@
 import { MapPinIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const clients = [
+const defaultClients = [
   {
     id: 1,
     name: "Saudi Electric Company",
@@ -108,9 +108,9 @@ const clients = [
   },
 ];
 
-export default function InternationalClientsGrid() {
+export default function InternationalClientsGrid({ data }: { data?: any }) {
   const [selectedRegion, setSelectedRegion] = useState("international");
-  const [selectedIndustry, setSelectedIndustry] = useState("all");
+  const [selectedIndustry, setSelectedIndustry] = useState("all-industries");
 
   useEffect(() => {
     function handler(e: Event) {
@@ -124,11 +124,23 @@ export default function InternationalClientsGrid() {
     return () => window.removeEventListener("client-filter-change", handler as EventListener);
   }, []);
 
-  const filteredClients = clients.filter((client) => {
+  const clientsList = data?.clients && data.clients.length > 0 
+    ? data.clients.map((c: any, index: number) => ({
+        id: c._id || index,
+        name: c.name,
+        tag: c.industry,
+        country: c.location,
+        icon: c.logo || "/assets/clientele/powerIcons.png",
+        region: c.region?.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+        description: c.description || "",
+      }))
+    : defaultClients;
+
+  const filteredClients = clientsList.filter((client: any) => {
     if (selectedRegion && client.region !== selectedRegion) return false;
-    if (selectedIndustry && selectedIndustry !== "all") {
-      const tagNorm = client.tag.toLowerCase();
-      if (tagNorm.indexOf(selectedIndustry) === -1) return false;
+    if (selectedIndustry && selectedIndustry !== "all-industries") {
+      const tagNorm = client.tag?.toLowerCase().replace(/[^a-z0-9]/g, '-');
+      if (!tagNorm || tagNorm.indexOf(selectedIndustry) === -1) return false;
     }
     return true;
   });
@@ -147,7 +159,7 @@ export default function InternationalClientsGrid() {
 
       <div className="relative z-10 mx-auto w-[92%] max-w-[1274px]">
         <div className="grid grid-cols-2 gap-5 md:gap-7 md:grid-cols-2 xl:grid-cols-3">
-          {filteredClients.map((client) => (
+          {filteredClients.map((client: any) => (
             <div
               key={client.id}
               className="group relative h-[170px] md:h-[247px] w-full min-w-0 overflow-hidden rounded-[6px] border border-[#F7F7F7] bg-[#F7F7F7] px-2 py-2 md:px-5 md:py-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#dbe2f2] hover:bg-white hover:shadow-[0_10px_30px_rgba(22,59,140,0.08)]"

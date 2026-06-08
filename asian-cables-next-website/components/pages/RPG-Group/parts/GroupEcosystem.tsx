@@ -1,30 +1,33 @@
 "use client";
 
-const cards = [
-  {
-    icon: "/assets/rpggroup/img-1.png",
-    description:
-      "A pharmaceutical company with a strong portfolio in branded formulations, generics, and synthetic APIs.",
-  },
-  {
-    icon: "/assets/rpggroup/img-2.png",
-    description:
-      "A leading cable manufacturing company delivering high-performance power, telecom, and industrial cable solutions.",
-  },
-  {
-    icon: "/assets/rpggroup/img-3.png",
-    description:
-      "A specialist provider of engineering products and services for power, oil & gas, and industrial applications.",
-  },
-];
+export default function GroupEcosystem({ data }: { data?: any }) {
+  const cards = data?.ecosystemCards?.length > 0 ? data.ecosystemCards.map((card: any) => ({
+    icon: card.image ? (card.image.startsWith('http') ? card.image : `${process.env.NEXT_PUBLIC_BASE_URL}${card.image}`) : "/assets/rpggroup/img-1.png",
+    description: card.title
+  })) : [
+    {
+      icon: "/assets/rpggroup/img-1.png",
+      description:
+        "A pharmaceutical company with a strong portfolio in branded formulations, generics, and synthetic APIs.",
+    },
+    {
+      icon: "/assets/rpggroup/img-2.png",
+      description:
+        "A leading cable manufacturing company delivering high-performance power, telecom, and industrial cable solutions.",
+    },
+    {
+      icon: "/assets/rpggroup/img-3.png",
+      description:
+        "A specialist provider of engineering products and services for power, oil & gas, and industrial applications.",
+    },
+  ];
 
-export default function GroupEcosystem() {
   return (
     <section className="overflow-hidden py-0">
       {/* HEADER */}
       <div className="mx-auto max-w-7xl px-6 text-center">
         <h2 className="text-hero text-center font-[magistral] text-[24px] leading-[125%] md:text-[46px] font-bold md:tracking-[0px] text-[#1E3C8C] italic">
-          The RPG Group Ecosystem
+          {data?.ecosystemTitle || "The RPG Group Ecosystem"}
         </h2>
         <p className="md:mt-0 mt-3 dm-font text-body text-center text-[16px] leading-[150%] md:text-[19.77px] font-normal md:tracking-[0px] text-[#525252]">
           A diversified conglomerate with leading brands across multiple

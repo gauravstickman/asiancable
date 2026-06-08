@@ -3,7 +3,11 @@
 import Image from "next/image";
 import { Play } from "lucide-react";
 
-export default function DayInLifeSection() {
+export default function DayInLifeSection({ data }: { data?: any }) {
+  const imageUrl = data?.dayInLifeImage?.startsWith('http') 
+    ? data.dayInLifeImage 
+    : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${data?.dayInLifeImage || '/assets/Lifeofasiancables/dayinlife.png'}`;
+
   return (
     <section className="bg-white py-12 md:py-[80px]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px]">
@@ -14,7 +18,7 @@ export default function DayInLifeSection() {
           className="text-[#21409A] text-[30px] sm:text-[36px] lg:text-[44px] font-bold italic mb-8 lg:mb-12"
           
         >
-          A Day in the Life
+          {data?.dayInLifeTitle || "A Day in the Life"}
         </h2>
 
         {/* Content */}
@@ -24,8 +28,8 @@ export default function DayInLifeSection() {
           <div className="relative">
 
             <Image
-              src="/assets/Lifeofasiancables/dayinlife.png"
-              alt="Day In Life"
+              src={imageUrl}
+              alt={data?.dayInLifeTitle || "Day In Life"}
               width={900}
               height={550}
               className="rounded-[10px] w-full object-cover"
@@ -65,11 +69,7 @@ export default function DayInLifeSection() {
           {/* Right Text */}
           <div className="max-w-full lg:max-w-[420px]">
             <p className="text-[#555] text-[16px] md:text-[18px] leading-[30px] md:leading-[30.6px]">
-              In this section, we follow a junior engineer through
-              a full working day at Asian Cables — from morning
-              meetings and shop floor time to the everyday
-              moments of collaboration, problem-solving, and
-              progress that define life here.
+              {data?.dayInLifeDescription || "In this section, we follow a junior engineer through a full working day at Asian Cables — from morning meetings and shop floor time to the everyday moments of collaboration, problem-solving, and progress that define life here."}
             </p>
           </div>
 

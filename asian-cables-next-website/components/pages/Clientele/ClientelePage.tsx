@@ -4,13 +4,13 @@ import InternationalClientsGrid from "./parts/InternationalClientsGrid";
 import IndustryFilter from "./parts/IndustryFilter";
 import ClienteleHeader from "./parts/ClienteleHeader";
 
-function ClientelePage() {
+function ClientelePage({ data }: { data?: any }) {
   return (
     <div>
       <WebsiteNavbar />
-      <ClienteleHeader />
-      <IndustryFilter/>
-      <InternationalClientsGrid/>
+      <ClienteleHeader data={data} />
+      <IndustryFilter data={data} />
+      <InternationalClientsGrid data={data} />
       <Footer />
     </div>
   );

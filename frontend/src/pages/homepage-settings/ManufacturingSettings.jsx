@@ -70,19 +70,18 @@ const ManufacturingSettings = () => {
                 toast.error('Infrastructure: Section Title is required');
                 return false;
             }
-            if (!settings.infraImage?.trim()) {
-                toast.error('Infrastructure: Section Image is required');
-                return false;
-            }
-            if (!settings.infraDescription?.trim()) {
-                toast.error('Infrastructure: Description is required');
-                return false;
-            }
-            for (let i = 0; i < (settings.infraHighlights || []).length; i++) {
-                const h = settings.infraHighlights[i];
-                if (!h.title?.trim() || !h.subtitle?.trim()) {
-                    toast.error(`Infrastructure: Highlight #${i + 1} must have both title and subtitle`);
+            for (let i = 0; i < (settings.infraSlides || []).length; i++) {
+                const s = settings.infraSlides[i];
+                if (!s.title?.trim() || !s.description?.trim() || !s.image?.trim()) {
+                    toast.error(`Infrastructure: Slide #${i + 1} must have title, description, and image`);
                     return false;
+                }
+                for (let j = 0; j < (s.highlights || []).length; j++) {
+                    const h = s.highlights[j];
+                    if (!h.title?.trim() || !h.subtitle?.trim()) {
+                        toast.error(`Infrastructure: Slide #${i + 1} Highlight #${j + 1} must have both title and subtitle`);
+                        return false;
+                    }
                 }
             }
         }
@@ -187,12 +186,42 @@ const ManufacturingSettings = () => {
         handleChange(field, newArray);
     };
 
+    const handleNestedArrayChange = (field, slideIndex, nestedField, itemIndex, key, value) => {
+        const newArray = [...(settings[field] || [])];
+        const slide = { ...newArray[slideIndex] };
+        const nestedArray = [...(slide[nestedField] || [])];
+        nestedArray[itemIndex] = { ...nestedArray[itemIndex], [key]: value };
+        slide[nestedField] = nestedArray;
+        newArray[slideIndex] = slide;
+        handleChange(field, newArray);
+    };
+
+    const handleAddToNestedArray = (field, slideIndex, nestedField, defaultObj) => {
+        const newArray = [...(settings[field] || [])];
+        const slide = { ...newArray[slideIndex] };
+        const nestedArray = [...(slide[nestedField] || [])];
+        nestedArray.push(defaultObj);
+        slide[nestedField] = nestedArray;
+        newArray[slideIndex] = slide;
+        handleChange(field, newArray);
+    };
+
+    const handleRemoveFromNestedArray = (field, slideIndex, nestedField, itemIndex) => {
+        const newArray = [...(settings[field] || [])];
+        const slide = { ...newArray[slideIndex] };
+        const nestedArray = [...(slide[nestedField] || [])];
+        nestedArray.splice(itemIndex, 1);
+        slide[nestedField] = nestedArray;
+        newArray[slideIndex] = slide;
+        handleChange(field, newArray);
+    };
+
     const handleAddToArray = (field, defaultObj) => {
         handleChange(field, [...(settings[field] || []), defaultObj]);
     };
 
     const handleRemoveFromArray = (field, index) => {
-        const newArray = [...settings[field]];
+        const newArray = [...(settings[field] || [])];
         newArray.splice(index, 1);
         handleChange(field, newArray);
     };
@@ -421,100 +450,134 @@ const ManufacturingSettings = () => {
                                 />
                             </div>
 
-                            {/* Image */}
-                            <div className="mb-6 pb-6 border-b border-slate-100">
-                                <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
-                                    Section Image
-                                </label>
-                                <div className="flex gap-2 items-center">
-                                    <input
-                                        type="text"
-                                        value={settings.infraImage || ''}
-                                        onChange={e => handleChange('infraImage', e.target.value)}
-                                        placeholder="Image URL or choose from media library"
-                                        className="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none text-sm"
-                                    />
-                                    <button
-                                        onClick={() => openMediaPicker((url) => handleChange('infraImage', url))}
-                                        className="px-4 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 hover:text-blue-600 transition-colors font-medium text-sm flex items-center gap-2 whitespace-nowrap"
-                                    >
-                                        <Image size={16} /> Choose
-                                    </button>
-                                </div>
-                                {settings.infraImage && (
-                                    <div className="mt-3">
-                                        <img
-                                            src={settings.infraImage.startsWith('http') ? settings.infraImage : `${import.meta.env.VITE_API_URL}${settings.infraImage}`}
-                                            alt="Infrastructure Preview"
-                                            className="h-32 rounded-lg border border-slate-200 object-cover bg-slate-50"
-                                            onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x128?text=No+Image'; }}
-                                        />
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Description + Read More */}
-                            <div className="grid grid-cols-1 gap-4 mb-6 pb-6 border-b border-slate-100">
-                                <FormTextarea
-                                    label="Description"
-                                    rows={3}
-                                    placeholder="e.g. Manufacturing is distributed across two specialised facilities..."
-                                    value={settings.infraDescription || ''}
-                                    onChange={e => handleChange('infraDescription', e.target.value)}
-                                />
-                                <FormInput
-                                    label="Read More Link"
-                                    placeholder="e.g. /manufacturing"
-                                    value={settings.infraReadMoreLink || ''}
-                                    onChange={e => handleChange('infraReadMoreLink', e.target.value)}
-                                />
-                            </div>
-
-                            {/* Highlights List */}
+                            {/* Image, Description, and Highlights are now inside Slides */}
                             <div className="flex justify-between items-center mb-4">
                                 <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
                                     <BarChart2 size={16} className="text-blue-500" />
-                                    Facility Highlights
+                                    Infrastructure Slides
                                 </label>
                                 <button
-                                    onClick={() => handleAddToArray('infraHighlights', { title: '', subtitle: '' })}
+                                    onClick={() => handleAddToArray('infraSlides', { title: '', description: '', image: '', highlights: [] })}
                                     className="text-blue-600 text-sm font-medium flex items-center gap-1 hover:text-blue-700 px-3 py-1.5 border border-blue-200 bg-blue-50 rounded-lg"
                                 >
-                                    <Plus size={16} /> Add Highlight
+                                    <Plus size={16} /> Add Slide
                                 </button>
                             </div>
 
-                            <div className="space-y-3">
-                                {(settings.infraHighlights || []).map((item, idx) => (
-                                    <div key={idx} className="flex gap-2 items-center bg-slate-50 p-3 rounded-lg border border-slate-200">
-                                        <FormInput
-                                            label="Title"
-                                            placeholder="e.g. EHV / HV / Railway"
-                                            value={item.title || ''}
-                                            onChange={e => handleArrayChange('infraHighlights', idx, 'title', e.target.value)}
-                                        />
-                                        <FormInput
-                                            label="Subtitle"
-                                            placeholder="e.g. Vadodara Facility Focus"
-                                            value={item.subtitle || ''}
-                                            onChange={e => handleArrayChange('infraHighlights', idx, 'subtitle', e.target.value)}
-                                        />
+                            <div className="space-y-6">
+                                {(settings.infraSlides || []).map((slide, slideIdx) => (
+                                    <div key={slideIdx} className="bg-slate-50 p-5 rounded-xl border border-slate-200 relative">
                                         <button
-                                            onClick={() => handleRemoveFromArray('infraHighlights', idx)}
-                                            className="text-red-400 hover:text-red-600 p-2 mt-5 rounded-lg hover:bg-red-50 transition-colors"
+                                            onClick={() => handleRemoveFromArray('infraSlides', slideIdx)}
+                                            className="absolute top-4 right-4 text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-colors"
                                         >
                                             <Trash2 size={18} />
                                         </button>
+                                        <p className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">
+                                            Slide #{slideIdx + 1}
+                                        </p>
+                                        
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div className="md:col-span-2">
+                                                <FormInput
+                                                    label="Slide Title"
+                                                    placeholder="e.g. Integrated Manufacturing Systems"
+                                                    value={slide.title || ''}
+                                                    onChange={e => handleArrayChange('infraSlides', slideIdx, 'title', e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="md:col-span-2">
+                                                <FormTextarea
+                                                    label="Slide Description"
+                                                    rows={3}
+                                                    placeholder="Description..."
+                                                    value={slide.description || ''}
+                                                    onChange={e => handleArrayChange('infraSlides', slideIdx, 'description', e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="md:col-span-2">
+                                                <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+                                                    Slide Image
+                                                </label>
+                                                <div className="flex gap-2 items-center">
+                                                    <input
+                                                        type="text"
+                                                        value={slide.image || ''}
+                                                        onChange={e => handleArrayChange('infraSlides', slideIdx, 'image', e.target.value)}
+                                                        placeholder="Image URL or choose from media library"
+                                                        className="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none text-sm"
+                                                    />
+                                                    <button
+                                                        onClick={() => openMediaPicker((url) => handleArrayChange('infraSlides', slideIdx, 'image', url))}
+                                                        className="px-4 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 hover:text-blue-600 transition-colors font-medium text-sm flex items-center gap-2 whitespace-nowrap"
+                                                    >
+                                                        <Image size={16} /> Choose
+                                                    </button>
+                                                </div>
+                                                {slide.image && (
+                                                    <div className="mt-3">
+                                                        <img
+                                                            src={slide.image.startsWith('http') ? slide.image : `${import.meta.env.VITE_API_URL}${slide.image}`}
+                                                            alt="Slide Preview"
+                                                            className="h-28 rounded-lg border border-slate-200 object-cover bg-white"
+                                                            onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x128?text=No+Image'; }}
+                                                        />
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Nested Highlights for this Slide */}
+                                        <div className="bg-white p-4 rounded-lg border border-slate-200">
+                                            <div className="flex justify-between items-center mb-3">
+                                                <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">
+                                                    Facility Highlights
+                                                </label>
+                                                <button
+                                                    onClick={() => handleAddToNestedArray('infraSlides', slideIdx, 'highlights', { title: '', subtitle: '' })}
+                                                    className="text-blue-600 text-xs font-medium flex items-center gap-1 hover:text-blue-700 px-2 py-1 border border-blue-200 bg-blue-50 rounded-md"
+                                                >
+                                                    <Plus size={14} /> Add Highlight
+                                                </button>
+                                            </div>
+                                            <div className="space-y-2">
+                                                {(slide.highlights || []).map((item, itemIdx) => (
+                                                    <div key={itemIdx} className="flex gap-2 items-center bg-slate-50 p-2 rounded-lg border border-slate-200">
+                                                        <FormInput
+                                                            label="Title"
+                                                            placeholder="e.g. EHV / HV"
+                                                            value={item.title || ''}
+                                                            onChange={e => handleNestedArrayChange('infraSlides', slideIdx, 'highlights', itemIdx, 'title', e.target.value)}
+                                                        />
+                                                        <FormInput
+                                                            label="Subtitle"
+                                                            placeholder="e.g. Vadodara Facility"
+                                                            value={item.subtitle || ''}
+                                                            onChange={e => handleNestedArrayChange('infraSlides', slideIdx, 'highlights', itemIdx, 'subtitle', e.target.value)}
+                                                        />
+                                                        <button
+                                                            onClick={() => handleRemoveFromNestedArray('infraSlides', slideIdx, 'highlights', itemIdx)}
+                                                            className="text-red-400 hover:text-red-600 p-2 mt-5"
+                                                        >
+                                                            <Trash2 size={16} />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                                {(slide.highlights || []).length === 0 && (
+                                                    <p className="text-xs text-slate-400 italic py-2">No highlights added yet.</p>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
                                 ))}
-                                {(settings.infraHighlights || []).length === 0 && (
+                                {(settings.infraSlides || []).length === 0 && (
                                     <div className="text-center py-10 text-slate-400 border-2 border-dashed border-slate-200 rounded-xl">
                                         <Building2 size={32} className="mx-auto mb-2 opacity-40" />
-                                        <p className="text-sm">No highlights added yet. Click "Add Highlight" to get started.</p>
+                                        <p className="text-sm">No slides added yet. Click "Add Slide" to get started.</p>
                                     </div>
                                 )}
                             </div>
-                </div>
+                        </div>
                     )}
 
                     {/* ── PRODUCTION UNITS SECTION ── */}
@@ -529,21 +592,31 @@ const ManufacturingSettings = () => {
                             </div>
 
                             {/* Section Header Fields */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 pb-6 border-b border-slate-100">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 pb-6 border-b border-slate-100">
                                 <FormInput
-                                    label="Section Title"
-                                    placeholder="e.g. Production Units"
+                                    label="Section Title (Web)"
+                                    placeholder="e.g. Specialised Production Facilities"
                                     value={settings.productionTitle || ''}
                                     onChange={e => handleChange('productionTitle', e.target.value)}
                                 />
-                                <div className="md:col-span-1">
-                                    <FormInput
-                                        label="Section Subtitle"
-                                        placeholder="e.g. 12 state-of-the-art facilities..."
-                                        value={settings.productionSubtitle || ''}
-                                        onChange={e => handleChange('productionSubtitle', e.target.value)}
-                                    />
-                                </div>
+                                <FormInput
+                                    label="Section Title (Mobile)"
+                                    placeholder="e.g. Production Units"
+                                    value={settings.productionTitleMobile || ''}
+                                    onChange={e => handleChange('productionTitleMobile', e.target.value)}
+                                />
+                                <FormInput
+                                    label="Section Subtitle (Web)"
+                                    placeholder="e.g. 2 dedicated state-of-the-art production units."
+                                    value={settings.productionSubtitle || ''}
+                                    onChange={e => handleChange('productionSubtitle', e.target.value)}
+                                />
+                                <FormInput
+                                    label="Section Subtitle (Mobile)"
+                                    placeholder="e.g. 2 dedicated state-of-the-art production units."
+                                    value={settings.productionSubtitleMobile || ''}
+                                    onChange={e => handleChange('productionSubtitleMobile', e.target.value)}
+                                />
                             </div>
 
                             {/* Units List */}

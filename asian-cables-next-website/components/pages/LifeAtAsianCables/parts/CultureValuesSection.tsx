@@ -6,7 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
-const values = [
+
+const staticValues = [
   {
     title: "Nurturing Talent",
     image: "/assets/Lifeofasiancables/carasel1.png",
@@ -48,35 +49,49 @@ const values = [
   },
 ];
 
-// 4 unique cards duplicated -> 8 cards.
-// The second set is identical to the first, so translateX(-50%) lands
-// exactly on the start of the duplicate set for a seamless loop.
-const loopCards = [...values, ...values];
-
-const CultureValuesSection = () => {
+const CultureValuesSection = ({ data }: { data?: any }) => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
-const [mobileActive, setMobileActive] = useState(0);
-const mobileSlides =
-  values.length <= 4
-    ? [...values, ...values, ...values]
-    : values;
-    
+  const [mobileActive, setMobileActive] = useState(0);
+
+  // Parse cultureValues from the database or use static fallback
+  const values = data?.cultureValues?.length ? data.cultureValues.map((cv: any) => {
+    const points = cv.description
+      ? cv.description.split('\n').map((pt: string) => pt.replace(/^•\s*/, '').trim()).filter(Boolean)
+      : [];
+
+    const imageUrl = cv.icon?.startsWith('http') 
+      ? cv.icon 
+      : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${cv.icon}`;
+
+    return {
+      title: cv.title,
+      image: imageUrl,
+      position: "center center", // Default position
+      points: points,
+    };
+  }) : staticValues;
+
+  // 4 unique cards duplicated -> 8 cards.
+  // The second set is identical to the first, so translateX(-50%) lands
+  // exactly on the start of the duplicate set for a seamless loop.
+  const loopCards = [...values, ...values];
+
+  const mobileSlides =
+    values.length <= 4
+      ? [...values, ...values, ...values]
+      : values;
+      
   return (
     <section
       style={{
+        backgroundImage: "url('/assets/Lifeofasiancables/pattern.png')",
+        backgroundRepeat: "repeat",
+        backgroundSize: "auto",
         width: "100%",
-        background: "#FFFFFF",
-        paddingTop: "50px",
-        paddingBottom: "40px",
       }}
+      className="py-[40px]"
     >
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-        }}
-        className="md:px-0 px-5"
-      >
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px]">
         {/* Heading - Left Aligned */}
         <div
           style={{
@@ -92,18 +107,14 @@ const mobileSlides =
                  className="text-[#1E3C8C] text-[28px] md:text-[36px] leading-[42px] font-bold italic tracking-[-0.92px]"
 
           >
-            Our Culture & Core Values
+            {data?.cultureTitle || "Our Culture & Core Values"}
           </h2>
 
           <p
                          className="mt-[12px] text-[#525252] text-[16px] leading-[26px] md:text-[20px] md:leading-[36px] font-[400]"
 
           >
-            Our culture is anchored in the core values of the RPG Group,
-            which inspires us to act with integrity and pursue excellence.
-            We nurture an inclusive, entrepreneurial, and people-first
-            culture where every individual is valued and empowered to make
-            a difference.
+            {data?.cultureDescription || "Our culture is anchored in the core values of the RPG Group, which inspires us to act with integrity and pursue excellence. We nurture an inclusive, entrepreneurial, and people-first culture where every individual is valued and empowered to make a difference."}
           </p>
         </div>
       </div>

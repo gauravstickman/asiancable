@@ -3,22 +3,18 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 
-const content = {
-  heading: [
-    "A 5.2Bn Group with",
-    "Businesses from major",
-    "sectors of the economy.",
-  ],
-  descriptions: [
-    "The RPG Group is one of India's leading diversified business conglomerates, built on a foundation of ethical leadership, professional governance, and long-term value creation. With a strong presence across infrastructure, engineering, technology, pharmaceuticals, and consumer businesses, the Group operates at the intersection of scale, capability, and responsibility.",
+export default function RPGGroupSection({ data }: { data?: any }) {
+  const content = {
+    heading: typeof data?.infoHeading === 'string' ? data.infoHeading : (Array.isArray(data?.infoHeading) && data.infoHeading.length > 0 ? data.infoHeading.join(' ') : "A 5.2Bn Group with Businesses from major sectors of the economy."),
+    descriptions: data?.infoDescriptions?.length > 0 ? data.infoDescriptions : [
+      "The RPG Group is one of India's leading diversified business conglomerates, built on a foundation of ethical leadership, professional governance, and long-term value creation. With a strong presence across infrastructure, engineering, technology, pharmaceuticals, and consumer businesses, the Group operates at the intersection of scale, capability, and responsibility.",
+      "Founded by Shri R. P. Goenka in 1979, RPG has evolved into a globally respected enterprise with a multi-sector portfolio and international footprint. The RPG Group brings together diverse businesses, united by ethics, professional governance, and long-term value creation.",
+    ],
+    buttonText: data?.infoButtonText || "Visit RPG Website",
+    buttonUrl: data?.infoButtonUrl || "https://rpggroup.com",
+    image: data?.infoImage ? (data.infoImage.startsWith('http') ? data.infoImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.infoImage}`) : "/assets/rpggroup/personImage.png",
+  };
 
-    "Founded by Shri R. P. Goenka in 1979, RPG has evolved into a globally respected enterprise with a multi-sector portfolio and international footprint. The RPG Group brings together diverse businesses, united by ethics, professional governance, and long-term value creation.",
-  ],
-  buttonText: "Visit RPG Website",
-  image: "/assets/rpggroup/personImage.png",
-};
-
-export default function RPGGroupSection() {
   return (
     <section className="overflow-hidden py-14 sm:py-16 lg:py-24">
       <div className="mx-auto flex px-5 md:px-0 w-[100%] max-w-[1274px] flex-col-reverse items-center justify-between gap-12 lg:flex-row lg:gap-20">
@@ -26,15 +22,10 @@ export default function RPGGroupSection() {
         <div className="w-full max-w-[580px] text-center lg:text-left">
           {/* HEADING */}
           <h2 className="md:text-[35px] font-[700] text-[#1E3C8C] italic text-[29px] tracking-[-1px] leading-[125%] md:leading-[70px] lg:max-w-[540px] lg:text-[46px] lg:leading-[55px]">
-            {content.heading.map((line, index) => (
-              <React.Fragment key={index}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))}
+            {content.heading}
           </h2>
 
-            <div className="group relative md:hidden">
+          <div className="group relative md:hidden">
             {/* IMAGE */}
             <img
               src={content.image}
@@ -45,7 +36,7 @@ export default function RPGGroupSection() {
 
           {/* DESCRIPTION */}
           <div className="mt-7 space-y-2 sm:mt-4">
-            {content.descriptions.map((text, index) => (
+            {content.descriptions.map((text: any, index: number) => (
               <p
                 key={index}
                 className="font-normal text-[16px] leading-[160%] md:text-[18px] md:leading-[27.2px] tracking-[0px] text-[#525252]"
@@ -55,12 +46,12 @@ export default function RPGGroupSection() {
             ))}
 
             <button className="border-it-w mx-auto md:ml-0 flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] mt-8 md:mt-[30px] md:mb-[37.61px]">
-             {content.buttonText}
-            <span>
-              <ChevronRight size={18} />
-            </span>
-          </button>
-          </div>          
+              {content.buttonText}
+              <span>
+                <ChevronRight size={18} />
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* RIGHT IMAGE */}

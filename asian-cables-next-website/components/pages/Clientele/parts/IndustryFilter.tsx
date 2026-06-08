@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 
-const industries = [
+const defaultIndustries = [
   { id: "all", label: "All Industries" },
   { id: "power", label: "Power & Energy" },
   { id: "telecom", label: "Telecom" },
@@ -22,9 +22,10 @@ const iconMap: Record<string, string> = {
 };
 
 function Icon({ name, active }: { name: string; active: boolean }) {
+  const src = iconMap[name] || iconMap["all"];
   return (
     <img
-      src={iconMap[name]}
+      src={src}
       alt={name}
       className={`h-[15px] w-[15px] object-contain transition-all duration-300 ${
         active ? "opacity-100 brightness-100" : "opacity-40 grayscale"
@@ -33,9 +34,27 @@ function Icon({ name, active }: { name: string; active: boolean }) {
   );
 }
 
-export default function IndustryFilter() {
+export default function IndustryFilter({ data }: { data?: any }) {
   const [region, setRegion] = useState("international");
-  const [industry, setIndustry] = useState("all");
+  const [industry, setIndustry] = useState("all-industries");
+
+  const regionTabs = data?.regions && data.regions.length > 0 
+    ? data.regions.map((r: any) => ({
+        id: r.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+        label: r.name,
+        icon: r.icon || "/assets/clientele/globe.png"
+      }))
+    : [
+        { id: "international", label: "International", icon: "/assets/clientele/globe.png" },
+        { id: "domestic", label: "Domestic", icon: "/assets/clientele/flag-of-india.png" }
+      ];
+
+  const industryTabs = data?.industries && data.industries.length > 0
+    ? data.industries.map((ind: string) => ({
+        id: ind.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+        label: ind
+      }))
+    : defaultIndustries;
 
   // Emit filter changes so sibling components can listen
   useEffect(() => {
@@ -49,37 +68,26 @@ export default function IndustryFilter() {
     <section className="relative z-20 w-full bg-white py-8">
       <div className="mx-auto flex px-5 md:px-0 w-[100%] max-w-[1274px] flex-col md:items-center gap-6 lg:flex-row lg:items-center lg:justify-between">
         {/* LEFT REGION TABS */}
-        <div className="flex md:w-fit w-[94%] md:mr-auto md:ml-0 m-auto justify-between rounded-[4px] bg-white gap-2 p-[6px] shadow-lg">
-          {/* INTERNATIONAL */}
-          <button
-            onClick={() => setRegion("international")}
-            className={`flex cursor-pointer items-center gap-2 rounded-[4px] px-5 py-2.5 text-[13px] font-[600] transition-all duration-300 ${
-              region === "international"
-                ? "bg-[#163B8C] text-center font-[Work_Sans] text-[14px] md:text-[15px] leading-[22.5px] font-semibold tracking-normal text-white shadow-md"
-                : "text-center font-[Work_Sans] text-[14px] md:text-[15px] leading-[22.5px] font-semibold tracking-normal hover:text-[#163B8C]"
-            } `}
-          >
-            <span className="w-[18px]"><img src="/assets/clientele/globe.png"/></span>
-            <span>International</span>
-          </button>
-
-          {/* DOMESTIC */}
-          <button
-            onClick={() => setRegion("domestic")}
-            className={`flex cursor-pointer items-center gap-2 rounded-lg px-5 py-2.5 text-[13px] font-[600] transition-all duration-300 ${
-              region === "domestic"
-                ? "bg-[#163B8C] text-center font-[Work_Sans] text-[15px] leading-[22.5px] font-semibold tracking-normal text-white shadow-md"
-                : "text-center font-[Work_Sans] text-[15px] leading-[22.5px] font-semibold tracking-normal hover:text-[#163B8C]"
-            } `}
-          >
-            <span className="w-[18px]"><img src="/assets/clientele/flag-of-india.png"/></span>
-            <span>Domestic</span>
-          </button>
+        <div className="flex md:w-fit w-[94%] md:mr-auto md:ml-0 m-auto justify-between rounded-[4px] bg-white gap-2 p-[6px] shadow-lg overflow-x-auto scrollbar-hide">
+          {regionTabs.map((tab: any) => (
+            <button
+              key={tab.id}
+              onClick={() => setRegion(tab.id)}
+              className={`flex cursor-pointer items-center gap-2 rounded-[4px] px-5 py-2.5 text-[13px] font-[600] transition-all duration-300 whitespace-nowrap ${
+                region === tab.id
+                  ? "bg-[#163B8C] text-center font-[Work_Sans] text-[14px] md:text-[15px] leading-[22.5px] font-semibold tracking-normal text-white shadow-md"
+                  : "text-center font-[Work_Sans] text-[14px] md:text-[15px] leading-[22.5px] font-semibold tracking-normal hover:text-[#163B8C]"
+              } `}
+            >
+              <span className="w-[18px]"><img src={tab.icon}/></span>
+              <span>{tab.label}</span>
+            </button>
+          ))}
         </div>
 
         {/* RIGHT INDUSTRY FILTERS */}
 <div className="industries md:pb-0 pb-4 flex overflow-x-auto whitespace-nowrap gap-[45px] md:gap-4 md:flex-wrap md:overflow-visible md:whitespace-normal md:gap-x-7 md:gap-y-4 scrollbar-hide">          
-  {industries.map((item) => {
+  {industryTabs.map((item: any) => {
             const active = industry === item.id;
 
             return (

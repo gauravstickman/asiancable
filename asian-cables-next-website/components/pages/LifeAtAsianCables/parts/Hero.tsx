@@ -1,15 +1,18 @@
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
-Link
-const Hero = () => {
+
+const Hero = ({ data }: { data?: any }) => {
+  const bgImage = data?.headerBgImage?.startsWith('http') 
+    ? data.headerBgImage 
+    : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${data?.headerBgImage || '/assets/Lifeofasiancables/ImageWithFallback.png'}`;
+
   return (
     <div>
         <section
         className="relative  bg-cover bg-[position:75%_center] lg:bg-center"
         style={{
-          backgroundImage:
-            "url('/assets/Lifeofasiancables/ImageWithFallback.png')",
+          backgroundImage: `url('${bgImage}')`,
         }}
       >
         {/* Overlay */}
@@ -23,7 +26,7 @@ const Hero = () => {
             <div className="mb-4 sm:mb-6 text-xs sm:text-sm flex items-center gap-2">
               <span>Home</span>
               <span>•</span>
-              <span className="font-semibold">Culture</span>
+              <span className="font-semibold">{data?.headerTag || 'Culture'}</span>
             </div>
 
             {/* Heading */}
@@ -39,9 +42,8 @@ const Hero = () => {
                 font-bold italic
                 mb-4 sm:mb-6
               `}
-             
             >
-              Your Connection to  Brighter Future
+              {data?.headerTitle || 'Your Connection to Brighter Future'}
             </h1>
 
             {/* Paragraph */}
@@ -57,18 +59,14 @@ const Hero = () => {
                 text-white/95
                 mb-9 sm:mb-8
               `}
-             
             >
-              At Asian Cables, part of RPG Group, we don't just
-              manufacture wires and cables — we power industries,
-              enable homes, and connect communities. Be part of a
-              team that builds with purpose and grows with pride.
+              {data?.headerDescription || "At Asian Cables, part of RPG Group, we don't just manufacture wires and cables — we build the connections that power homes, industries, and progress across the globe."}
             </p>
 
             {/* Button */}
  
  <Link
-  href="#openroles"
+  href={data.headerLinkUrl || "#openroles"}
   className="sparkle
     group
     relative

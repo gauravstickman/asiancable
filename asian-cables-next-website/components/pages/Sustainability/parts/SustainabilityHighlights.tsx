@@ -1,7 +1,12 @@
 "use client";
 
-function SustainabilityHighlights() {
-  const baseSlides = [
+function SustainabilityHighlights({ data }: { data?: any }) {
+  const baseSlides = data?.highlights?.length > 0 ? data.highlights.map((h: any, i: number) => ({
+      id: i + 1,
+      image: h.image ? (h.image.startsWith('http') ? h.image : `${process.env.NEXT_PUBLIC_BASE_URL}${h.image}`) : "/assets/sustainability/img-6.png",
+      title: h.title,
+      description: h.description,
+  })) : [
     {
       id: 1,
       image: "/assets/sustainability/img-6.png",
@@ -39,13 +44,13 @@ function SustainabilityHighlights() {
     <section className="bg-[#F5F5F5] py-20">
       <div className="mx-auto max-w-[1280px] px-6">
         <h2 className="mb-8 text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
-          Sustainability Highlights
+          {data?.highlightsTitle || "Sustainability Highlights"}
         </h2>
       </div>
       <div className="relative overflow-hidden">
         <div className="animate-marquee flex w-max gap-[24px]">
             {/* FIRST SET */}
-            {baseSlides.map((slide, index) => (
+            {baseSlides.map((slide: any, index: number) => (
               <div
                 key={index}
                 className="sustain-card relative  w-[779.33px] h-[718px]  flex-shrink-0 overflow-hidden rounded-lg"
@@ -68,7 +73,7 @@ function SustainabilityHighlights() {
             ))}
 
             {/* DUPLICATE SET */}
-            {baseSlides.map((slide, index) => (
+            {baseSlides.map((slide: any, index: number) => (
               <div
                 key={`duplicate-${index}`}
                 className="sustain-card relative h-[420px]  w-[779.33px] h-[718px] flex-shrink-0 overflow-hidden rounded-lg"

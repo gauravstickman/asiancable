@@ -7,10 +7,17 @@ exports.get = async (req, res) => {
         if (!page) {
             // Auto-create default document if none exists
             page = await ManufacturingPage.create({
-                infraHighlights: [
-                    { title: 'EHV / HV / Railway', subtitle: 'Vadodara Facility Focus' },
-                    { title: 'LT / Telecom / Optical Fibre', subtitle: 'Mysuru Facility Focus' },
-                    { title: 'End-to-End Integration', subtitle: 'From Conductor to Final Testing' }
+                infraSlides: [
+                    {
+                        title: 'Integrated Manufacturing Systems',
+                        description: 'Manufacturing is distributed across two specialised facilities in Vadodara and Mysuru, each aligned to specific cable categories and voltage ranges.',
+                        image: '',
+                        highlights: [
+                            { title: 'EHV / HV / Railway', subtitle: 'Vadodara Facility Focus' },
+                            { title: 'LT / Telecom / Optical Fibre', subtitle: 'Mysuru Facility Focus' },
+                            { title: 'End-to-End Integration', subtitle: 'From Conductor to Final Testing' }
+                        ]
+                    }
                 ],
                 productionUnits: [
                     { name: 'Unit 1, Vadodara', image: '' },

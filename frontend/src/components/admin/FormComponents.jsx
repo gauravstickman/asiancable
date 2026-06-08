@@ -59,6 +59,15 @@ export const ImageInput = ({ label, value, onChange, onChoose, className = "" })
                 <Image size={16}/> Choose
             </button>
         </div>
+        {value && (
+            <div className="mt-2 rounded-lg overflow-hidden border border-slate-200 bg-slate-50 h-[100px] w-fit max-w-full">
+                <img 
+                    src={value.startsWith('http') ? value : `${(import.meta.env.VITE_API_URL || 'http://localhost:5000').replace('/api', '')}${value}`} 
+                    alt="Preview" 
+                    className="h-full w-auto object-contain"
+                />
+            </div>
+        )}
     </div>
 );
 

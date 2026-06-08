@@ -1,6 +1,10 @@
 
-function CertificationsAccreditations() {
-  const items = [
+function CertificationsAccreditations({ data }: { data?: any }) {
+  const items = data?.certifications?.length > 0 ? data.certifications.map((c: any) => ({
+    img: c.image ? (c.image.startsWith('http') ? c.image : `${process.env.NEXT_PUBLIC_BASE_URL}${c.image}`) : "/assets/sustainability/img-1.png",
+    title: c.title,
+    desc: c.description
+  })) : [
     {
       img: "/assets/sustainability/img-1.png",
       title: "IGBC",
@@ -28,14 +32,14 @@ function CertificationsAccreditations() {
       <div className="mx-auto flex max-h-[473px] max-w-[1425px] flex-col items-center justify-center px-6">
         {/* Heading */}
         <h2 className="mb-[47px] font-[magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
-          Certifications & Accreditations
+          {data?.certificationsTitle || "Certifications & Accreditations"}
         </h2>
 
         {/* Cards */}
         <div className="grid w-[1271px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((item) => (
+          {items.map((item: any, index: number) => (
             <div
-              key={item.title}
+              key={index}
               className="flex h-[209px] w-[299.75px] flex-col justify-center rounded-[4px] bg-[#F9F9F9] p-[24px] transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02] hover:shadow-sm"
             >
               <img

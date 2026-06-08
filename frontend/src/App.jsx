@@ -30,6 +30,8 @@ import ResourcesSettings from './pages/homepage-settings/ResourcesSettings';
 import InvestorSettings from './pages/homepage-settings/InvestorSettings';
 import ContactSettings from './pages/homepage-settings/ContactSettings';
 import ClienteleSettings from './pages/homepage-settings/ClienteleSettings';
+import RpgGroupSettings from './pages/homepage-settings/RpgGroupSettings';
+import LifeAtAsianCablesSettings from './pages/homepage-settings/LifeAtAsianCablesSettings';
 import CaseStudyList from './pages/case-studies/CaseStudyList';
 import CaseStudyForm from './pages/case-studies/CaseStudyForm';
 import Settings from './pages/settings/Settings';
@@ -73,6 +75,8 @@ function App() {
             <Route path="investor-page" element={<InvestorSettings />} />
             <Route path="contact-page" element={<ContactSettings />} />
             <Route path="clientele-page" element={<ClienteleSettings />} />
+            <Route path="rpg-group" element={<RpgGroupSettings />} />
+            <Route path="life-at-asian-cables" element={<LifeAtAsianCablesSettings />} />
             <Route path="case-studies" element={<CaseStudyList />} />
             <Route path="case-studies/new" element={<CaseStudyForm />} />
             <Route path="case-studies/edit/:id" element={<CaseStudyForm />} />

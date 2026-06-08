@@ -256,16 +256,6 @@ const ResourcesSettings = () => {
                                             onChange={e => handleChange('heroImage', e.target.value)}
                                             onChoose={() => openMediaPicker((url) => handleChange('heroImage', url))}
                                         />
-                                        {settings.heroImage && (
-                                            <div className="mt-3">
-                                                <img
-                                                    src={settings.heroImage.startsWith('http') ? settings.heroImage : `${import.meta.env.VITE_API_URL}${settings.heroImage}`}
-                                                    alt="Hero Desktop Preview"
-                                                    className="w-full h-48 rounded-xl border border-slate-200 object-cover"
-                                                    onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1920x1080?text=No+Image'; }}
-                                                />
-                                            </div>
-                                        )}
                                     </div>
 
                                     <div>
@@ -275,16 +265,6 @@ const ResourcesSettings = () => {
                                             onChange={e => handleChange('heroMobileImage', e.target.value)}
                                             onChoose={() => openMediaPicker((url) => handleChange('heroMobileImage', url))}
                                         />
-                                        {settings.heroMobileImage && (
-                                            <div className="mt-3">
-                                                <img
-                                                    src={settings.heroMobileImage.startsWith('http') ? settings.heroMobileImage : `${import.meta.env.VITE_API_URL}${settings.heroMobileImage}`}
-                                                    alt="Hero Mobile Preview"
-                                                    className="w-full h-48 rounded-xl border border-slate-200 object-cover"
-                                                    onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1080x1920?text=No+Image'; }}
-                                                />
-                                            </div>
-                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -316,16 +296,6 @@ const ResourcesSettings = () => {
                                                 onChange={e => handleFeaturedChange('icon', e.target.value)}
                                                 onChoose={() => openMediaPicker((url) => handleFeaturedChange('icon', url))}
                                             />
-                                            {settings.featuredTool?.icon && (
-                                                <div className="mt-2">
-                                                    <img
-                                                        src={settings.featuredTool.icon.startsWith('http') ? settings.featuredTool.icon : `${import.meta.env.VITE_API_URL}${settings.featuredTool.icon}`}
-                                                        alt="Icon Preview"
-                                                        className="h-12 w-12 object-contain bg-white rounded-lg border border-slate-200 p-1"
-                                                        onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/48x48?text=Icon'; }}
-                                                    />
-                                                </div>
-                                            )}
                                         </div>
                                         
                                         <div>
@@ -362,16 +332,6 @@ const ResourcesSettings = () => {
                                                 onChange={e => handleFeaturedChange('backgroundImage', e.target.value)}
                                                 onChoose={() => openMediaPicker((url) => handleFeaturedChange('backgroundImage', url))}
                                             />
-                                            {settings.featuredTool?.backgroundImage && (
-                                                <div className="mt-3">
-                                                    <img
-                                                        src={settings.featuredTool.backgroundImage.startsWith('http') ? settings.featuredTool.backgroundImage : `${import.meta.env.VITE_API_URL}${settings.featuredTool.backgroundImage}`}
-                                                        alt="Background Preview"
-                                                        className="w-full h-32 rounded-xl border border-slate-200 object-cover"
-                                                        onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x300?text=No+Image'; }}
-                                                    />
-                                                </div>
-                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -404,16 +364,6 @@ const ResourcesSettings = () => {
                                                         onChange={e => handleArrayChange('toolsList', idx, 'icon', e.target.value)}
                                                         onChoose={() => openMediaPicker((url) => handleArrayChange('toolsList', idx, 'icon', url))}
                                                     />
-                                                    {tool.icon && (
-                                                        <div className="mt-2">
-                                                            <img
-                                                                src={tool.icon.startsWith('http') ? tool.icon : `${import.meta.env.VITE_API_URL}${tool.icon}`}
-                                                                alt="Icon Preview"
-                                                                className="h-12 w-12 object-contain bg-white rounded-lg border border-slate-200 p-1"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/48x48?text=Icon'; }}
-                                                            />
-                                                        </div>
-                                                    )}
                                                 </div>
                                                 
                                                 <div>
@@ -499,16 +449,6 @@ const ResourcesSettings = () => {
                                                         onChange={e => handleArrayChange('whitepapersList', idx, 'icon', e.target.value)}
                                                         onChoose={() => openMediaPicker((url) => handleArrayChange('whitepapersList', idx, 'icon', url))}
                                                     />
-                                                    {wp.icon && (
-                                                        <div className="mt-2">
-                                                            <img
-                                                                src={wp.icon.startsWith('http') ? wp.icon : `${import.meta.env.VITE_API_URL}${wp.icon}`}
-                                                                alt="Icon Preview"
-                                                                className="h-12 w-12 object-contain bg-white rounded-lg border border-slate-200 p-1"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/48x48?text=Icon'; }}
-                                                            />
-                                                        </div>
-                                                    )}
                                                 </div>
                                                 
                                                 <div className="space-y-4">
@@ -648,16 +588,6 @@ const ResourcesSettings = () => {
                                                         onChange={e => handleArrayChange('featuredBlogs', idx, 'image', e.target.value)}
                                                         onChoose={() => openMediaPicker((url) => handleArrayChange('featuredBlogs', idx, 'image', url))}
                                                     />
-                                                    {blog.image && (
-                                                        <div className="mt-2">
-                                                            <img
-                                                                src={blog.image.startsWith('http') ? blog.image : `${import.meta.env.VITE_API_URL}${blog.image}`}
-                                                                alt="Preview"
-                                                                className="w-full h-32 object-cover bg-slate-200 rounded-lg border border-slate-200"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x300?text=Image'; }}
-                                                            />
-                                                        </div>
-                                                    )}
                                                     
                                                     <div className="grid grid-cols-2 gap-4">
                                                         <FormInput
