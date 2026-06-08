@@ -60,7 +60,7 @@ export default function WhitepapersResearch({ data }: { data?: any }) {
         </div>
 
         <div className="flex w-[1270px] flex-col gap-[24px]">
-          {sample.map((item, idx) => (
+          {sample.map((item: any, idx: number) => (
             <div
               key={idx}
               className="flex h-[190px] w-[1290px] gap-6 rounded-[4px] border-[2px] border-transparent bg-[#1E3C8C0A] pt-[42px] pr-[42px] pb-[42px] pl-[42px]"

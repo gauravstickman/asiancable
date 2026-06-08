@@ -93,7 +93,7 @@ export default function TestimonialsSection({ data }: { data?: any }) {
       {/* Slider — full-bleed auto-scrolling marquee (outer container removed) */}
       <div className="ts-marquee md:block hidden">
         <div className="ts-track">
-          {loopCards.map((item, index) => (
+          {loopCards.map((item: any, index: number) => (
             <div
               key={index}
               aria-hidden={index >= testimonials.length}
@@ -123,7 +123,7 @@ export default function TestimonialsSection({ data }: { data?: any }) {
 
               {/* Tags */}
               <div className="flex flex-wrap gap-3 pb-6 border-b border-[#E2E2E2] group-hover:hidden">
-                {item.tags.map((tag, i) => (
+                {item.tags.map((tag: any, i: number) => (
                   <span
                     key={i}
                     className="
@@ -187,7 +187,7 @@ export default function TestimonialsSection({ data }: { data?: any }) {
       disableOnInteraction: false,
     }}
   >
-    {mobileTestimonials.map((item, index) => (
+    {mobileTestimonials.map((item: any, index: number) => (
       <SwiperSlide key={index}>
         {({ isActive }) => (
           <div
@@ -231,7 +231,7 @@ export default function TestimonialsSection({ data }: { data?: any }) {
                   : "opacity-100"
               }`}
             >
-              {item.tags.map((tag, i) => (
+              {item.tags.map((tag: any, i: number) => (
                 <span
                   key={i}
                   className="md:h-[34px] px-2 md:px-4 rounded-[68px]

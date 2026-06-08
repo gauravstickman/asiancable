@@ -122,7 +122,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
       {/* Cards — full-bleed infinite auto-scrolling carousel */}
       <div className="cv-marquee hidden md:block">
         <div className="cv-track flex items-center">
-          {loopCards.map((item, index) => {
+          {loopCards.map((item: any, index: number) => {
             const isActive = activeCard === index;
 
             return (
@@ -209,7 +209,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
                       listStyle: "none",
                     }}
                   >
-                    {item.points.map((point, i) => (
+                    {item.points.map((point: any, i: number) => (
                       <li
                         key={i}
                         style={{
@@ -250,7 +250,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
   setMobileActive(swiper.realIndex)
 }
 >
-    {mobileSlides.map((item, index) => (
+    {mobileSlides.map((item: any, index: number) => (
       <SwiperSlide key={index}>
         {({ isActive }) => (
           <div
@@ -282,7 +282,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
                 }`}
               >
                 <ul className="space-y-2">
-                  {item.points.map((point, i) => (
+                  {item.points.map((point: any, i: number) => (
                     <li
                       key={i}
                       className="text-[16px] leading-[28px] text-white"

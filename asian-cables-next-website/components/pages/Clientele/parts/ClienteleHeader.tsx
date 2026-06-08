@@ -79,7 +79,7 @@ function ClienteleHeader({ data }: { data?: any }) {
           </h1>
           {/* Stats */}
           <div className="mt-10 md:mt-18 flex flex-wrap items-start gap-5 md:gap-[55px]">
-            {stats.map((stat) => (
+            {stats.map((stat: any) => (
               <div key={stat.label} className="relative md:w-[auto] w-[45%]">
                 <p className="relative font-[magistral] text-[24px] leading-[50px] md:text-[38px] md:leading-[83.02px] font-bold text-white italic">
                   {stat.value}
