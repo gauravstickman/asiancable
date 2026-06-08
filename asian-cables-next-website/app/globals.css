@@ -931,3 +931,10 @@ body {
     animation: none;
   }
 }
+
+.group:hover .resource-img {
+    filter: brightness(100);
+}
+.group:hover {
+   cursor: pointer;
+}

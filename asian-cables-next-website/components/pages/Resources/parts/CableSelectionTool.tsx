@@ -43,8 +43,8 @@ export default function CableSelectionTool({ data }: { data?: any }) {
   ];
 
   return (
-    <section className="mt-5 bg-gray-50 py-8 md:py-12">
-      <div className="mx-auto max-w-[1320px] px-4">
+    <section className="mt-5 bg-gray-50  md:py-12">
+      <div className="mx-auto max-w-[1320px] px-0">
         {/* CARD CONTAINER */}
         <div className="relative md:h-[574px] md:w-[1272px] bg-[#FFFFFF] px-[16px] py-[15px]">
           {/* TOP SECTION - Two column grid 65/35 ratio */}
@@ -57,7 +57,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
                     : "bg-[#F9F9F9] text-gray-900 hover:bg-[#1E3C8C]"
                   } ${index === 0
                     ? "px-[30px] pt-[36px] pb-[36px]"
-                    : "px-[40px] pt-[36px] pb-[36px]"
+                    : "px-[30px] pt-[36px] pb-[36px]"
                   }`}
               >
                 {/* Background image */}
@@ -66,7 +66,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
                     <img
                       src={item.bgImage}
                       alt=""
-                      className="pointer-events-none absolute inset-0 object-cover object-right"
+                      className="resource-img pointer-events-none absolute inset-0 object-cover object-right"
                     />
 
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#2A4FA0] via-[#2A4FA0]/85 to-[#1E3C8C]/70" />
@@ -80,7 +80,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
                     <img
                       src={item.icon}
                       alt=""
-                      className="w-[48px] w-[48px] md:h-[64px] md:w-[64px] object-contain transition-all duration-500 group-hover:scale-110"
+                      className="w-[48px] w-[48px] resource-img md:h-[64px] md:w-[64px] object-contain transition-all duration-500 group-hover:scale-110"
                     />
 
                     <div className="flex justify-between">
@@ -121,7 +121,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
 
                     {item.button && (
                       <div className="mt-auto flex justify-end md:hidden">
-                        <a href={item.buttonLink} className="flex h-[48.39px] w-fit items-center gap-[9.19px] rounded-[5.52px] bg-white px-[29.42px] py-[9.19px] transition-all duration-500 hover:bg-gray-50">
+                        <a href={item.buttonLink}  className=" mr-auto mt-[30px] flex h-[48.39px] w-fit items-center gap-[9.19px] rounded-[5.52px] bg-white px-[29.42px] py-[9.19px] transition-all duration-500 hover:bg-gray-50">
                           <span className="font-['Work_Sans'] text-[20px] leading-[29.42px] font-medium tracking-[-0.46px] text-[#1E3C8C]">
                             {item.buttonText}
                           </span>
@@ -147,8 +147,8 @@ export default function CableSelectionTool({ data }: { data?: any }) {
               <div
                 key={index}
                 className={`group flex md:h-[270px] flex-col items-start rounded-[4px] bg-[#F9F9F9] transition-all duration-500 hover:-translate-y-[6px] hover:bg-[#1E3C8C] hover:shadow-[0_18px_45px_rgba(30,60,140,0.22)] ${index === 0
-                    ? "px-[40px] pt-[36px]"
-                    : "px-[42px] pt-[36px] pb-[2px]"
+                    ? "px-[30px] pt-[36px] pb-[36px]"
+                    : "px-[30px] pt-[36px] pb-[36px]"
                   }`}
               >
                 {/* CONTENT */}
@@ -156,7 +156,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
                   <img
                     src={item.icon}
                     alt=""
-                    className="h-10 w-10 object-contain transition-all duration-500 group-hover:scale-110"
+                    className="h-10 w-10 resource-img object-contain transition-all duration-500 group-hover:scale-110"
                   />
 
                   <p className="text-[26px] leading-[36px] font-medium tracking-[0px] text-[#1E3C8C] transition-all duration-500 group-hover:text-white">

@@ -21,7 +21,7 @@ export default function ProductResource({ data }: { data?: any }) {
     <section className="reveal-section bg-[#ffffff] pt-[7px] pb-[78.82px]">
       <div className="mx-auto max-w-[1320px] px-4">
         <div className="mb-8 mt-10 text-center md:mb-[39.2px]">
-          <h2 className="text-center font-[Magistral] text-[46px] leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
+          <h2 className="text-center font-[Magistral] text-[32px] leading-[39px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
             Product Resources
           </h2>
         </div>
@@ -29,12 +29,12 @@ export default function ProductResource({ data }: { data?: any }) {
           {resources.map((item, index) => (
             <div
               key={index}
-              className="relative w-[1271px] h-[450px] overflow-hidden rounded-[8px] md:h-[480px]"
+              className="relative md:w-[1271px] h-[450px] overflow-hidden rounded-[8px] md:h-[480px]"
             >
               <img
                 src={item.image}
                 alt={item.title}
-                className="h-[479.984375px] w-[1271px] object-cover"
+                className="h-[479.984375px] md:w-[1271px] object-cover"
               />
               {/* dark gradient overlay for contrast */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-black/10" />
@@ -42,7 +42,7 @@ export default function ProductResource({ data }: { data?: any }) {
               <div className="absolute inset-0 flex flex-col p-5 md:p-11">
                 <div>
                   {/* folder icon */}
-                  <div className="mb-[45.2px]">
+                  <div className="md:mb-[45.2px] mb-3">
                     <div className="flex h-[35px] w-[35px] items-center md:h-[60px] md:w-[60px]">
                       <img
                         src={item.icon}
@@ -73,26 +73,26 @@ export default function ProductResource({ data }: { data?: any }) {
                       href={item.file}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex h-[48.38764953613281px] w-[286.0343017578125px] items-center justify-center gap-2 rounded-[5.52px] bg-[#FFFFFF] pt-[9.19px] pb-[9.19px] pl-[29.42px] pr-[29.42px] text-[#1E3C8C] transition hover:opacity-90"
+                      className="flex h-[48.38764953613281px] md:w-[286.0343017578125px] items-center justify-center gap-2 rounded-[5.52px] bg-[#FFFFFF] pt-[9.19px] pb-[9.19px] pl-[29.42px] pr-[29.42px] text-[#1E3C8C] transition hover:opacity-90"
                     >
                       <DownloadIcon size={20} />
 
-                      <p className="font-medium text-[20px] leading-[29.42px] tracking-[-0.46px] text-[#1E3C8C] text-center">
+                      <p className="font-medium text-[16px] leading-[22px] md:text-[20px] md:leading-[29.42px] tracking-[-0.46px] text-[#1E3C8C] text-center">
                         {item.downloadText}
                       </p>
                     </a>
 
-                    <button className="flex h-[38px] items-center justify-center gap-2 rounded-[5.52px] bg-none px-3 text-[16px] font-[500] text-white transition hover:bg-white/10 md:h-[48px] md:px-5 md:text-[20px]">
+                    {/* <button className="flex h-[38px] items-center justify-center gap-2 rounded-[5.52px] bg-none px-3 text-[16px] font-[500] text-white transition hover:bg-white/10 md:h-[48px] md:px-5 md:text-[20px]">
                       <p className="font-medium text-[20px] leading-[29.42px] tracking-[-0.46px] text-[#FFFFFF] text-center">
                         {item.requestText}
                       </p>
 
                       <ChevronRight size={20} />
-                    </button>
+                    </button> */}
                   </div>
-                  <div className="font-medium text-[14px] leading-[21px] tracking-[0px] text-[#FFFFFF]">
+                  {/* <div className="font-medium text-[14px] leading-[21px] tracking-[0px] text-[#FFFFFF]">
                     {item.fileSize}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

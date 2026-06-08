@@ -102,26 +102,26 @@ function CaseStudies({ data }: { data?: any }) {
 
   return (
     <section className="bg-[#1E3C8C0A] py-16 md:py-24">
-      <div className="mx-auto max-w-[1320px] px-4 md:px-6">
+      <div className="mx-auto max-w-[1320px] px-0 md:px-6">
         {/* HEADER */}
         <div className="mb-12 flex flex-col items-start justify-between gap-8 md:mb-16 md:flex-row md:items-end">
           {/* LEFT */}
-          <div>
-            <h1 className="mb-3 text-[34px] leading-[42px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic md:text-[46px] md:leading-[55px]">
+          <div className="md:px-0 px-5">
+            <h1 className="md:mb-3 mb-6 text-[32px] leading-[40px] md:text-[34px] md:leading-[42px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic md:text-[46px] md:leading-[55px]">
               {data?.blogsTitle || "Articles & Case studies"}
             </h1>
 
-            <p className="max-w-[640px] text-[16px] leading-[28px] text-[#525252]">
+            <p className="max-w-[640px] text-[16px] leading-[150%] md:leading-[28px] text-[#525252]">
               {data?.blogsSubtitle || "Industry trends, technical articles, and expert opinions from our team"}
             </p>
           </div>
           {/* TABS */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex md:flex-wrap flex-no-wrap w-[100%] whitespace-pre overflow-x-auto industries gap-3 md:ml-0 ml-5">
             {tabs.map((tab: any) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`h-[49px] min-w-[120px] rounded-[4px] px-5 text-[14px] font-medium transition-all duration-300 ${activeTab === tab.id
+                className={`md:h-[49px] h-[45px] min-w-[120px] rounded-[4px] px-5 text-[14px] font-medium transition-all duration-300 ${activeTab === tab.id
                     ? "bg-[#1E3C8C] text-white"
                     : "bg-white text-[#525252] hover:bg-[#1E3C8C] hover:text-white"
                   }`}
@@ -132,16 +132,16 @@ function CaseStudies({ data }: { data?: any }) {
           </div>
         </div>
         {/* FEATURED ARTICLES */}
-        <div className="mb-14 md:mb-12">
-          <p className="mb-8 text-[22px] leading-[33px] font-[500] text-[#1E3C8C]">
+        <div className="mb-3 md:mb-12 md:pl-0 pl-5">
+          <p className="mb-5 md:mb-8 text-[20px] md:text-[22px] leading-[33px] font-[500] text-[#1E3C8C]">
             {data?.blogsFeaturedTitle || "Featured Articles"}
           </p>
 
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="flex flex-no-wrap overflow-x-auto industries md:grid gap-8 lg:grid-cols-2">
             {featuredArticles.map((article: any) => (
               <div
                 key={article.id}
-                className="group overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group  md:min-w-[auto] min-w-[80vw] overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 {/* IMAGE */}
                 <div className="relative h-[300px] overflow-hidden">
@@ -160,13 +160,13 @@ function CaseStudies({ data }: { data?: any }) {
                 </div>
 
                 {/* CONTENT */}
-                <div className="flex h-[315.1875px] w-[621px] flex-col justify-between rounded-[4px] p-8">
+                <div className="flex md:h-[315.1875px] md:w-[621px] flex-col justify-between rounded-[4px] md:px-8 md:py-8 px-3 py-4">
                   {/* TOP CONTENT */}
                   <div>
                     {/* CATEGORY + READ TIME */}
                     <div className="mb-5 flex flex-wrap items-center gap-5 text-[14px] text-[#6B7280]">
                       <div className="flex items-center gap-2">
-                        <Tag size={15} className="text-[#1E3C8C]" />
+                        <Tag size={15} className="h-3 w-3 md:h-5 md:w-5 text-[#1E3C8C]" />
                         <span className="text-[12px] leading-[18px] font-medium tracking-[0px] text-[#1E3C8C]">
                           {article.tag}
                         </span>
@@ -180,8 +180,8 @@ function CaseStudies({ data }: { data?: any }) {
                       </div>
                     </div>
 
-                    <div className="w-[512px]">
-                      <h3 className="mb-5 text-[28px] leading-[33.6px] font-bold tracking-[0px] text-[#1E3C8C] italic">
+                    <div className="md:w-[512px]">
+                      <h3 className="mb-5 text-[18px] md:text-[28px] leading-[33.6px] font-bold tracking-[0px] text-[#1E3C8C] italic">
                         {article.title}
                       </h3>
 
@@ -193,7 +193,7 @@ function CaseStudies({ data }: { data?: any }) {
                   </div>
 
                   {/* BOTTOM */}
-                  <div className="mt-5 flex items-center justify-between">
+                  <div className="mt-5 flex items-center justify-between md:border-t-0 border-t-2 border-t-[#E1E2E5] pt-3 md:pt-0">
                     {/* AUTHOR */}
                     <div className="flex items-center gap-2 text-[15px] text-[#4B5563]">
                       <User size={16} />
@@ -213,15 +213,15 @@ function CaseStudies({ data }: { data?: any }) {
           </div>
         </div>
         {/* CASE STUDIES */}
-        <div>
-          <p className="mb-8 text-[22px] leading-[33px] font-medium tracking-[0px] text-[#1E3C8C] ">
+        <div className="md:pl-0 pl-5">
+          <p className="md:mt-0 mt-7 mb-5 md:mb-8 text-[20px] md:text-[22px] leading-[33px] font-[500] text-[#1E3C8C]">
             Case Studies
           </p>
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="flex flex-nowrap industries overflow-x-auto md:grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {caseStudies.map((study: any) => (
               <div
                 key={study.id}
-                className="group overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="md:min-w-[auto] min-w-[80vw] group overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 {/* IMAGE */}
                 <div className="relative overflow-hidden">
@@ -233,7 +233,7 @@ function CaseStudies({ data }: { data?: any }) {
                 </div>
 
                 {/* CONTENT */}
-                <div className="flex min-h-[208px] w-[407px] flex-col justify-between px-8 py-3">
+                <div className="flex min-h-[208px] md:w-[407px] flex-col justify-between px-3 py-4 md:px-8 md:py-3">
                   {/* TOP CONTENT */}
                   <div>
                     {/* CATEGORY */}
@@ -245,7 +245,7 @@ function CaseStudies({ data }: { data?: any }) {
                       </p>
                     </div>
                     {/* TITLE */}
-                    <div className="w-[330px]">
+                    <div className="md:w-[330px]">
                       <p className="mb-2 text-[18px] leading-[23.4px] font-medium tracking-[0px] text-[#1E3C8C]">
                         {study.title}
                       </p>
@@ -257,7 +257,7 @@ function CaseStudies({ data }: { data?: any }) {
                     </div>
                   </div>
                   {/* BOTTOM */}
-                  <div className="mt-4 w-[330px] flex items-center justify-between">
+                  <div className="mt-4 md:w-[330px] flex items-center justify-between">
                     {/* READ TIME */}
                     <div className="flex items-center gap-2">
                       <Clock3
