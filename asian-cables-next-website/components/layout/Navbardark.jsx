@@ -43,6 +43,8 @@ const WebsiteNavbarDark = () => {
 const pathname = usePathname();
 
 const isHomePage = pathname === "/";
+const isRPGgroup = pathname === "/rpg-group";
+  const [showCompanyMenuPc, setShowCompanyMenuPc] = useState(false);
 
   const [productsTab, setProductsTab] =
   useState("industry");
@@ -335,18 +337,146 @@ onMouseEnter={() => {
 
 
           {/* COMPANY */}
-          <Link
-            href="/company"
-            className={`text-[16px] ${
-    pathname === "/company"
-      ? "font-[600]"
-      : "font-[400]"
-  } ${
+        <div
+          className="relative"
+          onMouseEnter={() => setShowCompanyMenuPc(true)}
+          onMouseLeave={() => setShowCompanyMenuPc(false)}
+        >
+          <button
+         onMouseEnter={() => {
+          setShowMegaMenu(false);
+          setShowIndustryMenu(false);
+          setShowCompanyMenuPc(true);
+        }}
+          className={`flex items-center gap-1 text-[16px] ${
+            pathname === "/"
+              ? "font-[600]"
+              : "font-[400]"
+          } ${
               isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
             }`}
-          >
-            The Company
-          </Link>
+        >
+          The Company
+        
+          <ChevronDown
+            size={16}
+            className={`transition-transform duration-300 ${
+              showIndustryMenu ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+        
+          {showCompanyMenuPc && (
+            <div className="absolute top-full left-0 z-50 min-w-[280px] rounded-[6px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+              <div className="flex flex-col gap-2 pt-3">
+        
+                <Link
+                  href="/about"
+                className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                >
+                  <span
+            className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+            }}
+          />   
+                  About us
+                </Link>
+        
+                <Link
+                  href="/leadership"
+                className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                >
+                  <span
+            className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+            }}
+          />   
+                  Leadership
+                </Link>
+        
+                <Link
+                  href="/rpg-group"
+                 className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                >
+                  <span
+            className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+            }}
+          />   
+                  RPG Group
+                </Link>
+        
+                <Link
+                  href="/resources"
+                  className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                >
+                  <span
+            className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+            }}
+          />   
+                  Resources
+                </Link>
+        
+                <Link
+                  href="/manufacturing"
+                  className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                >
+                  <span
+            className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+            }}
+          />   
+                  Manufacturing
+                </Link>
+        
+              <Link
+                  href="/clientele"
+                  className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                >
+                  <span
+            className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+            }}
+          />    
+                  Clientele
+                </Link>
+        
+        
+        
+                <Link
+                  href="/sustainability"
+                   className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+                >
+                  <span
+            className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+            }}
+          />   
+                  Sustainability
+                </Link>
+        
+              </div>
+            </div>
+          )}
+        </div>
+        
+        
+                  {/* COMPANY End */}
 
           {/* CAREERS */}
           <Link

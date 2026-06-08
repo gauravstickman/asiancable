@@ -110,14 +110,32 @@ const isRPGgroup = pathname === "/rpg-group";
 
   const isProductsActive =
   pathname.startsWith("/products");
+
+const companyPages = [
+  "/about",
+  "/rpg-group",
+  "/clientele",
+  "/manufacturing",
+  "/resources",
+  "/sustainability",
+];
+
+const isCompanyActive = companyPages.includes(pathname);
+
 const [showCompanyMenu, setShowCompanyMenu] = useState(false);
  const [showIndustryMenu, setShowIndustryMenu] = useState(false);
+  const [showCompanyMenuPc, setShowCompanyMenuPc] = useState(false);
+
 // const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
 
 const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(
   pathname.startsWith("/industries")
 );
-
+useEffect(() => {
+  if (isCompanyActive) {
+    setShowCompanyMenu(true);
+  }
+}, [isCompanyActive]);
 useEffect(() => {
   if (pathname.startsWith("/industries")) {
     setShowIndustryMobileMenu(true);
@@ -357,19 +375,151 @@ console.log("pathname =", pathname);
   )}
 </div>
 
-          {/* COMPANY */}
-             <Link
-            href="/company"
-            className={`text-[16px] ${
-    pathname === "/company"
+
+
+  <div
+  className="relative"
+  onMouseEnter={() => setShowCompanyMenuPc(true)}
+  onMouseLeave={() => setShowCompanyMenuPc(false)}
+>
+  <button
+ onMouseEnter={() => {
+  setShowMegaMenu(false);
+  setShowIndustryMenu(false);
+  setShowCompanyMenuPc(true);
+}}
+  className={`flex items-center gap-1 text-[16px] ${
+    pathname === "/"
       ? "font-[600]"
       : "font-[400]"
   } ${
-              isScrolled || showMegaMenu || isRPGgroup ? "text-[#1E3C8C]" : "text-white"
-            }`}
-          >
-            The Company
-          </Link>
+    isScrolled || showMegaMenu || isRPGgroup
+      ? "text-[#1E3C8C]"
+      : "text-white"
+  }`}
+>
+  The Company
+
+  <ChevronDown
+    size={16}
+    className={`transition-transform duration-300 ${
+      showIndustryMenu ? "rotate-180" : ""
+    }`}
+  />
+</button>
+
+  {showCompanyMenuPc && (
+    <div className="absolute top-full left-0 z-50 min-w-[280px] rounded-[6px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+      <div className="flex flex-col gap-2 pt-3">
+
+        <Link
+          href="/about"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          About us
+        </Link>
+
+        <Link
+          href="/leadership"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          Leadership
+        </Link>
+
+        <Link
+          href="/rpg-group"
+         className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          RPG Group
+        </Link>
+
+        <Link
+          href="/resources"
+          className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          Resources
+        </Link>
+
+        <Link
+          href="/manufacturing"
+          className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          Manufacturing
+        </Link>
+
+      <Link
+          href="/clientele"
+          className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />    
+          Clientele
+        </Link>
+
+
+
+        <Link
+          href="/sustainability"
+           className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          Sustainability
+        </Link>
+
+      </div>
+    </div>
+  )}
+</div>
+
+
+          {/* COMPANY End */}
+        
 
              {/* CAREERS */}
           <Link
@@ -618,7 +768,7 @@ h-[30px]
     setShowCompanyMenu(!showCompanyMenu)
   }
   className={`flex items-center gap-3 text-[24px] leading-[26px] italic font-[700] transition-colors duration-300 ${
-    showCompanyMenu
+    isCompanyActive || showCompanyMenu 
       ? "text-[#1E3C8C]"
       : "text-[#9AA4C0]"
   }`}
@@ -628,62 +778,93 @@ h-[30px]
   <ChevronDown
     size={22}
     className={`transition-transform duration-300 ${
-      showCompanyMenu
+      isCompanyActive || showCompanyMenu
         ? "rotate-180"
         : ""
     }`}
   />
 </button>
 
+
   {showCompanyMenu && (
     <div className="mt-6 flex flex-col gap-3 pl-0">
 
       <h5><Link
         href="/about"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+       className={`text-[20px] italic font-[700] ${
+      pathname === "/about"
+        ? "text-[#1E3C8C]"
+        : "text-[#8B8B8B]"
+    }`}
+  >
         About us
       </Link></h5>
 
       <h5><Link
         href="/leadership"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+    className={`text-[20px] italic font-[700] ${
+      pathname === "/leadership"
+        ? "text-[#1E3C8C]"
+        : "text-[#8B8B8B]"
+    }`}
+  >
         Leadership
       </Link></h5>
 
-      <h5><Link
-        href="/rpg-group"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
-        RPG Group
-      </Link></h5>
+    <h5>
+  <Link
+    href="/rpg-group"
+    className={`text-[20px] italic font-[700] ${
+      pathname === "/rpg-group"
+        ? "text-[#1E3C8C]"
+        : "text-[#8B8B8B]"
+    }`}
+  >
+    RPG Group
+  </Link>
+</h5>
 
       <h5><Link
-        href="/csr"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
-        CSR
+        href="/sustainability"
+       className={`text-[20px] italic font-[700] ${
+      pathname === "/sustainability"
+        ? "text-[#1E3C8C]"
+        : "text-[#8B8B8B]"
+    }`}
+  >
+        Sustainability
       </Link></h5>
 
       <h5><Link
         href="/resources"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+        className={`text-[20px] italic font-[700] ${
+      pathname === "/resources"
+        ? "text-[#1E3C8C]"
+        : "text-[#8B8B8B]"
+    }`}
+  >
         Resources
       </Link></h5>
 
       <h5><Link
         href="/manufacturing"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+      className={`text-[20px] italic font-[700] ${
+      pathname === "/manufacturing"
+        ? "text-[#1E3C8C]"
+        : "text-[#8B8B8B]"
+    }`}
+  >
         Manufacturing
       </Link></h5>  
 
       <h5><Link
         href="/clientele"
-        className="text-[20px] italic font-[700] text-[#8B8B8B]"
-      >
+      className={`text-[20px] italic font-[700] ${
+      pathname === "/clientele"
+        ? "text-[#1E3C8C]"
+        : "text-[#8B8B8B]"
+    }`}
+  >
         Clientele
       </Link></h5>
     </div>
@@ -792,10 +973,10 @@ h-[30px]
 
 
            <h4><Link
-          href="/career"
+          href="/life-at-asian-cables"
           className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
         >
-          Careers
+          Life At Asian Cables
         </Link></h4>
 
         <h4><Link
