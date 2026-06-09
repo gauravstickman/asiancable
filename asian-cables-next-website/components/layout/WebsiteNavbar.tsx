@@ -403,7 +403,7 @@ console.log("pathname =", pathname);
   <ChevronDown
     size={16}
     className={`transition-transform duration-300 ${
-      showIndustryMenu ? "rotate-180" : ""
+      showCompanyMenuPc ? "rotate-180" : ""
     }`}
   />
 </button>

@@ -124,11 +124,11 @@ export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
 
                 <div className="flex w-full flex-row items-start justify-between h-auto gap-[4px] rounded-[4px] p-[16px]">
                   <div >
-                    <h3 className="font-[figtree] text-[16px] leading-[24px] font-medium tracking-[-0.010] text-[#1D1F1E]">
+                    <p className="text-[16px] leading-[24px] font-medium tracking-[-0.4%] text-[#1D1F1E]">
                       {leader.name}
-                    </h3>
+                    </p>
 
-                    <p className="font-[figtree] text-[14px] leading-[20px] font-normal tracking-[-0.004em] text-[#646A69]">
+                    <p className=" text-[14px] leading-[20px] font-normal tracking-[-0.004em] text-[#646A69]">
                       {leader.role}
                     </p>
                   </div>
