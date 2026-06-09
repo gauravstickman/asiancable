@@ -44,7 +44,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
 
   return (
     <section className="mt-5 bg-gray-50  md:py-12">
-      <div className="mx-auto max-w-[1270px] px-0">
+      <div className="mx-auto max-w-[1264px] px-0">
         {/* CARD CONTAINER */}
         <div className="relative  bg-[#FFFFFF] px-[16px] py-[15px]">
           {/* TOP SECTION - Two column grid 65/35 ratio */}
