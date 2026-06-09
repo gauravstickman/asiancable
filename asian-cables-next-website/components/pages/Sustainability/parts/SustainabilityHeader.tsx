@@ -36,12 +36,12 @@ function SustainabilityHeader({ data }: { data?: any }) {
 
   return (
     <main className="bg-white text-slate-900">
-      <section className="relative min-h-[700px] md:mb-15 overflow-hidden">
+      <section className="relative min-h-[700px] overflow-hidden">
         {/* Background Image */}
         <img
           src={bgImage}
           alt="Sustainability Hero"
-          className="absolute inset-0  w-full object-cover object-center hidden md:block"
+          className="absolute inset-0 h-full w-full object-cover object-center hidden md:block"
         />
         {/* Mobile Background Image can be handled via CSS or another img tag if data.heroMobileImage is used, but following existing layout we keep it simple or use heroMobileImage if provided */}
         <img
@@ -85,8 +85,8 @@ function SustainabilityHeader({ data }: { data?: any }) {
           />
 
           {/* Stats */}
-          <div className="flex md:w-[851px] md:h-[208px] gap-[24px]  md:pl-[16px] relative mt-8 mb-2">
-            <div className="mt-13 grid md:max-w-[920px] md:h-[208px] grid-cols-2 gap-[24px]">
+          <div className="flex md:w-[851px]  gap-[24px]  md:pl-[16px] relative mt-8 mb-2">
+            <div className="mt-13 grid md:max-w-[920px]  grid-cols-2 gap-[24px]">
               {stats.map((stat: any) => (
                 <div key={stat.value} className="md:w-[auto]">
                 <p className="relative font-[magistral] text-[24px] leading-[50px] md:text-[38px] md:leading-[83.02px] font-bold text-white italic">
