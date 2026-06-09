@@ -1,6 +1,8 @@
 "use client";
 
-const cards = [
+import { getBaseUrl } from "../../../../utils/api";
+
+const defaultCards = [
   {
     title: "Consistent Quality & Accredited Testing",
     icon: "/assets/about/awardIcon.png",
@@ -10,8 +12,7 @@ const cards = [
     icon: "/assets/about/mapIcon.png",
   },
   {
-    title: "Custom Engineering & Application",
-    title1: "Specific Solutions",
+    title: "Custom Engineering & Application Specific Solutions",
     icon: "/assets/about/mapIcon.png",
   },
   {
@@ -19,7 +20,8 @@ const cards = [
     icon: "/assets/about/trendingIcon.png",
   },
 ];
-const governanceContent = [
+
+const defaultGovernanceContent = [
   {
     icon: "/assets/about/teamsIcon.png",
     alt: "RPG Group",
@@ -29,7 +31,7 @@ const governanceContent = [
   },
 ];
 
-function  FeatureCard({
+function FeatureCard({
   title,
   title1,
   icon,
@@ -54,15 +56,37 @@ function  FeatureCard({
 
         <h4 className="font-[magistral] text-[20px] md:text-[24px] leading-[29.27px] font-bold text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
           {title}
-          <br />
-          <span>{title1}</span>
+          {title1 && (
+            <>
+              <br />
+              <span>{title1}</span>
+            </>
+          )}
         </h4>
       </div>
     </div>
   );
 }
 
-export default function GovernanceSection() {
+export default function GovernanceSection({ dynamicData }: { dynamicData?: any }) {
+  const getImage = (imageStr: string, defaultImg: string) => {
+    if (!imageStr) return defaultImg;
+    if (imageStr.startsWith('http')) return imageStr;
+    return `${getBaseUrl()}${imageStr.startsWith('/') ? '' : '/'}${imageStr}`;
+  };
+
+  const titleText = dynamicData?.governanceTitle || "Shaped by Governance. Built on Quality.\nProven across Critical Applications.";
+  const mainCards = dynamicData?.governanceCards?.length > 0 ? dynamicData.governanceCards : defaultCards;
+
+  const primaryContent = dynamicData?.governancePrimaryTitle ? [
+    {
+      icon: getImage(dynamicData.governancePrimaryIcon, "/assets/about/teamsIcon.png"),
+      alt: "Governance Primary",
+      title: dynamicData.governancePrimaryTitle.split('\n'),
+      description: dynamicData.governancePrimaryDescription,
+    }
+  ] : defaultGovernanceContent;
+
   return (
     <section className="relative overflow-hidden bg-white py-10 md:py-20">
       <img
@@ -73,15 +97,11 @@ export default function GovernanceSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-5">
-        <h2 className="mb-8 md:mb-14 text-center font-[magistral] text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
-          Shaped by Governance. Built on Quality.
-          <br />
-          Proven across Critical Applications.
-        </h2>
+        <h2 className="mb-8 md:mb-14 text-center font-[magistral] text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic" dangerouslySetInnerHTML={{ __html: titleText.replace(/\n/g, '<br />') }} />
 
         <div className="grid grid-cols-12 gap-4 bg-[#FFFFFF] md:p-4">
           {/* Left Blue Card */}
-          {governanceContent.map((item, index) => (
+          {primaryContent.map((item, index) => (
             <div
               key={index}
               className="col-span-12 lg:col-span-6 lg:row-span-2"
@@ -96,7 +116,7 @@ export default function GovernanceSection() {
                 </div>
 
                 <h3 className="mb-6 font-[magistral] text-[24px] leading-[160%] md:text-[46px] md:leading-[52px] font-bold text-white italic">
-                  {item.title.map((line, i) => (
+                  {item.title.map((line: string, i: number) => (
                     <span key={i}>
                       {line}
                       <br />
@@ -112,24 +132,32 @@ export default function GovernanceSection() {
           ))}
 
           {/* Top Right Card */}
-          <div className="col-span-12 lg:col-span-6">
-            <FeatureCard {...cards[0]} tall />
-          </div>
+          {mainCards[0] && (
+            <div className="col-span-12 lg:col-span-6">
+              <FeatureCard title={mainCards[0].title} icon={getImage(mainCards[0].icon, "/assets/about/awardIcon.png")} tall />
+            </div>
+          )}
 
           {/* Middle Right Card */}
-          <div className="col-span-12 lg:col-span-6">
-            <FeatureCard {...cards[1]} tall />
-          </div>
+          {mainCards[1] && (
+            <div className="col-span-12 lg:col-span-6">
+              <FeatureCard title={mainCards[1].title} icon={getImage(mainCards[1].icon, "/assets/about/mapIcon.png")} tall />
+            </div>
+          )}
 
           {/* Bottom Left */}
-          <div className="col-span-12 lg:col-span-6">
-            <FeatureCard {...cards[2]} />
-          </div>
+          {mainCards[2] && (
+            <div className="col-span-12 lg:col-span-6">
+              <FeatureCard title={mainCards[2].title} icon={getImage(mainCards[2].icon, "/assets/about/mapIcon.png")} />
+            </div>
+          )}
 
           {/* Bottom Right */}
-          <div className="col-span-12 lg:col-span-6">
-            <FeatureCard {...cards[3]} />
-          </div>
+          {mainCards[3] && (
+            <div className="col-span-12 lg:col-span-6">
+              <FeatureCard title={mainCards[3].title} icon={getImage(mainCards[3].icon, "/assets/about/trendingIcon.png")} />
+            </div>
+          )}
         </div>
       </div>
     </section>

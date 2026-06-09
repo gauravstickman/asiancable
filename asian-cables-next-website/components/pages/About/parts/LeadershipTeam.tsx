@@ -1,62 +1,67 @@
 "use client";
 
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { getBaseUrl } from "../../../../utils/api";
 
-const leaders = [
+const defaultLeaders = [
   {
     name: "Cameron Williamson",
     role: "Senior Sustainability Consultant",
     image: "/assets/about/personIcon.png",
+    linkedin: "https://linkedin.com",
   },
   {
     name: "Courtney Henry",
     role: "Energy Analysts",
     image: "/assets/about/personIcon1.png",
+    linkedin: "https://linkedin.com",
   },
   {
     name: "Dianne Russell",
     role: "Senior Renewable Energy Engineer",
     image: "/assets/about/personIcon2.png",
-  },
-  {
-    name: "Cameron Williamson",
-    role: "Senior Sustainability Consultant",
-    image: "/assets/about/personIcon.png",
-  },
-  {
-    name: "Courtney Henry",
-    role: "Energy Analysts",
-    image: "/assets/about/personIcon1.png",
-  },
-  {
-    name: "Dianne Russell",
-    role: "Senior Renewable Energy Engineer",
-    image: "/assets/about/personIcon2.png",
+    linkedin: "https://linkedin.com",
   },
 ];
 
-export default function LeadershipTeam() {
+export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
+  const getImage = (imageStr: string, defaultImg: string) => {
+    if (!imageStr) return defaultImg;
+    if (imageStr.startsWith('http')) return imageStr;
+    return `${getBaseUrl()}${imageStr.startsWith('/') ? '' : '/'}${imageStr}`;
+  };
+
+  const title = dynamicData?.leadershipTitle || "Leadership Team";
+  const subtitle = dynamicData?.leadershipSubtitle || "Meet the visionaries driving Asian Cables forward";
+  const buttonLabel = dynamicData?.leadershipButtonLabel || "View Leadership";
+  const buttonUrl = dynamicData?.leadershipButtonUrl || "#";
+
+  const leaders = dynamicData?.leadershipMembers?.length > 0 
+    ? dynamicData.leadershipMembers.map((m: any) => ({
+        name: m.name,
+        role: m.designation,
+        image: getImage(m.image, "/assets/about/personIcon.png"),
+        linkedin: m.linkedin
+      }))
+    : defaultLeaders;
+
   return (
     <section className="overflow-hidden bg-white py-16">
       <div className="mx-auto max-w-[1400px] md:px-6 px-5">
         {/* Header */}
         <div className="mb-10 md:px-5 flex md:flex-row flex-col md:items-center md:justify-between">
           <div>
-            <h2 className="font-[magistral]  text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C]">
-              Leadership Team
-            </h2>
-
-            <p className="mt-4 font-[work_sans] text-[16px] leading-[150%] md:text-[17px] md:leading-[25.5px] font-normal text-[#525252]">
-              Meet the visionaries driving Asian Cables forward
-            </p>
+            <h2 className="font-[magistral]  text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C]" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
+            <p className="mt-4 font-[work_sans] text-[16px] leading-[150%] md:text-[17px] md:leading-[25.5px] font-normal text-[#525252]" dangerouslySetInnerHTML={{ __html: subtitle.replace(/\n/g, '<br />') }} />
           </div>
           <div>
-            <button className="border-it-b cursor-pointer md:mx-auto flex items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] px-5 py-2 text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px] md:mt-0 mt-5">
-              View Leadership
+            <Link href={buttonUrl} className="border-it-b cursor-pointer md:mx-auto flex items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] px-5 py-2 text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px] md:mt-0 mt-5 w-fit">
+              {buttonLabel}
               <span>
                 <ChevronRight size={18} />
               </span>
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -64,7 +69,7 @@ export default function LeadershipTeam() {
         <div className="relative">
           <div className="animate-marquee hover:[animation-play-state:paused] flex w-max gap-[33px]">
             {/* First Set */}
-            {leaders.map((leader, index) => (
+            {leaders.map((leader: any, index: number) => (
               <div key={index} className="md:max-w-[260px] min-w-[260px]">
                 {/* Image */}
                 <div className="overflow-hidden rounded-[4px]">
@@ -87,17 +92,27 @@ export default function LeadershipTeam() {
                     </p>
                   </div>
 
-                  <img
-                    src="/assets/about/linkdinIcon.png"
-                    alt="LinkedIn"
-                    className="h-6 w-6 object-contain cursor-pointer"
-                  />
+                  {leader.linkedin ? (
+                    <a href={leader.linkedin} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src="/assets/about/linkdinIcon.png"
+                        alt="LinkedIn"
+                        className="h-6 w-6 object-contain cursor-pointer"
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src="/assets/about/linkdinIcon.png"
+                      alt="LinkedIn"
+                      className="h-6 w-6 object-contain cursor-pointer opacity-50"
+                    />
+                  )}
                 </div>
               </div>
             ))}
 
             {/* Duplicate */}
-            {leaders.map((leader, index) => (
+            {leaders.map((leader: any, index: number) => (
               <div key={`dup-${index}`} className="max-w-[260px] min-w-[260px]">
                 <div className="overflow-hidden rounded-[4px]">
                   <img
@@ -118,11 +133,21 @@ export default function LeadershipTeam() {
                     </p>
                   </div>
 
-                  <img
-                    src="/assets/about/linkdinIcon.png"
-                    alt="LinkedIn"
-                    className="h-6 w-6 object-contain cursor-pointer"
-                  />
+                  {leader.linkedin ? (
+                    <a href={leader.linkedin} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src="/assets/about/linkdinIcon.png"
+                        alt="LinkedIn"
+                        className="h-6 w-6 object-contain cursor-pointer"
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src="/assets/about/linkdinIcon.png"
+                      alt="LinkedIn"
+                      className="h-6 w-6 object-contain cursor-pointer opacity-50"
+                    />
+                  )}
                 </div>
               </div>
             ))}

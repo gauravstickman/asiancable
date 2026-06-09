@@ -1,15 +1,16 @@
 import { Dot } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { getBaseUrl } from "../../../../utils/api";
 
-function AboutHeader() {
+function AboutHeader({ dynamicData }: { dynamicData?: any }) {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "The Company", href: "/company" },
     { label: "About" },
   ];
 
-  const stats = [
+  const defaultStats = [
     {
       value: "90+",
       line1: "Countries.",
@@ -27,16 +28,38 @@ function AboutHeader() {
     },
   ];
 
+  const statsToUse = dynamicData?.heroStats?.length > 0 
+    ? dynamicData.heroStats.map((s: any) => ({
+        value: s.value,
+        line1: s.label?.split(' ')[0] || '',
+        line2: s.label?.split(' ').slice(1).join(' ') || ''
+      })) 
+    : defaultStats;
+
+  const bgImage = dynamicData?.heroImage 
+    ? (dynamicData.heroImage.startsWith('http') ? dynamicData.heroImage : `${getBaseUrl()}${dynamicData.heroImage.startsWith('/') ? '' : '/'}${dynamicData.heroImage}`)
+    : "/assets/about/aboutbgIcon.png";
+
+  const bgMobileImage = dynamicData?.heroMobileImage 
+    ? (dynamicData.heroMobileImage.startsWith('http') ? dynamicData.heroMobileImage : `${getBaseUrl()}${dynamicData.heroMobileImage.startsWith('/') ? '' : '/'}${dynamicData.heroMobileImage}`)
+    : bgImage;
+
   return (
     <main className="bg-white text-slate-900">
       <section className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(270deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.2)_50%,_rgba(0,0,0,0.6)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(270deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.2)_50%,_rgba(0,0,0,0.6)_100%)]" />
 
-        {/* Background Image */}
+        {/* Background Image Desktop */}
         <img
-          src="/assets/about/aboutbgIcon.png"
+          src={bgImage}
           alt="Manufacturing Hero"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-cover object-center hidden md:block"
+        />
+        {/* Background Image Mobile */}
+        <img
+          src={bgMobileImage}
+          alt="Manufacturing Hero Mobile"
+          className="absolute inset-0 h-full w-full object-cover object-center md:hidden"
         />
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-7xl px-3 pt-60 pb-[60px] text-white">
@@ -66,17 +89,21 @@ function AboutHeader() {
           </nav>
 
           {/* Heading */}
-          <h1 className="font-[magistral] text-[36px] leading-[140%] md:text-[68px] md:leading-[64.6px] tracking-[-1.44px] font-bold italic">
-            Reliability,
-            <span className="block font-[magistral] text-[36px] leading-[140%] md:text-[68px] md:leading-[64.6px] tracking-[-1.44px] font-bold italic">
-              Redefined.
-            </span>
-          </h1>
+          {dynamicData?.heroTitle ? (
+            <h1 className="font-[magistral] text-[36px] leading-[140%] md:text-[68px] md:leading-[64.6px] tracking-[-1.44px] font-bold italic" dangerouslySetInnerHTML={{ __html: dynamicData.heroTitle.replace(/\n/g, '<br />') }} />
+          ) : (
+            <h1 className="font-[magistral] text-[36px] leading-[140%] md:text-[68px] md:leading-[64.6px] tracking-[-1.44px] font-bold italic">
+              Reliability,
+              <span className="block font-[magistral] text-[36px] leading-[140%] md:text-[68px] md:leading-[64.6px] tracking-[-1.44px] font-bold italic">
+                Redefined.
+              </span>
+            </h1>
+          )}
 
           {/* Stats */}
           <div className="mt-10 md:mt-18 flex flex-wrap items-start gap-2 md:gap-[55px]">
-            {stats.map((stat) => (
-              <div key={stat.value} className="about-box md:w-[auto] w-[48%]">
+            {statsToUse.map((stat: any, idx: number) => (
+              <div key={idx} className="about-box md:w-[auto] w-[48%]">
                 <p className="relative font-[magistral] text-[24px] leading-[50px] md:text-[38px] md:leading-[83.02px] font-bold italic text-white">
                   {stat.value}
                 </p>

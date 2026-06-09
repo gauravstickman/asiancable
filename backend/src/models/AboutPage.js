@@ -65,7 +65,8 @@ const aboutPageSchema = new mongoose.Schema({
     leadershipMembers: [{
         name: { type: String, default: '' },
         designation: { type: String, default: '' },
-        image: { type: String, default: '' }
+        image: { type: String, default: '' },
+        linkedin: { type: String, default: '' }
     }]
 
 }, { timestamps: true });

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Edit2, Trash2, ExternalLink, Briefcase, Search } from 'lucide-react';
+import { Plus, Edit2, Trash2, Briefcase, Search } from 'lucide-react';
 import { toast } from 'react-toastify';
 import API from '../../api/axios';
 
@@ -122,17 +122,6 @@ const CaseStudyList = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <div className="flex items-center justify-end gap-3">
-                                                {cs.documentPdf && (
-                                                    <a 
-                                                        href={cs.documentPdf} 
-                                                        target="_blank" 
-                                                        rel="noreferrer"
-                                                        className="text-slate-500 hover:text-blue-600 transition-colors"
-                                                        title="View PDF"
-                                                    >
-                                                        <ExternalLink size={18} />
-                                                    </a>
-                                                )}
                                                 <Link
                                                     to={`/admin/case-studies/edit/${cs._id}`}
                                                     className="text-blue-500 hover:bg-blue-50 p-1.5 rounded transition-colors"

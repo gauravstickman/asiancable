@@ -82,15 +82,13 @@ export default function Related({ currentCategory, currentTitle, allCaseStudies 
     link: blog.link || "/case-study",
   }));
 
-  // First, get case studies in the same category (excluding current)
-  const sameCategory = displayBlogs.filter((blog) => {
+  // Get case studies (excluding current)
+  const otherCaseStudies = displayBlogs.filter((blog) => {
     if (currentTitle && blog.title === currentTitle) return false;
-    if (!currentCategory) return true;
-    
-    return blog.tag.toLowerCase() === currentCategory.toLowerCase();
+    return true;
   });
 
-  const finalCasestudies = [...sameCategory];
+  const finalCasestudies = [...otherCaseStudies];
 
   if (finalCasestudies.length === 0) return null;
 

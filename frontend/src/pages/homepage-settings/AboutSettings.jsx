@@ -61,7 +61,7 @@ const AboutSettings = () => {
     const handleAddToArray = (arrayName, defaultItem) => {
         setSettings(prev => ({
             ...prev,
-            [arrayName]: [defaultItem, ...(prev[arrayName] || [])]
+            [arrayName]: [...(prev[arrayName] || []), defaultItem]
         }));
     };
 
@@ -252,16 +252,6 @@ const AboutSettings = () => {
                                         onChange={e => handleChange('heroImage', e.target.value)}
                                         onChoose={() => openMediaPicker((url) => handleChange('heroImage', url))}
                                     />
-                                    {settings.heroImage && (
-                                        <div className="mt-3">
-                                            <img
-                                                src={settings.heroImage.startsWith('http') ? settings.heroImage : `${import.meta.env.VITE_API_URL}${settings.heroImage}`}
-                                                alt="Hero Banner Preview"
-                                                className="w-full h-40 rounded-xl border border-slate-200 object-cover bg-slate-50"
-                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/800x200?text=No+Image'; }}
-                                            />
-                                        </div>
-                                    )}
                                 </div>
                                 <div className="mt-4">
                                     <ImageInput
@@ -270,16 +260,6 @@ const AboutSettings = () => {
                                         onChange={e => handleChange('heroMobileImage', e.target.value)}
                                         onChoose={() => openMediaPicker((url) => handleChange('heroMobileImage', url))}
                                     />
-                                    {settings.heroMobileImage && (
-                                        <div className="mt-3">
-                                            <img
-                                                src={settings.heroMobileImage.startsWith('http') ? settings.heroMobileImage : `${import.meta.env.VITE_API_URL}${settings.heroMobileImage}`}
-                                                alt="Hero Mobile Preview"
-                                                className="w-40 h-40 rounded-xl border border-slate-200 object-cover bg-slate-50"
-                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x400?text=No+Image'; }}
-                                            />
-                                        </div>
-                                    )}
                                 </div>
                             </div>
 
@@ -287,9 +267,6 @@ const AboutSettings = () => {
                             <div className="mt-4">
                                 <div className="flex justify-between items-center mb-2">
                                     <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">Stats</label>
-                                    <button onClick={() => handleAddToArray('heroStats', { value: '', label: '' })} className="text-blue-600 text-xs font-medium flex items-center gap-1 px-2 py-1 border border-blue-200 bg-blue-50 rounded-md">
-                                        <Plus size={14} /> Add Stat
-                                    </button>
                                 </div>
                                 <div className="space-y-2">
                                     {(settings.heroStats || []).map((stat, idx) => (
@@ -304,6 +281,9 @@ const AboutSettings = () => {
                                             No stats added yet. Click "Add Stat" to add one.
                                         </p>
                                     )}
+                                    <button onClick={() => handleAddToArray('heroStats', { value: '', label: '' })} className="mt-2 text-blue-600 text-sm font-medium flex items-center justify-center gap-1 px-4 py-2 border border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-lg w-full transition-colors">
+                                        <Plus size={16} /> Add Stat
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -337,47 +317,11 @@ const AboutSettings = () => {
                                 />
                             </div>
 
-                            {/* Quick Links */}
-                            <div className="mb-6 pb-6 border-b border-slate-100">
-                                <div className="flex justify-between items-center mb-2">
-                                    <label className="text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
-                                        <Link size={14} /> Quick Links
-                                    </label>
-                                    <button onClick={() => handleAddToArray('builtOnLinks', { label: '', url: '', icon: 'file' })} className="text-blue-600 text-xs font-medium flex items-center gap-1 px-2 py-1 border border-blue-200 bg-blue-50 rounded-md">
-                                        <Plus size={14} /> Add Link
-                                    </button>
-                                </div>
-                                <div className="space-y-2">
-                                    {(settings.builtOnLinks || []).map((link, idx) => (
-                                        <div key={idx} className="flex gap-2 items-center bg-slate-50 p-2 rounded-lg border border-slate-200">
-                                            <FormInput label="Label" placeholder="e.g. User Manual" value={link.label || ''} onChange={e => handleArrayChange('builtOnLinks', idx, 'label', e.target.value)} />
-                                            <FormInput label="URL" placeholder="e.g. /user-manual" value={link.url || ''} onChange={e => handleArrayChange('builtOnLinks', idx, 'url', e.target.value)} />
-                                            <div className="w-32 shrink-0">
-                                                <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Icon</label>
-                                                <select
-                                                    value={link.icon || 'file'}
-                                                    onChange={e => handleArrayChange('builtOnLinks', idx, 'icon', e.target.value)}
-                                                    className="w-full px-2 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                                                >
-                                                    <option value="file">📄 File</option>
-                                                    <option value="calculator">🧮 Calculator</option>
-                                                    <option value="download">⬇️ Download</option>
-                                                    <option value="link">🔗 Link</option>
-                                                </select>
-                                            </div>
-                                            <button onClick={() => handleRemoveFromArray('builtOnLinks', idx)} className="text-red-400 hover:text-red-600 p-2 mt-5"><Trash2 size={16} /></button>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
 
                             {/* Value Cards */}
                             <div>
                                 <div className="flex justify-between items-center mb-4">
                                     <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Value Cards (Vision / Mission / Purpose / Values)</p>
-                                    <button onClick={() => handleAddToArray('valueCards', { title: '', description: '', icon: '' })} className="text-blue-600 text-sm font-medium flex items-center gap-1 px-3 py-1.5 border border-blue-200 bg-blue-50 rounded-lg">
-                                        <Plus size={16} /> Add Card
-                                    </button>
                                 </div>
                                 <div className="space-y-4">
                                     {(settings.valueCards || []).map((card, idx) => (
@@ -388,7 +332,14 @@ const AboutSettings = () => {
                                             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Card #{idx + 1}</p>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                 <FormInput label="Title" placeholder="e.g. Our Vision" value={card.title || ''} onChange={e => handleArrayChange('valueCards', idx, 'title', e.target.value)} />
-                                                <FormInput label="Icon Image URL" placeholder="Icon URL (optional)" value={card.icon || ''} onChange={e => handleArrayChange('valueCards', idx, 'icon', e.target.value)} />
+                                                <div>
+                                                    <ImageInput
+                                                        label="Icon Image URL"
+                                                        value={card.icon || ''}
+                                                        onChange={e => handleArrayChange('valueCards', idx, 'icon', e.target.value)}
+                                                        onChoose={() => openMediaPicker((url) => handleArrayChange('valueCards', idx, 'icon', url))}
+                                                    />
+                                                </div>
                                                 <div className="md:col-span-2">
                                                     <FormTextarea label="Description" rows={3} placeholder="Card description..." value={card.description || ''} onChange={e => handleArrayChange('valueCards', idx, 'description', e.target.value)} />
                                                 </div>
@@ -401,6 +352,9 @@ const AboutSettings = () => {
                                             <p className="text-sm">No value cards added yet. Click "Add Card" to get started.</p>
                                         </div>
                                     )}
+                                    <button onClick={() => handleAddToArray('valueCards', { title: '', description: '', icon: '' })} className="mt-2 text-blue-600 text-sm font-medium flex items-center justify-center gap-1 px-4 py-2 border border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-lg w-full transition-colors">
+                                        <Plus size={16} /> Add Card
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -429,9 +383,6 @@ const AboutSettings = () => {
                             <div>
                                 <div className="flex justify-between items-center mb-4">
                                     <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Timeline Cards</p>
-                                    <button onClick={() => handleAddToArray('journeyCards', { year: '', description: '', image: '' })} className="text-blue-600 text-sm font-medium flex items-center gap-1 px-3 py-1.5 border border-blue-200 bg-blue-50 rounded-lg">
-                                        <Plus size={16} /> Add Card
-                                    </button>
                                 </div>
                                 <div className="space-y-4">
                                     {(settings.journeyCards || []).map((card, idx) => (
@@ -451,16 +402,6 @@ const AboutSettings = () => {
                                                         onChange={e => handleArrayChange('journeyCards', idx, 'image', e.target.value)}
                                                         onChoose={() => openMediaPicker((url) => handleArrayChange('journeyCards', idx, 'image', url))}
                                                     />
-                                                    {card.image && (
-                                                        <div className="mt-3">
-                                                            <img
-                                                                src={card.image.startsWith('http') ? card.image : `${import.meta.env.VITE_API_URL}${card.image}`}
-                                                                alt="Preview"
-                                                                className="h-28 rounded-lg border border-slate-200 object-cover bg-slate-50 w-full sm:w-1/2 md:w-1/3"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x112?text=No+Image'; }}
-                                                            />
-                                                        </div>
-                                                    )}
                                                 </div>
 
                                                 <FormTextarea label="Description" rows={3} placeholder="Merger of..." value={card.description || ''} onChange={e => handleArrayChange('journeyCards', idx, 'description', e.target.value)} />
@@ -473,6 +414,9 @@ const AboutSettings = () => {
                                             <p className="text-sm">No timeline events added yet. Click "Add Card" to get started.</p>
                                         </div>
                                     )}
+                                    <button onClick={() => handleAddToArray('journeyCards', { year: '', description: '', image: '' })} className="mt-2 text-blue-600 text-sm font-medium flex items-center justify-center gap-1 px-4 py-2 border border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-lg w-full transition-colors">
+                                        <Plus size={16} /> Add Card
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -515,16 +459,6 @@ const AboutSettings = () => {
                                             onChange={e => handleChange('governancePrimaryIcon', e.target.value)}
                                             onChoose={() => openMediaPicker((url) => handleChange('governancePrimaryIcon', url))}
                                         />
-                                        {settings.governancePrimaryIcon && (
-                                            <div className="mt-3">
-                                                <img
-                                                    src={settings.governancePrimaryIcon.startsWith('http') ? settings.governancePrimaryIcon : `${import.meta.env.VITE_API_URL}${settings.governancePrimaryIcon}`}
-                                                    alt="Icon Preview"
-                                                    className="h-12 w-12 rounded object-contain bg-white border border-slate-200 p-1"
-                                                    onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/48?text=?'; }}
-                                                />
-                                            </div>
-                                        )}
                                     </div>
                                     <FormTextarea
                                         label="Description"
@@ -540,9 +474,6 @@ const AboutSettings = () => {
                             <div>
                                 <div className="flex justify-between items-center mb-4">
                                     <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Other Governance Cards</p>
-                                    <button onClick={() => handleAddToArray('governanceCards', { title: '', icon: '' })} className="text-blue-600 text-sm font-medium flex items-center gap-1 px-3 py-1.5 border border-blue-200 bg-blue-50 rounded-lg">
-                                        <Plus size={16} /> Add Card
-                                    </button>
                                 </div>
                                 <div className="space-y-4">
                                     {(settings.governanceCards || []).map((card, idx) => (
@@ -562,16 +493,6 @@ const AboutSettings = () => {
                                                         onChange={e => handleArrayChange('governanceCards', idx, 'icon', e.target.value)}
                                                         onChoose={() => openMediaPicker((url) => handleArrayChange('governanceCards', idx, 'icon', url))}
                                                     />
-                                                    {card.icon && (
-                                                        <div className="mt-3">
-                                                            <img
-                                                                src={card.icon.startsWith('http') ? card.icon : `${import.meta.env.VITE_API_URL}${card.icon}`}
-                                                                alt="Icon Preview"
-                                                                className="h-12 w-12 rounded object-contain bg-white border border-slate-200 p-1"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/48?text=?'; }}
-                                                            />
-                                                        </div>
-                                                    )}
                                                 </div>
                                             </div>
                                         </div>
@@ -582,6 +503,9 @@ const AboutSettings = () => {
                                             <p className="text-sm">No other cards added yet. Click "Add Card" to get started.</p>
                                         </div>
                                     )}
+                                    <button onClick={() => handleAddToArray('governanceCards', { title: '', icon: '' })} className="mt-2 text-blue-600 text-sm font-medium flex items-center justify-center gap-1 px-4 py-2 border border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-lg w-full transition-colors">
+                                        <Plus size={16} /> Add Card
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -628,9 +552,6 @@ const AboutSettings = () => {
                             <div>
                                 <div className="flex justify-between items-center mb-4">
                                     <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Team Members</p>
-                                    <button onClick={() => handleAddToArray('leadershipMembers', { name: '', designation: '', image: '' })} className="text-blue-600 text-sm font-medium flex items-center gap-1 px-3 py-1.5 border border-blue-200 bg-blue-50 rounded-lg">
-                                        <Plus size={16} /> Add Member
-                                    </button>
                                 </div>
                                 <div className="space-y-4">
                                     {(settings.leadershipMembers || []).map((member, idx) => (
@@ -640,28 +561,21 @@ const AboutSettings = () => {
                                             </button>
                                             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Member #{idx + 1}</p>
                                             
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                <div className="space-y-4">
+                                            <div className="space-y-4">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                     <FormInput label="Name" placeholder="e.g. John Doe" value={member.name || ''} onChange={e => handleArrayChange('leadershipMembers', idx, 'name', e.target.value)} />
-                                                    <FormInput label="Designation" placeholder="e.g. CEO" value={member.designation || ''} onChange={e => handleArrayChange('leadershipMembers', idx, 'designation', e.target.value)} />
+                                                    <div>
+                                                        <ImageInput
+                                                            label="Member Image URL"
+                                                            value={member.image || ''}
+                                                            onChange={e => handleArrayChange('leadershipMembers', idx, 'image', e.target.value)}
+                                                            onChoose={() => openMediaPicker((url) => handleArrayChange('leadershipMembers', idx, 'image', url))}
+                                                        />
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <ImageInput
-                                                        label="Member Image URL"
-                                                        value={member.image || ''}
-                                                        onChange={e => handleArrayChange('leadershipMembers', idx, 'image', e.target.value)}
-                                                        onChoose={() => openMediaPicker((url) => handleArrayChange('leadershipMembers', idx, 'image', url))}
-                                                    />
-                                                    {member.image && (
-                                                        <div className="mt-3">
-                                                            <img
-                                                                src={member.image.startsWith('http') ? member.image : `${import.meta.env.VITE_API_URL}${member.image}`}
-                                                                alt="Preview"
-                                                                className="h-28 rounded-lg border border-slate-200 object-cover bg-slate-50 w-full sm:w-1/2"
-                                                                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/200x200?text=No+Image'; }}
-                                                            />
-                                                        </div>
-                                                    )}
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                    <FormInput label="Designation" placeholder="e.g. CEO" value={member.designation || ''} onChange={e => handleArrayChange('leadershipMembers', idx, 'designation', e.target.value)} />
+                                                    <FormInput label="LinkedIn Profile URL (Optional)" placeholder="https://linkedin.com/in/..." value={member.linkedin || ''} onChange={e => handleArrayChange('leadershipMembers', idx, 'linkedin', e.target.value)} />
                                                 </div>
                                             </div>
                                         </div>
@@ -672,6 +586,13 @@ const AboutSettings = () => {
                                             <p className="text-sm">No members added yet. Click "Add Member" to get started.</p>
                                         </div>
                                     )}
+                                    <button onClick={(e) => {
+                                        handleAddToArray('leadershipMembers', { name: '', designation: '', image: '', linkedin: '' });
+                                        const btn = e.currentTarget;
+                                        setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'end' }), 100);
+                                    }} className="mt-2 text-blue-600 text-sm font-medium flex items-center justify-center gap-1 px-4 py-2 border border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-lg w-full transition-colors">
+                                        <Plus size={16} /> Add Member
+                                    </button>
                                 </div>
                             </div>
                         </div>
