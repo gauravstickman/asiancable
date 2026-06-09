@@ -43,6 +43,8 @@ const WebsiteNavbarDark = () => {
 const pathname = usePathname();
 
 const isHomePage = pathname === "/";
+const isContactPage = pathname === "/contact";
+
 const isRPGgroup = pathname === "/rpg-group";
   const [showCompanyMenuPc, setShowCompanyMenuPc] = useState(false);
 
@@ -107,7 +109,11 @@ useEffect(() => {
 
 
 const isProductsActive =
-  pathname.startsWith("/products");
+  pathname.startsWith("/product");
+  console.log({
+  pathname,
+  isProductsActive,
+});
 const [showCompanyMenu, setShowCompanyMenu] = useState(false);
 const [showIndustryMenu, setShowIndustryMenu] = useState(false);
 const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
@@ -161,8 +167,8 @@ const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
               className={`flex items-center gap-1  text-[16px] leading-[26px] cursor-pointer tracking-[-0.5px] ${
                 isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
               } ${
-    isProductsActive || showMegaMenu
-      ? "font-[400]"
+    isProductsActive
+      ? "font-[600]"
       : "font-[400]"
   }`}
             >
@@ -480,9 +486,9 @@ onMouseEnter={() => {
 
           {/* CAREERS */}
           <Link
-            href="/career"
+            href="/life-at-asian-cables"
             className={`text-[16px] ${
-    pathname === "/career"
+    pathname === "/life-at-asian-cables"
       ? "font-[600]"
       : "font-[400]"
   } ${
@@ -869,7 +875,8 @@ onMouseEnter={() => {
 </div>
   </div>
 )}
-<Bottombar />
+{!isContactPage && <Bottombar />}
+
     </nav>
   );
 };

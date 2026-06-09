@@ -40,7 +40,7 @@ function CertificationsAccreditations({ data }: { data?: any }) {
           {items.map((item: any, index: number) => (
             <div
               key={index}
-              className="flex md:text-left text-center md:h-[209px] md:min-w-[auto] min-w-[80vw] md:w-[299.75px] flex-col justify-center rounded-[4px] bg-[#F9F9F9] p-[24px] transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02] hover:shadow-sm"
+              className="flex md:text-left text-center md:h-[209px] md:min-w-[auto] min-w-[80vw] md:w-[299.75px] flex-col justify-center rounded-[4px] bg-[#F9F9F9] p-[24px] transition-all duration-300 ease-in-out hover:shadow-sm"
             >
               <img
                 src={item.img}

@@ -59,11 +59,11 @@ export default function WhitepapersResearch({ data }: { data?: any }) {
           </a>
         </div>
 
-        <div className="flex flex-nowrap overflow-x-auto industries md:w-[1270px] md:flex-col gap-[24px]">
+        <div className="flex flex-nowrap overflow-x-auto industries  md:flex-col gap-[24px]">
           {sample.map((item: any, idx: number) => (
             <div
               key={idx}
-              className="flex md:flex-row  flex-col md:h-[190px] md:w-[1290px] md:min-w-[auto] min-w-[80vw] gap-6 rounded-[4px] border-[2px] border-transparent bg-[#1E3C8C0A] md:pt-[42px] md:pr-[42px] md:pb-[42px] md:pl-[42px] p-6"
+              className="flex md:flex-row  flex-col md:h-[190px] md:min-w-[1290px] md:min-w-[auto] min-w-[80vw] gap-6 rounded-[4px] border-[2px] border-transparent bg-[#1E3C8C0A] md:pt-[42px] md:pr-[42px] md:pb-[42px] md:pl-[42px] p-6"
             >
               <div className="mr-6 md:mt-5">
                 <img

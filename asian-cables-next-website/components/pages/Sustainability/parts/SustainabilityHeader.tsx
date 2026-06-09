@@ -36,7 +36,7 @@ function SustainabilityHeader({ data }: { data?: any }) {
 
   return (
     <main className="bg-white text-slate-900">
-      <section className="relative min-h-[700px] overflow-hidden">
+      <section className="relative min-h-[700px] md:mb-15 overflow-hidden">
         {/* Background Image */}
         <img
           src={bgImage}

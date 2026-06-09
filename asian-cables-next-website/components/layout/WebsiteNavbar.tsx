@@ -247,7 +247,7 @@ console.log("pathname =", pathname);
   setShowIndustryMenu(true);
 }}
   className={`flex items-center gap-1 text-[16px] ${
-    pathname === "/industries"
+showIndustryMobileMenu    
       ? "font-[600]"
       : "font-[400]"
   } ${
@@ -389,7 +389,8 @@ console.log("pathname =", pathname);
   setShowCompanyMenuPc(true);
 }}
   className={`flex items-center gap-1 text-[16px] ${
-    pathname === "/"
+    isCompanyActive
+    
       ? "font-[600]"
       : "font-[400]"
   } ${
@@ -523,9 +524,9 @@ console.log("pathname =", pathname);
 
              {/* CAREERS */}
           <Link
-            href="/career"
+            href="/life-at-asian-cables"
             className={`text-[16px] ${
-    pathname === "/career"
+    pathname === "/life-at-asian-cables"
       ? "font-[600]"
       : "font-[400]"
   } ${
