@@ -567,16 +567,72 @@ body {
   height: 180px;
 }
 
+.highlights {
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.highlights::-webkit-scrollbar,
+.highlights::-webkit-scrollbar-track,
+.highlights::-webkit-scrollbar-thumb {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  background: transparent !important;
+}
+.highlights {
+  cursor: grab;
+}
+.highlights {
+  scrollbar-gutter: stable;
+}
+.highlights:active {
+  cursor: grabbing;
+  user-select: none;
+}
+.highlights::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
 @media(min-width:768px) {
 
-.sustain-card:not(:first-child) {
+.sustain-card {
     max-width: 467px;
-    
-}
-.sustain-card:not(:first-child) .sustain-desc {
-    display: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
 }
 
+.sustain-desc {
+    max-height: 200px; /* adjust as needed */
+    opacity: 1;
+    visibility: visible;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+.sustain-card,
+.sustain-desc {
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
+}
+.sustain-card:not(:hover) .sustain-desc {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.sustain-card:hover {
+    max-width: 880px; /* if you want expansion */
+    transition: .3s ease-in;
+}
+.sustain-card:not(:hover) { max-width: 467px; transition: .3s ease-in; }
   .masonry {
     column-count: 3;
     column-gap: 80px;

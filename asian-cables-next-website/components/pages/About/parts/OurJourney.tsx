@@ -67,11 +67,11 @@ export default function OurJourney({ dynamicData }: { dynamicData?: any }) {
       </div>
 
       {/* Timeline - Full Width */}
-      <div className="mb-12 overflow-hidden">
+      <div className="md:mb-12 overflow-hidden">
         <div className="relative">
           <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-white to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-white to-transparent" />
-          <div ref={yearsRef} className="flex justify-center gap-8 mb-10">
+          <div ref={yearsRef} className="flex justify-center gap-8 mb-10 industries md:overflow-hidden overflow-x-auto">
             {timelineData.map((item: any, index: number) => (
               <button
                 key={`${item.year}-${index}`}
@@ -80,10 +80,10 @@ export default function OurJourney({ dynamicData }: { dynamicData?: any }) {
                   swiperRef.current?.slideTo(index);
                 }}
                 className={`transition-all shrink-0 duration-300 ${
-                  activeIndex === index ? "text-[40px] font-bold text-[#1E3C8C]" : "text-[24px] text-[#C8D0E3]"
+                  activeIndex === index ? "text-[16px] md:text-[40px] font-bold text-[#1E3C8C]" : "text-[24px] text-[#C8D0E3]"
                 }`}
               >
-                <span className={`${activeIndex === index ? "text-[40px] font-bold" : "text-[24px]"}`}>
+                <span className={`${activeIndex === index ? "text-[20px] md:text-[40px] font-bold" : "text-[16px] md:text-[24px]"}`}>
                   {item.year}
                 </span>
               </button>
@@ -111,7 +111,7 @@ export default function OurJourney({ dynamicData }: { dynamicData?: any }) {
               <SwiperSlide key={`${item.year}-${index}`}>
                 <div className="grid grid-cols-1 rounded-lg bg-white lg:grid-cols-2">
                   {/* Image */}
-                  <div className="relative h-[280] md:h-[480] overflow-hidden">
+                  <div className="relative h-[280] md:h-[480] overflow-hidden shadow-[3px_43px_250px_0px_#0000000D]">
                     <img
                       src={getImage(item.image, "/assets/about/industryIcons.png")}
                       alt={item.year}
