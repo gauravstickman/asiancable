@@ -41,14 +41,14 @@ export default function CoreValues({ data }: { data?: any }) {
           {values.map((item: any, index: number) => (
             <div
               key={index}
-              className="group flex min-w-[240px]  md:min-w-[auto] h-[301px] w-[293.75px] flex-col gap-[18px] rounded-[4px] border border-[#E5E7EB] bg-[#B7B7B71A] p-3 md:p-[41px]  md:px-6 py-10 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
+              className="group flex min-w-[240px]  md:min-w-[auto] min-h-[320px] w-[293.75px] flex-col gap-[18px] rounded-[4px] border border-[#E5E7EB] bg-[#B7B7B71A] p-3 md:p-[41px]  md:px-6 py-10 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]"
             >
               {/* ICON */}
               <div className="mb-6 flex justify-center">
                 <img
                   src={item.icon}
                   alt=""
-                  className="h-15 w-15 object-contain transition-transform duration-300 group-hover:scale-110"
+                  className="h-15 w-15 object-contain transition-transform duration-300"
                 />
               </div>
 

@@ -44,7 +44,7 @@ function FeatureCard({
 }) {
   return (
     <div
-      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9] transition-all duration-300 hover:bg-[#1E3C8C] ${tall ? "h-[157px]" : "h-[238.5px]"}`}
+      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9] transition-all duration-300 h-[157px] md:h-[238.5px] md:p-[40px] p-5 hover:bg-[#1E3C8C] ${tall ? "h-[157px]" : "h-[238.5px]"}`}
     >
       <div className="flex w-full md:p-0 p-5 flex-row items-center justify-center gap-6">
         <img
