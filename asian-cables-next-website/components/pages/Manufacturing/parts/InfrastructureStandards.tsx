@@ -263,16 +263,12 @@ export default function InfrastructureStandards({ data }: { data?: any }) {
           </p>
 
           <div className="relative mt-15 w-full">
+            
             <div
-              className="flex justify-start gap-[36px] transition-transform duration-700 ease-in-out"
-              style={{
-                transform: `translateX(-${currentSlide * cardWidth}px)`,
-                transition: isTransitioning
-                  ? "transform 700ms ease-in-out"
-                  : "none",
-              }}
+              className="flex cert-track justify-start gap-[36px] transition-transform duration-700 ease-in-out"
+            
             >
-              {[...certifications, ...certifications].map((card: any, i: number) => (
+              {[...certifications, ...certifications, ...certifications].map((card: any, i: number) => (
                 <div
                   key={i}
                   className="flex h-[175px] w-[232.5px] flex-shrink-0 flex-col items-center justify-center rounded-[17.61px] bg-[#F9F9F9] p-5"

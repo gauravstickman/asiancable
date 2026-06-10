@@ -111,7 +111,7 @@ export default function ContactForm() {
 
             <button
               type="submit"
-              className="border-it-w mt-8 inline-flex h-[48.39px] text-[20px] leading-[29.42px] tracking-[-0.46px] items-center gap-3 rounded-[4px] bg-[#1E3C8C] px-3 md:px-6 text-white transition-all cursor-pointer"
+              className="border-it-w font-[500] mt-8 inline-flex h-[48.39px] text-[20px] leading-[29.42px] tracking-[-0.46px] items-center gap-3 rounded-[4px] bg-[#1E3C8C] px-3 md:px-6 text-white transition-all cursor-pointer"
             >
               Submit Query
               <ArrowRight size={18} />

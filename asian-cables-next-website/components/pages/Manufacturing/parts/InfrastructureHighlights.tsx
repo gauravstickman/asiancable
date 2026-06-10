@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 const infrastructureData = [
   {
     id: 1,
@@ -113,115 +114,48 @@ export default function InfrastructureHighlights({ data }: { data?: any }) {
   const slides = dynamicSlides;
 
   const [current, setCurrent] = useState(0);
-  const [progress, setProgress] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+const [activeIndex, setActiveIndex] = useState(0);
 
+const [progress, setProgress] = useState(0);
+const swiperRef = useRef<any>(null);
 
-  useEffect(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
+const nextSlide = () => {
+  setProgress(0);
+  swiperRef.current?.slideNext();
+};
+
+const prevSlide = () => {
+  setProgress(0);
+  swiperRef.current?.slidePrev();
+};
+  
+
+useEffect(() => {
+  let value = 0;
+
+  const interval = setInterval(() => {
+    value += 1;
+
+    setProgress(value);
+
+    if (value >= 100) {
+      value = 0;
+      swiperRef.current?.slideNext();
     }
+  }, 50);
 
-    setProgress(0);
-
-    let value = 0;
-
-    intervalRef.current = setInterval(() => {
-      value += 1;
-
-      setProgress(value);
-
-      if (value >= 100) {
-        value = 0;
-
-        setCurrent((prev) => {
-          const next =
-            prev === dynamicSlides.length - 1
-              ? 0
-              : prev + 1;
-
-          const el = scrollRef.current;
-
-          if (el) {
-            el.scrollTo({
-              left: next * 1236,
-              behavior: "smooth",
-            });
-          }
-
-          return next;
-        });
-      }
-    }, 50); // 5 seconds
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [current, dynamicSlides.length]);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const handleScroll = () => {
-      const scrollLeft = el.scrollLeft;
-      const maxScroll = el.scrollWidth - el.clientWidth;
-
-      const pct = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
-
-      setProgress(Math.min(100, Math.max(0, pct)));
-
-      setCurrent(Math.round(scrollLeft / (window.innerWidth * 0.9)));
-    };
-
-    el.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    handleScroll();
-
-    return () => {
-      el.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const nextSlide = () => {
-    setProgress(0);
-
-    const nextIndex =
-      current === dynamicSlides.length - 1
-        ? 0
-        : current + 1;
-
-    setCurrent(nextIndex);
-
-    scrollRef.current?.scrollTo({
-      left: nextIndex * 1236,
-      behavior: "smooth",
-    });
-  };
-
-  const prevSlide = () => {
-    setProgress(0);
-
-    const prevIndex =
-      current === 0
-        ? dynamicSlides.length - 1
-        : current - 1;
-
-    setCurrent(prevIndex);
-
-    scrollRef.current?.scrollTo({
-      left: prevIndex * 1236,
-      behavior: "smooth",
-    });
-  };
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <section className="scrollbar-hide overflow-hidden bg-white py-15 md:py-20">
+
+
+
+
+
       <div className="mx-auto w-[100%] md:ml-[84px]">
         {/* Heading */}
         <h2 className="text-center font-[magistral] mb-14 text-[29px] leading-[100%] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
@@ -229,21 +163,33 @@ export default function InfrastructureHighlights({ data }: { data?: any }) {
         </h2>
 
         {/* Carousel */}
-        <div
-          ref={scrollRef}
-          className="scrollbar-hide [scrollbar-width:none] overflow-x-auto overflow-y-hidden scroll-smooth [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          <div className="flex md:h-[728px] md:w-[1236px] snap-x snap-mandatory md:gap-6 rounded-[4px]">
-            {dynamicSlides.map((item: any) => (
-              <div
-                key={item.id}
-                className="min-w-[100%] md:min-w-[1236px] snap-start bg-[#F7F8FC] p-5 md:p-[64px]"
-              >
-                <div className="flex flex-col md:flex-row items-center justify-between pt-5 md:pt-0 gap-6 md:gap-20">
+     <Swiper
+  slidesPerView={1.2}
+  spaceBetween={30}
+  loop={true}
+  breakpoints={{
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 2,
+    },
+    768: {
+      slidesPerView: 1.2,
+      spaceBetween: 30,
+    },
+  }}
+  onSwiper={(swiper) => {
+    swiperRef.current = swiper;
+  }}
+  onSlideChange={(swiper) => {
+    setActiveIndex(swiper.realIndex);
+    setProgress(0);
+  }}
+>
+  {dynamicSlides.map((item: any, index: number) => (
+    <SwiperSlide key={item.id}>
+      <div className="bg-[#F7F8FC] p-5 md:p-[64px] md:mx-0 mx-5">
+
+   <div className="flex flex-col md:flex-row items-center justify-between pt-5 md:pt-0 gap-6 md:gap-20">
                   {/* Left Side */}
                   <div className="md:max-w-1/2">
                     <div className="md:h-[232px] md:w-[520px] gap-[0px] !p-0 !m-0">
@@ -254,7 +200,7 @@ export default function InfrastructureHighlights({ data }: { data?: any }) {
                         <img
                           src={item.image}
                           alt={item.title}
-                          className="h-[284px] w-[100%] md:h-[488px] md:w-[488px] rounded-[4px] object-cover"
+                          className="h-[284px] w-[100%]  md:max-w-[488px] rounded-[4px] object-cover"
                         />
                       </div>
                       <p className="mt-6 mb-4 font-[work_sans] text-[16px] md:text-[18px] leading-[26px] font-normal tracking-[-0.004em] text-[#646A69]">
@@ -311,22 +257,30 @@ export default function InfrastructureHighlights({ data }: { data?: any }) {
                     />
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
+   
 
-        {/* Progress Bar */}
-        <div className="h-1.5 overflow-hidden rounded-full bg-[#D9D9D9]">
-          <div
-            className="h-full rounded-full transition-all duration-500 ease-out"
-            style={{
-              width: `${progress}%`,
-              background:
-                "linear-gradient(90deg,#3CAADF 0%,#F04123 50%,#FFD212 100%)",
-            }}
-          />
-        </div>
+
+   
+
+      </div>
+      {activeIndex === index && (
+  <div className="mt-0 h-[6px] overflow-hidden rounded-full bg-[#D9D9D9] md:mx-0 mx-5">
+    <div
+      className="h-full rounded-full"
+      style={{
+        width: `${progress}%`,
+        background:
+          "linear-gradient(90deg,#3CAADF 0%,#F04123 50%,#FFD212 100%)",
+      }}
+    />
+  </div>
+)}
+    </SwiperSlide>
+  ))}
+</Swiper>
+
+
+   
       </div>
     </section>
   );
