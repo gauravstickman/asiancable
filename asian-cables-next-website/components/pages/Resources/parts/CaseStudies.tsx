@@ -106,7 +106,7 @@ function CaseStudies({ data }: { data?: any }) {
         {/* HEADER */}
         <div className="mb-12 flex flex-col items-start justify-between gap-8 md:mb-16 md:flex-row md:items-end">
           {/* LEFT */}
-          <div className="md:px-0 px-5">
+          <div className="md:px-0 px-5 w-[100%]">
             <h1 className="md:mb-3 mb-6 text-[32px] leading-[40px] md:text-[34px] md:leading-[42px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic md:text-[46px] md:leading-[55px]">
               {data?.blogsTitle || "Articles & Case studies"}
             </h1>
@@ -116,7 +116,7 @@ function CaseStudies({ data }: { data?: any }) {
             </p>
           </div>
           {/* TABS */}
-          <div className="flex md:flex-wrap flex-no-wrap w-[100%] whitespace-pre overflow-x-auto industries gap-3 md:ml-0 ml-5">
+          <div className="flex md:flex-wrap flex-no-wrap w-[100%] whitespace-pre overflow-x-auto industries gap-3 md:ml-0 ml-5 w-[100%] justify-start md:justify-end">
             {tabs.map((tab: any) => (
               <button
                 key={tab.id}
