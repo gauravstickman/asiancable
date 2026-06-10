@@ -25,7 +25,7 @@ const distributors = [
 
 export default function DistributorFinder() {
   return (
-    <section className="bg-[#FFFFFF] md:py-[80px]">
+    <section className="bg-[#FFFFFF] pb-[40px] md:pb-[80px] md:pt-[80px]">
       <div className="mx-auto max-w-[1280px] px-5">
         {/* Heading */}
         <h2 className="font-[magistral] text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px] italic font-bold text-[#1E3C8C]">
@@ -42,8 +42,9 @@ export default function DistributorFinder() {
                   Select State
                 </label>
 
-                <select className="h-[53px] w-full rounded-[2px] border border-[#E5E5E5] bg-white px-4 outline-none">
+                <select className="appearance-none h-[53px] w-full rounded-[2px] border border-[#E5E5E5] bg-white px-4 outline-none">
                   <option>Select State</option>
+               
                 </select>
               </div>
 
@@ -52,7 +53,7 @@ export default function DistributorFinder() {
                   Select City
                 </label>
 
-                <select className="h-[53px] w-full rounded-[2px] border border-[#E5E5E5] bg-white px-5 outline-none">
+                <select className="appearance-none h-[53px] w-full rounded-[2px] border border-[#E5E5E5] bg-white px-5 outline-none">
                   <option>Select City</option>
                 </select>
               </div>
