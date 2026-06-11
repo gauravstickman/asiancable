@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
-export default function ContactForm() {
+export default function ContactForm({ data }: { data?: any }) {
   return (
     <section className="relative overflow-hidden bg-[#fff] py-6 md:py-[80px]">
       {/* Background Glow */}
@@ -24,11 +24,11 @@ export default function ContactForm() {
         <div className="relative mx-auto rounded-[2px] max-w-[773px] bg-white p-[25px] md:px-[48px] md:py-[35px] shadow-[0px_4px_59px_0px_#00000040]">
           {/* Heading */}
           <h2 className="font-[magistral] text-[32px] leading-[150%] md:text-[42px] md:leading-[63px] font-bold italic text-[#1E3C8C]">
-            General Enquiry
+            {data?.formTitle || "General Enquiry"}
           </h2>
 
           <p className="mt-2 text-[16px] leading-[24px] text-[#525252]">
-            Fill out the form below and our team will get back to you promptly.
+            {data?.formDescription || "Fill out the form below and our team will get back to you promptly."}
           </p>
 
           {/* Form */}

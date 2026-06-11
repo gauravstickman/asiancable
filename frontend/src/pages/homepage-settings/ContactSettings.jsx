@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import { toast } from 'react-toastify';
-import { Save, Info, Phone, HeadphonesIcon, AlertCircle, MapPin, Plus, Trash2 } from 'lucide-react';
-import { FormInput, FormTextarea } from '../../components/admin/FormComponents';
+import { Save, Info, Phone, HeadphonesIcon, AlertCircle, MapPin, Plus, Trash2, Building2, FileText } from 'lucide-react';
+import { FormInput, FormTextarea, FormSelect } from '../../components/admin/FormComponents';
+import { INDIA_STATES_CITIES } from '../../utils/indiaStatesCities';
 
 const ContactSettings = () => {
     const [settings, setSettings] = useState(null);
@@ -14,6 +15,8 @@ const ContactSettings = () => {
         { id: 'contact', label: 'Contact Details', icon: Phone },
         { id: 'support', label: 'Support & Grievance', icon: HeadphonesIcon },
         { id: 'distributors', label: 'Distributors', icon: MapPin },
+        { id: 'offices', label: 'Our Offices', icon: Building2 },
+        { id: 'form', label: 'General Enquiry Form', icon: FileText },
     ];
 
     const fetchSettings = async () => {
@@ -23,7 +26,8 @@ const ContactSettings = () => {
                 const fetchedData = data.data || {};
                 setSettings({
                     ...fetchedData,
-                    distributorsList: fetchedData.distributorsList || []
+                    distributorsList: fetchedData.distributorsList || [],
+                    officeLocations: fetchedData.officeLocations || []
                 });
             }
         } catch (error) {
@@ -126,9 +130,30 @@ const ContactSettings = () => {
                 if (!dist.phone?.trim()) {
                     toast.error(`Distributor '${dist.name || i+1}' is missing a phone number`); return false;
                 }
-                if (!dist.link?.trim()) {
-                    toast.error(`Distributor '${dist.name || i+1}' is missing a link/URL`); return false;
+            }
+        }
+        
+        if (activeTab === 'offices') {
+            if (!settings.officeTitle?.trim()) {
+                toast.error('Offices Section: Main Title is required'); return false;
+            }
+            if (!settings.officeDescription?.trim()) {
+                toast.error('Offices Section: Description is required'); return false;
+            }
+            for (let i = 0; i < (settings.officeLocations || []).length; i++) {
+                const loc = settings.officeLocations[i];
+                if (!loc.title?.trim() || !loc.state?.trim() || !loc.address?.trim()) {
+                    toast.error(`Office #${i + 1} is missing required fields (Title, State, or Address)`); return false;
                 }
+            }
+        }
+
+        if (activeTab === 'form') {
+            if (!settings.formTitle?.trim()) {
+                toast.error('Form Section: Title is required'); return false;
+            }
+            if (!settings.formDescription?.trim()) {
+                toast.error('Form Section: Description is required'); return false;
             }
         }
         
@@ -244,6 +269,26 @@ const ContactSettings = () => {
                             </div>
 
                             <div className="space-y-8">
+                                {/* Address Box */}
+                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                                    <h3 className="text-sm font-bold text-slate-700 uppercase tracking-wider mb-4">Corporate Address</h3>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                        <FormInput
+                                            label="Address Title"
+                                            placeholder="e.g. KEC Asian Cables Limited"
+                                            value={settings.addressTitle || ''}
+                                            onChange={e => handleChange('addressTitle', e.target.value)}
+                                        />
+                                        <FormTextarea
+                                            label="Full Address"
+                                            rows={3}
+                                            placeholder="e.g. 16th Floor, RPG House..."
+                                            value={settings.addressDescription || ''}
+                                            onChange={e => handleChange('addressDescription', e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+
                                 {/* Phone Box */}
                                 <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
                                     <h3 className="text-sm font-bold text-slate-700 uppercase tracking-wider mb-4">Phone Number</h3>
@@ -465,6 +510,23 @@ const ContactSettings = () => {
                                                         value={dist.name || ''}
                                                         onChange={e => handleArrayChange('distributorsList', idx, 'name', e.target.value)}
                                                     />
+                                                    <div className="grid grid-cols-2 gap-4">
+                                                        <FormSelect
+                                                            label="State"
+                                                            options={Object.keys(INDIA_STATES_CITIES)}
+                                                            value={dist.state || ''}
+                                                            onChange={e => {
+                                                                handleArrayChange('distributorsList', idx, 'state', e.target.value);
+                                                                handleArrayChange('distributorsList', idx, 'city', ''); // reset city
+                                                            }}
+                                                        />
+                                                        <FormSelect
+                                                            label="City"
+                                                            options={dist.state && INDIA_STATES_CITIES[dist.state] ? INDIA_STATES_CITIES[dist.state] : []}
+                                                            value={dist.city || ''}
+                                                            onChange={e => handleArrayChange('distributorsList', idx, 'city', e.target.value)}
+                                                        />
+                                                    </div>
                                                     <FormInput
                                                         label="Address"
                                                         placeholder="e.g. 123 Link Road, Andheri West..."
@@ -497,13 +559,167 @@ const ContactSettings = () => {
                                     
                                     <div className="mt-8 pt-6 border-t border-slate-100 flex justify-center">
                                         <button 
-                                            onClick={() => handleAddToArray('distributorsList', { name: '', address: '', phone: '', link: '' })}
+                                            onClick={() => handleAddToArray('distributorsList', { name: '', state: '', city: '', address: '', phone: '', link: '' })}
                                             className="text-blue-600 font-medium flex items-center gap-2 px-8 py-3 border-2 border-dashed border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-xl transition-colors shadow-sm"
                                         >
                                             <Plus size={20} /> Add Distributor
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* OFFICES SECTION */}
+                    {activeTab === 'offices' && (
+                        <div className="animate-in fade-in duration-300">
+                            <div className="mb-6 pb-4 border-b border-slate-100">
+                                <h2 className="text-xl font-semibold text-slate-800 flex items-center gap-2">
+                                    <Building2 size={20} className="text-blue-500" />
+                                    Our Offices & Facilities
+                                </h2>
+                                <p className="text-sm text-slate-500 mt-1">Manage the office locations shown on the contact page.</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <FormInput
+                                    label="Offices Section Title"
+                                    placeholder="e.g. Our Offices & Manufacturing Facilities"
+                                    value={settings.officeTitle || ''}
+                                    onChange={e => handleChange('officeTitle', e.target.value)}
+                                />
+                                <FormTextarea
+                                    label="Offices Section Description"
+                                    rows={2}
+                                    placeholder="e.g. Serving customers across India..."
+                                    value={settings.officeDescription || ''}
+                                    onChange={e => handleChange('officeDescription', e.target.value)}
+                                />
+                            </div>
+
+                            <div className="space-y-8">
+                                <div>
+                                    <h3 className="text-sm font-bold text-slate-700 uppercase tracking-wider mb-4">Office Locations</h3>
+                                    
+                                    <div className="grid grid-cols-1 gap-6">
+                                        {(settings.officeLocations || []).map((loc, idx) => (
+                                            <div id={`officeLocations-${idx}`} key={idx} className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm relative group">
+                                                <button 
+                                                    onClick={() => handleRemoveFromArray('officeLocations', idx)}
+                                                    className="absolute top-2 right-2 text-white bg-red-500/80 hover:bg-red-600 p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
+                                                    title="Remove Office"
+                                                >
+                                                    <Trash2 size={16} />
+                                                </button>
+                                                
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pr-8">
+                                                    <div className="grid grid-cols-2 gap-4">
+                                                        <FormSelect
+                                                            label="State"
+                                                            options={Object.keys(INDIA_STATES_CITIES)}
+                                                            value={loc.state || ''}
+                                                            onChange={e => {
+                                                                handleArrayChange('officeLocations', idx, 'state', e.target.value);
+                                                                handleArrayChange('officeLocations', idx, 'city', ''); // reset city
+                                                            }}
+                                                        />
+                                                        <FormSelect
+                                                            label="City"
+                                                            options={loc.state && INDIA_STATES_CITIES[loc.state] ? INDIA_STATES_CITIES[loc.state] : []}
+                                                            value={loc.city || ''}
+                                                            onChange={e => handleArrayChange('officeLocations', idx, 'city', e.target.value)}
+                                                        />
+                                                    </div>
+                                                    <FormInput
+                                                        label="Title"
+                                                        placeholder="e.g. Vadodara Factory"
+                                                        value={loc.title || ''}
+                                                        onChange={e => handleArrayChange('officeLocations', idx, 'title', e.target.value)}
+                                                    />
+                                                    <FormInput
+                                                        label="Company"
+                                                        placeholder="e.g. KEC Asian Cables Limited"
+                                                        value={loc.company || ''}
+                                                        onChange={e => handleArrayChange('officeLocations', idx, 'company', e.target.value)}
+                                                    />
+                                                    <FormInput
+                                                        label="Subsidiary Info"
+                                                        placeholder="e.g. A KEC International Ltd. Subsidiary"
+                                                        value={loc.subsidiary || ''}
+                                                        onChange={e => handleArrayChange('officeLocations', idx, 'subsidiary', e.target.value)}
+                                                    />
+                                                    <div className="md:col-span-2">
+                                                        <FormTextarea
+                                                            label="Address (Multiline)"
+                                                            rows={3}
+                                                            placeholder="Village: Godampura...&#10;Taluka: Savli...&#10;Vadodara, 391520"
+                                                            value={loc.address || ''}
+                                                            onChange={e => handleArrayChange('officeLocations', idx, 'address', e.target.value)}
+                                                        />
+                                                    </div>
+                                                    <FormInput
+                                                        label="Phone Number"
+                                                        placeholder="e.g. +91 XX XXXX XXXX"
+                                                        value={loc.phone || ''}
+                                                        onChange={e => handleArrayChange('officeLocations', idx, 'phone', e.target.value)}
+                                                    />
+                                                    <FormInput
+                                                        label="Email Address"
+                                                        placeholder="e.g. contact@asiancables.com"
+                                                        value={loc.email || ''}
+                                                        onChange={e => handleArrayChange('officeLocations', idx, 'email', e.target.value)}
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    
+                                    {(!settings.officeLocations || settings.officeLocations.length === 0) && (
+                                        <div className="text-center py-12 text-slate-400 border border-dashed border-slate-200 rounded-xl bg-slate-50 mt-4">
+                                            <Building2 size={32} className="mx-auto mb-3 opacity-30" />
+                                            <p className="text-sm">No office locations added yet.</p>
+                                        </div>
+                                    )}
+                                    
+                                    <div className="mt-8 pt-6 border-t border-slate-100 flex justify-center">
+                                        <button 
+                                            onClick={() => handleAddToArray('officeLocations', { state: '', title: '', company: '', subsidiary: '', address: '', phone: '', email: '' })}
+                                            className="text-blue-600 font-medium flex items-center gap-2 px-8 py-3 border-2 border-dashed border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-xl transition-colors shadow-sm"
+                                        >
+                                            <Plus size={20} /> Add Office Location
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* FORM SECTION */}
+                    {activeTab === 'form' && (
+                        <div className="animate-in fade-in duration-300">
+                            <div className="mb-6 pb-4 border-b border-slate-100">
+                                <h2 className="text-xl font-semibold text-slate-800 flex items-center gap-2">
+                                    <FileText size={20} className="text-blue-500" />
+                                    General Enquiry Form
+                                </h2>
+                                <p className="text-sm text-slate-500 mt-1">Configure the heading and description for the contact form section.</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-6 mb-8">
+                                <FormInput
+                                    label="Form Title"
+                                    placeholder="e.g. General Enquiry"
+                                    value={settings.formTitle || ''}
+                                    onChange={e => handleChange('formTitle', e.target.value)}
+                                />
+                                
+                                <FormTextarea
+                                    label="Form Description"
+                                    rows={3}
+                                    placeholder="e.g. Fill out the form below and our team will get back to you promptly."
+                                    value={settings.formDescription || ''}
+                                    onChange={e => handleChange('formDescription', e.target.value)}
+                                />
                             </div>
                         </div>
                     )}

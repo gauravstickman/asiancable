@@ -7,6 +7,7 @@ import {
   ChevronRight,
   ArrowRight,
 } from "lucide-react";
+import { useState } from "react";
 
 const distributors = [
   {
@@ -23,13 +24,30 @@ const distributors = [
   },
 ];
 
-export default function DistributorFinder() {
+export default function DistributorFinder({ data }: { data?: any }) {
+  const distributorsToUse = data?.distributorsList?.length > 0 ? data.distributorsList : distributors;
+
+  const [selectedState, setSelectedState] = useState<string>("");
+  const [selectedCity, setSelectedCity] = useState<string>("");
+
+  const states = Array.from(new Set(distributorsToUse.map((d: any) => d.state).filter(Boolean))) as string[];
+  const cities = selectedState 
+    ? Array.from(new Set(distributorsToUse.filter((d: any) => d.state === selectedState).map((d: any) => d.city).filter(Boolean))) as string[]
+    : Array.from(new Set(distributorsToUse.map((d: any) => d.city).filter(Boolean))) as string[];
+
+  const filteredDistributors = distributorsToUse.filter((d: any) => {
+    let match = true;
+    if (selectedState && d.state !== selectedState) match = false;
+    if (selectedCity && d.city !== selectedCity) match = false;
+    return match;
+  });
+
   return (
     <section className="bg-[#FFFFFF] pb-[40px] md:pb-[80px] md:pt-[80px]">
       <div className="mx-auto max-w-[1280px] px-5">
         {/* Heading */}
         <h2 className="font-[magistral] text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px] italic font-bold text-[#1E3C8C]">
-          Find Distributors & Dealers
+          {data?.distributorSectionTitle || "Find Distributors & Dealers"}
         </h2>
 
         <div className="mt-9 md:mt-15 grid gap-6 md:gap-[35px] lg:grid-cols-[1fr_413px]">
@@ -42,9 +60,18 @@ export default function DistributorFinder() {
                   Select State
                 </label>
 
-                <select className="appearance-none h-[53px] w-full rounded-[2px] border border-[#E5E5E5] bg-white px-4 outline-none">
-                  <option>Select State</option>
-               
+                <select 
+                  className="appearance-none h-[53px] w-full rounded-[2px] border border-[#E5E5E5] bg-white px-4 outline-none"
+                  value={selectedState}
+                  onChange={(e) => {
+                    setSelectedState(e.target.value);
+                    setSelectedCity(""); // Reset city when state changes
+                  }}
+                >
+                  <option value="">Select State</option>
+                  {states.map((state, idx) => (
+                    <option key={idx} value={state}>{state}</option>
+                  ))}
                 </select>
               </div>
 
@@ -53,8 +80,15 @@ export default function DistributorFinder() {
                   Select City
                 </label>
 
-                <select className="appearance-none h-[53px] w-full rounded-[2px] border border-[#E5E5E5] bg-white px-5 outline-none">
-                  <option>Select City</option>
+                <select 
+                  className="appearance-none h-[53px] w-full rounded-[2px] border border-[#E5E5E5] bg-white px-5 outline-none"
+                  value={selectedCity}
+                  onChange={(e) => setSelectedCity(e.target.value)}
+                >
+                  <option value="">Select City</option>
+                  {cities.map((city, idx) => (
+                    <option key={idx} value={city}>{city}</option>
+                  ))}
                 </select>
               </div>
 
@@ -68,8 +102,13 @@ export default function DistributorFinder() {
 
             {/* Results */}
             <div className="mt-7 space-y-4">
-              {distributors.map((item, index) => (
-                <div
+              {filteredDistributors.length === 0 ? (
+                <div className="p-8 text-center bg-white rounded-[4px] border border-[#E5E5E5]">
+                  <p className="text-[#767676]">No distributors found for the selected filters.</p>
+                </div>
+              ) : (
+                filteredDistributors.map((item: any, index: number) => (
+                  <div
                   key={index}
                   className="group rounded-[4px] bg-white p-6 transition-all hover:shadow-[0px_4px_24px_0px_#00000012]"
                 >
@@ -104,7 +143,7 @@ export default function DistributorFinder() {
                     <ArrowRight className="text-[#E1E2E5] transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
-              ))}
+              )))}
             </div>
           </div>
 
@@ -115,31 +154,28 @@ export default function DistributorFinder() {
               strokeWidth={1.8}
             />
 
-            <h3 className="mt-[20px] font-[magistral] text-[32px] leading-[35.3px] font-bold italic">
-              Nationwide <br/>Network
-            </h3>
+            <h3 className="mt-[20px] font-[magistral] text-[32px] leading-[35.3px] font-bold italic" dangerouslySetInnerHTML={{ __html: (data?.networkTitle || "Nationwide <br/>Network").replace('\n', '<br/>') }} />
 
             <p className="mt-[12px] md:max-w-[293px] text-[15px] leading-[25.2px] text-white/85">
-              500+ distributors and dealers across all
-              major cities in India
+              {data?.networkDescription || "500+ distributors and dealers across all major cities in India"}
             </p>
 
             <div className="mt-30 flex gap-4">
               <div className="flex  min-w-[138px] flex-col justify-center rounded-[4px] border border-white/15 bg-white/10 p-4">
                 <span className="font-[magistral] text-[28px] leading-[42px] font-bold italic">
-                  500+
+                  {data?.networkStat1Number || "500+"}
                 </span>
                 <span className="text-[16px] leading-[16.5px] text-white/70">
-                  Dealers
+                  {data?.networkStat1Label || "Dealers"}
                 </span>
               </div>
 
               <div className="flex min-w-[138px] flex-col justify-center rounded-[4px] border border-white/15 bg-white/10 p-4">
                 <span className="font-[magistral] text-[28px] leading-[42px] font-bold italic">
-                  28
+                  {data?.networkStat2Number || "28"}
                 </span>
                 <span className="text-[16px] leading-[16.5px] text-white/70">
-                  States
+                  {data?.networkStat2Label || "States"}
                 </span>
               </div>
             </div>

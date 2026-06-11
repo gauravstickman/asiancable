@@ -5,14 +5,14 @@ import OfficeLocations from './Parts/OurOffices'
 import DistributorFinder from './Parts/DistributorFinder'
 import WebsiteNavbarDark from '@/components/layout/Navbardark'
 
-const Contact = () => {
+const Contact = ({ data }: { data?: any }) => {
   return (
     <div>
     <WebsiteNavbarDark/>
-    <ContactOverview/>
-    <ContactForm/>
-    <OfficeLocations/>
-    <DistributorFinder/>
+    <ContactOverview data={data} />
+    <ContactForm data={data} />
+    <OfficeLocations data={data} />
+    <DistributorFinder data={data} />
       <Footer/>
     </div>
   )

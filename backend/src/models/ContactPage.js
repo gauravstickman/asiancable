@@ -6,6 +6,8 @@ const contactPageSchema = new mongoose.Schema({
     description: { type: String, default: 'Our team is ready to help with product inquiries, technical support, partnership opportunities, or any questions about Asian Cables.' },
     
     // Contact Info Cards
+    addressTitle: { type: String, default: 'KEC Asian Cables Limited' },
+    addressDescription: { type: String, default: '16th Floor, RPG House, 463, Dr Annie Besant Rd, Hanuman Nagar,\nWorli, Mumbai, Maharashtra, 400030' },
     phoneTitle: { type: String, default: '+91 22 1234 5678' },
     phoneSubtitle: { type: String, default: 'Mon-Sat, 9AM-6PM IST' },
     emailTitle: { type: String, default: 'info@asiancables.com' },
@@ -28,6 +30,8 @@ const contactPageSchema = new mongoose.Schema({
     distributorSectionTitle: { type: String, default: 'Find Distributors & Dealers' },
     distributorsList: [{
         name: { type: String, default: '' },
+        state: { type: String, default: '' },
+        city: { type: String, default: '' },
         address: { type: String, default: '' },
         phone: { type: String, default: '' },
         link: { type: String, default: '' }
@@ -39,7 +43,25 @@ const contactPageSchema = new mongoose.Schema({
     networkStat1Number: { type: String, default: '500+' },
     networkStat1Label: { type: String, default: 'Dealers' },
     networkStat2Number: { type: String, default: '28' },
-    networkStat2Label: { type: String, default: 'States' }
+    networkStat2Label: { type: String, default: 'States' },
+
+    // Our Offices Section
+    officeTitle: { type: String, default: 'Our Offices & Manufacturing Facilities' },
+    officeDescription: { type: String, default: 'Serving customers across India through manufacturing facilities, regional offices, and commercial hubs.' },
+    officeLocations: [{
+        state: { type: String, default: '' },
+        city: { type: String, default: '' },
+        title: { type: String, default: '' },
+        company: { type: String, default: '' },
+        subsidiary: { type: String, default: '' },
+        address: { type: String, default: '' },
+        phone: { type: String, default: '' },
+        email: { type: String, default: '' }
+    }],
+
+    // Form Section
+    formTitle: { type: String, default: 'General Enquiry' },
+    formDescription: { type: String, default: 'Fill out the form below and our team will get back to you promptly.' }
 }, { timestamps: true });
 
 module.exports = mongoose.model('ContactPage', contactPageSchema);

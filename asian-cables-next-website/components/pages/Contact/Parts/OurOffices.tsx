@@ -119,29 +119,38 @@ function OfficeCard({ item }: { item: (typeof officeLocations)[0] }) {
   );
 }
 
-export default function OfficeLocations() {
+export default function OfficeLocations({ data }: { data?: any }) {
+
+  const officeLocationsToUse = data?.officeLocations?.length > 0 ? data.officeLocations.map((loc: any) => ({
+    state: loc.state,
+    title: loc.title,
+    company: loc.company,
+    subsidiary: loc.subsidiary,
+    address: (loc.address || "").split('\n'),
+    phone: loc.phone,
+    email: loc.email
+  })) : officeLocations;
 
 const mobileLocations =
-  officeLocations.length < 5
-    ? [...officeLocations, ...officeLocations]
-    : officeLocations;
+  officeLocationsToUse.length < 5
+    ? [...officeLocationsToUse, ...officeLocationsToUse]
+    : officeLocationsToUse;
 
   return (
     <section className="bg-[#FFFFFF] py-10 md:py-[80px]">
       <div className="mx-auto max-w-[1280px] px-5">
         {/* Heading */}
         <h2 className="font-[magistral] text-[28px] leading-[100%] tracking-[-2%] md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px] italic font-bold text-[#1E3C8C]">
-          Our Offices & Manufacturing Facilities
+          {data?.officeTitle || "Our Offices & Manufacturing Facilities"}
         </h2>
 
         <p className="mt-[16px] md:mt-[10px] text-[16px] leading-[150%] md:text-[18px] md:leading-[30.6px] text-[#525252]">
-          Serving customers across India through manufacturing
-          facilities, regional offices, and commercial hubs.
+          {data?.officeDescription || "Serving customers across India through manufacturing facilities, regional offices, and commercial hubs."}
         </p>
 
         {/* Desktop */}
         <div className="mt-15 hidden md:grid grid-cols-3 gap-9">
-          {officeLocations.map((item, index) => (
+          {officeLocationsToUse.map((item: any, index: number) => (
             <OfficeCard
               key={index}
               item={item}

@@ -11,7 +11,7 @@ import {
   Clock3,
 } from "lucide-react";
 
-export default function ContactOverview() {
+export default function ContactOverview({ data }: { data?: any }) {
   return (
     <section className="bg-[#ffffff] pt-[130px]  pb-[40px] md:pt-[80px] md:pb-[80px]">
         
@@ -28,13 +28,11 @@ export default function ContactOverview() {
 
             {/* Heading */}
             <h1 className="font-[magistral] text-[36px] leading-[140%] tracking-[5%] md:text-[72px] italic font-bold md:leading-[64px] md:tracking-[-3.6px] text-[#1E3C8C]">
-              Let&apos;s Connect
+              {data?.title || "Let's Connect"}
             </h1>
 
             <p className="mt-[32px] max-w-[520px] text-[16px] leading-[26px] md:text-[20px] md:leading-[36px] text-[#525252]">
-              Our team is ready to help with product inquiries,
-              technical support, partnership opportunities, or any
-              questions about Asian Cables.
+              {data?.description || "Our team is ready to help with product inquiries, technical support, partnership opportunities, or any questions about Asian Cables."}
             </p>
 
             {/* Contact Info */}
@@ -49,14 +47,20 @@ export default function ContactOverview() {
 
                 <div>
                   <p className="font-[600] text-[16px] leading-[24px] text-[#1E3C8C]">
-                    KEC Asian Cables Limited
+                    {data?.addressTitle || "KEC Asian Cables Limited"}
                   </p>
 
                   <p className="text-[13px] leading-[19.5px] text-[#767676]">
-                    16th Floor, RPG House, 463, Dr Annie Besant Rd,
-                    Hanuman Nagar,
-                    <br />
-                    Worli, Mumbai, Maharashtra, 400030
+                    {data?.addressDescription ? data.addressDescription.split('\n').map((line: string, i: number) => (
+                      <span key={i}>{line}<br /></span>
+                    )) : (
+                      <>
+                        16th Floor, RPG House, 463, Dr Annie Besant Rd,
+                        Hanuman Nagar,
+                        <br />
+                        Worli, Mumbai, Maharashtra, 400030
+                      </>
+                    )}
                   </p>
                 </div>
               </div>
@@ -73,11 +77,11 @@ export default function ContactOverview() {
 
                   <div>
                   <p className="font-[600] text-[16px] leading-[24px] text-[#1E3C8C]">
-                      022 6667 0253
+                      {data?.phoneTitle || "022 6667 0253"}
                     </p>
 
                   <p className="text-[13px] leading-[19.5px] text-[#767676]">
-                      Mon-Sat, 9AM-6PM IST
+                      {data?.phoneSubtitle || "Mon-Sat, 9AM-6PM IST"}
                     </p>
                   </div>
                 </div>
@@ -92,11 +96,11 @@ export default function ContactOverview() {
 
                   <div>
                   <p className="font-[600] text-[16px] leading-[24px] text-[#1E3C8C]">
-                      contact@asiancables.com
+                      {data?.emailTitle || "contact@asiancables.com"}
                     </p>
 
                   <p className="text-[13px] leading-[19.5px] text-[#767676]">
-                      Response within 24 hours
+                      {data?.emailSubtitle || "Response within 24 hours"}
                     </p>
                   </div>
                 </div>
@@ -104,18 +108,18 @@ export default function ContactOverview() {
 
               {/* Distributor Button */}
               <Link
-                href="#"
+                href={data?.distributorLinkUrl || "#"}
                 className="relative mt-[19px] rounded-[4px] group inline-flex h-[67px] w-full max-w-[410px] items-center justify-between bg-[#1E3C8C] px-8 text-white transition-all hover:bg-[#173170]"
               >
                                 <div className="absolute left-0 h-[70px] w-[2px] md:h-[70px] md:w-[3px] bg-[linear-gradient(0deg,#3CAADF_0%,#F04123_50%,#FFD212_100%)]" />
 
                 <div>
                   <div className="font-[600] text-[16px] leading-[24px]">
-                    Find Distributor
+                    {data?.distributorTitle || "Find Distributor"}
                   </div>
 
                   <div className="text-[13px] leading-[19.5px] text-[#B1B1B1]">
-                    Get distributor details around you
+                    {data?.distributorSubtitle || "Get distributor details around you"}
                   </div>
                 </div>
 
@@ -138,17 +142,16 @@ export default function ContactOverview() {
               />
 
               <h3 className="mt-6 font-[magistral] text-[30px] md:text-[32px] leading-[35.2px] italic font-bold leading-none">
-                Customer Support
+                {data?.supportTitle || "Customer Support"}
               </h3>
 
               <p className="mt-3 text-[15px] leading-[25.5px] text-white/80">
-                Technical support, product queries, and
-                after-sales assistance available round the clock.
+                {data?.supportDescription || "Technical support, product queries, and after-sales assistance available round the clock."}
               </p>
 
               <div className="mt-5 flex items-center gap-2 text-[14px] leading-[21px]">
                 <span className="h-2 w-2 rounded-full bg-[#4ADE80]" />
-                Online 24/7
+                {data?.supportStatus || "Online 24/7"}
               </div>
             </div>
 
@@ -161,17 +164,16 @@ export default function ContactOverview() {
               />
 
               <h3 className="mt-6 font-[magistral] text-[30px] md:text-[32px] leading-[35.5px] italic font-bold leading-none text-[#1E3C8C]">
-                Grievance Redressal
+                {data?.grievanceTitle || "Grievance Redressal"}
               </h3>
 
               <p className="mt-3 text-[15px] leading-[25.5px] leading-[28px] text-[#1E3C8C]">
-                Report issues for prompt resolution. We
-                guarantee response within 48 hours.
+                {data?.grievanceDescription || "Report issues for prompt resolution. We guarantee response within 48 hours."}
               </p>
 
               <div className="mt-5 flex items-center gap-2 text-[14px] leading-[21px] font-medium text-[#1E3C8C]">
                 <Clock3 size={15} />
-                48hr Response Guaranteed
+                {data?.grievanceStatus || "48hr Response Guaranteed"}
               </div>
             </div>
           </div>
