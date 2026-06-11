@@ -159,7 +159,7 @@ export default function InternationalClientsGrid({ data }: { data?: any }) {
               {/* COMPACT CARD CONTENT (default) */}
               <div className="relative z-20">
                 <div className="flex items-start justify-between">
-                  <div className="md:mt-7 flex h-[48px] w-[48px] md:h-[72px] md:w-[72px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:scale-105">
+                  <div className="flex h-[48px] w-[48px] md:h-[72px] md:w-[72px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:scale-105">
                     <img src={client.icon} alt={client.name} className="h-7 w-7 md:h-10 md:w-10 object-contain" />
                   </div>
 
@@ -191,12 +191,12 @@ export default function InternationalClientsGrid({ data }: { data?: any }) {
                 <div className="absolute inset-0 bg-black/50" />
 
                 <div className="relative z-40 flex h-full flex-col justify-center px-8 text-white">
-                   <div className=" flex h-[72px] w-[72px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:translate-y-[-80px]">
+                   <div className=" flex h-[72px] w-[72px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:translate-y-[-90px]">
                     <img src={client.icon} alt={client.name} className="h-10 w-10 object-contain" />
                   </div>
                   <div className="transition-all duration-300 group-hover:translate-y-[-35px]">
                   <p className="font-[Work_Sans] font-medium text-[20px] leading-[30px] tracking-[0px]">{client.name}</p  >
-                  <p className="mt-4 max-w-[100%] text-[15px] leading-7 opacity-90">{client.description}</p>
+                  <p className="mt-4 max-w-[100%] text-[14px] leading-[22px] line-clamp-3 opacity-90">{client.description}</p>
                     </div>
                   <div className="mt-6 transition-all duration-300 group-hover:translate-y-[-40px]">
                     <span className="inline-flex items-center rounded-full bg-gray-800 px-3 py-2 text-[12px] font-semibold tracking-wide text-white/90">
