@@ -5,6 +5,7 @@ import { MapPinIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const defaultClients = [
+  // INTERNATIONAL
   {
     id: 1,
     name: "Saudi Electric Company",
@@ -12,8 +13,7 @@ const defaultClients = [
     country: "Saudi Arabia",
     icon: "/assets/clientele/powerIcons.png",
     region: "international",
-    description:
-      "The Saudi Electric Company is a top electricity provider ",
+    description: "The Saudi Electric Company is a top electricity provider.",
   },
   {
     id: 2,
@@ -21,6 +21,8 @@ const defaultClients = [
     tag: "Infrastructure",
     country: "UAE",
     icon: "/assets/clientele/industryIcons.png",
+    region: "international",
+    description: "Dubai Municipality oversees major civic and infrastructure projects in Dubai.",
   },
   {
     id: 3,
@@ -28,6 +30,8 @@ const defaultClients = [
     tag: "Railway",
     country: "Qatar",
     icon: "/assets/clientele/bluietIcons.png",
+    region: "international",
+    description: "Qatar Rail is responsible for the design and construction of Qatar's railway network.",
   },
   {
     id: 4,
@@ -36,49 +40,19 @@ const defaultClients = [
     country: "UAE",
     icon: "/assets/clientele/distIcons.png",
     region: "international",
-    description:
-      "Etisalat is a leading telecom operator in the UAE delivering innovative connectivity and digital services.",
+    description: "Etisalat is a leading telecom operator in the UAE delivering innovative connectivity.",
   },
   {
     id: 5,
-    name: "ADNOC",
-    tag: "Power",
-    country: "UAE",
-    icon: "/assets/clientele/powerIcons.png",
-  },
-  {
-    id: 6,
-    name: "Kenya Power",
-    tag: "Power",
-    country: "Kenya",
-    icon: "/assets/clientele/powerIcons.png",
-    region: "international",
-    description: "Kenya Power provides electricity distribution and reliable power services across Kenya.",
-  },
-  {
-    id: 7,
-    name: "Bangladesh Railway",
-    tag: "Railway",
-    country: "Bangladesh",
-    icon: "/assets/clientele/bluietIcons.png",
-  },
-  {
-    id: 8,
-    name: "Nepal Telecom",
-    tag: "Telecom",
-    country: "Nepal",
-    icon: "/assets/clientele/distIcons.png",
-  },
-  {
-    id: 9,
-    name: "Sri Lanka Ports",
-    tag: "Infrastructure",
-    country: "Sri Lanka",
+    name: "Global Industrial Corp",
+    tag: "Industrial",
+    country: "Germany",
     icon: "/assets/clientele/industryIcons.png",
     region: "international",
-    description: "Sri Lanka Ports manages and operates major ports and maritime infrastructure in Sri Lanka.",
+    description: "A leading industrial manufacturing firm with global operations.",
   },
-  // Domestic examples
+
+  // DOMESTIC
   {
     id: 10,
     name: "Power Grid Corporation of India",
@@ -90,6 +64,15 @@ const defaultClients = [
   },
   {
     id: 11,
+    name: "L&T Infrastructure",
+    tag: "Infrastructure",
+    country: "India",
+    icon: "/assets/clientele/industryIcons.png",
+    region: "domestic",
+    description: "Larsen & Toubro is a major technology, engineering, construction, and manufacturing company.",
+  },
+  {
+    id: 12,
     name: "Railways India",
     tag: "Railway",
     country: "India",
@@ -98,7 +81,7 @@ const defaultClients = [
     description: "Railways India oversees major rail infrastructure and passenger/freight services nationwide.",
   },
   {
-    id: 12,
+    id: 13,
     name: "BSNL",
     tag: "Telecom",
     country: "India",
@@ -106,6 +89,15 @@ const defaultClients = [
     region: "domestic",
     description: "BSNL is a state-owned telecom operator providing connectivity across urban and rural India.",
   },
+  {
+    id: 14,
+    name: "Reliance Industries",
+    tag: "Industrial",
+    country: "India",
+    icon: "/assets/clientele/industryIcons.png",
+    region: "domestic",
+    description: "A massive Indian conglomerate operating in diverse industrial sectors.",
+  }
 ];
 
 export default function InternationalClientsGrid({ data }: { data?: any }) {

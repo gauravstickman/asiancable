@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 
 const defaultIndustries = [
-  { id: "all", label: "All Industries" },
+  { id: "all-industries", label: "All Industries" },
   { id: "power", label: "Power & Energy" },
   { id: "telecom", label: "Telecom" },
   { id: "infra", label: "Infrastructure" },
@@ -13,6 +13,7 @@ const defaultIndustries = [
 ];
 
 const iconMap: Record<string, string> = {
+  "all-industries": "/assets/clientele/globeIcon.png",
   all: "/assets/clientele/globeIcon.png",
   power: "/assets/clientele/power.png",
   telecom: "/assets/clientele/Wifi.png",
@@ -22,7 +23,7 @@ const iconMap: Record<string, string> = {
 };
 
 function Icon({ name, active }: { name: string; active: boolean }) {
-  const src = iconMap[name] || iconMap["all"];
+  const src = iconMap[name] || iconMap["all-industries"];
   return (
     <img
       src={src}
@@ -50,10 +51,13 @@ export default function IndustryFilter({ data }: { data?: any }) {
       ];
 
   const industryTabs = data?.industries && data.industries.length > 0
-    ? data.industries.map((ind: string) => ({
-        id: ind.toLowerCase().replace(/[^a-z0-9]/g, '-'),
-        label: ind
-      }))
+    ? [
+        { id: "all-industries", label: "All Industries" },
+        ...data.industries.map((ind: string) => ({
+          id: ind.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+          label: ind
+        }))
+      ]
     : defaultIndustries;
 
   // Emit filter changes so sibling components can listen

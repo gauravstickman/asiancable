@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import { toast } from 'react-toastify';
 import { Save, Image, Globe, Briefcase, Users, Plus, Trash2 } from 'lucide-react';
-import { FormInput, ImageInput } from '../../components/admin/FormComponents';
+import { FormInput, FormTextarea, ImageInput } from '../../components/admin/FormComponents';
 import MediaPicker from '../../components/common/MediaPicker';
 
 const ClienteleSettings = () => {
@@ -433,6 +433,13 @@ const ClienteleSettings = () => {
                                                 onChange={e => handleArrayChange('clients', idx, 'location', e.target.value)}
                                             />
                                             
+                                            <FormTextarea
+                                                label="Description"
+                                                placeholder="e.g. A top provider..."
+                                                value={client.description || ''}
+                                                onChange={e => handleArrayChange('clients', idx, 'description', e.target.value)}
+                                            />
+                                            
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div>
                                                     <label className="block text-sm font-semibold text-slate-700 mb-2">Region</label>
@@ -476,7 +483,7 @@ const ClienteleSettings = () => {
 
                             <div className="mt-8 pt-6 border-t border-slate-100 flex justify-center">
                                 <button 
-                                    onClick={() => handleAddToArray('clients', { name: '', logo: '', location: '', industry: '', region: '' })}
+                                    onClick={() => handleAddToArray('clients', { name: '', logo: '', location: '', industry: '', region: '', description: '' })}
                                     className="text-blue-600 font-medium flex items-center gap-2 px-8 py-3 border-2 border-dashed border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-xl transition-colors shadow-sm"
                                 >
                                     <Plus size={20} /> Add Client

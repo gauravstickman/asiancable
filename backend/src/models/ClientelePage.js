@@ -31,7 +31,8 @@ const clientelePageSchema = new mongoose.Schema({
         logo: { type: String, default: '' },
         location: { type: String, default: '' },
         industry: { type: String, default: '' },
-        region: { type: String, default: '' }
+        region: { type: String, default: '' },
+        description: { type: String, default: '' }
     }]
 }, { timestamps: true });
 
