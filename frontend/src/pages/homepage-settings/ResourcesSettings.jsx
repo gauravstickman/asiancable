@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import { toast } from 'react-toastify';
-import { Save, Image, Plus, Trash2, PenTool, FileText, BookOpen } from 'lucide-react';
+import { Save, Image, Plus, Trash2, PenTool, FileText, BookOpen, Folder } from 'lucide-react';
 import { FormInput, ImageInput, FormTextarea } from '../../components/admin/FormComponents';
 import MediaPicker from '../../components/common/MediaPicker';
 
@@ -21,8 +21,10 @@ const ResourcesSettings = () => {
         blogsTitle: '',
         blogsSubtitle: '',
         blogsCategories: [],
-        blogsFeaturedTitle: '',
-        featuredBlogs: []
+        featuredBlogs: [],
+        productResource: {
+            icon: '', image: '', title: '', description: '', file: '', fileSize: '', downloadText: '', requestText: ''
+        }
     });
     
     const [loading, setLoading] = useState(true);
@@ -34,6 +36,7 @@ const ResourcesSettings = () => {
     const tabs = [
         { id: 'hero', label: 'Hero Section', icon: Image },
         { id: 'tools', label: 'Tools & Resources', icon: PenTool },
+        { id: 'product_resources', label: 'Product Resources', icon: Folder },
         { id: 'whitepapers', label: 'Whitepapers', icon: FileText },
         { id: 'blogs', label: 'Blogs & Insights', icon: BookOpen }
     ];
@@ -65,6 +68,16 @@ const ResourcesSettings = () => {
             ...prev,
             featuredTool: {
                 ...(prev.featuredTool || {}),
+                [field]: value
+            }
+        }));
+    };
+
+    const handleProductResourceChange = (field, value) => {
+        setSettings(prev => ({
+            ...prev,
+            productResource: {
+                ...(prev.productResource || {}),
                 [field]: value
             }
         }));
@@ -266,6 +279,84 @@ const ResourcesSettings = () => {
                                             onChoose={() => openMediaPicker((url) => handleChange('heroMobileImage', url))}
                                         />
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* PRODUCT RESOURCES SECTION */}
+                    {activeTab === 'product_resources' && (
+                        <div>
+                            <div className="mb-6 pb-4 border-b border-slate-100">
+                                <h2 className="text-xl font-semibold text-slate-800 flex items-center gap-2">
+                                    <Folder size={20} className="text-blue-500" />
+                                    Product Resources
+                                </h2>
+                                <p className="text-sm text-slate-500 mt-1">Manage the product catalogue, datasheet, and associated files.</p>
+                            </div>
+
+                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                                    <ImageInput
+                                        label="Icon"
+                                        value={settings.productResource?.icon || ''}
+                                        onChange={e => handleProductResourceChange('icon', e.target.value)}
+                                        onChoose={() => openMediaPicker((url) => handleProductResourceChange('icon', url))}
+                                    />
+                                    <ImageInput
+                                        label="Background Image"
+                                        value={settings.productResource?.image || ''}
+                                        onChange={e => handleProductResourceChange('image', e.target.value)}
+                                        onChoose={() => openMediaPicker((url) => handleProductResourceChange('image', url))}
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                                    <FormInput
+                                        label="Title"
+                                        placeholder="e.g. Product Catalogue"
+                                        value={settings.productResource?.title || ''}
+                                        onChange={e => handleProductResourceChange('title', e.target.value)}
+                                    />
+                                    <FormInput
+                                        label="File Size / Info"
+                                        placeholder="e.g. PDF • 2.4 MB"
+                                        value={settings.productResource?.fileSize || ''}
+                                        onChange={e => handleProductResourceChange('fileSize', e.target.value)}
+                                    />
+                                </div>
+
+                                <div className="mb-5">
+                                    <FormTextarea
+                                        label="Description"
+                                        rows={2}
+                                        value={settings.productResource?.description || ''}
+                                        onChange={e => handleProductResourceChange('description', e.target.value)}
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                                    <FormInput
+                                        label="Download Button Text"
+                                        placeholder="e.g. Download Catalogue"
+                                        value={settings.productResource?.downloadText || ''}
+                                        onChange={e => handleProductResourceChange('downloadText', e.target.value)}
+                                    />
+                                    <FormInput
+                                        label="Download File URL"
+                                        placeholder="Link to file"
+                                        value={settings.productResource?.file || ''}
+                                        onChange={e => handleProductResourceChange('file', e.target.value)}
+                                    />
+                                </div>
+
+                                <div>
+                                    <FormInput
+                                        label="Request Datasheet Link / Text (Optional)"
+                                        placeholder="e.g. Request Datasheet"
+                                        value={settings.productResource?.requestText || ''}
+                                        onChange={e => handleProductResourceChange('requestText', e.target.value)}
+                                    />
                                 </div>
                             </div>
                         </div>

@@ -43,7 +43,17 @@ const resourcesPageSchema = new mongoose.Schema({
         author: { type: String, default: '' },
         date: { type: String, default: '' },
         link: { type: String, default: '' }
-    }]
+    }],
+    productResource: {
+        title: { type: String, default: 'Product Catalogue' },
+        description: { type: String, default: 'A comprehensive guide.' },
+        image: { type: String, default: '' },
+        icon: { type: String, default: '' },
+        file: { type: String, default: '' },
+        fileSize: { type: String, default: 'PDF • 2.4 MB' },
+        downloadText: { type: String, default: 'Download Catalogue' },
+        requestText: { type: String, default: 'Request Datasheet' }
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('ResourcesPage', resourcesPageSchema);

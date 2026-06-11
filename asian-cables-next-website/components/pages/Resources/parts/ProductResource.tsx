@@ -4,18 +4,18 @@ import { ChevronRight, DownloadIcon } from "lucide-react";
 import React from "react";
 
 export default function ProductResource({ data }: { data?: any }) {
-  const resources = [
-    {
-      title: "Product Catalogue",
-      description: "A comprehensive guide.",
-      image: "/assets/resources/img-1.jpg",
-      icon: "/assets/resources/folderIcons.png",
-      file: "/assets/resources/catalogue.pdf",
-      fileSize: "PDF • 2.4 MB",
-      downloadText: "Download Catalogue",
-      requestText: "Request Datasheet",
-    },
-  ];
+  const resourceData = data?.productResource || {
+    title: "Product Catalogue",
+    description: "A comprehensive guide.",
+    image: "/assets/resources/img-1.jpg",
+    icon: "/assets/resources/folderIcons.png",
+    file: "/assets/resources/catalogue.pdf",
+    fileSize: "PDF • 2.4 MB",
+    downloadText: "Download Catalogue",
+    requestText: "Request Datasheet",
+  };
+  
+  const resources = [resourceData];
 
   return (
     <section className="reveal-section bg-[#ffffff] pt-[7px] pb-[78.82px]">
