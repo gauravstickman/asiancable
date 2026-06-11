@@ -52,7 +52,7 @@ export default function ProductResource({ data }: { data?: any }) {
                   </div>
                   {/* title */}
                   <h3 className="font-[Magistral] text-[36px] leading-[43.2px] font-bold tracking-[0px] text-[#FFFFFF] italic">
-                    {item.title.split(" ").map((word, i) => (
+                    {item.title.split(" ").map((word: string, i: number) => (
                       <React.Fragment key={i}>
                         {word}
                         {i === 0 && <br />}
