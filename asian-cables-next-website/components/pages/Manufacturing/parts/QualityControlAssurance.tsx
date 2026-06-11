@@ -95,6 +95,7 @@ const QualityControlAssurance = ({ data }: { data?: any }) => {
     id: idx + 1,
     title: item.title,
     subtitle: item.subtitle,
+    type: item.type,
     icon: item.logo ? (item.logo.startsWith('http') ? item.logo : `${process.env.NEXT_PUBLIC_BASE_URL}${item.logo}`) : "/assets/manufacturing/image 5.png",
     fileUrl: item.file || "#"
   })) : [
@@ -102,8 +103,12 @@ const QualityControlAssurance = ({ data }: { data?: any }) => {
     ...accreditationData
   ];
 
-  const dynamicCertifications = qualityItems.filter((item: any) => !item.subtitle?.toLowerCase().includes("accreditation"));
-  const dynamicAccreditations = qualityItems.filter((item: any) => item.subtitle?.toLowerCase().includes("accreditation"));
+  const dynamicCertifications = qualityItems.filter((item: any) => 
+    item.type ? (item.type === "certification" || item.type === "compliance") : !item.subtitle?.toLowerCase().includes("accreditation")
+  );
+  const dynamicAccreditations = qualityItems.filter((item: any) => 
+    item.type ? item.type === "accredition" : item.subtitle?.toLowerCase().includes("accreditation")
+  );
 
   const displayedData =
     activeTab === "certifications" ? dynamicCertifications : dynamicAccreditations;
