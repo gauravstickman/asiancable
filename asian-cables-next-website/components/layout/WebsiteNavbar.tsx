@@ -556,7 +556,13 @@ showIndustryMobileMenu
               isScrolled || showMegaMenu || isRPGgroup ? "text-[#1E3A8A]" : "text-white"
             }`}
           >
-            <Search className="hidden md:block" size={18} />
+            <Search
+  size={18}
+  className={`${
+    isCompanyActive ? "block" : "hidden"
+  } md:block`}
+/>
+            {/* <Search className="hidden md:block" size={18} /> */}
           </span>
            <Link
             href="/contact"
@@ -573,7 +579,7 @@ showIndustryMobileMenu
             Contact
           </Link>
 
-      
+      <span className={`${ isCompanyActive ? "hidden" : "block" } md:block`}>
 <button
   onClick={() => setShowProductsMenu(true)}
   className={`
@@ -629,7 +635,7 @@ h-[30px]
         className="relative z-10"
       />
 </button>
-
+</span>
 
  {/* <Link
   href="/contact"
