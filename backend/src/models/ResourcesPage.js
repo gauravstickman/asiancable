@@ -44,6 +44,7 @@ const resourcesPageSchema = new mongoose.Schema({
         date: { type: String, default: '' },
         link: { type: String, default: '' }
     }],
+    productResourceTitle: { type: String, default: 'Product Resources' },
     productResource: {
         title: { type: String, default: 'Product Catalogue' },
         description: { type: String, default: 'A comprehensive guide.' },
@@ -51,7 +52,6 @@ const resourcesPageSchema = new mongoose.Schema({
         icon: { type: String, default: '' },
         file: { type: String, default: '' },
         fileSize: { type: String, default: 'PDF • 2.4 MB' },
-        downloadText: { type: String, default: 'Download Catalogue' },
         requestText: { type: String, default: 'Request Datasheet' }
     }
 }, { timestamps: true });

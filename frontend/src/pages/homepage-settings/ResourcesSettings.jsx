@@ -22,6 +22,7 @@ const ResourcesSettings = () => {
         blogsSubtitle: '',
         blogsCategories: [],
         featuredBlogs: [],
+        productResourceTitle: '',
         productResource: {
             icon: '', image: '', title: '', description: '', file: '', fileSize: '', downloadText: '', requestText: ''
         }
@@ -295,6 +296,15 @@ const ResourcesSettings = () => {
                                 <p className="text-sm text-slate-500 mt-1">Manage the product catalogue, datasheet, and associated files.</p>
                             </div>
 
+                            <div className="mb-6">
+                                <FormInput
+                                    label="Main Section Title"
+                                    placeholder="e.g. Product Resources"
+                                    value={settings.productResourceTitle || ''}
+                                    onChange={e => handleChange('productResourceTitle', e.target.value)}
+                                />
+                            </div>
+
                             <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                                     <ImageInput
@@ -335,13 +345,7 @@ const ResourcesSettings = () => {
                                     />
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-                                    <FormInput
-                                        label="Download Button Text"
-                                        placeholder="e.g. Download Catalogue"
-                                        value={settings.productResource?.downloadText || ''}
-                                        onChange={e => handleProductResourceChange('downloadText', e.target.value)}
-                                    />
+                                <div className="mb-5">
                                     <FormInput
                                         label="Download File URL"
                                         placeholder="Link to file"
@@ -352,8 +356,8 @@ const ResourcesSettings = () => {
 
                                 <div>
                                     <FormInput
-                                        label="Request Datasheet Link / Text (Optional)"
-                                        placeholder="e.g. Request Datasheet"
+                                        label="Request Datasheet Link"
+                                        placeholder="Link for Request Datasheet"
                                         value={settings.productResource?.requestText || ''}
                                         onChange={e => handleProductResourceChange('requestText', e.target.value)}
                                     />

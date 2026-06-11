@@ -11,7 +11,6 @@ export default function ProductResource({ data }: { data?: any }) {
     icon: "/assets/resources/folderIcons.png",
     file: "/assets/resources/catalogue.pdf",
     fileSize: "PDF • 2.4 MB",
-    downloadText: "Download Catalogue",
     requestText: "Request Datasheet",
   };
   
@@ -22,7 +21,7 @@ export default function ProductResource({ data }: { data?: any }) {
       <div className="mx-auto max-w-[1320px] px-4">
         <div className="mb-8 mt-10 text-center md:mb-[39.2px]">
           <h2 className="text-center font-[Magistral] text-[32px] leading-[39px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
-            Product Resources
+            {data?.productResourceTitle || "Product Resources"}
           </h2>
         </div>
         <div className="flex flex-col gap-6">
@@ -78,17 +77,24 @@ export default function ProductResource({ data }: { data?: any }) {
                       <DownloadIcon size={20} />
 
                       <p className="font-medium text-[16px] leading-[22px] md:text-[20px] md:leading-[29.42px] tracking-[-0.46px] text-[#1E3C8C] text-center">
-                        {item.downloadText}
+                        Download Catalogue
                       </p>
                     </a>
 
-                    {/* <button className="flex h-[38px] items-center justify-center gap-2 rounded-[5.52px] bg-none px-3 text-[16px] font-[500] text-white transition hover:bg-white/10 md:h-[48px] md:px-5 md:text-[20px]">
-                      <p className="font-medium text-[20px] leading-[29.42px] tracking-[-0.46px] text-[#FFFFFF] text-center">
-                        {item.requestText}
-                      </p>
+                    {item.requestText && (
+                      <a 
+                        href={item.requestText} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="flex h-[38px] items-center justify-center gap-2 rounded-[5.52px] bg-none px-3 text-[16px] font-[500] text-white transition hover:bg-white/10 md:h-[48px] md:px-5 md:text-[20px]"
+                      >
+                        <p className="font-medium text-[20px] leading-[29.42px] tracking-[-0.46px] text-[#FFFFFF] text-center">
+                          Request Datasheet
+                        </p>
 
-                      <ChevronRight size={20} />
-                    </button> */}
+                        <ChevronRight size={20} />
+                      </a>
+                    )}
                   </div>
                   {/* <div className="font-medium text-[14px] leading-[21px] tracking-[0px] text-[#FFFFFF]">
                     {item.fileSize}
