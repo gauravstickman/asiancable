@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function LifeBeyondWorkSection({ data }: { data?: any }) {
 
   // Ensure we have 5 images for the grid layout by falling back to static images
-  const apiImages = data?.lifeBeyondWorkImages || [];
+  const apiImages = data?.lifeBeyondImages || [];
   
   const staticImages = [
     "/assets/Lifeofasiancables/gallery1.png",
