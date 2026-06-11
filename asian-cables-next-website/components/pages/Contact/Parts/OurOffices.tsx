@@ -174,7 +174,7 @@ const mobileLocations =
     }}
     speed={800}
   >
-                {mobileLocations.map((item, index) => (
+                {mobileLocations.map((item: any, index: number) => (
                 <SwiperSlide key={index} className="py-5">
                     <OfficeCard item={item} />
                 </SwiperSlide>
