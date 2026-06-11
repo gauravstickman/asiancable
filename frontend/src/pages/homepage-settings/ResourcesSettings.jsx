@@ -158,6 +158,21 @@ const ResourcesSettings = () => {
             }
         }
 
+        if (activeTab === 'product_resources') {
+            if (!settings.productResourceTitle?.trim()) {
+                toast.error('Main Section Title is required');
+                return false;
+            }
+            if (!settings.productResource?.title?.trim() || !settings.productResource?.description?.trim()) {
+                toast.error('Product Resource must have a title and description');
+                return false;
+            }
+            if (!settings.productResource?.file?.trim()) {
+                toast.error('Product Resource must have a Download File URL');
+                return false;
+            }
+        }
+
         return true;
     };
 
