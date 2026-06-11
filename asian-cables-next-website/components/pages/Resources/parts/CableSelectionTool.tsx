@@ -21,7 +21,10 @@ export default function CableSelectionTool({ data }: { data?: any }) {
   ];
 
   const bottomCards = data?.toolsList && data.toolsList.length >= 2
-    ? data.toolsList.slice(0, 2)
+    ? data.toolsList.slice(0, 2).map((item: any) => ({
+      ...item,
+      desc: item.desc || item.description, // normalize
+    }))
     : [
       {
         title: "Pricing Calculator",
@@ -35,7 +38,6 @@ export default function CableSelectionTool({ data }: { data?: any }) {
         icon: "/assets/resources/openbookIcon.png",
       },
     ];
-
   const tabs = [
     { id: "cable", label: "Cable Selection" },
     { id: "rating", label: "D Rating" },
@@ -53,8 +55,8 @@ export default function CableSelectionTool({ data }: { data?: any }) {
               <div
                 key={index}
                 className={`group relative flex md:h-[270px] flex-col overflow-hidden rounded-[4px] transition-all duration-500 hover:-translate-y-[6px] hover:shadow-[0_18px_45px_rgba(30,60,140,0.22)] ${index === 0
-                    ? "bg-gradient-to-r from-[#2A4FA0] to-[#1E3C8C] text-white"
-                    : "bg-[#F9F9F9] text-gray-900 hover:bg-[#1E3C8C]"
+                  ? "bg-gradient-to-r from-[#2A4FA0] to-[#1E3C8C] text-white"
+                  : "bg-[#F9F9F9] text-gray-900 hover:bg-[#1E3C8C]"
                   } ${index === 0
                     ? "px-[30px] pt-[36px] pb-[36px]"
                     : "px-[30px] pt-[36px] pb-[36px]"
@@ -86,8 +88,8 @@ export default function CableSelectionTool({ data }: { data?: any }) {
                     <div className="flex justify-between">
                       <p
                         className={`${index === 0
-                            ? "max-w-[420px] font-[Magistral] text-[26px] md:text-[38px] md:leading-[46.2px] font-bold tracking-[0px] text-[#FFFFFF] italic"
-                            : "max-w-[240px] text-[26px] leading-[36px] font-medium tracking-[0px] text-[#1E3C8C] transition-all duration-500 group-hover:text-white"
+                          ? "max-w-[420px] font-[Magistral] text-[26px] md:text-[38px] md:leading-[46.2px] font-bold tracking-[0px] text-[#FFFFFF] italic"
+                          : "max-w-[240px] text-[26px] leading-[36px] font-medium tracking-[0px] text-[#1E3C8C] transition-all duration-500 group-hover:text-white"
                           }`}
                       >
                         {item.title}
@@ -111,8 +113,8 @@ export default function CableSelectionTool({ data }: { data?: any }) {
 
                     <p
                       className={`${index === 0
-                          ? "max-w-[430px] text-[#FFFFFFE5]"
-                          : "text-[16px] leading-[27.5px] md:text-[18px] md:leading-[21px] font-normal tracking-[0px] text-[#1E3C8CCC] transition-all duration-500 group-hover:text-[#FFFFFFE5]"
+                        ? "max-w-[430px] text-[#FFFFFFE5]"
+                        : "text-[16px] leading-[27.5px] md:text-[18px] md:leading-[21px] font-normal tracking-[0px] text-[#1E3C8CCC] transition-all duration-500 group-hover:text-[#FFFFFFE5]"
                         }`}
                     >
                       {item.desc}
@@ -121,7 +123,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
 
                     {item.button && (
                       <div className="mt-auto flex justify-end md:hidden">
-                        <a href={item.buttonLink}  className=" mr-auto mt-[30px] flex h-[48.39px] w-fit items-center gap-[9.19px] rounded-[5.52px] bg-white px-[29.42px] py-[9.19px] transition-all duration-500 hover:bg-gray-50">
+                        <a href={item.buttonLink} className=" mr-auto mt-[30px] flex h-[48.39px] w-fit items-center gap-[9.19px] rounded-[5.52px] bg-white px-[29.42px] py-[9.19px] transition-all duration-500 hover:bg-gray-50">
                           <span className="font-['Work_Sans'] text-[20px] leading-[29.42px] font-medium tracking-[-0.46px] text-[#1E3C8C]">
                             {item.buttonText}
                           </span>
@@ -147,8 +149,8 @@ export default function CableSelectionTool({ data }: { data?: any }) {
               <div
                 key={index}
                 className={`group flex md:h-[270px] flex-col items-start rounded-[4px] bg-[#F9F9F9] transition-all duration-500 hover:-translate-y-[6px] hover:bg-[#1E3C8C] hover:shadow-[0_18px_45px_rgba(30,60,140,0.22)] ${index === 0
-                    ? "px-[30px] pt-[36px] pb-[36px]"
-                    : "px-[30px] pt-[36px] pb-[36px]"
+                  ? "px-[30px] pt-[36px] pb-[36px]"
+                  : "px-[30px] pt-[36px] pb-[36px]"
                   }`}
               >
                 {/* CONTENT */}
