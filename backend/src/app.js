@@ -53,6 +53,7 @@ app.use('/api/clientele-page', require('./routes/clientelePageRoutes'));
 app.use('/api/case-studies', require('./routes/caseStudyRoutes'));
 app.use('/api/rpg-group-page', require('./routes/rpgGroupPageRoutes'));
 app.use('/api/life-at-asian-cables', require('./routes/lifeAtAsianCablesRoutes'));
+app.use('/api/events', require('./routes/eventRoutes'));
 app.get('/', (req, res) => {
     res.send('API is running...');
 });

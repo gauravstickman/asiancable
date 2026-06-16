@@ -17,6 +17,7 @@ import CategoryList from './pages/category/CategoryList';
 import ProductList from './pages/product/ProductList';
 import BlogCategoryList from './pages/blog/BlogCategoryList';
 import BlogList from './pages/blog/BlogList';
+import EventList from './pages/event/EventList';
 
 // Homepage Settings Pages
 import HomepageSettingsMaster from './pages/homepage-settings/HomepageSettingsMaster';
@@ -62,6 +63,7 @@ function App() {
             <Route path="products" element={<ProductList />} />
             <Route path="blog-categories" element={<BlogCategoryList />} />
             <Route path="blogs" element={<BlogList />} />
+            <Route path="events" element={<EventList />} />
 
             {/* Content Sections */}
             <Route path="homepage-settings" element={<HomepageSettingsMaster />} />

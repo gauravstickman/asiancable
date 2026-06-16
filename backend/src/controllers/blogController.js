@@ -3,16 +3,16 @@ const slugify = require('slugify');
 
 exports.createBlog = async (req, res) => {
     try {
-        const { title, description, content, image: bodyImage, category, status } = req.body;
+        const { title, description, content, image: bodyImage, category, status, sections, author } = req.body;
         if (!title) {
             return res.status(400).json({ message: 'Blog title is required' });
         }
-        if (!category) {
-            return res.status(400).json({ message: 'Blog category is required' });
-        }
-
         const image = req.file ? req.file.path : (bodyImage || '');
-        const slug = slugify(title.toLowerCase().replace(/ /g, '-'), { lower: true, strict: true });
+        let slug = slugify(title.toLowerCase().replace(/ /g, '-'), { lower: true, strict: true });
+        const existingBlog = await Blog.findOne({ slug });
+        if (existingBlog) {
+            slug = `${slug}-${Math.floor(Math.random() * 1000)}`;
+        }
 
         const blog = await Blog.create({
             title,
@@ -21,6 +21,8 @@ exports.createBlog = async (req, res) => {
             content: content || '',
             image,
             category,
+            sections: sections || [],
+            author: author || {},
             status: status || 'published'
         });
 
@@ -62,13 +64,20 @@ exports.getBlogById = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
     try {
-        const { title, description, content, category, status } = req.body;
+        const { title, description, content, category, status, sections, author } = req.body;
         const blog = await Blog.findById(req.params.id);
 
         if (blog) {
             blog.title = title || blog.title;
             if (title) {
-                blog.slug = slugify(title.toLowerCase().replace(/ /g, '-'), { lower: true, strict: true });
+                let newSlug = slugify(title.toLowerCase().replace(/ /g, '-'), { lower: true, strict: true });
+                if (newSlug !== blog.slug) {
+                    const existingBlog = await Blog.findOne({ slug: newSlug });
+                    if (existingBlog) {
+                        newSlug = `${newSlug}-${Math.floor(Math.random() * 1000)}`;
+                    }
+                    blog.slug = newSlug;
+                }
             }
             blog.description = description !== undefined ? description : blog.description;
             blog.content = content !== undefined ? content : blog.content;
@@ -80,6 +89,12 @@ exports.updateBlog = async (req, res) => {
             }
 
             blog.category = category || blog.category;
+            if (sections !== undefined) {
+                blog.sections = sections;
+            }
+            if (author !== undefined) {
+                blog.author = author;
+            }
             blog.status = status || blog.status;
 
             const updatedBlog = await blog.save();

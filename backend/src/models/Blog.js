@@ -26,7 +26,18 @@ const blogSchema = new mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'BlogCategory',
-        required: true
+        required: false
+    },
+    sections: [{
+        title: { type: String, required: true },
+        description: { type: String, required: true },
+        images: [{ type: String }]
+    }],
+    author: {
+        name: { type: String, default: '' },
+        bio: { type: String, default: '' },
+        image: { type: String, default: '' },
+        linkedin: { type: String, default: '' }
     },
     status: {
         type: String,

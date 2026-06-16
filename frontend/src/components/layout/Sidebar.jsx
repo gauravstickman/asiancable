@@ -17,7 +17,8 @@ import {
     Factory,
     Info,
     Leaf,
-    Briefcase
+    Briefcase,
+    Globe
 } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/authSlice';
@@ -54,7 +55,8 @@ const Sidebar = ({ isOpen, onClose }) => {
                 // { path: '/admin/categories', name: 'Categories', icon: Layers },
                 { path: '/admin/products', name: 'Products', icon: Package },
                 // { path: '/admin/blog-categories', name: 'Blog Categories', icon: Layers },
-                // { path: '/admin/blogs', name: 'Blogs', icon: FileText },
+                { path: '/admin/blogs', name: 'Blogs', icon: FileText },
+                { path: '/admin/events', name: 'Events', icon: Globe },
             ]
         },
         {
