@@ -10,34 +10,8 @@ export default function ArticleSnippet({
   images = [],
 }: ArticleSnippetProps) {
   return (
-    <section className="mt-[24px] md:mt-[30px]">
-      {/* Images */}
-      {images.length > 0 && (
-        <div
-          className={`grid gap-[16px] md:gap-[24px] ${
-            images.length === 1
-              ? "grid-cols-1"
-              : "grid-cols-2"
-          }`}
-        >
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="overflow-hidden rounded-[6px] md:rounded-[20px] md:mb-15"
-            >
-              <img
-                src={image}
-                alt=""
-                className={`w-full object-cover ${
-                  images.length === 1
-                    ? "h-[240px] md:h-[579px]"
-                    : "h-[180px] md:h-[477px]"
-                }`}
-              />
-            </div>
-          ))}
-        </div>
-      )}
+    <section className="mt-[36px] md:mt-[30px]">
+    
 
       {/* Content */}
       <div className="mt-[12px] md:mt-[30px]">
@@ -56,6 +30,34 @@ export default function ArticleSnippet({
           ))}
         </div>
       </div>
+
+        {/* Images */}
+      {images.length > 0 && (
+        <div
+          className={`grid gap-[24px] md:gap-[30px] mt-[30px] ${
+            images.length === 1
+              ? "grid-cols-1"
+              : "grid-cols-2"
+          }`}
+        >
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="overflow-hidden rounded-[20px] md:rounded-[20px] md:mb-15"
+            >
+              <img
+                src={image}
+                alt=""
+                className={`w-full object-cover ${
+                  images.length === 1
+                    ? "h-[240px] md:h-[579px]"
+                    : "h-[180px] md:h-[477px]"
+                }`}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

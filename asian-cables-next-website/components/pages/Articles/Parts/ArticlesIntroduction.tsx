@@ -56,14 +56,41 @@ export default function ArticlesIntroduction() {
 
         <div className="featured-image mt-[30px]">
               {/* Hero */}
-        <div className="overflow-hidden rounded-[6px] md:rounded-[20px] md:min-h-[450px]  md:max-h-[477px]">
+        <div className="overflow-hidden rounded-[20px] md:rounded-[20px] md:min-h-[450px]  md:max-h-[477px]">
           <img
             src="assets/articles/main.jpg"
             alt=""
-            className="w-full rounded-[6px] md:rounded-[20px] object-cover"
+            className="w-full rounded-[20px] md:rounded-[20px] object-cover"
           />
         </div>
 
+        </div>
+
+            <div
+          className="grid grid-cols-2 gap-[24px] mt-[24px] md:mt-[30px"
+        >
+            <div
+              
+              className="overflow-hidden rounded-[20px] md:rounded-[20px] md:mb-15"
+            >
+             <img
+            src="assets/articles/main.jpg"
+            alt=""
+            className="w-full rounded-[20px] md:rounded-[20px] object-cover h-[180px] md:h-[477px]"
+          />
+            </div>
+
+             <div
+              
+              className="overflow-hidden rounded-[20px] md:rounded-[20px] md:mb-15"
+            >
+             <img
+            src="assets/articles/main.jpg"
+            alt=""
+            className="w-full rounded-[20px] md:rounded-[20px] object-cover h-[180px] md:h-[477px]"
+          />
+            </div>
+         
         </div>
       </div>
 
