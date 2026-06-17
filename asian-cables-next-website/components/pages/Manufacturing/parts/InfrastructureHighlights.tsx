@@ -154,8 +154,6 @@ useEffect(() => {
 
 
 
-
-
       <div className="mx-auto w-[100%] md:ml-[84px]">
         {/* Heading */}
         <h2 className="text-center font-[magistral] mb-14 text-[29px] leading-[100%] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
