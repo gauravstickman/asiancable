@@ -10,41 +10,10 @@ import {
   Building2,
 } from "lucide-react";
 
-const jobs = [
-  {
-    category: "Finance",
-    title: "Senior Manager – Finance & Accounts",
-    location: "Mumbai, India",
-    experience: "8–12 years experience",
-    salary: "₹15–20 LPA",
-  },
-  {
-    category: "Sales",
-    title: "Executive – Sales & Distribution",
-    location: "Pune, India",
-    experience: "2–5 years experience",
-    salary: "₹5–8 LPA",
-  },
-  {
-    category: "Quality",
-    title: "Engineer – Quality Assurance",
-    location: "Nashik, India",
-    experience: "3–6 years experience",
-    salary: "₹6–10 LPA",
-  },
-];
-
-const tabs = [
-  "All Roles",
-  "Engineering",
-  "Quality",
-  "Sales",
-  "Finance",
-];
-
 export default function OpenRolesSection({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState("All Roles");
 
+<<<<<<< HEAD
 const [showPopup, setShowPopup] = useState(false);
 useEffect(() => {
   if (showPopup) {
@@ -76,6 +45,12 @@ useEffect(() => {
   };
 }, [showPopup]);
 
+=======
+  const jobs = data?.openRoles || [];
+  const tabs = ["All Roles", ...Array.from(new Set(jobs.map((job: any) => job.category))).filter(Boolean)] as string[];
+
+  const filteredJobs = activeTab === "All Roles" ? jobs : jobs.filter((job: any) => job.category === activeTab);
+>>>>>>> 207cca1 (Add dynamic open roles management and update models, APIs, frontend UI)
 
   return (
     <section className="w-full bg-white py-[40px]" id="openroles">
@@ -150,7 +125,7 @@ useEffect(() => {
 
         {/* Jobs */}
         <div className="flex flex-col gap-[16px]">
-          {jobs.map((job, index) => (
+          {filteredJobs.map((job: any, index: number) => (
             <div
               key={index}
               className="
@@ -242,7 +217,11 @@ useEffect(() => {
                   </div>
                    {/* Button */}
               <button
+<<<<<<< HEAD
               onClick={() => setShowPopup(true)}
+=======
+                onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : window.location.href = data?.openRolesLink || "/careers"}
+>>>>>>> 207cca1 (Add dynamic open roles management and update models, APIs, frontend UI)
                 className="
                 md:hidden
                 mt-6
@@ -275,7 +254,11 @@ useEffect(() => {
 
               {/* Button */}
               <button
+<<<<<<< HEAD
               onClick={() => setShowPopup(true)}
+=======
+                onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : window.location.href = data?.openRolesLink || "/careers"}
+>>>>>>> 207cca1 (Add dynamic open roles management and update models, APIs, frontend UI)
                 className="hidden md:flex
                   w-full
                   md:w-[148px]

@@ -1,16 +1,33 @@
+"use client";
+import { BlogType } from "../Articles";
+import { useState, useEffect } from "react";
 
+export default function ArticlesSidebar({ blog }: { blog?: BlogType }) {
+  const [activeSection, setActiveSection] = useState(0);
 
-export default function ArticlesSidebar() {
+  const relatedArticles = blog?.sections?.map(s => s.title) || [];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = relatedArticles.map((_, index) => document.getElementById(`section-${index}`));
+      let currentActive = 0;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 150) {
+            currentActive = i;
+            break;
+          }
+        }
+      }
+      setActiveSection(currentActive);
+    };
 
-const relatedArticles = [
-  "Utilizing Renewable Energy for a Sustainable Tomorrow",
-  "Steering Clear of Common Mistakes in AI Writing for Renewable Energy",
-  "Establishing Your Voice with ChatGPT in Renewable Energy Writing",
-  "Understanding Your Audience in Renewable Energy Blogging",
-  "Creating Quality AI-Enhanced Blogs in Renewable Energy",
-  "Final Thoughts: Embracing AI in Renewable Energy Content Creation",
-];
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [blog?.sections?.length]);
 
   return (
     <div className="sidebar-wrap md:sticky top-24 reveal-section md:min-w-[341px] md:h-[100vh]">
@@ -21,24 +38,22 @@ const relatedArticles = [
       <div className="rounded-[10px] bg-[#1E3C8C] p-5 text-white hidden md:block">
         <div className="flex items-start justify-between">
           <img
-            src="/assets/articles/author.png"
-            alt="Author"
+            src={blog?.author?.image || "/assets/articles/author.png"}
+            alt={blog?.author?.name || "Author"}
             className="h-[95px] w-[95px] rounded-[10px] object-cover"
           />
 
-          <a href="#">
-                   <img src="assets/articles/in.png" className="w-[30px] h-[30px] object-contain"/>
-
+          <a href={blog?.author?.linkedin || "#"} target={blog?.author?.linkedin ? "_blank" : "_self"} rel="noopener noreferrer">
+                   <img src="/assets/articles/in.png" alt="LinkedIn" className="w-[30px] h-[30px] object-contain"/>
           </a>
         </div>
 
         <h3 className="mt-[10px]  text-[20px] leading-[100%] italic font-bold">
-          David James
+          {blog?.author?.name || "David James"}
         </h3>
 
         <p className="mt-[10px] text-[16px] leading-[110%] text-white font-[400]">
-          CEO at Data Innovators – Leading the charge in AI and
-          analytics for customer engagement.
+          {blog?.author?.bio || "CEO at Data Innovators – Leading the charge in AI and analytics for customer engagement."}
         </p>
 
         <div className="mt-5 h-px bg-white/20" />
@@ -50,19 +65,32 @@ const relatedArticles = [
       </p>
 
       <div className="flex gap-5">
-        <button className="flex items-center justify-center rounded bg-[#F3F3F3] text-white">
-        <img src="assets/events/facebook.png" className="w-[30px] h-[30px] object-contain"/>
-</button>
+        <a 
+          href={`https://www.facebook.com/sharer/sharer.php?u=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}`} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center justify-center rounded bg-[#F3F3F3] hover:bg-slate-200 transition-colors"
+        >
+          <img src="/assets/events/facebook.png" alt="Facebook" className="w-[30px] h-[30px] object-contain" />
+        </a>
 
-        <button className="flex  items-center justify-center rounded bg-[#F3F3F3] text-white">
-         <img src="assets/events/twitter.png" className="w-[30px] h-[30px] object-contain"/>
+        <a 
+          href={`https://twitter.com/intent/tweet?url=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}&text=${encodeURIComponent(blog?.title || '')}`}
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center justify-center rounded bg-[#F3F3F3] hover:bg-slate-200 transition-colors"
+        >
+         <img src="/assets/events/twitter.png" alt="Twitter" className="w-[30px] h-[30px] object-contain" />
+        </a>
 
-        </button>
-
-        <button className="flex  items-center justify-center rounded bg-[#F3F3F3] text-white">
-        <img src="assets/events/linkedin.png" className="w-[30px] h-[30px] object-contain"/>
-
-        </button>
+        <a 
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}`}
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center justify-center rounded bg-[#F3F3F3] hover:bg-slate-200 transition-colors"
+        >
+          <img src="/assets/events/linkedin.png" alt="LinkedIn" className="w-[30px] h-[30px] object-contain" />
+        </a>
       </div>
     </div>
 
@@ -77,16 +105,24 @@ const relatedArticles = [
     <div
       key={index}
       className={`group pl-5 border-l-[3px] transition-all duration-300 ${
-        index === 0
+        index === activeSection
           ? "border-[#1E3C8C]"
           : "border-transparent hover:border-[#1E3C8C]"
       }`}
     >
       <a
-        href="#"
-        className={`text-[16px] leading-[24px] tracking-[-0.02em] transition-colors duration-300 ${
-          index === 0
-            ? "text-[#1E3C8C]"
+        href={`#section-${index}`}
+        onClick={(e) => {
+          e.preventDefault();
+          const element = document.getElementById(`section-${index}`);
+          if (element) {
+            const y = element.getBoundingClientRect().top + window.scrollY - 120;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }}
+        className={`text-[16px] leading-[24px] tracking-[-0.02em] transition-colors duration-300 block ${
+          index === activeSection
+            ? "text-[#1E3C8C] font-semibold"
             : "text-[#666666] group-hover:text-[#1E3C8C]"
         }`}
       >

@@ -2,8 +2,9 @@ import { Dot, MapPin, Calendar } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+import { BlogType } from "../Articles";
 
-function ArticleHeader() {
+function ArticleHeader({ blog }: { blog: BlogType }) {
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Resources", href: "/resources" },
@@ -15,8 +16,8 @@ const breadcrumbs = [
       <section className="relative md:min-h-[551px]  overflow-hidden">
         {/* Background Image */}
         <img
-          src="assets/events/events-bg.png"
-          alt=""
+          src={blog?.image ? (blog.image.startsWith('http') ? blog.image : `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:5000'}/${blog.image}`) : "/assets/events/events-bg.png"}
+          alt={blog?.title || ""}
           className="absolute inset-0 h-full w-full object-cover object-top"
         />
         <div className="absolute inset-0 bg-[linear-gradient(259.73deg,_rgba(30,60,140,0.21)_3.79%,_rgba(30,60,140,0.7)_47.77%)]" />
@@ -47,15 +48,15 @@ const breadcrumbs = [
             
             {/* case studies meta */}
 <div className="case-meta flex flex-wrap gap-6 md:gap-3 mt-[81px] md:mt-[68px] mb-[24px] md:mb-[34px]">
-                <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-[#FFA500] tex-[#000000] rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]">Blog - Renewable energy</span>
-            <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-white/25 text-white rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]"><Calendar size={16}/> October 19 2026</span>
-                      <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-white/25 text-white rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]"> 10 min read</span>
+                <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-[#FFA500] tex-[#000000] rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]">Blog - {blog?.category || "Renewable energy"}</span>
+            <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-white/25 text-white rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]"><Calendar size={16}/> {blog?.createdAt ? new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'October 19 2026'}</span>
+                      <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-white/25 text-white rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]"> {blog?.readTime || "10 min read"}</span>
 
           </div>
 
           {/* Heading */}
           <h1 className="mb-[24px] mt-[0px] font-[Magistral] text-[28px] leading-[36px] md:text-[54px] md:leading-[64.6px] font-bold tracking-[-1.44px] text-white italic">
-          Harnessing Renewable Energy: Essential Tips for SaaS Marketing Leaders
+          {blog?.title || "Harnessing Renewable Energy: Essential Tips for SaaS Marketing Leaders"}
           </h1>
           </div>
         </div>

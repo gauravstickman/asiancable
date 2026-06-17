@@ -6,14 +6,32 @@ import ArticlesIntroduction from './Parts/ArticlesIntroduction'
 import ArticlesSidebar from './Parts/ArticlesSidebar'
 import MoreBlogs from './Parts/RelatedArticles'
 
-function Articles() {
+export type BlogType = {
+  _id: string;
+  title: string;
+  slug: string;
+  description: string;
+  content: string;
+  image: string;
+  sections: { title: string; description: string; images: string[] }[];
+  author: { name: string; bio: string; image: string; linkedin: string };
+  category?: string;
+  createdAt: string;
+  readTime?: string;
+};
+
+function Articles({ blog }: { blog?: BlogType }) {
+  if (!blog) {
+    return <div>Article not found</div>;
+  }
+
   return (
     <div>
         <WebsiteNavbar/>
-        <ArticleHeader/>
+        <ArticleHeader blog={blog} />
           <div className="mx-auto flex max-w-[1274px] flex-col gap-[46px] md:px-0 px-5 lg:flex-row lg:justify-between my-8 md:my-14 items-flex-start ">
-          <ArticlesIntroduction />
-          <ArticlesSidebar />
+          <ArticlesIntroduction blog={blog} />
+          <ArticlesSidebar blog={blog} />
         </div>
 
         <MoreBlogs/>

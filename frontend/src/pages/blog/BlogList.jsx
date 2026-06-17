@@ -21,6 +21,7 @@ const BlogList = () => {
     const [description, setDescription] = useState('');
     const [sections, setSections] = useState([{ title: '', description: '', images: ['', '', ''] }]);
     const [status, setStatus] = useState('published');
+    const [readTime, setReadTime] = useState('10 min');
     const [author, setAuthor] = useState({ name: '', bio: '', image: '', linkedin: '' });
     const [imageUrl, setImageUrl] = useState('');
     const [imagePreview, setImagePreview] = useState('');
@@ -67,7 +68,7 @@ const BlogList = () => {
     const handleOpenForm = (blog = null) => {        if (blog) {
             setSelectedBlog(blog);
             setTitle(blog.title);
-            setCategory(blog.category?._id || blog.category || '');
+            setCategory(blog.category || '');
             setDescription(blog.description || '');
             
             // Ensure 3 images array for each section
@@ -81,16 +82,18 @@ const BlogList = () => {
             
             setAuthor(blog.author || { name: '', bio: '', image: '', linkedin: '' });
             setStatus(blog.status || 'published');
+            setReadTime(blog.readTime || '10 min');
             setImageUrl(blog.image || '');
             setImagePreview(blog.image ? (blog.image.startsWith('http') ? blog.image : `${API_URL}/${blog.image.replace(/\\/g, '/')}`) : '');
         } else {
             setSelectedBlog(null);
             setTitle('');
-            setCategory(categories[0]?._id || '');
+            setCategory('');
             setDescription('');
             setSections([{ title: '', description: '', images: ['', '', ''] }]);
             setAuthor({ name: '', bio: '', image: '', linkedin: '' });
             setStatus('published');
+            setReadTime('10 min');
             setImageUrl('');
             setImagePreview('');
         }
@@ -101,6 +104,14 @@ const BlogList = () => {
         e.preventDefault();
         if (!title.trim()) {
             toast.error('Blog title is required');
+            return;
+        }
+        if (!category.trim()) {
+            toast.error('Category is required');
+            return;
+        }
+        if (!readTime.trim()) {
+            toast.error('Read Time is required');
             return;
         }
         if (!imageUrl || !imageUrl.trim()) {
@@ -119,6 +130,7 @@ const BlogList = () => {
             })),
             author,
             status,
+            readTime,
             image: imageUrl
         };
 
@@ -244,6 +256,36 @@ const BlogList = () => {
                                         <option value="published">Published</option>
                                         <option value="draft">Draft</option>
                                     </select>
+                                </div>
+
+                                <div className="space-y-1.5">
+                                    <label className="text-sm font-medium text-slate-700 flex items-center gap-1.5">
+                                        <Layers size={14} className="text-slate-400" />
+                                        Category
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        value={category}
+                                        onChange={(e) => setCategory(e.target.value)}
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm"
+                                        placeholder="e.g. Renewable energy"
+                                        required
+                                    />
+                                </div>
+
+                                <div className="space-y-1.5 md:col-span-2">
+                                    <label className="text-sm font-medium text-slate-700 flex items-center gap-1.5">
+                                        <BookOpen size={14} className="text-slate-400" />
+                                        Read Time
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        value={readTime}
+                                        onChange={(e) => setReadTime(e.target.value)}
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm"
+                                        placeholder="e.g. 10 min read"
+                                        required
+                                    />
                                 </div>
 
                                 <div className="space-y-3">

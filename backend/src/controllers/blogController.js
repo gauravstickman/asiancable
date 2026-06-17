@@ -3,7 +3,7 @@ const slugify = require('slugify');
 
 exports.createBlog = async (req, res) => {
     try {
-        const { title, description, content, image: bodyImage, category, status, sections, author } = req.body;
+        const { title, description, content, image: bodyImage, category, status, sections, author, readTime } = req.body;
         if (!title) {
             return res.status(400).json({ message: 'Blog title is required' });
         }
@@ -23,10 +23,11 @@ exports.createBlog = async (req, res) => {
             category,
             sections: sections || [],
             author: author || {},
-            status: status || 'published'
+            status: status || 'published',
+            readTime: readTime || '10 min'
         });
 
-        const populated = await Blog.findById(blog._id).populate('category');
+        const populated = await Blog.findById(blog._id);
         res.status(201).json(populated);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -42,7 +43,7 @@ exports.getBlogs = async (req, res) => {
         if (req.query.status) {
             query.status = req.query.status;
         }
-        const blogs = await Blog.find(query).populate('category').sort({ createdAt: -1 });
+        const blogs = await Blog.find(query).sort({ createdAt: -1 });
         res.json(blogs);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -51,7 +52,20 @@ exports.getBlogs = async (req, res) => {
 
 exports.getBlogById = async (req, res) => {
     try {
-        const blog = await Blog.findById(req.params.id).populate('category');
+        const blog = await Blog.findById(req.params.id);
+        if (blog) {
+            res.json(blog);
+        } else {
+            res.status(404).json({ message: 'Blog not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+exports.getBlogBySlug = async (req, res) => {
+    try {
+        const blog = await Blog.findOne({ slug: req.params.slug });
         if (blog) {
             res.json(blog);
         } else {
@@ -64,7 +78,7 @@ exports.getBlogById = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
     try {
-        const { title, description, content, category, status, sections, author } = req.body;
+        const { title, description, content, category, status, sections, author, readTime } = req.body;
         const blog = await Blog.findById(req.params.id);
 
         if (blog) {
@@ -96,9 +110,12 @@ exports.updateBlog = async (req, res) => {
                 blog.author = author;
             }
             blog.status = status || blog.status;
+            if (readTime !== undefined) {
+                blog.readTime = readTime;
+            }
 
             const updatedBlog = await blog.save();
-            const populated = await Blog.findById(updatedBlog._id).populate('category');
+            const populated = await Blog.findById(updatedBlog._id);
             res.json(populated);
         } else {
             res.status(404).json({ message: 'Blog not found' });

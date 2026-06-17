@@ -3,7 +3,12 @@ import Link from "next/link";
 import React from "react";
 
 
-function EventHeader() {
+function EventHeader({ event }: { event?: any }) {
+const title = event?.title || "Wire & Cable India 2025";
+const location = event?.location || "Pragati Maidan, New Delhi";
+const duration = event?.duration || "4-Day Exhibition";
+const bannerImage = event?.bannerImage || "assets/events/events-bg.png";
+
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Resources", href: "/resources" },
@@ -15,7 +20,7 @@ const breadcrumbs = [
       <section className="relative md:min-h-[551px]  overflow-hidden">
         {/* Background Image */}
         <img
-          src="assets/events/events-bg.png"
+          src={bannerImage}
           alt=""
           className="absolute inset-0 h-full w-full object-cover object-top"
         />
@@ -48,13 +53,13 @@ const breadcrumbs = [
             {/* case studies meta */}
 <div className="case-meta flex flex-wrap gap-6 md:gap-3 mt-[81px] md:mt-[68px] mb-[24px] md:mb-[34px]">
                 <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-[#FFA500] tex-[#000000] rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]">Event</span>
-            <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-white/25 text-white rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]"><MapPin size={16}/> Pragati Maidan, New Delhi</span>
-            <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-white/25 text-white rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]"><Calendar size={16}/> 4-Day Exhibition</span>
+            <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-white/25 text-white rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]"><MapPin size={16}/> {location}</span>
+            <span className="text-[14px] leading-[22px] md:text-[16px] md:leading-[26px] px-3 py-1 bg-white/25 text-white rounded-[8px] flex items-center gap-2 uppercase tracking-[-0.5px]"><Calendar size={16}/> {duration}</span>
           </div>
 
           {/* Heading */}
           <h1 className="mb-[24px] mt-[0px] font-[Magistral] text-[28px] leading-[36px] md:text-[54px] md:leading-[64.6px] font-bold tracking-[-1.44px] text-white italic">
-          Wire & Cable India 2025 
+          {title} 
           </h1>
           </div>
         </div>

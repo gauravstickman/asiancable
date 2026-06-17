@@ -112,3 +112,16 @@ exports.deleteEvent = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+exports.getEventBySlug = async (req, res) => {
+    try {
+        const event = await Event.findOne({ slug: req.params.slug });
+        if (event) {
+            res.json(event);
+        } else {
+            res.status(404).json({ message: 'Event not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
