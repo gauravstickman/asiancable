@@ -66,7 +66,7 @@ const Hero = ({ data }: { data?: any }) => {
             {/* Button */}
  
  <Link
-  href={data.headerLinkUrl || "#openroles"}
+  href="#openroles"
   className="sparkle
     group
     relative

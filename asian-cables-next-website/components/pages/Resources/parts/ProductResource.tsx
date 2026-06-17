@@ -61,9 +61,9 @@ export default function ProductResource({ data }: { data?: any }) {
                     ))}
                   </h3>
                   {/* description */}
-                  <p className="mt-2 text-[16px] leading-[25.6px] font-normal tracking-[0px] text-[#FFFFFFE5]">
+                  {/* <p className="mt-2 text-[16px] leading-[25.6px] font-normal tracking-[0px] text-[#FFFFFFE5]">
                     {item.description}
-                  </p>
+                  </p> */}
                 </div>
                 {/* bottom actions */}
                 <div className="mt-auto flex items-center justify-between">

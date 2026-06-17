@@ -14,20 +14,24 @@ export default function OpenRolesSection({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState("All Roles");
 
   const [showPopup, setShowPopup] = useState(false);
-  useEffect(() => {
-    if (showPopup) {
-      document.body.style.overflow = "hidden";
-      document.body.style.height = "100vh";
-    } else {
-      document.body.style.overflow = "";
-      document.body.style.height = "";
-    }
 
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.height = "";
-    };
-  }, [showPopup]);
+  useEffect(() => {
+  if (!showPopup) return;
+
+  const scrollY = window.scrollY;
+
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.width = "100%";
+
+  return () => {
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+
+    window.scrollTo(0, scrollY);
+  };
+}, [showPopup]);
 
   useEffect(() => {
     const nav = document.querySelector("nav");
