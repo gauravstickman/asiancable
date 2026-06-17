@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 
 export default function ArticlesSidebar({ blog }: { blog?: BlogType }) {
   const [activeSection, setActiveSection] = useState(0);
+  const [currentUrl, setCurrentUrl] = useState("");
 
   const relatedArticles = blog?.sections?.map(s => s.title) || [];
 
   useEffect(() => {
+    setCurrentUrl(window.location.href);
     const handleScroll = () => {
       const sections = relatedArticles.map((_, index) => document.getElementById(`section-${index}`));
       let currentActive = 0;
@@ -66,7 +68,7 @@ export default function ArticlesSidebar({ blog }: { blog?: BlogType }) {
 
       <div className="flex gap-5">
         <a 
-          href={`https://www.facebook.com/sharer/sharer.php?u=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}`} 
+          href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`} 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center justify-center rounded bg-[#F3F3F3] hover:bg-slate-200 transition-colors"
@@ -75,7 +77,7 @@ export default function ArticlesSidebar({ blog }: { blog?: BlogType }) {
         </a>
 
         <a 
-          href={`https://twitter.com/intent/tweet?url=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}&text=${encodeURIComponent(blog?.title || '')}`}
+          href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(blog?.title || '')}`}
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center justify-center rounded bg-[#F3F3F3] hover:bg-slate-200 transition-colors"
@@ -84,7 +86,7 @@ export default function ArticlesSidebar({ blog }: { blog?: BlogType }) {
         </a>
 
         <a 
-          href={`https://www.linkedin.com/sharing/share-offsite/?url=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}`}
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center justify-center rounded bg-[#F3F3F3] hover:bg-slate-200 transition-colors"
