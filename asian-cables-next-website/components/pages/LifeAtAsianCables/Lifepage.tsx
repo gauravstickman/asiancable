@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import axios from "axios";
 import Footer from "../../layout/Footer";
 import WebsiteNavbar from "../../layout/WebsiteNavbar";
 import TestimonialsSection from "./parts/TestimonialsSection";
@@ -19,10 +20,9 @@ const Lifepage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/life-at-asian-cables`);
-        const result = await response.json();
-        if (result.success) {
-          setData(result.data);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/life-at-asian-cables`);
+        if (response.data?.success) {
+          setData(response.data.data);
         }
       } catch (error) {
         console.error("Failed to fetch Life at Asian Cables data:", error);

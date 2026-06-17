@@ -13,44 +13,40 @@ import {
 export default function OpenRolesSection({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState("All Roles");
 
-<<<<<<< HEAD
-const [showPopup, setShowPopup] = useState(false);
-useEffect(() => {
-  if (showPopup) {
-    document.body.style.overflow = "hidden";
-    document.body.style.height = "100vh";
-  } else {
-    document.body.style.overflow = "";
-    document.body.style.height = "";
-  }
+  const [showPopup, setShowPopup] = useState(false);
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    }
 
-  return () => {
-    document.body.style.overflow = "";
-    document.body.style.height = "";
-  };
-}, [showPopup]);
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    };
+  }, [showPopup]);
 
+  useEffect(() => {
+    const nav = document.querySelector("nav");
 
-useEffect(() => {
-  const nav = document.querySelector("nav");
+    if (showPopup) {
+      nav?.classList.add("pointer-events-none");
+    } else {
+      nav?.classList.remove("pointer-events-none");
+    }
 
-  if (showPopup) {
-    nav?.classList.add("pointer-events-none");
-  } else {
-    nav?.classList.remove("pointer-events-none");
-  }
+    return () => {
+      nav?.classList.remove("pointer-events-none");
+    };
+  }, [showPopup]);
 
-  return () => {
-    nav?.classList.remove("pointer-events-none");
-  };
-}, [showPopup]);
-
-=======
   const jobs = data?.openRoles || [];
   const tabs = ["All Roles", ...Array.from(new Set(jobs.map((job: any) => job.category))).filter(Boolean)] as string[];
 
   const filteredJobs = activeTab === "All Roles" ? jobs : jobs.filter((job: any) => job.category === activeTab);
->>>>>>> 207cca1 (Add dynamic open roles management and update models, APIs, frontend UI)
 
   return (
     <section className="w-full bg-white py-[40px]" id="openroles">
@@ -217,11 +213,7 @@ useEffect(() => {
                   </div>
                    {/* Button */}
               <button
-<<<<<<< HEAD
-              onClick={() => setShowPopup(true)}
-=======
-                onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : window.location.href = data?.openRolesLink || "/careers"}
->>>>>>> 207cca1 (Add dynamic open roles management and update models, APIs, frontend UI)
+              onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : setShowPopup(true)}
                 className="
                 md:hidden
                 mt-6
@@ -254,11 +246,7 @@ useEffect(() => {
 
               {/* Button */}
               <button
-<<<<<<< HEAD
-              onClick={() => setShowPopup(true)}
-=======
-                onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : window.location.href = data?.openRolesLink || "/careers"}
->>>>>>> 207cca1 (Add dynamic open roles management and update models, APIs, frontend UI)
+              onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : setShowPopup(true)}
                 className="hidden md:flex
                   w-full
                   md:w-[148px]

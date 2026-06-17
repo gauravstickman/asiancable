@@ -1,13 +1,11 @@
 import RPGGroup from '@/components/pages/RPG-Group/RPGGroup'
 import React from 'react'
+import axios from 'axios'
 
 async function getRPGData() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/rpg-group-page`, {
-      cache: 'no-store'
-    });
-    const result = await res.json();
-    return result.success ? result.data : null;
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/rpg-group-page`);
+    return res.data?.success ? res.data?.data : null;
   } catch (error) {
     console.error('Failed to fetch RPG Group data:', error);
     return null;
