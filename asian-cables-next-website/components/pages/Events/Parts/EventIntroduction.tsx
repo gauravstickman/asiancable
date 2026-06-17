@@ -1,16 +1,46 @@
 import EventGallery from "./EventGallery";
 
-export default function EventIntroduction() {
+export default function EventIntroduction({ event }: { event?: any }) {
+  const title = event?.title || "Wire & Cable India 2025";
+  const location = event?.location || "Pragati Maidan, New Delhi";
+  const duration = event?.duration || "4-Day Exhibition";
+  const description = event?.description;
+  const galleryImages = event?.galleryImages && event.galleryImages.length > 0 ? event.galleryImages : [
+    "assets/events/main-g.png",
+    "assets/events/2.jpg",
+    "assets/events/3.jpg",
+    "assets/events/4.jpg",
+    "assets/events/5.jpg",
+    "assets/events/6.jpg",
+    "assets/events/7.jpg",
+    "assets/events/8.jpg",
+     "assets/events/9.jpg",
+    "assets/events/10.jpg",
+    "assets/events/11.png",
+  ];
+
   return (
     <div className="reveal-section">
       <h2 className="mb-1 text-[24px] font-bold italic text-[#1E3C8C] tracking-[1%]">
-        EVENT RECAP – Wire & Cable India 2025
+        EVENT RECAP – {title}
       </h2>
 
       <p className="text-[16px] md:text-[20px] tracking-[1%] text-[#767676]">
-        Pragati Maidan, New Delhi | 4-Day Exhibition
+        {location} | {duration}
       </p>
 
+      {description ? (
+        <div className="mt-5 space-y-8 event-description">
+          {description.split('. ').map((sentence: string, index: number) => {
+            if (!sentence.trim()) return null;
+            return (
+              <p key={index} className="text-[16px] md:text-[18px] leading-[150%] tracking-[-4%] text-[#1B1B1F]">
+                {sentence.trim()}{sentence.trim().endsWith('.') ? '' : '.'}
+              </p>
+            );
+          })}
+        </div>
+      ) : (
       <div className="mt-5 space-y-8">
         <p className="text-[16px] md:text-[18px] leading-[150%] tracking-[-4%] text-[#1B1B1F]">
           Asian Cables participated in Wire & Cable India 2025 — one of
@@ -44,21 +74,10 @@ export default function EventIntroduction() {
           carry forward well beyond the exhibition floor.
         </p>
       </div>
+      )}
 
 <EventGallery
-  images={[
-    "assets/events/main-g.png",
-    "assets/events/2.jpg",
-    "assets/events/3.jpg",
-    "assets/events/4.jpg",
-    "assets/events/5.jpg",
-    "assets/events/6.jpg",
-    "assets/events/7.jpg",
-    "assets/events/8.jpg",
-     "assets/events/9.jpg",
-    "assets/events/10.jpg",
-    "assets/events/11.png",
-  ]}
+  images={galleryImages}
 />
 
     </div>

@@ -70,8 +70,16 @@ const schema = new mongoose.Schema({
 
     // Open Roles Section
     openRolesTitle: { type: String, default: 'Ready to Power Progress?' },
-    openRolesDescription: { type: String, default: 'Explore our current openings and find where your skills can make the biggest impact.' },
-    openRolesLink: { type: String, default: '/careers' }
+    openRolesDescription: { type: String, default: '3 positions open' },
+    openRolesLink: { type: String, default: '/careers' },
+    openRoles: [{
+        category: String,
+        title: String,
+        location: String,
+        experience: String,
+        salary: String,
+        applyLink: String
+    }]
 }, { timestamps: true });
 
 module.exports = mongoose.model('LifeAtAsianCablesPage', schema);

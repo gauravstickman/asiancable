@@ -1,36 +1,57 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
 const Event = require('./src/models/Event');
+require('dotenv').config({ path: './.env' });
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/mern-admin';
-
-const seedEvents = async () => {
+async function seedEvents() {
     try {
-        await mongoose.connect(MONGO_URI);
-        console.log('Connected to DB');
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log('Connected to MongoDB');
 
-        const dummyEvents = [];
-        for (let i = 1; i <= 5; i++) {
-            dummyEvents.push({
-                title: `Wire & Cable India Exhibition 202${i + 4}`,
-                slug: `wire-cable-india-exhibition-202${i + 4}-${Date.now() + i}`,
-                location: 'Pragati Maidan, New Delhi',
-                duration: '4-Day Exhibition',
-                description: 'Asian Cables participated in Wire & Cable India — one of India\'s most significant platforms for the wire, cable, and allied industries. The event brought together manufacturers, EPC companies, consultants, infrastructure developers, OEMs, and distribution partners from across India and internationally.',
-                bannerImage: '', // Blank placeholder
-                galleryImages: ['', '', ''], // 3 empty placeholders (or dummy images if preferred, but schema allows empty if it passes backend, wait: my backend has no required validation for gallery items but frontend does. I'll just leave them empty strings)
-                status: 'published'
-            });
+        const events = [
+            {
+                title: "Global Cable Tech Expo 2026",
+                slug: "global-cable-tech-expo-2026",
+                location: "Pragati Maidan, New Delhi, India",
+                duration: "October 15 - October 18, 2026",
+                description: "Join Asian Cables at the world's premier cable and wire exhibition. We will be showcasing our latest high-voltage solutions and advanced sustainable manufacturing techniques. Meet our engineers and discover the future of power transmission.",
+                bannerImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                galleryImages: [
+                    "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                status: "published"
+            },
+            {
+                title: "Sustainability Summit: Wiring the Future",
+                slug: "sustainability-summit-wiring-the-future",
+                location: "Mumbai Convention Centre, Mumbai",
+                duration: "November 10 - November 11, 2026",
+                description: "A two-day summit hosted by Asian Cables focusing on eco-friendly industrial practices. Learn how the cable industry can achieve net-zero emissions through recycling, energy efficiency, and innovative material science.",
+                bannerImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                galleryImages: [
+                    "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                status: "published"
+            }
+        ];
+
+        // Insert or update events
+        for (const event of events) {
+            await Event.findOneAndUpdate(
+                { slug: event.slug },
+                event,
+                { upsert: true, new: true }
+            );
+            console.log(`Upserted Event: ${event.title}`);
         }
 
-        await Event.insertMany(dummyEvents);
-        console.log('Successfully inserted 5 dummy events.');
-
+        console.log('Successfully seeded 2 Events!');
         process.exit(0);
-    } catch (err) {
-        console.error('Error seeding events:', err);
+    } catch (error) {
+        console.error('Error seeding events:', error);
         process.exit(1);
     }
-};
+}
 
 seedEvents();

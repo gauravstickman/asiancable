@@ -2,8 +2,40 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+import axios from "axios";
 
 export default function ContactForm({ data }: { data?: any }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    inquiryType: "",
+    message: ""
+  });
+  const [status, setStatus] = useState({ loading: false, message: "", type: "" });
+
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus({ loading: true, message: "", type: "" });
+    
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/enquiries`, formData);
+      setStatus({ loading: false, message: "Enquiry submitted successfully!", type: "success" });
+      setFormData({
+        name: "", email: "", phone: "", company: "", inquiryType: "", message: ""
+      });
+    } catch (error) {
+      console.error(error);
+      setStatus({ loading: false, message: "Failed to submit enquiry. Please try again.", type: "error" });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden bg-[#fff] py-6 md:py-[80px]">
       {/* Background Glow */}
@@ -31,8 +63,14 @@ export default function ContactForm({ data }: { data?: any }) {
             {data?.formDescription || "Fill out the form below and our team will get back to you promptly."}
           </p>
 
+          {status.message && (
+            <div className={`mt-4 p-4 rounded ${status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+              {status.message}
+            </div>
+          )}
+
           {/* Form */}
-          <form className="mt-10">
+          <form className="mt-10" onSubmit={handleSubmit}>
             <div className="grid gap-6 md:grid-cols-2">
               <div>
                 <label className="mb-2 block text-[14px] leading-[21px] font-[600] text-[#525252]">
@@ -41,6 +79,10 @@ export default function ContactForm({ data }: { data?: any }) {
 
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   placeholder="Enter your name"
                   className="h-[56px] w-full rounded-[8px] border border-[#D7D7D7] px-4 outline-none focus:border-[#1E3C8C]"
                 />
@@ -53,6 +95,10 @@ export default function ContactForm({ data }: { data?: any }) {
 
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   placeholder="your.email@company.com"
                   className="h-[56px] w-full rounded-[8px] border border-[#D7D7D7] px-4 outline-none focus:border-[#1E3C8C]"
                 />
@@ -65,6 +111,10 @@ export default function ContactForm({ data }: { data?: any }) {
 
                 <input
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
                   placeholder="+91 XXXXX XXXXX"
                   className="h-[56px] w-full rounded-[8px] border border-[#D7D7D7] px-4 outline-none focus:border-[#1E3C8C]"
                 />
@@ -77,6 +127,9 @@ export default function ContactForm({ data }: { data?: any }) {
 
                 <input
                   type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
                   placeholder="Your company"
                   className="h-[56px] w-full rounded-[8px] border border-[#D7D7D7] px-4 outline-none focus:border-[#1E3C8C]"
                 />
@@ -88,12 +141,17 @@ export default function ContactForm({ data }: { data?: any }) {
                 Inquiry Type *
               </label>
 
-              <select className="h-[56px] w-full rounded-[8px] border border-[#D7D7D7] px-4 outline-none focus:border-[#1E3C8C]">
-                <option>Select Inquiry Type</option>
-                <option>Product Inquiry</option>
-                <option>Technical Support</option>
-                <option>Partnership</option>
-                <option>General Query</option>
+              <select 
+                name="inquiryType"
+                value={formData.inquiryType}
+                onChange={handleChange}
+                required
+                className="h-[56px] w-full rounded-[8px] border border-[#D7D7D7] px-4 outline-none focus:border-[#1E3C8C]">
+                <option value="">Select Inquiry Type</option>
+                <option value="Product Inquiry">Product Inquiry</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Partnership">Partnership</option>
+                <option value="General Query">General Query</option>
               </select>
             </div>
 
@@ -103,6 +161,10 @@ export default function ContactForm({ data }: { data?: any }) {
               </label>
 
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
                 rows={6}
                 placeholder="Tell us more about your requirements..."
                 className="md:h-[auto] h-[148px] text-[15px] w-full rounded-[8px] border border-[#D7D7D7] p-4 outline-none focus:border-[#1E3C8C]"
@@ -111,9 +173,10 @@ export default function ContactForm({ data }: { data?: any }) {
 
             <button
               type="submit"
-              className="border-it-w font-[500] mt-8 inline-flex h-[48.39px] text-[20px] leading-[29.42px] tracking-[-0.46px] items-center gap-3 rounded-[4px] bg-[#1E3C8C] px-3 md:px-6 text-white transition-all cursor-pointer"
+              disabled={status.loading}
+              className="border-it-w font-[500] mt-8 inline-flex h-[48.39px] text-[20px] leading-[29.42px] tracking-[-0.46px] items-center gap-3 rounded-[4px] bg-[#1E3C8C] px-3 md:px-6 text-white transition-all cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Submit Query
+              {status.loading ? 'Submitting...' : 'Submit Query'}
               <ArrowRight size={18} />
             </button>
           </form>

@@ -4,77 +4,35 @@ import Link from "next/link";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const blogs = [
-  {
-    id: 1,
-    category: "BLOG - RENEWABLE ENERGY",
-    readTime: "10 MIN READ",
-    image: "assets/articles/image-1.jpg",
-    title:
-      "Fire-Tested Fibre Optic Cables for Critical ADNOC Installations",
-    description:
-      "Designed and supplied fire-tested fibre optic cables meeting IEC fire survival and flame retardancy standards for ADNOC installations.",
-    slug: "/blogs/fire-tested-fibre-optic-cables",
-  },
-  {
-    id: 2,
-    category: "BLOG - RENEWABLE ENERGY",
-    readTime: "10 MIN READ",
-    image: "assets/articles/image-2.jpg",
-    title:
-      "Fire-Tested Fibre Optic Cables for Critical ADNOC Installations",
-    description:
-      "Designed and supplied fire-tested fibre optic cables meeting IEC fire survival and flame retardancy standards for ADNOC installations.",
-    slug: "/blogs/fire-tested-fibre-optic-cables",
-  },
-  {
-    id: 3,
-    category: "BLOG - RENEWABLE ENERGY",
-    readTime: "10 MIN READ",
-    image: "assets/articles/image-1.jpg",
-    title:
-      "Fire-Tested Fibre Optic Cables for Critical ADNOC Installations",
-    description:
-      "Designed and supplied fire-tested fibre optic cables meeting IEC fire survival and flame retardancy standards for ADNOC installations.",
-    slug: "/blogs/fire-tested-fibre-optic-cables",
-  },
-   {
-    id: 4,
-    category: "BLOG - RENEWABLE ENERGY",
-    readTime: "10 MIN READ",
-    image: "assets/articles/image-2.jpg",
-    title:
-      "Fire-Tested Fibre Optic Cables for Critical ADNOC Installations",
-    description:
-      "Designed and supplied fire-tested fibre optic cables meeting IEC fire survival and flame retardancy standards for ADNOC installations.",
-    slug: "/blogs/fire-tested-fibre-optic-cables",
-  },
-  {
-    id: 5,
-    category: "BLOG - RENEWABLE ENERGY",
-    readTime: "10 MIN READ",
-    image: "assets/articles/image-1.jpg",
-    title:
-      "Fire-Tested Fibre Optic Cables for Critical ADNOC Installations",
-    description:
-      "Designed and supplied fire-tested fibre optic cables meeting IEC fire survival and flame retardancy standards for ADNOC installations.",
-    slug: "/blogs/fire-tested-fibre-optic-cables",
-  },
-  {
-    id: 6,
-    category: "BLOG - RENEWABLE ENERGY",
-    readTime: "10 MIN READ",
-    image: "assets/articles/image-2.jpg",
-    title:
-      "Fire-Tested Fibre Optic Cables for Critical ADNOC Installations",
-    description:
-      "Designed and supplied fire-tested fibre optic cables meeting IEC fire survival and flame retardancy standards for ADNOC installations.",
-    slug: "/blogs/fire-tested-fibre-optic-cables",
-  },
-];
+export default function MoreBlogs({ currentSlug }: { currentSlug?: string }) {
+  const [blogs, setBlogs] = useState<any[]>([]);
 
-export default function MoreBlogs() {
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/blogs`);
+        let allBlogs = [];
+        if (Array.isArray(response.data)) {
+          allBlogs = response.data;
+        } else if (response.data?.success && Array.isArray(response.data.data)) {
+          allBlogs = response.data.data;
+        }
+        
+        // Filter out the current blog
+        const filtered = currentSlug ? allBlogs.filter((b: any) => b.slug !== currentSlug) : allBlogs;
+        setBlogs(filtered);
+      } catch (error) {
+        console.error("Failed to fetch related blogs:", error);
+      }
+    };
+    fetchBlogs();
+  }, [currentSlug]);
+
+  if (blogs.length === 0) return null;
+
   return (
     <section className="mt-[0px] md:mt-[110px]">
       <div className="flex items-center justify-between max-w-[1274px] mx-auto md:px-0 px-5">
@@ -82,12 +40,12 @@ export default function MoreBlogs() {
           More Blogs
         </h2>
 
-       <button className="border-it-w hidden md:ml-0 md:flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
+        <Link href="/articles" className="border-it-w hidden md:ml-0 md:flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
               View All
               <span>
                 <ChevronRight size={18} />
               </span>
-        </button>
+        </Link>
       </div>
 <div className="more-posts  ml-5 md:ml-[80px]">
      <Swiper
@@ -107,16 +65,16 @@ export default function MoreBlogs() {
   className="mt-[30px] md:mt-[60px] mb-10"
 >
   {blogs.map((blog) => (
-    <SwiperSlide key={blog.id} className="rounded-[20px] bg-white shadow-[0px_4px_24px_0px_#00000026] md:mx-3 mb-5 md:mb-10 rounded-t-[20px]">
+    <SwiperSlide key={blog._id} className="rounded-[20px] bg-white shadow-[0px_4px_24px_0px_#00000026] md:mx-3 mb-5 md:mb-10 rounded-t-[20px]">
           <Link
-            key={blog.id}
-            href={blog.slug}
-            className="min-w-[320px] md:min-w-[380px] overflow-hidden rounded-[16px] bg-white shadow-[0px_4px_20px_0px_#00000014] rounded-t-[20px]"
+            key={blog._id}
+            href={`/articles/${blog.slug}`}
+            className="min-w-[320px] md:min-w-[380px] overflow-hidden rounded-[16px] bg-white shadow-[0px_4px_20px_0px_#00000014] rounded-t-[20px] block"
           >
             {/* Image */}
             <div className="relative">
               <img
-                src={blog.image}
+                src={blog.image || "/assets/articles/image-1.jpg"}
                 alt={blog.title}
                 className="h-[180px] md:h-[334px] w-full object-cover rounded-t-[20px]"
               />
@@ -127,12 +85,12 @@ export default function MoreBlogs() {
         "linear-gradient(180deg, rgba(30, 60, 140, 0.5) 19.31%, rgba(246, 248, 254, 0) 100%)",
     }}
   />
-              <div className="absolute left-5 top-5 rounded-[6px] bg-[#ffffff] md:bg-[#FFB300] px-2 py-1 md:px-3 md:py-2 text-[12px] font-medium text-black">
-                {blog.category}
+              <div className="absolute left-5 top-5 rounded-[6px] bg-[#ffffff] md:bg-[#FFB300] px-2 py-1 md:px-3 md:py-2 text-[12px] font-medium text-black uppercase">
+                {blog.category || "BLOG"}
               </div>
 
-              <span className="absolute md:right-5 md:top-5 right-5 bottom-5 text-[12px] text-white">
-                {blog.readTime}
+              <span className="absolute md:right-5 md:top-5 right-5 bottom-5 text-[12px] text-white uppercase">
+                {blog.readTime || "5 MIN READ"}
               </span>
             </div>
 
@@ -157,12 +115,12 @@ export default function MoreBlogs() {
 </Swiper>
 </div>
       <div className="mt-0 mb-8 md:hidden">
-       <button className="border-it-w mx-auto md:ml-0 flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
+       <Link href="/articles" className="border-it-w mx-auto md:ml-0 flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
               View All
               <span>
                 <ChevronRight size={18} />
               </span>
-            </button>
+            </Link>
       </div>
     </section>
   );

@@ -117,7 +117,13 @@ const LifeAtAsianCablesSettings = () => {
         // Open Roles
         if (!settings.openRolesTitle?.trim()) { toast.error('Open Roles Section: Title is required'); return false; }
         if (!settings.openRolesDescription?.trim()) { toast.error('Open Roles Section: Description is required'); return false; }
-        if (!settings.openRolesLink?.trim()) { toast.error('Open Roles Section: Link URL is required'); return false; }
+        if (settings.openRoles && settings.openRoles.length > 0) {
+            for (let i = 0; i < settings.openRoles.length; i++) {
+                const role = settings.openRoles[i];
+                if (!role.category?.trim()) { toast.error(`Open Role #${i+1}: Category is required`); return false; }
+                if (!role.title?.trim()) { toast.error(`Open Role #${i+1}: Title is required`); return false; }
+            }
+        }
 
         return true;
     };
@@ -501,10 +507,28 @@ const LifeAtAsianCablesSettings = () => {
                             <div className="mb-6 pb-4 border-b border-slate-100">
                                 <h2 className="text-xl font-semibold text-slate-800">Open Roles</h2>
                             </div>
-                            <div className="grid grid-cols-1 gap-4">
+                            <div className="grid grid-cols-1 gap-4 mb-6">
                                 <FormInput label="Section Title" value={settings.openRolesTitle || ''} onChange={e => handleChange('openRolesTitle', e.target.value)} />
-                                <FormTextarea label="Description" rows={3} value={settings.openRolesDescription || ''} onChange={e => handleChange('openRolesDescription', e.target.value)} />
-                                <FormInput label="Link URL" value={settings.openRolesLink || ''} onChange={e => handleChange('openRolesLink', e.target.value)} />
+                                <FormInput label="Description (e.g. 3 positions open)" value={settings.openRolesDescription || ''} onChange={e => handleChange('openRolesDescription', e.target.value)} />
+                                <FormInput label="General Link URL" value={settings.openRolesLink || ''} onChange={e => handleChange('openRolesLink', e.target.value)} />
+                            </div>
+                            
+                            <div className="flex justify-between items-center mb-2 mt-8">
+                                <label className="text-sm font-bold text-slate-800">Job Positions</label>
+                                <button onClick={() => handleAddToArray('openRoles', {category: '', title: '', location: '', experience: '', salary: '', applyLink: ''})} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Role</button>
+                            </div>
+                            <div className="space-y-4">
+                                {settings.openRoles?.map((role, idx) => (
+                                    <div key={idx} className="bg-slate-50 p-4 rounded-lg border relative grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        <button onClick={() => handleRemoveFromArray('openRoles', idx)} className="absolute top-2 right-2 text-red-500 hover:bg-red-50 p-1 rounded"><Trash2 size={18}/></button>
+                                        <FormInput label="Category (e.g. Finance)" value={role.category || ''} onChange={e => handleArrayChange('openRoles', idx, 'category', e.target.value)} />
+                                        <FormInput label="Job Title" value={role.title || ''} onChange={e => handleArrayChange('openRoles', idx, 'title', e.target.value)} />
+                                        <FormInput label="Location" value={role.location || ''} onChange={e => handleArrayChange('openRoles', idx, 'location', e.target.value)} />
+                                        <FormInput label="Experience" value={role.experience || ''} onChange={e => handleArrayChange('openRoles', idx, 'experience', e.target.value)} />
+                                        <FormInput label="Salary / Compensation" value={role.salary || ''} onChange={e => handleArrayChange('openRoles', idx, 'salary', e.target.value)} />
+                                        <FormInput label="Apply Link (e.g. mailto:hr@asiancables.com)" value={role.applyLink || ''} onChange={e => handleArrayChange('openRoles', idx, 'applyLink', e.target.value)} />
+                                    </div>
+                                ))} 
                             </div>
                         </div>
                     )}

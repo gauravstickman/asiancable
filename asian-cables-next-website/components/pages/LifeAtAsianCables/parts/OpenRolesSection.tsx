@@ -10,77 +10,43 @@ import {
   Building2,
 } from "lucide-react";
 
-const jobs = [
-  {
-    category: "Finance",
-    title: "Senior Manager – Finance & Accounts",
-    location: "Mumbai, India",
-    experience: "8–12 years experience",
-    salary: "₹15–20 LPA",
-  },
-  {
-    category: "Sales",
-    title: "Executive – Sales & Distribution",
-    location: "Pune, India",
-    experience: "2–5 years experience",
-    salary: "₹5–8 LPA",
-  },
-  {
-    category: "Quality",
-    title: "Engineer – Quality Assurance",
-    location: "Nashik, India",
-    experience: "3–6 years experience",
-    salary: "₹6–10 LPA",
-  },
-];
-
-const tabs = [
-  "All Roles",
-  "Engineering",
-  "Quality",
-  "Sales",
-  "Finance",
-];
-
 export default function OpenRolesSection({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState("All Roles");
 
-const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    }
 
-useEffect(() => {
-  if (!showPopup) return;
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    };
+  }, [showPopup]);
 
-  const scrollY = window.scrollY;
+  useEffect(() => {
+    const nav = document.querySelector("nav");
 
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${scrollY}px`;
-  document.body.style.width = "100%";
+    if (showPopup) {
+      nav?.classList.add("pointer-events-none");
+    } else {
+      nav?.classList.remove("pointer-events-none");
+    }
 
-  return () => {
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.width = "";
+    return () => {
+      nav?.classList.remove("pointer-events-none");
+    };
+  }, [showPopup]);
 
-    window.scrollTo(0, scrollY);
-  };
-}, [showPopup]);
+  const jobs = data?.openRoles || [];
+  const tabs = ["All Roles", ...Array.from(new Set(jobs.map((job: any) => job.category))).filter(Boolean)] as string[];
 
-
-
-useEffect(() => {
-  const nav = document.querySelector("nav");
-
-  if (showPopup) {
-    nav?.classList.add("pointer-events-none");
-  } else {
-    nav?.classList.remove("pointer-events-none");
-  }
-
-  return () => {
-    nav?.classList.remove("pointer-events-none");
-  };
-}, [showPopup]);
-
+  const filteredJobs = activeTab === "All Roles" ? jobs : jobs.filter((job: any) => job.category === activeTab);
 
   return (
     <section className="w-full bg-white py-[40px]" id="openroles">
@@ -155,7 +121,7 @@ useEffect(() => {
 
         {/* Jobs */}
         <div className="flex flex-col gap-[16px]">
-          {jobs.map((job, index) => (
+          {filteredJobs.map((job: any, index: number) => (
             <div
               key={index}
               className="
@@ -247,7 +213,7 @@ useEffect(() => {
                   </div>
                    {/* Button */}
               <button
-              onClick={() => setShowPopup(true)}
+              onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : setShowPopup(true)}
                 className="
                 md:hidden
                 mt-6
@@ -280,7 +246,7 @@ useEffect(() => {
 
               {/* Button */}
               <button
-              onClick={() => setShowPopup(true)}
+              onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : setShowPopup(true)}
                 className="hidden md:flex
                   w-full
                   md:w-[148px]

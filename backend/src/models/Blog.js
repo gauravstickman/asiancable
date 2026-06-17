@@ -24,9 +24,9 @@ const blogSchema = new mongoose.Schema({
         default: ''
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'BlogCategory',
-        required: false
+        type: String,
+        required: true,
+        trim: true
     },
     sections: [{
         title: { type: String, required: true },
@@ -43,6 +43,11 @@ const blogSchema = new mongoose.Schema({
         type: String,
         enum: ['draft', 'published'],
         default: 'published'
+    },
+    readTime: {
+        type: String,
+        required: true,
+        trim: true
     }
 }, { timestamps: true });
 
