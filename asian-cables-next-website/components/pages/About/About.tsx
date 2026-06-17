@@ -9,6 +9,7 @@ import GovernanceSection from "./parts/GovernanceSection";
 import LeadershipTeam from "./parts/LeadershipTeam";
 import OurJourney from "./parts/OurJourney";
 import api, { getBaseUrl } from "../../../utils/api";
+import LeadershipStatic from "./parts/LeadershipStatic";
 
 function About() {
   const [dynamicData, setDynamicData] = useState<any>(null);
@@ -32,8 +33,12 @@ function About() {
       <CompanyValuesSection dynamicData={dynamicData} />
       <OurJourney dynamicData={dynamicData} />
       <GovernanceSection dynamicData={dynamicData} />
-      <LeadershipTeam dynamicData={dynamicData} />
-      <Footer />
+      {/* <LeadershipTeam dynamicData={dynamicData} /> */}
+<LeadershipStatic
+  onCloseSanjay={() => {}}
+  onCloseGarima={() => {}}
+  onCloseKushal={() => {}}
+/>    <Footer />
     </div>
   );
 }
