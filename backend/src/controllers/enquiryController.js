@@ -33,7 +33,7 @@ ${message}
         try {
             if (process.env.ADMIN_EMAIL) {
                 await sendEmail({
-                    email: "ujjawalmehta156@gmail.com",
+                    email: "asiancablesdev@gmail.com",
                     subject: `New Enquiry from ${name} - ${inquiryType}`,
                     message: emailMessage
                 });

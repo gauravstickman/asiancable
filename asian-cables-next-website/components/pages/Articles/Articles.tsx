@@ -34,7 +34,7 @@ function Articles({ blog }: { blog?: BlogType }) {
           <ArticlesSidebar blog={blog} />
         </div>
 
-        <MoreBlogs/>
+        <MoreBlogs currentSlug={blog.slug} />
         <Footer/>
     </div>
   )
