@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import JobApplyPopup from "../../LifeAtAsianCables/parts/JobApplyPopup";
 import {
   BriefcaseBusiness,
   MapPin,
@@ -43,6 +44,38 @@ const tabs = [
 
 export default function OpenRolesSection({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState("All Roles");
+
+const [showPopup, setShowPopup] = useState(false);
+useEffect(() => {
+  if (showPopup) {
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100vh";
+  } else {
+    document.body.style.overflow = "";
+    document.body.style.height = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+    document.body.style.height = "";
+  };
+}, [showPopup]);
+
+
+useEffect(() => {
+  const nav = document.querySelector("nav");
+
+  if (showPopup) {
+    nav?.classList.add("pointer-events-none");
+  } else {
+    nav?.classList.remove("pointer-events-none");
+  }
+
+  return () => {
+    nav?.classList.remove("pointer-events-none");
+  };
+}, [showPopup]);
+
 
   return (
     <section className="w-full bg-white py-[40px]" id="openroles">
@@ -209,6 +242,7 @@ export default function OpenRolesSection({ data }: { data?: any }) {
                   </div>
                    {/* Button */}
               <button
+              onClick={() => setShowPopup(true)}
                 className="
                 md:hidden
                 mt-6
@@ -241,6 +275,7 @@ export default function OpenRolesSection({ data }: { data?: any }) {
 
               {/* Button */}
               <button
+              onClick={() => setShowPopup(true)}
                 className="hidden md:flex
                   w-full
                   md:w-[148px]
@@ -269,6 +304,12 @@ export default function OpenRolesSection({ data }: { data?: any }) {
           ))}
         </div>
       </div>
+
+   
+      
+      {showPopup && (
+        <JobApplyPopup onClose={() => setShowPopup(false)} />
+      )}
     </section>
   );
 }
