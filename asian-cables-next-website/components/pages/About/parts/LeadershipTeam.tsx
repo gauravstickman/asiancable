@@ -48,15 +48,15 @@ export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
 
   return (
     <section className="overflow-hidden bg-white py-16">
-      <div className="mx-auto max-w-[1400px] md:px-6 px-5">
+      <div className="mx-auto max-w-[1400px] md:px-6">
         {/* Header */}
-        <div className="mb-10 md:px-5 flex md:flex-row flex-col md:items-center md:justify-between">
+        <div className="mb-10 px-5 flex md:flex-row flex-col md:items-center md:justify-between">
           <div>
             <h2 className="font-[magistral]  text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C]" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
             <p className="mt-4 font-[work_sans] text-[16px] leading-[150%] md:text-[17px] md:leading-[25.5px] font-normal text-[#525252]" dangerouslySetInnerHTML={{ __html: subtitle.replace(/\n/g, '<br />') }} />
           </div>
           <div>
-            <Link href={buttonUrl} className="border-it-b cursor-pointer md:mx-auto flex items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] px-5 py-2 text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px] md:mt-0 mt-5 w-fit">
+            <Link href={buttonUrl} className="border-it-w cursor-pointer md:mx-auto flex items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] px-5 py-2 text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px] md:mt-0 mt-5 w-fit">
               {buttonLabel}
               <span>
                 <ChevronRight size={18} />
@@ -67,23 +67,23 @@ export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
 
         {/* Marquee */}
         <div className="relative">
-          <div className="animate-marquee hover:[animation-play-state:paused] flex w-max gap-[33px]">
+          <div className="animate-marquee1 hover:[animation-play-state:paused] md:ml-0 ml-5 md:pr-0 pr-5 md:overflow-x-hidden overflow-x-auto industries flex gap-6 md:gap-[33px]">
             {/* First Set */}
             {leaders.map((leader: any, index: number) => (
-              <div key={index} className="md:max-w-[260px] min-w-[260px]">
+              <div key={index} className=" min-w-[80vw] md:min-w-[33%]">
                 {/* Image */}
                 <div className="overflow-hidden rounded-[4px]">
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="h-[371px] md:w-[314px] w-[80vw] rounded-[4px] full object-cover"
+                    className="md:h-[371px] md:w-[100%] w-[80vw] rounded-[4px] full object-cover"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="flex w-full flex-row items-start justify-between h-auto gap-[4px] rounded-[4px] p-[16px]">
+                <div className="flex w-full flex-row items-center justify-between h-auto gap-[4px] rounded-[4px] p-[16px]">
                   <div >
-                    <p className="text-[16px] leading-[24px] font-medium tracking-[-0.4%] text-[#1D1F1E]">
+                    <p className="text-[16px] md:text-[18px] leading-[24px] font-medium tracking-[-0.4%] text-[#1D1F1E]">
                       {leader.name}
                     </p>
 
@@ -97,14 +97,14 @@ export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
                       <img
                         src="/assets/about/linkdinIcon.png"
                         alt="LinkedIn"
-                        className="h-6 w-6 object-contain cursor-pointer"
+                        className="h-8 w-8 object-contain cursor-pointer"
                       />
                     </a>
                   ) : (
                     <img
                       src="/assets/about/linkdinIcon.png"
                       alt="LinkedIn"
-                      className="h-6 w-6 object-contain cursor-pointer opacity-50"
+                      className="h-8 w-8 object-contain cursor-pointer opacity-50"
                     />
                   )}
                 </div>
@@ -112,7 +112,7 @@ export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
             ))}
 
             {/* Duplicate */}
-            {leaders.map((leader: any, index: number) => (
+            {/* {leaders.map((leader: any, index: number) => (
               <div key={`dup-${index}`} className="max-w-[260px] min-w-[260px]">
                 <div className="overflow-hidden rounded-[4px]">
                   <img
@@ -150,7 +150,7 @@ export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
                   )}
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
