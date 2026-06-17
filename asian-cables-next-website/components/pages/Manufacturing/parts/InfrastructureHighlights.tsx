@@ -111,7 +111,10 @@ export default function InfrastructureHighlights({ data }: { data?: any }) {
     })) || []
   })) : infrastructureData;
 
-  const slides = dynamicSlides;
+const slides =
+  dynamicSlides.length === 2
+    ? [...dynamicSlides, ...dynamicSlides]
+    : dynamicSlides;
 
   const [current, setCurrent] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -149,8 +152,13 @@ useEffect(() => {
   return () => clearInterval(interval);
 }, []);
 
+
+
+
   return (
     <section className="scrollbar-hide overflow-hidden bg-white py-15 md:py-20">
+
+
 
 
 
@@ -183,7 +191,7 @@ useEffect(() => {
     setProgress(0);
   }}
 >
-  {dynamicSlides.map((item: any, index: number) => (
+ {slides.map((item: any, index: number) => (
     <SwiperSlide key={item.id}>
       <div className="bg-[#F7F8FC] p-5 md:p-[64px] md:mx-0 mx-5">
 
