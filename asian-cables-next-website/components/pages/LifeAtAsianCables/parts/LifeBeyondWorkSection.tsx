@@ -20,7 +20,7 @@ export default function LifeBeyondWorkSection({ data }: { data?: any }) {
       const url = apiImages[index];
       return url.startsWith('http') 
         ? url 
-        : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${url}`;
+        : `${process.env.NEXT_PUBLIC_API_URL}${url}`;
     }
     return staticImages[index];
   };

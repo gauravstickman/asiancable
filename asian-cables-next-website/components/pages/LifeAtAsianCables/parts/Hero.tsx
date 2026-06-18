@@ -5,7 +5,7 @@ import React from 'react'
 const Hero = ({ data }: { data?: any }) => {
   const bgImage = data?.headerBgImage?.startsWith('http') 
     ? data.headerBgImage 
-    : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${data?.headerBgImage || '/assets/Lifeofasiancables/ImageWithFallback.png'}`;
+    : `${process.env.NEXT_PUBLIC_API_URL}${data?.headerBgImage || '/assets/Lifeofasiancables/ImageWithFallback.png'}`;
 
   return (
     <div>

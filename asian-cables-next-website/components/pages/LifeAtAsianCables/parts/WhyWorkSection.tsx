@@ -3,7 +3,7 @@ import Image from "next/image";
 const WhyWorkSection = ({ data }: { data?: any }) => {
   const imageUrl = data?.whyWorkImage?.startsWith('http') 
     ? data.whyWorkImage 
-    : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${data?.whyWorkImage || '/assets/Lifeofasiancables/whywork.png'}`;
+    : `${process.env.NEXT_PUBLIC_API_URL}${data?.whyWorkImage || '/assets/Lifeofasiancables/whywork.png'}`;
 
   return (
     <section className="bg-white mt-[10] md:mt-[40px] py-[40px]">

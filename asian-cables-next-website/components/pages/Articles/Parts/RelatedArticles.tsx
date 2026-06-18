@@ -13,7 +13,7 @@ export default function MoreBlogs({ currentSlug }: { currentSlug?: string }) {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/blogs`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
         let allBlogs = [];
         if (Array.isArray(response.data)) {
           allBlogs = response.data;

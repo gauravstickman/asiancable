@@ -6,7 +6,7 @@ import { Play } from "lucide-react";
 export default function DayInLifeSection({ data }: { data?: any }) {
   const imageUrl = data?.dayInLifeImage?.startsWith('http') 
     ? data.dayInLifeImage 
-    : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${data?.dayInLifeImage || '/assets/Lifeofasiancables/dayinlife.png'}`;
+    : `${process.env.NEXT_PUBLIC_API_URL}${data?.dayInLifeImage || '/assets/Lifeofasiancables/dayinlife.png'}`;
 
   return (
     <section className="bg-white py-12 md:py-[80px]">

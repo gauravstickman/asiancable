@@ -16,8 +16,8 @@ export default async function CaseStudyDynamicPage({ params }: PageProps) {
   let allCaseStudies = [];
   try {
     const [res, allRes] = await Promise.all([
-      axios.get(`http://localhost:5000/api/case-studies/slug/${slug}`),
-      axios.get(`http://localhost:5000/api/case-studies`)
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/case-studies/slug/${slug}`),
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/case-studies`)
     ]);
     dbCaseStudy = res.data;
     allCaseStudies = allRes.data;

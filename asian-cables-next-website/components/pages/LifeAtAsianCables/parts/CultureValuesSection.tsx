@@ -61,7 +61,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
 
     const imageUrl = cv.icon?.startsWith('http') 
       ? cv.icon 
-      : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${cv.icon}`;
+      : `${process.env.NEXT_PUBLIC_API_URL}${cv.icon}`;
 
     return {
       title: cv.title,

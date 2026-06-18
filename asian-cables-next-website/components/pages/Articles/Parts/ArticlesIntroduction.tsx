@@ -52,7 +52,7 @@ export default function ArticlesIntroduction({ blog }: { blog?: BlogType }) {
             {/* Hero */}
             <div className="overflow-hidden rounded-[20px] md:rounded-[20px] md:min-h-[450px]  md:max-h-[477px]">
               <img
-                src={firstSection.images[0].startsWith('http') ? firstSection.images[0] : `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:5000'}/${firstSection.images[0]}`}
+                src={firstSection.images[0].startsWith('http') ? firstSection.images[0] : `${process.env.NEXT_PUBLIC_BASE_URL}/${firstSection.images[0]}`}
                 alt=""
                 className="w-full rounded-[20px] md:rounded-[20px] object-cover"
               />
@@ -65,7 +65,7 @@ export default function ArticlesIntroduction({ blog }: { blog?: BlogType }) {
             {firstSection.images[1] && (
               <div className="overflow-hidden rounded-[20px] md:rounded-[20px] md:mb-15">
                 <img
-                  src={firstSection.images[1].startsWith('http') ? firstSection.images[1] : `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:5000'}/${firstSection.images[1]}`}
+                  src={firstSection.images[1].startsWith('http') ? firstSection.images[1] : `${process.env.NEXT_PUBLIC_BASE_URL}/${firstSection.images[1]}`}
                   alt=""
                   className="w-full rounded-[20px] md:rounded-[20px] object-cover h-[180px] md:h-[477px]"
                 />
@@ -75,7 +75,7 @@ export default function ArticlesIntroduction({ blog }: { blog?: BlogType }) {
             {firstSection.images[2] && (
               <div className="overflow-hidden rounded-[20px] md:rounded-[20px] md:mb-15">
                 <img
-                  src={firstSection.images[2].startsWith('http') ? firstSection.images[2] : `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:5000'}/${firstSection.images[2]}`}
+                  src={firstSection.images[2].startsWith('http') ? firstSection.images[2] : `${process.env.NEXT_PUBLIC_BASE_URL}/${firstSection.images[2]}`}
                   alt=""
                   className="w-full rounded-[20px] md:rounded-[20px] object-cover h-[180px] md:h-[477px]"
                 />
@@ -89,7 +89,7 @@ export default function ArticlesIntroduction({ blog }: { blog?: BlogType }) {
       {remainingSections.map((section, index) => (
         <div key={index} id={`section-${index + 1}`}>
           <ArticleSnippet
-            images={section.images ? section.images.map(img => img.startsWith('http') ? img : `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:5000'}/${img}`) : []}
+            images={section.images ? section.images.map(img => img.startsWith('http') ? img : `${process.env.NEXT_PUBLIC_BASE_URL}/${img}`) : []}
             title={section.title}
             content={section.description ? section.description.split('\n').filter(p => p.trim() !== '') : []}
           />

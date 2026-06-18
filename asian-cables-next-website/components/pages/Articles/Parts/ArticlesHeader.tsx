@@ -16,7 +16,7 @@ const breadcrumbs = [
       <section className="relative md:min-h-[551px]  overflow-hidden">
         {/* Background Image */}
         <img
-          src={blog?.image ? (blog.image.startsWith('http') ? blog.image : `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:5000'}/${blog.image}`) : "/assets/events/events-bg.png"}
+          src={blog?.image ? (blog.image.startsWith('http') ? blog.image : `${process.env.NEXT_PUBLIC_BASE_URL}/${blog.image}`) : "/assets/events/events-bg.png"}
           alt={blog?.title || ""}
           className="absolute inset-0 h-full w-full object-cover object-top"
         />

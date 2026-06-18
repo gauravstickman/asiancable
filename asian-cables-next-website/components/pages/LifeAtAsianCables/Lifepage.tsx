@@ -20,7 +20,7 @@ const Lifepage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/life-at-asian-cables`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/life-at-asian-cables`);
         if (response.data?.success) {
           setData(response.data.data);
         }

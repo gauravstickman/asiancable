@@ -16,7 +16,7 @@ function EventSlugPage() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/events/slug/${slug}`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/events/slug/${slug}`);
         setEvent(response.data);
       } catch (error) {
         console.error("Error fetching event:", error);

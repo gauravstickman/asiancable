@@ -119,7 +119,7 @@ export default function ExperienceSection({ data }: { data?: any }) {
   const tabs = data?.experiencePoints?.length > 0 ? data.experiencePoints.map((pt: any, index: number) => {
     const imageUrl = pt.image?.startsWith('http')
       ? pt.image
-      : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}${pt.image}`;
+      : `${process.env.NEXT_PUBLIC_API_URL}${pt.image}`;
 
     return {
       id: index + 1,

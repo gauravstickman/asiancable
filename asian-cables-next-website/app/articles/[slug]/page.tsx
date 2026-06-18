@@ -7,7 +7,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 
 async function getBlogData(slug: string) {
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/blogs/slug/${slug}`);
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/blogs/slug/${slug}`);
     return res.data;
   } catch (error) {
     console.error("Error fetching blog data:", error);
