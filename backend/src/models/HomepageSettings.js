@@ -57,6 +57,7 @@ const schema = new mongoose.Schema({
         title: String,
         description: String,
         image: String,
+        link: { type: String, default: '' },
         badges: [String]
     }],
     engineering: {

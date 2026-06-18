@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -172,6 +173,11 @@ const displayProjects =
                     </div>
                   </div>
                 </div>
+                
+                {/* LINK COVER */}
+                {project.link && (
+                  <Link href={project.link} className="absolute inset-0 z-20" aria-label={project.title}></Link>
+                )}
               </div>
             </SwiperSlide>
           ))}

@@ -247,7 +247,7 @@ const IndustryPageSettings = () => {
                         </div>
                         <div className="flex justify-between items-center mb-2">
                             <label className="text-sm font-bold text-slate-800">Projects List</label>
-                            <button onClick={() => handleAddToArray('projects', {company: '', title: '', description: '', image: '', tags: []})} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Project</button>
+                            <button onClick={() => handleAddToArray('projects', {company: '', title: '', description: '', image: '', link: '', tags: []})} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Project</button>
                         </div>
                         <div className="space-y-4">
                             {settings.projects.map((proj, idx) => (
@@ -264,6 +264,9 @@ const IndustryPageSettings = () => {
                                         {proj.image && <img src={proj.image.startsWith('http') ? proj.image : `${import.meta.env.VITE_API_URL}${proj.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                     </div>
                                     <FormInput label="Tags" placeholder="Tags (comma separated)" value={(proj.tags || []).join(', ')} onChange={e => handleArrayChange('projects', idx, 'tags', e.target.value.split(',').map(s=>s.trim()))} />
+                                    <div className="md:col-span-2">
+                                        <FormInput type="url" label="Project Link" placeholder="https://example.com/project" value={proj.link || ''} onChange={e => handleArrayChange('projects', idx, 'link', e.target.value)} />
+                                    </div>
                                 </div>
                                 ))} 
                         </div>

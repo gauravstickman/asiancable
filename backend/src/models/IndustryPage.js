@@ -10,6 +10,7 @@ const projectSchema = new mongoose.Schema({
     title: String,
     description: String,
     image: String,
+    link: { type: String, default: '' },
     tags: [String]
 });
 

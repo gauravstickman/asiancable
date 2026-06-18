@@ -161,6 +161,13 @@ const ProductList = () => {
             return;
         }
 
+        // Validate project links
+        const invalidProject = projectsArray.find(p => p.link && !/^https?:\/\/.+/.test(p.link));
+        if (invalidProject) {
+            toast.error('Please enter a valid URL (including http:// or https://) for project links.');
+            return;
+        }
+
         setSubmitting(true);
         const payload = {
             name,
@@ -561,7 +568,7 @@ const ProductList = () => {
                             <div className="col-span-1 md:col-span-2 pt-4 border-t border-slate-200">
                                 <div className="flex justify-between items-center mb-4">
                                     <h3 className="text-md font-bold text-slate-800">Proven In The Field (Projects)</h3>
-                                    <button type="button" onClick={() => setProjectsArray([...projectsArray, {tag: '', title: '', description: '', image: '', badges: []}])} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Project</button>
+                                    <button type="button" onClick={() => setProjectsArray([...projectsArray, {tag: '', title: '', description: '', image: '', link: '', badges: []}])} className="text-blue-600 text-sm font-medium flex items-center gap-1"><Plus size={16}/> Add Project</button>
                                 </div>
                                 <div className="space-y-4">
                                     {projectsArray.map((proj, idx) => (
@@ -597,6 +604,10 @@ const ProductList = () => {
                                             <div className="space-y-1.5 md:col-span-2">
                                                 <label className="text-sm font-medium text-slate-700">Badges (comma separated)</label>
                                                 <input type="text" value={(proj.badges || []).join(', ')} onChange={(e) => { const arr = [...projectsArray]; arr[idx].badges = e.target.value.split(',').map(s=>s.trim()); setProjectsArray(arr); }} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm" placeholder="e.g. High Efficiency, High Load" />
+                                            </div>
+                                            <div className="space-y-1.5 md:col-span-2">
+                                                <label className="text-sm font-medium text-slate-700">Project Link</label>
+                                                <input type="url" value={proj.link || ''} onChange={(e) => { const arr = [...projectsArray]; arr[idx].link = e.target.value; setProjectsArray(arr); }} className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-slate-800 text-sm" placeholder="https://example.com/project" />
                                             </div>
                                         </div>
                                     ))}

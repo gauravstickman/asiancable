@@ -394,7 +394,7 @@ const HomepageSettingsMaster = () => {
                         <div>
                             <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
                                 <h2 className="text-xl font-semibold text-slate-800">Proven Fields</h2>
-                                <button onClick={() => handleAddToArray('provenFields', {tag: '', title: '', description: '', image: '', badges: []})} className="text-blue-600 text-sm font-medium flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors"><Plus size={16}/> Add Field</button>
+                                <button onClick={() => handleAddToArray('provenFields', {tag: '', title: '', description: '', image: '', link: '', badges: []})} className="text-blue-600 text-sm font-medium flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors"><Plus size={16}/> Add Field</button>
                             </div>
                             <div className="space-y-4">
                         {settings.provenFields.map((field, idx) => (
@@ -411,6 +411,9 @@ const HomepageSettingsMaster = () => {
                                     {field.image && <img src={field.image.startsWith('http') ? field.image : `${import.meta.env.VITE_API_URL}${field.image}`} alt="Preview" className="h-16 rounded object-contain bg-slate-100 border border-slate-200 self-start" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150?text=No+Image'; }} />}
                                 </div>
                                 <FormInput label="Badges" placeholder="Badges (comma separated)" value={(field.badges || []).join(', ')} onChange={e => handleArrayChange('provenFields', idx, 'badges', e.target.value.split(',').map(s=>s.trim()))} />
+                                <div className="md:col-span-2">
+                                    <FormInput type="url" label="Link" placeholder="https://example.com/project" value={field.link || ''} onChange={e => handleArrayChange('provenFields', idx, 'link', e.target.value)} />
+                                </div>
                             </div>
                                 ))} 
                             </div>

@@ -70,7 +70,8 @@ Resume: ${resumeUrl}
 
                 await doc.loadInfo();
 
-                let sheet = doc.sheetsByIndex[0];
+                // Find or create sheet named 'Job Applications'
+                let sheet = doc.sheetsByTitle['Job Applications'];
 
                 if (!sheet) {
                     sheet = await doc.addSheet({

@@ -1,5 +1,6 @@
 import { Award } from "lucide-react";
 import { getBaseUrl } from "../../../../utils/api";
+import Link from "next/link";
 
 export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubtitle }: { dynamicData?: any[], sectionTitle?: string, sectionSubtitle?: string }) {
   const fallbackProjects = [
@@ -96,6 +97,11 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
                   ))}
                 </div>
               </div>
+              
+              {/* LINK COVER */}
+              {displayProjects[0].link && (
+                <Link href={displayProjects[0].link} className="absolute inset-0 z-20" aria-label={displayProjects[0].title}></Link>
+              )}
             </div>
           </div>
 
@@ -148,6 +154,11 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
                   ))}
                 </div>
               </div>
+              
+              {/* LINK COVER */}
+              {displayProjects[1].link && (
+                <Link href={displayProjects[1].link} className="absolute inset-0 z-20" aria-label={displayProjects[1].title}></Link>
+              )}
             </div>
           </div>
         </div>
