@@ -107,7 +107,7 @@ const CaseStudyList = () => {
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="text-sm font-medium text-slate-800 line-clamp-2">{cs.title}</div>
-                                            <div className="text-xs text-slate-500 mt-1">{cs.location}</div>
+                                            <div className="text-xs text-blue-500 mt-1">/{cs.slug}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-sm text-slate-600">{cs.client}</div>
