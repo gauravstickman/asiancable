@@ -44,7 +44,7 @@ export default function ProductResources({ data }: { data?: any }) {
                 </div>
 
                 {/* TITLE */}
-                <h3 className="mb-[11px] max-w-[420px] text-[28px] leading-[43px] font-black text-white italic md:mb-2 md:text-[36px] md:leading-[43.2px]" dangerouslySetInnerHTML={{ __html: data?.catalogueName || 'Product<br className="hidden md:block" />Catalogue' }}>
+                <h3 className="mb-[11px] max-w-[480px] text-[28px] leading-[43px] font-black text-white italic md:mb-2 md:text-[36px] md:leading-[43.2px]" dangerouslySetInnerHTML={{ __html: data?.catalogueName || 'Product<br className="hidden md:block" />Catalogue' }}>
                 </h3>
 
                 {/* DESCRIPTION */}
