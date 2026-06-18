@@ -43,7 +43,7 @@ const updateSettings = async (req, res) => {
             page = new ResourcesPage(req.body);
             await page.save();
         } else {
-            page = await ResourcesPage.findOneAndUpdate({}, req.body, { new: true, runValidators: true });
+            page = await ResourcesPage.findOneAndUpdate({}, req.body, { returnDocument: 'after', runValidators: true });
         }
         res.status(200).json({ success: true, data: page });
     } catch (error) {

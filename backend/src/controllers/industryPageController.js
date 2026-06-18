@@ -35,7 +35,7 @@ exports.getBySlug = async (req, res) => {
 
 exports.updateById = async (req, res) => {
     try {
-        const page = await IndustryPage.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        const page = await IndustryPage.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after', runValidators: true });
         if (!page) {
             return res.status(404).json({ success: false, message: 'Industry Page not found' });
         }

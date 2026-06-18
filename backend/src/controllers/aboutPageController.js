@@ -64,7 +64,7 @@ exports.update = async (req, res) => {
             page = await AboutPage.findByIdAndUpdate(
                 page._id,
                 req.body,
-                { new: true, runValidators: true }
+                { returnDocument: 'after', runValidators: true }
             );
         }
         res.status(200).json({ success: true, data: page, message: 'About page settings saved successfully' });

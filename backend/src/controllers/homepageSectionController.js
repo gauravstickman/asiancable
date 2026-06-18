@@ -70,7 +70,7 @@ exports.update = async (req, res) => {
     if (!Model) return res.status(400).json({ success: false, message: 'Invalid section' });
     
     try {
-        const item = await Model.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        const item = await Model.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after', runValidators: true });
         if (!item) return res.status(404).json({ success: false, message: 'Item not found' });
         res.status(200).json({ success: true, data: item, message: 'Item updated successfully' });
     } catch (error) {

@@ -47,7 +47,7 @@ exports.update = async (req, res) => {
             page = new SustainabilityPage(req.body);
             await page.save();
         } else {
-            page = await SustainabilityPage.findOneAndUpdate({}, req.body, { new: true, runValidators: true });
+            page = await SustainabilityPage.findOneAndUpdate({}, req.body, { returnDocument: 'after', runValidators: true });
         }
         res.status(200).json({ success: true, data: page });
     } catch (error) {

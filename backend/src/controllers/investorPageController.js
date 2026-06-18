@@ -29,7 +29,7 @@ exports.update = async (req, res) => {
             page = await InvestorPage.findByIdAndUpdate(
                 page._id,
                 req.body,
-                { new: true, runValidators: true }
+                { returnDocument: 'after', runValidators: true }
             );
         }
         res.status(200).json({ success: true, data: page, message: 'Investor page settings saved successfully' });

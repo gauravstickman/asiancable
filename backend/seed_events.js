@@ -41,7 +41,7 @@ async function seedEvents() {
             await Event.findOneAndUpdate(
                 { slug: event.slug },
                 event,
-                { upsert: true, new: true }
+                { upsert: true, returnDocument: 'after' }
             );
             console.log(`Upserted Event: ${event.title}`);
         }

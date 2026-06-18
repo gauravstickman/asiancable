@@ -1,6 +1,9 @@
 import ManufacturingPage from "@/components/pages/Manufacturing/ManufacturingPage";
 import axios from "axios";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 async function getManufacturingData() {
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/manufacturing-page`);

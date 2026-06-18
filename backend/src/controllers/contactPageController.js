@@ -31,7 +31,7 @@ exports.updateContactPageSettings = async (req, res) => {
             settings = await ContactPage.findByIdAndUpdate(
                 settings._id,
                 req.body,
-                { new: true, runValidators: true }
+                { returnDocument: 'after', runValidators: true }
             );
         } else {
             settings = await ContactPage.create(req.body);

@@ -71,7 +71,7 @@ async function seedArticles() {
             await Blog.findOneAndUpdate(
                 { slug: article.slug },
                 article,
-                { upsert: true, new: true }
+                { upsert: true, returnDocument: 'after' }
             );
             console.log(`Upserted: ${article.title}`);
         }

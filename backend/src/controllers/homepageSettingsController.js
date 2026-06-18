@@ -217,7 +217,7 @@ exports.updateSettings = async (req, res) => {
             settings = new HomepageSettings(req.body);
             await settings.save();
         } else {
-            settings = await HomepageSettings.findOneAndUpdate({}, req.body, { new: true, runValidators: true });
+            settings = await HomepageSettings.findOneAndUpdate({}, req.body, { returnDocument: 'after', runValidators: true });
         }
         res.status(200).json({ success: true, data: settings, message: "Homepage Settings updated successfully" });
     } catch (error) {
