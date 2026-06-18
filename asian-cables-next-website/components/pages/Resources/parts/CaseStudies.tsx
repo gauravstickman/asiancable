@@ -91,10 +91,12 @@ function CaseStudies({ data }: { data?: any }) {
       },
     ];
 
-  const tabs = data?.blogsCategories && data.blogsCategories.length > 0
+  const uniqueFeaturedTags = Array.from(new Set(featuredArticles.map((a: any) => a.tag).filter(Boolean))) as string[];
+  
+  const tabs = uniqueFeaturedTags.length > 0
     ? [
       { id: "all", label: "All" },
-      ...data.blogsCategories.map((c: string) => ({ id: c.toLowerCase().replace(/[^a-z0-9]/g, '-'), label: c }))
+      ...uniqueFeaturedTags.map((c: string) => ({ id: c.toLowerCase().replace(/[^a-z0-9]/g, '-'), label: c }))
     ]
     : [
       { id: "all", label: "All" },
@@ -108,10 +110,6 @@ function CaseStudies({ data }: { data?: any }) {
     return article.tag?.toLowerCase().replace(/[^a-z0-9]/g, '-') === activeTab;
   });
 
-  const filteredCaseStudies = caseStudies.filter((study: any) => {
-    if (activeTab === "all") return true;
-    return study.tag?.toLowerCase().replace(/[^a-z0-9]/g, '-') === activeTab;
-  });
 
   return (
     <section className="bg-[#1E3C8C0A] py-16 md:py-24">
@@ -231,7 +229,7 @@ function CaseStudies({ data }: { data?: any }) {
             Case Studies
           </p>
           <div className="flex flex-nowrap industries overflow-x-auto md:grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {filteredCaseStudies.map((study: any) => (
+            {caseStudies.map((study: any) => (
               <div
                 key={study.id}
                 className="md:min-w-[auto] min-w-[80vw] group overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"

@@ -36,7 +36,7 @@ Resume: ${resumeUrl}
         try {
             if (process.env.ADMIN_EMAIL) {
                 await sendEmail({
-                    email: "asiancablesdev@gmail.com",
+                    email: process.env.ADMIN_EMAIL,
                     subject: `New Job Application from ${name} - ${jobPosition}`,
                     message: emailMessage
                 });
@@ -64,14 +64,13 @@ Resume: ${resumeUrl}
                 });
 
                 const doc = new GoogleSpreadsheet(
-                    process.env.GOOGLE_SHEET_ID,
+                    process.env.GOOGLE_SHEET_ID_job,
                     serviceAccountAuth
                 );
 
                 await doc.loadInfo();
 
-                // Find or create sheet named 'Job Applications'
-                let sheet = doc.sheetsByTitle['Job Applications'];
+                let sheet = doc.sheetsByIndex[0];
 
                 if (!sheet) {
                     sheet = await doc.addSheet({
