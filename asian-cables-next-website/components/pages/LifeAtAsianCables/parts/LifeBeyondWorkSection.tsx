@@ -26,7 +26,7 @@ export default function LifeBeyondWorkSection({ data }: { data?: any }) {
   };
 
   return (
-    <section className="bg-white py-[40px]">
+    <section className=" md:mt-10 bg-white py-[40px]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-[40px] lg:px-[60px]">
 
         {/* Heading */}

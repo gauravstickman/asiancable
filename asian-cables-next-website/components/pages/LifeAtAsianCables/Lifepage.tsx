@@ -53,7 +53,7 @@ const Lifepage = () => {
       <CultureValuesSection data={data} />
       <ExperienceSection data={data} />
       <TestimonialsSection data={data} /> 
-      <DayInLifeSection data={data} />
+      {/* <DayInLifeSection data={data} /> */}
       <LifeBeyondWorkSection data={data} />
       <OpenRolesSection data={data} />
       <Footer />

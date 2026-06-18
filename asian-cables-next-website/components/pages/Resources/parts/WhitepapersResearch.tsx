@@ -51,7 +51,7 @@ export default function WhitepapersResearch({ data }: { data?: any }) {
             {data?.whitepapersTitle || "Whitepapers & Research"}
           </h2>
 
-          <a href={data?.whitepapersViewAllLink || "#"} className="border-it-b md:mt-0 mt-5 flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
+          <a href={data?.whitepapersViewAllLink || "#"} className="border-it-w md:mt-0 mt-5 flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
             View All
             <span>
               <ChevronRight size={18} />
@@ -101,7 +101,7 @@ export default function WhitepapersResearch({ data }: { data?: any }) {
               <div className="md:ml-6 flex flex-col md:items-end md:mt-0 mt-3">
                 <a
                   href={item.href}
-                  className="flex items-center gap-2 text-center text-[14px] leading-[21px] font-semibold tracking-[0px] text-[#1E3C8C]"
+                  className="border-it-w md:mt-0 mt-5 flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition"
                 >
                   <Download size={16} />
                   <span>{item.downloadText}</span>

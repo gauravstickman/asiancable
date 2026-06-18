@@ -150,30 +150,30 @@ export default function InternationalClientsGrid({ data }: { data?: any }) {
       <div className="hidden md:block  absolute right-0 bottom-0 z-0 h-[260px] w-[260px] rounded-full bg-orange-200/40 blur-3xl" />
 
       <div className="relative z-10 mx-auto w-[92%] max-w-[1274px]">
-        <div className="grid grid-cols-2 gap-5 md:gap-7 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-2 gap-5 md:gap-7 md:grid-cols-5 xl:grid-cols-5">
           {filteredClients.map((client: any) => (
             <div
               key={client.id}
-              className="group relative h-[170px] md:h-[247px] w-full min-w-0 overflow-hidden rounded-[6px] border border-[#F7F7F7] bg-[#F7F7F7] px-2 py-2 md:px-5 md:py-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#dbe2f2] hover:bg-white hover:shadow-[0_10px_30px_rgba(22,59,140,0.08)]"
+              className="group1 relative h-[170px] md:h-[247px] w-full min-w-0 overflow-hidden rounded-[6px] border border-[#F7F7F7] bg-[#F7F7F7] px-2 py-2 md:px-5 md:py-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#dbe2f2] hover:bg-white hover:shadow-[0_10px_30px_rgba(22,59,140,0.08)]"
             >
               {/* COMPACT CARD CONTENT (default) */}
               <div className="relative z-20">
-                <div className="flex items-start justify-between">
-                  <div className="flex h-[48px] w-[48px] md:h-[72px] md:w-[72px] items-center justify-center rounded-xl bg-gradient-to-b from-[#F6F6F6] to-[#FFFFFF] transition-all duration-300 group-hover:scale-105">
-                    <img src={client.icon} alt={client.name} className="h-7 w-7 md:h-10 md:w-10 object-contain" />
+                <div className="flex items-center justify-center">
+                  <div className="flex h-[70px] w-[70px] md:h-[100px] md:w-[100px] items-center justify-center rounded-xl  transition-all duration-300 group-hover:scale-105">
+                    <img src={client.icon} alt={client.name} className="h-15 w-15 md:h-25 md:w-25 object-contain" />
                   </div>
 
-                  <div className="flex items-center gap-1 text-[11px] font-medium text-[#8a8fa3]">
+                  <div className="hidden flex items-center gap-1 text-[11px] font-medium text-[#8a8fa3]">
                     <MapPinIcon className="h-3.5 w-3.5 object-contain opacity-70" />
                     <span className="font-[Work_Sans] font-normal text-[12px] leading-[14.9px] md:text-[14px] md:leading-[21px] tracking-[0]">{client.country}</span>
                   </div>
                 </div>
 
-                <p className="md:mt-7 mt-3 font-['Work_Sans'] font-medium text-[14px] leading-[21px] md:text-[20px] md:leading-[30px] tracking-[0px] text-[#1E3C8C] transition-colors duration-300 group-hover:text-[#0f2f75]">
+                <p className="text-center font-['Work_Sans'] font-medium text-[14px] leading-[21px] md:text-[20px] md:leading-[30px] tracking-[0px] text-[#1E3C8C] transition-colors duration-300 group-hover:text-[#0f2f75]">
                   {client.name}
                 </p>
 
-                <div className="mt-5">
+                <div className="mt-5 text-center">
                   <span className="inline-flex font-[Work_Sans] items-center rounded-full bg-[#1E3C8C1A] px-3 py-[6px] text-[10px] font-semibold tracking-wide text-[#1E3C8C]">
                     {client.tag}
                   </span>

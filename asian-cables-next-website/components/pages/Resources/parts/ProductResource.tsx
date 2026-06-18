@@ -2,6 +2,10 @@
 
 import { ChevronRight, DownloadIcon } from "lucide-react";
 import React from "react";
+import { Autoplay } from "swiper/modules";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export default function ProductResource({ data }: { data?: any }) {
   const resourceData = data?.productResource || {
@@ -16,20 +20,51 @@ export default function ProductResource({ data }: { data?: any }) {
   
   const resources = [resourceData];
 
+  const sliderResources =
+  resources.length === 1
+    ? [...resources, ...resources, ...resources, ...resources, ...resources, ...resources, ...resources, ...resources]
+    : resources;
+
   return (
     <section className="reveal-section bg-[#ffffff] pt-[7px] pb-[78.82px]">
-      <div className="mx-auto max-w-[1320px] px-4">
-        <div className="mb-8 mt-10 text-center md:mb-[39.2px]">
+      <div className="mx-auto md:px-0 px-0">
+        <div className="mb-8 mt-10 text-center md:mb-[39.2px] px-5">
           <h2 className="text-center font-[Magistral] text-[32px] leading-[39px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
             {data?.productResourceTitle || "Product Resources"}
           </h2>
         </div>
-        <div className="flex flex-col gap-6">
-          {resources.map((item, index) => (
-            <div
-              key={index}
-              className="relative md:w-[1271px] h-[450px] overflow-hidden rounded-[8px] md:h-[480px]"
-            >
+      <Swiper
+  slidesPerView={1.2}
+    centeredSlides={true}
+
+  spaceBetween={10}
+  loop={true}
+    autoplay={{
+    delay: 3000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+  }}
+   modules={[Autoplay]}
+  breakpoints={{
+    768: {
+      slidesPerView: 3.2,
+      spaceBetween: 24,
+    },
+     1280: {
+      slidesPerView: 3.2,
+      spaceBetween: 24,
+    },
+    1600: {
+      slidesPerView: 3.6,
+      spaceBetween: 24,
+    },
+  }}
+>
+         {sliderResources.map((item, index) => (
+  <SwiperSlide key={index}>
+         <div
+  className="relative h-[350px] md:h-[450px] overflow-hidden rounded-[8px] md:h-[480px]"
+>
               <img
                 src={item.image}
                 alt={item.title}
@@ -51,11 +86,11 @@ export default function ProductResource({ data }: { data?: any }) {
                     </div>
                   </div>
                   {/* title */}
-                  <h3 className="font-[Magistral] text-[36px] leading-[43.2px] font-bold tracking-[0px] text-[#FFFFFF] italic">
+                  <h3 className="font-[Magistral] text-[26px] md:text-[36px] leading-[43.2px] font-bold tracking-[0px] text-[#FFFFFF] italic">
                     {item.title.split(" ").map((word: string, i: number) => (
                       <React.Fragment key={i}>
                         {word}
-                        {i === 0 && <br />}
+                        {i === 0 && <br className="hidden"/>}
                         {" "}
                       </React.Fragment>
                     ))}
@@ -67,12 +102,26 @@ export default function ProductResource({ data }: { data?: any }) {
                 </div>
                 {/* bottom actions */}
                 <div className="mt-auto flex items-center justify-between">
-                  <div className="flex flex-col items-center gap-6 md:flex-row md:gap-9">
+                  <div className="flex flex-col items-start gap-6  md:gap-6">
+                     {item.requestText && (
+                      <a 
+                        href={item.requestText} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="flex h-[38px] items-center justify-center gap-2 rounded-[5.52px] bg-none  text-[16px] font-[500] text-white transition hover:bg-white/10 md:h-[48px]  md:text-[20px]"
+                      >
+                        <p className="font-medium text-[16px] md:text-[20px] leading-[29.42px] tracking-[-0.46px] text-[#FFFFFF] text-center">
+                          Request Datasheet
+                        </p>
+
+                        <ChevronRight size={20} />
+                      </a>
+                    )}
                     <a
                       href={item.file}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex h-[48.38764953613281px] md:w-[286.0343017578125px] items-center justify-center gap-2 rounded-[5.52px] bg-[#FFFFFF] pt-[9.19px] pb-[9.19px] pl-[29.42px] pr-[29.42px] text-[#1E3C8C] transition hover:opacity-90"
+                      className="pr-5 pl-5 flex md:h-[48.38764953613281px] md:w-[286.0343017578125px] items-center justify-center gap-2 rounded-[5.52px] bg-[#FFFFFF] pt-[9.19px] pb-[9.19px] md:pl-[29.42px] md:pr-[29.42px] text-[#1E3C8C] transition hover:opacity-90"
                     >
                       <DownloadIcon size={20} />
 
@@ -81,20 +130,7 @@ export default function ProductResource({ data }: { data?: any }) {
                       </p>
                     </a>
 
-                    {item.requestText && (
-                      <a 
-                        href={item.requestText} 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        className="flex h-[38px] items-center justify-center gap-2 rounded-[5.52px] bg-none px-3 text-[16px] font-[500] text-white transition hover:bg-white/10 md:h-[48px] md:px-5 md:text-[20px]"
-                      >
-                        <p className="font-medium text-[20px] leading-[29.42px] tracking-[-0.46px] text-[#FFFFFF] text-center">
-                          Request Datasheet
-                        </p>
-
-                        <ChevronRight size={20} />
-                      </a>
-                    )}
+                   
                   </div>
                   {/* <div className="font-medium text-[14px] leading-[21px] tracking-[0px] text-[#FFFFFF]">
                     {item.fileSize}
@@ -102,8 +138,9 @@ export default function ProductResource({ data }: { data?: any }) {
                 </div>
               </div>
             </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );

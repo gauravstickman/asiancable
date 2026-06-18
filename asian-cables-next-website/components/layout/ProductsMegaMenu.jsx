@@ -8,7 +8,7 @@ export default function ProductsMegaMenu({ industryGroups = {}, typeGroups = {} 
 const allProducts = Object.values(industryGroups).flat();
   return (
     <>
-      <div className=" border-t border-[#ffffff] bg-white">
+      <div className=" border-t border-[#ffffff] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
 
         <div className="max-w-[1320px] mx-auto px-6 py-10">
 

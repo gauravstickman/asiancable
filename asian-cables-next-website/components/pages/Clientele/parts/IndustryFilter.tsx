@@ -46,8 +46,8 @@ export default function IndustryFilter({ data }: { data?: any }) {
         icon: r.icon || "/assets/clientele/globe.png"
       }))
     : [
-        { id: "international", label: "International", icon: "/assets/clientele/globe.png" },
-        { id: "domestic", label: "Domestic", icon: "/assets/clientele/flag-of-india.png" }
+        { id: "domestic", label: "Domestic", icon: "/assets/clientele/flag-of-india.png" },
+        { id: "international", label: "International", icon: "/assets/clientele/globe.png" }
       ];
 
   const industryTabs = data?.industries && data.industries.length > 0

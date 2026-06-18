@@ -215,14 +215,14 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
                         style={{
                           fontWeight: 400,
                           fontStyle: "  Regular",
-                          fontSize: "17.1px",
-                          lineHeight: "29.06px",
+                          fontSize: "17px",
+                          lineHeight: "23px",
                           letterSpacing: "0px",
                           color: "#FFFFFF",
                           marginBottom: "4px",
                         }}
                       >
-                        • {point}
+                        {point}
                       </li>
                     ))}
                   </ul>
@@ -285,9 +285,9 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
                   {item.points.map((point: any, i: number) => (
                     <li
                       key={i}
-                      className="text-[16px] leading-[28px] text-white"
+                      className="text-[17px] leading-[23px] text-white"
                     >
-                      • {point}
+                      {point}
                     </li>
                   ))}
                 </ul>

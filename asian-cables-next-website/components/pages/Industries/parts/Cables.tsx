@@ -65,7 +65,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
           {displayProducts.map((item, index) => (
             <div
               key={index}
-              className="group relative min-w-[76vw] overflow-hidden rounded-[6px] bg-white md:min-w-[100%]"
+              className=" relative min-w-[76vw] overflow-hidden rounded-[6px] bg-white md:min-w-[100%]"
             >
               {/* IMAGE */}
               <div className="h-[240px] overflow-hidden">
@@ -77,7 +77,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
               </div>
 
               {/* CONTENT */}
-              <div className="relative flex min-h-[268px] flex-col p-7">
+              <div className="relative flex min-h-[208px] flex-col p-7">
                 {/* GRADIENT */}
      {/* BACKGROUND IMAGE */}
                <div className="absolute right-0 bottom-0 h-[100%] w-[100%]">
@@ -98,7 +98,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
                 </p>
 
                 {/* CTA */}
-                {item.link ? (
+                {/* {item.link ? (
                   <Link href={item.link} className="relative z-10 mt-auto inline-flex items-center gap-2 pt-5 text-[15px] font-[500] leading-[22.5px] text-[#525252] transition hover:text-[#1E3C8C] max-w-max">
                     Know more
                     <span className="text-[18px] leading-none"><ChevronRight size={16}/></span>
@@ -108,7 +108,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
                     Know more
                     <span className="text-[18px] leading-none"><ChevronRight size={16}/></span>
                   </button>
-                )}
+                )} */}
               </div>
             </div>
           ))}

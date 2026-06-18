@@ -129,13 +129,13 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
 
 
         {/* VIEW ALL BUTTON */}
-        <button className="border-it-b mx-auto flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
+        <Link href="/resources#resources" className="border-it-b mx-auto flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px]">
           View All
           <span>
             {" "}
             <ChevronRight size={18} />
           </span>
-        </button>
+        </Link>
       </div>
     </section>
   );

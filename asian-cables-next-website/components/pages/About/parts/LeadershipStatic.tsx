@@ -164,11 +164,11 @@ useEffect(() => {
 </p>
           </div>
           <div>
-            <Link href="#" className="border-it-w cursor-pointer md:mx-auto flex items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] px-5 py-2 text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px] md:mt-0 mt-5 w-fit">
+            {/* <Link href="#" className="border-it-w cursor-pointer md:mx-auto flex items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] px-5 py-2 text-[20px] font-medium text-white transition hover:bg-[#163174] md:mt-[59px] md:mb-[37.61px] md:mt-0 mt-5 w-fit">
              View Leadership <span>
                 <ChevronRight size={18} />
               </span>
-            </Link>
+            </Link> */}
           </div>
         </div>
 

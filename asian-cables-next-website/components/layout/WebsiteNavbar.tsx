@@ -427,7 +427,7 @@ showIndustryMobileMenu
           About us
         </Link>
 
-        <Link
+        {/* <Link
           href="/leadership"
         className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
@@ -439,7 +439,7 @@ showIndustryMobileMenu
     }}
   />   
           Leadership
-        </Link>
+        </Link> */}
 
         <Link
           href="/rpg-group"
@@ -559,8 +559,8 @@ showIndustryMobileMenu
             <Search
   size={18}
   className={`${
-    isCompanyActive ? "block" : "hidden"
-  } md:block`}
+    isCompanyActive ? "hidden" : "hidden"
+  } hidden`}
 />
             {/* <Search className="hidden md:block" size={18} /> */}
           </span>
@@ -807,7 +807,7 @@ h-[30px]
         About us
       </Link></h5>
 
-      <h5><Link
+      {/* <h5><Link
         href="/leadership"
     className={`text-[20px] italic font-[700] ${
       pathname === "/leadership"
@@ -816,7 +816,7 @@ h-[30px]
     }`}
   >
         Leadership
-      </Link></h5>
+      </Link></h5> */}
 
     <h5>
   <Link

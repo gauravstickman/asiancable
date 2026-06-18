@@ -390,7 +390,7 @@ onMouseEnter={() => {
                   About us
                 </Link>
         
-                <Link
+                {/* <Link
                   href="/leadership"
                 className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
                 >
@@ -402,7 +402,7 @@ onMouseEnter={() => {
             }}
           />   
                   Leadership
-                </Link>
+                </Link> */}
         
                 <Link
                   href="/rpg-group"
@@ -519,7 +519,7 @@ onMouseEnter={() => {
               isScrolled || showMegaMenu ? "text-[#1E3A8A]" : "text-[#1E3C8C]"
             }`}
           >
-            <Search className="" size={18} />
+            <Search className="hidden" size={18} />
           </span>
           <Link
             href="/contact"
@@ -640,12 +640,12 @@ onMouseEnter={() => {
         About us
       </Link></h5>
 
-      <h5><Link
+      {/* <h5><Link
         href="/leadership"
         className="text-[20px] italic font-[700] text-[#8B8B8B]"
       >
         Leadership
-      </Link></h5>
+      </Link></h5> */}
 
       <h5><Link
         href="/rpg-group"

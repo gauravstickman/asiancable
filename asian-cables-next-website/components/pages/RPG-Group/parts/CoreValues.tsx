@@ -48,7 +48,7 @@ export default function CoreValues({ data }: { data?: any }) {
                 <img
                   src={item.icon}
                   alt=""
-                  className="h-15 w-15 object-contain transition-transform duration-300"
+                  className="h-16 w-16 object-contain transition-transform duration-300"
                 />
               </div>
 
