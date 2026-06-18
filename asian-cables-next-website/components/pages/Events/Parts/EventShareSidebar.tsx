@@ -13,7 +13,7 @@ export default function EventShareSidebar() {
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
 
   return (
-    <div className="w-full rounded-[10px] bg-[#F3F3F3] p-5 md:sticky top-24 reveal-section">
+    <div className="w-full rounded-[10px] bg-[#F3F3F3] p-5 md:sticky top-24  md:min-w-[340px]">
       <p className="mb-5 text-[16px] font-[600] leading-[100%] text-[#152999]">
         Share with your community!
       </p>

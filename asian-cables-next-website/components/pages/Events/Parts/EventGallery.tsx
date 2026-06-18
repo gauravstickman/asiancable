@@ -99,7 +99,7 @@ const remainingImages = images.slice(8);
       <div className="mx-auto  md:px-0 hidden md:block">
 
         {/* Hero */}
-        <div className="overflow-hidden rounded-[6px] md:rounded-[20px] md:min-h-[579px]">
+        <div className="overflow-hidden rounded-[6px] md:rounded-[20px] md:min-h-[579px] md:max-h-[600px]">
           <img
             src={heroImage}
             alt=""

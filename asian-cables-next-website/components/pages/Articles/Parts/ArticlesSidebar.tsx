@@ -32,7 +32,7 @@ export default function ArticlesSidebar({ blog }: { blog?: BlogType }) {
   }, [blog?.sections?.length]);
 
   return (
-    <div className="sidebar-wrap md:sticky top-24 reveal-section md:min-w-[341px] md:h-[100vh]">
+    <div className="sidebar-wrap md:sticky top-24  md:min-w-[341px] md:h-[100vh]">
 
 
  <div className="space-y-4 ">

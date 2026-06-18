@@ -20,7 +20,7 @@ export default function EventIntroduction({ event }: { event?: any }) {
   ];
 
   return (
-    <div className="reveal-section">
+    <div className="">
       <h2 className="mb-1 text-[24px] font-bold italic text-[#1E3C8C] tracking-[1%]">
         EVENT RECAP – {title}
       </h2>
