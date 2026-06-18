@@ -6,7 +6,7 @@ import EventShareSidebar from "@/components/pages/Events/Parts/EventShareSidebar
 import React, { useEffect, useState } from 'react'
 import Footer from '@/components/layout/Footer';
 import { useParams } from 'next/navigation';
-import axios from 'axios';
+import api from '@/utils/api';
 
 function EventSlugPage() {
   const { slug } = useParams();
@@ -16,7 +16,7 @@ function EventSlugPage() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/events/slug/${slug}`);
+        const response = await api.get(`/events/slug/${slug}`);
         setEvent(response.data);
       } catch (error) {
         console.error("Error fetching event:", error);

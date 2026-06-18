@@ -5,7 +5,7 @@ import { ChevronRight, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from '@/utils/api';
 
 export default function MoreBlogs({ currentSlug }: { currentSlug?: string }) {
   const [blogs, setBlogs] = useState<any[]>([]);
@@ -13,7 +13,7 @@ export default function MoreBlogs({ currentSlug }: { currentSlug?: string }) {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
+        const response = await api.get(`/blogs`);
         let allBlogs = [];
         if (Array.isArray(response.data)) {
           allBlogs = response.data;

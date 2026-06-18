@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import { toast } from 'react-toastify';
 import { Save, Image, Plus, Trash2, PenTool, FileText, BookOpen, Folder } from 'lucide-react';
-import { FormInput, ImageInput, FormTextarea } from '../../components/admin/FormComponents';
+import { FormInput, ImageInput, FormTextarea, FormSelect } from '../../components/admin/FormComponents';
 import MediaPicker from '../../components/common/MediaPicker';
 
 const ResourcesSettings = () => {
@@ -700,9 +700,9 @@ const ResourcesSettings = () => {
                                                     />
                                                     
                                                     <div className="grid grid-cols-2 gap-4">
-                                                        <FormInput
+                                                        <FormSelect
                                                             label="Category"
-                                                            placeholder="e.g. Renewable Energy"
+                                                            options={settings.blogsCategories || []}
                                                             value={blog.category || ''}
                                                             onChange={e => handleArrayChange('featuredBlogs', idx, 'category', e.target.value)}
                                                         />

@@ -15,7 +15,7 @@ function CaseStudies({ data }: { data?: any }) {
       description: b.description,
       author: b.author,
       date: b.date,
-      blog: "Blog",
+      blog: "Featured",
       readTime: b.readTime || "5 min read",
       link: b.link || "#",
     }))
@@ -92,13 +92,26 @@ function CaseStudies({ data }: { data?: any }) {
     ];
 
   const tabs = data?.blogsCategories && data.blogsCategories.length > 0
-    ? data.blogsCategories.map((c: string) => ({ id: c.toLowerCase().replace(/[^a-z0-9]/g, '-'), label: c }))
+    ? [
+      { id: "all", label: "All" },
+      ...data.blogsCategories.map((c: string) => ({ id: c.toLowerCase().replace(/[^a-z0-9]/g, '-'), label: c }))
+    ]
     : [
       { id: "all", label: "All" },
       { id: "blogs", label: "Blogs" },
       { id: "events", label: "Events" },
       { id: "case-studies", label: "Case studies" },
     ];
+
+  const filteredFeaturedArticles = featuredArticles.filter((article: any) => {
+    if (activeTab === "all") return true;
+    return article.tag?.toLowerCase().replace(/[^a-z0-9]/g, '-') === activeTab;
+  });
+
+  const filteredCaseStudies = caseStudies.filter((study: any) => {
+    if (activeTab === "all") return true;
+    return study.tag?.toLowerCase().replace(/[^a-z0-9]/g, '-') === activeTab;
+  });
 
   return (
     <section className="bg-[#1E3C8C0A] py-16 md:py-24">
@@ -138,7 +151,7 @@ function CaseStudies({ data }: { data?: any }) {
           </p>
 
           <div className="flex flex-no-wrap overflow-x-auto industries md:grid gap-8 lg:grid-cols-2">
-            {featuredArticles.map((article: any) => (
+            {filteredFeaturedArticles.map((article: any) => (
               <div
                 key={article.id}
                 className="group  md:min-w-[auto] min-w-[80vw] overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
@@ -218,7 +231,7 @@ function CaseStudies({ data }: { data?: any }) {
             Case Studies
           </p>
           <div className="flex flex-nowrap industries overflow-x-auto md:grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {caseStudies.map((study: any) => (
+            {filteredCaseStudies.map((study: any) => (
               <div
                 key={study.id}
                 className="md:min-w-[auto] min-w-[80vw] group overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"

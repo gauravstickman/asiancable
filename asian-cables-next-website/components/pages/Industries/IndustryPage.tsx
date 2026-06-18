@@ -29,6 +29,7 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
 
   // Use fallback hardcoded values initially so it matches the design while loading
   const headerTitle = data?.headerTitle || "Oil & Gas";
+  const headerTag = data?.headerTag || "Industries";
   const headerDescription = data?.headerDescription || "Enabling uninterrupted operations across upstream, midstream, and downstream facilities through cabling solutions aligned to safety protocols, reliability requirements, and asset integrity expectations. Specialized cable solutions support energy infrastructure including refineries, petrochemical plants and pipeline protection systems.";
   const headerImage = data?.headerBgImage ? (data.headerBgImage.startsWith("http") ? data.headerBgImage : `${getBaseUrl()}/${data.headerBgImage.replace(/\\/g, "/")}`) : "/assets/industry-main.png";
   const headerMobileImage = data?.headerMobileBgImage ? (data.headerMobileBgImage.startsWith("http") ? data.headerMobileBgImage : `${getBaseUrl()}/${data.headerMobileBgImage.replace(/\\/g, "/")}`) : headerImage;
@@ -51,19 +52,19 @@ const IndustryPage = ({ slug = "oil-and-gas" }: { slug?: string }) => {
           alt={headerTitle}
           className="absolute inset-0 h-full w-full object-cover hidden md:block"
         />
-{/* for mobile */}
-<img src={headerMobileImage} alt={headerTitle} className="absolute inset-0 h-full w-full object-cover position-top md:hidden" />
+        {/* for mobile */}
+        <img src={headerMobileImage} alt={headerTitle} className="absolute inset-0 h-full w-full object-cover position-top md:hidden" />
 
 
         {/* OVERLAY */}
-<div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_32.35%,_#000000_91.59%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_32.35%,_#000000_91.59%)]" />
 
         {/* CONTENT */}
         <div className="relative z-10 mx-auto max-w-[1320px] px-4 pt-[210px] pb-[60px] md:pt-[228px] md:pb-[0px]">
           {/* TAG */}
           <div className="mb-[19px] inline-flex h-[27px] items-center justify-center bg-[#D8D8D81A] px-2">
             <span className="text-[14px] tracking-[1px] leading-[21px] text-white uppercase">
-              Industries
+              {headerTag}
             </span>
           </div>
 

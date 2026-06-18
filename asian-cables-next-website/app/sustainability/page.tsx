@@ -1,10 +1,10 @@
 import Sustainability from '@/components/pages/Sustainability/Sustainability'
 import React from 'react'
-import axios from 'axios'
+import api from '@/utils/api'
 
 async function getSustainabilityData() {
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sustainability-page`);
+    const res = await api.get(`/sustainability-page`);
     return res.data?.data || null;
   } catch (error) {
     console.error('Failed to fetch sustainability data:', error);

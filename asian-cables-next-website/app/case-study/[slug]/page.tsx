@@ -1,7 +1,7 @@
 import CaseStdy from "@/components/pages/CaseStudy/Casestudypage";
 import { CaseStudyData } from "@/components/pages/CaseStudy/types";
 import { notFound } from "next/navigation";
-import axios from "axios";
+import api from '@/utils/api';
 
 interface PageProps {
   params: Promise<{
@@ -16,8 +16,8 @@ export default async function CaseStudyDynamicPage({ params }: PageProps) {
   let allCaseStudies = [];
   try {
     const [res, allRes] = await Promise.all([
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/case-studies/slug/${slug}`),
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/case-studies`)
+      api.get(`/case-studies/slug/${slug}`),
+      api.get(`/case-studies`)
     ]);
     dbCaseStudy = res.data;
     allCaseStudies = allRes.data;

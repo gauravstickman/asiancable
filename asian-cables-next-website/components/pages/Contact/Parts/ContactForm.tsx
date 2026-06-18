@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
-import axios from "axios";
+import api from '@/utils/api';
 
 export default function ContactForm({ data }: { data?: any }) {
   const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ export default function ContactForm({ data }: { data?: any }) {
     setStatus({ loading: true, message: "", type: "" });
     
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/enquiries`, formData);
+      const response = await api.post(`/enquiries`, formData);
       setStatus({ loading: false, message: "Enquiry submitted successfully!", type: "success" });
       setFormData({
         name: "", email: "", phone: "", company: "", inquiryType: "", message: ""

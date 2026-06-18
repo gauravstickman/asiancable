@@ -1,10 +1,12 @@
 import Resources from "@/components/pages/Resources/Resources";
 import React from "react";
-import axios from "axios";
+import api from '@/utils/api';
 
 async function getResourcesData() {
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/resources-page`);
+    const res = await api.get(`/resources-page`);
+    console.log("resources-page", res);
+
     return res.data?.data || null;
   } catch (error) {
     console.error("Error fetching resources page data:", error);

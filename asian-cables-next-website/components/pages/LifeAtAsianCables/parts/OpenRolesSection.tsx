@@ -13,7 +13,7 @@ import {
 export default function OpenRolesSection({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState("All Roles");
 
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState<string | false>(false);
 
   useEffect(() => {
   if (!showPopup) return;
@@ -217,7 +217,7 @@ export default function OpenRolesSection({ data }: { data?: any }) {
                   </div>
                    {/* Button */}
               <button
-              onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : setShowPopup(true)}
+              onClick={() => setShowPopup(job.title)}
                 className="
                 md:hidden
                 mt-6
@@ -250,7 +250,7 @@ export default function OpenRolesSection({ data }: { data?: any }) {
 
               {/* Button */}
               <button
-              onClick={() => job.applyLink ? window.open(job.applyLink, "_blank") : setShowPopup(true)}
+              onClick={() => setShowPopup(job.title)}
                 className="hidden md:flex
                   w-full
                   md:w-[148px]
@@ -283,7 +283,7 @@ export default function OpenRolesSection({ data }: { data?: any }) {
    
       
       {showPopup && (
-        <JobApplyPopup onClose={() => setShowPopup(false)} />
+        <JobApplyPopup jobTitle={typeof showPopup === 'string' ? showPopup : ""} onClose={() => setShowPopup(false)} />
       )}
     </section>
   );
