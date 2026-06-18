@@ -160,9 +160,9 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
               </p>
 
               {/* BUTTON */}
-              <Link href="/contact" className="border-it-w h-[56px] rounded-[4px] bg-[#1E3C8C] px-7 text-[16px] font-[600] text-white transition">
-                Request Technical Consultation
-              </Link>
+              <button className="border-it-w h-[56px] rounded-[4px] bg-[#1E3C8C] px-7 text-[16px] font-[600] text-white transition">
+                   <Link href="/contact">Request Technical Consultation</Link>
+              </button>
             </div>
 
             {/* RIGHT IMAGE */}

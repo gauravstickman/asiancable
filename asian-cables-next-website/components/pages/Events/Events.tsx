@@ -10,7 +10,7 @@ function Events() {
     <div>
         <WebsiteNavbar/>
         <EventsHeader/>
-       <div className="mx-auto flex max-w-[1274px] flex-col gap-[46px] md:px-0 px-5 lg:flex-row lg:justify-between my-14 items-flex-start">
+       <div className="mx-auto flex max-w-[1274px] flex-col gap-[46px] md:px-0 px-5 lg:flex-row lg:justify-between my-14 items-start">
   <EventIntroduction />
   <EventShareSidebar />
 </div>
