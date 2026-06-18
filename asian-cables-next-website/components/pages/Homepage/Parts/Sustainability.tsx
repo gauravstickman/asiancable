@@ -72,19 +72,19 @@ export default function SustainabilitySection({ dynamicData }: SustainabilitySec
           <div className="flex flex-col items-start gap-[29px] md:flex-row md:items-center">
             {/* PRIMARY BUTTON */}
             <Link href={primaryBtnLink}>
-              <button className="flex h-[48px] items-center gap-2 rounded-[5.52px] bg-white px-6 text-[18px] font-[500] text-[#1E3C8C] shadow-lg transition md:text-[20px] leading-[29.42px] tracking-[-0.46px]">
+              <button className="cursor-pointer flex h-[48px] items-center gap-2 rounded-[5.52px] bg-white px-6 text-[18px] font-[500] text-[#1E3C8C] shadow-lg transition md:text-[20px] leading-[29.42px] tracking-[-0.46px]">
                 {primaryBtnText}
                 <ChevronRight size={18} />
               </button>
             </Link>
 
             {/* SECONDARY LINK */}
-            <Link href={secondaryBtnLink}>
+            {/* <Link href={secondaryBtnLink}>
               <button className="flex items-center gap-2 text-[18px] font-[500] text-white transition md:text-[20px] leading-[29.42px] tracking-[-0.46px]">
                 {secondaryBtnText}
                 <ChevronRight size={18} />
               </button>
-            </Link>
+            </Link> */}
           </div>
         </div>
 

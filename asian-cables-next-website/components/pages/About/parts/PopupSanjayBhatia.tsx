@@ -33,7 +33,7 @@
                 <img
                 src="/assets/about/leader1.jpg"
                 alt="Sanjay Bhatia"
-                className="h-[100%] w-full rounded-[8px] object-cover"
+                className="h-[auto] w-full rounded-[8px] object-cover"
                 />
             </div>
 

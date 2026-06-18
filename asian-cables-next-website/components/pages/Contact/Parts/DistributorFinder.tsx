@@ -43,7 +43,7 @@ export default function DistributorFinder({ data }: { data?: any }) {
   });
 
   return (
-    <section className="bg-[#FFFFFF] pb-[40px] md:pb-[80px] md:pt-[80px]">
+    <section className="bg-[#FFFFFF] pb-[40px] md:pb-[80px] md:pt-[80px]" id="FindDisributers">
       <div className="mx-auto max-w-[1280px] px-5">
         {/* Heading */}
         <h2 className="font-[magistral] text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px] italic font-bold text-[#1E3C8C]">

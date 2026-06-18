@@ -94,13 +94,13 @@ export default function FloatingActions() {
   <div className="flex overflow-visible rounded-md border border-blue-200 bg-white/65 border-[1px] shadow-[0px_20px_60px_0px_#00000026] p-2 md:justify-center justify-between gap-[10px] md:gap-[25px]">
 
     {/* COMPANY */}
-    <Link href="#" className="flex  f-part f-first flex min-h-[45px] items-center rounded-[4px]  gap-1 md:gap-[10px]   text-[12px] leading-[18px]  md:text-[15px] md:leading-[22.5px] font-[15px] text-[#1E3C8C] font-[500] bg-white/60  w-[35%] md:w-[40%] justify-center">
+    <Link href="/about" className="flex  f-part f-first flex min-h-[45px] items-center rounded-[4px]  gap-1 md:gap-[10px]   text-[12px] leading-[18px]  md:text-[15px] md:leading-[22.5px] font-[15px] text-[#1E3C8C] font-[500] bg-white/60  w-[35%] md:w-[40%] justify-center">
       <FileText className="h-[15px] w-[15px] md:h-5 md:w-5" />
       Company Overview
     </Link>
 
     {/* CONTACT */}
-    <Link href="#"  className="flex f-part min-h-[45px]  flex items-center rounded-[4px]  gap-1 md:gap-[10px]   text-[12px] leading-[18px] md:text-[15px] md:leading-[22.5px] font-[15px] text-[#1E3C8C] font-[500] bg-white/60  w-[35%] justify-center md:w-[30%]">
+    <Link href="/contact"  className="flex f-part min-h-[45px]  flex items-center rounded-[4px]  gap-1 md:gap-[10px]   text-[12px] leading-[18px] md:text-[15px] md:leading-[22.5px] font-[15px] text-[#1E3C8C] font-[500] bg-white/60  w-[35%] justify-center md:w-[30%]">
       <Phone className="h-[15px] w-[15px] md:h-5 md:w-5" />
       Contact us
     </Link>
@@ -141,7 +141,7 @@ export default function FloatingActions() {
               </div>
 
               <p className="text-[20px] font-[500] text-[#21409A]">
-                Downloads 1
+                Downloads
               </p>
             </div>
 

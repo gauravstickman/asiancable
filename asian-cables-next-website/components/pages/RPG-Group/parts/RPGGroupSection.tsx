@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default function RPGGroupSection({ data }: { data?: any }) {
   const content = {
@@ -44,13 +45,12 @@ export default function RPGGroupSection({ data }: { data?: any }) {
                 {text}
               </p>
             ))}
-
-            <button className="border-it-w mx-auto md:ml-0 flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] mt-8 md:mt-[30px] md:mb-[37.61px]">
+            <Link href="https://www.rpggroup.com/" className="border-it-w mx-auto md:ml-0 flex h-[48px] w-[162px] w-fit justify-center items-center py-3 px-6 gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174] mt-8 md:mt-[30px] md:mb-[37.61px]">
               {content.buttonText}
               <span>
                 <ChevronRight size={18} />
               </span>
-            </button>
+            </Link>
           </div>
         </div>
 

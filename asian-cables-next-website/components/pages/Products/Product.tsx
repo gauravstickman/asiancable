@@ -9,6 +9,7 @@ import ProjectSection from "../Homepage/Parts/Applications";
 import ProductResources from "./parts/ProductResources";
 import ProvenFieldSection from "../Homepage/Parts/Fields";
 import ProvenFieldSectionMobile from "../Homepage/Parts/FieldsMobile";
+import Link from "next/link";
 
 const Product = ({ productSlug }: { productSlug?: string }) => {
   const [data, setData] = useState<any>(null);
@@ -159,9 +160,9 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
               </p>
 
               {/* BUTTON */}
-              <button className="border-it-w h-[56px] rounded-[4px] bg-[#1E3C8C] px-7 text-[16px] font-[600] text-white transition">
+              <Link href="/contact" className="border-it-w h-[56px] rounded-[4px] bg-[#1E3C8C] px-7 text-[16px] font-[600] text-white transition">
                 Request Technical Consultation
-              </button>
+              </Link>
             </div>
 
             {/* RIGHT IMAGE */}

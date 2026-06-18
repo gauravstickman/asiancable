@@ -72,7 +72,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
   ].slice(0, 6);
 
   return (
-    <section className="reveal-section bg-[#f5f5f5] pt-[72px] py-10 md:pt-[100px]">
+    <section className="reveal-section bg-[#f5f5f5] pb-[65px] pt-[72px] py-10 md:pt-[100px] md:pb-[100px]">
       <div className="mx-auto max-w-[1320px] md:px-4">
         {/* HEADING */}
         <div className="mb-8 text-center md:px-0 px-4 md:mb-[39px]">
@@ -122,7 +122,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                 </div>
 
                 <div className="absolute right-0 bottom-0 flex justify-end">
-                  <Link href={displayProducts[0].link || "/products"} className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
+                  <Link href={displayProducts[0].link || "/products"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
@@ -175,7 +175,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </div>
 
                     <div className="absolute right-0 bottom-0 flex justify-end">
-                    <Link href={item.link || "/products"} className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
+                    <Link href={item.link || "/products"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
@@ -226,7 +226,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </div>
 
                     <div className="absolute right-0 bottom-0 flex justify-end">
-                    <Link href={item.link || "/products"} className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
+                    <Link href={item.link || "/products"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
@@ -273,7 +273,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
               </div>
 
               <div className="absolute right-0 bottom-0 flex justify-end">
-                <Link href={displayProducts[5].link || "/products"} className="flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
+                <Link href={displayProducts[5].link || "/products"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
@@ -343,7 +343,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                   </div>
 
                   {/* BUTTON */}
-                  <div className="absolute right-4 bottom-6 flex justify-end">
+                  <div className="hidden absolute right-4 bottom-6 flex justify-end">
                     <Link href={item.link || "/products"} className="flex items-center gap-2 text-[16px] text-white hover:underline">
                       Read More
                       <span>›</span>
@@ -358,7 +358,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
   </Swiper>
 </div>
       </div>
-      <button className="border-it-b mx-auto mt-[39px] mb-[32px] md:mb-[60px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
+      <button className="hidden border-it-b mx-auto mt-[39px] mb-[32px] md:mb-[60px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] bg-[#1E3C8C] text-[20px] font-medium text-white transition hover:bg-[#163174]">
         View All
         <span>
           {" "}

@@ -38,7 +38,7 @@ export default function ContactOverview({ data }: { data?: any }) {
             {/* Contact Info */}
             <div className="mt-[36px] md:mt-[47.7px] space-y-[16px] md:space-y-[30px]">
               {/* Address */}
-                <div className="flex items-center gap-4 md:gap-6">
+                <Link href="https://www.google.com/maps?gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCDEyNTlqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=Kc0HoPm9zuc7MY9l8Aymr0bq&daddr=RPG+House,+463,+Dr+Annie+Besant+Rd,+Hanuman+Nagar,+Worli,+Mumbai,+Maharashtra+400030" className="flex items-center gap-4 md:gap-6">
                 <div className="h-[70px] min-w-[2px] md:h-[70px] md:w-[3px] bg-[linear-gradient(0deg,#3CAADF_0%,#F04123_50%,#FFD212_100%)]" />
 
                 <MapPin
@@ -63,11 +63,11 @@ export default function ContactOverview({ data }: { data?: any }) {
                     )}
                   </p>
                 </div>
-              </div>
+              </Link>
 
               {/* Phone + Email */}
               <div className="grid gap-8 md:grid-cols-2">
-                <div className="flex items-center gap-6">
+                <Link href={`tel:${data?.phoneTitle}`} className="flex items-center gap-6">
                 <div className="h-[70px] min-w-[2px] md:h-[70px] md:w-[3px] bg-[linear-gradient(0deg,#3CAADF_0%,#F04123_50%,#FFD212_100%)]" />
 
                   <Phone
@@ -84,9 +84,9 @@ export default function ContactOverview({ data }: { data?: any }) {
                       {data?.phoneSubtitle || "Mon-Sat, 9AM-6PM IST"}
                     </p>
                   </div>
-                </div>
+                </Link>
 
-                <div className="flex items-center gap-6">
+                 <Link href={`mailto:${data?.emailTitle}`} className="flex items-center gap-6">
                 <div className="h-[70px] min-w-[2px] md:h-[70px] md:w-[3px] bg-[linear-gradient(0deg,#3CAADF_0%,#F04123_50%,#FFD212_100%)]" />
 
                   <Mail
@@ -103,12 +103,12 @@ export default function ContactOverview({ data }: { data?: any }) {
                       {data?.emailSubtitle || "Response within 24 hours"}
                     </p>
                   </div>
-                </div>
+                </Link>
               </div>
 
               {/* Distributor Button */}
               <Link
-                href={data?.distributorLinkUrl || "#"}
+                href={data?.distributorLinkUrl || "#FindDisributers"}
                 className="relative mt-[19px] rounded-[4px] group inline-flex h-[67px] w-full max-w-[410px] items-center justify-between bg-[#1E3C8C] px-8 text-white transition-all hover:bg-[#173170]"
               >
                                 <div className="absolute left-0 h-[70px] w-[2px] md:h-[70px] md:w-[3px] bg-[linear-gradient(0deg,#3CAADF_0%,#F04123_50%,#FFD212_100%)]" />
