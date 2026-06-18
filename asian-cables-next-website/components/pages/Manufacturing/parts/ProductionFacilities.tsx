@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckCircle } from "lucide-react";
 import { useState } from "react";
 
 export default function SpecialisedProductionFacilities({ data }: { data?: any }) {
@@ -11,12 +12,12 @@ export default function SpecialisedProductionFacilities({ data }: { data?: any }
     {
       id: 1,
       name: "Unit 1, Vadodara",
-      image: "/assets/manufacturing/Preview Image.png"
+      image: "/assets/manufacturing/map.png"
     },
     {
       id: 2,
       name: "Unit 2, Mysuru",
-      image: "/assets/manufacturing/Preview Image.png"
+      image: "/assets/manufacturing/map.png"
     },
   ];
 
@@ -65,7 +66,7 @@ export default function SpecialisedProductionFacilities({ data }: { data?: any }
         </div>
 
         {/* Background Image Section */}
-        <div className="relative h-[450px ] md:h-[700px] w-full mt-4">
+        <div className="relative h-[450px ] min-h-[500px] md:h-[700px] w-full mt-4">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
@@ -78,16 +79,42 @@ export default function SpecialisedProductionFacilities({ data }: { data?: any }
           <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-transparent" />
 
           {/* Content Area */}
-          <div className="relative z-10 h-full">
+          <div className="relative z-10 h-full max-w-[90%] md:max-w-[1274px] mx-auto">
             {activeUnit === 1 && (
-              <div className="absolute top-[20%] left-[10%]">
-                {/* Unit 1 Content Here */}
+              <div className="md:absolute top-[30%] right-[10%] left-[auto] md:pt-0 pt-20">
+                {/* Unit 1 Content Here */} 
+                <div className="flex gap-4 md:flex-row flex-col md:items-center">
+                  <div className="location-icon">
+                    <img src="/assets/manufacturing/map-point.png" className="h-auto max-h-10 md:max-h-[80px] md:ml-0 ml-8"/>
+                    </div>
+                    <div className="location-area bg-white p-6 rounded-[20px] space-y-2 text-[12px] md:text-[14.5px]">
+                      <h3 className="text-[#1E3C8C] text-[18px] md:text-[20.59px] italic">Vadodara, Gujarat</h3>
+                      <p className="flex md:gap-1 text-[12px] md:text-[14.5px]  md:flex-row flex-col"> <b className="flex font-[500]"><CheckCircle color="green" className="w-3 md:w-5 mr-2"/>Focus: </b> EHV / HV / Railway cables</p>
+<p className="flex md:gap-1 text-[12px] md:text-[14.5px] md:flex-row flex-col"> <b className="flex font-[500]"><CheckCircle color="green" className="w-3 md:w-5 mr-2"/>Capability:</b> High-voltage cable manufacturing and testing</p>
+<p className="flex md:gap-1 text-[12px] md:text-[14.5px]  md:flex-row flex-col"> <b className="flex font-[500]"><CheckCircle color="green" className="w-3 md:w-5 mr-2"/>Certification:</b> IGBC Platinum-rated green facility</p>
+<p className="flex md:gap-1 text-[12px] md:text-[14.5px]  md:flex-row flex-col"> <b className="flex font-[500]"><CheckCircle color="green" className="w-3 md:w-5 mr-2"/>Infrastructure:</b> Integrated production and in-house validation systems</p>
+
+                      </div>
+                  </div>
               </div>
             )}
 
             {activeUnit === 2 && (
-              <div className="absolute top-[20%] left-[10%]">
-                {/* Unit 2 Content Here */}
+                   <div className="md:absolute top-[30%] right-[10%] left-[auto] md:pt-0 pt-20">
+                {/* Unit 1 Content Here */} 
+                <div className="flex gap-4 md:flex-row flex-col md:items-center">
+                  <div className="location-icon">
+                    <img src="/assets/manufacturing/map-point.png" className="h-auto max-h-10 md:max-h-[80px] md:ml-0 ml-8"/>
+                    </div>
+                    <div className="location-area bg-white p-6 rounded-[20px] space-y-2 text-[12px] md:text-[14.5px]">
+                      <h3 className="text-[#1E3C8C] text-[18px] md:text-[20.59px] italic">Mysuru, Karnataka</h3>
+  <p className="flex md:gap-1 text-[12px] md:text-[14.5px]  md:flex-row flex-col"> <b className="flex font-[500]"><CheckCircle color="green" className="w-3 md:w-5 mr-2"/>Capability:</b> Communication and distribution cable manufacturing</p>
+ <p className="flex md:gap-1 text-[12px] md:text-[14.5px]  md:flex-row flex-col"> <b className="flex font-[500]"><CheckCircle color="green" className="w-3 md:w-5 mr-2"/>Energy:</b> Majority renewable-powered operations</p>
+ <p className="flex md:gap-1 text-[12px] md:text-[14.5px]  md:flex-row flex-col"> <b className="flex font-[500]"><CheckCircle color="green" className="w-3 md:w-5 mr-2"/>Role:</b> High-volume, multi-category production</p>
+ <p className="flex md:gap-1 text-[12px] md:text-[14.5px]  md:flex-row flex-col"> <b className="flex font-[500]"><CheckCircle color="green" className="w-3 md:w-5 mr-2"/>Focus:</b> LT / Telecom / Optical Fibre cables</p>
+
+                      </div>
+                  </div>
               </div>
             )}
           </div>
