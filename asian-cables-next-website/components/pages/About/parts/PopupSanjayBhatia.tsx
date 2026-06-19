@@ -26,14 +26,14 @@
             <X size={18} />
             </button>
 
-            <div className="grid md:grid-cols-[460px_1fr] gap-2 md:gap-8 md:overflow-hidden h-[100%] ">
+            <div className="grid md:grid-cols-[460px_1fr] gap-2 md:gap-8 overflow-auto md:overflow-hidden h-[100%] ">
             
             {/* Image */}
             <div className="h-[300px] md:h-[calc(90vh-30px)]">
                 <img
                 src="/assets/about/leader1.jpg"
                 alt="Sanjay Bhatia"
-                className="h-[auto] w-full rounded-[8px] object-cover"
+                className="  w-full rounded-[8px] object-cover h-[300px] md:h-[calc(90vh-30px)]"
                 />
             </div>
 

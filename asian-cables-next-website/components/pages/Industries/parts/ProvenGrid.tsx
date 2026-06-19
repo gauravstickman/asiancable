@@ -86,7 +86,7 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
                 </p>
 
                 {/* TAGS */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
                   {(displayProjects[0].tags || []).map((tag: string, index: number) => (
                     <div
                       key={index}
