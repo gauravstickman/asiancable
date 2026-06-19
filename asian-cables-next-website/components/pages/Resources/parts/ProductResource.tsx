@@ -22,10 +22,11 @@ export default function ProductResource({ data }: { data?: any }) {
     ? data.productResourcesList
     : [resourceData];
 
-  const sliderResources =
-    resources.length === 1
-      ? [...resources, ...resources, ...resources, ...resources, ...resources, ...resources, ...resources, ...resources]
-      : resources;
+  let sliderResources = [...resources];
+  // Swiper loop mode needs enough slides to clone. If we have 5 items and show 3.6, it might glitch.
+  while (sliderResources.length > 0 && sliderResources.length < 10) {
+    sliderResources = [...sliderResources, ...resources];
+  }
 
   return (
     <section className="reveal-section bg-[#ffffff] pt-[7px] pb-[78.82px]">
