@@ -62,7 +62,7 @@ const MediaPicker = ({ isOpen, onClose, onSelect }) => {
         }
     };
 
-    const handleDelete = async (filename, e) => {
+    const handleDelete = async (file, e) => {
         e.stopPropagation(); // Prevent choosing the image when clicking delete
         
         if (!window.confirm('Are you sure you want to permanently delete this image from your server library?')) {
@@ -70,11 +70,11 @@ const MediaPicker = ({ isOpen, onClose, onSelect }) => {
         }
 
         try {
-            const { data } = await API.delete(`/upload/${filename}`);
+            const { data } = await API.delete(`/upload/${file.name}`);
             if (data.success) {
                 toast.success('Image deleted from library');
                 // Clear selection if the deleted image was the selected one
-                if (selectedUrl === file.url || selectedUrl === `/uploads/${filename}`) {
+                if (selectedUrl === file.url || selectedUrl === `/uploads/${file.name}`) {
                     setSelectedUrl('');
                 }
                 fetchMedia(); // Refresh list
@@ -218,7 +218,7 @@ const MediaPicker = ({ isOpen, onClose, onSelect }) => {
                                         {/* Delete Button (visible on card hover) */}
                                         <button
                                             type="button"
-                                            onClick={(e) => handleDelete(file.name, e)}
+                                            onClick={(e) => handleDelete(file, e)}
                                             className="absolute top-2 left-2 bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-200"
                                             title="Delete Image"
                                         >
