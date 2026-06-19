@@ -257,7 +257,7 @@ export default function InfrastructureStandards({ data }: { data?: any }) {
             ))}
           </div>
         </div>
-        <div className="m t-15 md:mt-25">
+        <div className="mt-15 md:mt-25">
           <p className="text-center font-[magistral] text-[24px] leading-[32px] font-bold text-white italic">
             {data?.certificationsTitle || "Certifications & Standards"}
           </p>
