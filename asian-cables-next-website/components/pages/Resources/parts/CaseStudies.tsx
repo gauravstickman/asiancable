@@ -231,7 +231,7 @@ function CaseStudies({ data }: { data?: any }) {
           </p>
           <div className="flex flex-nowrap industries overflow-x-auto md:grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {caseStudies.map((study: any) => (
-              <div
+              <a href={study.link} 
                 key={study.id}
                 className="md:min-w-[auto] min-w-[80vw] group overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
@@ -288,7 +288,7 @@ function CaseStudies({ data }: { data?: any }) {
                     </a>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
