@@ -69,17 +69,19 @@ export default function SpecialisedProductionFacilities({ data }: { data?: any }
         <div className="relative h-[450px ] min-h-[500px] md:h-[700px] w-full mt-4">
           {/* Background Image */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
-            style={{
-              backgroundImage: `url('${activeImage}')`,
-            }}
-          />
+  key={activeUnit}
+  className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-fade-up"
+  style={{
+    backgroundImage: `url('${activeImage}')`,
+  }}
+/>
 
           {/* White Fade Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-transparent" />
 
           {/* Content Area */}
-          <div className="relative z-10 h-full max-w-[90%] md:max-w-[1274px] mx-auto">
+          <div className="animate-fade-up relative z-10 h-full max-w-[90%] md:max-w-[1274px] mx-auto"   key={`content-${activeUnit}`}
+  >
             {activeUnit === 1 && (
               <div className="md:absolute top-[30%] right-[10%] left-[auto] md:pt-0 pt-20">
                 {/* Unit 1 Content Here */} 
