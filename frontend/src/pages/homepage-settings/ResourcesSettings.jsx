@@ -23,6 +23,7 @@ const ResourcesSettings = () => {
         blogsCategories: [],
         featuredBlogs: [],
         productResourceTitle: '',
+        productResourcesList: [],
         productResource: {
             icon: '', image: '', title: '', description: '', file: '', fileSize: '', downloadText: '', requestText: ''
         }
@@ -46,7 +47,14 @@ const ResourcesSettings = () => {
         try {
             const { data } = await API.get('/resources-page');
             if (data.success && data.data) {
-                setSettings(data.data);
+                let settingsData = data.data;
+                // Migrate old single productResource to the new productResourcesList array if list is empty
+                if ((!settingsData.productResourcesList || settingsData.productResourcesList.length === 0) && settingsData.productResource) {
+                    if (settingsData.productResource.title || settingsData.productResource.file) {
+                        settingsData.productResourcesList = [settingsData.productResource];
+                    }
+                }
+                setSettings(settingsData);
             }
         } catch (error) {
             console.error('Failed to fetch settings:', error);
@@ -163,13 +171,16 @@ const ResourcesSettings = () => {
                 toast.error('Main Section Title is required');
                 return false;
             }
-            if (!settings.productResource?.title?.trim() || !settings.productResource?.description?.trim()) {
-                toast.error('Product Resource must have a title and description');
-                return false;
-            }
-            if (!settings.productResource?.file?.trim()) {
-                toast.error('Product Resource must have a Download File URL');
-                return false;
+            for (let i = 0; i < (settings.productResourcesList || []).length; i++) {
+                const pr = settings.productResourcesList[i];
+                if (!pr.title?.trim() || !pr.description?.trim()) {
+                    toast.error(`Product Resource #${i + 1} must have a title and description`);
+                    return false;
+                }
+                if (!pr.file?.trim()) {
+                    toast.error(`Product Resource #${i + 1} must have a Download File URL`);
+                    return false;
+                }
             }
         }
 
@@ -320,62 +331,98 @@ const ResourcesSettings = () => {
                                 />
                             </div>
 
-                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-                                    <ImageInput
-                                        label="Icon"
-                                        value={settings.productResource?.icon || ''}
-                                        onChange={e => handleProductResourceChange('icon', e.target.value)}
-                                        onChoose={() => openMediaPicker((url) => handleProductResourceChange('icon', url))}
-                                    />
-                                    <ImageInput
-                                        label="Background Image"
-                                        value={settings.productResource?.image || ''}
-                                        onChange={e => handleProductResourceChange('image', e.target.value)}
-                                        onChoose={() => openMediaPicker((url) => handleProductResourceChange('image', url))}
-                                    />
+                            <div>
+                                <div className="flex justify-between items-center mb-4 pt-4 border-t border-slate-200">
+                                    <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Product Resources List</p>
                                 </div>
+                                <div className="grid grid-cols-1 gap-6">
+                                    {(settings.productResourcesList || []).map((pr, idx) => (
+                                        <div key={idx} id={`product-resource-${idx}`} className="bg-slate-50 p-6 rounded-xl border border-slate-200 relative group flex flex-col">
+                                            <button onClick={() => handleRemoveFromArray('productResourcesList', idx)} className="absolute top-3 right-3 text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg z-10 transition-colors">
+                                                <Trash2 size={16} />
+                                            </button>
+                                            
+                                            <div className="flex items-center gap-4 mb-4">
+                                                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Resource #{idx + 1}</p>
+                                            </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-                                    <FormInput
-                                        label="Title"
-                                        placeholder="e.g. Product Catalogue"
-                                        value={settings.productResource?.title || ''}
-                                        onChange={e => handleProductResourceChange('title', e.target.value)}
-                                    />
-                                    <FormInput
-                                        label="File Size / Info"
-                                        placeholder="e.g. PDF • 2.4 MB"
-                                        value={settings.productResource?.fileSize || ''}
-                                        onChange={e => handleProductResourceChange('fileSize', e.target.value)}
-                                    />
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                                                <ImageInput
+                                                    label="Icon"
+                                                    value={pr.icon || ''}
+                                                    onChange={e => handleArrayChange('productResourcesList', idx, 'icon', e.target.value)}
+                                                    onChoose={() => openMediaPicker((url) => handleArrayChange('productResourcesList', idx, 'icon', url))}
+                                                />
+                                                <ImageInput
+                                                    label="Background Image"
+                                                    value={pr.image || ''}
+                                                    onChange={e => handleArrayChange('productResourcesList', idx, 'image', e.target.value)}
+                                                    onChoose={() => openMediaPicker((url) => handleArrayChange('productResourcesList', idx, 'image', url))}
+                                                />
+                                            </div>
+
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                                                <FormInput
+                                                    label="Title"
+                                                    placeholder="e.g. Product Catalogue"
+                                                    value={pr.title || ''}
+                                                    onChange={e => handleArrayChange('productResourcesList', idx, 'title', e.target.value)}
+                                                />
+                                                <FormInput
+                                                    label="File Size / Info"
+                                                    placeholder="e.g. PDF • 2.4 MB"
+                                                    value={pr.fileSize || ''}
+                                                    onChange={e => handleArrayChange('productResourcesList', idx, 'fileSize', e.target.value)}
+                                                />
+                                            </div>
+
+                                            <div className="mb-5">
+                                                <FormTextarea
+                                                    label="Description"
+                                                    rows={2}
+                                                    value={pr.description || ''}
+                                                    onChange={e => handleArrayChange('productResourcesList', idx, 'description', e.target.value)}
+                                                />
+                                            </div>
+
+                                            <div className="mb-5">
+                                                <FormInput
+                                                    label="Download File URL"
+                                                    placeholder="Link to file"
+                                                    value={pr.file || ''}
+                                                    onChange={e => handleArrayChange('productResourcesList', idx, 'file', e.target.value)}
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <FormInput
+                                                    label="Request Datasheet Link"
+                                                    placeholder="Link for Request Datasheet"
+                                                    value={pr.requestText || ''}
+                                                    onChange={e => handleArrayChange('productResourcesList', idx, 'requestText', e.target.value)}
+                                                />
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-
-                                <div className="mb-5">
-                                    <FormTextarea
-                                        label="Description"
-                                        rows={2}
-                                        value={settings.productResource?.description || ''}
-                                        onChange={e => handleProductResourceChange('description', e.target.value)}
-                                    />
-                                </div>
-
-                                <div className="mb-5">
-                                    <FormInput
-                                        label="Download File URL"
-                                        placeholder="Link to file"
-                                        value={settings.productResource?.file || ''}
-                                        onChange={e => handleProductResourceChange('file', e.target.value)}
-                                    />
-                                </div>
-
-                                <div>
-                                    <FormInput
-                                        label="Request Datasheet Link"
-                                        placeholder="Link for Request Datasheet"
-                                        value={settings.productResource?.requestText || ''}
-                                        onChange={e => handleProductResourceChange('requestText', e.target.value)}
-                                    />
+                                {(settings.productResourcesList || []).length === 0 && (
+                                    <div className="text-center py-6 text-slate-400 border-2 border-dashed border-slate-200 rounded-xl mb-6">
+                                        <p className="text-sm">No resources added yet.</p>
+                                    </div>
+                                )}
+                                <div className="mt-6 flex justify-center">
+                                    <button 
+                                        onClick={() => {
+                                            handleAddToArray('productResourcesList', { icon: '', image: '', title: '', description: '', file: '', fileSize: '', downloadText: '', requestText: '' });
+                                            setTimeout(() => {
+                                                const el = document.getElementById(`product-resource-${(settings.productResourcesList || []).length}`);
+                                                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                            }, 100);
+                                        }} 
+                                        className="text-blue-600 font-medium flex items-center gap-2 px-6 py-3 border border-blue-200 bg-blue-50 rounded-xl hover:bg-blue-100 transition-all shadow-sm"
+                                    >
+                                        <Plus size={20} /> Add New Resource
+                                    </button>
                                 </div>
                             </div>
                         </div>
