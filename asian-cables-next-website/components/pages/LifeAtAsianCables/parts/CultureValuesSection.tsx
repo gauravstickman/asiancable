@@ -182,9 +182,9 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
 
                 <div
-                  className="relative z-10 flex flex-col bottom-8"
+                  className="absolute z-10 flex flex-col bottom-5"
                   style={{
-                    gap: isActive ? "19.18px" : "19.18px",
+                    gap: isActive ? "4px" : "4px",
                   }}
                 >
                   <p
@@ -203,7 +203,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
                   <ul
                     style={{
                       width: "322.8559875488281px",
-                      height: "146px",
+                      height: "auto",
                       margin: 0,
                       paddingLeft: "5px",
                       listStyle: "none",
@@ -215,7 +215,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
                         style={{
                           fontWeight: 400,
                           fontStyle: "  Regular",
-                          fontSize: "17px",
+                          fontSize: "15px",
                           lineHeight: "23px",
                           letterSpacing: "0px",
                           color: "#FFFFFF",
@@ -270,7 +270,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
 
             <div className="absolute bottom-0 left-0 z-10 p-6">
-              <p className="mb-4 text-[24px] font-medium text-white">
+              <p className="mb-1 text-[24px] font-medium text-white">
                 {item.title}
               </p>
 
@@ -285,7 +285,7 @@ const CultureValuesSection = ({ data }: { data?: any }) => {
                   {item.points.map((point: any, i: number) => (
                     <li
                       key={i}
-                      className="text-[17px] leading-[23px] text-white"
+                      className="text-[15px] leading-[23px] text-white"
                     >
                       {point}
                     </li>

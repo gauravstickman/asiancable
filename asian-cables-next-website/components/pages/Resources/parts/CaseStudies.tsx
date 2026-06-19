@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, Clock3, Tag, User } from "lucide-react";
+import Link from "next/link";
 
 function CaseStudies({ data }: { data?: any }) {
   const [activeTab, setActiveTab] = useState("all");
@@ -149,8 +150,8 @@ function CaseStudies({ data }: { data?: any }) {
           </p>
 
           <div className="flex flex-no-wrap overflow-x-auto industries md:grid gap-8 lg:grid-cols-2">
-            {filteredFeaturedArticles.map((article: any) => (
-              <div
+            {filteredFeaturedArticles.map((article: any) => ( 
+              <Link href={article.link}
                 key={article.id}
                 className="group  md:min-w-[auto] min-w-[80vw] overflow-hidden rounded-[8px] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
@@ -219,7 +220,7 @@ function CaseStudies({ data }: { data?: any }) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

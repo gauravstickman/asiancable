@@ -14,7 +14,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
       buttonLink: data?.featuredTool?.buttonLink || "#",
     },
     {
-      title: "D-Rating Tool",
+      title: "D-Rating Tool (launching soon)",
       desc: "Calculate derating factors based on installation conditions, ambient temperature, and load requirements.",
       icon: "/assets/resources/wrenchIcon.png",
     },

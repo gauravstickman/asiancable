@@ -139,7 +139,7 @@ export default function ExperienceSection({ data }: { data?: any }) {
   const current = tabs[activeTab] || tabs[0];
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white mb-8 md:mb-15">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] pt-12 md:pt-[60px] lg:pt-[80px]">
         {/* Top Header */}
         <div className="mb-10 lg:mb-[60px] flex justify-center">

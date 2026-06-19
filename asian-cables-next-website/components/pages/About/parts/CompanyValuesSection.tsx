@@ -23,9 +23,9 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
   const subtitle = dynamicData?.builtOnSubtitle || "Engineering systems that power certainty across industries, infrastructure, and everyday life.";
 
   return (
-    <section className="bg-[#F8F9FB] py-6 md:py-16">
+    <section className="bg-[#F8F9FB]  py-6 md:pt-20 md:pb-20">
       <div className="mx-auto max-w-[1280px] px-4">
-        <div className="mb-6">
+        <div className="mb-6 md:mb-8">
           <h1 className="mb-4 font-[magistral] text-[32px] leading-[40px] md:text-[46px] md:leading-[42.17px] font-bold italic text-[#1E3C8C] text-center" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
           <p className="font-[work_sans] text-[16px] leading-[24px] md:text-[19.77px] md:leading-[31.62px] font-normal text-[#525252] text-center" dangerouslySetInnerHTML={{ __html: subtitle.replace(/\n/g, '<br />') }} />
         </div>

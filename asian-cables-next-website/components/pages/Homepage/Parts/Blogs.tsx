@@ -82,8 +82,9 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
     {displayBlogs.map((blog, index) => (
       <SwiperSlide key={index}>
         <div className="group relative h-[327px] md:h-[509px] overflow-hidden rounded-[4px]">
-          
+              <Link href={blog.link}>
           {/* IMAGE */}
+      
           <img
             src={blog.image}
             alt={blog.title}
@@ -121,6 +122,7 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
             </Link>
 
           </div>
+          </Link>
         </div>
       </SwiperSlide>
     ))}

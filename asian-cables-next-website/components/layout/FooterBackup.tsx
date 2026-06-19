@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Footer = () => {
+const FooterBackup = () => {
   return (
     <footer className="relative overflow-hidden text-white" id="footer">
       <div className="absolute inset-0">
@@ -101,22 +101,16 @@ const Footer = () => {
           </div>
 
           {/* PRODUCTS */}
-          <div className="lg:col-span-2">
+          <div>
             <p className="mb-[14px] text-[20px] leading-[28px] tracking-[-0.5px] font-[400]">Products</p>
 
-            <ul className="space-y-[26px] text-[16px] leading-[16px] tracking-[-0.5px] font-[400] text-[#FBFBFB]/60 grid md:grid-cols-2">
-            <Link href="/product/control-and-instrumentation">  <li>Control and Instrumentation</li></Link>
-            <Link href="/product/low-voltage-lv-cables">  <li>Low Voltage (LV) Cables</li></Link>
-             <Link href="/product/medium-voltage-cables"> <li>Medium Voltage Cables</li></Link>
-           <Link href="/product/high-voltage-ehv-cables">   <li>High Voltage/EHV Cables</li></Link>
-            <Link href="/product/elastomeric-rubber-cables">    <li>Elastomeric/Rubber Cables</li></Link>
-            <Link href="/product/ev-cables">  <li>EV Cables</li></Link>
-            <Link href="/product/overhead-line-conductors">  <li>Overhead LINE Conductors</li></Link>
-            <Link href="/product/renewable-energy-cables">  <li>Renewable Energy Cables</li></Link>
-             <Link href="/product/concentric-cables"> <li>Concentric Cables</li></Link>
-             <Link href="/product/cathodic-protection-cables"> <li>Cathodic Protection Cables</li></Link>
-             <Link href="/product/submersible-cables"> <li>Submersible Cables</li></Link>
-             <Link href="/product/ul-cables"> <li>UL Cables</li></Link>
+            <ul className="space-y-[26px] text-[16px] leading-[16px] tracking-[-0.5px] font-[400] text-[#FBFBFB]/60">
+              <li>Specialty Cables</li>
+              <li>Power Cables</li>
+              <li>Railway Cables</li>
+              <li>Control & Instrumentation</li>
+              <li>Conductors</li>
+              <li>Telecom & OFC</li>
             </ul>
           </div>
 
@@ -124,16 +118,25 @@ const Footer = () => {
           <div>
             <p className="mb-[14px] text-[20px] leading-[28px] tracking-[-0.5px] font-[400]">Company</p>
 
-            <ul className="space-y-[26px] text-[16px] leading-[16px] tracking-[-0.5px] font-[400] grid  text-[#FBFBFB]/60">
-              <Link href="/about"><li>About Us</li></Link>
-              <Link href="/rpg-group"><li>RPG Group</li></Link>
-             <Link href="/resources"> <li>Resources</li></Link>
-             <Link href="/manufacturing"> <li>Manufacturing</li></Link>
-             <Link href="/clientele"> <li>Clientele</li></Link>
-             <Link href="/sustainability"> <li>Sustainability</li></Link>
+            <ul className="space-y-[26px] text-[16px] leading-[16px] tracking-[-0.5px] font-[400] text-[#FBFBFB]/60">
+              <li>About Us</li>
+              <li>Careers</li>
+              <li>Sustainability</li>
+              <li>Investors</li>
             </ul>
           </div>
 
+          {/* SUPPORT */}
+          <div>
+            <p className="mb-[14px] text-[20px] leading-[28px] tracking-[-0.5px] font-[400]">Support</p>
+
+            <ul className="space-y-[26px] text-[16px] leading-[16px] tracking-[-0.5px] font-[400] text-[#FBFBFB]/60">
+              <li>Contact Us</li>
+              <li>Technical Support</li>
+              <li>Downloads</li>
+              <li>FAQs</li>
+            </ul>
+          </div>
         </div>
 
         {/* BOTTOM */}
@@ -153,4 +156,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterBackup;

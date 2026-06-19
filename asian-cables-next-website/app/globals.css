@@ -602,7 +602,9 @@ body {
 }
 
 @media(min-width:768px) {
-
+.blog-slider .swiper-wrapper {
+    justify-content: center !important;
+}
 .sustain-card {
     max-width: 467px;
     cursor: pointer;

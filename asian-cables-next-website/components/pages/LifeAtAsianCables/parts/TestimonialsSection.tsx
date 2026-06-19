@@ -54,7 +54,7 @@ export default function TestimonialsSection({ data }: { data?: any }) {
       : testimonials;
 
   return (
-    <section className="bg-[#21409A] py-[40px] overflow-hidden">
+    <section className="bg-[#21409A] pt-[40px] pb-[40px]  md:pt-[60px] overflow-hidden">
       <div className="max-w-[1280px] mx-auto">
         {/* Heading */}
         <div className="mb-10 lg:mb-[60px] md:px-0 px-5">

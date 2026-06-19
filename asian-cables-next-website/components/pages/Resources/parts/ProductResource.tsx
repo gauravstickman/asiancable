@@ -2,7 +2,6 @@
 
 import { ChevronRight, DownloadIcon } from "lucide-react";
 import React from "react";
-import { Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -42,12 +41,6 @@ export default function ProductResource({ data }: { data?: any }) {
 
           spaceBetween={10}
           loop={true}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: false,
-          }}
-          modules={[Autoplay]}
           breakpoints={{
             768: {
               slidesPerView: 3.2,
@@ -106,7 +99,7 @@ export default function ProductResource({ data }: { data?: any }) {
                   {/* bottom actions */}
                   <div className="mt-auto flex items-center justify-between">
                     <div className="flex flex-col items-start gap-6  md:gap-6">
-                      {item.requestText && (
+                      {/* {item.requestText && (
                         <a
                           href={item.requestText}
                           target="_blank"
@@ -119,7 +112,7 @@ export default function ProductResource({ data }: { data?: any }) {
 
                           <ChevronRight size={20} />
                         </a>
-                      )}
+                      )} */}
                       <a
                         href={item.file}
                         target="_blank"
