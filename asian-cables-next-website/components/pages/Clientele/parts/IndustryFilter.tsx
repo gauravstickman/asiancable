@@ -72,7 +72,7 @@ export default function IndustryFilter({ data }: { data?: any }) {
     <section className="relative z-20 w-full bg-white py-8">
       <div className="mx-auto flex px-5 md:px-0 w-[100%] max-w-[1274px] flex-col md:items-center gap-6 lg:flex-row lg:items-center lg:justify-between">
         {/* LEFT REGION TABS */}
-        <div className="flex md:w-fit w-[94%] md:mr-auto md:ml-0 m-auto justify-between rounded-[4px] bg-white gap-2 p-[6px] shadow-lg overflow-x-auto scrollbar-hide">
+        <div className="flex md:w-[338px] w-[94%] md:mr-auto md:ml-0 m-auto justify-between rounded-[4px] bg-white gap-2 p-[6px] shadow-lg overflow-x-auto scrollbar-hide">
           {regionTabs.map((tab: any) => (
             <button
               key={tab.id}
