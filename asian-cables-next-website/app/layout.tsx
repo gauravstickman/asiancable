@@ -4,6 +4,8 @@ import RevealHook from "@/components/hooks/RevealProvider";
 import FloatingBar from "@/components/layout/Floatingactions";
 import "./globals.css";
 import { ScrollbarController } from "../components/hooks/ScrollbarController";
+import Preloader from "@/components/hooks/Preloader";
+import CookieConsent from "@/components/hooks/CookieConsent";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -58,11 +60,13 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" />
 
       </head>
-
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <div className="site-wrapper">
           <ScrollbarController />
+          <Preloader/>
+
           {children}
+          <CookieConsent/>
           <RevealHook />
           <FloatingBar />
         </div>
