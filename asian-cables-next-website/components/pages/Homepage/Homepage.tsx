@@ -81,6 +81,19 @@ export default function Homepage() {
   const [productsData, setProductsData] = useState<any[]>([]);
   const [sustainabilityData, setSustainabilityData] = useState<any>(null);
 
+const videoRef = useRef<HTMLVideoElement>(null);
+const handleSlideChange = (swiper: any) => {
+  setCurrent(swiper.realIndex);
+
+  if (swiper.realIndex === 0) {
+    swiper.autoplay.stop();
+
+    videoRef.current?.play();
+  } else {
+    swiper.autoplay.start();
+  }
+};
+
   useEffect(() => {
     api.get("/homepage-settings")
       .then((res) => {
@@ -181,6 +194,8 @@ export default function Homepage() {
   //   setCurrent((prev) => (prev + 1) % slides.length);
   // };
 
+const totalSlides = slides.length + 1;
+
   return (
     <>
       <WebsiteNavbar />
@@ -194,10 +209,114 @@ export default function Homepage() {
           disableOnInteraction: false,
         }}
         loop={true}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
+        onSwiper={(swiper) => {
+    swiperRef.current = swiper;
+  }}
+  
+  onSlideChange={handleSlideChange}   
         className="main-banner relative h-screen w-full overflow-hidden bg-black"
       >
+
+
+
+<SwiperSlide>
+  <div className="relative h-screen overflow-hidden">
+    {/* Background Video */}
+    <video
+      ref={videoRef}
+      autoPlay
+      muted
+      playsInline
+      className="absolute inset-0 h-full w-full object-cover"
+      onEnded={() => {
+        swiperRef.current?.slideNext();
+        swiperRef.current?.autoplay.start();
+      }}
+    >
+    <source src="/assets/asian.mp4" type="video/mp4" />
+    </video>
+
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-black/40" />
+
+    {/* Content */}
+    <div className="overlay1" />
+          <div className="overlay2" />
+            <div className="relative z-30 mx-auto flex h-full max-w-[1320px] items-end px-6 pb-[50%] md:pb-[9%]">
+              <div className="md:max-w-[1165px] md:w-[100%]"  data-swiper-parallax="-180">
+                <h1
+                  data-swiper-parallax="-50"
+                  className="text-[36px] leading-[42px] font-[700] text-white italic tracking-[-0.03em]  md:text-[64px] md:leading-[71px]"
+                 
+                >
+Reliability, Redefined
+</h1>
+                <p
+                  data-swiper-parallax="-50"
+                  className="max-w-[456px] mt-[16px] text-[16px] leading-[26px] text-[#ECECEC] md:text-[18px] md:leading-[26px] tracking-[-0.4%]"
+                  
+                >
+                  Six decades of precision engineering. One unwavering standard, systems that never let you down.
+                  </p>
+
+                <div data-swiper-parallax="-50">
+              <Link
+  href="#"
+  className="sparkle
+    group
+    relative
+    mt-6
+    inline-flex
+    items-center
+    gap-2
+    rounded-[6px]
+    bg-white
+    px-5
+    py-2
+    text-[16px]
+    font-[500]
+    text-[#1E3C8C]
+    transition-all
+    duration-300
+    hover:bg-transparent
+    hover:text-white
+    md:text-[20px]
+  "
+>
+  Watch Brand Video
+
+  <ChevronRight size={20} />
+
+  <span
+    className="
+      absolute
+      inset-0
+      rounded-[6px]
+      opacity-0
+      group-hover:opacity-100
+      transition-opacity
+      duration-300
+      pointer-events-none
+    "
+    style={{
+      boxShadow:
+        "inset 0 0 0 2px transparent",
+      borderRadius: "6px",
+      background:
+        "linear-gradient(270deg,#3CAADF 0%,#F04123 50%,#FFD212 100%)",
+      WebkitMask:
+        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      WebkitMaskComposite: "xor",
+      padding: "2px",
+    }}
+  />
+</Link>
+                </div>
+              </div>
+            </div>
+  </div>
+</SwiperSlide>
+
         {slides.map((slide, index) => (
 
 
@@ -305,7 +424,12 @@ export default function Homepage() {
 
         {/* NEXT CARD */}
         <button
-          onClick={() => swiperRef.current?.slideNext()}
+          onClick={() => {
+  videoRef.current?.pause();
+
+  swiperRef.current?.slideNext();
+  swiperRef.current?.autoplay.start();
+}}
           className="md:hidden absolute right-[20px] bottom-[20px] left-[20px] z-40 w-[auto] overflow-hidden rounded-[0px] md:border md:border-[#383838] bg-[linear-gradient(90deg,_#3178C0_0%,_#F4D3B6_100%)] md:bg-black/40 shadow-[0px_4px_17.9px_0px_#00000040] backdrop-blur-xl transition-all duration-500  md:right-20 md:bottom-40 md:left-[auto] md:w-[250px] md:rounded-[10px]"
         >
           <div className="flex">
@@ -330,21 +454,22 @@ export default function Homepage() {
 
               {/* BULLETS */}
               <div className="mt-[9px] flex items-center gap-2">
-                {slides.map((_, index) => {
-                  const isActive = index === (current + 1) % slides.length;
+             {Array.from({ length: totalSlides }).map((_, index) => {
+  const isActive = index === current;
 
-                  return (
-                    <div
-                      key={index}
-                      className="relative h-[1.6px] flex-1 overflow-hidden rounded-full bg-[#ffffff]"
-                    >
-                      <div
-                        className={`absolute top-0 left-0 h-full bg-[#1E3C8C] ${isActive ? "animate-progress" : "w-0"
-                          }`}
-                      />
-                    </div>
-                  );
-                })}
+  return (
+  <div className="relative h-[1.6px] flex-1 overflow-hidden rounded-full bg-[#A2A2A2]">
+  {isActive ? (
+    <div
+      key={`${current}-${index}`}
+      className="absolute inset-0 bg-[#1E3C8C] animate-progress"
+    />
+  ) : (
+    <div className="absolute inset-0 w-0 bg-[#1E3C8C]" />
+  )}
+</div>
+  );
+})}
               </div>
             </div>
           </div>
@@ -376,22 +501,24 @@ export default function Homepage() {
               </p>
 
               {/* BULLETS */}
+              
               <div className="mt-3 flex items-center gap-2">
-                {slides.map((_, index) => {
-                  const isActive = index === (current + 1) % slides.length;
+ {Array.from({ length: totalSlides }).map((_, index) => {
+  const isActive = index === current;
 
-                  return (
-                    <div
-                      key={index}
-                      className="relative h-[1.6px] flex-1 overflow-hidden rounded-full bg-[#A2A2A2]"
-                    >
-                      <div
-                        className={`absolute top-0 left-0 h-full bg-[#1E3C8C] ${isActive ? "animate-progress" : "w-0"
-                          }`}
-                      />
-                    </div>
-                  );
-                })}
+  return (
+ <div className="md:min-w-[20%] relative h-[1.6px] flex-1 overflow-hidden rounded-full bg-[#A2A2A2]">
+  {isActive ? (
+    <div
+      key={`${current}-${index}`}
+      className="absolute md:min-w-[20%] inset-0 bg-[#1E3C8C] animate-progress"
+    />
+  ) : (
+    <div className="absolute inset-0 w-0 bg-[#1E3C8C]" />
+  )}
+</div>
+  );
+})}
               </div>
             </div>
           </div>
