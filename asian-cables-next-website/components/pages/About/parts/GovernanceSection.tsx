@@ -104,18 +104,18 @@ export default function GovernanceSection({ dynamicData }: { dynamicData?: any }
           {primaryContent.map((item, index) => (
             <div
               key={index}
-              className="col-span-12 lg:col-span-6 lg:row-span-2"
+              className="group col-span-12 lg:col-span-6 lg:row-span-2"
             >
-              <div className="flex md:h-[494px] flex-col rounded-[4px] bg-[#1E3C8C] p-5 md:p-10">
+              <div className="flex md:h-[494px] flex-col rounded-[4px] bg-[#F9F9F9] transition-all duration-300 hover:bg-[#1E3C8C] p-5 md:p-10">
                 <div className="mb-8">
                   <img
                     src={item.icon}
                     alt={item.alt}
-                    className="h-12 w-auto object-contain"
+                    className="resource-img  h-12 w-auto object-contain"
                   />
                 </div>
 
-                <h3 className="mb-6 font-[magistral] text-[24px] leading-[160%] md:text-[46px] md:leading-[52px] font-bold text-white italic">
+                <h3 className="mb-6 font-[magistral] text-[24px] leading-[160%] md:text-[46px] md:leading-[52px] font-bold text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
                   {item.title.map((line: string, i: number) => (
                     <span key={i}>
                       {line}
@@ -124,7 +124,7 @@ export default function GovernanceSection({ dynamicData }: { dynamicData?: any }
                   ))}
                 </h3>
 
-                <p className="text-[16px] leading-[31.60px] md:text-[17px] md:leading-[32px] text-[#FFFFFFE5]">
+                <p className="text-[16px] leading-[31.60px] md:text-[17px] md:leading-[32px]  transition-all duration-300 text-[#525252] group-hover:text-[#ffffff]">
                   {item.description}
                 </p>
               </div>

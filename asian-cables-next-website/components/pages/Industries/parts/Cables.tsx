@@ -68,11 +68,11 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
               className=" relative min-w-[76vw] overflow-hidden rounded-[6px] bg-white md:min-w-[100%]"
             >
               {/* IMAGE */}
-              <div className="h-[240px] overflow-hidden">
+              <div className="h-[240px] overflow-hidden relative z-[1]">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="h-full w-full object-contain transition duration-700 group-hover:scale-105"
                 />
               </div>
 
@@ -84,7 +84,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
   <img
     src="/assets/obg.png"
     alt=""
-    className="h-full w-full object-cover object-bottom opacity-[0.4]"
+    className="h-full w-full object-cover object-bottom opacity-[1]"
   />
 </div>
                 {/* TITLE */}

@@ -87,7 +87,7 @@ const Footer = () => {
               </div>
 
               <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">
-                <img src="/assets/x.svg" alt="" className="max-w-[16px]" />
+                <img src="/assets/instaa.svg" alt="" className="max-w-[16px]" />
               </div>
 
               <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">

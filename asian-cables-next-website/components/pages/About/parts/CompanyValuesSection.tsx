@@ -34,14 +34,14 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
         <div className="mb-4 grid grid-cols-12 gap-4">
           {cards[0] && (
             <div className="col-span-12 md:col-span-8">
-              <div className="h-full rounded-[8px] bg-[#1E3C8C] p-8">
+              <div className="group h-full rounded-[8px] bg-[#ffffff]  hover:bg-[#1E3C8C] shadow-[0px_4px_12px_0px_#1E3C8C26] p-8">
                 <div className="mb-2 flex items-center gap-8">
-                  <img src={getIcon(cards[0].icon, "/assets/about/eyeIcon.png")} alt="Vision Icon" className={cards[0].icon ? "h-12 w-12 object-contain" : ""} />
+                  <img src={getIcon(cards[0].icon, "/assets/about/eyeIcon.png")} alt="Vision Icon" className={cards[0].icon ? "h-12 w-12 object-contain resource-img" : ""} />
                 </div>
-                <h2 className="block mb-3 text-[32px] md:text-[36px] font-black text-[#ffffff] italic transition-colors duration-300 group-hover:text-white">
+                <h2 className="block mb-3 text-[32px] md:text-[36px] font-black text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
                   {cards[0].title}
                 </h2>
-                <p className="font-[work_sans] text-[18px] leading-[28px] font-normal text-[#FFFFFF]">
+                <p className="font-[work_sans] text-[18px] leading-[28px] font-normal text-[#525252] transition-colors duration-300 group-hover:text-white">
                   {cards[0].description}
                 </p>
               </div>
