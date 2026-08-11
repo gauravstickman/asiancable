@@ -59,6 +59,7 @@ function ManufacturingHeader({ data }: { data?: any }) {
             ))}
           </nav>
 
+            <img src="/assets/rpggroup/rpg.png" alt="RPGnLogo" className="md:max-w-[200px] mt-5 max-w-[150px] md:mt-0 mb-5"/>
           {/* Heading */}
           <h1 className="md:block hidden md:mt-0 mt-2 font-[Magistral] text-[36px] leading-[140%] md:text-[64px] md:leading-[68px] tracking-[-1.44px] font-bold italic text-[#1E3C8C]" dangerouslySetInnerHTML={{ __html: data?.heroTitle ? data.heroTitle.replace(/\n/g, '<br/>') : 'RPG GROUP<br/>Powered by Passion. Driven<br/>by Ethics.' }}>
           </h1>

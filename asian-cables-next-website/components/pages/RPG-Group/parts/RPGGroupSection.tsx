@@ -22,7 +22,7 @@ export default function RPGGroupSection({ data }: { data?: any }) {
         {/* LEFT CONTENT */}
         <div className="w-full max-w-[580px] text-center lg:text-left">
           {/* HEADING */}
-          <h2 className="md:text-[35px] font-[700] text-[#1E3C8C] italic text-[29px] tracking-[-1px] leading-[125%] md:leading-[70px] lg:max-w-[540px] lg:text-[46px] lg:leading-[55px]">
+          <h2 className="md:text-[35px] font-[700] inline-block bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent italic text-[29px] tracking-[-1px] leading-[125%] md:leading-[70px] lg:max-w-[540px] lg:text-[46px] lg:leading-[55px]">
             {content.heading}
           </h2>
 

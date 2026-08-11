@@ -35,9 +35,11 @@ export default function BusinessVerticals({ data }: { data?: any }) {
     <section className="md:bg-[#F8F8F8] md:py-15">
       <div className="mx-auto px-5 md:px-0 w-[100%] max-w-[1274px]">
         {/* HEADING */}
-        <h2 className="font-magistral mb-3 md:mb-5 text-hero text-center text-[32px] md:text-[46px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
+        <div className="text-center">
+<h2 className="font-magistral mb-3 md:mb-5 text-hero text-center text-[32px] md:text-[46px] font-bold tracking-[-0.92px] italic bg-[linear-gradient(270deg,#3CAADF_0%,#F04123_60.78%,#FFD212_121.56%)] bg-clip-text text-transparent inline-flex justify-center px-1">
           {data?.verticalsTitle || "Business Verticals"}
         </h2>
+        </div>
         {data?.verticalsDescription && (
           <p className="text-center text-[#525252] text-[16px] md:text-[18px] mb-10">
             {data.verticalsDescription}

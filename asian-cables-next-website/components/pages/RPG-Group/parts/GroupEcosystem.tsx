@@ -26,7 +26,7 @@ export default function GroupEcosystem({ data }: { data?: any }) {
     <section className="overflow-hidden py-0">
       {/* HEADER */}
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <h2 className="text-hero text-center font-[magistral] text-[24px] leading-[125%] md:text-[46px] font-bold md:tracking-[0px] text-[#1E3C8C] italic">
+          <h2 className="text-hero text-center font-[magistral] text-[24px] leading-[125%] md:text-[46px] font-bold md:tracking-[0px] inline-block bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent italic">
           {data?.ecosystemTitle || "The RPG Group Ecosystem"}
         </h2>
         <p className="md:mt-0 mt-3 dm-font text-body text-center text-[16px] leading-[150%] md:text-[19.77px] font-normal md:tracking-[0px] text-[#525252]">

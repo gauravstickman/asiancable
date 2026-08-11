@@ -44,7 +44,8 @@ function FeatureCard({
 }) {
   return (
     <div
-      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9] transition-all duration-300 h-[157px] md:h-[238.5px] md:p-[40px] p-5 hover:bg-[#1E3C8C] ${tall ? "h-[157px]" : "h-[238.5px]"}`}
+      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9]  h-[157px] md:h-[238.5px] md:p-[40px] p-5  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+    transition-all duration-500 ${tall ? "h-[157px]" : "h-[238.5px]"}`}
     >
       <div className="flex w-full md:p-0 p-5 flex-row items-center justify-center gap-6">
         <img
@@ -97,8 +98,9 @@ export default function GovernanceSection({ dynamicData }: { dynamicData?: any }
       />
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-5">
-        <h2 className="mb-8 md:mb-14 text-center font-[magistral] text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic" dangerouslySetInnerHTML={{ __html: titleText.replace(/\n/g, '<br />') }} />
-
+        <div className="text-center">
+        <h2 className="mb-8 md:mb-14 text-center font-[magistral] text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic" dangerouslySetInnerHTML={{ __html: titleText.replace(/\n/g, '<br />') }} />
+</div>
         <div className="grid grid-cols-12 gap-4 bg-[#FFFFFF] md:p-4">
           {/* Left Blue Card */}
           {primaryContent.map((item, index) => (
@@ -106,7 +108,8 @@ export default function GovernanceSection({ dynamicData }: { dynamicData?: any }
               key={index}
               className="group col-span-12 lg:col-span-6 lg:row-span-2"
             >
-              <div className="flex md:h-[494px] flex-col rounded-[4px] bg-[#F9F9F9] transition-all duration-300 hover:bg-[#1E3C8C] p-5 md:p-10">
+              <div className="flex md:h-[494px] flex-col rounded-[4px] bg-[#F9F9F9]  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+    transition-all duration-500 p-5 md:p-10">
                 <div className="mb-8">
                   <img
                     src={item.icon}

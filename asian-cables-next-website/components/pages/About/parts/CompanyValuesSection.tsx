@@ -25,8 +25,8 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
   return (
     <section className="bg-[#F8F9FB]  py-6 md:pt-20 md:pb-20">
       <div className="mx-auto max-w-[1280px] px-4">
-        <div className="mb-6 md:mb-8">
-          <h1 className="mb-4 font-[magistral] text-[32px] leading-[40px] md:text-[46px] md:leading-[42.17px] font-bold italic text-[#1E3C8C] text-center" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
+        <div className="mb-6 md:mb-8 text-center">
+          <h1 className="mb-4 font-[magistral] text-[32px] leading-[40px] md:text-[46px] md:leading-[42.17px] font-bold italic inline-block bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent text-center" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
           <p className="font-[work_sans] text-[16px] leading-[24px] md:text-[19.77px] md:leading-[31.62px] font-normal text-[#525252] text-center" dangerouslySetInnerHTML={{ __html: subtitle.replace(/\n/g, '<br />') }} />
         </div>
         
@@ -34,7 +34,8 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
         <div className="mb-4 grid grid-cols-12 gap-4">
           {cards[0] && (
             <div className="col-span-12 md:col-span-8">
-              <div className="group h-full rounded-[8px] bg-[#ffffff]  hover:bg-[#1E3C8C] shadow-[0px_4px_12px_0px_#1E3C8C26] p-8">
+              <div className="group h-full rounded-[8px] bg-[#ffffff]   hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+    transition-all duration-500 shadow-[0px_4px_12px_0px_#1E3C8C26] p-8">
                 <div className="mb-2 flex items-center gap-8">
                   <img src={getIcon(cards[0].icon, "/assets/about/eyeIcon.png")} alt="Vision Icon" className={cards[0].icon ? "h-12 w-12 object-contain resource-img" : ""} />
                 </div>
@@ -50,7 +51,8 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
 
           {cards[1] && (
             <div className="col-span-12 md:col-span-4">
-              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 transition-all duration-300 hover:bg-[#1E3C8C] shadow-[0px_4px_12px_0px_#1E3C8C26]">
+              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+    transition-all duration-500 shadow-[0px_4px_12px_0px_#1E3C8C26]">
                 <div className="mb-5 flex items-center gap-5">
                   <img src={getIcon(cards[1].icon, "/assets/about/targetIcon.png")} className="resource-img" alt="Mission Icon" />
                   <h2 className="text-[32px] md:text-[36px] font-black text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
@@ -69,7 +71,8 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
         <div className="grid grid-cols-12 gap-4">
           {cards[2] && (
             <div className="col-span-12 md:col-span-6">
-              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 transition-all duration-300 hover:text-white hover:bg-[#1E3C8C] shadow-[0px_4px_12px_0px_#1E3C8C26]">
+              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 transition-all duration-300 hover:text-white  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+    transition-all duration-500 shadow-[0px_4px_12px_0px_#1E3C8C26]">
                 <div className="mb-5 flex items-center gap-8">
                   <img src={getIcon(cards[2].icon, "/assets/about/targetIcon.png")} alt="Purpose Icon" className="resource-img" />
                   <h2 className="text-[32px] md:text-[36px] font-black text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">
@@ -85,7 +88,8 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
 
           {cards[3] && (
             <div className="col-span-12 md:col-span-6">
-              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 transition-all duration-300 hover:bg-[#1E3C8C] shadow-[0px_4px_12px_0px_#1E3C8C26]">
+              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 transition-all duration-300  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+    transition-all duration-500 shadow-[0px_4px_12px_0px_#1E3C8C26]">
                 <div className="mb-5 flex items-center gap-8">
                   <img src={getIcon(cards[3].icon, "/assets/about/targetIcon.png")} alt="Values Icon" className="resource-img" />
                   <h2 className="text-[32px] md:text-[36px] font-black text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white">

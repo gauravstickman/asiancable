@@ -32,9 +32,12 @@ export default function CoreValues({ data }: { data?: any }) {
     <section className="bg-white md:pt-10 pb-20">
       <div className="mx-auto px-5 md:px-0 w-[100%] max-w-[1274px]">
         {/* TITLE */}
-        <p className="font-bold md:mb-10 italic text-[24px] leading-[125%] md:text-[46px] md:leading-[61.6px] mb-6 tracking-[-2.8px] text-center text-[#1E3C8C] font-[magistral]">
+                <div className="text-center">
+
+        <p className="font-bold md:mb-10 italic text-[24px] leading-[125%] md:text-[46px] md:leading-[61.6px] mb-6 tracking-[-2.8px] text-center bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-flex mx-auto px-1 justify-center font-[magistral]">
           {data?.coreValuesTitle || "Core Values"}
         </p>
+        </div>
 
         {/* GRID */}
         <div className="flex overflow-x-scroll industries flex-nowrap gap-2 md:grid grid-cols-1 md:gap-[32px] md:grid-cols-2 xl:grid-cols-4">

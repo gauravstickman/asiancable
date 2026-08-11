@@ -37,9 +37,12 @@ export default function FAQSection({ data }: { data?: any }) {
     <section className="bg-[#FFFFFF] py-10 md:py-20">
       <div className="mx-auto w-[92%] max-w-[950px]">
         {/* TITLE */}
-        <h2 className="mb-8 md:mb-14 text-center text-[32px] md:text-[38px] font-[700] tracking-[-1px] text-[#1E3C8C] italic">
+                <div className="text-center">
+
+        <h2 className="mb-8 md:mb-14 text-center text-[32px] md:text-[38px] font-[700] tracking-[-1px] text-[#1E3C8C] italic bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block px-1">
           {data?.faqTitle || "FAQ"}
         </h2>
+        </div>
 
         {/* ACCORDION */}
         <div className="space-y-4">

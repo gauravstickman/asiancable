@@ -52,7 +52,7 @@ export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
         {/* Header */}
         <div className="mb-10 px-5 flex md:flex-row flex-col md:items-center md:justify-between">
           <div>
-            <h2 className="font-[magistral]  text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] tracking-[-0.92px] font-bold italic text-[#1E3C8C]" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
+            <h2 className="font-[magistral]  text-[32px] leading-[100%] md:text-[46px] md:leading-[55.2px] tracking-[-0.92px] font-bold italic bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
             <p className="mt-4 font-[work_sans] text-[16px] leading-[150%] md:text-[17px] md:leading-[25.5px] font-normal text-[#525252]" dangerouslySetInnerHTML={{ __html: subtitle.replace(/\n/g, '<br />') }} />
           </div>
           <div>
