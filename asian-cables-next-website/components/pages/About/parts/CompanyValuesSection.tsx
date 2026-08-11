@@ -34,7 +34,9 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
         <div className="mb-4 grid grid-cols-12 gap-4">
           {cards[0] && (
             <div className="col-span-12 md:col-span-8">
-              <div className="group h-full rounded-[8px] bg-[#ffffff]   hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+              <div className="group h-full rounded-[8px] bg-[#ffffff]   hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
     transition-all duration-500 shadow-[0px_4px_12px_0px_#1E3C8C26] p-8">
                 <div className="mb-2 flex items-center gap-8">
                   <img src={getIcon(cards[0].icon, "/assets/about/eyeIcon.png")} alt="Vision Icon" className={cards[0].icon ? "h-12 w-12 object-contain resource-img" : ""} />
@@ -51,7 +53,9 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
 
           {cards[1] && (
             <div className="col-span-12 md:col-span-4">
-              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8    hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
     transition-all duration-500 shadow-[0px_4px_12px_0px_#1E3C8C26]">
                 <div className="mb-5 flex items-center gap-5">
                   <img src={getIcon(cards[1].icon, "/assets/about/targetIcon.png")} className="resource-img" alt="Mission Icon" />
@@ -71,7 +75,9 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
         <div className="grid grid-cols-12 gap-4">
           {cards[2] && (
             <div className="col-span-12 md:col-span-6">
-              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 transition-all duration-300 hover:text-white  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 transition-all duration-300 hover:text-white  hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
     transition-all duration-500 shadow-[0px_4px_12px_0px_#1E3C8C26]">
                 <div className="mb-5 flex items-center gap-8">
                   <img src={getIcon(cards[2].icon, "/assets/about/targetIcon.png")} alt="Purpose Icon" className="resource-img" />
@@ -88,7 +94,9 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
 
           {cards[3] && (
             <div className="col-span-12 md:col-span-6">
-              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 transition-all duration-300  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+              <div className="group h-full rounded-[8px] border border-[#1E3C8C26] bg-white p-8 hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
     transition-all duration-500 shadow-[0px_4px_12px_0px_#1E3C8C26]">
                 <div className="mb-5 flex items-center gap-8">
                   <img src={getIcon(cards[3].icon, "/assets/about/targetIcon.png")} alt="Values Icon" className="resource-img" />

@@ -28,7 +28,7 @@ export default function ProductResource({ data }: { data?: any }) {
   }
 
   return (
-    <section className="reveal-section bg-[#ffffff] pt-[7px] pb-[78.82px]">
+    <section className="reveal-section bg-[#ffffff] pt-[7px] pb-[78.82px]" id="product-resources">
       <div className="mx-auto md:px-0 px-0">
         <div className="mb-8 mt-10 text-center md:mb-[39.2px] px-5">
           <h2 className="text-center font-[Magistral] text-[32px] leading-[39px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">

@@ -116,13 +116,78 @@ const companyPages = [
   "/rpg-group",
   "/clientele",
   "/manufacturing",
-  "/resources",
   "/sustainability",
 ];
+
+
+const ResourcesPages = [
+  "/resources",
+];
+
+const isResourcesActive = ResourcesPages.includes(pathname);
+const [showResourcesMenu, setShowResourcesMenu] = useState(false);
+const [activeResource, setActiveResource] = useState("");
+
+
+useEffect(() => {
+  const updateHash = () => {
+    setActiveResource(window.location.hash.replace("#", ""));
+  };
+
+  updateHash();
+
+  window.addEventListener("hashchange", updateHash);
+
+  return () => {
+    window.removeEventListener("hashchange", updateHash);
+  };
+}, []);
+
+// const handleResourceClick = (resource: string) => {
+//   setActiveResource(resource);
+//   setShowResourcesMenu(false);
+//   setIsMenuOpen(false);
+//   setMobileMenuView("main");
+// };
+
+const handleResourceClick = () => {
+  setIsMenuOpen(false);
+  setMobileMenuView("main");
+};
+
+const handleResourceClickPc = () => {
+  setShowResourcesMenu(false);
+};
+
+useEffect(() => {
+  const checkHash = () => {
+    const hash = window.location.hash;
+
+    const resourceHashes = [
+      "#calculator",
+      "#product-resources",
+      "#whitepapers",
+      "#articles",
+    ];
+
+    if (pathname === "/resources" && resourceHashes.includes(hash)) {
+      setShowResourcesMenu(true);
+    }
+  };
+
+  checkHash();
+
+  window.addEventListener("hashchange", checkHash);
+
+  return () => {
+    window.removeEventListener("hashchange", checkHash);
+  };
+}, [pathname]);
 
 const isCompanyActive = companyPages.includes(pathname);
 
 const [showCompanyMenu, setShowCompanyMenu] = useState(false);
+
  const [showIndustryMenu, setShowIndustryMenu] = useState(false);
   const [showCompanyMenuPc, setShowCompanyMenuPc] = useState(false);
 
@@ -131,6 +196,16 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
 const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(
   pathname.startsWith("/industries")
 );
+
+useEffect(() => {
+  if (isResourcesActive) {
+    setShowResourcesMenu(true);
+  }
+}, [isResourcesActive]);
+
+
+
+
 useEffect(() => {
   if (isCompanyActive) {
     setShowCompanyMenu(true);
@@ -455,7 +530,7 @@ showIndustryMobileMenu
           RPG Group
         </Link>
 
-        <Link
+        {/* <Link
           href="/resources"
           className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
         >
@@ -467,7 +542,7 @@ showIndustryMobileMenu
     }}
   />   
           Resources
-        </Link>
+        </Link> */}
 
         <Link
           href="/manufacturing"
@@ -536,19 +611,134 @@ showIndustryMobileMenu
             Careers
           </Link>
 
-         {/* INVESTOR */}
-          <Link
-            href="/investor"
-            className={`text-[16px] ${
-    pathname === "/investor"
+     
+<div
+  className="relative"
+  onMouseEnter={() => setShowResourcesMenu(true)}
+  onMouseLeave={() => setShowResourcesMenu(false)}
+>
+  <button
+ onMouseEnter={() => {
+  setShowMegaMenu(false);
+  setShowIndustryMenu(false);
+  setShowCompanyMenuPc(false);
+  setShowResourcesMenu(true);
+
+}}
+  className={`flex items-center gap-1 text-[16px] ${
+    isResourcesActive
+    
       ? "font-[600]"
       : "font-[400]"
   } ${
-              isScrolled || showMegaMenu || isRPGgroup ? "text-[#1E3C8C]" : "text-white"
-            }`}
-          >
-            Investor
-          </Link>
+    isScrolled || showMegaMenu || isRPGgroup
+      ? "text-[#1E3C8C]"
+      : "text-white"
+  }`}
+>
+ Resources
+
+  <ChevronDown
+    size={16}
+    className={`transition-transform duration-300 ${
+      showResourcesMenu ? "rotate-180" : ""
+    }`}
+  />
+</button>
+
+  {showResourcesMenu && (
+    <div className="absolute top-full left-0 z-50 min-w-[280px] rounded-[6px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+      <div className="flex flex-col gap-2 pt-3">
+
+        <Link
+                  onClick={handleResourceClickPc}
+
+          href="/resources#calculator"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+          
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+         Cable Sizing Calculator
+        </Link>
+
+        {/* <Link
+          href="/leadership"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          Leadership
+        </Link> */}
+
+        <Link
+                  onClick={handleResourceClickPc}
+
+          href="/resources#product-resources"
+         className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+         Product Resources
+
+        </Link>
+
+        <Link
+          onClick={handleResourceClickPc}
+
+          href="/resources#whitepapers"
+          className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          Whitepapers & Research
+
+        </Link>
+
+        <Link
+                  onClick={handleResourceClickPc}
+
+          href="/resources#articles"
+          className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+           Articles & Case studies
+
+        </Link>
+
+  
+
+      </div>
+    </div>
+  )}
+</div>
+
         </div>
         <div className="xs:hidden ml-[auto] flex items-center gap-6 md:gap-[35px] md:ml-0">
          <span
@@ -793,89 +983,89 @@ h-[30px]
 </button>
 
 
-  {showCompanyMenu && (
-    <div className="mt-6 flex flex-col gap-3 pl-0">
+    {showCompanyMenu && (
+      <div className="mt-6 flex flex-col gap-3 pl-0">
 
-      <h5><Link
-        href="/about"
-       className={`text-[20px] italic font-[700] ${
-      pathname === "/about"
-        ? "text-[#1E3C8C]"
-        : "text-[#8B8B8B]"
-    }`}
-  >
-        About us
-      </Link></h5>
-
-      {/* <h5><Link
-        href="/leadership"
-    className={`text-[20px] italic font-[700] ${
-      pathname === "/leadership"
-        ? "text-[#1E3C8C]"
-        : "text-[#8B8B8B]"
-    }`}
-  >
-        Leadership
-      </Link></h5> */}
-
-    <h5>
-  <Link
-    href="/rpg-group"
-    className={`text-[20px] italic font-[700] ${
-      pathname === "/rpg-group"
-        ? "text-[#1E3C8C]"
-        : "text-[#8B8B8B]"
-    }`}
-  >
-    RPG Group
-  </Link>
-</h5>
-
-      <h5><Link
-        href="/sustainability"
-       className={`text-[20px] italic font-[700] ${
-      pathname === "/sustainability"
-        ? "text-[#1E3C8C]"
-        : "text-[#8B8B8B]"
-    }`}
-  >
-        Sustainability
-      </Link></h5>
-
-      <h5><Link
-        href="/resources"
+        <h5><Link
+          href="/about"
         className={`text-[20px] italic font-[700] ${
-      pathname === "/resources"
-        ? "text-[#1E3C8C]"
-        : "text-[#8B8B8B]"
-    }`}
-  >
-        Resources
-      </Link></h5>
+        pathname === "/about"
+          ? "text-[#1E3C8C]"
+          : "text-[#8B8B8B]"
+      }`}
+    >
+          About us
+        </Link></h5>
 
-      <h5><Link
-        href="/manufacturing"
+        {/* <h5><Link
+          href="/leadership"
       className={`text-[20px] italic font-[700] ${
-      pathname === "/manufacturing"
-        ? "text-[#1E3C8C]"
-        : "text-[#8B8B8B]"
-    }`}
-  >
-        Manufacturing
-      </Link></h5>  
+        pathname === "/leadership"
+          ? "text-[#1E3C8C]"
+          : "text-[#8B8B8B]"
+      }`}
+    >
+          Leadership
+        </Link></h5> */}
 
-      <h5><Link
-        href="/clientele"
+      <h5>
+    <Link
+      href="/rpg-group"
       className={`text-[20px] italic font-[700] ${
-      pathname === "/clientele"
-        ? "text-[#1E3C8C]"
-        : "text-[#8B8B8B]"
-    }`}
-  >
-        Clientele
-      </Link></h5>
-    </div>
-  )}
+        pathname === "/rpg-group"
+          ? "text-[#1E3C8C]"
+          : "text-[#8B8B8B]"
+      }`}
+    >
+      RPG Group
+    </Link>
+  </h5>
+
+        <h5><Link
+          href="/sustainability"
+        className={`text-[20px] italic font-[700] ${
+        pathname === "/sustainability"
+          ? "text-[#1E3C8C]"
+          : "text-[#8B8B8B]"
+      }`}
+    >
+          Sustainability
+        </Link></h5>
+
+        {/* <h5><Link
+          href="/resources"
+          className={`text-[20px] italic font-[700] ${
+        pathname === "/resources"
+          ? "text-[#1E3C8C]"
+          : "text-[#8B8B8B]"
+      }`}
+    >
+          Resources
+        </Link></h5> */}
+
+        <h5><Link
+          href="/manufacturing"
+        className={`text-[20px] italic font-[700] ${
+        pathname === "/manufacturing"
+          ? "text-[#1E3C8C]"
+          : "text-[#8B8B8B]"
+      }`}
+    >
+          Manufacturing
+        </Link></h5>  
+
+        <h5><Link
+          href="/clientele"
+        className={`text-[20px] italic font-[700] ${
+        pathname === "/clientele"
+          ? "text-[#1E3C8C]"
+          : "text-[#8B8B8B]"
+      }`}
+    >
+          Clientele
+        </Link></h5>
+      </div>
+    )}
 </div>
 
 
@@ -986,12 +1176,95 @@ h-[30px]
           Life At Asian Cables
         </Link></h4>
 
-        <h4><Link
-          href="/investors"
-          className="text-[24px] leading-[26px] trcking-[-0.5px] italic font-[700] text-[#9AA4C0]"
+<div>
+  <button
+    onClick={() => setShowResourcesMenu(!showResourcesMenu)}
+    className={`flex items-center gap-3 text-[24px] leading-[26px] italic font-[700] transition-colors duration-300 ${
+      showResourcesMenu
+        ? "text-[#1E3C8C]"
+        : "text-[#9AA4C0]"
+    }`}
+  >
+    <h4>Resources</h4>
+
+    <ChevronDown
+      size={22}
+      className={`transition-transform duration-300 ${
+        showResourcesMenu ? "rotate-180" : ""
+      }`}
+    />
+  </button>
+
+  {showResourcesMenu && (
+    <div className="mt-6 flex flex-col gap-3 pl-0">
+
+      {/* Calculator */}
+      <h5>
+        <Link
+          href="/resources#calculator"
+  onClick={handleResourceClick}
+          className={`text-[20px] italic font-[700] ${
+            activeResource === "calculator"
+              ? "text-[#21409A] font-[600]"
+              : "text-[#5C5C5C]"
+          }`}
         >
-          Investors
-        </Link></h4>
+          Cable Sizing Calculator
+        </Link>
+      </h5>
+
+      {/* Product Resources */}
+      <h5>
+        <Link
+          href="/resources#product-resources"
+        onClick={handleResourceClick}
+
+          className={`text-[20px] italic font-[700] ${
+            activeResource === "product-resources"
+              ? "text-[#21409A] font-[600]"
+              : "text-[#5C5C5C]"
+          }`}
+        >
+          Product Resources
+        </Link>
+      </h5>
+
+      {/* Whitepapers */}
+      <h5>
+        <Link
+          href="/resources#whitepapers"
+          onClick={handleResourceClick}
+
+          className={`text-[20px] italic font-[700] ${
+            activeResource === "whitepapers"
+              ? "text-[#21409A] font-[600]"
+              : "text-[#5C5C5C]"
+          }`}
+        >
+          Whitepapers & Research
+        </Link>
+      </h5>
+
+      {/* Articles */}
+      <h5>
+        <Link
+          href="/resources#articles"
+          onClick={handleResourceClick}
+
+          className={`text-[20px] italic font-[700] ${
+            activeResource === "articles"
+              ? "text-[#21409A] font-[600]"
+              : "text-[#5C5C5C]"
+          }`}
+        >
+          Articles & Case studies
+        </Link>
+      </h5>
+
+    </div>
+  )}
+</div>
+
 
         <h4><Link
           href="/contact"

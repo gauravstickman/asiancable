@@ -118,6 +118,19 @@ const [showCompanyMenu, setShowCompanyMenu] = useState(false);
 const [showIndustryMenu, setShowIndustryMenu] = useState(false);
 const [showIndustryMobileMenu, setShowIndustryMobileMenu] = useState(false);
 
+
+const ResourcesPages = [
+  "/resources",
+];
+
+const isResourcesActive = ResourcesPages.includes(pathname);
+const [showResourcesMenu, setShowResourcesMenu] = useState(false);
+useEffect(() => {
+  if (isResourcesActive) {
+    setShowResourcesMenu(true);
+  }
+}, [isResourcesActive]);
+
   return (
     <nav
       className={`sticky top-0 right-0 left-0 z-50 ${
@@ -499,18 +512,125 @@ onMouseEnter={() => {
           </Link>
 
           {/* INVESTOR */}
-          <Link
-            href="/investor"
-            className={`text-[16px] ${
-    pathname === "/investor"
+   
+
+<div
+  className="relative"
+  onMouseEnter={() => setShowResourcesMenu(true)}
+  onMouseLeave={() => setShowResourcesMenu(false)}
+>
+  <button
+ onMouseEnter={() => {
+  setShowMegaMenu(false);
+  setShowIndustryMenu(false);
+  setShowCompanyMenuPc(false);
+  setShowResourcesMenu(true);
+
+}}
+  className={`flex items-center gap-1 text-[16px] ${
+    isResourcesActive
+    
       ? "font-[600]"
       : "font-[400]"
   } ${
-              isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
-            }`}
-          >
-            Investor
-          </Link>
+                  isScrolled || showMegaMenu ? "text-[#1E3C8C]" : "text-[#1E3C8C]"
+
+  }`}
+>
+ Resources
+
+  <ChevronDown
+    size={16}
+    className={`transition-transform duration-300 ${
+      showResourcesMenu ? "rotate-180" : ""
+    }`}
+  />
+</button>
+
+  {showResourcesMenu && (
+    <div className="absolute top-full left-0 z-50 min-w-[280px] rounded-[6px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+      <div className="flex flex-col gap-2 pt-3">
+
+        <Link
+          href="/resources#calculator"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+         Cable Sizing Calculator
+        </Link>
+
+        {/* <Link
+          href="/leadership"
+        className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          Leadership
+        </Link> */}
+
+        <Link
+          href="/resources#product-resources"
+         className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+         Product Resources
+
+        </Link>
+
+        <Link
+          href="/resources#whitepapers"
+          className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+          Whitepapers & Research
+
+        </Link>
+
+        <Link
+          href="/resources#articles"
+          className=" relative flex items-center mb-[15px] h-[18px] pl-3  text-[16px] leading-[206%] text-[#5C5C5C] font-[400] hover:text-[#21409A]"
+        >
+          <span
+    className="absolute left-0 top-0 right-auto h-[18px] w-[3px]"
+    style={{
+      background:
+        "linear-gradient(180deg, #FFD212 0%, #F04123 50%, #3CAADF 100%)",
+    }}
+  />   
+           Articles & Case studies
+
+        </Link>
+
+  
+
+      </div>
+    </div>
+  )}
+</div>
+
         </div>
 
         <div className="xs:hidden ml-[auto] flex items-center gap-6 md:gap-[35px] md:ml-0">

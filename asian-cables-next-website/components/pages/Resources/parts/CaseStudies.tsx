@@ -113,7 +113,7 @@ function CaseStudies({ data }: { data?: any }) {
 
 
   return (
-    <section className="bg-[#1E3C8C0A] py-16 md:py-24" id="resources">
+    <section className="bg-[#1E3C8C0A] py-16 md:py-24" id="articles">
       <div className="mx-auto max-w-[1320px] px-0 md:px-6">
         {/* HEADER */}
         <div className="mb-12 flex flex-col items-start justify-between gap-8 md:mb-16 md:flex-row md:items-end">

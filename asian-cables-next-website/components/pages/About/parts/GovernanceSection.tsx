@@ -44,7 +44,9 @@ function FeatureCard({
 }) {
   return (
     <div
-      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9]  h-[157px] md:h-[238.5px] md:p-[40px] p-5  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+      className={`group flex w-full rounded-[3.9px] bg-[#F9F9F9]  h-[157px] md:h-[238.5px] md:p-[40px] p-5  hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
     transition-all duration-500 ${tall ? "h-[157px]" : "h-[238.5px]"}`}
     >
       <div className="flex w-full md:p-0 p-5 flex-row items-center justify-center gap-6">
@@ -108,7 +110,9 @@ export default function GovernanceSection({ dynamicData }: { dynamicData?: any }
               key={index}
               className="group col-span-12 lg:col-span-6 lg:row-span-2"
             >
-              <div className="flex md:h-[494px] flex-col rounded-[4px] bg-[#F9F9F9]  hover:bg-[linear-gradient(135deg,#052D73_0%,#353B72_28%,#8A4B65_58%,#B85B55_78%,#A96F55_100%)]
+              <div className="flex md:h-[494px] flex-col rounded-[4px] bg-[#F9F9F9]  hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
     transition-all duration-500 p-5 md:p-10">
                 <div className="mb-8">
                   <img

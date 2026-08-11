@@ -45,7 +45,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
   ];
 
   return (
-    <section className="mt-5 bg-gray-50  md:py-12">
+    <section className="mt-5 bg-gray-50  md:py-12"  id="calculator">
       <div className="mx-auto max-w-[1264px] px-0">
         {/* CARD CONTAINER */}
         <div className="relative  bg-[#FFFFFF] px-[16px] py-[15px]">
@@ -56,7 +56,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
                 key={index}
                 className={`group relative flex md:h-[270px] flex-col overflow-hidden rounded-[4px] transition-all duration-500 hover:-translate-y-[6px] hover:shadow-[0_18px_45px_rgba(30,60,140,0.22)] ${index === 0
                   ? "bg-gradient-to-r from-[#2A4FA0] to-[#1E3C8C] text-white"
-                  : "bg-[#F9F9F9] text-gray-900 hover:bg-[#1E3C8C]"
+                  : "bg-[#F9F9F9] text-gray-900 hover:bg-[url('/assets/rpggroup/hoverbg.jpg')] bg-cover bg-center transition-all duration-500"
                   } ${index === 0
                     ? "px-[30px] pt-[36px] pb-[36px]"
                     : "px-[30px] pt-[36px] pb-[36px]"
@@ -148,7 +148,7 @@ export default function CableSelectionTool({ data }: { data?: any }) {
             {bottomCards.map((item: any, index: number) => (
               <div
                 key={index}
-                className={`group flex md:h-[270px] flex-col items-start rounded-[4px] bg-[#F9F9F9] transition-all duration-500 hover:-translate-y-[6px] hover:bg-[#1E3C8C] hover:shadow-[0_18px_45px_rgba(30,60,140,0.22)] ${index === 0
+                className={`group flex md:h-[270px] flex-col items-start rounded-[4px] bg-[#F9F9F9] transition-all duration-500 hover:-translate-y-[6px] hover:bg-[url('/assets/rpggroup/hoverbg.jpg')] bg-cover bg-center transition-all duration-500 hover:shadow-[0_18px_45px_rgba(30,60,140,0.22)] ${index === 0
                   ? "px-[30px] pt-[36px] pb-[36px]"
                   : "px-[30px] pt-[36px] pb-[36px]"
                   }`}

@@ -17,7 +17,10 @@ export default function FactsSection({ dynamicData }: FactsProps) {
           {/* LEFT SIDE */}
           <div className="col-span-12 flex flex-col gap-6 md:gap-3 lg:col-span-8 md:max-w-[862px]">
             {/* TOP CARD */}
-            <div className="group cursor-pointer rounded-sm border border-[#f9f9f9] bg-[#f9f9f9] p-5 transition-all duration-300 hover:bg-[#1E3C8C]">
+            <div className="group cursor-pointer rounded-sm border border-[#f9f9f9] bg-[#f9f9f9] p-5 transition-all duration-300 hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
+    transition-all duration-500">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 {/* TEXT */}
                 <div className="max-w-[508px]">
@@ -44,7 +47,10 @@ export default function FactsSection({ dynamicData }: FactsProps) {
             {/* BOTTOM CARDS */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3 pb-5 md:pb-0">
               {/* CARD 1 */}
-              <div className="group cursor-pointer flex flex-col justify-between border border-[#f9f9f9] bg-[#f9f9f9] p-5 transition-all duration-300 hover:bg-[#1E3C8C]">
+              <div className="group cursor-pointer flex flex-col justify-between border border-[#f9f9f9] bg-[#f9f9f9] p-5 transition-all duration-300 hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
+    transition-all duration-500">
                 <div>
                   <h3 className="mb-8 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic transition-all duration-300 group-hover:bg-none group-hover:text-white md:mb-20 md:text-[48px]">
                     {dynamicData?.decades?.title ? dynamicData.decades.title : "6+ Decades"}
@@ -63,7 +69,10 @@ export default function FactsSection({ dynamicData }: FactsProps) {
               </div>
 
               {/* CARD 2 */}
-              <div className="group cursor-pointer flex flex-col justify-between border border-[#f9f9f9] bg-[#f9f9f9] p-5 transition-all duration-300 hover:bg-[#1E3C8C]">
+              <div className="group cursor-pointer flex flex-col justify-between border border-[#f9f9f9] bg-[#f9f9f9] p-5 transition-all duration-300 hover:bg-[url('/assets/rpggroup/hoverbg.jpg')]
+    bg-cover
+    bg-center
+    transition-all duration-500">
                 <div>
                   <h3 className="mb-8 bg-[linear-gradient(270.11deg,_#3CAADF_60.24%,_#F04123_82.12%,_#FFD212_104%)] bg-clip-text text-[32px] leading-none font-black text-transparent italic transition-all duration-300 group-hover:bg-none group-hover:text-white md:mb-20 md:text-[48px]">
                     {dynamicData?.capacity?.title ? dynamicData.capacity.title : "Up To 220 KV"}

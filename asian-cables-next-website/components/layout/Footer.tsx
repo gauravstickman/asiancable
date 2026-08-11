@@ -90,13 +90,14 @@ const Footer = () => {
                 <img src="/assets/instaa.svg" alt="" className="max-w-[16px]" />
               </div>
 
+                 <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">
+                <img src="/assets/yt.svg" alt="" className="max-w-[16px]" />
+              </div>
+
               <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">
                 <img src="/assets/fb.svg" alt="" className="max-w-[16px]" />
               </div>
 
-              <div className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-[#1E3C8C] transition">
-                <img src="/assets/yt.svg" alt="" className="max-w-[16px]" />
-              </div>
             </div>
           </div>
 
