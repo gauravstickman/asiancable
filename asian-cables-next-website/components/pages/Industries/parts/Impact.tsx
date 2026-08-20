@@ -33,7 +33,7 @@ export default function AsianCablesImpact({ dynamicData, sectionTitle }: { dynam
   ].slice(0, 3);
 
   return (
-    <section className="reveal-section bg-[#1E3C8C] py-12 md:py-24">
+<section className="reveal-section bg-[url('/assets/rpggroup/hoverbg.jpg')] bg-cover py-12 md:py-24">
       <div className="mx-auto max-w-[1320px] md:px-4 px-5">
         {/* HEADING */}
         <div className="mb-10 text-center md:mb-16">

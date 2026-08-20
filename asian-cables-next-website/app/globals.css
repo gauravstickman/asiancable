@@ -131,9 +131,18 @@ body {
 }
 
 .proven-f h2 {
-  color: #1e3c8c;
+    background: linear-gradient(
+        269.91deg,
+        #3CAADF 4.39%,
+        #F04123 59.1%,
+        #FFD212 113.8%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
-
 .proven-f button {
   background: #1e3c8c;
   color: #fff;

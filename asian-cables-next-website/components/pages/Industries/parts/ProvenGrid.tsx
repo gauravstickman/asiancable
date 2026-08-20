@@ -38,7 +38,7 @@ export default function ProvenProjects({ dynamicData, sectionTitle, sectionSubti
       <div className="mx-auto max-w-[1320px] mt-24 md:px-4 px-6 md:mt-[74px]">
         {/* HEADING */}
         <div className="mt-7 mb-10 text-center md:mt-0">
-          <h2 className="mb-5 text-[32px] leading-none font-[700] text-[#1E3C8C] italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
+          <h2 className="mb-5 text-[32px] leading-none font-[700] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
             {sectionTitle || "Proven In The Field"}
           </h2>
 

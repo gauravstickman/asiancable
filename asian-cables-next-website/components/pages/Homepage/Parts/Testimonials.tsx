@@ -42,7 +42,7 @@ export default function TestimonialsSection({ dynamicData }: { dynamicData?: any
       <div className="mx-auto max-w-[100%]">
         {/* HEADING */}
         <div className="mb-10 text-center md:mb-[64px ]">
-          <h2 className="text-[32px]  text-[#1E3C8C] italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
+          <h2 className="text-[32px]  bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block px-1 italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
             What Our Clients Say
           </h2>
         </div>

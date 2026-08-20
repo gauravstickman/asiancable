@@ -55,7 +55,7 @@ export default function ContactForm({ data }: { data?: any }) {
       <div className="relative z-10 mx-auto max-w-[1280px] px-5">
         <div className="relative mx-auto rounded-[2px] max-w-[773px] bg-white p-[25px] md:px-[48px] md:py-[35px] shadow-[0px_4px_59px_0px_#00000040]">
           {/* Heading */}
-          <h2 className="font-[magistral] text-[32px] leading-[150%] md:text-[42px] md:leading-[63px] font-bold italic text-[#1E3C8C]">
+          <h2 className="font-[magistral] text-[32px] leading-[150%] md:text-[42px] md:leading-[63px] font-bold italic px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block">
             {data?.formTitle || "General Enquiry"}
           </h2>
 

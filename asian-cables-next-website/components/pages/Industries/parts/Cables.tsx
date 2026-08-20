@@ -46,7 +46,7 @@ export default function IndustryProducts({ dynamicData, sectionTitle }: { dynami
         {/* TOP */}
         <div className="md-gap-0 mb-14 flex flex-col gap-6 md:flex-row md:items-center md:justify-between px-5 md:px-0">
           {/* HEADING */}
-          <h2 className="text-[32px] leading-none font-black text-[#1E3C8C] italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
+          <h2 className="text-[32px] leading-none font-black px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
             {sectionTitle || "Cables for Oil & Gas"}
           </h2>
 

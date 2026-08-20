@@ -61,7 +61,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
               </div>
 
               {/* TITLE */}
-              <h1 className="mb-[18px] text-[32px] leading-[1.3] font-[700] text-[#1E3C8C] italic md:text-[56px] md:leading-[61.2px] md:tracking-[1.12px]">
+              <h1 className="mb-[18px] text-[32px] leading-[1.3] font-[700] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:text-[56px] md:leading-[61.2px] md:tracking-[1.12px]">
                 {productData.name || (
                   <>
                     Control and
@@ -150,7 +150,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
             {/* LEFT CONTENT */}
             <div>
               {/* TITLE */}
-              <h2 className="mb-[24px] text-[32px] leading-[1.4] font-black text-[#1E3C8C] italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
+              <h2 className="mb-[24px] text-[32px] leading-[1.4] font-black px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
                 Product Overview
               </h2>
 
@@ -245,7 +245,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
         <div className="mx-auto max-w-[1320px] px-4">
           {/* HEADING */}
           <div className="mb-[60px] text-center">
-            <h2 className="text-[32px] leading-none font-[700] text-[#1E3C8C] italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
+            <h2 className="text-[32px] leading-none font-[700] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
               Features & Standards
             </h2>
           </div>

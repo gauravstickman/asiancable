@@ -100,8 +100,8 @@ const displayProjects =
         {/* HEADING */}
         <div className="mb-8 px-4 text-center md:mb-[84px]">
           <h2 className="mb-[16px] text-[32px]  text-white italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
-            Proven In The Field
-          </h2>
+            Proven In The Field 
+          </h2> 
 
           <p className="text-[20px] text-white/50 md:text-[24px] leading-[150%]">
             Real projects. Demanding environments. Reliable outcomes.

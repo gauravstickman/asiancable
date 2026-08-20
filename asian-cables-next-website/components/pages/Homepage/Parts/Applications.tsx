@@ -35,9 +35,11 @@ export default function ApplicationsSection({ data }: { data?: any[] }) {
     <section className="reveal-section bg-[#ffffff] pt-10 pb-3 md:pt-25 md:pb-0">
       <div className="mx-auto max-w-[1320px] px-4">
         {/* Heading */}
-        <h2 className="mb-8 text-center text-[32px] font-black text-[#1E3C8C] italic md:mb-14 md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
+           <div className="text-center">
+        <h2 className="mb-8 text-center text-[32px] font-black px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:mb-14 md:text-[46px] md:leading-[55.2px] md:tracking-[-0.92px]">
           Applications
         </h2>
+        </div>
 
         {/* EXACT LAYOUT */}
         <div className="grid grid-cols-12 gap-4">

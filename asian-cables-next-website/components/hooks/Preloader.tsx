@@ -80,7 +80,7 @@ ${stage >= 2 ? "translate-y-0" : "translate-y-full"}
       {/* WHITE LOGO */}
 
       <img
-        src="assets/footer-logo.png"
+        src="/assets/footer-logo.png"
         className={`
 absolute
 left-1/2
@@ -98,7 +98,7 @@ ${stage >= 2 ? "opacity-0 scale-90" : "opacity-100 scale-100"}
       {/* BLUE LOGO */}
 
       <img
-        src="assets/LOGO_Dark.png"
+        src="/assets/LOGO_Dark.png"
         className={`
 absolute
 left-1/2

@@ -47,7 +47,7 @@ export default function WhitepapersResearch({ data }: { data?: any }) {
     <section className="reveal-section bg-white py-8 md:py-16" id="whitepapers">
       <div className="mx-auto max-w-[1320px] md:pl-0 pl-5">
         <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between">
-          <h2 className="font-[Magistral] text-[29px] leading-[55.2px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic">
+          <h2 className="font-[Magistral] text-[29px] leading-[55.2px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic">
             {data?.whitepapersTitle || "Whitepapers & Research"}
           </h2>
 

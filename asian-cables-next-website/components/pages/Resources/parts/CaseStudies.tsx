@@ -119,7 +119,7 @@ function CaseStudies({ data }: { data?: any }) {
         <div className="mb-12 flex flex-col items-start justify-between gap-8 md:mb-16 md:flex-row md:items-end">
           {/* LEFT */}
           <div className="md:px-0 px-5 w-[100%]">
-            <h1 className="md:mb-3 mb-6 text-[32px] leading-[40px] md:text-[34px] md:leading-[42px] font-bold tracking-[-0.92px] text-[#1E3C8C] italic md:text-[46px] md:leading-[55px]">
+            <h1 className="md:mb-3 mb-6 text-[32px] leading-[40px] md:text-[34px] md:leading-[42px] font-bold tracking-[-0.92px] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:text-[46px] md:leading-[55px]">
               {data?.blogsTitle || "Articles & Case studies"}
             </h1>
 
