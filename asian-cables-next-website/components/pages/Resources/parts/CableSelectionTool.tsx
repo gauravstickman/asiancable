@@ -5,12 +5,12 @@ import { ChevronRight } from "lucide-react";
 export default function CableSelectionTool({ data }: { data?: any }) {
   const topCards = [
     {
-      title: data?.featuredTool?.title || "Cable Selection Tool",
-      desc: data?.featuredTool?.description || "Identify the right cable for your application based on voltage, current, installation conditions, and performance requirements.",
-      icon: data?.featuredTool?.icon || "/assets/resources/calculator.png",
-      bgImage: data?.featuredTool?.backgroundImage || "/assets/resources/img-1.jpg",
+      title: data?.featuredTool?.title || "",
+      desc: data?.featuredTool?.description || "",
+      icon: data?.featuredTool?.icon || "",
+      bgImage: data?.featuredTool?.backgroundImage || "",
       button: true,
-      buttonText: data?.featuredTool?.buttonText || "Launch Tool",
+      buttonText: data?.featuredTool?.buttonText || "",
       buttonLink: data?.featuredTool?.buttonLink || "#",
     },
     {

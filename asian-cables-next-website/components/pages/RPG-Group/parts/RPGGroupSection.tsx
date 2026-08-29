@@ -11,8 +11,8 @@ export default function RPGGroupSection({ data }: { data?: any }) {
       "The RPG Group is one of India's leading diversified business conglomerates, built on a foundation of ethical leadership, professional governance, and long-term value creation. With a strong presence across infrastructure, engineering, technology, pharmaceuticals, and consumer businesses, the Group operates at the intersection of scale, capability, and responsibility.",
       "Founded by Shri R. P. Goenka in 1979, RPG has evolved into a globally respected enterprise with a multi-sector portfolio and international footprint. The RPG Group brings together diverse businesses, united by ethics, professional governance, and long-term value creation.",
     ],
-    buttonText: data?.infoButtonText || "Visit RPG Website",
-    buttonUrl: data?.infoButtonUrl || "https://rpggroup.com",
+    buttonText: data?.infoButtonText || "",
+    buttonUrl: data?.infoButtonUrl || "#",
     image: data?.infoImage ? (data.infoImage.startsWith('http') ? data.infoImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.infoImage}`) : "/assets/rpggroup/personImage.png",
   };
 

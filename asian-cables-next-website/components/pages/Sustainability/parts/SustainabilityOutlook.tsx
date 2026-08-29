@@ -10,26 +10,19 @@ interface HeaderItem {
 function SustainabilityOutlook({ data }: { data?: any }) {
   const sustainabilityItems = data?.commitments?.length > 0 
     ? data.commitments.map((c: any) => c.text)
-    : [
-        "Committed to sustainable operations",
-        "Advancing the green economy and reducing our ecological footprint",
-        "Preserving and enhancing natural capital",
-        "Comprehensive environmental stewardship",
-        "Healthier planet & a sustainable future",
-      ];
+    : [];
 
-  const headerTitle = data?.ourSustainabilityTitle || "Our Sustainability\nOutlook";
-  const titleParts = headerTitle.split('\n');
-  const name = titleParts[0] || "Our Sustainability";
-  const title = titleParts[1] || "Outlook";
+  const headerTitle = data?.ourSustainabilityTitle || "";
+  const titleParts = headerTitle.split("\n");
+  const name = titleParts[0] || "";
+  const title = titleParts[1] || "";
 
   const headerItems: HeaderItem[] = [
     {
       id: 1,
       name: name,
       title: title,
-      description: data?.ourSustainabilityDescription ||
-        "At Asian Cables, sustainability is an integral part of our manufacturing philosophy and business operations. Our facilities and processes are designed to deliver high-performance cable solutions while minimizing environmental impact and ensuring responsible resource management. As encapsulated in our sustainability purpose, “We transform lives by building sustainable world-class infrastructure.”",
+      description: data?.ourSustainabilityDescription || "",
     },
   ];
 

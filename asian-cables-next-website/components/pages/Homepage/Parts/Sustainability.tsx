@@ -18,12 +18,12 @@ interface SustainabilitySectionProps {
 }
 
 export default function SustainabilitySection({ dynamicData }: SustainabilitySectionProps) {
-  const bgImage = dynamicData?.bgImage || "/assets/sustainability-bg.jpg";
-  const heading = dynamicData?.heading || "We transform lives by building sustainable world-class infrastructure.";
-  const primaryBtnText = dynamicData?.primaryBtnText || "Our Sustainability Practices";
-  const primaryBtnLink = dynamicData?.primaryBtnLink || "/sustainability";
-  const secondaryBtnText = dynamicData?.secondaryBtnText || "View Certifications";
-  const secondaryBtnLink = dynamicData?.secondaryBtnLink || "/certifications";
+  const bgImage = dynamicData?.bgImage || "";
+  const heading = dynamicData?.heading || "";
+  const primaryBtnText = dynamicData?.primaryBtnText || "";
+  const primaryBtnLink = dynamicData?.primaryBtnLink || "#";
+  const secondaryBtnText = dynamicData?.secondaryBtnText || "";
+  const secondaryBtnLink = dynamicData?.secondaryBtnLink || "#";
 
   const defaultFeatures = [
     {

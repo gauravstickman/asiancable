@@ -46,7 +46,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
             <div className="my-8 flex h-[auto] items-center justify-center bg-white md:my-0 md:h-[592px]">
               <img
                 src={productData.image ? getImg(productData.image) : "/assets/p-main.png"}
-                alt={productData.name || "Control Cable"}
+                alt={productData.name || ""}
                 className="object-contain md:w-[88%]"
               />
             </div>
@@ -56,24 +56,18 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
               {/* TAG */}
               <div className="mb-[10px] inline-flex h-[30px] items-center justify-center bg-white px-3">
                 <span className="text-[14px] font-[500] tracking-[0px] text-[#767676] uppercase">
-                  {productData.category?.name || productData.category || "Power Cables"}
+                  {productData.category?.name || productData.category || ""}
                 </span>
               </div>
 
               {/* TITLE */}
               <h1 className="mb-[18px] text-[32px] leading-[1.3] font-[700] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:text-[56px] md:leading-[61.2px] md:tracking-[1.12px]">
-                {productData.name || (
-                  <>
-                    Control and
-                    <br />
-                    instrumentation
-                  </>
-                )}
+                {productData.name || ""}
               </h1>
 
               {/* DESCRIPTION */}
               <p className="mb-[24px] max-w-[100%] text-[16px] leading-[27.2px] text-[#525252] md:text-[17px]">
-                {productData.description || "Multicore, multi-pair control and instrumentation constructions with screening, individual pair shielding, and specialised jacketing options for chemical, temperature or EM-noisy environments; available in high-core counts (up to 61 cores and above) and varied pair configurations per plant specs."}
+                {productData.description || ""}
               </p>
 
               {/* FEATURES */}
@@ -85,7 +79,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
                   { label: "Shielding", value: "Individual / Overall Screening Options", icon: "/assets/p-4.svg" }
                 ]).map((spec: any, idx: number) => {
                   const defaultIcons = ["/assets/p-1.svg", "/assets/p-2.svg", "/assets/p-3.svg", "/assets/p-4.svg"];
-                  const displayIcon = spec.icon || defaultIcons[idx % 4] || "/assets/p-1.svg";
+                  const displayIcon = spec.icon || defaultIcons[idx % 4] || "";
                   return (
                   <div key={idx} className="flex items-center items-center gap-2">
                     <div className="flex h-7 w-7 shrink-0 items-center justify-center">
@@ -156,7 +150,7 @@ const Product = ({ productSlug }: { productSlug?: string }) => {
 
               {/* DESCRIPTION */}
               <p className="mb-[36px] text-[18px] font-[400] leading-[32.4px] text-[#6F6F6F]">
-                {productData.overviewDescription || "Asian Cables Instrumentation cables are designed for accurate signal transmission in industrial control and monitoring systems. These cables feature high-quality copper conductors, advanced insulation materials and shielding options to minimize signal interference. Ideal for industries where precise data and signal transmission are critical for operational reliability."}
+                {productData.overviewDescription || ""}
               </p>
 
               {/* BUTTON */}

@@ -32,7 +32,7 @@ function CertificationsAccreditations({ data }: { data?: any }) {
       <div className="mx-auto flex  md:max-h-[473px] max-w-[1425px] flex-col items-center justify-center px-6">
         {/* Heading */}
         <h2 className="mb-[47px] font-[magistral] text-[32px] leading-[40px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic">
-          {data?.certificationsTitle || "Certifications & Accreditations"}
+          {data?.certificationsTitle || ""}
         </h2>
 
         {/* Cards */}

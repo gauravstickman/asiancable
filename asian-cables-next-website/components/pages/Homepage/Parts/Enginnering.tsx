@@ -70,7 +70,7 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
         {/* HEADING */}
         <div className="mb-8 text-center md:mb-[91px]">
           <h2 className="mx-auto max-w-[700px] text-[32px]  italic  font-[700] md:text-[46px] leading-[100%] tracking-[-2%] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block">
-            {dynamicData?.title || "Engineering Trust. Enabling Progress."}
+            {dynamicData?.title || ""}
           </h2>
           {dynamicData?.tagline && (
             <p className="mt-4 text-[18px] text-[#6F6F6F]">{dynamicData.tagline}</p>

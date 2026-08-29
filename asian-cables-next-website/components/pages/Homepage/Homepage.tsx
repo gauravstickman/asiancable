@@ -23,55 +23,13 @@ import "swiper/css";
 import { useRef } from "react";
 import api, { getBaseUrl } from "../../../utils/api";
 
-const staticSlides = [
-  {
-    id: 1,
-    image: "/assets/home1.jpg",
-    title: "Endurance, by design",
-    description:
-      "Delivering world-class power and telecom cables for critical infrastructure across industries",
-    nextText: "Sustainable Impact",
-    buttonText: "Explore Products",
-    buttonLink: "/products",
-  },
-  {
-    id: 2,
-    image: "/assets/home2.png",
-    title:
-      "Transforming lives by building\nsustainable world-class infrastructure",
-    description:
-      "Delivering world-class power and telecom cables for critical infrastructure across industries",
-    nextText: "Innovation First",
-    buttonText: "Sustainability",
-    buttonLink: "/products",
-  },
-  {
-    id: 3,
-    image: "/assets/home3.jpg",
-    title: "Powering a future\nthat holds the world",
-    description:
-      "Delivering world-class power and telecom cables for critical infrastructure across industries",
-    nextText: "Global Excellence",
-    buttonText: "Company Impact",
-    buttonLink: "/products",
-  },
-  {
-    id: 4,
-    image: "/assets/home4.jpg",
-    title: "Reliability, Redefined",
-    description:
-      "Delivering world-class power and telecom cables for critical infrastructure across industries",
-    nextText: "Reliability, Redefined",
-    buttonText: "Watch Full Video",
-    buttonLink: "/products",
-  },
-];
+const staticSlides: any[] = [];
 
 export default function Homepage() {
   const swiperRef = useRef<any>(null);
 
   const [current, setCurrent] = useState(0);
-  const [slides, setSlides] = useState<any[]>(staticSlides);
+  const [slides, setSlides] = useState<any[]>([]);
   const [aboutText, setAboutText] = useState<string>("");
   const [factsData, setFactsData] = useState<any>(null);
   const [engineeringData, setEngineeringData] = useState<any>(null);
@@ -435,11 +393,13 @@ Reliability, Redefined
           <div className="flex">
             {/* IMAGE */}
             <div className="h-[58px] w-[58px] shrink-0 overflow-hidden md:h-[66px]">
+              {slides.length > 0 && (
               <img
-                src={slides[(current + 1) % slides.length].image}
+                src={slides[(current + 1) % slides.length]?.image || ""}
                 alt="next"
                 className="h-full w-full object-cover"
               />
+              )}
             </div>
 
             {/* CONTENT */}
@@ -449,7 +409,7 @@ Reliability, Redefined
               </p>
 
               <p className="text-[16px] leading-[100%] font-[500] text-white/76">
-                {slides[(current + 1) % slides.length].nextText}
+                {slides.length > 0 ? slides[(current + 1) % slides.length]?.nextText : ""}
               </p>
 
               {/* BULLETS */}
@@ -483,11 +443,13 @@ Reliability, Redefined
           <div className="flex">
             {/* IMAGE */}
             <div className="h-[58px] w-[58px] shrink-0 overflow-hidden md:h-[66px]">
+              {slides.length > 0 && (
               <img
-                src={slides[(current + 1) % slides.length].image}
+                src={slides[(current + 1) % slides.length]?.image || ""}
                 alt="next"
                 className="h-full w-full object-cover"
               />
+              )}
             </div>
 
             {/* CONTENT */}
@@ -497,7 +459,7 @@ Reliability, Redefined
               </p>
 
               <p className="text-[16px] leading-[100%] font-[500] text-white/76">
-                {slides[(current + 1) % slides.length].nextText}
+                {slides.length > 0 ? slides[(current + 1) % slides.length]?.nextText : ""}
               </p>
 
               {/* BULLETS */}

@@ -33,12 +33,7 @@ function About() {
       <CompanyValuesSection dynamicData={dynamicData} />
       <OurJourney dynamicData={dynamicData} />
       <GovernanceSection dynamicData={dynamicData} />
-      {/* <LeadershipTeam dynamicData={dynamicData} /> */}
-<LeadershipStatic
-  onCloseSanjay={() => {}}
-  onCloseGarima={() => {}}
-  onCloseKushal={() => {}}
-/>    <Footer />
+      <LeadershipTeam dynamicData={dynamicData} />    <Footer />
     </div>
   );
 }

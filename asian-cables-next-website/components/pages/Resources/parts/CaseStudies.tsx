@@ -10,14 +10,14 @@ function CaseStudies({ data }: { data?: any }) {
   const featuredArticles = data?.featuredBlogs && data.featuredBlogs.length > 0
     ? data.featuredBlogs.filter((b: any) => b.isFeatured).map((b: any, i: number) => ({
       id: b._id || i,
-      image: b.image || "/assets/resources/fallback4.png",
+      image: b.image || "",
       tag: b.category,
       title: b.title,
       description: b.description,
       author: b.author,
       date: b.date,
       blog: "Featured",
-      readTime: b.readTime || "5 min read",
+      readTime: b.readTime || "",
       link: b.link || "#",
     }))
     : [
@@ -52,11 +52,11 @@ function CaseStudies({ data }: { data?: any }) {
   const caseStudies = data?.featuredBlogs && data.featuredBlogs.length > 0
     ? data.featuredBlogs.filter((b: any) => !b.isFeatured).map((b: any, i: number) => ({
       id: b._id || i + 100,
-      image: b.image || "/assets/resources/img5.png",
+      image: b.image || "",
       tag: b.category,
       title: b.title,
       description: b.description,
-      readTime: b.readTime || "6 min read",
+      readTime: b.readTime || "",
       link: b.link || "#",
     }))
     : [
@@ -120,11 +120,11 @@ function CaseStudies({ data }: { data?: any }) {
           {/* LEFT */}
           <div className="md:px-0 px-5 w-[100%]">
             <h1 className="md:mb-3 mb-6 text-[32px] leading-[40px] md:text-[34px] md:leading-[42px] font-bold tracking-[-0.92px] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic md:text-[46px] md:leading-[55px]">
-              {data?.blogsTitle || "Articles & Case studies"}
+              {data?.blogsTitle || ""}
             </h1>
 
             <p className="max-w-[640px] text-[16px] leading-[150%] md:leading-[28px] text-[#525252]">
-              {data?.blogsSubtitle || "Industry trends, technical articles, and expert opinions from our team"}
+              {data?.blogsSubtitle || ""}
             </p>
           </div>
           {/* TABS */}
@@ -146,7 +146,7 @@ function CaseStudies({ data }: { data?: any }) {
         {/* FEATURED ARTICLES */}
         <div className="mb-3 md:mb-12 md:pl-0 pl-5">
           <p className="mb-5 md:mb-8 text-[20px] md:text-[22px] leading-[33px] font-[500] text-[#1E3C8C]">
-            {data?.blogsFeaturedTitle || "Featured Articles"}
+            {data?.blogsFeaturedTitle || ""}
           </p>
 
           <div className="flex flex-no-wrap overflow-x-auto industries md:grid gap-8 lg:grid-cols-2">

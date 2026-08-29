@@ -86,8 +86,8 @@ export default function InfrastructureStandards({ data }: { data?: any }) {
 
   const standardsData = [
     {
-      title: data?.standardsCardTitle || "Standards-Led Manufacturing",
-      description: data?.standardsCardDescription || "Manufacturing is aligned to internationally recognised standards including IEC, BS, AS/NZS, and IS, ensuring consistent performance across diverse infrastructure applications. This enables seamless integration into global projects across utilities, industrial systems, and specialised environments.",
+      title: data?.standardsCardTitle || "",
+      description: data?.standardsCardDescription || "",
     },
   ];
 
@@ -178,7 +178,7 @@ export default function InfrastructureStandards({ data }: { data?: any }) {
           />
 
           <p className="text-center font-[magistral] text-[28px] leading-[40px] md:text-[46px] md:leading-[70.4px] font-bold tracking-[-1.44  px] text-[#FFFFFF] italic">
-            {data?.globalTitle || "Built for Global Infrastructure Standards"}
+            {data?.globalTitle || ""}
           </p>
         </div>
 
@@ -259,7 +259,7 @@ export default function InfrastructureStandards({ data }: { data?: any }) {
         </div>
         <div className="mt-15 md:mt-25">
           <p className="text-center font-[magistral] text-[24px] leading-[32px] font-bold text-white italic">
-            {data?.certificationsTitle || "Certifications & Standards"}
+            {data?.certificationsTitle || ""}
           </p>
 
           <div className="relative mt-15 w-full">

@@ -35,7 +35,7 @@ export default function CoreValues({ data }: { data?: any }) {
                 <div className="text-center">
 
         <p className="font-bold md:mb-10 italic text-[24px] leading-[125%] md:text-[46px] md:leading-[61.6px] mb-6 tracking-[-2.8px] text-center bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-flex mx-auto px-1 justify-center font-[magistral]">
-          {data?.coreValuesTitle || "Core Values"}
+          {data?.coreValuesTitle || ""}
         </p>
         </div>
 

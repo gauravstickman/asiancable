@@ -8,13 +8,13 @@ import "swiper/css";
 
 export default function ProductResource({ data }: { data?: any }) {
   const resourceData = data?.productResource || {
-    title: "Product Catalogue",
-    description: "A comprehensive guide.",
-    image: "/assets/resources/img-1.jpg",
-    icon: "/assets/resources/folderIcons.png",
-    file: "/assets/resources/catalogue.pdf",
-    fileSize: "PDF • 2.4 MB",
-    requestText: "Request Datasheet",
+    title: "",
+    description: "",
+    image: "",
+    icon: "",
+    file: "",
+    fileSize: "",
+    requestText: "",
   };
 
   const resources = data?.productResourcesList && data.productResourcesList.length > 0
@@ -32,7 +32,7 @@ export default function ProductResource({ data }: { data?: any }) {
       <div className="mx-auto md:px-0 px-0">
         <div className="mb-8 mt-10 text-center md:mb-[39.2px] px-5">
           <h2 className="text-center font-[Magistral] text-[32px] leading-[39px] md:text-[46px] md:leading-[55.2px] font-bold tracking-[-0.92px] px-1 bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block italic">
-            {data?.productResourceTitle || "Product Resources"}
+            {data?.productResourceTitle || ""}
           </h2>
         </div>
         <Swiper

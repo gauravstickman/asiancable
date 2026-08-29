@@ -32,7 +32,7 @@ function SustainabilityHeader({ data }: { data?: any }) {
     ? (data.heroImage.startsWith('http') ? data.heroImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.heroImage}`) 
     : "/assets/sustainability/bgIcon.png";
     
-  const heroTitle = data?.heroTitle || "Powering Infrastructure\nResponsibly";
+  const heroTitle = data?.heroTitle || "";
 
   return (
     <main className="bg-white text-slate-900">
@@ -94,7 +94,7 @@ function SustainabilityHeader({ data }: { data?: any }) {
                   </p>
 
                 <p className="relative font-worksans text-[14px] md:leading-[21px] md:text-[15.81px] md:leading-[23.72px] font-medium text-[#FFFFFFB5]">
-                    {stat.label || stat.description}
+                    {stat.label || ""}
                   </p>
                 </div>
               ))}

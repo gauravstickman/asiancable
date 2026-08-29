@@ -19,8 +19,8 @@ export default function ManufacturingHeader({ data }: { data?: any }) {
     { value: "Up to 220 kV", label: "Voltage Capability", highlight: false },
   ];
 
-  const title = data?.heroTitle || "Precision led Manufacturing";
-  const description = data?.heroDescription || "Integrated manufacturing facilities built for scale,\nprecision, and consistent quality.";
+  const title = data?.heroTitle || "";
+  const description = data?.heroDescription || "";
   const bgImage = data?.heroBgImage ? (data.heroBgImage.startsWith('http') ? data.heroBgImage : `${process.env.NEXT_PUBLIC_BASE_URL}${data.heroBgImage}`) : "/assets/manufacturing/Rectangle 2707.png";
   // You can also handle mobile bg image similarly if needed
 

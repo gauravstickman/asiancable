@@ -32,9 +32,9 @@ export default function LeadershipTeam({ dynamicData }: { dynamicData?: any }) {
     return `${getBaseUrl()}${imageStr.startsWith('/') ? '' : '/'}${imageStr}`;
   };
 
-  const title = dynamicData?.leadershipTitle || "Leadership Team";
-  const subtitle = dynamicData?.leadershipSubtitle || "Meet the visionaries driving Asian Cables forward";
-  const buttonLabel = dynamicData?.leadershipButtonLabel || "View Leadership";
+  const title = dynamicData?.leadershipTitle || "";
+  const subtitle = dynamicData?.leadershipSubtitle || "";
+  const buttonLabel = dynamicData?.leadershipButtonLabel || "";
   const buttonUrl = dynamicData?.leadershipButtonUrl || "#";
 
   const leaders = dynamicData?.leadershipMembers?.length > 0 

@@ -118,7 +118,7 @@ const QualityControlAssurance = ({ data }: { data?: any }) => {
       <div className="mx-auto max-w-[1274px] px-5 md:px-0">
         {/* Heading */}
         <h2 className="font-[magistral] text-[32px] leading-[100%] tracking-[-2%] md:text-[46px] md:leading-[55.2px] md:  tracking-[-0.92px] font-bold italic text-[#1E3C8C] text-center">
-          {data?.qualityTitle || "Quality Control & Assurance"}
+          {data?.qualityTitle || ""}
         </h2>
         <div className="mb-12 pt-10 flex items-center justify-center gap-2">
           <button

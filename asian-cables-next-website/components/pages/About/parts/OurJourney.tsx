@@ -57,7 +57,7 @@ export default function OurJourney({ dynamicData }: { dynamicData?: any }) {
     container.scrollTo({ left, behavior: "smooth" });
   }, [activeIndex]);
 
-  const title = dynamicData?.journeyTitle || "Our Journey";
+  const title = dynamicData?.journeyTitle || "";
 
   return (
     <section className="bg-white py-20 company-slider">

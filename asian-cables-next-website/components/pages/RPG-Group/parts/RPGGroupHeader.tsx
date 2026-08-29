@@ -69,7 +69,7 @@ function ManufacturingHeader({ data }: { data?: any }) {
 
           {/* Subtitle */}
           <p className="mt-[27px] max-w-[550px] font-['Work_Sans'] font-normal text-[18px] md:text-[20px] leading-[31px] tracking-[0px] text-[#767676]">
-            {data?.heroDescription || "For nearly four decades, Asian Cables has been at the forefront of cable manufacturing excellence"}
+            {data?.heroDescription || ""}
           </p>
         </div>
       </div>

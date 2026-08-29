@@ -7,62 +7,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 export default function ProductRangeSection({ dynamicData }: { dynamicData?: any[] }) {
-  const staticProducts = [
-    {
-      title: "Specialty Cables",
-      image:
-        "https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=1400&auto=format&fit=crop",
-      large: true,
-      points: [
-        "Fire-Survival & LSZH",
-        "Solar & EV Charging Ready",
-        "Oil & Gas Rated",
-      ],
-    },
-    {
-      title: "Power Cables",
-      image:
-        "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1200&auto=format&fit=crop",
-      points: ["Up to 220 kV", "Single & Multicore", "Factory-Tested"],
-    },
-    {
-      title: "Railway Cables",
-      image:
-        "https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=1200&auto=format&fit=crop",
-      points: [
-        "Contact & Catenary Wires",
-        "Signaling & Quad Cables",
-        "Fire-Survival for Tunnels",
-      ],
-    },
-    {
-      title: "Control & Instrumentation",
-      image:
-        "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1200&auto=format&fit=crop",
-      points: ["Screened & Armoured", "FR / FRLS / LSZH", "Up to 61+ Cores"],
-    },
-    {
-      title: "Conductors",
-      image:
-        "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop",
-      points: [
-        "AAC, AAAC, ACSR, Al 59",
-        "Overhead Transmission",
-        "High-Temperature Rated",
-      ],
-    },
-    {
-      title: "Telecom & OFC",
-      image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop",
-      wide: true,
-      points: [
-        "Single & Multi-Mode Fibre",
-        "Up to 288+ Fibre Counts",
-        "ADSS & Armoured Options",
-      ],
-    },
-  ];
+  const staticProducts = Array(6).fill({
+    title: "",
+    image: "",
+    points: [],
+    link: ""
+  });
 
   // We need exactly 6 products for the UI grid to look complete on desktop
   // So we pad with static products if dynamic ones aren't enough
@@ -122,7 +72,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                 </div>
 
                 <div className="absolute right-0 bottom-0 flex justify-end">
-                  <Link href={displayProducts[0].link || "/products"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
+                  <Link href={displayProducts[0]?.link || "#"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
@@ -175,7 +125,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </div>
 
                     <div className="absolute right-0 bottom-0 flex justify-end">
-                    <Link href={item.link || "/products"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
+                    <Link href={item.link || "#"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
@@ -226,7 +176,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
                     </div>
 
                     <div className="absolute right-0 bottom-0 flex justify-end">
-                    <Link href={item.link || "/products"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
+                    <Link href={item.link || "#"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
@@ -273,7 +223,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
               </div>
 
               <div className="absolute right-0 bottom-0 flex justify-end">
-                <Link href={displayProducts[5].link || "/products"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
+                <Link href={displayProducts[5]?.link || "#"} className="hidden flex font-dm items-center gap-2 text-[16px] leading-[16px] tracking-[-0.5px] text-white hover:underline">
                     Read More
                     <span>
                       <ChevronRight size={15} />
@@ -344,7 +294,7 @@ export default function ProductRangeSection({ dynamicData }: { dynamicData?: any
 
                   {/* BUTTON */}
                   <div className="hidden absolute right-4 bottom-6 flex justify-end">
-                    <Link href={item.link || "/products"} className="flex items-center gap-2 text-[16px] text-white hover:underline">
+                    <Link href={item.link || "#"} className="flex items-center gap-2 text-[16px] text-white hover:underline">
                       Read More
                       <span>›</span>
                     </Link>

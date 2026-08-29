@@ -25,11 +25,11 @@ export default function FactsSection({ dynamicData }: FactsProps) {
                 {/* TEXT */}
                 <div className="max-w-[508px]">
                   <h2 className="mb-2 text-[20px]  font-[700] text-[#1E3C8C] italic transition-colors duration-300 group-hover:text-white md:text-[22px] leading-[160%]">
-                    {dynamicData?.presence?.title || "Presence in 90+ Countries"}
+                    {dynamicData?.presence?.title || ""}
                   </h2>
 
                   <p className="text-[16px] leading-[150%] text-[#767676] transition-colors duration-300 group-hover:text-white/80 md:text-[14px]">
-                    {dynamicData?.presence?.description || "The company exports cables worldwide, serving global infrastructure projects across Asia, Africa, Europe, the Middle East and Australia."}
+                    {dynamicData?.presence?.description || ""}
                   </p>
                 </div>
 
@@ -58,11 +58,11 @@ export default function FactsSection({ dynamicData }: FactsProps) {
 
                   <div>
                     <h4 className="mb-4 text-[20px] leading-[160%] font-[700] text-[#1E3C8C] italic group-hover:text-white md:text-[24px]">
-                      {dynamicData?.decades?.subtitle || "Manufacturing Expertise"}
+                      {dynamicData?.decades?.subtitle || ""}
                     </h4>
 
                     <p className="text-[16px] leading-[150%] text-[#767676] group-hover:text-white/80">
-                      {dynamicData?.decades?.description || "Asian Cables has been delivering advanced cable solutions since its inception, with continuous innovation in power and telecom cable technologies."}
+                      {dynamicData?.decades?.description || ""}
                     </p>
                   </div>
                 </div>
@@ -80,11 +80,11 @@ export default function FactsSection({ dynamicData }: FactsProps) {
 
                   <div>
                     <h4 className="mb-4 text-[20px] leading-[160%] font-[700] text-[#1E3C8C] italic group-hover:text-white md:text-[24px]">
-                      {dynamicData?.capacity?.subtitle || "Manufacturing Capability"}
+                      {dynamicData?.capacity?.subtitle || ""}
                     </h4>
 
                     <p className="text-[16px] leading-[150%] text-[#767676] group-hover:text-white/80">
-                      {dynamicData?.capacity?.description || "High Voltage and Extra High Voltage cables up to 220 kV are manufactured at the advanced facility in Vadodara."}
+                      {dynamicData?.capacity?.description || ""}
                     </p>
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function FactsSection({ dynamicData }: FactsProps) {
   {/* BIG TEXT */}
   <div className="absolute top-8 left-8">
     <h2 className="text-[48px] leading-none font-black text-white italic md:text-[64px]">
-      {dynamicData?.annual?.value || "3600 Km"}
+      {dynamicData?.annual?.value || ""}
     </h2>
   </div>
 </div>
@@ -117,11 +117,11 @@ export default function FactsSection({ dynamicData }: FactsProps) {
               {/* CONTENT */}
               <div className="absolute bottom-[10px] p-8">
                 <h3 className="mb-4 text-[20px] leading-[160%] font-[700] text-[#1E3C8C] italic md:text-[24px]">
-                  {dynamicData?.annual?.title || "Annual Cable manufacturing capacity"}
+                  {dynamicData?.annual?.title || ""}
                 </h3>
 
                 <p className="text-[16px] leading-[150%] text-[#383838]">
-                  {dynamicData?.annual?.description || "The infrastructure, the expertise, and the scale to power industries across Asia and beyond."}
+                  {dynamicData?.annual?.description || ""}
                 </p>
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function FactsSection({ dynamicData }: FactsProps) {
                 {/* BIG TEXT */}
                 <div className="absolute top-8 left-8">
                   <h2 className="text-[48px] leading-none font-black text-white italic md:text-[64px]">
-                    {dynamicData?.annual?.value || "3600 Km"}
+                    {dynamicData?.annual?.value || ""}
                   </h2>
                 </div>
               </div>
@@ -158,11 +158,11 @@ export default function FactsSection({ dynamicData }: FactsProps) {
               {/* CONTENT */}
               <div className="absolute bottom-[10px] p-4 pb-0">
                 <h3 className="mb-4 text-[20px] leading-[160%] font-[700] text-[#1E3C8C] italic md:text-[24px]">
-                  {dynamicData?.annual?.title || "Annual Cable manufacturing capacity"}
+                  {dynamicData?.annual?.title || ""}
                 </h3>
 
                 <p className="text-[16px] leading-[150%] text-[#383838]">
-                  {dynamicData?.annual?.description || "The infrastructure, the expertise, and the scale to power industries across Asia and beyond."}
+                  {dynamicData?.annual?.description || ""}
                 </p>
               </div>
             </div>

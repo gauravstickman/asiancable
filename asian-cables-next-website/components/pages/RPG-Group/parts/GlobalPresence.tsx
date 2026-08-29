@@ -11,8 +11,8 @@ function GlobalPresenceSection({ data }: { data?: any }) {
   }, []);
 
   const topContent = {
-    title: data?.globalTitle || "Global Presence",
-    description: data?.globalDescription || "Operating across 135+ countries with world-class manufacturing and distribution facilities",
+    title: data?.globalTitle || "",
+    description: data?.globalDescription || "",
   };
 
   const bottomStats = data?.globalMainStats?.length > 0 ? data.globalMainStats.map((stat: any, index: number) => ({

@@ -34,7 +34,7 @@ import { getBaseUrl } from "../../../../utils/api";
 export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
   const displayBlogs = dynamicData && dynamicData.length > 0
     ? dynamicData.map((item: any) => ({
-        tag: item.category?.name || item.tag || "Blog",
+        tag: item.category?.name || item.tag || "",
         title: item.title,
         description: item.description,
         image: item.image?.startsWith("http")
@@ -42,9 +42,9 @@ export default function BlogSection({ dynamicData }: { dynamicData?: any[] }) {
           : item.image
           ? `${getBaseUrl()}${item.image}`
           : "/assets/sustainability-bg.jpg",
-        link: item.link || "/blogs",
+        link: item.link || "#",
       }))
-    : blogs.map(b => ({ ...b, link: "/blogs" }));
+    : [];
 
   return (
     <section className="reveal-section bg-[#f6f6f6] py-10 md:pt-[84.5px]">

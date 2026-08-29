@@ -40,7 +40,7 @@ export default function FAQSection({ data }: { data?: any }) {
                 <div className="text-center">
 
         <h2 className="mb-8 md:mb-14 text-center text-[32px] md:text-[38px] font-[700] tracking-[-1px] text-[#1E3C8C] italic bg-[linear-gradient(269.91deg,#3CAADF_4.39%,#F04123_59.1%,#FFD212_113.8%)] bg-clip-text text-transparent inline-block px-1">
-          {data?.faqTitle || "FAQ"}
+          {data?.faqTitle || ""}
         </h2>
         </div>
 

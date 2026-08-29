@@ -78,7 +78,7 @@ export default function GovernanceSection({ dynamicData }: { dynamicData?: any }
     return `${getBaseUrl()}${imageStr.startsWith('/') ? '' : '/'}${imageStr}`;
   };
 
-  const titleText = dynamicData?.governanceTitle || "Shaped by Governance. Built on Quality.\nProven across Critical Applications.";
+  const titleText = dynamicData?.governanceTitle || "";
   const mainCards = dynamicData?.governanceCards?.length > 0 ? dynamicData.governanceCards : defaultCards;
 
   const primaryContent = dynamicData?.governancePrimaryTitle ? [

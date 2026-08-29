@@ -35,10 +35,7 @@ export default function AboutUs({ dynamicText }: AboutUsProps) {
     };
   }, []);
 
-  const text =
-    dynamicText ||
-    "Asian Cables, a part of RPG Group, is one of India’s most respected industrial houses. Our journey began in 1959, at a time when India was building the foundations of its future. Over six decades, we have grown alongside the country, a journey guided by deep commitment to quality, reliability, and engineering discipline.";
-
+  const text = dynamicText || "";
   const words = text.split(" ");
 
   return (

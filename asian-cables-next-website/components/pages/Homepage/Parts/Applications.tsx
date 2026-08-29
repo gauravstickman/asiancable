@@ -47,7 +47,7 @@ export default function ApplicationsSection({ data }: { data?: any[] }) {
           <div className="col-span-12 row-span-2 lg:col-span-7">
             <div className="group relative h-[440px] overflow-hidden rounded-[4px] md:h-[650px]">
               <img
-                src={getImg(app1.image) || "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop"}
+                src={getImg(app1?.image) || ""}
                 alt={app1.title}
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               />
@@ -79,7 +79,7 @@ export default function ApplicationsSection({ data }: { data?: any[] }) {
               {/* POWER PLANTS */}
               <div className="group relative h-[234px] overflow-hidden rounded-[4px] md:h-[315px]">
                 <img
-                  src={getImg(app2.image) || "https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=1200&auto=format&fit=crop"}
+                  src={getImg(app2?.image) || ""}
                   alt={app2.title}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
@@ -107,7 +107,7 @@ export default function ApplicationsSection({ data }: { data?: any[] }) {
               {/* UTILITIES */}
               <div className="group relative h-[234px] overflow-hidden rounded-[4px] md:h-[315px]">
                 <img
-                  src={getImg(app3.image) || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"}
+                  src={getImg(app3?.image) || ""}
                   alt={app3.title}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
@@ -136,7 +136,7 @@ export default function ApplicationsSection({ data }: { data?: any[] }) {
             {/* BOTTOM WIDE CARD */}
             <div className="group relative h-[234px] overflow-hidden rounded-[4px] md:h-[315px]">
               <img
-                src={getImg(app4.image) || "https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=1400&auto=format&fit=crop"}
+                src={getImg(app4?.image) || ""}
                 alt={app4.title}
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />

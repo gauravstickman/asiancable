@@ -37,7 +37,7 @@ export default function BusinessVerticals({ data }: { data?: any }) {
         {/* HEADING */}
         <div className="text-center">
 <h2 className="font-magistral mb-3 md:mb-5 text-hero text-center text-[32px] md:text-[46px] font-bold tracking-[-0.92px] italic bg-[linear-gradient(270deg,#3CAADF_0%,#F04123_60.78%,#FFD212_121.56%)] bg-clip-text text-transparent inline-flex justify-center px-1">
-          {data?.verticalsTitle || "Business Verticals"}
+          {data?.verticalsTitle || ""}
         </h2>
         </div>
         {data?.verticalsDescription && (

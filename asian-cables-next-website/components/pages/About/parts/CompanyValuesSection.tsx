@@ -19,8 +19,8 @@ export default function CompanyValuesSection({ dynamicData }: { dynamicData?: an
     return `${getBaseUrl()}${iconStr.startsWith('/') ? '' : '/'}${iconStr}`;
   };
 
-  const title = dynamicData?.builtOnTitle || "Built on Precision. Driven by Purpose.";
-  const subtitle = dynamicData?.builtOnSubtitle || "Engineering systems that power certainty across industries, infrastructure, and everyday life.";
+  const title = dynamicData?.builtOnTitle || "";
+  const subtitle = dynamicData?.builtOnSubtitle || "";
 
   return (
     <section className="bg-[#F8F9FB]  py-6 md:pt-20 md:pb-20">
