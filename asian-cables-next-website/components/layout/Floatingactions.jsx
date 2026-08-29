@@ -9,6 +9,8 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
+import ContactForm from "../pages/Contact/Parts/ContactForm";
+
 const downloads = [
   {
     name: "Industry Solutions Brochure",
@@ -39,6 +41,7 @@ const downloads = [
 
 export default function FloatingActions() {
   const [show, setShow] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [hideAtFooter, setHideAtFooter] = useState(false);
   const [openDownloads, setOpenDownloads] =
     useState(false);
@@ -199,6 +202,42 @@ export default function FloatingActions() {
     </div>
   </div>
 </div>
+
+<button
+  type="button"
+  onClick={() => setContactOpen(true)}
+  className={`fixed right-6 bottom-8 z-[999999] hidden cursor-pointer rounded-[4px] bg-[#1e3c8c] px-5 py-3 text-[#ffffff] transition-all duration-500 md:block ${
+    show && !hideAtFooter
+      ? "translate-y-0 opacity-100"
+      : "pointer-events-none translate-y-[120px] opacity-0"
+  }`}
+>
+  Contact Us Today!
+</button>
+
+{contactOpen && (
+  <div
+    className="fixed inset-0 z-[9999999] flex items-center justify-center bg-black/60  px-4"
+    onClick={() => setContactOpen(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-[700px] overflow-y-auto min-h-[300px] flex items-center justify-center rounded-[12px] bg-white"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close */}
+      <button
+        type="button"
+        onClick={() => setContactOpen(false)}
+        className="absolute cursor-pointer right-4 top-4 z-20 flex h-[38px] w-[38px] items-center justify-center rounded-full bg-[#1e3c8c] text-[24px] leading-none text-white"
+        aria-label="Close"
+      >
+        ×
+      </button>
+     <h2 className="text-2xl">Form Coming Soon!</h2>
+    </div>
+  </div>
+)}
+
 
 
     </>

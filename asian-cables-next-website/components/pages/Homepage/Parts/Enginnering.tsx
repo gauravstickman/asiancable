@@ -81,7 +81,7 @@ export default function EngineeringAccordionSection({ dynamicData }: { dynamicDa
         {/* DESKTOP */}
         <div className="hidden grid-cols-2 items-start gap-[80px] lg:grid">
           {/* LEFT IMAGE */}
-          <div className="relative h-[100%] h-[590px] overflow-hidden rounded-[6px]">
+          <div className="relative h-[100%] h-[700px] overflow-hidden rounded-[6px]">
             <img
               src={finalAccordionData[activeIndex]?.image}
               alt="Engineering"

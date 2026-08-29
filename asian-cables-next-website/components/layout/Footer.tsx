@@ -11,6 +11,7 @@ const Footer = () => {
         />
 
         {/* DARK OVERLAY */}
+        
         {/* <div className="absolute inset-0" /> */}
 
         {/* OPTIONAL GLOW EFFECTS */}

@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { getBaseUrl } from "../../../../utils/api";
 import "swiper/css";
 
@@ -100,7 +100,7 @@ const displayProjects =
         {/* HEADING */}
         <div className="mb-8 px-4 text-center md:mb-[84px]">
           <h2 className="mb-[16px] text-[32px]  text-white italic font-[700] md:text-[46px] leading-[100%] tracking-[-2%]">
-            Proven In The Field 
+            Proven In The Field
           </h2> 
 
           <p className="text-[20px] text-white/50 md:text-[24px] leading-[150%]">
@@ -109,25 +109,30 @@ const displayProjects =
         </div>
 
         {/* SLIDER */}
-        <Swiper
-          key={projects.length}
-          modules={[Autoplay]}
-          spaceBetween={18}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          slidesPerView={"auto"}
-          centeredSlides={true}
-          grabCursor={true}
-          loop={true}
-          breakpoints={{
-            1200: {
-              slidesPerView: projects.length >= 2 ? 2 : 1,
-            },
-          }}
-          className="!overflow-visible"
-        >
+        <div className="relative">
+  <Swiper
+    key={projects.length}
+    modules={[Autoplay, Navigation]}
+    spaceBetween={18}
+    autoplay={{
+      delay: 3000,
+      disableOnInteraction: false,
+    }}
+    navigation={{
+      nextEl: ".projects-next",
+      prevEl: ".projects-prev",
+    }}
+    slidesPerView="auto"
+    centeredSlides={true}
+    grabCursor={true}
+    loop={true}
+    breakpoints={{
+      1200: {
+        slidesPerView: projects.length >= 2 ? 2 : 1,
+      },
+    }}
+    className="!overflow-visible"
+  >
           {displayProjects.map((project, index) => (
             <SwiperSlide key={index} className="max-w-[90vw] md:max-w-[60vw]">
               <div className="group relative h-[506px] overflow-hidden rounded-[2px]">
@@ -182,6 +187,18 @@ const displayProjects =
             </SwiperSlide>
           ))}
         </Swiper>
+       <button
+    className="projects-prev absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center  text-2xl transition text-white"
+  >
+    <ChevronLeft className="h-8 w-8"/>
+  </button>
+
+  <button
+    className="projects-next absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center  text-xl transition text-white"
+  >
+  <ChevronRight className="h-8 w-8"/>
+  </button>
+</div>
 
         {/* BUTTON */}
         <button className="border-it mx-auto mt-[36px] md:mt-[50px] mb-[14px] md:mb-[81px] flex h-[48px] w-[162px] items-center justify-center gap-[6px] rounded-[5.52px] border-transparent bg-[#ffffff] text-[20px] font-medium text-[#1E3C8C] transition transition-all duration-300 hover:border-[1.84px] hover:bg-[#ffffff] hover:[border-image:linear-gradient(270deg,_#3CAADF_0%,_#F04123_50%,_#FFD212_100%)_1]">

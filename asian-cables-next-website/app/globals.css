@@ -1074,3 +1074,42 @@ box-shadow: 3px 43px 250px 0px #0000000D;
 .animate-loaderExit {
   animation: loaderExit 0.9s cubic-bezier(.7,0,.3,1) forwards;
 }
+
+
+button.projects-next {
+    background: linear-gradient(90deg, rgba(30, 60, 140, 0) 4.1%, #1E3C8C 100%);
+    height: 100%;
+    right: 0;
+    width: 177px;
+    justify-content: right;
+    padding-right: 24px;
+    cursor: pointer;
+}
+
+
+button.projects-prev {
+    background: linear-gradient(90deg, #1E3C8C 4.1%, rgba(30, 60, 140, 0) 100%);
+    height: 100%;
+    left: 0;
+    width: 177px;
+    justify-content: left;
+    padding-left: 24px;
+    cursor: pointer;
+}
+
+
+.event-gallery-swiper {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden;
+}
+
+.event-gallery-swiper .swiper-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.event-gallery-swiper .swiper-slide {
+  flex-shrink: 0;
+  height: auto;
+}

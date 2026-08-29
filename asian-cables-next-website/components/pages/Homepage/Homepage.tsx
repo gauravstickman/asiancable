@@ -139,6 +139,23 @@ const handleSlideChange = (swiper: any) => {
       .catch((error) => console.warn("Error fetching homepage settings:", error));
   }, []);
 
+
+
+
+  useEffect(() => {
+  const startHeroVideo = () => {
+    if (swiperRef.current?.realIndex === 0) {
+      videoRef.current?.play().catch(() => {});
+    }
+  };
+
+  window.addEventListener("preloaderComplete", startHeroVideo);
+
+  return () => {
+    window.removeEventListener("preloaderComplete", startHeroVideo);
+  };
+}, []);
+
   // Auto slide
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -182,7 +199,6 @@ const totalSlides = slides.length + 1;
     {/* Background Video */}
     <video
       ref={videoRef}
-      autoPlay
       muted
       playsInline
       className="absolute inset-0 h-full w-full object-cover"
@@ -220,7 +236,7 @@ Reliability, Redefined
                 <div data-swiper-parallax="-50">
               <Link
   href="#"
-  className="sparkle
+  className="hidden! sparkle
     group
     relative
     mt-6
@@ -496,7 +512,7 @@ Reliability, Redefined
       <ProvenFieldSectionMobile dynamicData={provenData}  />
       <ProductRangeSection dynamicData={productsData} />
       <SustainabilitySection dynamicData={sustainabilityData} />
-      <TestimonialsSection dynamicData={testimonialsData} />
+       {/* <TestimonialsSection dynamicData={testimonialsData} /> */}
       <Blogs dynamicData={blogsData} />
       <Footer />
     </>
