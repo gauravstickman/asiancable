@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, X, ChevronDown } from "lucide-react";
+import { Check, CircleX, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 type Props = {
@@ -131,14 +131,15 @@ export default function ConnectStepForm({ onClose }: Props) {
           {/* Close */}
           <button
             onClick={onClose}
-            className="absolute right-5 top-5 z-20 cursor-pointer text-[#777] transition hover:text-[#1E3C8C]"
+            className="absolute right-5 top-5 z-20 cursor-pointer text-[#767676] transition hover:text-[#1E3C8C]"
           >
-            <X size={17} />
+        
+            <CircleX size={16} />
           </button>
 
           {/* ================= STEP 1 ================= */}
           {step === 1 && (
-            <div className="animate-fadeStep">
+            <div className="animate-[fadeStep_0.35s_ease-out]">
               <StepHeading
                 title="Tell Us About Yourself"
                 subtitle="Required fields are marked with an asterisk (*)"
@@ -189,7 +190,7 @@ export default function ConnectStepForm({ onClose }: Props) {
 
           {/* ================= STEP 2 ================= */}
           {step === 2 && (
-            <div className="animate-fadeStep">
+            <div className="animate-[fadeStep_0.35s_ease-out]">
               <StepHeading
                 title="Select Your Industry *"
                 subtitle="Required fields are marked with an asterisk (*)"
@@ -216,7 +217,7 @@ export default function ConnectStepForm({ onClose }: Props) {
 
           {/* ================= STEP 3 ================= */}
           {step === 3 && (
-            <div className="animate-fadeStep">
+            <div className="animate-[fadeStep_0.35s_ease-out]">
               <StepHeading
                 title="Select Cable Products You Need *"
                 subtitle="Required fields are marked with an asterisk (*)"
@@ -243,7 +244,7 @@ export default function ConnectStepForm({ onClose }: Props) {
 
           {/* ================= STEP 4 ================= */}
           {step === 4 && (
-            <div className="animate-fadeStep">
+            <div className="animate-[fadeStep_0.35s_ease-out]">
               <StepHeading
                 title="Additional Requirements"
                 subtitle="Describe your specification and timelines"
@@ -386,23 +387,7 @@ export default function ConnectStepForm({ onClose }: Props) {
       </div>
 
       {/* Animation */}
-      <style jsx>{`
-        @keyframes fadeStep {
-          from {
-            opacity: 0;
-            transform: translateX(12px);
-          }
-
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        .animate-fadeStep {
-          animation: fadeStep 0.35s ease-out;
-        }
-      `}</style>
+     
 
     </div>
   );

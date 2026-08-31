@@ -9,7 +9,6 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
-import ContactForm from "../pages/Contact/Parts/ContactForm";
 import ConnectStepForm from "./ConnectStepForm";
 
 const downloads = [
@@ -232,16 +231,14 @@ export default function FloatingActions() {
         className="absolute cursor-pointer right-4 top-4 z-20 flex h-[38px] w-[38px] items-center justify-center rounded-full bg-[#1e3c8c] text-[24px] leading-none text-white"
         aria-label="Close"
       >
-        1
+        <X/>
       </button>
     <ConnectStepForm
   onClose={() => setContactOpen(false)}
-/>
+/> 
     </div>
   </div>
 )}
-
-
 
     </>
   );

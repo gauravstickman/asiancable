@@ -1113,3 +1113,19 @@ button.projects-prev {
   flex-shrink: 0;
   height: auto;
 }
+
+@keyframes fadeStep {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeStep {
+  animation: fadeStep 0.35s ease-out;
+}
