@@ -206,13 +206,13 @@ export default function FloatingActions() {
 <button
   type="button"
   onClick={() => setContactOpen(true)}
-  className={`fixed right-6 bottom-8 z-[999999] hidden cursor-pointer rounded-[4px] bg-[#1e3c8c] px-5 py-3 text-[#ffffff] transition-all duration-500 md:block ${
+  className={`fixed right-6 bottom-7 z-[999999] hidden cursor-pointer rounded-[4px] bg-[#1e3c8c] px-5 py-3 text-[#ffffff] transition-all duration-500 md:block ${
     show && !hideAtFooter
       ? "translate-y-0 opacity-100"
       : "pointer-events-none translate-y-[120px] opacity-0"
   }`}
 >
-  Contact Us Today!
+ Get A Callback
 </button>
 
 {contactOpen && (

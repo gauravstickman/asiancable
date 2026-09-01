@@ -184,9 +184,14 @@ const totalSlides = slides.length + 1;
           disableOnInteraction: false,
         }}
         loop={true}
-        onSwiper={(swiper) => {
-    swiperRef.current = swiper;
-  }}
+      onSwiper={(swiper) => {
+  swiperRef.current = swiper;
+  swiper.autoplay.stop();
+
+  setTimeout(() => {
+    videoRef.current?.play().catch(() => {});
+  }, 100);
+}}
   
   onSlideChange={handleSlideChange}   
         className="main-banner relative h-screen w-full overflow-hidden bg-black"
@@ -203,9 +208,12 @@ const totalSlides = slides.length + 1;
       playsInline
       className="absolute inset-0 h-full w-full object-cover"
       onEnded={() => {
-        swiperRef.current?.slideNext();
-        swiperRef.current?.autoplay.start();
-      }}
+  swiperRef.current?.slideNext();
+
+  setTimeout(() => {
+    swiperRef.current?.autoplay.start();
+  }, 100);
+}}
     >
     <source src="/assets/asian.mp4" type="video/mp4" />
     </video>
