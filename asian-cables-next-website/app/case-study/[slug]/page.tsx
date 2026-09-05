@@ -3,6 +3,9 @@ import { CaseStudyData } from "@/components/pages/CaseStudy/types";
 import { notFound } from "next/navigation";
 import api from '@/utils/api';
 
+export const dynamic = 'force-dynamic';
+
+
 interface PageProps {
   params: Promise<{
     slug: string;

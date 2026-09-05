@@ -2,6 +2,8 @@ import Resources from "@/components/pages/Resources/Resources";
 import React from "react";
 import api from '@/utils/api';
 
+export const dynamic = 'force-dynamic';
+
 async function getResourcesData() {
   try {
     const res = await api.get(`/resources-page`);

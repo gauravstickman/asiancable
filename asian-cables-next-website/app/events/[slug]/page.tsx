@@ -8,6 +8,9 @@ import Footer from '@/components/layout/Footer';
 import { useParams } from 'next/navigation';
 import api from '@/utils/api';
 
+export const dynamic = 'force-dynamic';
+
+
 function EventSlugPage() {
   const { slug } = useParams();
   const [event, setEvent] = useState<any>(null);

@@ -1,6 +1,9 @@
 import Contact from "@/components/pages/Contact/Contact";
 import api from '@/utils/api';
 
+export const dynamic = 'force-dynamic';
+
+
 export default async function Page() {
   let data = null;
   try {

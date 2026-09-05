@@ -5,6 +5,9 @@ import api from '@/utils/api'
 
 import { Metadata, ResolvingMetadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
+
 async function getBlogData(slug: string) {
   try {
     const res = await api.get(`/blogs/slug/${slug}`);
